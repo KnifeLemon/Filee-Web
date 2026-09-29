@@ -27,6 +27,22 @@ export const STRINGS = {
     s5chips: ['Presets', 'Shortcuts', 'Themes'],
     s6a: 'Free & open source · Windows',
     s6cta: 'filee.sh',
+    // Short Threads / Reels cut (renderThreads): hook, the gesture, everyday uses, end card.
+    cut: {
+      hook: 'Still uploading files\nto converter sites?',
+      hookSub: 'Pop-up ads, queues, 2 free files a day…\nand is your contract safe there?',
+      site: 'Free File Converter', ad: 'AD', popup: 'Wait! Premium\nis 10× faster', file: 'contract.pdf',
+      uploading: 'Uploading…', queue: '#128 in queue', limit: '2 free files/day',
+      after: 'No upload. Just drag and drop.',
+      usesTitle: 'Everything you\nconvert every day',
+      uses: [
+        ['heic', 'jpg', 'iPhone photos → JPG'], ['webp', 'jpg', 'WEBP from the web → JPG'],
+        ['jpg', 'pdf', 'Many photos → one PDF'], ['pdf', 'pdf', 'Merge & split PDFs'],
+        ['jpg', 'jpg', 'Shrink photo file size'], ['docx', 'hwpx', 'Word → HWPX'],
+        ['hwp', 'pdf', 'HWP → PDF'], ['pptx', 'pdf', 'PowerPoint & Excel → PDF'],
+      ],
+      endLine: 'No upload · No ads · Free',
+    },
   },
   ko: {
     tagline: '끌어서 놓으면, 변환 끝.',
@@ -54,6 +70,21 @@ export const STRINGS = {
     s5chips: ['프리셋', '단축키', '테마'],
     s6a: '무료 · 오픈소스 · Windows',
     s6cta: 'filee.sh',
+    cut: {
+      hook: '아직도 변환 사이트에\n파일 올려요?',
+      hookSub: '광고 팝업, 대기열, 하루 2회 제한…\n내 계약서는 괜찮을까?',
+      site: '무료 파일 변환', ad: '광고', popup: '잠깐!\n프리미엄이면 10배 빨라요', file: '계약서.pdf',
+      uploading: '업로드 중…', queue: '대기 128번째', limit: '무료 하루 2회',
+      after: '이제 업로드 없이, 끌어서 놓기만',
+      usesTitle: '자주 하는 변환,\n전부 이걸로',
+      uses: [
+        ['heic', 'jpg', '아이폰 사진 → JPG'], ['webp', 'jpg', '웹에서 저장한 WEBP → JPG'],
+        ['jpg', 'pdf', '사진 여러 장 → PDF 한 개'], ['pdf', 'pdf', 'PDF 합치기 · 나누기'],
+        ['jpg', 'jpg', '사진 용량 줄이기'], ['docx', 'hwpx', '워드 → 한글(HWPX)'],
+        ['hwp', 'pdf', '한글(HWP) → PDF'], ['pptx', 'pdf', 'PPT · 엑셀 → PDF'],
+      ],
+      endLine: '업로드 0 · 광고 0 · 무료',
+    },
   },
   'zh-CN': {
     tagline: '拖一下，放一下，转好了。',
@@ -81,5 +112,20 @@ export const STRINGS = {
     s5chips: ['预设', '快捷键', '主题'],
     s6a: '免费 · 开源 · Windows',
     s6cta: 'filee.sh',
+    cut: {
+      hook: '转换文件，\n还在上传到网站？',
+      hookSub: '弹窗广告、排队、每天限 2 次……\n我的合同安全吗？',
+      site: '免费文件转换', ad: '广告', popup: '等等！\n升级会员提速 10 倍', file: '合同.pdf',
+      uploading: '上传中…', queue: '排队第 128 位', limit: '每天免费 2 次',
+      after: '无需上传，拖放即可',
+      usesTitle: '日常转换，\n一个工具全搞定',
+      uses: [
+        ['heic', 'jpg', 'iPhone 照片 → JPG'], ['webp', 'jpg', '网上存的 WEBP → JPG'],
+        ['jpg', 'pdf', '多张照片 → 一个 PDF'], ['pdf', 'pdf', 'PDF 合并 · 拆分'],
+        ['jpg', 'jpg', '压缩照片大小'], ['docx', 'hwpx', 'Word → HWPX'],
+        ['hwp', 'pdf', 'HWP → PDF'], ['pptx', 'pdf', 'PPT · Excel → PDF'],
+      ],
+      endLine: '无需上传 · 无广告 · 免费',
+    },
   },
 };

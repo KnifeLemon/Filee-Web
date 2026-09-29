@@ -15,6 +15,7 @@
   <header>
     <select id="lang"><option>ko</option><option>en</option><option>zh-CN</option></select>
     <select id="format"><option value="1080x1920">1080×1920</option><option value="1920x1080">1920×1080</option></select>
+    <select id="cut"><option value="full">Full (27 s)</option><option value="threads">Threads cut</option></select>
     <input id="time" type="range" min="0" max="27" step="0.01" value="5" />
     <span id="t">5.00s</span>
     <button id="play">Play</button>
@@ -23,7 +24,7 @@
   <canvas id="stage" width="1080" height="1920"></canvas>
 
   <script type="module">
-    import { render, DURATION, MOMENTS, useScreenshots } from './promo.js';
+    import { CUTS, MOMENTS, useScreenshots } from './promo.js';
     import { encodeMp4 } from './mp4.js';
     import { renderStill, STILL_NAMES } from './stills.js';
 
@@ -57,13 +58,15 @@
       canvas.width = w;
       canvas.height = h;
     }
+    const cut = () => CUTS[$('cut').value];
     function draw() {
       const t = Number($('time').value);
       $('t').textContent = `${t.toFixed(2)}s`;
-      render(ctx, t, $('lang').value);
+      cut().render(ctx, t, $('lang').value);
     }
     $('lang').onchange = draw;
     $('format').onchange = () => { setFormat($('format').value); draw(); };
+    $('cut').onchange = () => { $('time').max = cut().duration; draw(); };
     $('time').oninput = draw;
     let playing = false;
     $('play').onclick = () => {
@@ -71,7 +74,7 @@
       const start = performance.now() - Number($('time').value) * 1000;
       const tick = now => {
         if (!playing) return;
-        $('time').value = ((now - start) / 1000) % DURATION;
+        $('time').value = ((now - start) / 1000) % cut().duration;
         draw();
         requestAnimationFrame(tick);
       };
@@ -86,28 +89,31 @@
 
     /** API used to render everything (called from the console or automation). */
     window.studio = {
-      async video(lang, format, name, bitrate = 9e6, output) {
+      /** cutName: 'full' (27 s) or 'threads' (short vertical cut), see CUTS in promo.js. */
+      async video(lang, format, name, bitrate = 9e6, output, cutName = 'full') {
         setFormat(format);
         status(`encoding ${name}…`);
         const started = performance.now();
         const [width, height] = (output ?? format).split('x').map(Number);
+        const { render, duration } = CUTS[cutName];
         const mp4 = await encodeMp4(canvas, t => render(ctx, t, lang), {
-          fps: 30, duration: DURATION, bitrate, width, height, onProgress: f => status(`${name} ${Math.round(f * 100)}%`),
+          fps: 30, duration, bitrate, width, height, onProgress: f => status(`${name} ${Math.round(f * 100)}%`),
         });
         await save(name, new Blob([mp4], { type: 'video/mp4' }));
         status(`${name}: ${(mp4.byteLength / 1e6).toFixed(1)} MB in ${((performance.now() - started) / 1000).toFixed(0)} s`);
         return mp4.byteLength;
       },
-      async still(lang, format, t, name) {
+      async still(lang, format, t, name, cutName = 'full') {
         setFormat(format);
-        render(ctx, t, lang);
+        CUTS[cutName].render(ctx, t, lang);
         const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
         await save(name, blob);
         return blob.size;
       },
       /** PNG frames for the README animation (packed into WebP by make-anim.py). */
-      async frames(lang, format, from, to, fps, folder, scale = 0.5) {
+      async frames(lang, format, from, to, fps, folder, scale = 0.5, cutName = 'full') {
         setFormat(format);
+        const { render } = CUTS[cutName];
         const small = document.createElement('canvas');
         small.width = Math.round(canvas.width * scale);
         small.height = Math.round(canvas.height * scale);

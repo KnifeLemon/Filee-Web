@@ -37,7 +37,7 @@ const LOGO_FOLD = new Path2D('M266 212 v24 h24 z');
 
 const TYPE_COLORS = {
   jpg: '#E0913C', webp: '#7F77DD', png: '#378ADD', docx: '#2B579A', pptx: '#D24726', xlsx: '#217346',
-  hwp: '#1B7FC4', hwpx: '#1B7FC4', pdf: '#E5252A', md: '#5F5E5A',
+  hwp: '#1B7FC4', hwpx: '#1B7FC4', pdf: '#E5252A', md: '#5F5E5A', heic: '#639922',
 };
 
 // ───────────────────────── Timing helpers ─────────────────────────
@@ -213,7 +213,7 @@ function fileIcon(ctx, x, y, w, type, { alpha = 1, glow = 0 } = {}) {
   ctx.shadowColor = 'transparent';
   ctx.save();
   ctx.clip();
-  if (type === 'jpg' || type === 'webp' || type === 'png') {
+  if (type === 'jpg' || type === 'webp' || type === 'png' || type === 'heic') {
     // A little landscape picture.
     const g = ctx.createLinearGradient(x, y, x, y + h);
     g.addColorStop(0, '#8EC5F0');
@@ -850,7 +850,7 @@ function scene5(ctx, W, H, u, s, lang) {
 const FORMATS = ['JPG', 'PNG', 'WEBP', 'HEIC', 'AVIF', 'TIFF', 'BMP', 'GIF', 'ICO', 'PDF', 'DOCX', 'DOC', 'ODT', 'RTF',
   'HWP', 'HWPX', 'XLSX', 'PPTX', 'MD', 'HTML', 'TXT'];
 
-function scene6(ctx, W, H, u, s) {
+function scene6(ctx, W, H, u, s, lang, extra) {
   const portrait = H > W;
   // Format marquee rows behind the end card.
   const rows = portrait ? 11 : 7;
@@ -883,9 +883,13 @@ function scene6(ctx, W, H, u, s) {
   const logoY = y + (portrait ? 220 : 150);
   drawLogo(ctx, cx, logoY, portrait ? 260 : 200, { progress: span(u, 0.4, 1.6) });
   text(ctx, 'Filee', cx, logoY + (portrait ? 210 : 160), { size: portrait ? 100 : 86, weight: 800, alpha: easeOut(span(u, 0.8, 1.2)), letter: -2 });
-  text(ctx, s.s6a, cx, logoY + (portrait ? 310 : 240), { size: portrait ? 40 : 34, weight: 600, color: C.muted, alpha: easeOut(span(u, 1.0, 1.4)) });
+  // extra: an optional bold line under the subtitle (the Threads cut's "no upload · no ads · free").
+  const lineY = logoY + (portrait ? (extra ? 300 : 310) : (extra ? 232 : 240));
+  text(ctx, s.s6a, cx, lineY, { size: portrait ? 40 : 34, weight: 600, color: C.muted, alpha: easeOut(span(u, 1.0, 1.4)) });
+  if (extra)
+    text(ctx, extra, cx, lineY + (portrait ? 72 : 58), { size: portrait ? 46 : 38, weight: 800, color: C.accentDark, alpha: easeOut(span(u, 1.15, 1.55)) });
   const p = spring(span(u, 1.3, 1.9));
-  pill(ctx, cx, logoY + (portrait ? 450 : 350), s.s6cta, { size: portrait ? 44 : 38, alpha: clamp(p * 2), scale: p });
+  pill(ctx, cx, logoY + (portrait ? (extra ? 500 : 450) : (extra ? 370 : 350)), s.s6cta, { size: portrait ? 44 : 38, alpha: clamp(p * 2), scale: p });
 }
 
 const SCENES = [
@@ -897,16 +901,25 @@ const SCENES = [
   [23.4, DURATION, scene6],
 ];
 
-/** Draws the frame at time t (seconds). */
+/** Draws the frame at time t (seconds) of the full video. */
 export function render(ctx, t, lang) {
+  renderScenes(ctx, t, lang, SCENES, { mark: [2.6, 23.2] });
+}
+
+/**
+ * Cross-fades the scenes active at t and shows the brand mark in the corner between mark[0] and mark[1].
+ * firstVisible draws the first scene at full opacity from frame 0, for cuts whose first frame is the thumbnail.
+ */
+function renderScenes(ctx, t, lang, scenes, { mark, firstVisible = false }) {
   const { width: W, height: H } = ctx.canvas;
   const s = STRINGS[lang];
   background(ctx, W, H, t);
   const fade = 0.35;
-  for (const [start, end, scene] of SCENES) {
+  for (const [start, end, scene] of scenes) {
     if (t < start - fade || t > end + fade)
       continue;
-    const alpha = Math.min(span(t, start - fade, start + fade * 0.2), 1 - span(t, end - fade * 0.2, end + fade));
+    const fadeIn = firstVisible && start === 0 ? 1 : span(t, start - fade, start + fade * 0.2);
+    const alpha = Math.min(fadeIn, 1 - span(t, end - fade * 0.2, end + fade));
     if (alpha <= 0)
       continue;
     ctx.save();
@@ -914,13 +927,213 @@ export function render(ctx, t, lang) {
     scene(ctx, W, H, t - start, s, lang);
     ctx.restore();
   }
-  // Brand mark in the corner after the intro.
-  const mark = span(t, 2.6, 3.2) * (1 - span(t, 23.2, 23.6));
-  if (mark > 0) {
+  const markAlpha = span(t, mark[0], mark[0] + 0.6) * (1 - span(t, mark[1], mark[1] + 0.4));
+  if (markAlpha > 0) {
     drawLogo(ctx, 70, H - 70, 60, {});
-    text(ctx, 'filee.sh', 115, H - 70, { size: 28, weight: 700, color: C.accentDark, align: 'left', alpha: mark });
+    text(ctx, 'filee.sh', 115, H - 70, { size: 28, weight: 700, color: C.accentDark, align: 'left', alpha: markAlpha });
   }
 }
+
+// ───────────────────────── Threads / Reels cut ─────────────────────────
+
+/**
+ * Hook: a cluttered converter website (ads, a pop-up, a queue, a daily limit, a contract being uploaded) gets
+ * crossed out. Everything is drawn from frame 0, because the first frame is the thumbnail in the feed.
+ */
+function sceneHook(ctx, W, H, u, s) {
+  const c = s.cut;
+  const portrait = H > W;
+  // Portrait keeps the headline and the card inside the central 4:5 area, in case a feed crops the video.
+  const titleY = portrait ? 330 : 110;
+  const titleH = headline(ctx, c.hook, W / 2, titleY, portrait ? 84 : 70, 1, { maxWidth: W - 100 });
+  headline(ctx, c.hookSub, W / 2, titleY + titleH + 24, portrait ? 40 : 32, 1, { maxWidth: W - 140, color: C.muted, weight: 600 });
+
+  const card = portrait ? { x: 90, y: 680, w: W - 180, h: 780 } : { x: W / 2 - 520, y: 360, w: 1040, h: 560 };
+  const k = portrait ? 1 : 0.8;
+  ctx.save();
+  shadow(ctx, 60, 24, 0.18);
+  roundRect(ctx, card.x, card.y, card.w, card.h, 28);
+  ctx.fillStyle = C.white;
+  ctx.fill();
+  ctx.shadowColor = 'transparent';
+  roundRect(ctx, card.x, card.y, card.w, card.h, 28);
+  ctx.clip();
+  // Browser bar.
+  ctx.fillStyle = '#ECEAE6';
+  ctx.fillRect(card.x, card.y, card.w, 66);
+  ['#FF6159', '#FFBD2E', '#28C941'].forEach((color, i) => {
+    ctx.beginPath();
+    ctx.arc(card.x + 36 + i * 30, card.y + 33, 9, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+  });
+  roundRect(ctx, card.x + 140, card.y + 16, card.w - 180, 34, 17);
+  ctx.fillStyle = C.white;
+  ctx.fill();
+  text(ctx, c.site, card.x + card.w / 2, card.y + 66 + 64 * k, { size: 44 * k, weight: 800 });
+  // Blinking ad banner.
+  const ad = { x: card.x + 40, y: card.y + 66 + 124 * k, w: card.w - 80, h: 150 * k };
+  ctx.save();
+  roundRect(ctx, ad.x, ad.y, ad.w, ad.h, 14);
+  ctx.clip();
+  ctx.fillStyle = '#FFE9A8';
+  ctx.fillRect(ad.x, ad.y, ad.w, ad.h);
+  ctx.strokeStyle = '#FFD66B';
+  ctx.lineWidth = 18;
+  for (let sx = ad.x - ad.h; sx < ad.x + ad.w; sx += 56) {
+    ctx.beginPath();
+    ctx.moveTo(sx, ad.y + ad.h);
+    ctx.lineTo(sx + ad.h, ad.y);
+    ctx.stroke();
+  }
+  ctx.restore();
+  text(ctx, c.ad, ad.x + ad.w / 2, ad.y + ad.h / 2, { size: 64 * k, weight: 800, color: '#B7791F', alpha: 0.7 + 0.3 * Math.sin(u * 12) });
+  // Upload box with a contract crawling up.
+  const box = { x: card.x + 40, y: ad.y + ad.h + 40 * k, w: card.w - 80, h: 250 * k };
+  ctx.setLineDash([14, 10]);
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = '#C9C5E8';
+  roundRect(ctx, box.x, box.y, box.w, box.h, 20);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  fileIcon(ctx, box.x + 40, box.y + (box.h - 110 * k * 1.22) / 2, 110 * k, 'pdf');
+  const value = 0.12 + 0.25 * easeOut(span(u, 0, 1.4));
+  const tx = box.x + 190 * k;
+  text(ctx, c.file, tx, box.y + box.h * 0.3, { size: 36 * k, weight: 700, align: 'left' });
+  roundRect(ctx, tx, box.y + box.h * 0.52, box.w - 230 * k, 22 * k, 11 * k);
+  ctx.fillStyle = '#EEEDF3';
+  ctx.fill();
+  roundRect(ctx, tx, box.y + box.h * 0.52, (box.w - 230 * k) * value, 22 * k, 11 * k);
+  ctx.fillStyle = C.accent;
+  ctx.fill();
+  text(ctx, `${c.uploading} ${Math.round(value * 100)}%`, tx, box.y + box.h * 0.78, { size: 30 * k, weight: 600, color: C.muted, align: 'left' });
+  // Queue and daily limit.
+  const badgeY = box.y + box.h + 70 * k;
+  const first = pill(ctx, card.x + 40, badgeY, c.queue, { size: 30 * k, color: '#B42318', background: '#FDE7E4', align: 'left' });
+  pill(ctx, card.x + 40 + first + 20, badgeY, c.limit, { size: 30 * k, color: '#B42318', background: '#FDE7E4', align: 'left' });
+  ctx.restore();
+
+  // Pop-up ad on top.
+  const pop = spring(span(u, 0.45, 0.85));
+  if (pop > 0) {
+    ctx.save();
+    ctx.translate(card.x + card.w * 0.6, card.y + card.h * 0.52);
+    ctx.rotate(-0.04);
+    ctx.scale(pop * k, pop * k);
+    shadow(ctx, 50, 20, 0.28);
+    roundRect(ctx, -280, -110, 560, 220, 22);
+    ctx.fillStyle = C.white;
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#F2B8B5';
+    ctx.stroke();
+    text(ctx, '✕', 240, -76, { size: 32, weight: 700, color: C.muted });
+    headline(ctx, c.popup, 0, -20, 38, 1, { maxWidth: 440, color: '#B42318' });
+    ctx.restore();
+  }
+
+  // Crossed out with a "no" sign.
+  const no = spring(span(u, 1.45, 1.85));
+  if (no > 0) {
+    ctx.save();
+    ctx.globalAlpha *= clamp(no * 1.5);
+    roundRect(ctx, card.x, card.y, card.w, card.h, 28);
+    ctx.fillStyle = 'rgba(246, 244, 240, 0.6)';
+    ctx.fill();
+    const cx = card.x + card.w / 2;
+    const cy = card.y + card.h / 2;
+    const r = (portrait ? 200 : 170) * no;
+    ctx.lineWidth = portrait ? 38 : 30;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#E5484D';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - r * 0.7, cy - r * 0.7);
+    ctx.lineTo(cx + r * 0.7, cy + r * 0.7);
+    ctx.stroke();
+    ctx.restore();
+  }
+  headline(ctx, c.after, W / 2, card.y + card.h + (portrait ? 100 : 70), portrait ? 58 : 46, span(u, 1.8, 2.3),
+    { maxWidth: W - 120, color: C.accentDark });
+}
+
+/** Everyday conversions, one row each (source → target), so the pitch isn't about a single format. */
+function sceneUses(ctx, W, H, u, s) {
+  const c = s.cut;
+  const L = layout(W, H);
+  const bottom = caption(ctx, L, c.usesTitle, span(u, 0, 0.5));
+  const portrait = L.portrait;
+  const rowH = portrait ? 128 : 92;
+  const gap = portrait ? 22 : 12;
+  const top = portrait ? Math.max(bottom + 40, 470) : L.stage.y - 40;
+  const x = portrait ? 80 : L.stage.x;
+  const w = portrait ? W - 160 : L.stage.w;
+  c.uses.forEach(([from, to, label], i) => {
+    const p = spring(span(u, 0.45 + i * 0.4, 0.95 + i * 0.4));
+    if (p <= 0)
+      return;
+    const y = top + i * (rowH + gap);
+    ctx.save();
+    ctx.globalAlpha *= clamp(p * 2);
+    ctx.translate((1 - p) * 80, 0);
+    shadow(ctx, 30, 10, 0.12);
+    roundRect(ctx, x, y, w, rowH, 26);
+    ctx.fillStyle = 'rgba(255,255,255,0.94)';
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    const iw = rowH * 0.5;
+    const iy = y + (rowH - iw * 1.22) / 2;
+    fileIcon(ctx, x + 36, iy, iw, from);
+    text(ctx, '→', x + 36 + iw + 40, y + rowH / 2, { size: rowH * 0.32, weight: 800, color: C.accent });
+    fileIcon(ctx, x + 36 + iw + 80, iy, iw, to);
+    const lx = x + 36 + iw * 2 + 120;
+    text(ctx, label, lx, y + rowH / 2, { size: portrait ? 36 : 28, weight: 700, align: 'left', maxWidth: w - (lx - x) - 90 });
+    const ok = spring(span(u, 0.8 + i * 0.4, 1.2 + i * 0.4));
+    if (ok > 0) {
+      const cx = x + w - 50;
+      const cy = y + rowH / 2;
+      const r = rowH * 0.19 * ok;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = C.green;
+      ctx.fill();
+      ctx.lineWidth = r * 0.28;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = C.white;
+      ctx.beginPath();
+      ctx.moveTo(cx - r * 0.4, cy + r * 0.02);
+      ctx.lineTo(cx - r * 0.1, cy + r * 0.32);
+      ctx.lineTo(cx + r * 0.45, cy - r * 0.3);
+      ctx.stroke();
+    }
+    ctx.restore();
+  });
+}
+
+export const THREADS_DURATION = 17.8;
+
+const THREADS_SCENES = [
+  [0, 2.6, sceneHook],
+  // The full video's gesture scene (7.8 s), played 1.3× faster.
+  [2.6, 8.6, (ctx, W, H, u, s) => scene2(ctx, W, H, u * 1.3, s)],
+  [8.6, 14.2, sceneUses],
+  [14.2, THREADS_DURATION, (ctx, W, H, u, s, lang) => scene6(ctx, W, H, u, s, lang, s.cut.endLine)],
+];
+
+/** Draws the frame at time t of the short Threads / Reels cut. */
+export function renderThreads(ctx, t, lang) {
+  renderScenes(ctx, t, lang, THREADS_SCENES, { mark: [2.6, 14.0], firstVisible: true });
+}
+
+/** Every renderable cut by name (the studio's cut selector and the last argument of studio.video). */
+export const CUTS = {
+  full: { duration: DURATION, render },
+  threads: { duration: THREADS_DURATION, render: renderThreads },
+};
 
 // ───────────────────────── Stills ─────────────────────────
 

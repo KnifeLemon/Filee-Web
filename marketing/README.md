@@ -39,10 +39,14 @@ Open http://127.0.0.1:4173/studio.html. The scrubber previews any moment in any 
 API from the browser console:
 
 ```js
-// Videos: (lang, canvas format, file name, bitrate, output size)
+// Videos: (lang, canvas format, file name, bitrate, output size, cut)
 await studio.video('ko', '1080x1920', 'threads/filee-ko-1080x1920.mp4', 9e6)                     // Threads / Reels / Shorts
 await studio.video('ko', '1920x1080', 'landscape/filee-ko-1920x1080.mp4', 8e6)                   // YouTube
 await studio.video('ko', '1920x1080', 'web/filee-ko-1280x720.mp4', 2.2e6, '1280x720')           // website
+
+// Short feed cut (17.8 s): hook ("still uploading to converter sites?"), the gesture, everyday uses, end card.
+// Its first frame is the hook, so it doubles as the thumbnail. Pick "Threads cut" in the studio to preview it.
+await studio.video('ko', '1080x1920', 'threads/filee-threads-ko-1080x1920.mp4', 9e6, undefined, 'threads')
 
 // Carousel slides, Open Graph card and social preview for one language → out/images/
 await studio.stills('ko')
@@ -65,7 +69,8 @@ Repeat with `en` and `zh-CN`. Keep the studio tab in the foreground while encodi
 
 | File | Used for |
 |---|---|
-| `out/threads/filee-*-1080x1920.mp4` | Threads, Instagram Reels, YouTube Shorts, TikTok (9:16) |
+| `out/threads/filee-threads-*-1080x1920.mp4` | Short cut for feeds: Threads, Instagram Reels, YouTube Shorts, TikTok (9:16) |
+| `out/threads/filee-*-1080x1920.mp4` | The full 27-second vertical video |
 | `out/landscape/filee-*-1920x1080.mp4` | YouTube, X, LinkedIn (16:9) |
 | `out/web/filee-*-1280x720.mp4` | filee.sh (`site/public/media/promo-*.mp4`) |
 | `out/images/threads-1…6-*.png` | Threads or Instagram carousel (4:5), posted in order |
