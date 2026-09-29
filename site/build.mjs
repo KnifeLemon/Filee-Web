@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { DOWNLOAD, INLINE_SCRIPT, REPO, SITE, renderNotFound, renderPage } from './src/page.mjs';
+import { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE, renderNotFound, renderPage } from './src/page.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, 'dist');
@@ -107,15 +107,17 @@ const manifest = JSON.stringify({
 
 /** Security and caching headers (Cloudflare Workers static assets read _headers from the assets directory). */
 function headers() {
-  const scriptHash = createHash('sha256').update(INLINE_SCRIPT).digest('base64');
+  const hashes = INLINE_SCRIPTS.map(s => `'sha256-${createHash('sha256').update(s).digest('base64')}'`).join(' ');
+  // Google Analytics 4 hosts, per Google's CSP guide for gtag.js (it also reports to www.google.com/g/collect).
+  const ga = 'https://*.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://*.google.com';
   const csp = [
     "default-src 'self'",
-    `script-src 'self' 'sha256-${scriptHash}' https://static.cloudflareinsights.com`,
+    `script-src 'self' ${hashes} https://www.googletagmanager.com https://static.cloudflareinsights.com`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
     "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net",
-    "img-src 'self' data:",
+    `img-src 'self' data: ${ga}`,
     "media-src 'self'",
-    "connect-src 'self' https://api.github.com https://cloudflareinsights.com",
+    `connect-src 'self' https://api.github.com https://cloudflareinsights.com ${ga} https://*.analytics.google.com`,
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'none'",

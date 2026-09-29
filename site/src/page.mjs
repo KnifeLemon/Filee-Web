@@ -31,9 +31,21 @@ const ICONS = {
   arrow: 'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z',
 };
 
-/** The only inline script: marks JS as available before first paint so reveal animations don't flash.
- *  build.mjs puts its hash into the Content-Security-Policy. */
-export const INLINE_SCRIPT = "document.documentElement.classList.add('js')";
+/** Marks JS as available before first paint so reveal animations don't flash. */
+const JS_FLAG_SCRIPT = "document.documentElement.classList.add('js')";
+
+/** Google Analytics 4 measurement ID; empty turns analytics off. */
+const GA_ID = 'G-0Q2YHDJHEL';
+const GA_SCRIPT = GA_ID
+  ? `window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', '${GA_ID}');`
+  : '';
+/** Google tag (gtag.js), as Google asks: early in <head>. */
+const ANALYTICS = GA_ID
+  ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>\n<script>${GA_SCRIPT}</script>`
+  : '';
+
+/** Every inline script on the pages: build.mjs puts their hashes into the Content-Security-Policy. */
+export const INLINE_SCRIPTS = [JS_FLAG_SCRIPT, GA_SCRIPT].filter(Boolean);
 
 const icon = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS[name]}"/></svg>`;
 
@@ -150,7 +162,8 @@ export function renderPage(t, languages, assets) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>${INLINE_SCRIPT}</script>
+${ANALYTICS}
+<script>${JS_FLAG_SCRIPT}</script>
 <title>${escape(t.meta.title)}</title>
 <meta name="description" content="${escape(t.meta.description)}">
 ${verificationMeta}
@@ -356,6 +369,7 @@ export function renderNotFound(languages, assets) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+${ANALYTICS}
 <title>404 · Filee</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
