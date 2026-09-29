@@ -35,7 +35,7 @@ The site is a Worker with static assets only, so it is free to serve and needs n
 ### Automatic deploys from GitHub (recommended)
 
 1. Add `filee.sh` to your Cloudflare account, so Cloudflare runs its DNS.
-2. In **Workers & Pages → Create → Import a repository**, pick `KnifeLemon/filee-web` (private repositories work).
+2. In **Workers & Pages → Create → Import a repository**, pick `KnifeLemon/Filee-Web` (private repositories work).
 3. Set up the build:
 
    | Setting | Value |

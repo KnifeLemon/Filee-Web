@@ -1,4 +1,4 @@
-# filee-web
+# Filee-Web
 
 Website and promo material for [Filee](https://github.com/KnifeLemon/Filee). The app itself lives in the Filee
 repository; keep it checked out next to this one (`repos/Filee`, `repos/filee-web`).
