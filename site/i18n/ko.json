@@ -1,0 +1,135 @@
+{
+  "lang": "ko",
+  "htmlLang": "ko",
+  "ogLocale": "ko_KR",
+  "path": "/ko/",
+  "name": "한국어",
+  "meta": {
+    "title": "Filee — 끌어서 놓으면 끝나는 무료 파일 변환기 (HWP·PDF·JPG)",
+    "description": "Ctrl을 누르고 파일을 끌어 원하는 형식에 놓기만 하세요. 이미지, PDF, 워드, 엑셀, 파워포인트, 한글(HWP·HWPX)을 내 PC에서 바로 변환하는 무료 오픈소스 Windows 프로그램입니다.",
+    "ogAlt": "Filee: 파일을 끌면 커서 위치에 변환 형식 도넛이 열립니다"
+  },
+  "nav": {
+    "features": "기능",
+    "how": "사용법",
+    "formats": "지원 형식",
+    "hwp": "한글 파일",
+    "download": "다운로드",
+    "github": "GitHub",
+    "language": "언어",
+    "menu": "메뉴"
+  },
+  "hero": {
+    "badge": "무료 · 오픈소스 · Windows 10/11",
+    "title": ["끌어서", "놓으면,", "변환 끝."],
+    "lead": "Ctrl을 누르고 파일을 끌면 커서 위치에 변환 형식 도넛이 열립니다. 원하는 형식에 놓기만 하면 원본 옆에 변환된 파일이 생겨요. 업로드도, 이리저리 누를 창도 없습니다.",
+    "download": "Windows용 다운로드",
+    "downloadNote": "Windows 10/11 · 64비트 · 무료",
+    "github": "GitHub에서 보기"
+  },
+  "demo": {
+    "label": "여기서 직접 해보세요",
+    "hint": "파일을 끌어 보세요",
+    "hintTouch": "손가락으로 파일을 끌어 보세요",
+    "files": [
+      { "name": "여행사진.jpg", "type": "jpg", "profile": "image" },
+      { "name": "보고서.docx", "type": "docx", "profile": "document" },
+      { "name": "계약서.hwp", "type": "hwp", "profile": "hwp" }
+    ],
+    "center": { "image": "JPG 1개", "document": "DOCX 1개", "hwp": "HWP 1개" },
+    "close": "가운데에 놓으면 취소",
+    "done": "변환 완료",
+    "cancelled": "취소됨",
+    "output": "변환된 파일",
+    "empty": "변환된 파일이 여기에 나타나요",
+    "keyboard": "키보드: 파일에 초점을 두고 Enter, 방향키로 형식 선택, Enter로 변환."
+  },
+  "video": {
+    "title": "27초 만에 보는 Filee",
+    "caption": "사진 한 장부터 문서 여러 개, 한글 없이 HWP 변환까지 — 모두 같은 동작 하나로."
+  },
+  "how": {
+    "title": "동작 하나, 세 단계",
+    "steps": [
+      { "title": "Ctrl 누르고 끌기", "text": "탐색기나 바탕화면에서 평소처럼 파일을 끌되 Ctrl을 누르고 끄세요. 원하는 다른 키로도 바꿀 수 있어요." },
+      { "title": "형식 위에 놓기", "text": "커서 위치에 그 파일에 맞는 형식들이 도넛으로 열립니다. 원하는 칸 위에서 손을 떼세요." },
+      { "title": "원본 옆에 저장", "text": "진행률 링이 차오르고 체크 표시가 뜨면, 새 파일이 원본 바로 옆에 있어요." }
+    ]
+  },
+  "features": {
+    "title": "변환기에 필요한 건 다, 필요 없는 건 없이",
+    "items": [
+      { "icon": "donut", "title": "커서 위에 뜨는 도넛", "text": "프로그램 창을 열 필요가 없어요. 수정키, 마우스 버튼, 길게 누르기, 단축키 무엇으로든 열 수 있습니다." },
+      { "icon": "sliders", "title": "파일 종류별 프리셋", "text": "품질, 크기 조정, DPI, 메타데이터, TIFF 압축, ICO 크기, PDF 합치기·나누기, 페이지 범위, 저장 위치, 파일 이름까지." },
+      { "icon": "hwp", "title": "한글 없이 HWP·HWPX", "text": "DOCX → HWPX 변환에도 쪽 설정, 머리말·꼬리말, 표, 글상자가 그대로. HWP ↔ HWPX도 한글 없이 변환합니다." },
+      { "icon": "stack", "title": "일괄 변환", "text": "1개든 100개든 한 번에. 여러 파일을 동시에 변환하고, 하나가 실패해도 나머지는 계속됩니다." },
+      { "icon": "lock", "title": "100% 내 PC에서", "text": "아무것도 업로드하지 않아요. 인터넷 없이도 동작하고 문서가 밖으로 나가지 않습니다." },
+      { "icon": "doors", "title": "네 가지 사용 방법", "text": "드래그 동작, 탐색기 우클릭과 보내기, 선택한 파일에 단축키, 메인 창의 드롭 영역." },
+      { "icon": "palette", "title": "말랑한 UI, 내 맘대로", "text": "라이트·다크·시스템 테마, 강조색, 모서리 둥글기, 저사양 PC를 위한 애니메이션 줄이기." },
+      { "icon": "globe", "title": "한국어 · English · 简体中文", "text": "앱 전체가 번역되어 있고 기본값은 Windows 언어를 따릅니다." },
+      { "icon": "code", "title": "오픈소스 (MIT)", "text": "가벼운 설치 파일, 필요할 때만 받는 추가 엔진, GitHub 릴리스로 자동 업데이트." }
+    ]
+  },
+  "formats": {
+    "title": "26가지 형식, 경로는 자동으로",
+    "lead": "형식 사이의 가장 좋은 경로를 알아서 찾습니다. 예를 들어 HWPX → PDF → PNG처럼, 단계마다 가장 잘하는 엔진을 씁니다.",
+    "groups": [
+      { "name": "이미지", "list": "JPG, PNG, WEBP, TIFF, BMP, GIF, ICO, AVIF, HEIC(읽기)", "to": "모든 이미지 형식, PDF" },
+      { "name": "PDF", "list": "PDF", "to": "PNG, JPG, TIFF, 합치기, 나누기, 페이지 범위" },
+      { "name": "문서", "list": "DOCX, DOC, ODT, RTF", "to": "PDF, HWPX, 서로 변환, TXT, HTML" },
+      { "name": "한글", "list": "HWP, HWPX", "to": "PDF, HWPX ↔ HWP, DOCX, TXT, 마크다운, HTML" },
+      { "name": "스프레드시트·프레젠테이션", "list": "XLSX, XLS, ODS, CSV, PPTX, PPT, ODP", "to": "PDF와 서로 변환" },
+      { "name": "텍스트", "list": "TXT, 마크다운, HTML", "to": "DOCX, HWPX, PDF" }
+    ],
+    "note": "오피스 문서와 마크다운은 추가 엔진(LibreOffice, Pandoc)을 씁니다. 처음 실행할 때 받을지 물어봐요."
+  },
+  "hwp": {
+    "eyebrow": "한글 파일을 쓴다면",
+    "title": "한컴오피스 없이 쓰는 HWP 변환기",
+    "text": "한컴오피스는 다른 프로그램이 파일을 열 때마다 승인 창을 띄웁니다. Filee는 HWPX를 직접 만들고 HWP ↔ HWPX는 rhwp로 변환해서, 승인 창도 한글 라이선스도 필요 없어요.",
+    "points": [
+      "DOCX → HWPX: 용지·여백, 머리말·꼬리말과 쪽 번호까지 유지",
+      "병합 셀·테두리·음영이 있는 표, 글상자, 도형, 그림",
+      "HWP → HWPX, HWPX → HWP, HWP/HWPX → PDF·PNG",
+      "서로 다른 HWPX 리더 3개로 검증"
+    ]
+  },
+  "gallery": {
+    "title": "도넛은 내 마음대로",
+    "lead": "파일 종류마다 도넛을 따로 두고, 실제 도넛 위에서 끌어다 놓아 배치해요.",
+    "shots": [
+      { "src": "page-toolbar-ko", "alt": "프로필과 프리셋으로 원형 툴바를 편집하는 화면" },
+      { "src": "page-home-ko", "alt": "드롭 영역과 최근 변환 기록이 있는 홈 화면" },
+      { "src": "preset-popup-ko", "alt": "품질과 저장 위치를 고르는 프리셋 편집 창" },
+      { "src": "engine-setup-ko", "alt": "처음 실행할 때 추가 엔진을 고르는 창" }
+    ]
+  },
+  "specs": {
+    "title": "한눈에 보기",
+    "rows": [
+      ["가격", "무료"],
+      ["라이선스", "MIT (오픈소스)"],
+      ["운영체제", "Windows 10·11, 64비트 (macOS 계획 중)"],
+      ["오프라인", "지원 — 파일이 PC 밖으로 나가지 않음"],
+      ["지원 형식", "26가지 (HWP·HWPX 포함)"],
+      ["언어", "한국어, 영어, 중국어 간체"],
+      ["업데이트", "GitHub 릴리스로 자동 업데이트"]
+    ]
+  },
+  "download": {
+    "title": "지금 바로 시작하세요",
+    "text": "설치 파일은 가볍습니다. 이미지, PDF, HWP/HWPX, DOCX → HWPX는 바로 되고, 오피스 문서용 LibreOffice(약 420MB)와 마크다운용 Pandoc(약 42MB)은 처음 실행할 때 받을지 고를 수 있어요.",
+    "button": "Windows용 다운로드",
+    "latest": "최신 버전",
+    "all": "모든 릴리스",
+    "source": "소스 코드"
+  },
+  "footer": {
+    "tagline": "끌어서 놓으면, 변환 끝.",
+    "license": "MIT 라이선스",
+    "notices": "서드파티 고지",
+    "issues": "문제 신고",
+    "made": "KnifeLemon과 기여자들이 만듭니다."
+  },
+  "langBanner": "이 페이지는 한국어로도 볼 수 있어요."
+}

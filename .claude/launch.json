@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "studio",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["marketing/server.mjs"],
+      "port": 4173
+    },
+    {
+      "name": "site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["site/serve.mjs", "4174"],
+      "port": 4174
+    }
+  ]
+}

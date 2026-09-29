@@ -1,0 +1,19 @@
+{
+  "name": "filee-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "filee.sh: the Filee website (static, deployed to Cloudflare Workers static assets)",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node serve.mjs",
+    "preview": "node build.mjs && wrangler dev",
+    "deploy": "node build.mjs && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}

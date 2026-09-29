@@ -1,0 +1,11 @@
+# Website build output and tooling (site/build.mjs, Wrangler)
+site/dist/
+site/node_modules/
+site/.wrangler/
+
+# Studio renders (marketing/studio.html); the web-ready copies live in site/public/media
+marketing/out/
+
+# OS
+Thumbs.db
+.DS_Store

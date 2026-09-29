@@ -1,0 +1,135 @@
+{
+  "lang": "zh-CN",
+  "htmlLang": "zh-CN",
+  "ogLocale": "zh_CN",
+  "path": "/zh-cn/",
+  "name": "简体中文",
+  "meta": {
+    "title": "Filee — 拖放即可转换的免费文件格式转换器（Windows）",
+    "description": "按住 Ctrl 拖动文件，放到目标格式上即可。Filee 在你的电脑上转换图片、PDF、Word、Excel、PowerPoint 和 HWP/HWPX，免费、开源、离线可用。",
+    "ogAlt": "Filee：拖动文件时，光标处会弹出格式圆环"
+  },
+  "nav": {
+    "features": "功能",
+    "how": "使用方法",
+    "formats": "支持格式",
+    "hwp": "HWP",
+    "download": "下载",
+    "github": "GitHub",
+    "language": "语言",
+    "menu": "菜单"
+  },
+  "hero": {
+    "badge": "免费 · 开源 · Windows 10/11",
+    "title": ["拖一下，", "放一下，", "转好了。"],
+    "lead": "按住 Ctrl 拖动任意文件，格式圆环会在光标处弹出。放到想要的格式上，转换后的文件就出现在原文件旁边。无需上传，也无需点来点去。",
+    "download": "下载 Windows 版",
+    "downloadNote": "Windows 10/11 · 64 位 · 免费",
+    "github": "在 GitHub 上查看"
+  },
+  "demo": {
+    "label": "在这里试一试",
+    "hint": "把文件拖到这里",
+    "hintTouch": "用手指拖动文件",
+    "files": [
+      { "name": "旅行.jpg", "type": "jpg", "profile": "image" },
+      { "name": "报告.docx", "type": "docx", "profile": "document" },
+      { "name": "合同.hwp", "type": "hwp", "profile": "hwp" }
+    ],
+    "center": { "image": "1 个 JPG", "document": "1 个 DOCX", "hwp": "1 个 HWP" },
+    "close": "放在中间即可取消",
+    "done": "已转换",
+    "cancelled": "已取消",
+    "output": "转换结果",
+    "empty": "转换后的文件会显示在这里",
+    "keyboard": "键盘操作：选中文件按 Enter，用方向键选择格式，再按 Enter 转换。"
+  },
+  "video": {
+    "title": "27 秒看懂 Filee",
+    "caption": "单张图片、批量文档，还有无需韩文办公软件的 HWP 转换——全都只用一个手势。"
+  },
+  "how": {
+    "title": "一个手势，三个步骤",
+    "steps": [
+      { "title": "按住 Ctrl 拖动", "text": "像平时一样从资源管理器或桌面拖动文件，同时按住 Ctrl（也可以换成其他按键）。" },
+      { "title": "放到格式上", "text": "光标处会弹出适合这些文件的格式圆环，移到想要的格式上松开即可。" },
+      { "title": "保存在原文件旁", "text": "进度环走完、出现对勾后，新文件就在原文件旁边。" }
+    ]
+  },
+  "features": {
+    "title": "转换器该有的都有，不该有的一概没有",
+    "items": [
+      { "icon": "donut", "title": "光标处的格式圆环", "text": "无需打开程序窗口，格式就在你的光标旁。可用任意修饰键、鼠标按键、长按或快捷键打开。" },
+      { "icon": "sliders", "title": "按文件类型的预设", "text": "质量、缩放、DPI、元数据、TIFF 压缩、ICO 尺寸、PDF 合并与拆分、页码范围、保存位置和文件名。" },
+      { "icon": "hwp", "title": "无需韩文办公软件处理 HWP/HWPX", "text": "内置 HWPX 写入器，DOCX 转换时保留页面设置、页眉页脚、表格和文本框；HWP ↔ HWPX 也无需韩文办公软件。" },
+      { "icon": "stack", "title": "批量转换", "text": "1 个或 100 个文件都能一次完成，并行转换，某个文件失败也不影响其余文件。" },
+      { "icon": "lock", "title": "100% 本地处理", "text": "不上传任何内容。离线也能使用，文档不会离开你的电脑。" },
+      { "icon": "doors", "title": "四种使用方式", "text": "拖动手势、资源管理器右键和“发送到”、对选中文件按快捷键，或主窗口的拖放区。" },
+      { "icon": "palette", "title": "柔和且可定制的界面", "text": "浅色、深色或跟随系统，自定义强调色和圆角，旧电脑可开启“减少动画”。" },
+      { "icon": "globe", "title": "简体中文 · English · 한국어", "text": "整个应用均已翻译，默认跟随 Windows 语言。" },
+      { "icon": "code", "title": "开源（MIT）", "text": "安装包小巧，额外引擎按需下载，通过 GitHub Releases 自动更新。" }
+    ]
+  },
+  "formats": {
+    "title": "26 种格式，自动规划路径",
+    "lead": "Filee 会自动找到格式之间的最佳路径，例如 HWPX → PDF → PNG，每一步都使用最擅长的引擎。",
+    "groups": [
+      { "name": "图片", "list": "JPG、PNG、WEBP、TIFF、BMP、GIF、ICO、AVIF、HEIC（读取）", "to": "任意图片格式、PDF" },
+      { "name": "PDF", "list": "PDF", "to": "PNG、JPG、TIFF、合并、拆分、页码范围" },
+      { "name": "文档", "list": "DOCX、DOC、ODT、RTF", "to": "PDF、HWPX、互相转换、TXT、HTML" },
+      { "name": "HWP", "list": "HWP、HWPX", "to": "PDF、HWPX ↔ HWP、DOCX、TXT、Markdown、HTML" },
+      { "name": "表格与演示文稿", "list": "XLSX、XLS、ODS、CSV、PPTX、PPT、ODP", "to": "PDF 及互相转换" },
+      { "name": "文本", "list": "TXT、Markdown、HTML", "to": "DOCX、HWPX、PDF" }
+    ],
+    "note": "办公文档和 Markdown 使用可选引擎（LibreOffice、Pandoc），Filee 会在首次启动时询问是否下载。"
+  },
+  "hwp": {
+    "eyebrow": "HWP 用户",
+    "title": "无需韩文办公软件的 HWP 转换器",
+    "text": "韩文办公软件（Hancom Office）在其他程序打开文件时每次都会弹出确认窗口。Filee 自己写入 HWPX，并用 rhwp 完成 HWP ↔ HWPX 转换，无需确认窗口，也无需 Hancom 授权。",
+    "points": [
+      "DOCX → HWPX 保留纸张大小、页边距、页眉页脚和页码",
+      "带合并单元格、边框和底纹的表格，文本框、形状和图片",
+      "HWP → HWPX、HWPX → HWP、HWP/HWPX → PDF 和 PNG",
+      "经过三个独立 HWPX 读取器验证"
+    ]
+  },
+  "gallery": {
+    "title": "圆环菜单随你定制",
+    "lead": "每种文件类型一个圆环，直接在圆环上拖放排列格式。",
+    "shots": [
+      { "src": "page-toolbar-zh-CN", "alt": "用配置文件和预设编辑圆环工具栏" },
+      { "src": "page-home-zh-CN", "alt": "带拖放区和最近转换记录的主页" },
+      { "src": "page-presets-zh-CN", "alt": "设置质量和输出选项的预设编辑器" },
+      { "src": "page-toolbar-dark", "alt": "深色主题" }
+    ]
+  },
+  "specs": {
+    "title": "一览",
+    "rows": [
+      ["价格", "免费"],
+      ["许可证", "MIT（开源）"],
+      ["平台", "Windows 10 和 11，64 位（macOS 计划中）"],
+      ["离线使用", "支持，文件不会离开你的电脑"],
+      ["支持格式", "26 种，包括 HWP 和 HWPX"],
+      ["语言", "简体中文、英语、韩语"],
+      ["更新", "通过 GitHub Releases 自动更新"]
+    ]
+  },
+  "download": {
+    "title": "随时开始",
+    "text": "安装包很小。图片、PDF、HWP/HWPX 和 DOCX → HWPX 装好即用；办公文档所需的 LibreOffice（约 420 MB）和 Markdown 所需的 Pandoc（约 42 MB）可在首次启动时选择下载。",
+    "button": "下载 Windows 版",
+    "latest": "最新版本",
+    "all": "全部版本",
+    "source": "源代码"
+  },
+  "footer": {
+    "tagline": "拖一下，放一下，转好了。",
+    "license": "MIT 许可证",
+    "notices": "第三方声明",
+    "issues": "反馈问题",
+    "made": "由 KnifeLemon 和贡献者打造。"
+  },
+  "langBanner": "此页面也提供简体中文版本。"
+}

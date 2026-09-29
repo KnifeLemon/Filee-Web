@@ -1,0 +1,257 @@
+{
+  "lang": "en",
+  "htmlLang": "en",
+  "ogLocale": "en_US",
+  "path": "/",
+  "name": "English",
+  "meta": {
+    "title": "Filee — Free Drag & Drop File Converter for Windows",
+    "description": "Hold Ctrl, drag a file and drop it on a format. Filee converts images, PDF, Word, Excel, PowerPoint and HWP/HWPX on your PC — free, open source and offline.",
+    "ogAlt": "Filee: a donut of formats opens at the cursor while dragging a file"
+  },
+  "nav": {
+    "features": "Features",
+    "how": "How it works",
+    "formats": "Formats",
+    "hwp": "HWP",
+    "download": "Download",
+    "github": "GitHub",
+    "language": "Language",
+    "menu": "Menu"
+  },
+  "hero": {
+    "badge": "Free & open source · Windows 10/11",
+    "title": [
+      "Drag.",
+      "Drop.",
+      "Converted."
+    ],
+    "lead": "Hold Ctrl and drag any file. A donut of formats opens right at your cursor — drop the file on one and the converted copy appears next to the original. No upload, no windows to click through.",
+    "download": "Download for Windows",
+    "downloadNote": "Windows 10/11 · 64-bit · Free",
+    "github": "Star on GitHub"
+  },
+  "demo": {
+    "label": "Try it here",
+    "hint": "Drag a file onto the stage",
+    "hintTouch": "Drag a file with your finger",
+    "files": [
+      {
+        "name": "trip.jpg",
+        "type": "jpg",
+        "profile": "image"
+      },
+      {
+        "name": "report.docx",
+        "type": "docx",
+        "profile": "document"
+      },
+      {
+        "name": "contract.hwp",
+        "type": "hwp",
+        "profile": "hwp"
+      }
+    ],
+    "center": {
+      "image": "1 JPG",
+      "document": "1 DOCX",
+      "hwp": "1 HWP"
+    },
+    "close": "Release in the middle to cancel",
+    "done": "Converted",
+    "cancelled": "Cancelled",
+    "output": "Converted files",
+    "empty": "Your converted files show up here",
+    "keyboard": "With a keyboard: focus a file, press Enter, choose with the arrow keys, Enter to convert."
+  },
+  "video": {
+    "title": "See it in 27 seconds",
+    "caption": "Single images, batches of documents, HWP without Hancom Office — all with one gesture."
+  },
+  "how": {
+    "title": "One gesture. Three steps.",
+    "steps": [
+      {
+        "title": "Hold Ctrl and drag",
+        "text": "Drag files from Explorer or the desktop as you always do, with Ctrl (or any modifier you choose) held down."
+      },
+      {
+        "title": "Drop on a format",
+        "text": "The donut opens at your cursor with the formats that make sense for those files. Hover one, let go."
+      },
+      {
+        "title": "Done, next to the original",
+        "text": "A progress ring counts up, a check mark appears, and the new file sits right beside the source."
+      }
+    ]
+  },
+  "features": {
+    "title": "Everything a converter should do. Nothing it shouldn't.",
+    "items": [
+      {
+        "icon": "donut",
+        "title": "A donut at your cursor",
+        "text": "No app window in the way: formats appear where you already are. Any modifier key, mouse button, hold gesture or keyboard shortcut can open it."
+      },
+      {
+        "icon": "sliders",
+        "title": "Presets per file type",
+        "text": "Quality, resizing, DPI, metadata, TIFF compression, ICO sizes, PDF merge and split, page ranges, output folder and file names."
+      },
+      {
+        "icon": "hwp",
+        "title": "HWP & HWPX without Hancom Office",
+        "text": "Built-in HWPX writer keeps page setup, headers, footers, tables and text boxes when converting DOCX. HWP ↔ HWPX with rhwp."
+      },
+      {
+        "icon": "stack",
+        "title": "Batch conversion",
+        "text": "Drop 1 file or 100. Every file is converted in parallel and a failure never stops the rest."
+      },
+      {
+        "icon": "lock",
+        "title": "100% on your PC",
+        "text": "Nothing is uploaded. Filee works offline and never sends your documents anywhere."
+      },
+      {
+        "icon": "doors",
+        "title": "Four ways in",
+        "text": "Drag gesture, Explorer right-click and Send To, a shortcut on the selected files, or the drop zone in the main window."
+      },
+      {
+        "icon": "palette",
+        "title": "Soft, customizable UI",
+        "text": "Light, dark or system theme, your accent colour, adjustable roundness and a Reduce animations switch for older PCs."
+      },
+      {
+        "icon": "globe",
+        "title": "English, 한국어, 简体中文",
+        "text": "The whole app is translated and follows your Windows language by default."
+      },
+      {
+        "icon": "code",
+        "title": "Open source, MIT",
+        "text": "Small installer, optional engines downloaded only when you want them, automatic updates from GitHub Releases."
+      }
+    ]
+  },
+  "formats": {
+    "title": "26 formats, planned routes",
+    "lead": "Filee finds the best path between formats automatically — for example HWPX → PDF → PNG — using the engine that does each step best.",
+    "groups": [
+      {
+        "name": "Images",
+        "list": "JPG, PNG, WEBP, TIFF, BMP, GIF, ICO, AVIF, HEIC (read)",
+        "to": "any image format, PDF"
+      },
+      {
+        "name": "PDF",
+        "list": "PDF",
+        "to": "PNG, JPG, TIFF, merge, split, page ranges"
+      },
+      {
+        "name": "Documents",
+        "list": "DOCX, DOC, ODT, RTF",
+        "to": "PDF, HWPX, each other, TXT, HTML"
+      },
+      {
+        "name": "HWP",
+        "list": "HWP, HWPX",
+        "to": "PDF, HWPX ↔ HWP, DOCX, TXT, Markdown, HTML"
+      },
+      {
+        "name": "Spreadsheets & slides",
+        "list": "XLSX, XLS, ODS, CSV, PPTX, PPT, ODP",
+        "to": "PDF and each other"
+      },
+      {
+        "name": "Text",
+        "list": "TXT, Markdown, HTML",
+        "to": "DOCX, HWPX, PDF"
+      }
+    ],
+    "note": "Office documents and Markdown use optional engines (LibreOffice, Pandoc) that Filee offers to download on first start."
+  },
+  "hwp": {
+    "eyebrow": "For HWP users",
+    "title": "The HWP converter that doesn't need Hancom Office",
+    "text": "Hancom Office asks for approval every time another program opens a file. Filee writes HWPX itself and converts HWP ↔ HWPX with rhwp, so there is no dialog and no Hancom license needed.",
+    "points": [
+      "DOCX → HWPX keeps page size, margins, headers and footers with page numbers",
+      "Tables with merged cells, borders and shading; text boxes, shapes and pictures",
+      "HWP → HWPX and HWPX → HWP, HWP/HWPX → PDF and PNG",
+      "Checked with three independent HWPX readers"
+    ]
+  },
+  "gallery": {
+    "title": "Make the donut yours",
+    "lead": "Arrange formats on a live donut by drag & drop, one toolbar per file type.",
+    "shots": [
+      {
+        "src": "page-toolbar-en",
+        "alt": "Donut toolbar editor with profiles and presets"
+      },
+      {
+        "src": "page-home-en",
+        "alt": "Home screen with the drop zone and recent conversions"
+      },
+      {
+        "src": "page-presets-en",
+        "alt": "Preset editor with quality and output options"
+      },
+      {
+        "src": "page-toolbar-dark",
+        "alt": "Dark theme"
+      }
+    ]
+  },
+  "specs": {
+    "title": "At a glance",
+    "rows": [
+      [
+        "Price",
+        "Free"
+      ],
+      [
+        "License",
+        "MIT (open source)"
+      ],
+      [
+        "Platform",
+        "Windows 10 and 11, 64-bit (macOS planned)"
+      ],
+      [
+        "Works offline",
+        "Yes — files never leave your PC"
+      ],
+      [
+        "Formats",
+        "26, including HWP and HWPX"
+      ],
+      [
+        "Languages",
+        "English, Korean, Simplified Chinese"
+      ],
+      [
+        "Updates",
+        "Automatic, from GitHub Releases"
+      ]
+    ]
+  },
+  "download": {
+    "title": "Ready when you are",
+    "text": "The installer is small. Images, PDF, HWP/HWPX and DOCX → HWPX work right away; LibreOffice (~420 MB) and Pandoc (~42 MB) are offered on first start for office documents and Markdown.",
+    "button": "Download for Windows",
+    "latest": "Latest version",
+    "all": "All releases",
+    "source": "Source code"
+  },
+  "footer": {
+    "tagline": "Drag. Drop. Converted.",
+    "license": "MIT License",
+    "notices": "Third-party notices",
+    "issues": "Report an issue",
+    "made": "Built by KnifeLemon and contributors."
+  },
+  "langBanner": "This page is also available in English."
+}

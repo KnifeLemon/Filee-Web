@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Filee promo studio</title>
+  <style>
+    body { margin: 0; font: 14px system-ui, sans-serif; background: #222; color: #eee; }
+    header { display: flex; gap: 10px; align-items: center; padding: 10px 14px; background: #111; position: sticky; top: 0; }
+    canvas { display: block; margin: 16px auto; max-width: calc(100vw - 32px); max-height: calc(100vh - 120px); box-shadow: 0 10px 40px #0008; }
+    input[type=range] { flex: 1; }
+    #status { min-width: 220px; }
+  </style>
+</head>
+<body>
+  <header>
+    <select id="lang"><option>ko</option><option>en</option><option>zh-CN</option></select>
+    <select id="format"><option value="1080x1920">1080×1920</option><option value="1920x1080">1920×1080</option></select>
+    <input id="time" type="range" min="0" max="27" step="0.01" value="5" />
+    <span id="t">5.00s</span>
+    <button id="play">Play</button>
+    <span id="status"></span>
+  </header>
+  <canvas id="stage" width="1080" height="1920"></canvas>
+
+  <script type="module">
+    import { render, DURATION, MOMENTS, useScreenshots } from './promo.js';
+    import { encodeMp4 } from './mp4.js';
+    import { renderStill, STILL_NAMES } from './stills.js';
+
+    const fonts = [
+      ['NotoSans', 'NotoSans-Regular.ttf', 400], ['NotoSans', 'NotoSans-Medium.ttf', 500], ['NotoSans', 'NotoSans-Bold.ttf', 700],
+      ['NotoSans', 'NotoSans-Bold.ttf', 800], ['NotoSans', 'NotoSans-Medium.ttf', 600],
+      ['NotoSansKR', 'NotoSansKR-Regular.otf', 400], ['NotoSansKR', 'NotoSansKR-Regular.otf', 500], ['NotoSansKR', 'NotoSansKR-Bold.otf', 600],
+      ['NotoSansKR', 'NotoSansKR-Bold.otf', 700], ['NotoSansKR', 'NotoSansKR-Bold.otf', 800],
+      ['NotoSansSC', 'NotoSansSC-Regular.otf', 400], ['NotoSansSC', 'NotoSansSC-Regular.otf', 500], ['NotoSansSC', 'NotoSansSC-Bold.otf', 600],
+      ['NotoSansSC', 'NotoSansSC-Bold.otf', 700], ['NotoSansSC', 'NotoSansSC-Bold.otf', 800],
+    ];
+    await Promise.all(fonts.map(async ([family, file, weight]) => {
+      const face = new FontFace(family, `url(/repo/src/Filee.App/Assets/Fonts/${file})`, { weight: String(weight) });
+      document.fonts.add(await face.load());
+    }));
+    const load = src => new Promise((resolve, reject) => { const i = new Image(); i.onload = () => resolve(i); i.onerror = reject; i.src = src; });
+    const shots = {
+      'toolbar-en': await load('assets/page-toolbar-en.png'),
+      'toolbar-ko': await load('assets/page-toolbar-ko.png'),
+      'toolbar-zh-CN': await load('assets/page-toolbar-zh-CN.png'),
+    };
+    useScreenshots(shots);
+
+    const canvas = document.getElementById('stage');
+    const ctx = canvas.getContext('2d');
+    const $ = id => document.getElementById(id);
+    const status = message => { $('status').textContent = message; };
+
+    function setFormat(format) {
+      const [w, h] = format.split('x').map(Number);
+      canvas.width = w;
+      canvas.height = h;
+    }
+    function draw() {
+      const t = Number($('time').value);
+      $('t').textContent = `${t.toFixed(2)}s`;
+      render(ctx, t, $('lang').value);
+    }
+    $('lang').onchange = draw;
+    $('format').onchange = () => { setFormat($('format').value); draw(); };
+    $('time').oninput = draw;
+    let playing = false;
+    $('play').onclick = () => {
+      playing = !playing;
+      const start = performance.now() - Number($('time').value) * 1000;
+      const tick = now => {
+        if (!playing) return;
+        $('time').value = ((now - start) / 1000) % DURATION;
+        draw();
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    draw();
+
+    async function save(name, blob) {
+      const response = await fetch(`/save?name=${encodeURIComponent(name)}`, { method: 'POST', body: blob });
+      if (!response.ok) throw new Error(`save failed: ${response.status}`);
+    }
+
+    /** API used to render everything (called from the console or automation). */
+    window.studio = {
+      async video(lang, format, name, bitrate = 9e6, output) {
+        setFormat(format);
+        status(`encoding ${name}…`);
+        const started = performance.now();
+        const [width, height] = (output ?? format).split('x').map(Number);
+        const mp4 = await encodeMp4(canvas, t => render(ctx, t, lang), {
+          fps: 30, duration: DURATION, bitrate, width, height, onProgress: f => status(`${name} ${Math.round(f * 100)}%`),
+        });
+        await save(name, new Blob([mp4], { type: 'video/mp4' }));
+        status(`${name}: ${(mp4.byteLength / 1e6).toFixed(1)} MB in ${((performance.now() - started) / 1000).toFixed(0)} s`);
+        return mp4.byteLength;
+      },
+      async still(lang, format, t, name) {
+        setFormat(format);
+        render(ctx, t, lang);
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        await save(name, blob);
+        return blob.size;
+      },
+      /** PNG frames for the README animation (packed into WebP by make-anim.py). */
+      async frames(lang, format, from, to, fps, folder, scale = 0.5) {
+        setFormat(format);
+        const small = document.createElement('canvas');
+        small.width = Math.round(canvas.width * scale);
+        small.height = Math.round(canvas.height * scale);
+        const sctx = small.getContext('2d');
+        let index = 0;
+        for (let t = from; t < to; t += 1 / fps) {
+          render(ctx, t, lang);
+          sctx.drawImage(canvas, 0, 0, small.width, small.height);
+          const blob = await new Promise(resolve => small.toBlob(resolve, 'image/png'));
+          await save(`${folder}/${String(index++).padStart(4, '0')}.png`, blob);
+        }
+        return index;
+      },
+      /** Carousel slides (1080×1350), Open Graph card (1200×630) and social preview (1280×640) for a language. */
+      async stills(lang, folder = 'images') {
+        const sizes = { og: [1200, 630], social: [1280, 640] };
+        const saved = [];
+        for (const name of [...STILL_NAMES, 'social']) {
+          const [w, h] = sizes[name] ?? [1080, 1350];
+          canvas.width = w;
+          canvas.height = h;
+          renderStill(ctx, name, lang, shots);
+          const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+          const file = `${folder}/${name}-${lang}.png`;
+          await save(file, blob);
+          saved.push(file);
+        }
+        return saved;
+      },
+      moments: MOMENTS,
+    };
+    status('ready');
+  </script>
+</body>
+</html>
