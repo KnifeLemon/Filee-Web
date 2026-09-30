@@ -69,10 +69,10 @@
       { "icon": "document", "title": "无需 Office", "text": "Word、Excel、PowerPoint 文件无需 Microsoft Office 或 LibreOffice，HWP 无需 Hancom Office 即可转换。Filee 从不调用电脑上已安装的程序。" },
       { "icon": "doors", "title": "批量转换", "text": "1 个或 100 个文件都能一次完成：并行转换，某个文件失败也不影响其余文件，还能合并成一个 PDF 或一个 ZIP。" },
       { "icon": "lock", "title": "100% 本地处理", "text": "不上传任何内容。离线也能使用，私人文档、照片和录音都不会离开你的电脑。" },
-      { "icon": "windows", "title": "就在你工作的地方", "text": "拖动手势、Windows 11 右键菜单第一层的 Filee 转换、“发送到”、快捷键，或主窗口的拖放区。" },
+      { "icon": "windows", "title": "就在你工作的地方", "text": "拖动手势、右键菜单中的 Filee 转换（Windows 11 还可加入第一层菜单）、“发送到”、快捷键，或主窗口的拖放区。" },
       { "icon": "sliders", "title": "按文件类型的预设", "text": "质量、缩放、DPI、灰度、元数据、TIFF 压缩、ICO 尺寸、PDF 合并/拆分/页码范围、720p 视频、MP3 码率、保存位置和文件名。" },
-      { "icon": "download", "title": "安装包小巧，引擎按需下载", "text": "大型引擎是应用内的可选下载：{engineNames}。可查看版本、下载速度和剩余时间。" },
-      { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持简体中文、英语和韩语，自动更新时会显示更新内容和贡献者。" }
+      { "icon": "download", "title": "引擎按需下载", "text": "大型引擎是应用内的可选下载：{engineNames}。可查看版本、下载速度和剩余时间。" },
+      { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持简体中文、英语和韩语。有新版本时会提醒你，每个版本都会列出更新内容和贡献者。" }
     ]
   },
   "formats": {
@@ -115,12 +115,12 @@
       ["内置", "{builtinTotal} 种格式无需额外安装"],
       ["可选引擎", "{engineNames}"],
       ["语言", "简体中文、英语、韩语"],
-      ["更新", "通过 GitHub Releases 自动更新"]
+      ["更新", "新版本提醒，从 GitHub Releases 下载"]
     ]
   },
   "download": {
     "title": "随时开始",
-    "text": "安装包很小，大多数格式装好即用。可选引擎只在需要时于应用内下载：{engineDetails}。",
+    "text": "大多数格式装好即用。可选引擎只在需要时于应用内下载：{engineDetails}。",
     "button": "下载 Windows 版",
     "latest": "最新版本",
     "all": "全部版本",

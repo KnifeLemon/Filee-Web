@@ -1099,9 +1099,9 @@ export const FAQ = [
       '네. 원하는 만큼 파일을 골라 한 번에 놓으면 동시에 변환합니다. 한 파일이 실패해도 나머지는 계속되고, 프리셋으로 전부 PDF 하나로 합치거나 ZIP 하나로 묶을 수도 있어요.',
       '可以。选中任意多个文件一次拖放即可：Filee 会并行转换，某个文件失败也不影响其他文件，还可以用预设把所有文件合并成一个 PDF 或打包成一个 ZIP。') },
   { q: T('Can I convert from the Windows 11 right-click menu?', 'Windows 11 우클릭 메뉴에서도 변환할 수 있나요?', '可以在 Windows 11 右键菜单中转换吗？'),
-    a: T('Yes. Right-click files in File Explorer and choose "Convert with Filee"; on Windows 11 it sits in the top-level menu, without "Show more options". Send To, a keyboard shortcut and the drop zone in the main window work too.',
-      '네. 탐색기에서 파일을 우클릭하면 Windows 11의 첫 메뉴에 바로 Filee 변환 항목이 있어, ‘추가 옵션 표시’를 누를 필요가 없습니다. 보내기 메뉴, 단축키, 메인 창의 드롭 영역도 쓸 수 있어요.',
-      '可以。在资源管理器中右键点击文件，Windows 11 的第一层菜单里就有 Filee 转换，无需点“显示更多选项”。也可以使用“发送到”、快捷键或主窗口的拖放区。') },
+    a: T('Yes. Right-click files in File Explorer and choose "Convert with Filee". On Windows 11 you can also put it in the top-level menu, without "Show more options": click "Add to the main menu" in Settings → General once and approve the administrator prompt. Send To, a keyboard shortcut and the drop zone in the main window work too.',
+      '네. 탐색기에서 파일을 우클릭하고 Filee 변환을 고르면 돼요. Windows 11에서는 설정 → 일반의 ‘기본 메뉴에 추가’를 한 번 누르고 관리자 승인을 하면 ‘추가 옵션 표시’ 없이 첫 메뉴에 나타나요. 보내기 메뉴, 단축키, 메인 창의 드롭 영역도 쓸 수 있어요.',
+      '可以。在资源管理器中右键点击文件并选择 Filee 转换即可。在 Windows 11 上，只需在“设置 → 常规”中点一次“添加到主菜单”并同意管理员提示，它就会出现在第一层菜单中，无需点“显示更多选项”。也可以使用“发送到”、快捷键或主窗口的拖放区。') },
   { q: T('How do I convert a file, for example HEIC to JPG?', '파일은 어떻게 변환하나요? 예를 들어 HEIC를 JPG로 바꾸려면요?', '如何转换文件？比如 HEIC 转 JPG？'),
     a: T('Select the files in File Explorer, hold Ctrl (or the key you chose) and drag them. A donut of formats opens at the cursor: drop the files on JPG and the new files appear next to the originals. There are step-by-step guides for the most common conversions.',
       '탐색기에서 파일을 고르고 Ctrl(또는 직접 정한 키)을 누른 채 끌어 보세요. 커서 위치에 형식 도넛이 열리면 JPG에 놓기만 하면 원본 옆에 새 파일이 생깁니다. 자주 쓰는 변환은 단계별 안내 페이지도 있어요.',
@@ -1112,9 +1112,9 @@ export const FAQ = [
       '온라인 변환 사이트는 파일을 남의 서버에 올리고, 크기와 개수를 제한하는 경우가 많으며, 빠른 인터넷이 필요합니다. Filee는 내 PC에서 변환하므로 개인 파일이 밖으로 나가지 않고, 큰 동영상이나 수백 개의 파일도 문제없으며, 인터넷 없이도 광고 없이 무료로 쓸 수 있어요.',
       '在线转换网站要把文件上传到别人的服务器，常常限制文件大小和数量，还依赖网速。Filee 在你的电脑上转换：私密文件不外泄，大视频和上百个文件都没问题，没有网络也能用，而且免费、无广告。') },
   { q: T('Which Windows versions are supported?', '어떤 Windows에서 쓸 수 있나요?', '支持哪些 Windows 版本？'),
-    a: T('Windows 10 and Windows 11, 64-bit (x64). The installer is small and updates itself from GitHub Releases. A macOS version is planned.',
-      'Windows 10과 Windows 11 64비트(x64)를 지원합니다. 설치 파일이 가볍고 GitHub 릴리스로 자동 업데이트됩니다. macOS 버전도 계획 중이에요.',
-      '支持 Windows 10 和 Windows 11 64 位（x64）。安装包小巧，并通过 GitHub Releases 自动更新。macOS 版本正在计划中。') },
+    a: T('Windows 10 and Windows 11, 64-bit (x64). When a new version is out, Filee tells you and opens its download page on GitHub Releases. A macOS version is planned.',
+      'Windows 10과 Windows 11 64비트(x64)를 지원합니다. 새 버전이 나오면 앱이 알려 주고 GitHub 릴리스 다운로드 페이지를 열어 줘요. macOS 버전도 계획 중이에요.',
+      '支持 Windows 10 和 Windows 11 64 位（x64）。有新版本时 Filee 会提醒你，并打开 GitHub Releases 的下载页面。macOS 版本正在计划中。') },
 ];
 
 /* ───────── Home page bits ───────── */
