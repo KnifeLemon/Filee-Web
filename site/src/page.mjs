@@ -15,7 +15,7 @@ const VIDEO_DATE = '2026-09-30';
 
 /** Pixel sizes of the screenshots in public/media/screens (for width/height attributes: no layout shift). */
 const SCREEN_SIZES = {
-  'engine-setup-en': [560, 452], 'engine-setup-ko': [560, 461], 'preset-popup-ko': [560, 680],
+  'engine-setup-en': [560, 953], 'engine-setup-ko': [560, 945], 'preset-popup-ko': [560, 680],
 };
 const screenSize = name => SCREEN_SIZES[name] ?? [1080, 820];
 
