@@ -1,13 +1,27 @@
 // Local preview of dist/ that behaves like Cloudflare's static assets (folder index pages, trailing-slash
 // redirects, 404.html) and rebuilds when src/, i18n/ or public/ change. Usage: node serve.mjs [port]
 
+import { spawn } from 'node:child_process';
 import { createReadStream, watch } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
-import { build } from './build.mjs';
 
 const ROOT = import.meta.dirname;
+
+/**
+ * Each build runs in a fresh Node process, so edits to src/*.mjs (catalog.mjs above all) are picked up; an
+ * in-process build would keep the modules imported the first time. Builds never overlap.
+ */
+let building = null, again = false;
+const runBuild = () => new Promise(resolve => {
+  spawn(process.execPath, [join(ROOT, 'build.mjs')], { cwd: ROOT, stdio: 'inherit' }).on('exit', resolve);
+});
+async function build() {
+  if (building) { again = true; return building; }
+  do { again = false; building = runBuild(); await building; } while (again);
+  building = null;
+}
 const DIST = join(ROOT, 'dist');
 const PORT = Number(process.argv[2] ?? process.env.PORT ?? 4174);
 const TYPES = {
@@ -21,7 +35,7 @@ let timer;
 for (const folder of ['src', 'i18n', 'public']) {
   watch(join(ROOT, folder), { recursive: true }, () => {
     clearTimeout(timer);
-    timer = setTimeout(() => build().catch(error => console.error(error)), 120);
+    timer = setTimeout(build, 120);
   });
 }
 
