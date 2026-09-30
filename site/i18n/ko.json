@@ -5,38 +5,43 @@
   "path": "/ko/",
   "name": "한국어",
   "meta": {
-    "title": "Filee — 끌어서 놓으면 끝나는 무료 파일 변환기 (HWP·PDF·JPG)",
-    "description": "Ctrl을 누르고 파일을 끌어 원하는 형식에 놓기만 하세요. 이미지, PDF, 워드, 엑셀, 파워포인트, 한글(HWP·HWPX)을 내 PC에서 바로 변환하는 무료 오픈소스 Windows 프로그램입니다.",
-    "ogAlt": "Filee: 파일을 끌면 커서 위치에 변환 형식 도넛이 열립니다"
+    "title": "무료 파일 변환기 Filee — 이미지·PDF·동영상·문서·HWP 변환 프로그램",
+    "description": "이미지·PDF·동영상·오디오·문서·HWP·전자책·압축 파일을 끌어다 놓기만 하면 바로 변환하는 무료 파일 변환기. 업로드 없이 내 PC에서 오프라인으로 변환합니다.",
+    "ogAlt": "Filee: 파일을 끌면 커서 위치에 변환 형식 도넛이 열립니다",
+    "appAlternateName": "Filee 파일 변환기",
+    "keywords": "파일 변환기, 파일 변환 프로그램, 무료 파일 변환, 확장자 변환, 이미지 변환, PDF 변환, 동영상 변환, HWP 변환, HEIC JPG 변환, 한글 PDF 변환"
   },
   "nav": {
     "features": "기능",
     "how": "사용법",
     "formats": "지원 형식",
     "hwp": "한글 파일",
+    "faq": "자주 묻는 질문",
     "download": "다운로드",
     "github": "GitHub",
     "language": "언어",
-    "menu": "메뉴"
+    "menu": "메뉴",
+    "skip": "본문으로 건너뛰기"
   },
   "hero": {
-    "badge": "무료 · 오픈소스 · Windows 10/11",
+    "badge": "{versionShort} 새 기능: 동영상·오디오·전자책·압축 파일·CAD·글꼴",
+    "kicker": "Windows용 무료 파일 변환기",
     "title": ["끌어서", "놓으면,", "변환 끝."],
-    "lead": "Ctrl을 누르고 파일을 끌면 커서 위치에 변환 형식 도넛이 열립니다. 원하는 형식에 놓기만 하면 원본 옆에 변환된 파일이 생겨요. 업로드도, 이리저리 누를 창도 없습니다.",
+    "lead": "이미지, PDF, 워드·엑셀·파워포인트, 동영상, 음악, 전자책, 압축 파일까지 내 PC에서 바로 변환하세요. 키를 누른 채 파일을 끌어다 원하는 형식에 놓으면 끝. 업로드도, 가입도 없는 무료 오픈소스입니다.",
     "download": "Windows용 다운로드",
     "downloadNote": "Windows 10/11 · 64비트 · 무료",
-    "github": "GitHub에서 보기"
+    "formats": "지원 형식 {formatTotal}가지 보기"
   },
   "demo": {
     "label": "여기서 직접 해보세요",
     "hint": "파일을 끌어 보세요",
     "hintTouch": "손가락으로 파일을 끌어 보세요",
     "files": [
-      { "name": "여행사진.jpg", "type": "jpg", "profile": "image" },
-      { "name": "보고서.docx", "type": "docx", "profile": "document" },
+      { "name": "여행사진.heic", "type": "heic", "profile": "image" },
+      { "name": "발표영상.mov", "type": "mov", "profile": "video" },
       { "name": "계약서.hwp", "type": "hwp", "profile": "hwp" }
     ],
-    "center": { "image": "JPG 1개", "document": "DOCX 1개", "hwp": "HWP 1개" },
+    "center": { "image": "HEIC 1개", "video": "MOV 1개", "document": "DOCX 1개", "hwp": "HWP 1개" },
     "close": "가운데에 놓으면 취소",
     "done": "변환 완료",
     "cancelled": "취소됨",
@@ -51,52 +56,42 @@
   "how": {
     "title": "동작 하나, 세 단계",
     "steps": [
-      { "title": "Ctrl 누르고 끌기", "text": "탐색기나 바탕화면에서 평소처럼 파일을 끌되 Ctrl을 누르고 끄세요. 원하는 다른 키로도 바꿀 수 있어요." },
+      { "title": "키를 누른 채 끌기", "text": "탐색기나 바탕화면에서 파일을 골라 Ctrl을 누른 채 끌어 보세요. 다른 수정키로 바꿀 수도 있어요." },
       { "title": "형식 위에 놓기", "text": "커서 위치에 그 파일에 맞는 형식들이 도넛으로 열립니다. 원하는 칸 위에서 손을 떼세요." },
-      { "title": "원본 옆에 저장", "text": "진행률 링이 차오르고 체크 표시가 뜨면, 새 파일이 원본 바로 옆에 있어요." }
+      { "title": "원본 옆에 저장", "text": "진행률 링이 차오르면 새 파일이 원본 바로 옆에 생깁니다. 메뉴가 편하다면 탐색기 우클릭 메뉴에서 바로 변환할 수도 있어요." }
     ]
   },
   "features": {
     "title": "변환기에 필요한 건 다, 필요 없는 건 없이",
     "items": [
-      { "icon": "donut", "title": "커서 위에 뜨는 도넛", "text": "프로그램 창을 열 필요가 없어요. 수정키, 마우스 버튼, 길게 누르기, 단축키 무엇으로든 열 수 있습니다." },
-      { "icon": "sliders", "title": "파일 종류별 프리셋", "text": "품질, 크기 조정, DPI, 메타데이터, TIFF 압축, ICO 크기, PDF 합치기·나누기, 페이지 범위, 저장 위치, 파일 이름까지." },
-      { "icon": "hwp", "title": "한글 없이 HWP·HWPX", "text": "DOCX → HWPX 변환에도 쪽 설정, 머리말·꼬리말, 표, 글상자가 그대로. HWP ↔ HWPX도 한글 없이 변환합니다." },
-      { "icon": "stack", "title": "일괄 변환", "text": "1개든 100개든 한 번에. 여러 파일을 동시에 변환하고, 하나가 실패해도 나머지는 계속됩니다." },
-      { "icon": "lock", "title": "100% 내 PC에서", "text": "아무것도 업로드하지 않아요. 인터넷 없이도 동작하고 문서가 밖으로 나가지 않습니다." },
-      { "icon": "doors", "title": "네 가지 사용 방법", "text": "드래그 동작, 탐색기 우클릭과 보내기, 선택한 파일에 단축키, 메인 창의 드롭 영역." },
-      { "icon": "palette", "title": "말랑한 UI, 내 맘대로", "text": "라이트·다크·시스템 테마, 강조색, 모서리 둥글기, 저사양 PC를 위한 애니메이션 줄이기." },
-      { "icon": "globe", "title": "한국어 · English · 简体中文", "text": "앱 전체가 번역되어 있고 기본값은 Windows 언어를 따릅니다." },
-      { "icon": "code", "title": "오픈소스 (MIT)", "text": "가벼운 설치 파일, 필요할 때만 받는 추가 엔진, GitHub 릴리스로 자동 업데이트." }
+      { "icon": "donut", "title": "커서 위에 뜨는 도넛", "text": "프로그램 창을 열 필요가 없어요. 수정키, 마우스 버튼, 길게 누르기, 단축키 무엇으로든 지금 커서 위치에 형식이 열립니다." },
+      { "icon": "stack", "title": "{formatTotal}가지 형식, 동작 하나", "text": "이미지, PDF, 워드·엑셀·파워포인트, 한글, 전자책, 동영상, 오디오, 압축 파일, CAD 도면, 글꼴까지. 형식 사이의 변환 경로는 Filee가 알아서 찾습니다." },
+      { "icon": "document", "title": "오피스 없어도 OK", "text": "워드·엑셀·파워포인트 파일은 MS 오피스나 LibreOffice 없이, 한글 파일은 한컴오피스 없이 변환합니다. PC에 설치된 프로그램은 쓰지 않아요." },
+      { "icon": "doors", "title": "일괄 변환", "text": "1개든 100개든 한 번에. 여러 파일을 동시에 변환하고, 하나가 실패해도 나머지는 계속되며, PDF 하나나 ZIP 하나로 묶을 수도 있어요." },
+      { "icon": "lock", "title": "100% 내 PC에서", "text": "아무것도 업로드하지 않습니다. 인터넷 없이 동작해 개인 문서·사진·녹음 파일이 PC 밖으로 나가지 않아요." },
+      { "icon": "windows", "title": "쓰던 자리에서 바로", "text": "드래그 동작, Windows 11 우클릭 메뉴 맨 위의 Filee 변환, 보내기 메뉴, 단축키, 메인 창의 드롭 영역." },
+      { "icon": "sliders", "title": "파일 종류별 프리셋", "text": "품질, 크기 조정, DPI, 흑백, 메타데이터, TIFF 압축, ICO 크기, PDF 합치기·나누기·페이지 범위, 720p 동영상, MP3 비트레이트, 저장 위치와 파일 이름." },
+      { "icon": "download", "title": "가벼운 설치, 엔진은 필요할 때", "text": "큰 엔진은 앱에서 골라 받는 추가 기능입니다: {engineNames}. 버전과 다운로드 속도, 남은 시간도 보여 줘요." },
+      { "icon": "code", "title": "무료 오픈소스", "text": "MIT 라이선스, 광고도 가입도 없습니다. 한국어·영어·중국어 간체를 지원하고, 자동 업데이트 때 변경 사항과 기여자를 보여 줍니다." }
     ]
   },
   "formats": {
-    "title": "26가지 형식, 경로는 자동으로",
+    "title": "{categoryCount}개 분야, {formatTotal}가지 형식",
     "lead": "형식 사이의 가장 좋은 경로를 알아서 찾습니다. 예를 들어 HWPX → PDF → PNG처럼, 단계마다 가장 잘하는 엔진을 씁니다.",
-    "groups": [
-      { "name": "이미지", "list": "JPG, PNG, WEBP, TIFF, BMP, GIF, ICO, AVIF, HEIC(읽기)", "to": "모든 이미지 형식, PDF" },
-      { "name": "PDF", "list": "PDF", "to": "PNG, JPG, TIFF, 합치기, 나누기, 페이지 범위" },
-      { "name": "문서", "list": "DOCX, DOC, ODT, RTF", "to": "PDF, HWPX, 서로 변환, TXT, HTML" },
-      { "name": "한글", "list": "HWP, HWPX", "to": "PDF, HWPX ↔ HWP, DOCX, TXT, 마크다운, HTML" },
-      { "name": "스프레드시트·프레젠테이션", "list": "XLSX, XLS, ODS, CSV, PPTX, PPT, ODP", "to": "PDF와 서로 변환" },
-      { "name": "텍스트", "list": "TXT, 마크다운, HTML", "to": "DOCX, HWPX, PDF" }
-    ],
-    "note": "오피스 문서와 마크다운은 추가 엔진(LibreOffice, Pandoc)을 씁니다. 처음 실행할 때 받을지 물어봐요."
+    "count": "{n}가지 형식",
+    "popular": "많이 찾는 변환",
+    "catalog": "지원 형식 {formatTotal}가지 전체 보기"
   },
   "hwp": {
     "eyebrow": "한글 파일을 쓴다면",
     "title": "한컴오피스 없이 쓰는 HWP 변환기",
-    "text": "한컴오피스는 다른 프로그램이 파일을 열 때마다 승인 창을 띄웁니다. Filee는 HWPX를 직접 만들고 HWP ↔ HWPX는 rhwp로 변환해서, 승인 창도 한글 라이선스도 필요 없어요.",
-    "points": [
-      "DOCX → HWPX: 용지·여백, 머리말·꼬리말과 쪽 번호까지 유지",
-      "병합 셀·테두리·음영이 있는 표, 글상자, 도형, 그림",
-      "HWP → HWPX, HWPX → HWP, HWP/HWPX → PDF·PNG",
-      "서로 다른 HWPX 리더 3개로 검증"
-    ]
+    "text": "Filee는 한글 문서를 직접 읽고 씁니다. 한글 라이선스도, 매번 뜨는 승인 창도 필요 없어요.",
+    "quality": "DOCX → HWPX: 쪽 설정, 머리말·꼬리말, 병합 셀이 있는 표, 글상자, 그림까지 유지",
+    "guides": "한글 파일 변환 안내"
   },
   "gallery": {
     "title": "도넛은 내 마음대로",
-    "lead": "파일 종류마다 도넛을 따로 두고, 실제 도넛 위에서 끌어다 놓아 배치해요.",
+    "lead": "파일 종류마다 도넛을 따로 두고 실제 도넛 위에서 끌어다 배치해요. 확장자 태그와, 여러 종류를 섞어 골랐을 때 뜨는 도넛도 정할 수 있습니다.",
     "shots": [
       { "src": "page-toolbar-ko", "alt": "프로필과 프리셋으로 원형 툴바를 편집하는 화면" },
       { "src": "page-home-ko", "alt": "드롭 영역과 최근 변환 기록이 있는 홈 화면" },
@@ -104,21 +99,28 @@
       { "src": "engine-setup-ko", "alt": "처음 실행할 때 추가 엔진을 고르는 창" }
     ]
   },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "lead": "가격, 개인정보, 지원 형식, 사용법에 대한 짧은 답입니다."
+  },
   "specs": {
     "title": "한눈에 보기",
     "rows": [
       ["가격", "무료"],
       ["라이선스", "MIT (오픈소스)"],
+      ["버전", "{version}"],
       ["운영체제", "Windows 10·11, 64비트 (macOS 계획 중)"],
       ["오프라인", "지원 — 파일이 PC 밖으로 나가지 않음"],
-      ["지원 형식", "26가지 (HWP·HWPX 포함)"],
+      ["지원 형식", "{categoryCount}개 분야 {formatTotal}가지"],
+      ["기본 내장", "{builtinTotal}가지 형식은 추가 설치 없이"],
+      ["추가 엔진", "{engineNames}"],
       ["언어", "한국어, 영어, 중국어 간체"],
       ["업데이트", "GitHub 릴리스로 자동 업데이트"]
     ]
   },
   "download": {
     "title": "지금 바로 시작하세요",
-    "text": "설치 파일은 가볍습니다. 이미지, PDF, HWP/HWPX, DOCX → HWPX는 바로 되고, 오피스 문서용 LibreOffice(약 420MB)와 마크다운용 Pandoc(약 42MB)은 처음 실행할 때 받을지 고를 수 있어요.",
+    "text": "설치 파일은 가볍고 대부분의 형식은 바로 변환됩니다. 추가 엔진은 필요할 때만 앱 안에서 받아요: {engineDetails}.",
     "button": "Windows용 다운로드",
     "latest": "최신 버전",
     "all": "모든 릴리스",
@@ -129,7 +131,74 @@
     "license": "MIT 라이선스",
     "notices": "서드파티 고지",
     "issues": "문제 신고",
-    "made": "KnifeLemon과 기여자들이 만듭니다."
+    "made": "KnifeLemon과 기여자들이 만듭니다.",
+    "formats": "지원 형식 전체",
+    "popular": "많이 찾는 변환"
+  },
+  "common": {
+    "home": "홈",
+    "breadcrumb": "이동 경로",
+    "builtIn": "기본 내장",
+    "builtInHint": "설치 직후 바로 사용, 추가 다운로드 없음",
+    "optional": "추가 엔진",
+    "optionalHint": "Filee 안에서 한 번 받는 무료 추가 엔진",
+    "free": "무료",
+    "offline": "오프라인",
+    "batch": "일괄 변환"
+  },
+  "catalog": {
+    "title": "지원 형식 전체 목록 — {formatTotal}가지 파일 형식 변환 | Filee",
+    "description": "무료 파일 변환기 Filee가 지원하는 {formatTotal}가지 형식. 이미지·PDF·문서·HWP·동영상·오디오·전자책·압축·CAD·글꼴을 무엇으로 바꿀 수 있는지 한눈에 보세요.",
+    "crumb": "지원 형식",
+    "h1": "지원 형식 목록",
+    "lead": "{categoryCount}개 분야, {formatTotal}가지 형식. 이 중 {builtinTotal}가지는 설치 직후 바로 쓸 수 있고, 나머지는 필요할 때만 받는 무료 추가 엔진을 씁니다.",
+    "stats": { "formats": "형식", "categories": "분야", "builtin": "기본 내장", "guides": "변환 안내" },
+    "jump": "분야",
+    "legendBuiltIn": "기본 내장: 설치 직후 바로 됩니다. 내장 엔진:",
+    "legendOptional": "추가 엔진: Filee 안에서 무료로 받는 선택 기능입니다(설정 → 엔진). Filee 전용 폴더에 저장되고 언제든 지울 수 있으며, PC에 설치된 프로그램은 쓰지 않아요.",
+    "engineCols": ["엔진", "쓰임", "다운로드"],
+    "from": "원본",
+    "to": "바꿀 수 있는 형식",
+    "engine": "엔진",
+    "guides": "단계별 변환 안내",
+    "ctaTitle": "모든 형식을 동작 하나로",
+    "ctaText": "Windows 10·11용 Filee를 받아 {formatTotal}가지 형식을 인터넷 없이 무료로 변환하세요."
+  },
+  "convert": {
+    "title": "{from} {to} 변환 — 무료·오프라인 일괄 변환 | Filee",
+    "description": "{from} 파일을 {toRo} 바꾸는 무료 변환기. Windows에서 끌어다 놓기만 하면 여러 개를 한 번에, 업로드 없이 오프라인으로 변환합니다. {engineShort}",
+    "descBuiltIn": "추가 설치가 필요 없어요.",
+    "descOptional": "무료 {engine} 엔진 사용.",
+    "h1": "{fromEul} {toRo} 변환",
+    "lead": "Windows 10·11에서 {from} 파일을 {toRo} 바꿔 보세요. 무료이고, 인터넷 없이 여러 개를 한 번에 변환합니다. 파일을 끌어 형식 도넛의 {to}에 놓으면 원본 옆에 {to} 파일이 생겨요.",
+    "crumb": "{from} → {to}",
+    "howButton": "변환 방법 보기",
+    "howTitle": "Windows에서 {fromEul} {toRo} 변환하는 방법",
+    "steps": [
+      { "title": "{from} 파일 고르기", "text": "탐색기나 바탕화면에서 {from} 파일을 하나 또는 여러 개 고르세요." },
+      { "title": "Ctrl 누른 채 끌기", "text": "Ctrl(또는 Filee에서 정한 키)을 누른 채 파일을 끌면 커서 위치에 형식 도넛이 열립니다. 메뉴가 편하다면 우클릭 메뉴에서 바로 변환할 수도 있어요." },
+      { "title": "{to}에 놓기", "text": "{to} 칸 위에서 손을 떼면 진행률 링이 차오르고, {to} 파일이 원본 옆에 저장됩니다." }
+    ],
+    "stepEngine": "처음 한 번은 이 변환에 필요한 무료 {engine} 엔진을 받을지 물어봅니다.",
+    "whatTitle": "Filee의 {from} → {to} 변환",
+    "points": {
+      "builtIn": "기본 내장: Filee만 설치하면 추가로 받을 것 없이 바로 됩니다.",
+      "optional": "{engine} 엔진 사용: Filee 전용 폴더에 한 번만 받는 무료 추가 엔진입니다{sizeParen}. PC에 설치된 프로그램은 쓰지 않아요.",
+      "via": "엔진: {via}",
+      "batch": "일괄 변환: 파일 하나든 수백 개든 동시에 변환하고, 하나가 실패해도 나머지는 계속됩니다.",
+      "local": "개인정보 보호: 내 PC에서 변환하며 파일을 업로드하지 않고, 인터넷 없이도 됩니다.",
+      "output": "저장 위치: 원본 옆 또는 원하는 폴더에, 원하는 파일 이름 규칙으로 저장합니다."
+    },
+    "alsoTo": "{fromEun} 이런 형식으로도 바꿀 수 있어요",
+    "aboutTitle": "{fromWa} {to} 알아보기",
+    "aboutExt": "확장자:",
+    "aboutMore": "{category} 형식 전체 보기",
+    "relatedTitle": "관련 변환",
+    "sameSource": "다른 {from} 변환",
+    "sameTarget": "다른 형식을 {toRo} 변환",
+    "sameCategory": "{category} 변환 더 보기",
+    "ctaTitle": "{fromEul} {toRo}, 지금 무료로 변환하세요",
+    "ctaText": "Filee는 Windows 10·11용 무료 오픈소스 파일 변환기입니다. 인터넷 없이 동작하고, 끌어다 놓기 한 번으로 {formatTotal}가지 형식을 변환해요."
   },
   "langBanner": "이 페이지는 한국어로도 볼 수 있어요."
 }

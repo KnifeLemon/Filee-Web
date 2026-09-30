@@ -1,0 +1,138 @@
+// llms.txt and llms-full.txt (llmstxt.org): plain, quotable facts for AI assistants and answer engines (GEO).
+// Everything is generated from catalog.mjs, so the facts match the pages.
+
+import {
+  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, VERSION, L, engineDetails, fill, joinList, pairSlug,
+  routeFor, sizeText, stats, vars,
+} from './catalog.mjs';
+import { DOWNLOAD, REPO, SITE, paths } from './layout.mjs';
+import { pairMeta } from './convert-page.mjs';
+
+const EN = 'en';
+/** Source lists show every extension group (PPM/PGM/PBM); targets are the format actually written (PPM). */
+const labels = ids => ids.map(id => FORMATS[id].display ?? FORMATS[id].label);
+const targetLabels = ids => ids.map(id => FORMATS[id].label);
+
+function facts(en) {
+  const s = stats();
+  const v = vars(EN);
+  return [
+    `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (64-bit) that converts files offline on the user's own PC; files are never uploaded.`,
+    `Filee converts ${s.formatTotal} file formats in ${s.categoryCount} categories: ${v.categoryList}.`,
+    `${s.builtinTotal} of those formats work right after installation. The others use optional engines that are downloaded inside the app when needed: ${engineDetails(EN)}.`,
+    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files, and it never uses programs installed on the PC.`,
+    `How it works: hold a modifier key (Ctrl by default, configurable) and drag files; a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals.`,
+    `Other ways to convert: "Convert with Filee" in the Windows 11 top-level right-click menu, Send To, a keyboard shortcut on selected files, and the drop zone in the main window.`,
+    `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
+    `Presets per file type: quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder and file names.`,
+    `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Korean and Simplified Chinese.`,
+    `Current version: ${VERSION}. Updates are installed automatically from GitHub Releases. The installer is named Filee-<version>-win-Setup.exe.`,
+    en ? `Website: ${SITE}/ (English), ${SITE}/ko/ (Korean), ${SITE}/zh-cn/ (Simplified Chinese).` : '',
+  ].filter(Boolean);
+}
+
+const describeRoute = r => {
+  const from = r.fromText ? L(r.fromText, EN) : `${r.label ? `${L(r.label, EN)}: ` : ''}${labels(r.from).join(', ')}`;
+  const to = r.to.length ? targetLabels(r.to).join(', ') : 'merge, split and page ranges';
+  const engine = r.engine === 'builtin' ? `built in${r.via ? `, ${r.via}` : ''}` : `optional ${ENGINES[r.engine].name}`;
+  const extras = r.extras?.length ? `; options: ${r.extras.map(k => L(OPTIONS[k].short, EN)).join(', ')}` : '';
+  const note = r.note ? ` (${L(r.note, EN)})` : '';
+  return `${from} → ${to} [${engine}${extras}]${note}`;
+};
+
+const en = languages => languages.find(l => l.lang === EN);
+
+export function llmsTxt(languages) {
+  const t = en(languages);
+  return `# Filee
+
+> Filee is a free, open-source (MIT) file converter for Windows 10 and 11. It converts images, PDF, Word, Excel and PowerPoint files, Korean HWP/HWPX, e-books, video, audio, archives, CAD drawings and fonts offline on your PC: hold a key, drag files and drop them on a format.
+
+${facts(true).map(line => `- ${line}`).join('\n')}
+
+## Formats
+
+${CATEGORIES.map(c => `- ${L(c.name, EN)} (${c.formats.length}): ${L(c.intro, EN)}`).join('\n')}
+
+Full list with every format, extension, target and engine: [format catalog](${SITE}/formats/) and [llms-full.txt](${SITE}/llms-full.txt).
+
+## Conversion guides
+
+${PAIRS.map(p => `- [${pairMeta(t, p).h1}](${SITE}${paths.convert(t, pairSlug(p))})`).join('\n')}
+
+## Download
+
+- [Windows installer, latest release](${DOWNLOAD}) (free; Windows 10/11, x64)
+- [All releases and release notes](${REPO}/releases)
+
+## Website
+
+${languages.map(l => `- [${l.name}](${SITE}${l.path}), [format catalog](${SITE}${paths.formats(l)})`).join('\n')}
+
+## Source code and documentation
+
+- [GitHub repository](${REPO})
+- [Conversion engines](${REPO}/blob/main/docs/ENGINES.md)
+- [Architecture](${REPO}/blob/main/docs/ARCHITECTURE.md)
+`;
+}
+
+export function llmsFullTxt(languages) {
+  const t = en(languages);
+  const s = stats();
+  const v = vars(EN);
+  return `# Filee: full format catalog, engines and FAQ
+
+> Filee is a free, open-source (MIT) file converter for Windows 10 and 11 that converts ${s.formatTotal} file formats offline on the user's own PC. This file lists every format Filee ${VERSION} reads, what each converts to, which engine does the work, the conversion guides and the FAQ. Short version: ${SITE}/llms.txt
+
+## Facts
+
+${facts(true).map(line => `- ${line}`).join('\n')}
+
+## Engines
+
+- Built in (in the installer): ${BUILT_IN_ENGINES.join(', ')} and more. ${s.builtinTotal} formats need nothing else.
+${Object.values(ENGINES).map(e => `- ${e.name} (optional download${e.sizeMB ? `, ${sizeText(e.sizeMB, EN)}` : ''}): ${L(e.for, EN)}. ${e.url}`).join('\n')}
+- Optional engines are downloaded inside Filee (Settings → Engines, or when first needed) into Filee's own folder and can be removed at any time. The app shows each engine's version, download speed and time left.
+
+## Format catalog
+
+${CATEGORIES.map(c => `### ${L(c.name, EN)} (${c.formats.length} formats)
+
+${L(c.intro, EN)}
+
+Formats: ${c.formats.map(f => `${f.display ?? f.label} (${f.ext.map(e => `.${e}`).join(' ')}${f.brand ? `; ${f.brand}` : ''})`).join(', ')}.
+
+Conversions:
+${c.routes.map(r => `- ${describeRoute(r)}`).join('\n')}
+
+Details: ${SITE}/formats/#${c.id}
+`).join('\n')}
+## Conversion guides
+
+${PAIRS.map(p => {
+    const meta = pairMeta(t, p);
+    const route = routeFor(p.from, p.to);
+    const engine = route.engine === 'builtin' ? 'Built in' : `Needs the optional ${ENGINES[route.engine].name} engine`;
+    return `### ${meta.h1}
+
+${SITE}${paths.convert(t, pairSlug(p))}
+
+${meta.lead} ${engine}. ${L(p.tip, EN)}${p.options.length ? ` Options: ${p.options.map(k => L(OPTIONS[k].long, EN)).join(' ')}` : ''}
+`;
+  }).join('\n')}
+## FAQ
+
+${FAQ.map(item => `### ${L(item.q, EN)}
+
+${fill(L(item.a, EN), v)}
+`).join('\n')}
+## Links
+
+- Download (latest release): ${DOWNLOAD}
+- Source code: ${REPO}
+- Website: ${languages.map(l => `${SITE}${l.path}`).join(', ')}
+- Other languages of the format catalog: ${languages.filter(l => l.lang !== EN).map(l => `${SITE}${paths.formats(l)}`).join(', ')}
+- Categories: ${joinList(CATEGORIES.map(c => L(c.plain, EN)), EN)}
+`;
+}

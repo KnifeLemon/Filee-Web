@@ -1,9 +1,17 @@
-// filee.sh interactions: the drag & drop demo, scroll reveals, lazy video, GitHub release info, the language
-// suggestion and card tilt. No dependencies; without JavaScript the page is still complete and readable.
+// filee.sh interactions: the drag & drop demo (home page), scroll reveals, lazy video, GitHub release info and the
+// real installer link, the language suggestion and card tilt. No dependencies; without JavaScript every page is
+// still complete and readable, and download buttons lead to the latest release page.
 
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(pointer: fine)').matches;
-const data = JSON.parse(document.getElementById('demo-data').textContent);
+const readJson = id => {
+  const node = document.getElementById(id);
+  try { return node ? JSON.parse(node.textContent) : null; } catch { return null; }
+};
+/** Demo files and donuts (home page only). */
+const data = readJson('demo-data');
+/** This page's language and its address in every language. */
+const page = readJson('page-data') ?? { lang: document.documentElement.lang, langs: [] };
 
 /* ───────── Drag & drop demo ───────── */
 
@@ -150,7 +158,7 @@ const CURSOR = '<svg class="cursor" viewBox="0 0 24 24"><path d="M5 2.5v17l4.4-4
 
 function setupDemo() {
   const demo = document.querySelector('[data-demo]');
-  if (!demo) return;
+  if (!demo || !data) return;
   const files = [...demo.querySelectorAll('.file')];
   const results = demo.querySelector('.demo-results');
   const hint = demo.querySelector('[data-hint]');
@@ -447,25 +455,66 @@ function setupVideo() {
   }, { threshold: 0.4 }).observe(video);
 }
 
+const HOUR = 3_600_000;
+
+/**
+ * Cached in localStorage (shared by all pages and tabs) because the GitHub API allows 60 unauthenticated requests
+ * per hour and IP. Failures (offline, rate limit, timeout) are remembered for 10 minutes so every page view doesn't
+ * retry; the static fallbacks in the HTML simply stay.
+ */
 async function cached(key, load) {
   try {
-    const hit = JSON.parse(sessionStorage.getItem(key));
-    if (hit && Date.now() - hit.at < 3_600_000) return hit.value;
-  } catch { /* storage unavailable */ }
-  const value = await load();
-  try { sessionStorage.setItem(key, JSON.stringify({ at: Date.now(), value })); } catch { /* storage unavailable */ }
-  return value;
+    const hit = JSON.parse(localStorage.getItem(key));
+    if (hit && Date.now() - hit.at < (hit.value ? HOUR : HOUR / 6)) {
+      if (hit.value) return hit.value;
+      throw new Error('failed recently');
+    }
+  } catch (error) {
+    if (error.message === 'failed recently') throw error;
+  }
+  const store = value => { try { localStorage.setItem(key, JSON.stringify({ at: Date.now(), value })); } catch { /* storage unavailable */ } };
+  try {
+    const value = await load();
+    store(value);
+    return value;
+  } catch (error) {
+    store(null);
+    throw error;
+  }
 }
 
 async function getJson(url) {
-  const res = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } });
-  if (!res.ok) throw new Error(`${res.status} ${url}`);
-  return res.json();
+  if (navigator.onLine === false) throw new Error('offline');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+  try {
+    const res = await fetch(url, { headers: { Accept: 'application/vnd.github+json' }, signal: controller.signal });
+    if (!res.ok) throw new Error(`${res.status} ${url}`); // 403/429 when rate limited
+    return await res.json();
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
-/** Latest version, installer size and stars from the GitHub API (unauthenticated, cached per session). */
+/**
+ * The Windows installer among a release's assets. Since 1.1.0 its name carries the version
+ * (Filee-1.1.0-win-Setup.exe); older releases used Filee-win-Setup.exe.
+ */
+function findInstaller(assets = []) {
+  for (const pattern of [/^Filee-[\w.-]*win-Setup\.exe$/i, /-win-Setup\.exe$/i, /Setup\.exe$/i]) {
+    const asset = assets.find(a => pattern.test(a.name));
+    if (asset) return asset;
+  }
+  return null;
+}
+
+/**
+ * Latest version, installer size and stars from the GitHub API. Download buttons point at the latest release page
+ * in the HTML and are upgraded to the installer itself when the API answers.
+ */
 function setupGitHub() {
   const api = 'https://api.github.com/repos/KnifeLemon/Filee';
+  const releaseDownloads = 'https://github.com/KnifeLemon/Filee/releases/download/';
   const compact = n => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10_000 ? 0 : 1).replace(/\.0$/, '')}k` : String(n));
 
   cached('filee-repo', async () => ({ stars: (await getJson(api)).stargazers_count }))
@@ -474,9 +523,9 @@ function setupGitHub() {
     })
     .catch(() => {});
 
-  cached('filee-release', async () => {
+  cached('filee-release-v2', async () => {
     const release = await getJson(`${api}/releases/latest`);
-    const setup = release.assets.find(a => /Setup\.exe$/i.test(a.name));
+    const setup = findInstaller(release.assets);
     return { tag: release.tag_name, size: setup?.size ?? 0, url: setup?.browser_download_url ?? '' };
   })
     .then(({ tag, size, url }) => {
@@ -485,7 +534,7 @@ function setupGitHub() {
       const mb = size ? ` · ${Math.round(size / 1_048_576)} MB` : '';
       document.querySelectorAll('[data-version-full]').forEach(el => { el.textContent = version + mb; });
       document.querySelectorAll('[data-latest]').forEach(el => { el.hidden = false; });
-      if (url) document.querySelectorAll('[data-download]').forEach(a => { a.href = url; });
+      if (url.startsWith(releaseDownloads)) document.querySelectorAll('[data-download]').forEach(a => { a.href = url; });
     })
     .catch(() => {});
 }
@@ -506,8 +555,8 @@ function setupLanguageBanner() {
     return null;
   };
   const preferred = (navigator.languages?.length ? navigator.languages : [navigator.language]).map(map).find(Boolean);
-  const target = data.langs.find(l => l.lang === preferred);
-  if (!target || target.lang === data.lang) return;
+  const target = page.langs.find(l => l.lang === preferred);
+  if (!target || target.lang === page.lang) return;
 
   const banner = Object.assign(document.createElement('div'), { className: 'lang-banner', lang: target.lang });
   banner.setAttribute('role', 'note');

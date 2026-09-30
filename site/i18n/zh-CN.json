@@ -5,38 +5,43 @@
   "path": "/zh-cn/",
   "name": "简体中文",
   "meta": {
-    "title": "Filee — 拖放即可转换的免费文件格式转换器（Windows）",
-    "description": "按住 Ctrl 拖动文件，放到目标格式上即可。Filee 在你的电脑上转换图片、PDF、Word、Excel、PowerPoint 和 HWP/HWPX，免费、开源、离线可用。",
-    "ogAlt": "Filee：拖动文件时，光标处会弹出格式圆环"
+    "title": "免费文件转换器 Filee — Windows 离线格式转换工具",
+    "description": "免费文件转换器 Filee：拖放即可在 Windows 上离线转换图片、PDF、视频、音频、Word、Excel、电子书和压缩包，文件不上传，开源免费。",
+    "ogAlt": "Filee：拖动文件时，光标处会弹出格式圆环",
+    "appAlternateName": "Filee 文件转换器",
+    "keywords": "文件转换器, 格式转换器, 免费格式转换, 离线文件转换, 图片格式转换, PDF 转换, 视频格式转换, 音频转换, HEIC 转 JPG, PDF 转 Word"
   },
   "nav": {
     "features": "功能",
     "how": "使用方法",
     "formats": "支持格式",
     "hwp": "HWP",
+    "faq": "常见问题",
     "download": "下载",
     "github": "GitHub",
     "language": "语言",
-    "menu": "菜单"
+    "menu": "菜单",
+    "skip": "跳到正文"
   },
   "hero": {
-    "badge": "免费 · 开源 · Windows 10/11",
+    "badge": "{versionShort} 新增：视频、音频、电子书、压缩包、CAD 和字体",
+    "kicker": "免费的 Windows 文件转换器",
     "title": ["拖一下，", "放一下，", "转好了。"],
-    "lead": "按住 Ctrl 拖动任意文件，格式圆环会在光标处弹出。放到想要的格式上，转换后的文件就出现在原文件旁边。无需上传，也无需点来点去。",
+    "lead": "图片、PDF、Word/Excel/PowerPoint、视频、音乐、电子书、压缩包……都能直接在你的电脑上转换。按住一个键拖动文件，放到想要的格式上即可。无需上传、无需注册，免费开源。",
     "download": "下载 Windows 版",
     "downloadNote": "Windows 10/11 · 64 位 · 免费",
-    "github": "在 GitHub 上查看"
+    "formats": "浏览全部 {formatTotal} 种格式"
   },
   "demo": {
     "label": "在这里试一试",
     "hint": "把文件拖到这里",
     "hintTouch": "用手指拖动文件",
     "files": [
-      { "name": "旅行.jpg", "type": "jpg", "profile": "image" },
-      { "name": "报告.docx", "type": "docx", "profile": "document" },
-      { "name": "合同.hwp", "type": "hwp", "profile": "hwp" }
+      { "name": "旅行.heic", "type": "heic", "profile": "image" },
+      { "name": "视频.mov", "type": "mov", "profile": "video" },
+      { "name": "报告.docx", "type": "docx", "profile": "document" }
     ],
-    "center": { "image": "1 个 JPG", "document": "1 个 DOCX", "hwp": "1 个 HWP" },
+    "center": { "image": "1 个 HEIC", "video": "1 个 MOV", "document": "1 个 DOCX", "hwp": "1 个 HWP" },
     "close": "放在中间即可取消",
     "done": "已转换",
     "cancelled": "已取消",
@@ -51,52 +56,42 @@
   "how": {
     "title": "一个手势，三个步骤",
     "steps": [
-      { "title": "按住 Ctrl 拖动", "text": "像平时一样从资源管理器或桌面拖动文件，同时按住 Ctrl（也可以换成其他按键）。" },
+      { "title": "按住按键拖动", "text": "在资源管理器或桌面上选中文件，按住 Ctrl（也可以换成其他修饰键）拖动。" },
       { "title": "放到格式上", "text": "光标处会弹出适合这些文件的格式圆环，移到想要的格式上松开即可。" },
-      { "title": "保存在原文件旁", "text": "进度环走完、出现对勾后，新文件就在原文件旁边。" }
+      { "title": "保存在原文件旁", "text": "进度环走完后，新文件就出现在原文件旁边。习惯用菜单的话，也可以在资源管理器右键菜单中直接转换。" }
     ]
   },
   "features": {
     "title": "转换器该有的都有，不该有的一概没有",
     "items": [
-      { "icon": "donut", "title": "光标处的格式圆环", "text": "无需打开程序窗口，格式就在你的光标旁。可用任意修饰键、鼠标按键、长按或快捷键打开。" },
-      { "icon": "sliders", "title": "按文件类型的预设", "text": "质量、缩放、DPI、元数据、TIFF 压缩、ICO 尺寸、PDF 合并与拆分、页码范围、保存位置和文件名。" },
-      { "icon": "hwp", "title": "无需韩文办公软件处理 HWP/HWPX", "text": "内置 HWPX 写入器，DOCX 转换时保留页面设置、页眉页脚、表格和文本框；HWP ↔ HWPX 也无需韩文办公软件。" },
-      { "icon": "stack", "title": "批量转换", "text": "1 个或 100 个文件都能一次完成，并行转换，某个文件失败也不影响其余文件。" },
-      { "icon": "lock", "title": "100% 本地处理", "text": "不上传任何内容。离线也能使用，文档不会离开你的电脑。" },
-      { "icon": "doors", "title": "四种使用方式", "text": "拖动手势、资源管理器右键和“发送到”、对选中文件按快捷键，或主窗口的拖放区。" },
-      { "icon": "palette", "title": "柔和且可定制的界面", "text": "浅色、深色或跟随系统，自定义强调色和圆角，旧电脑可开启“减少动画”。" },
-      { "icon": "globe", "title": "简体中文 · English · 한국어", "text": "整个应用均已翻译，默认跟随 Windows 语言。" },
-      { "icon": "code", "title": "开源（MIT）", "text": "安装包小巧，额外引擎按需下载，通过 GitHub Releases 自动更新。" }
+      { "icon": "donut", "title": "光标处的格式圆环", "text": "无需打开程序窗口，格式就出现在光标旁。可用修饰键、鼠标按键、长按或快捷键打开。" },
+      { "icon": "stack", "title": "{formatTotal} 种格式，一个手势", "text": "图片、PDF、Word/Excel/PowerPoint、HWP、电子书、视频、音频、压缩包、CAD 图纸和字体。格式之间的转换路径由 Filee 自动规划。" },
+      { "icon": "document", "title": "无需 Office", "text": "Word、Excel、PowerPoint 文件无需 Microsoft Office 或 LibreOffice，HWP 无需 Hancom Office 即可转换。Filee 从不调用电脑上已安装的程序。" },
+      { "icon": "doors", "title": "批量转换", "text": "1 个或 100 个文件都能一次完成：并行转换，某个文件失败也不影响其余文件，还能合并成一个 PDF 或一个 ZIP。" },
+      { "icon": "lock", "title": "100% 本地处理", "text": "不上传任何内容。离线也能使用，私人文档、照片和录音都不会离开你的电脑。" },
+      { "icon": "windows", "title": "就在你工作的地方", "text": "拖动手势、Windows 11 右键菜单第一层的 Filee 转换、“发送到”、快捷键，或主窗口的拖放区。" },
+      { "icon": "sliders", "title": "按文件类型的预设", "text": "质量、缩放、DPI、灰度、元数据、TIFF 压缩、ICO 尺寸、PDF 合并/拆分/页码范围、720p 视频、MP3 码率、保存位置和文件名。" },
+      { "icon": "download", "title": "安装包小巧，引擎按需下载", "text": "大型引擎是应用内的可选下载：{engineNames}。可查看版本、下载速度和剩余时间。" },
+      { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持简体中文、英语和韩语，自动更新时会显示更新内容和贡献者。" }
     ]
   },
   "formats": {
-    "title": "26 种格式，自动规划路径",
+    "title": "{categoryCount} 大类，{formatTotal} 种格式",
     "lead": "Filee 会自动找到格式之间的最佳路径，例如 HWPX → PDF → PNG，每一步都使用最擅长的引擎。",
-    "groups": [
-      { "name": "图片", "list": "JPG、PNG、WEBP、TIFF、BMP、GIF、ICO、AVIF、HEIC（读取）", "to": "任意图片格式、PDF" },
-      { "name": "PDF", "list": "PDF", "to": "PNG、JPG、TIFF、合并、拆分、页码范围" },
-      { "name": "文档", "list": "DOCX、DOC、ODT、RTF", "to": "PDF、HWPX、互相转换、TXT、HTML" },
-      { "name": "HWP", "list": "HWP、HWPX", "to": "PDF、HWPX ↔ HWP、DOCX、TXT、Markdown、HTML" },
-      { "name": "表格与演示文稿", "list": "XLSX、XLS、ODS、CSV、PPTX、PPT、ODP", "to": "PDF 及互相转换" },
-      { "name": "文本", "list": "TXT、Markdown、HTML", "to": "DOCX、HWPX、PDF" }
-    ],
-    "note": "办公文档和 Markdown 使用可选引擎（LibreOffice、Pandoc），Filee 会在首次启动时询问是否下载。"
+    "count": "{n} 种格式",
+    "popular": "热门转换",
+    "catalog": "查看全部 {formatTotal} 种格式"
   },
   "hwp": {
     "eyebrow": "HWP 用户",
-    "title": "无需韩文办公软件的 HWP 转换器",
-    "text": "韩文办公软件（Hancom Office）在其他程序打开文件时每次都会弹出确认窗口。Filee 自己写入 HWPX，并用 rhwp 完成 HWP ↔ HWPX 转换，无需确认窗口，也无需 Hancom 授权。",
-    "points": [
-      "DOCX → HWPX 保留纸张大小、页边距、页眉页脚和页码",
-      "带合并单元格、边框和底纹的表格，文本框、形状和图片",
-      "HWP → HWPX、HWPX → HWP、HWP/HWPX → PDF 和 PNG",
-      "经过三个独立 HWPX 读取器验证"
-    ]
+    "title": "无需 Hancom Office 的 HWP 转换器",
+    "text": "Filee 自己读写韩文（한글）文档，无需购买 Hancom 授权，也不会每次弹出确认窗口。",
+    "quality": "DOCX → HWPX 保留页面设置、页眉页脚、含合并单元格的表格、文本框和图片",
+    "guides": "HWP 转换指南"
   },
   "gallery": {
     "title": "圆环菜单随你定制",
-    "lead": "每种文件类型一个圆环，直接在圆环上拖放排列格式。",
+    "lead": "每种文件类型一个圆环，直接在圆环上拖放排列格式，还可以编辑扩展名标签，并为混合选择设置工具栏。",
     "shots": [
       { "src": "page-toolbar-zh-CN", "alt": "用配置文件和预设编辑圆环工具栏" },
       { "src": "page-home-zh-CN", "alt": "带拖放区和最近转换记录的主页" },
@@ -104,21 +99,28 @@
       { "src": "page-toolbar-dark", "alt": "深色主题" }
     ]
   },
+  "faq": {
+    "title": "常见问题",
+    "lead": "关于价格、隐私、支持格式和使用方法的简短回答。"
+  },
   "specs": {
     "title": "一览",
     "rows": [
       ["价格", "免费"],
       ["许可证", "MIT（开源）"],
+      ["版本", "{version}"],
       ["平台", "Windows 10 和 11，64 位（macOS 计划中）"],
       ["离线使用", "支持，文件不会离开你的电脑"],
-      ["支持格式", "26 种，包括 HWP 和 HWPX"],
+      ["支持格式", "{categoryCount} 大类共 {formatTotal} 种"],
+      ["内置", "{builtinTotal} 种格式无需额外安装"],
+      ["可选引擎", "{engineNames}"],
       ["语言", "简体中文、英语、韩语"],
       ["更新", "通过 GitHub Releases 自动更新"]
     ]
   },
   "download": {
     "title": "随时开始",
-    "text": "安装包很小。图片、PDF、HWP/HWPX 和 DOCX → HWPX 装好即用；办公文档所需的 LibreOffice（约 420 MB）和 Markdown 所需的 Pandoc（约 42 MB）可在首次启动时选择下载。",
+    "text": "安装包很小，大多数格式装好即用。可选引擎只在需要时于应用内下载：{engineDetails}。",
     "button": "下载 Windows 版",
     "latest": "最新版本",
     "all": "全部版本",
@@ -129,7 +131,74 @@
     "license": "MIT 许可证",
     "notices": "第三方声明",
     "issues": "反馈问题",
-    "made": "由 KnifeLemon 和贡献者打造。"
+    "made": "由 KnifeLemon 和贡献者打造。",
+    "formats": "格式目录",
+    "popular": "热门转换"
+  },
+  "common": {
+    "home": "首页",
+    "breadcrumb": "面包屑导航",
+    "builtIn": "内置",
+    "builtInHint": "安装后即可使用，无需额外下载",
+    "optional": "可选引擎",
+    "optionalHint": "在 Filee 内下载一次的免费可选引擎",
+    "free": "免费",
+    "offline": "离线",
+    "batch": "批量"
+  },
+  "catalog": {
+    "title": "支持的文件格式一览 — {formatTotal} 种格式 | Filee 文件转换器",
+    "description": "免费文件转换器 Filee 支持的全部 {formatTotal} 种格式：图片、PDF、文档、HWP、视频、音频、电子书、压缩包、CAD 和字体，以及每种格式能转换成什么。",
+    "crumb": "格式目录",
+    "h1": "格式目录",
+    "lead": "{categoryCount} 大类，共 {formatTotal} 种格式。其中 {builtinTotal} 种安装后即可使用，其余使用按需下载的免费可选引擎。",
+    "stats": { "formats": "格式", "categories": "大类", "builtin": "内置", "guides": "转换指南" },
+    "jump": "分类",
+    "legendBuiltIn": "内置：安装后即可使用。内置引擎包括",
+    "legendOptional": "可选引擎：在 Filee 内免费下载（设置 → 引擎），保存在 Filee 自己的文件夹中，可随时删除。Filee 从不调用电脑上已安装的程序。",
+    "engineCols": ["引擎", "用途", "下载大小"],
+    "from": "源格式",
+    "to": "可转换为",
+    "engine": "引擎",
+    "guides": "分步转换指南",
+    "ctaTitle": "所有格式，一个手势",
+    "ctaText": "下载适用于 Windows 10/11 的 Filee，免费离线转换 {formatTotal} 种格式。"
+  },
+  "convert": {
+    "title": "{from} 转 {to} — 免费离线批量转换 | Filee",
+    "description": "用 Filee 在 Windows 10/11 上免费把 {from} 转成 {to}：拖放即可，支持批量转换，离线运行，文件不上传。{engineShort}",
+    "descBuiltIn": "内置功能，无需额外安装。",
+    "descOptional": "使用免费的 {engine} 引擎。",
+    "h1": "{from} 转 {to}",
+    "lead": "在 Windows 10 和 11 上免费把 {from} 文件转换为 {to}，离线、批量都可以。把文件拖到格式圆环的 {to} 上松开，{to} 文件就会出现在原文件旁边。",
+    "crumb": "{from} 转 {to}",
+    "howButton": "查看步骤",
+    "howTitle": "如何在 Windows 上把 {from} 转换为 {to}",
+    "steps": [
+      { "title": "选择 {from} 文件", "text": "在资源管理器或桌面上选中一个或多个 {from} 文件。" },
+      { "title": "按住 Ctrl 拖动", "text": "按住 Ctrl（或在 Filee 中设置的键）拖动文件，光标处会弹出格式圆环。习惯用菜单的话，也可以右键点击文件直接转换。" },
+      { "title": "放到 {to} 上", "text": "在 {to} 上松开，进度环走完后，每个 {to} 文件都会保存在原文件旁边。" }
+    ],
+    "stepEngine": "首次使用时，Filee 会提示下载此转换所需的免费引擎 {engine}。",
+    "whatTitle": "Filee 如何处理 {from} → {to}",
+    "points": {
+      "builtIn": "内置：安装 Filee 后即可使用，无需额外下载。",
+      "optional": "使用 {engine}：Filee 下载到自身文件夹、只需下载一次的免费可选引擎{sizeParen}。不会调用电脑上已安装的程序。",
+      "via": "引擎：{via}",
+      "batch": "批量：一个或上百个文件并行转换，某个失败也不影响其他文件。",
+      "local": "隐私：文件在你的电脑上转换，从不上传，没有网络也能用。",
+      "output": "输出：保存在原文件旁，或保存到你指定的文件夹，并按你设定的规则命名。"
+    },
+    "alsoTo": "{from} 还可以转换为",
+    "aboutTitle": "了解 {from} 和 {to}",
+    "aboutExt": "扩展名：",
+    "aboutMore": "查看全部{category}格式",
+    "relatedTitle": "相关转换",
+    "sameSource": "{from} 的其他转换",
+    "sameTarget": "其他格式转 {to}",
+    "sameCategory": "更多{category}转换指南",
+    "ctaTitle": "免费把 {from} 转换为 {to}",
+    "ctaText": "Filee 是适用于 Windows 10 和 11 的免费开源文件转换器，离线运行，拖放一次即可转换 {formatTotal} 种格式。"
   },
   "langBanner": "此页面也提供简体中文版本。"
 }
