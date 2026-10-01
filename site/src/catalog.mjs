@@ -5,7 +5,7 @@
 //
 // Texts are { en, ko, 'zh-CN' } objects made with T(). Placeholders like {formatTotal} are filled by vars() below.
 
-export const VERSION = '1.1.0';
+export const VERSION = '1.2.0';
 export const LANGS = ['en', 'ko', 'zh-CN'];
 
 const T = (en, ko, zh) => ({ en, ko, 'zh-CN': zh });
@@ -1091,9 +1091,13 @@ export const FAQ = [
       '不需要。Word、Excel、PowerPoint 文件（DOCX、XLSX、XLS、CSV、PPTX）和韩文 HWP/HWPX 文档都由 Filee 内置的引擎转换。Filee 从不调用电脑上已安装的程序；LibreOffice 只是为 DOC、PPT、ODT、RTF 等旧格式准备的应用内可选下载。'),
     links: ['docx-to-pdf', 'xlsx-to-pdf', 'pptx-to-pdf', 'hwp-to-pdf'] },
   { q: T('What are the optional engines?', '추가 엔진은 무엇인가요?', '什么是可选引擎？'),
-    a: T('Large engines are not in the installer but can be downloaded inside Filee when you need them: {engineDetails}. They are saved in Filee\'s own folder and can be removed at any time, and the app shows their versions, download speed and time left.',
-      '용량이 큰 엔진은 설치 파일에 넣지 않고, 필요할 때 Filee 안에서 받을 수 있습니다: {engineDetails}. 엔진은 Filee 전용 폴더에 저장되고 언제든 지울 수 있으며, 앱에서 버전·다운로드 속도·남은 시간을 볼 수 있어요.',
-      '体积较大的引擎不包含在安装包中，需要时可以在 Filee 内下载：{engineDetails}。引擎保存在 Filee 自己的文件夹中，随时可以删除，应用内会显示版本、下载速度和剩余时间。') },
+    a: T('Large engines are not in the installer: tick them on the installer\'s engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee\'s own folder and can be removed at any time, and the app shows their versions, download speed and time left.',
+      '용량이 큰 엔진은 설치 파일에 넣지 않았어요. 설치할 때 엔진 선택 화면에서 고르거나, 필요할 때 Filee 안에서 받을 수 있습니다: {engineDetails}. 엔진은 Filee 전용 폴더에 저장되고 언제든 지울 수 있으며, 앱에서 버전·다운로드 속도·남은 시간을 볼 수 있어요.',
+      '体积较大的引擎不包含在安装包中：可以在安装程序的引擎页面勾选，也可以在需要时于 Filee 内下载：{engineDetails}。引擎保存在 Filee 自己的文件夹中，随时可以删除，应用内会显示版本、下载速度和剩余时间。') },
+  { q: T('Does installing Filee need administrator rights?', 'Filee를 설치하려면 관리자 권한이 필요한가요?', '安装 Filee 需要管理员权限吗？'),
+    a: T('Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. If you can\'t install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.',
+      '설치할 때 한 번만 필요해요. 설치 프로그램이 모든 사용자를 위해 Program Files에 설치하고, Windows 11에서는 탐색기 기본 메뉴에 “Filee로 변환”을 추가합니다. 설치 후 Filee는 일반 사용자 권한으로 실행돼요. 프로그램을 설치할 수 없다면 포터블 ZIP을 원하는 곳에 풀고 Filee.exe를 실행하세요.',
+      '只在安装时需要一次。安装程序会为所有用户安装到 Program Files，并在 Windows 11 上把“用 Filee 转换”添加到资源管理器主菜单。之后 Filee 以普通用户身份运行。如果无法安装程序，可以使用便携版 ZIP：解压到任意位置后运行 Filee.exe。') },
   { q: T('Can I convert many files at once?', '여러 파일을 한 번에 변환할 수 있나요?', '可以一次转换很多文件吗？'),
     a: T('Yes. Select as many files as you like and drop them once: Filee converts them in parallel, a failed file never stops the others, and presets can merge everything into one PDF or pack it into one ZIP.',
       '네. 원하는 만큼 파일을 골라 한 번에 놓으면 동시에 변환합니다. 한 파일이 실패해도 나머지는 계속되고, 프리셋으로 전부 PDF 하나로 합치거나 ZIP 하나로 묶을 수도 있어요.',
