@@ -123,6 +123,7 @@ export function renderDocument({ t, languages, assets, title, description, alter
   const pageData = {
     lang: t.lang,
     langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name })),
+    afterDownload: t.download.after,
   };
   return `<!doctype html>
 <html lang="${t.htmlLang}">

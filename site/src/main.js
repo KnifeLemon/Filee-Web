@@ -539,6 +539,47 @@ function setupGitHub() {
     .catch(() => {});
 }
 
+/**
+ * After a click on a download button that fetches the installer itself: the download starts as usual, and a panel
+ * explains the SmartScreen prompt of the (not yet code-signed) installer and points to GitHub for a star or an issue,
+ * which visitors who download from here would otherwise never see.
+ */
+function setupDownloadGuide() {
+  const t = page.afterDownload;
+  if (!t || typeof HTMLDialogElement !== 'function') return;
+  const repo = 'https://github.com/KnifeLemon/Filee';
+  const el = (tag, props = {}) => Object.assign(document.createElement(tag), props);
+  let dialog, retry;
+
+  const build = () => {
+    dialog = el('dialog', { className: 'download-guide' });
+    dialog.setAttribute('aria-labelledby', 'download-guide-title');
+    const close = el('button', { type: 'button', className: 'download-guide-close', textContent: '×' });
+    close.setAttribute('aria-label', t.close);
+    close.addEventListener('click', () => dialog.close());
+    const steps = el('ol');
+    for (const step of t.steps) steps.append(el('li', { textContent: step }));
+    const actions = el('div', { className: 'download-guide-actions' });
+    actions.append(
+      el('a', { className: 'btn btn-primary', href: repo, target: '_blank', rel: 'noopener', textContent: t.star }),
+      el('a', { className: 'btn btn-ghost', href: `${repo}/issues/new/choose`, target: '_blank', rel: 'noopener', textContent: t.issue }));
+    retry = el('a', { className: 'download-guide-retry', textContent: t.retry });
+    dialog.append(close, el('h2', { id: 'download-guide-title', textContent: t.title }), steps, actions, retry);
+    // A click on the backdrop (outside the panel) closes it.
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    document.body.append(dialog);
+  };
+
+  document.addEventListener('click', e => {
+    const link = e.target.closest?.('[data-download]');
+    if (!link || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    if (!/\.exe$/i.test(new URL(link.href).pathname)) return; // still the release page: it explains itself
+    if (!dialog) build();
+    retry.href = link.href;
+    setTimeout(() => { if (!dialog.open) dialog.showModal(); }, 200);
+  });
+}
+
 /** Suggests the visitor's language when it differs from the page. Never redirects (crawlers and shared links stay put). */
 function setupLanguageBanner() {
   const KEY = 'filee-lang-chosen';
@@ -612,4 +653,5 @@ setupDemo();
 setupVideo();
 setupTilt();
 setupGitHub();
+setupDownloadGuide();
 setupLanguageBanner();
