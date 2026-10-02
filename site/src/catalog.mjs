@@ -5,7 +5,7 @@
 //
 // Texts are { en, ko, 'zh-CN' } objects made with T(). Placeholders like {formatTotal} are filled by vars() below.
 
-export const VERSION = '1.2.3';
+export const VERSION = '1.3.0';
 export const LANGS = ['en', 'ko', 'zh-CN'];
 
 const T = (en, ko, zh) => ({ en, ko, 'zh-CN': zh });
@@ -1106,6 +1106,11 @@ export const FAQ = [
     a: T('Yes. Right-click files in File Explorer and choose "Convert with Filee". On Windows 11 you can also put it in the top-level menu, without "Show more options": click "Add to the main menu" in Settings → General once and approve the administrator prompt. Send To, a keyboard shortcut and the drop zone in the main window work too.',
       '네. 탐색기에서 파일을 우클릭하고 Filee 변환을 고르면 돼요. Windows 11에서는 설정 → 일반의 ‘기본 메뉴에 추가’를 한 번 누르고 관리자 승인을 하면 ‘추가 옵션 표시’ 없이 첫 메뉴에 나타나요. 보내기 메뉴, 단축키, 메인 창의 드롭 영역도 쓸 수 있어요.',
       '可以。在资源管理器中右键点击文件并选择 Filee 转换即可。在 Windows 11 上，只需在“设置 → 常规”中点一次“添加到主菜单”并同意管理员提示，它就会出现在第一层菜单中，无需点“显示更多选项”。也可以使用“发送到”、快捷键或主窗口的拖放区。') },
+  { q: T('Can Filee convert from the command line or automatically?', '명령줄이나 자동으로도 변환할 수 있나요?', '可以用命令行或自动转换吗？'),
+    a: T('Yes. Setup can add the filee command to PATH: filee convert *.heic --to jpg converts files, wildcards and folders with your presets, prints JSON for scripts and returns exit codes. Watch folders convert the files that land in a folder automatically, set up on the Watch folders page in the app or with filee watch in a terminal, and can move the originals aside.',
+      '네. 설치할 때 filee 명령을 PATH에 추가할 수 있어요. filee convert *.heic --to jpg처럼 파일, 와일드카드, 폴더를 내 프리셋으로 변환하고, 스크립트용 JSON과 종료 코드도 내놓아요. 자동 변환 폴더는 앱의 자동 변환 폴더 화면이나 터미널의 filee watch로 설정하며, 폴더에 들어오는 파일을 알아서 변환하고 원본을 따로 옮겨 둘 수도 있어요.',
+      '可以。安装时可以把 filee 命令添加到 PATH：filee convert *.heic --to jpg 可用你的预设转换文件、通配符和文件夹，并为脚本输出 JSON 和退出码。自动转换文件夹会自动转换放入文件夹的文件，可在应用的“自动转换文件夹”页面设置，也可在终端中运行 filee watch，还能把原文件移到别处。'),
+    links: ['cli'] },
   { q: T('How do I convert a file, for example HEIC to JPG?', '파일은 어떻게 변환하나요? 예를 들어 HEIC를 JPG로 바꾸려면요?', '如何转换文件？比如 HEIC 转 JPG？'),
     a: T('Select the files in File Explorer, hold Ctrl (or the key you chose) and drag them. A donut of formats opens at the cursor: drop the files on JPG and the new files appear next to the originals. There are step-by-step guides for the most common conversions.',
       '탐색기에서 파일을 고르고 Ctrl(또는 직접 정한 키)을 누른 채 끌어 보세요. 커서 위치에 형식 도넛이 열리면 JPG에 놓기만 하면 원본 옆에 새 파일이 생깁니다. 자주 쓰는 변환은 단계별 안내 페이지도 있어요.',
@@ -1267,7 +1272,7 @@ export function validateCatalog() {
   }
   for (const f of FAQ) {
     if (!hasText(f.q) || !hasText(f.a)) errors.push(`FAQ "${f.q?.en}" is missing a language`);
-    for (const link of f.links ?? []) if (link !== 'formats' && !PAIR[link]) errors.push(`FAQ links to unknown page ${link}`);
+    for (const link of f.links ?? []) if (link !== 'formats' && link !== 'cli' && !PAIR[link]) errors.push(`FAQ links to unknown page ${link}`);
   }
   for (const id of MARQUEE) if (!FORMATS[id]) errors.push(`MARQUEE: unknown format ${id}`);
   const byLabel = Object.fromEntries(Object.values(FORMATS).flatMap(f => [[f.label.toLowerCase(), f.id], [f.id, f.id]]));

@@ -15,6 +15,7 @@
     "features": "功能",
     "how": "使用方法",
     "formats": "支持格式",
+    "cli": "命令行",
     "hwp": "HWP",
     "faq": "常见问题",
     "download": "下载",
@@ -24,7 +25,7 @@
     "skip": "跳到正文"
   },
   "hero": {
-    "badge": "{versionShort} 新增：视频、音频、电子书、压缩包、CAD 和字体",
+    "badge": "{versionShort} 新增：filee 命令行和自动转换文件夹",
     "kicker": "免费的 Windows 文件转换器",
     "title": ["拖一下，", "放一下，", "转好了。"],
     "lead": "图片、PDF、Word/Excel/PowerPoint、视频、音乐、电子书、压缩包……都能直接在你的电脑上转换。按住一个键拖动文件，放到想要的格式上即可。无需上传、无需注册，免费开源。",
@@ -114,6 +115,7 @@
       ["支持格式", "{categoryCount} 大类共 {formatTotal} 种"],
       ["内置", "{builtinTotal} 种格式无需额外安装"],
       ["可选引擎", "{engineNames}"],
+      ["命令行", "filee convert、filee watch（安装时添加到 PATH）"],
       ["语言", "简体中文、英语、韩语"],
       ["更新", "新版本提醒，从 GitHub Releases 下载"]
     ]
@@ -147,6 +149,7 @@
     "issues": "反馈问题",
     "made": "由 KnifeLemon 和贡献者打造。",
     "formats": "格式目录",
+    "cli": "命令行",
     "popular": "热门转换"
   },
   "common": {
@@ -213,6 +216,218 @@
     "sameCategory": "更多{category}转换指南",
     "ctaTitle": "免费把 {from} 转换为 {to}",
     "ctaText": "Filee 是适用于 Windows 10 和 11 的免费开源文件转换器，离线运行，拖放一次即可转换 {formatTotal} 种格式。"
+  },
+  "auto": {
+    "eyebrow": "自动化",
+    "title": "用命令行转换，或交给文件夹自动完成",
+    "text": "filee 命令可以用你的预设转换文件、通配符和整个文件夹，为脚本输出 JSON 并返回退出码。自动转换文件夹会转换放入其中的文件，在应用和终端中都能使用。",
+    "points": [
+      "`filee convert *.heic --to jpg`，{formatCount} 种格式都能用",
+      "下载和扫描的文件一完成就自动转换",
+      "把原文件移到别处，文件夹就像收件箱",
+      "为脚本和计划任务提供 JSON 输出和退出码"
+    ],
+    "guide": "阅读命令行指南",
+    "terminal": "示例：把扫描件转成 PDF 的自动转换文件夹"
+  },
+  "cli": {
+    "title": "Filee 命令行：在终端中转换文件、自动转换文件夹 | Filee",
+    "description": "在 Windows 上用免费的 filee 命令离线转换文件、文件夹和通配符，监视文件夹自动转换，并用 JSON 输出和退出码编写脚本。",
+    "crumb": "命令行",
+    "h1": "filee 命令行",
+    "lead": "在命令提示符、PowerShell 或你自己的脚本中，用与应用相同的引擎和预设转换文件，或让文件夹自动转换放入的文件。一切都在你的电脑上完成。",
+    "tags": [
+      "Windows 10/11",
+      "沿用你的预设",
+      "JSON 输出"
+    ],
+    "commandsButton": "查看命令",
+    "terminalLabel": "示例：在终端中把 HEIC 照片转换为 JPG",
+    "setupTitle": "设置 filee 命令",
+    "setup": [
+      {
+        "title": "在安装程序中保持勾选",
+        "text": "在 Filee 安装程序的选项页面保持勾选 **将 \"filee\" 命令添加到 PATH**（默认已勾选）。已经安装过？再运行一次最新的安装程序即可。"
+      },
+      {
+        "title": "打开新的终端",
+        "text": "打开新的命令提示符、PowerShell 或 Windows 终端窗口（之前已打开的窗口看不到新的 PATH），运行 `filee version`。"
+      },
+      {
+        "title": "便携版或不使用 PATH",
+        "text": "所需文件都在 Filee 文件夹中：直接运行其中的 `filee-cli.exe`，或自行把 `cli` 文件夹添加到 PATH。无需运行 Filee 应用。"
+      }
+    ],
+    "quickTitle": "快速上手",
+    "quickLead": "可以传入文件名、`*.heic` 这样的通配符或整个文件夹。不加 `-o` 时，结果保存在原文件旁边。",
+    "quick": [
+      {
+        "title": "把一张照片转成 JPG",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "所有 PNG 转成质量 80 的 WebP，存到一个文件夹",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "用预设转换文件夹及其子文件夹",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "自动生成 PDF 的收件箱文件夹",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEIC 能转换成什么？",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "你的预设（ID 和名称）",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "命令",
+    "optionsLabel": "选项",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "转换文件、通配符（`*.heic`）和文件夹。传入文件夹时会转换其中 Filee 认识的文件，加 `-r` 则包括子文件夹。目标格式和预设二选一。",
+        "options": [
+          [
+            "-t, --to <format>",
+            "目标格式（ID 或扩展名）：jpg、png、webp、pdf、docx、hwpx、mp4、mp3…（见 `filee formats`）"
+          ],
+          [
+            "-p, --preset <preset>",
+            "应用中的预设，按 ID 或名称（见 `filee presets`）"
+          ],
+          [
+            "-o, --output <folder>",
+            "保存到该文件夹，而不是原文件旁边"
+          ],
+          [
+            "-r, --recursive",
+            "包括子文件夹"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "JPG、WebP、AVIF 等有损图像的质量"
+          ],
+          [
+            "--overwrite",
+            "覆盖已存在的输出文件（默认在新文件名后加编号）"
+          ],
+          [
+            "--skip",
+            "保留已存在的输出文件"
+          ],
+          [
+            "--json",
+            "以一个 JSON 文档输出结果，便于脚本读取"
+          ],
+          [
+            "--quiet",
+            "除错误外不输出任何内容"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "转换放入文件夹的每个文件，直到按下 Ctrl+C。不加 `-o` 时，转换后的文件保存在其中的 `converted` 文件夹。",
+        "options": [
+          [
+            "-t, --to <format>",
+            "目标格式"
+          ],
+          [
+            "-p, --preset <preset>",
+            "应用中的预设，按 ID 或名称"
+          ],
+          [
+            "-o, --output <folder>",
+            "转换后文件的保存位置（默认：`<文件夹>\\converted`）"
+          ],
+          [
+            "-r, --recursive",
+            "同时监视子文件夹"
+          ],
+          [
+            "--move-originals",
+            "把转换过的原文件移到 `<文件夹>\\originals`，并在启动时转换已在等待的文件"
+          ],
+          [
+            "--settle <seconds>",
+            "文件需保持不变多少秒后才转换（默认 2）"
+          ],
+          [
+            "--quiet",
+            "除错误外不输出任何内容"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "列出所有格式的 ID 和扩展名，或某个格式能转换成什么，也会列出安装可选引擎后能增加的目标。",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "列出内置预设和你在应用中创建的预设，包括 ID、名称和目标格式。",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "显示全部命令或某个命令的用法，以及已安装的版本。",
+        "options": []
+      }
+    ],
+    "watchTitle": "自动转换文件夹",
+    "watchLead": "下载、扫描、其他应用导出的文件，放进文件夹就会自动转换。",
+    "watchPoints": [
+      "文件完整后才转换：大小不再变化且没有被其他程序打开，所以正在下载或长时间复制的文件也不会出问题。",
+      "忽略临时和隐藏文件（`.crdownload`、`.part`、`.tmp`、`~$` 文件）以及 Filee 不认识的格式。",
+      "转换后的文件保存到所监视文件夹中的 `converted` 文件夹，或 `-o` 指定的位置。",
+      "使用 `--move-originals` 时，转换过的原文件会移到 `originals`：文件夹就像收件箱，启动时已在等待的文件也会被转换。"
+    ],
+    "watchAppTitle": "或者在应用中后台运行",
+    "watchAppText": "Filee 的 **自动转换文件夹** 页面无需终端也能做到：添加文件夹并为每个文件夹选择预设，Filee 在托盘中运行时就会自动转换。",
+    "scriptsTitle": "在脚本中使用",
+    "scriptsLead": "`--json` 会输出一个包含每个文件结果的 JSON 文档，退出码则告诉脚本执行结果。",
+    "exitTitle": "退出码",
+    "exitCodes": [
+      [
+        "0",
+        "没有失败的文件"
+      ],
+      [
+        "1",
+        "部分文件失败（其余已转换）"
+      ],
+      [
+        "2",
+        "参数错误、未知的格式或预设、输入文件不存在"
+      ],
+      [
+        "3",
+        "没有可转换的文件"
+      ]
+    ],
+    "psTitle": "PowerShell 示例",
+    "notesTitle": "须知",
+    "notes": [
+      "与应用使用相同的引擎和预设：在 Filee 中创建或修改的预设可以立即通过 `--preset` 按 ID 或名称使用。",
+      "可选引擎（FFmpeg、LibreOffice 等）在应用的“设置 → 引擎”中安装。用 `filee formats <格式>` 可查看哪些转换需要引擎。",
+      "通配符由 filee 自己展开，所以在命令提示符中也能像在 PowerShell 中一样使用 `*.heic`。含空格的路径请加引号。",
+      "不上传任何文件，也不需要联网：与应用一样在你的电脑上转换。",
+      "消息使用英文，脚本和日志在任何电脑上都一致。"
+    ],
+    "ctaTitle": "获取带 filee 命令的 Filee",
+    "ctaText": "命令行随 Windows 10/11 版 Filee 一起提供：免费、开源、离线可用。"
   },
   "langBanner": "此页面也提供简体中文版本。"
 }

@@ -576,3 +576,58 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
   .backdrop i { animation: none; }
   .js [data-reveal] { opacity: 1; translate: none; }
 }
+
+/* ───────── Command line: code, terminal, the guide page, the home automation section ───────── */
+code { font-family: "Cascadia Code", "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace; font-size: 0.88em; font-variant-ligatures: none; }
+:not(pre) > code { padding: 1px 6px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); white-space: nowrap; }
+.pill code, .cli-command h3 code { padding: 0; background: none; border: 0; }
+.terminal { margin: 0; min-width: 0; border-radius: 20px; overflow: hidden; background: #17161f; color: #e6e4f2; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.06); }
+.terminal-bar { display: flex; gap: 7px; padding: 12px 16px; background: #22202d; }
+.terminal-bar i { width: 11px; height: 11px; border-radius: 50%; background: #f26d6d; }
+.terminal-bar i:nth-child(2) { background: #f2c14e; }
+.terminal-bar i:nth-child(3) { background: #3fcf8e; }
+.terminal pre, pre.code { margin: 0; overflow-x: auto; font-size: 13.5px; line-height: 1.7; }
+.terminal pre { padding: 16px 20px 20px; }
+.terminal code, pre.code code { font-size: inherit; }
+.t-prompt { color: #9a93f0; }
+.t-cmd { color: #fff; font-weight: 600; }
+.t-out { color: #aaa7bf; }
+.t-ok { color: #5fd3aa; font-weight: 700; }
+.t-fail { color: #ff8a8a; font-weight: 700; }
+.t-skip { color: #f2c14e; font-weight: 700; }
+pre.code { margin-top: 12px; padding: 14px 16px; border-radius: 14px; background: #17161f; color: #e6e4f2; }
+
+.page-hero-cli { grid-template-columns: 1.05fr 0.95fr; }
+.cli-recipes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.cli-recipes li, .cli-command { min-width: 0; border-radius: var(--radius); background: color-mix(in srgb, var(--surface) 82%, transparent); border: 1px solid var(--line); backdrop-filter: blur(12px); }
+.cli-recipes li { padding: 20px 22px; }
+.cli-recipes h3 { font-size: 17px; letter-spacing: -0.01em; }
+#commands .cat-index { justify-content: center; margin-bottom: 22px; }
+.cli-commands { display: grid; gap: 16px; }
+.cli-command { padding: clamp(22px, 3vw, 32px); }
+.cli-command h3 { font-size: 22px; }
+.cli-command > p { margin-top: 14px; color: var(--muted); }
+.cli-command h4 { margin: 20px 0 2px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.cli-table th { width: 1%; white-space: nowrap; padding-right: 24px; }
+.cli-scripts { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 20px; align-items: start; }
+.cli-scripts-side { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; min-width: 0; }
+#watch .details-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+.cli-scripts h3, #notes h2 { font-size: 20px; letter-spacing: -0.01em; }
+#notes h2 { font-size: clamp(24px, 2.6vw, 30px); }
+.details-side .terminal { margin-top: 18px; }
+.details-side .terminal pre { font-size: 12.5px; }
+
+.auto { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.auto h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 800; margin-bottom: 18px; }
+.auto-copy > p:not(.eyebrow):not(.more-link) { color: var(--muted); font-size: 18px; }
+.auto-visual .terminal pre { font-size: 13px; }
+
+@media (max-width: 980px) {
+  .auto, .cli-scripts, #watch .details-grid, .page-hero-cli { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .cli-recipes { grid-template-columns: minmax(0, 1fr); }
+  .cli-recipes li { padding: 18px; }
+  .cli-table th { width: auto; white-space: normal; }
+  .terminal pre, pre.code { font-size: 12.5px; }
+}

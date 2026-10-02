@@ -1,5 +1,5 @@
 // Shared page frame: <head> (meta, canonical, hreflang, Open Graph, JSON-LD), navigation, footer, icons and small
-// building blocks used by every page type (home, format catalog, conversion pages).
+// building blocks used by every page type (home, format catalog, conversion pages, command line guide).
 
 import { CATEGORIES, FORMATS, PAIRS, label, pairSlug } from './catalog.mjs';
 
@@ -117,6 +117,7 @@ const FONTS = {
 export const paths = {
   home: t => t.path,
   formats: t => `${t.path}formats/`,
+  cli: t => `${t.path}cli/`,
   convert: (t, slug) => `${t.path}convert/${slug}/`,
 };
 
@@ -205,6 +206,7 @@ function header(t, languages, alternates, current) {
       ${link(`${home}#how`, t.nav.how, 'how')}
       ${link(`${home}#features`, t.nav.features, 'features')}
       ${link(paths.formats(t), t.nav.formats, 'formats')}
+      ${link(paths.cli(t), t.nav.cli, 'cli')}
       ${link(`${home}#hwp`, t.nav.hwp, 'hwp')}
       ${link(`${home}#faq`, t.nav.faq, 'faq')}
     </nav>
@@ -227,6 +229,7 @@ function footer(t, languages, alternates) {
     <div class="footer-brand">${LOGO}<div><strong>Filee</strong><p>${escape(t.footer.tagline)}</p></div></div>
     <nav class="footer-links" aria-label="Footer">
       <a href="${paths.formats(t)}">${escape(t.footer.formats)}</a>
+      <a href="${paths.cli(t)}">${escape(t.footer.cli)}</a>
       <a href="${REPO}">GitHub</a>
       <a href="${REPO}/releases">${escape(t.download.all)}</a>
       <a href="${REPO}/issues">${escape(t.footer.issues)}</a>

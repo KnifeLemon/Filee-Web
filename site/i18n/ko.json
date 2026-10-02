@@ -15,6 +15,7 @@
     "features": "기능",
     "how": "사용법",
     "formats": "지원 형식",
+    "cli": "명령줄",
     "hwp": "한글 파일",
     "faq": "자주 묻는 질문",
     "download": "다운로드",
@@ -24,7 +25,7 @@
     "skip": "본문으로 건너뛰기"
   },
   "hero": {
-    "badge": "{versionShort} 새 기능: 동영상·오디오·전자책·압축 파일·CAD·글꼴",
+    "badge": "{versionShort} 새 기능: filee 명령줄과 자동 변환 폴더",
     "kicker": "Windows용 무료 파일 변환기",
     "title": ["끌어서", "놓으면,", "변환 끝."],
     "lead": "이미지, PDF, 워드·엑셀·파워포인트, 동영상, 음악, 전자책, 압축 파일까지 내 PC에서 바로 변환하세요. 키를 누른 채 파일을 끌어다 원하는 형식에 놓으면 끝. 업로드도, 가입도 없는 무료 오픈소스입니다.",
@@ -114,6 +115,7 @@
       ["지원 형식", "{categoryCount}개 분야 {formatTotal}가지"],
       ["기본 내장", "{builtinTotal}가지 형식은 추가 설치 없이"],
       ["추가 엔진", "{engineNames}"],
+      ["명령줄", "filee convert, filee watch (설치할 때 PATH에 추가)"],
       ["언어", "한국어, 영어, 중국어 간체"],
       ["업데이트", "새 버전 알림, GitHub 릴리스에서 다운로드"]
     ]
@@ -147,6 +149,7 @@
     "issues": "문제 신고",
     "made": "KnifeLemon과 기여자들이 만듭니다.",
     "formats": "지원 형식 전체",
+    "cli": "명령줄",
     "popular": "많이 찾는 변환"
   },
   "common": {
@@ -213,6 +216,218 @@
     "sameCategory": "{category} 변환 더 보기",
     "ctaTitle": "{fromEul} {toRo}, 지금 무료로 변환하세요",
     "ctaText": "Filee는 Windows 10·11용 무료 오픈소스 파일 변환기입니다. 인터넷 없이 동작하고, 끌어다 놓기 한 번으로 {formatTotal}가지 형식을 변환해요."
+  },
+  "auto": {
+    "eyebrow": "자동화",
+    "title": "명령줄로 변환하거나, 폴더에 맡기세요",
+    "text": "filee 명령은 내 프리셋으로 파일, 와일드카드, 폴더를 통째로 변환하고 스크립트용 JSON과 종료 코드를 내놓아요. 자동 변환 폴더는 앱이나 터미널에서 폴더에 들어오는 파일을 알아서 변환해요.",
+    "points": [
+      "`filee convert *.heic --to jpg`처럼 {formatCount}가지 형식 모두",
+      "다운로드와 스캔 파일은 완성되는 대로 바로 변환",
+      "원본을 따로 옮겨서 폴더를 받은편지함처럼",
+      "스크립트와 예약 작업을 위한 JSON 출력과 종료 코드"
+    ],
+    "guide": "명령줄 가이드 보기",
+    "terminal": "예시: 스캔 파일을 PDF로 바꾸는 자동 변환 폴더"
+  },
+  "cli": {
+    "title": "Filee 명령줄: 터미널에서 파일 변환·폴더 자동 변환 | Filee",
+    "description": "무료 filee 명령으로 Windows에서 파일·폴더·와일드카드를 오프라인 변환하고, 폴더를 감시해 자동 변환하고, JSON 출력과 종료 코드로 스크립트를 만드세요.",
+    "crumb": "명령줄",
+    "h1": "filee 명령줄",
+    "lead": "명령 프롬프트, PowerShell, 직접 만든 스크립트에서 앱과 같은 엔진과 프리셋으로 파일을 변환하거나, 폴더에 들어오는 파일을 알아서 변환하게 할 수 있어요. 모든 작업은 내 PC에서 이루어져요.",
+    "tags": [
+      "Windows 10/11",
+      "내 프리셋 그대로",
+      "JSON 출력"
+    ],
+    "commandsButton": "명령어 보기",
+    "terminalLabel": "예시: 터미널에서 HEIC 사진을 JPG로 변환",
+    "setupTitle": "filee 명령 설정하기",
+    "setup": [
+      {
+        "title": "설치할 때 체크 유지",
+        "text": "Filee 설치 프로그램의 옵션 화면에서 **\"filee\" 명령어를 PATH에 추가**를 체크된 상태로 두세요(기본으로 켜져 있어요). 이미 설치했다면 최신 설치 파일을 한 번 더 실행하면 돼요."
+      },
+      {
+        "title": "새 터미널 열기",
+        "text": "명령 프롬프트, PowerShell, Windows 터미널 창을 새로 열고(이미 열려 있던 창은 바뀐 PATH를 몰라요) `filee version`을 실행해 보세요."
+      },
+      {
+        "title": "포터블이거나 PATH 없이",
+        "text": "필요한 파일은 모두 Filee 폴더에 있어요. 그 안의 `filee-cli.exe`를 실행하거나 `cli` 폴더를 직접 PATH에 추가하세요. 앱이 실행 중일 필요는 없어요."
+      }
+    ],
+    "quickTitle": "빠르게 시작하기",
+    "quickLead": "파일 이름, `*.heic` 같은 와일드카드, 폴더를 통째로 넘길 수 있어요. `-o`를 주지 않으면 결과는 원본 옆에 저장돼요.",
+    "quick": [
+      {
+        "title": "사진 한 장을 JPG로",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "모든 PNG를 품질 80 WebP로, 한 폴더에",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "하위 폴더까지 프리셋으로 변환",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "PDF를 만들어 주는 받은편지함 폴더",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEIC는 무엇으로 바꿀 수 있을까?",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "내 프리셋 목록(ID와 이름)",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "명령어",
+    "optionsLabel": "옵션",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "파일, 와일드카드(`*.heic`), 폴더를 변환해요. 폴더를 주면 그 안에서 Filee가 아는 파일을 변환하고, `-r`을 붙이면 하위 폴더까지 포함해요. 대상 형식이나 프리셋 중 하나를 지정하세요.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "대상 형식(ID나 확장자): jpg, png, webp, pdf, docx, hwpx, mp4, mp3… (`filee formats` 참고)"
+          ],
+          [
+            "-p, --preset <preset>",
+            "앱에 있는 프리셋, ID나 이름으로(`filee presets` 참고)"
+          ],
+          [
+            "-o, --output <folder>",
+            "원본 옆 대신 이 폴더에 저장"
+          ],
+          [
+            "-r, --recursive",
+            "하위 폴더 포함"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "JPG, WebP, AVIF 같은 손실 압축 이미지의 품질"
+          ],
+          [
+            "--overwrite",
+            "같은 이름의 결과 파일이 있으면 덮어쓰기(기본은 새 이름에 번호를 붙여요)"
+          ],
+          [
+            "--skip",
+            "같은 이름의 결과 파일이 있으면 그대로 두기"
+          ],
+          [
+            "--json",
+            "결과를 스크립트용 JSON 하나로 출력"
+          ],
+          [
+            "--quiet",
+            "오류 말고는 아무것도 출력하지 않기"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Ctrl+C를 누를 때까지 폴더에 들어오는 파일을 모두 변환해요. `-o`를 주지 않으면 변환된 파일은 그 폴더 안의 `converted` 폴더에 저장돼요.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "대상 형식"
+          ],
+          [
+            "-p, --preset <preset>",
+            "앱에 있는 프리셋, ID나 이름으로"
+          ],
+          [
+            "-o, --output <folder>",
+            "변환된 파일을 저장할 곳(기본: `<폴더>\\converted`)"
+          ],
+          [
+            "-r, --recursive",
+            "하위 폴더도 감시"
+          ],
+          [
+            "--move-originals",
+            "변환한 원본을 `<폴더>\\originals`로 옮기고, 시작할 때 이미 기다리던 파일도 변환"
+          ],
+          [
+            "--settle <seconds>",
+            "파일이 몇 초 동안 바뀌지 않아야 변환할지(기본 2초)"
+          ],
+          [
+            "--quiet",
+            "오류 말고는 아무것도 출력하지 않기"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "모든 형식의 ID와 확장자, 또는 한 형식이 무엇으로 바뀔 수 있는지 보여 줘요. 추가 엔진을 받으면 늘어나는 형식도 알려 줘요.",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "기본 프리셋과 앱에서 만든 프리셋을 ID, 이름, 대상 형식과 함께 보여 줘요.",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "모든 명령이나 명령 하나의 사용법, 그리고 설치된 버전을 보여 줘요.",
+        "options": []
+      }
+    ],
+    "watchTitle": "자동 변환 폴더",
+    "watchLead": "다운로드, 스캔, 다른 앱에서 내보낸 파일까지, 폴더에 넣기만 하면 알아서 변환되게 할 수 있어요.",
+    "watchPoints": [
+      "파일이 완성된 뒤에 변환해요. 크기가 더 이상 바뀌지 않고 다른 프로그램이 열고 있지 않을 때라서, 다운로드 중이거나 오래 걸리는 복사도 안전해요.",
+      "임시·숨김 파일(`.crdownload`, `.part`, `.tmp`, `~$` 파일)과 Filee가 모르는 형식은 무시해요.",
+      "변환된 파일은 감시하는 폴더 안의 `converted` 폴더나 `-o`로 지정한 곳에 저장돼요.",
+      "`--move-originals`를 쓰면 변환한 원본을 `originals`로 옮겨요. 폴더가 받은편지함처럼 동작하고, 시작할 때 이미 기다리던 파일도 변환해요."
+    ],
+    "watchAppTitle": "앱에서 백그라운드로",
+    "watchAppText": "Filee의 **자동 변환 폴더** 화면에서는 터미널 없이 똑같이 할 수 있어요. 폴더를 추가하고 폴더마다 프리셋을 고르면, Filee가 트레이에서 실행되는 동안 변환해요.",
+    "scriptsTitle": "스크립트에서 쓰기",
+    "scriptsLead": "`--json`은 파일마다 결과가 담긴 JSON 하나를 출력하고, 종료 코드로 스크립트가 결과를 알 수 있어요.",
+    "exitTitle": "종료 코드",
+    "exitCodes": [
+      [
+        "0",
+        "실패한 파일 없음"
+      ],
+      [
+        "1",
+        "일부 파일 실패(나머지는 변환됨)"
+      ],
+      [
+        "2",
+        "잘못된 인자, 모르는 형식이나 프리셋, 없는 입력 파일"
+      ],
+      [
+        "3",
+        "변환할 파일 없음"
+      ]
+    ],
+    "psTitle": "PowerShell 예시",
+    "notesTitle": "알아 두면 좋은 점",
+    "notes": [
+      "앱과 같은 엔진과 프리셋을 써요. Filee에서 만들거나 고친 프리셋을 바로 `--preset`에 ID나 이름으로 쓸 수 있어요.",
+      "추가 엔진(FFmpeg, LibreOffice 등)은 앱의 설정 → 엔진에서 설치해요. `filee formats <형식>`으로 엔진이 필요한 변환을 확인할 수 있어요.",
+      "와일드카드는 filee가 직접 풀기 때문에 명령 프롬프트에서도 PowerShell처럼 `*.heic`를 쓸 수 있어요. 공백이 있는 경로는 따옴표로 감싸세요.",
+      "아무것도 업로드하지 않고 인터넷도 필요 없어요. 앱처럼 내 PC에서 변환해요.",
+      "메시지는 영어로 나와서 어느 PC에서든 스크립트와 로그가 똑같이 읽혀요."
+    ],
+    "ctaTitle": "filee 명령이 들어 있는 Filee 받기",
+    "ctaText": "명령줄은 Windows 10/11용 Filee에 함께 들어 있어요. 무료이고 오픈소스이며 오프라인으로 동작해요."
   },
   "langBanner": "이 페이지는 한국어로도 볼 수 있어요."
 }

@@ -15,6 +15,7 @@
     "features": "Features",
     "how": "How it works",
     "formats": "Formats",
+    "cli": "Command line",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Download",
@@ -24,7 +25,7 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {versionShort}: video, audio, e-books, archives, CAD and fonts",
+    "badge": "New in {versionShort}: the filee command line and watch folders",
     "kicker": "Free file converter for Windows",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
@@ -114,6 +115,7 @@
       ["Formats", "{formatTotal} in {categoryCount} categories"],
       ["Built in", "{builtinTotal} formats, nothing else to install"],
       ["Optional engines", "{engineNames}"],
+      ["Command line", "filee convert and filee watch, added to PATH by Setup"],
       ["Languages", "English, Korean, Simplified Chinese"],
       ["Updates", "Update notices, downloads from GitHub Releases"]
     ]
@@ -147,6 +149,7 @@
     "issues": "Report an issue",
     "made": "Built by KnifeLemon and contributors.",
     "formats": "All formats",
+    "cli": "Command line",
     "popular": "Popular conversions"
   },
   "common": {
@@ -213,6 +216,218 @@
     "sameCategory": "More {category} guides",
     "ctaTitle": "Convert {from} to {to} for free",
     "ctaText": "Filee is a free, open-source file converter for Windows 10 and 11. It works offline and converts {formatCount} formats with one drag and drop."
+  },
+  "auto": {
+    "eyebrow": "For automation",
+    "title": "Convert from the command line, or let a folder do it",
+    "text": "The filee command converts files, wildcards and whole folders with your presets, prints JSON for scripts and returns exit codes. Watch folders convert whatever lands in them, in the app or in a terminal.",
+    "points": [
+      "`filee convert *.heic --to jpg` with any of the {formatCount} formats",
+      "Downloads and scans converted as soon as they are complete",
+      "Originals moved aside, so a folder works like an inbox",
+      "JSON output and exit codes for scripts and scheduled tasks"
+    ],
+    "guide": "Read the command line guide",
+    "terminal": "Example: a watch folder that turns scans into PDFs"
+  },
+  "cli": {
+    "title": "Filee Command Line: Convert Files and Watch Folders | Filee",
+    "description": "Use the free filee command on Windows to convert files, folders and wildcards offline, watch folders, and script conversions with JSON output and exit codes.",
+    "crumb": "Command line",
+    "h1": "The filee command line",
+    "lead": "Convert files from Command Prompt, PowerShell or your own scripts with the same engines and presets as the app, or leave a folder converting whatever lands in it. Everything stays on your PC.",
+    "tags": [
+      "Windows 10/11",
+      "Your presets",
+      "JSON output"
+    ],
+    "commandsButton": "See the commands",
+    "terminalLabel": "Example: converting HEIC photos to JPG in a terminal",
+    "setupTitle": "Set up the filee command",
+    "setup": [
+      {
+        "title": "Keep it ticked in Setup",
+        "text": "On the options page of the Filee installer, leave **Add the \"filee\" command to PATH** ticked (it is on by default). Already installed? Run the latest installer again."
+      },
+      {
+        "title": "Open a new terminal",
+        "text": "Open a new Command Prompt, PowerShell or Windows Terminal window (one that was already open doesn't see the new PATH) and run `filee version`."
+      },
+      {
+        "title": "Portable or without PATH",
+        "text": "Everything is in the Filee folder: run `filee-cli.exe` there, or add its `cli` folder to PATH yourself. The app doesn't need to be running."
+      }
+    ],
+    "quickTitle": "Quick start",
+    "quickLead": "Pass file names, wildcards like `*.heic` or whole folders. Results are saved next to the originals unless you add `-o`.",
+    "quick": [
+      {
+        "title": "One photo to JPG",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "Every PNG to WebP at quality 80, into one folder",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "A folder and its sub folders with a preset",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "An inbox folder that makes PDFs",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "What can HEIC become?",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "Your presets, by id and name",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "Commands",
+    "optionsLabel": "Options",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "Converts files, wildcards (`*.heic`) and folders. A folder converts the files in it that Filee knows; add `-r` for its sub folders. Give either a target format or one of your presets.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Target format by id or extension: jpg, png, webp, pdf, docx, hwpx, mp4, mp3… (see `filee formats`)"
+          ],
+          [
+            "-p, --preset <preset>",
+            "A preset from the app, by id or by name (see `filee presets`)"
+          ],
+          [
+            "-o, --output <folder>",
+            "Save there instead of next to the sources"
+          ],
+          [
+            "-r, --recursive",
+            "Include sub folders"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "Image quality for JPG, WebP, AVIF and other lossy formats"
+          ],
+          [
+            "--overwrite",
+            "Replace existing output files (by default a number is added to the new name)"
+          ],
+          [
+            "--skip",
+            "Leave existing output files alone"
+          ],
+          [
+            "--json",
+            "Print the result as one JSON document, for scripts"
+          ],
+          [
+            "--quiet",
+            "Print nothing but errors"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Converts every file that lands in the folder until you press Ctrl+C. Converted files go to a `converted` folder inside it unless you add `-o`.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Target format"
+          ],
+          [
+            "-p, --preset <preset>",
+            "A preset from the app, by id or by name"
+          ],
+          [
+            "-o, --output <folder>",
+            "Where converted files go (default: `<folder>\\converted`)"
+          ],
+          [
+            "-r, --recursive",
+            "Also watch sub folders"
+          ],
+          [
+            "--move-originals",
+            "Move each converted source to `<folder>\\originals`, and convert the files already waiting there at start"
+          ],
+          [
+            "--settle <seconds>",
+            "How long a file must stay unchanged before it is converted (default 2)"
+          ],
+          [
+            "--quiet",
+            "Print nothing but errors"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "Lists every format with its id and extensions, or what one format converts to, including what an optional engine would add.",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "Lists the built-in presets and the ones you made in the app, with their id, name and target format.",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "Shows how to use every command or one of them, and the installed version.",
+        "options": []
+      }
+    ],
+    "watchTitle": "Watch folders",
+    "watchLead": "Let a folder convert whatever you put in it: downloads, scans, exports from other apps.",
+    "watchPoints": [
+      "Files are converted once they are complete, no longer growing and not open in another program, so downloads and long copies are safe.",
+      "Temporary and hidden files (`.crdownload`, `.part`, `.tmp`, `~$` files) and formats Filee doesn't know are ignored.",
+      "Converted files go to a `converted` folder inside the watched folder, or wherever `-o` points.",
+      "With `--move-originals` each converted source moves to `originals`: the folder works like an inbox, and files already waiting there are converted at start."
+    ],
+    "watchAppTitle": "Or in the app, in the background",
+    "watchAppText": "The **Watch folders** page in Filee does the same without a terminal: add folders, pick a preset for each, and they are converted while Filee runs in the tray.",
+    "scriptsTitle": "Use it in scripts",
+    "scriptsLead": "`--json` prints one JSON document with every file's result, and the exit code tells your script how it went.",
+    "exitTitle": "Exit codes",
+    "exitCodes": [
+      [
+        "0",
+        "Nothing failed"
+      ],
+      [
+        "1",
+        "Some files failed (the others were converted)"
+      ],
+      [
+        "2",
+        "Wrong arguments, an unknown format or preset, or a missing input"
+      ],
+      [
+        "3",
+        "Nothing to convert"
+      ]
+    ],
+    "psTitle": "PowerShell example",
+    "notesTitle": "Good to know",
+    "notes": [
+      "Same engines and presets as the app: a preset you make or change in Filee works with `--preset` right away, by id or by name.",
+      "Optional engines (FFmpeg, LibreOffice…) are installed in the app under Settings → Engines. `filee formats <format>` shows which conversions need one.",
+      "Wildcards are expanded by filee itself, so `*.heic` works in Command Prompt as well as in PowerShell. Put paths with spaces in quotes.",
+      "Nothing is uploaded and no internet is needed: files are converted on your PC, as in the app.",
+      "Messages are in English, so scripts and logs read the same on every PC."
+    ],
+    "ctaTitle": "Get Filee with the filee command",
+    "ctaText": "The command line comes with Filee for Windows 10/11: free, open source and offline."
   },
   "langBanner": "This page is also available in English."
 }

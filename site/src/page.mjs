@@ -7,6 +7,7 @@ import {
 import {
   DOWNLOAD, LOGO, REPO, SITE, alternatesOf, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
 } from './layout.mjs';
+import { md, terminal } from './cli-page.mjs';
 
 export { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE } from './layout.mjs';
 
@@ -18,6 +19,15 @@ const SCREEN_SIZES = {
   'engine-setup-en': [560, 953], 'engine-setup-ko': [560, 945], 'preset-popup-ko': [560, 680],
 };
 const screenSize = name => SCREEN_SIZES[name] ?? [1080, 820];
+
+/** The terminal on the home page's automation section (output as the filee command prints it). */
+const AUTO_SESSION = [
+  '> filee watch . --to pdf --move-originals',
+  'Watching D:\\Inbox → PDF, saving to D:\\Inbox\\converted. Press Ctrl+C to stop.',
+  'ok    scan-0412.jpg -> converted\\scan-0412.pdf',
+  'ok    receipt.heic -> converted\\receipt.pdf',
+  'ok    contract.docx -> converted\\contract.pdf',
+];
 
 /** One endless marquee row: the chips repeated twice so the CSS loop is seamless. */
 function marqueeRow(ids, lang, reverse = false) {
@@ -231,6 +241,19 @@ export function renderPage(t, languages, assets) {
     </div>
   </section>
 
+  <section class="section auto" id="automation">
+    <div class="auto-copy" data-reveal>
+      <p class="eyebrow">${escape(t.auto.eyebrow)}</p>
+      <h2>${escape(t.auto.title)}</h2>
+      <p>${escape(t.auto.text)}</p>
+      <ul class="checks">${t.auto.points.map(p => `<li>${icon('check')}<span>${md(f(p))}</span></li>`).join('')}</ul>
+      <p class="more-link"><a href="${paths.cli(t)}">${escape(t.auto.guide)} ${icon('arrow')}</a></p>
+    </div>
+    <div class="auto-visual" data-reveal>
+      ${terminal(AUTO_SESSION, t.auto.terminal, 'D:\\Inbox>')}
+    </div>
+  </section>
+
   <section class="section" id="gallery">
     <header class="section-head" data-reveal><h2>${escape(t.gallery.title)}</h2><p>${escape(t.gallery.lead)}</p></header>
     <div class="gallery" data-reveal>
@@ -269,10 +292,12 @@ export function renderPage(t, languages, assets) {
 
 function faqLinks(t, item) {
   if (!item.links?.length) return '';
-  const pairs = item.links.filter(l => l !== 'formats').map(slug => PAIRS.find(p => `${p.from}-to-${p.to}` === slug));
+  const pairs = item.links.filter(l => l !== 'formats' && l !== 'cli').map(slug => PAIRS.find(p => `${p.from}-to-${p.to}` === slug));
   const catalog = item.links.includes('formats')
     ? `<p class="more-link"><a href="${paths.formats(t)}">${escape(fill(t.formats.catalog, vars(t.lang)))} ${icon('arrow')}</a></p>` : '';
-  return `${pairLinks(t, pairs)}${catalog}`;
+  const cli = item.links.includes('cli')
+    ? `<p class="more-link"><a href="${paths.cli(t)}">${escape(t.auto.guide)} ${icon('arrow')}</a></p>` : '';
+  return `${pairLinks(t, pairs)}${catalog}${cli}`;
 }
 
 /** The 404 page: all three languages at once, since we can't know which one the visitor reads. */

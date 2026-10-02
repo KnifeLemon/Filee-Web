@@ -24,6 +24,8 @@ function facts(en) {
     `How it works: hold a modifier key (Ctrl by default, configurable) and drag files; a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals.`,
     `Other ways to convert: "Convert with Filee" in the Windows 11 top-level right-click menu, Send To, a keyboard shortcut on selected files, and the drop zone in the main window.`,
     `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
+    `Command line: Setup can add the "filee" command to PATH. "filee convert <files, wildcards or folders> --to <format>" (or "--preset <preset>") converts with the app's engines and presets; "--json" prints the result for scripts; exit codes are 0 (nothing failed), 1 (some files failed), 2 (wrong arguments or a missing input) and 3 (nothing to convert). "filee watch <folder> --to <format>" converts files that land in a folder. Guide: ${SITE}/cli/`,
+    `Watch folders: files that land in a chosen folder are converted automatically once they are complete, set up in the app or with "filee watch"; the originals can stay or move to an "originals" folder.`,
     `Presets per file type: quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder and file names.`,
     `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Korean and Simplified Chinese.`,
     `Current version: ${VERSION}. The installer (Filee-<version>-win-Setup.exe) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in and optional engines; a portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. Filee says when a new version is out on GitHub Releases; running the new installer updates it and keeps settings and engines.`,
@@ -67,7 +69,7 @@ ${PAIRS.map(p => `- [${pairMeta(t, p).h1}](${SITE}${paths.convert(t, pairSlug(p)
 
 ## Website
 
-${languages.map(l => `- [${l.name}](${SITE}${l.path}), [format catalog](${SITE}${paths.formats(l)})`).join('\n')}
+${languages.map(l => `- [${l.name}](${SITE}${l.path}), [format catalog](${SITE}${paths.formats(l)}), [command line guide](${SITE}${paths.cli(l)})`).join('\n')}
 
 ## Source code and documentation
 

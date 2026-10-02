@@ -109,7 +109,8 @@ async function main() {
         if (item['@type'] === 'FAQPage' && !(item.mainEntity?.length >= 5)) error(path, 'FAQPage has too few questions');
       }
     }
-    const expected = path.includes('/convert/') ? ['HowTo', 'BreadcrumbList'] : path.endsWith('/formats/') ? ['CollectionPage', 'BreadcrumbList'] : ['SoftwareApplication', 'FAQPage'];
+    const expected = path.includes('/convert/') ? ['HowTo', 'BreadcrumbList'] : path.endsWith('/formats/') ? ['CollectionPage', 'BreadcrumbList']
+      : path.endsWith('/cli/') ? ['TechArticle', 'BreadcrumbList'] : ['SoftwareApplication', 'FAQPage'];
     for (const type of expected) if (!types.includes(type)) error(path, `JSON-LD type ${type} missing`);
 
     // Internal links and fragments.
@@ -159,10 +160,10 @@ async function main() {
   }
 
   // Report.
-  const byType = { home: 0, formats: 0, convert: 0 };
-  for (const p of pages.keys()) byType[p.includes('/convert/') ? 'convert' : p.endsWith('/formats/') ? 'formats' : 'home']++;
+  const byType = { home: 0, formats: 0, cli: 0, convert: 0 };
+  for (const p of pages.keys()) byType[p.includes('/convert/') ? 'convert' : p.endsWith('/formats/') ? 'formats' : p.endsWith('/cli/') ? 'cli' : 'home']++;
   const sizes = [...pages.values()].sort((a, b) => b.size - a.size);
-  console.log(`Checked ${pages.size} pages (home ${byType.home}, format catalog ${byType.formats}, conversion guides ${byType.convert}), ${locs.length} sitemap URLs.`);
+  console.log(`Checked ${pages.size} pages (home ${byType.home}, format catalog ${byType.formats}, command line guide ${byType.cli}, conversion guides ${byType.convert}), ${locs.length} sitemap URLs.`);
   console.log(`Largest pages: ${sizes.slice(0, 3).map(p => `${p.path} ${(p.size / 1024).toFixed(1)} KB`).join(', ')}; smallest ${sizes.at(-1).path} ${(sizes.at(-1).size / 1024).toFixed(1)} KB`);
   for (const lang of LANGS) {
     const ofLang = [...pages.values()].filter(p => p.lang === lang);

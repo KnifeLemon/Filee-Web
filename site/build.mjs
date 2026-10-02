@@ -1,5 +1,5 @@
-// Builds the static site into dist/: per language the home page, the format catalog and one conversion guide per
-// catalog pair; hashed CSS/JS, sitemap (hreflang for every page, the promo video on home pages), robots.txt,
+// Builds the static site into dist/: per language the home page, the format catalog, the command line guide and one
+// conversion guide per catalog pair; hashed CSS/JS, sitemap (hreflang for every page, the promo video on home pages), robots.txt,
 // llms.txt, llms-full.txt, pad.xml (for download sites), 404 page, web manifest and Cloudflare _headers/_redirects.
 // Usage: node build.mjs          (no dependencies; Node 20+)
 
@@ -8,6 +8,7 @@ import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAIRS, pairSlug, validateCatalog } from './src/catalog.mjs';
+import { renderCliPage } from './src/cli-page.mjs';
 import { renderConvertPage } from './src/convert-page.mjs';
 import { renderFormatsPage } from './src/formats-page.mjs';
 import { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE, paths } from './src/layout.mjs';
@@ -51,6 +52,7 @@ function pageList() {
   return [
     { pathOf: paths.home, render: renderPage, video: true, priority: '1.0' },
     { pathOf: paths.formats, render: renderFormatsPage, priority: '0.9' },
+    { pathOf: paths.cli, render: renderCliPage, priority: '0.8' },
     ...PAIRS.map(pair => ({
       pathOf: l => paths.convert(l, pairSlug(pair)),
       render: (t, languages, assets) => renderConvertPage(t, languages, assets, pair),
