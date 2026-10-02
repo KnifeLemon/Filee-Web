@@ -131,6 +131,8 @@ npm run deploy
   - Bing Webmaster Tools (Bing also feeds ChatGPT search and Copilot)
   - Naver Search Advisor (important for Korean search)
 - Verification files, such as a Naver or Google HTML file, go into `public/`.
+- **IndexNow**: `npm run deploy` ends with `node indexnow.mjs`, which sends every sitemap URL to Bing, Naver and the
+  other IndexNow engines; the key is the `public/<key>.txt` file named in that script.
 - **Cloudflare bot settings**: to be cited by AI answer engines (the GEO part), leave **AI crawl control / Block AI bots** off, and don't let a managed `robots.txt` disallow them. `robots.txt` here allows everything.
 - **Analytics**: Google Analytics 4 is on; its measurement ID is `GA_ID` in `src/page.mjs` (empty turns it off).
   `build.mjs` adds the hashes of the inline scripts and Google's hosts to the Content-Security-Policy, so after

@@ -12,7 +12,7 @@
     "check": "node build.mjs && node check.mjs",
     "dev": "node serve.mjs",
     "preview": "node build.mjs && wrangler dev",
-    "deploy": "node build.mjs && wrangler deploy"
+    "deploy": "node build.mjs && wrangler deploy && node indexnow.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.40.0"

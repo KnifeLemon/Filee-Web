@@ -66,6 +66,20 @@ export const icon = (name, cls = 'icon') => {
 /** Marks JS as available before first paint so reveal animations don't flash. */
 const JS_FLAG_SCRIPT = "document.documentElement.classList.add('js')";
 
+/**
+ * On the English home page only (filee.sh/ typed or shared without a language): a visitor whose browser prefers
+ * Korean or Simplified Chinese goes straight to /ko/ or /zh-cn/. Runs before anything renders. Not when the visitor
+ * picked a language in the menu before (localStorage, see setupLanguageBanner), nor when coming from another page of
+ * the site. Crawlers read English and stay, so every language keeps its own indexed URL (hreflang does the rest).
+ */
+const LANG_REDIRECT_SCRIPT = "(function(){try{if(location.pathname!=='/'||localStorage.getItem('filee-lang-chosen'))return;"
+  + "var r=document.referrer;if(r&&new URL(r).origin===location.origin)return;"
+  + "var l=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language];"
+  + "for(var i=0;i<l.length;i++){var t=String(l[i]||'').toLowerCase();if(t.indexOf('en')===0)return;"
+  + "if(t.indexOf('ko')===0){location.replace('/ko/'+location.search+location.hash);return}"
+  + "if(t==='zh'||t.indexOf('zh-cn')===0||t.indexOf('zh-hans')===0||t.indexOf('zh-sg')===0){location.replace('/zh-cn/'+location.search+location.hash);return}}"
+  + "}catch(e){}})()";
+
 /** Google Analytics 4 measurement ID; empty turns analytics off. */
 const GA_ID = 'G-0Q2YHDJHEL';
 const GA_SCRIPT = GA_ID
@@ -77,7 +91,7 @@ export const ANALYTICS = GA_ID
   : '';
 
 /** Every inline script on the pages: build.mjs puts their hashes into the Content-Security-Policy. */
-export const INLINE_SCRIPTS = [JS_FLAG_SCRIPT, GA_SCRIPT].filter(Boolean);
+export const INLINE_SCRIPTS = [JS_FLAG_SCRIPT, LANG_REDIRECT_SCRIPT, GA_SCRIPT].filter(Boolean);
 
 /** Search engine ownership checks: paste only the content="…" value from each console. Empty ones are skipped. */
 const SITE_VERIFICATION = {
@@ -123,12 +137,14 @@ export function renderDocument({ t, languages, assets, title, description, alter
   const pageData = {
     lang: t.lang,
     langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name })),
+    afterDownload: t.download.after,
   };
   return `<!doctype html>
 <html lang="${t.htmlLang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+${alternates[t.lang] === '/' ? `<script>${LANG_REDIRECT_SCRIPT}</script>` : ''}
 ${ANALYTICS}
 <script>${JS_FLAG_SCRIPT}</script>
 <title>${escape(title)}</title>
