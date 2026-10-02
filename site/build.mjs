@@ -1,6 +1,6 @@
 // Builds the static site into dist/: per language the home page, the format catalog and one conversion guide per
 // catalog pair; hashed CSS/JS, sitemap (hreflang for every page, the promo video on home pages), robots.txt,
-// llms.txt, llms-full.txt, 404 page, web manifest and Cloudflare _headers/_redirects.
+// llms.txt, llms-full.txt, pad.xml (for download sites), 404 page, web manifest and Cloudflare _headers/_redirects.
 // Usage: node build.mjs          (no dependencies; Node 20+)
 
 import { createHash } from 'node:crypto';
@@ -12,6 +12,7 @@ import { renderConvertPage } from './src/convert-page.mjs';
 import { renderFormatsPage } from './src/formats-page.mjs';
 import { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE, paths } from './src/layout.mjs';
 import { llmsFullTxt, llmsTxt } from './src/llms.mjs';
+import { latestRelease, padXml } from './src/pad.mjs';
 import { renderNotFound, renderPage } from './src/page.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
@@ -189,6 +190,7 @@ export async function build() {
   await writeFile(join(DIST, 'llms.txt'), llmsTxt(languages));
   await writeFile(join(DIST, 'llms-full.txt'), llmsFullTxt(languages));
   await writeFile(join(DIST, 'site.webmanifest'), manifest);
+  await writeFile(join(DIST, 'pad.xml'), padXml(await latestRelease()));
   await writeFile(join(DIST, '_headers'), headers());
   await writeFile(join(DIST, '_redirects'), redirects(languages));
   console.log(`Built ${count} pages (${pages.length} × ${languages.length} languages) into dist/ in ${Date.now() - started} ms`);
