@@ -232,6 +232,7 @@ function footer(t, languages, alternates) {
       <a href="${REPO}/issues">${escape(t.footer.issues)}</a>
       <a href="${REPO}/blob/main/LICENSE">${escape(t.footer.license)}</a>
       <a href="${REPO}/blob/main/THIRD-PARTY-NOTICES.md">${escape(t.footer.notices)}</a>
+      <a href="${REPO}#code-signing-policy">${escape(t.footer.signing)}</a>
     </nav>
     <nav class="footer-popular" aria-label="${escape(t.footer.popular)}">
       <strong>${escape(t.footer.popular)}</strong>
@@ -285,7 +286,8 @@ export function downloadCard(t, { title, text, button }) {
       <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download>${icon('windows')}<span>${escape(button)}</span></a>
       <p class="download-meta"><span data-latest hidden>${escape(t.download.latest)}: <b data-version-full></b></span>
         <a href="${REPO}/releases">${escape(t.download.all)}</a>
-        <a href="${REPO}">${escape(t.download.source)}</a></p>
+        <a href="${REPO}">${escape(t.download.source)}</a>
+        <a href="${REPO}#code-signing-policy">${escape(t.download.signing)}</a></p>
     </div>
   </section>`;
 }

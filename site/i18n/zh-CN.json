@@ -125,6 +125,7 @@
     "latest": "最新版本",
     "all": "全部版本",
     "source": "源代码",
+    "signing": "Code signing policy",
     "after": {
       "title": "下载已开始",
       "steps": [
@@ -142,6 +143,7 @@
     "tagline": "拖一下，放一下，转好了。",
     "license": "MIT 许可证",
     "notices": "第三方声明",
+    "signing": "Code signing policy",
     "issues": "反馈问题",
     "made": "由 KnifeLemon 和贡献者打造。",
     "formats": "格式目录",

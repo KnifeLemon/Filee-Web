@@ -125,6 +125,7 @@
     "latest": "Latest version",
     "all": "All releases",
     "source": "Source code",
+    "signing": "Code signing policy",
     "after": {
       "title": "Your download has started",
       "steps": [
@@ -142,6 +143,7 @@
     "tagline": "Drag. Drop. Converted.",
     "license": "MIT License",
     "notices": "Third-party notices",
+    "signing": "Code signing policy",
     "issues": "Report an issue",
     "made": "Built by KnifeLemon and contributors.",
     "formats": "All formats",
