@@ -11,8 +11,8 @@ const EXTRA = {
     coverSub: 'The free file converter you use by dragging',
     howTitle: 'Ctrl + drag. Done.',
     steps: ['Hold Ctrl and drag a file', 'Drop it on a format', 'Saved next to the original'],
-    formatsTitle: 'From photos to HWP documents',
-    formatsSub: 'Images · PDF · Office · HWP/HWPX · Markdown — 20+ formats',
+    formatsTitle: 'Photos, videos and HWP',
+    formatsSub: '180 formats: images, documents, HWP, video, audio',
     ctaTitle: 'Get it free',
     ctaSub: 'Free · Open source (MIT) · Windows 10/11',
     ctaButton: 'Download at filee.sh',
@@ -22,8 +22,8 @@ const EXTRA = {
     coverSub: '드래그 한 번으로 끝나는 무료 파일 변환기',
     howTitle: 'Ctrl + 드래그, 끝.',
     steps: ['Ctrl 누르고 파일 끌기', '원하는 형식에 놓기', '원본 옆에 바로 저장'],
-    formatsTitle: '사진부터 한글 문서까지',
-    formatsSub: '이미지 · PDF · 오피스 · HWP/HWPX · 마크다운 — 20가지 이상',
+    formatsTitle: '사진부터 영상, 한글 문서까지',
+    formatsSub: '이미지 · 문서 · 한글 · 영상 · 오디오 · 180가지 형식',
     ctaTitle: '지금 무료로 받아보세요',
     ctaSub: '무료 · 오픈소스 (MIT) · Windows 10/11',
     ctaButton: 'filee.sh 에서 다운로드',
@@ -33,8 +33,8 @@ const EXTRA = {
     coverSub: '拖一下就能完成的免费文件转换器',
     howTitle: 'Ctrl + 拖动，完成。',
     steps: ['按住 Ctrl 拖动文件', '放到目标格式上', '直接保存在原文件旁'],
-    formatsTitle: '从照片到 HWP 文档',
-    formatsSub: '图片 · PDF · Office · HWP/HWPX · Markdown — 20 多种格式',
+    formatsTitle: '照片、视频到 HWP 文档',
+    formatsSub: '图片 · 文档 · HWP · 视频 · 音频 · 180 种格式',
     ctaTitle: '免费下载',
     ctaSub: '免费 · 开源 (MIT) · Windows 10/11',
     ctaButton: '前往 filee.sh 下载',
@@ -100,7 +100,7 @@ const SLIDES = {
   'threads-3': (ctx, W, H, s, e) => {
     headline(ctx, e.formatsTitle, W / 2, 150, 76, 1, { maxWidth: W - 120 });
     headline(ctx, e.formatsSub, W / 2, 330, 36, 1, { color: C.muted, weight: 600, maxWidth: W - 140 });
-    const types = ['jpg', 'png', 'webp', 'pdf', 'docx', 'xlsx', 'pptx', 'hwp', 'hwpx', 'md'];
+    const types = ['jpg', 'png', 'heic', 'pdf', 'docx', 'pptx', 'hwp', 'hwpx', 'mp4', 'mp3'];
     types.forEach((type, i) => {
       const col = i % 5;
       const row = Math.floor(i / 5);

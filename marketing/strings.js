@@ -23,8 +23,8 @@ export const STRINGS = {
     s4aSub: 'DOCX → HWPX keeps page setup, tables, headers and page numbers',
     s4chips: ['DOCX → HWPX', 'HWP ↔ HWPX', 'HWPX → PDF'],
     s5a: 'Make the donut yours',
-    s5aSub: 'Pick formats, quality and shortcuts for every file type',
-    s5chips: ['Presets', 'Shortcuts', 'Themes'],
+    s5aSub: 'Formats and quality per file type, or a folder that converts by itself',
+    s5chips: ['Presets', 'Watch folders', 'Command line'],
     s6a: 'Free & open source · Windows',
     s6cta: 'filee.sh',
     // Short Threads / Reels cut (renderThreads): hook, the gesture, everyday uses, end card.
@@ -38,7 +38,7 @@ export const STRINGS = {
       uses: [
         ['heic', 'jpg', 'iPhone photos → JPG'], ['webp', 'jpg', 'WEBP from the web → JPG'],
         ['jpg', 'pdf', 'Many photos → one PDF'], ['pdf', 'pdf', 'Merge & split PDFs'],
-        ['jpg', 'jpg', 'Shrink photo file size'], ['docx', 'hwpx', 'Word → HWPX'],
+        ['mp4', 'mp3', 'Sound from a video → MP3'], ['docx', 'hwpx', 'Word → HWPX'],
         ['hwp', 'pdf', 'HWP → PDF'], ['pptx', 'pdf', 'PowerPoint & Excel → PDF'],
       ],
       endLine: 'No upload · No ads · Free',
@@ -66,8 +66,8 @@ export const STRINGS = {
     s4aSub: 'DOCX → HWPX 변환에도 쪽 설정·표·머리말·쪽 번호가 그대로',
     s4chips: ['DOCX → HWPX', 'HWP ↔ HWPX', 'HWPX → PDF'],
     s5a: '도넛은 내 마음대로',
-    s5aSub: '파일 종류마다 형식, 품질, 단축키를 설정해요',
-    s5chips: ['프리셋', '단축키', '테마'],
+    s5aSub: '파일 종류마다 형식과 품질을 정하고, 폴더에 넣기만 해도 변환돼요',
+    s5chips: ['프리셋', '자동 변환 폴더', '명령줄'],
     s6a: '무료 · 오픈소스 · Windows',
     s6cta: 'filee.sh',
     cut: {
@@ -80,7 +80,7 @@ export const STRINGS = {
       uses: [
         ['heic', 'jpg', '아이폰 사진 → JPG'], ['webp', 'jpg', '웹에서 저장한 WEBP → JPG'],
         ['jpg', 'pdf', '사진 여러 장 → PDF 한 개'], ['pdf', 'pdf', 'PDF 합치기 · 나누기'],
-        ['jpg', 'jpg', '사진 용량 줄이기'], ['docx', 'hwpx', '워드 → 한글(HWPX)'],
+        ['mp4', 'mp3', '영상에서 소리만 → MP3'], ['docx', 'hwpx', '워드 → 한글(HWPX)'],
         ['hwp', 'pdf', '한글(HWP) → PDF'], ['pptx', 'pdf', 'PPT · 엑셀 → PDF'],
       ],
       endLine: '업로드 0 · 광고 0 · 무료',
@@ -108,8 +108,8 @@ export const STRINGS = {
     s4aSub: 'DOCX → HWPX 保留页面设置、表格、页眉和页码',
     s4chips: ['DOCX → HWPX', 'HWP ↔ HWPX', 'HWPX → PDF'],
     s5a: '圆环菜单随你定制',
-    s5aSub: '为每种文件设置格式、质量和快捷键',
-    s5chips: ['预设', '快捷键', '主题'],
+    s5aSub: '格式和质量按类型设置，还能自动转换文件夹',
+    s5chips: ['预设', '自动转换文件夹', '命令行'],
     s6a: '免费 · 开源 · Windows',
     s6cta: 'filee.sh',
     cut: {
@@ -122,7 +122,7 @@ export const STRINGS = {
       uses: [
         ['heic', 'jpg', 'iPhone 照片 → JPG'], ['webp', 'jpg', '网上存的 WEBP → JPG'],
         ['jpg', 'pdf', '多张照片 → 一个 PDF'], ['pdf', 'pdf', 'PDF 合并 · 拆分'],
-        ['jpg', 'jpg', '压缩照片大小'], ['docx', 'hwpx', 'Word → HWPX'],
+        ['mp4', 'mp3', '视频提取声音 → MP3'], ['docx', 'hwpx', 'Word → HWPX'],
         ['hwp', 'pdf', 'HWP → PDF'], ['pptx', 'pdf', 'PPT · Excel → PDF'],
       ],
       endLine: '无需上传 · 无广告 · 免费',

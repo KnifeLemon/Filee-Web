@@ -12,7 +12,7 @@ import { md, terminal } from './cli-page.mjs';
 export { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE } from './layout.mjs';
 
 /** Date the promo video was published (VideoObject.uploadDate); bump when the video is re-rendered. */
-const VIDEO_DATE = '2026-09-30';
+const VIDEO_DATE = '2026-10-04';
 
 /** Pixel sizes of the screenshots in public/media/screens (for width/height attributes: no layout shift). */
 const SCREEN_SIZES = {

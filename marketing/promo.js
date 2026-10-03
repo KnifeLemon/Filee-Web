@@ -37,7 +37,7 @@ const LOGO_FOLD = new Path2D('M266 212 v24 h24 z');
 
 const TYPE_COLORS = {
   jpg: '#E0913C', webp: '#7F77DD', png: '#378ADD', docx: '#2B579A', pptx: '#D24726', xlsx: '#217346',
-  hwp: '#1B7FC4', hwpx: '#1B7FC4', pdf: '#E5252A', md: '#5F5E5A', heic: '#639922',
+  hwp: '#1B7FC4', hwpx: '#1B7FC4', pdf: '#E5252A', md: '#5F5E5A', heic: '#639922', mp4: '#D4537E', mp3: '#1D9E75',
 };
 
 // ───────────────────────── Timing helpers ─────────────────────────
@@ -839,16 +839,21 @@ function scene5(ctx, W, H, u, s, lang) {
   }
   const captionBottom = caption(ctx, L, s.s5a, span(u, 0.0, 0.6), { sub: s.s5aSub, subProgress: span(u, 0.3, 0.9) });
   const chips = s.s5chips;
+  // Portrait: one row, centred, with even gaps between chips of different widths.
+  const gap = 28;
+  const widths = chips.map(chip => pillWidth(ctx, chip, 30));
+  let rowX = W / 2 - (widths.reduce((sum, w) => sum + w, 0) + gap * (chips.length - 1)) / 2;
   chips.forEach((chip, i) => {
     const p = spring(span(u, 1.0 + i * 0.2, 1.6 + i * 0.2));
     const y = L.portrait ? 1560 : captionBottom + 70 + i * 90;
-    const x = L.portrait ? W / 2 + (i - 1) * 290 : L.captionX;
+    const x = L.portrait ? rowX + widths[i] / 2 : L.captionX;
+    rowX += widths[i] + gap;
     pill(ctx, x, y, chip, { size: 30, color: C.white, background: [C.accent, C.green, C.accentDark][i], alpha: clamp(p * 2), scale: p, align: L.portrait ? 'center' : 'left' });
   });
 }
 
-const FORMATS = ['JPG', 'PNG', 'WEBP', 'HEIC', 'AVIF', 'TIFF', 'BMP', 'GIF', 'ICO', 'PDF', 'DOCX', 'DOC', 'ODT', 'RTF',
-  'HWP', 'HWPX', 'XLSX', 'PPTX', 'MD', 'HTML', 'TXT'];
+const FORMATS = ['JPG', 'PNG', 'WEBP', 'HEIC', 'AVIF', 'TIFF', 'GIF', 'PDF', 'DOCX', 'DOC', 'ODT', 'RTF', 'HWP', 'HWPX',
+  'XLSX', 'PPTX', 'MD', 'HTML', 'TXT', 'EPUB', 'MOBI', 'MP4', 'MOV', 'MKV', 'MP3', 'FLAC', 'WAV', 'ZIP', '7Z', 'SVG', 'DWG', 'TTF'];
 
 function scene6(ctx, W, H, u, s, lang, extra) {
   const portrait = H > W;
