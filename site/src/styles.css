@@ -348,6 +348,8 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
 .footer-links a, .footer-langs a { color: var(--muted); text-decoration: none; }
 .footer-links a:hover, .footer-langs a:hover { color: var(--ink); }
 .footer-made { color: var(--muted); font-size: 13px; grid-column: 1 / -1; }
+.footer-badge { justify-self: end; line-height: 0; border-radius: 12px; }
+.footer-badge img { height: 48px; width: auto; }
 .footer-popular { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; font-size: 14px; }
 .footer-popular a { color: var(--muted); text-decoration: none; }
 .footer-popular a:hover { color: var(--ink); }
@@ -542,6 +544,7 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
   .format-table tr { display: grid; grid-template-columns: 1fr; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .format-table th, .format-table td { border: 0; padding: 2px 0; }
   .footer-inner { grid-template-columns: 1fr; }
+  .footer-badge { justify-self: start; }
   .demo-window { min-height: 430px; }
   .file-icon { width: 54px; height: 66px; }
 }

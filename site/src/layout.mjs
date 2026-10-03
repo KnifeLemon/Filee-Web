@@ -12,6 +12,9 @@ export const REPO = 'https://github.com/KnifeLemon/Filee';
  */
 export const DOWNLOAD = `${REPO}/releases/latest`;
 
+/** Filee's AlternativeTo page (footer badge; the badge SVGs are kept in public/media/badges, the CSP allows no other hosts). */
+const ALTERNATIVETO = 'https://alternativeto.net/software/filee-1/about/?utm_source=badge&utm_medium=referral';
+
 export const escape = value => String(value)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
@@ -242,6 +245,7 @@ function footer(t, languages, alternates) {
       ${popular.map(p => `<a href="${paths.convert(t, pairSlug(p))}">${escape(pairName(t, p))}</a>`).join('')}
     </nav>
     <nav class="footer-langs" aria-label="${escape(t.nav.language)}">${languages.map(l => `<a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}">${escape(l.name)}</a>`).join('')}</nav>
+    <a class="footer-badge" href="${ALTERNATIVETO}" rel="noopener" target="_blank"><picture><source srcset="/media/badges/alternativeto-dark.svg" media="(prefers-color-scheme: dark)"><img src="/media/badges/alternativeto-light.svg" alt="Filee on AlternativeTo" width="141" height="48" loading="lazy" decoding="async"></picture></a>
     <p class="footer-made">${escape(t.footer.made)} © ${new Date().getFullYear()}</p>
   </div>
 </footer>`;
