@@ -323,6 +323,10 @@
             "Leave existing output files alone"
           ],
           [
+            "--keep-dates",
+            "Give converted files the created and modified dates of the originals"
+          ],
+          [
             "--json",
             "Print the result as one JSON document, for scripts"
           ],
@@ -360,6 +364,10 @@
           [
             "--settle <seconds>",
             "How long a file must stay unchanged before it is converted (default 2)"
+          ],
+          [
+            "--keep-dates",
+            "Give converted files the created and modified dates of the originals"
           ],
           [
             "--quiet",
