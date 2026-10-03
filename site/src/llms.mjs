@@ -20,7 +20,7 @@ function facts(en) {
     `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (64-bit) that converts files offline on the user's own PC; files are never uploaded.`,
     `Filee converts ${s.formatTotal} file formats in ${s.categoryCount} categories: ${v.categoryList}.`,
     `${s.builtinTotal} of those formats work right after installation. The others use optional engines, picked in the installer or downloaded inside the app when needed: ${engineDetails(EN)}.`,
-    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files, and it never uses programs installed on the PC.`,
+    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files, and it doesn't look for programs installed on the PC (the user can point it to their own copy of an optional engine: FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice).`,
     `How it works: hold a modifier key (Ctrl by default, configurable) and drag files; a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals.`,
     `Other ways to convert: "Convert with Filee" in the Windows 11 top-level right-click menu, Send To, a keyboard shortcut on selected files, and the drop zone in the main window.`,
     `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
@@ -28,7 +28,7 @@ function facts(en) {
     `Watch folders: files that land in a chosen folder are converted automatically once they are complete, set up in the app or with "filee watch"; the originals can stay or move to an "originals" folder.`,
     `Presets per file type: quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder and file names.`,
     `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Korean and Simplified Chinese.`,
-    `Current version: ${VERSION}. The installer (Filee-<version>-win-Setup.exe) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in and optional engines; a portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. Filee says when a new version is out on GitHub Releases; running the new installer updates it and keeps settings and engines.`,
+    `Current version: ${VERSION}. The installer (Filee-<version>-win-Setup.exe) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in and optional engines; a portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. When a new version is out on GitHub Releases, the installed app downloads it, checks its SHA-256 and installs it after one click, keeping settings and engines; the portable ZIP is replaced by hand.`,
     en ? `Website: ${SITE}/ (English), ${SITE}/ko/ (Korean), ${SITE}/zh-cn/ (Simplified Chinese).` : '',
   ].filter(Boolean);
 }
