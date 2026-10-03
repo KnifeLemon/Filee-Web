@@ -25,7 +25,7 @@
     "skip": "跳到正文"
   },
   "hero": {
-    "badge": "{versionShort} 新增：自动安装更新，可使用自己的 FFmpeg 或 calibre",
+    "badge": "{versionShort} 新增：直接使用已有的 FFmpeg、calibre，多页 TIFF",
     "kicker": "免费的 Windows 文件转换器",
     "title": ["拖一下，", "放一下，", "转好了。"],
     "lead": "图片、PDF、Word/Excel/PowerPoint、视频、音乐、电子书、压缩包……都能直接在你的电脑上转换。按住一个键拖动文件，放到想要的格式上即可。无需上传、无需注册，免费开源。",
@@ -67,12 +67,12 @@
     "items": [
       { "icon": "donut", "title": "光标处的格式圆环", "text": "无需打开程序窗口，格式就出现在光标旁。可用修饰键、鼠标按键、长按或快捷键打开。" },
       { "icon": "stack", "title": "{formatTotal} 种格式，一个手势", "text": "图片、PDF、Word/Excel/PowerPoint、HWP、电子书、视频、音频、压缩包、CAD 图纸和字体。Filee 会自动规划格式之间的转换路径。" },
-      { "icon": "document", "title": "无需 Office", "text": "Word、Excel、PowerPoint 文件无需 Microsoft Office 或 LibreOffice，HWP 无需 Hancom Office 即可转换。Filee 不会自行查找电脑上已安装的程序。" },
+      { "icon": "document", "title": "无需 Office", "text": "Word、Excel、PowerPoint 文件无需 Microsoft Office 或 LibreOffice，HWP 无需 Hancom Office 即可转换。即使装了 Office 或 Hancom Office，Filee 也不会使用。" },
       { "icon": "doors", "title": "批量转换", "text": "1 个或 100 个文件都能一次完成：并行转换，某个文件失败也不影响其余文件，还能合并成一个 PDF 或一个 ZIP。" },
       { "icon": "lock", "title": "100% 本地处理", "text": "不上传任何内容。离线也能使用，私人文档、照片和录音都不会离开你的电脑。" },
       { "icon": "windows", "title": "多种转换入口", "text": "拖动手势、右键菜单中的 Filee 转换（Windows 11 还可加入第一层菜单）、“发送到”、快捷键，或主窗口的拖放区。" },
       { "icon": "sliders", "title": "按文件类型设置预设", "text": "质量、缩放、DPI、灰度、元数据、TIFF 压缩、ICO 尺寸、PDF 合并/拆分/页码范围、720p 视频、MP3 码率、保存位置、文件名以及保留原文件日期。" },
-      { "icon": "download", "title": "引擎按需下载", "text": "大型引擎是可选的，可以在安装时勾选，也可以之后在应用内下载：{engineNames}。下载时能看到版本、速度和剩余时间。已经有 FFmpeg、calibre 或 Pandoc？也可以直接指定你自己的程序。" },
+      { "icon": "download", "title": "引擎按需下载", "text": "大型引擎是可选的，可以在安装时勾选，也可以之后在应用内下载：{engineNames}。下载时能看到版本、速度和剩余时间。已经有 FFmpeg、calibre 或 Pandoc？Filee 会自动找到并使用，不再下载。" },
       { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持简体中文、英语和韩语。有新版本时会提醒你，每个版本都会列出更新内容和贡献者。" }
     ]
   },
@@ -172,7 +172,7 @@
     "stats": { "formats": "格式", "categories": "大类", "builtin": "内置", "guides": "转换指南" },
     "jump": "分类",
     "legendBuiltIn": "内置：安装后即可使用。内置引擎包括",
-    "legendOptional": "可选引擎：在 Filee 内免费下载（设置 → 引擎），保存在 Filee 自己的文件夹中，可随时删除。如果已经有这个引擎，也可以让 Filee 使用你自己的程序（设置 → 引擎 → 使用我的程序）。Filee 不会自行查找电脑上已安装的程序。",
+    "legendOptional": "可选引擎：在 Filee 内免费下载（设置 → 引擎），保存在 Filee 自己的文件夹中，可随时删除。电脑上已有的引擎（PATH 或 Program Files 中）会被直接使用；想用指定的程序，可在“设置 → 引擎 → 使用我的程序”中选择。",
     "engineCols": ["引擎", "用途", "下载大小"],
     "from": "源格式",
     "to": "可转换为",
@@ -200,7 +200,7 @@
     "whatTitle": "Filee 如何处理 {from} → {to}",
     "points": {
       "builtIn": "内置：安装 Filee 后即可使用，无需额外下载。",
-      "optional": "使用 {engine}：免费的可选引擎{sizeParen}，只需下载一次，保存在 Filee 自己的文件夹中。已经有 {engine}？也可以在“设置 → 引擎”中指定你自己的程序。",
+      "optional": "使用 {engine}：免费的可选引擎{sizeParen}，只需下载一次，保存在 Filee 自己的文件夹中。电脑上已有 {engine} 时会直接使用，不再下载。",
       "via": "引擎：{via}",
       "batch": "批量：一个或上百个文件并行转换，某个失败也不影响其他文件。",
       "local": "隐私：文件在你的电脑上转换，从不上传，没有网络也能用。",

@@ -25,7 +25,7 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {versionShort}: updates install themselves, use your own FFmpeg or calibre",
+    "badge": "New in {versionShort}: uses the FFmpeg or calibre you already have, multi-page TIFF",
     "kicker": "Free file converter for Windows",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
@@ -67,12 +67,12 @@
     "items": [
       { "icon": "donut", "title": "A donut at your cursor", "text": "The formats appear where you already are, with no app window in the way. A modifier key, mouse button, hold gesture or keyboard shortcut opens it." },
       { "icon": "stack", "title": "{formatCount} formats, one gesture", "text": "Images, PDF, Word, Excel, PowerPoint, HWP, e-books, video, audio, archives, CAD drawings and fonts. Filee plans the route between formats automatically." },
-      { "icon": "document", "title": "No Office needed", "text": "Word, Excel and PowerPoint files convert without Microsoft Office or LibreOffice, and HWP without Hancom Office. Filee doesn't go looking for programs installed on your PC." },
+      { "icon": "document", "title": "No Office needed", "text": "Word, Excel and PowerPoint files convert without Microsoft Office or LibreOffice, and HWP without Hancom Office. Filee doesn't use Office or Hancom Office even when they are installed." },
       { "icon": "doors", "title": "Batch conversion", "text": "Drop 1 file or 100. They're converted in parallel, a failure never stops the rest, and presets can merge everything into one PDF or one ZIP." },
       { "icon": "lock", "title": "100% on your PC", "text": "Nothing is uploaded. Filee works offline, so private documents, photos and recordings never leave your computer." },
       { "icon": "windows", "title": "Right where you work", "text": "The drag gesture, Convert with Filee in the right-click menu (on Windows 11 also in the top-level menu), Send To, a keyboard shortcut or the drop zone in the main window." },
       { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder, file names and the original file dates." },
-      { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left. Already have FFmpeg, calibre or Pandoc? Point Filee to your copy instead." },
+      { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left. Already have FFmpeg, calibre or Pandoc? Filee finds them and skips the download." },
       { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Korean and Simplified Chinese. Filee tells you about new versions; every release lists its changes and contributors." }
     ]
   },
@@ -172,7 +172,7 @@
     "stats": { "formats": "formats", "categories": "categories", "builtin": "built in", "guides": "step-by-step guides" },
     "jump": "Categories",
     "legendBuiltIn": "Built in: works right after install. The built-in engines include",
-    "legendOptional": "Optional engine: a free download inside Filee (Settings → Engines), saved in Filee's own folder and removable at any time. If you already have the engine, Filee can use your copy instead (Settings → Engines → Use my copy). Filee doesn't go looking for programs installed on your PC.",
+    "legendOptional": "Optional engine: a free download inside Filee (Settings → Engines), saved in Filee's own folder and removable at any time. If the engine is already on your PC (on the PATH or in Program Files), Filee uses that instead; Settings → Engines → Use my copy picks a specific one.",
     "engineCols": ["Engine", "Used for", "Download"],
     "from": "From",
     "to": "Converts to",
@@ -200,7 +200,7 @@
     "whatTitle": "What Filee does for {from} → {to}",
     "points": {
       "builtIn": "Built in: works right after installing Filee, with nothing else to download.",
-      "optional": "Uses {engine}, a free optional engine that Filee downloads once into its own folder{sizeParen}. Already have {engine}? Point Filee to your copy in Settings → Engines instead.",
+      "optional": "Uses {engine}, a free optional engine that Filee downloads once into its own folder{sizeParen}. If {engine} is already on your PC, Filee uses it and nothing is downloaded.",
       "via": "Engine: {via}.",
       "batch": "Batch: one file or hundreds, converted in parallel; a failure never stops the rest.",
       "local": "Private: files are converted on your PC and never uploaded, even without internet.",

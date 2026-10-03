@@ -5,7 +5,7 @@
 //
 // Texts are { en, ko, 'zh-CN' } objects made with T(). Placeholders like {formatTotal} are filled by vars() below.
 
-export const VERSION = '1.4.0';
+export const VERSION = '1.5.0';
 export const LANGS = ['en', 'ko', 'zh-CN'];
 
 const T = (en, ko, zh) => ({ en, ko, 'zh-CN': zh });
@@ -1107,14 +1107,14 @@ export const FAQ = [
       'Filee 可读取 {categoryCount} 大类共 {formatTotal} 种格式：{categoryList}。其中 {builtinTotal} 种安装后即可使用，其余使用免费的可选引擎。完整格式及可转换的目标格式见格式目录。'),
     links: ['formats'] },
   { q: T('Do I need Microsoft Office, Hancom Office or LibreOffice?', 'MS 오피스나 한컴오피스, LibreOffice가 있어야 하나요?', '需要安装 Microsoft Office、Hancom Office 或 LibreOffice 吗？'),
-    a: T('No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn\'t go looking for programs installed on your PC; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.',
-      '아니요. 워드·엑셀·파워포인트 파일(DOCX, XLSX, XLS, CSV, PPTX)과 한글 문서(HWP, HWPX)는 Filee에 내장된 엔진으로 변환합니다. Filee는 PC에 설치된 프로그램을 알아서 찾아 쓰지 않으며, LibreOffice는 DOC·PPT·ODT·RTF 같은 예전 형식을 위한 선택형 추가 엔진일 뿐입니다.',
-      '不需要。Word、Excel、PowerPoint 文件（DOCX、XLSX、XLS、CSV、PPTX）和韩文 HWP/HWPX 文档都由 Filee 内置的引擎转换。Filee 不会自行查找电脑上已安装的程序；LibreOffice 只是为 DOC、PPT、ODT、RTF 等旧格式准备的应用内可选下载。'),
+    a: T('No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn\'t use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.',
+      '아니요. 워드·엑셀·파워포인트 파일(DOCX, XLSX, XLS, CSV, PPTX)과 한글 문서(HWP, HWPX)는 Filee에 내장된 엔진으로 변환합니다. 오피스나 한컴오피스가 설치되어 있어도 쓰지 않으며, LibreOffice는 DOC·PPT·ODT·RTF 같은 예전 형식을 위한 선택형 추가 엔진일 뿐입니다.',
+      '不需要。Word、Excel、PowerPoint 文件（DOCX、XLSX、XLS、CSV、PPTX）和韩文 HWP/HWPX 文档都由 Filee 内置的引擎转换。即使装了 Office 或 Hancom Office，Filee 也不会使用；LibreOffice 只是为 DOC、PPT、ODT、RTF 等旧格式准备的应用内可选下载。'),
     links: ['docx-to-pdf', 'xlsx-to-pdf', 'pptx-to-pdf', 'hwp-to-pdf'] },
   { q: T('What are the optional engines?', '추가 엔진은 무엇인가요?', '什么是可选引擎？'),
-    a: T('Large engines are not in the installer. Tick them on the installer\'s engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee\'s own folder and can be removed at any time, and the app shows their versions, download speed and time left. If you already have FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice, choose your copy in Settings → Engines and Filee uses it instead of downloading its own.',
-      '용량이 큰 엔진은 설치 파일에 넣지 않았어요. 설치할 때 엔진 선택 화면에서 고르거나, 필요할 때 Filee 안에서 받을 수 있습니다: {engineDetails}. 엔진은 Filee 전용 폴더에 저장되고 언제든 지울 수 있으며, 앱에서 버전·다운로드 속도·남은 시간을 볼 수 있어요. FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice가 이미 있다면 설정 → 엔진에서 내 프로그램을 지정해 쓸 수 있어요. 그러면 따로 내려받지 않아요.',
-      '体积较大的引擎不包含在安装包中。可以在安装程序的引擎页面勾选，也可以在需要时在 Filee 里下载：{engineDetails}。引擎保存在 Filee 自己的文件夹中，随时可以删除，应用内会显示版本、下载速度和剩余时间。如果已经有 FFmpeg、calibre、Pandoc、Ghostscript 或 LibreOffice，可以在“设置 → 引擎”中指定自己的程序，Filee 就不再另外下载。') },
+    a: T('Large engines are not in the installer. Tick them on the installer\'s engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee\'s own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.',
+      '용량이 큰 엔진은 설치 파일에 넣지 않았어요. 설치할 때 엔진 선택 화면에서 고르거나, 필요할 때 Filee 안에서 받을 수 있습니다: {engineDetails}. 엔진은 Filee 전용 폴더에 저장되고 언제든 지울 수 있으며, 앱에서 버전·다운로드 속도·남은 시간을 볼 수 있어요. FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice가 PC에 이미 있으면(PATH, Scoop, Program Files) 그걸 쓰고 내려받지 않아요. Filee가 테스트한 버전보다 오래됐으면 업데이트를 권하고, 특정 프로그램은 설정 → 엔진 → 내 프로그램 쓰기에서 고를 수 있어요.',
+      '体积较大的引擎不包含在安装包中。可以在安装程序的引擎页面勾选，也可以在需要时在 Filee 里下载：{engineDetails}。引擎保存在 Filee 自己的文件夹中，随时可以删除，应用内会显示版本、下载速度和剩余时间。如果电脑上已有 FFmpeg、calibre、Pandoc、Ghostscript 或 LibreOffice（PATH、Scoop 或 Program Files 中），Filee 会直接使用，不再下载；版本比测试版本旧时会建议更新。也可以在“设置 → 引擎 → 使用我的程序”中指定某个程序。') },
   { q: T('Does installing Filee need administrator rights?', 'Filee를 설치하려면 관리자 권한이 필요한가요?', '安装 Filee 需要管理员权限吗？'),
     a: T('Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. If you can\'t install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.',
       '설치할 때 한 번만 필요해요. 설치 프로그램이 모든 사용자를 위해 Program Files에 설치하고, Windows 11에서는 탐색기 기본 메뉴에 “Filee로 변환”을 추가합니다. 설치 후 Filee는 일반 사용자 권한으로 실행돼요. 프로그램을 설치할 수 없다면 포터블 ZIP을 원하는 곳에 풀고 Filee.exe를 실행하세요.',
