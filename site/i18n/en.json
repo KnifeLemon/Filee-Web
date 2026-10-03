@@ -5,8 +5,8 @@
   "path": "/",
   "name": "English",
   "meta": {
-    "title": "Free File Converter for Windows — Convert Any File Offline | Filee",
-    "description": "Free file converter for Windows 10/11. Convert images, PDF, Word, Excel, video, audio, e-books, archives and HWP offline: just drag and drop. Open source.",
+    "title": "Free File Converter for Windows: Convert Files Offline | Filee",
+    "description": "Free file converter for Windows 10/11. Convert images, PDF, Word, Excel, video, audio, e-books, archives and HWP offline by drag and drop. Open source.",
     "ogAlt": "Filee: a donut of formats opens at the cursor while dragging a file",
     "appAlternateName": "Filee file converter",
     "keywords": "file converter, free file converter, offline file converter, Windows file converter, image converter, PDF converter, video converter, audio converter, HEIC to JPG, PDF to Word, HWP converter"
@@ -52,10 +52,10 @@
   },
   "video": {
     "title": "See it in 27 seconds",
-    "caption": "Single images, batches of documents, HWP without Hancom Office — all with one gesture."
+    "caption": "The same gesture converts single images, batches of documents and HWP files without Hancom Office."
   },
   "how": {
-    "title": "One gesture. Three steps.",
+    "title": "Convert files in three steps",
     "steps": [
       { "title": "Hold a key and drag", "text": "Select files in File Explorer or on the desktop and drag them with Ctrl held down, or any modifier key you choose." },
       { "title": "Drop on a format", "text": "A donut of the formats that fit those files opens at your cursor. Move onto one and let go." },
@@ -63,16 +63,16 @@
     ]
   },
   "features": {
-    "title": "Everything a converter should do. Nothing it shouldn't.",
+    "title": "What Filee does",
     "items": [
-      { "icon": "donut", "title": "A donut at your cursor", "text": "No app window in the way: the formats appear where you already are. A modifier key, mouse button, hold gesture or keyboard shortcut opens it." },
+      { "icon": "donut", "title": "A donut at your cursor", "text": "The formats appear where you already are, with no app window in the way. A modifier key, mouse button, hold gesture or keyboard shortcut opens it." },
       { "icon": "stack", "title": "{formatCount} formats, one gesture", "text": "Images, PDF, Word, Excel, PowerPoint, HWP, e-books, video, audio, archives, CAD drawings and fonts. Filee plans the route between formats automatically." },
       { "icon": "document", "title": "No Office needed", "text": "Word, Excel and PowerPoint files convert without Microsoft Office or LibreOffice, and HWP without Hancom Office. Filee never uses programs installed on your PC." },
       { "icon": "doors", "title": "Batch conversion", "text": "Drop 1 file or 100. They're converted in parallel, a failure never stops the rest, and presets can merge everything into one PDF or one ZIP." },
       { "icon": "lock", "title": "100% on your PC", "text": "Nothing is uploaded. Filee works offline, so private documents, photos and recordings never leave your computer." },
       { "icon": "windows", "title": "Right where you work", "text": "The drag gesture, Convert with Filee in the right-click menu (on Windows 11 also in the top-level menu), Send To, a keyboard shortcut or the drop zone in the main window." },
       { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder and file names." },
-      { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional: tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left." },
+      { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left." },
       { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Korean and Simplified Chinese. Filee tells you about new versions; every release lists its changes and contributors." }
     ]
   },
@@ -121,7 +121,7 @@
     ]
   },
   "download": {
-    "title": "Ready when you are",
+    "title": "Download Filee",
     "text": "Most formats work right after installing. Optional engines are picked in the installer or downloaded in the app when you need them: {engineDetails}.",
     "button": "Download for Windows",
     "latest": "Latest version",
@@ -178,11 +178,11 @@
     "to": "Converts to",
     "engine": "Engine",
     "guides": "Step-by-step guides",
-    "ctaTitle": "Every format, one gesture",
+    "ctaTitle": "Convert any of them with one gesture",
     "ctaText": "Download Filee for Windows 10/11 and convert {formatCount} formats offline, for free."
   },
   "convert": {
-    "title": "{from} to {to} Converter — Free, Offline, Batch | Filee",
+    "title": "{from} to {to} Converter: Free, Offline, Batch | Filee",
     "description": "Convert {from} to {to} free on Windows 10/11: drag and drop, batch conversion, works offline, no upload. {engineShort}",
     "descBuiltIn": "Nothing else to install.",
     "descOptional": "Uses the free {engine} engine.",
@@ -392,7 +392,7 @@
       "Files are converted once they are complete, no longer growing and not open in another program, so downloads and long copies are safe.",
       "Temporary and hidden files (`.crdownload`, `.part`, `.tmp`, `~$` files) and formats Filee doesn't know are ignored.",
       "Converted files go to a `converted` folder inside the watched folder, or wherever `-o` points.",
-      "With `--move-originals` each converted source moves to `originals`: the folder works like an inbox, and files already waiting there are converted at start."
+      "With `--move-originals` each converted source moves to `originals`, so the folder works like an inbox. Files already waiting there are converted at start."
     ],
     "watchAppTitle": "Or in the app, in the background",
     "watchAppText": "The **Watch folders** page in Filee does the same without a terminal: add folders, pick a preset for each, and they are converted while Filee runs in the tray.",

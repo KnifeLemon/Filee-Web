@@ -5,7 +5,7 @@
   "path": "/zh-cn/",
   "name": "简体中文",
   "meta": {
-    "title": "免费文件转换器 Filee — Windows 离线格式转换工具",
+    "title": "免费文件转换器 Filee | Windows 离线格式转换工具",
     "description": "免费文件转换器 Filee：拖放即可在 Windows 上离线转换图片、PDF、视频、音频、Word、Excel、电子书和压缩包，文件不上传，开源免费。",
     "ogAlt": "Filee：拖动文件时，光标处会弹出格式圆环",
     "appAlternateName": "Filee 文件转换器",
@@ -52,7 +52,7 @@
   },
   "video": {
     "title": "27 秒看懂 Filee",
-    "caption": "单张图片、批量文档，还有无需韩文办公软件的 HWP 转换——全都只用一个手势。"
+    "caption": "单张图片、批量文档，还有不用韩文办公软件的 HWP 转换，都只需一个手势。"
   },
   "how": {
     "title": "一个手势，三个步骤",
@@ -66,13 +66,13 @@
     "title": "转换器该有的都有，不该有的一概没有",
     "items": [
       { "icon": "donut", "title": "光标处的格式圆环", "text": "无需打开程序窗口，格式就出现在光标旁。可用修饰键、鼠标按键、长按或快捷键打开。" },
-      { "icon": "stack", "title": "{formatTotal} 种格式，一个手势", "text": "图片、PDF、Word/Excel/PowerPoint、HWP、电子书、视频、音频、压缩包、CAD 图纸和字体。格式之间的转换路径由 Filee 自动规划。" },
+      { "icon": "stack", "title": "{formatTotal} 种格式，一个手势", "text": "图片、PDF、Word/Excel/PowerPoint、HWP、电子书、视频、音频、压缩包、CAD 图纸和字体。Filee 会自动规划格式之间的转换路径。" },
       { "icon": "document", "title": "无需 Office", "text": "Word、Excel、PowerPoint 文件无需 Microsoft Office 或 LibreOffice，HWP 无需 Hancom Office 即可转换。Filee 从不调用电脑上已安装的程序。" },
       { "icon": "doors", "title": "批量转换", "text": "1 个或 100 个文件都能一次完成：并行转换，某个文件失败也不影响其余文件，还能合并成一个 PDF 或一个 ZIP。" },
       { "icon": "lock", "title": "100% 本地处理", "text": "不上传任何内容。离线也能使用，私人文档、照片和录音都不会离开你的电脑。" },
-      { "icon": "windows", "title": "就在你工作的地方", "text": "拖动手势、右键菜单中的 Filee 转换（Windows 11 还可加入第一层菜单）、“发送到”、快捷键，或主窗口的拖放区。" },
-      { "icon": "sliders", "title": "按文件类型的预设", "text": "质量、缩放、DPI、灰度、元数据、TIFF 压缩、ICO 尺寸、PDF 合并/拆分/页码范围、720p 视频、MP3 码率、保存位置和文件名。" },
-      { "icon": "download", "title": "引擎按需下载", "text": "大型引擎为可选项：可在安装时勾选，也可之后在应用内下载：{engineNames}。可查看版本、下载速度和剩余时间。" },
+      { "icon": "windows", "title": "多种转换入口", "text": "拖动手势、右键菜单中的 Filee 转换（Windows 11 还可加入第一层菜单）、“发送到”、快捷键，或主窗口的拖放区。" },
+      { "icon": "sliders", "title": "按文件类型设置预设", "text": "质量、缩放、DPI、灰度、元数据、TIFF 压缩、ICO 尺寸、PDF 合并/拆分/页码范围、720p 视频、MP3 码率、保存位置和文件名。" },
+      { "icon": "download", "title": "引擎按需下载", "text": "大型引擎是可选的，可以在安装时勾选，也可以之后在应用内下载：{engineNames}。下载时能看到版本、速度和剩余时间。" },
       { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持简体中文、英语和韩语。有新版本时会提醒你，每个版本都会列出更新内容和贡献者。" }
     ]
   },
@@ -87,12 +87,12 @@
     "eyebrow": "HWP 用户",
     "title": "无需 Hancom Office 的 HWP 转换器",
     "text": "Filee 自己读写韩文（한글）文档，无需购买 Hancom 授权，也不会每次弹出确认窗口。",
-    "quality": "DOCX → HWPX 保留页面设置、页眉页脚、含合并单元格的表格、文本框和图片",
+    "quality": "DOCX 转 HWPX 时保留页面设置、页眉页脚、含合并单元格的表格、文本框和图片",
     "guides": "HWP 转换指南"
   },
   "gallery": {
     "title": "圆环菜单随你定制",
-    "lead": "每种文件类型一个圆环，直接在圆环上拖放排列格式，还可以编辑扩展名标签，并为混合选择设置工具栏。",
+    "lead": "每种文件类型一个圆环，直接在圆环上拖放排列格式，还可以编辑扩展名标签，并为同时选中多种类型的文件设置工具栏。",
     "shots": [
       { "src": "page-toolbar-zh-CN", "alt": "用配置文件和预设编辑圆环工具栏" },
       { "src": "page-home-zh-CN", "alt": "带拖放区和最近转换记录的主页" },
@@ -105,7 +105,7 @@
     "lead": "关于价格、隐私、支持格式和使用方法的简短回答。"
   },
   "specs": {
-    "title": "一览",
+    "title": "概览",
     "rows": [
       ["价格", "免费"],
       ["许可证", "MIT（开源）"],
@@ -121,8 +121,8 @@
     ]
   },
   "download": {
-    "title": "随时开始",
-    "text": "大多数格式装好即用。可选引擎可在安装时勾选，也可在需要时于应用内下载：{engineDetails}。",
+    "title": "下载 Filee",
+    "text": "大多数格式装好即用。可选引擎可以在安装时勾选，也可以等需要时在应用内下载：{engineDetails}。",
     "button": "下载 Windows 版",
     "latest": "最新版本",
     "all": "全部版本",
@@ -147,7 +147,7 @@
     "notices": "第三方声明",
     "signing": "Code signing policy",
     "issues": "反馈问题",
-    "made": "由 KnifeLemon 和贡献者打造。",
+    "made": "由 KnifeLemon 和各位贡献者开发。",
     "formats": "格式目录",
     "cli": "命令行",
     "popular": "热门转换"
@@ -158,13 +158,13 @@
     "builtIn": "内置",
     "builtInHint": "安装后即可使用，无需额外下载",
     "optional": "可选引擎",
-    "optionalHint": "在 Filee 内下载一次的免费可选引擎",
+    "optionalHint": "免费的可选引擎，在 Filee 内下载一次即可",
     "free": "免费",
     "offline": "离线",
     "batch": "批量"
   },
   "catalog": {
-    "title": "支持的文件格式一览 — {formatTotal} 种格式 | Filee 文件转换器",
+    "title": "支持的文件格式一览：{formatTotal} 种格式 | Filee 文件转换器",
     "description": "免费文件转换器 Filee 支持的全部 {formatTotal} 种格式：图片、PDF、文档、HWP、视频、音频、电子书、压缩包、CAD 和字体，以及每种格式能转换成什么。",
     "crumb": "格式目录",
     "h1": "格式目录",
@@ -182,7 +182,7 @@
     "ctaText": "下载适用于 Windows 10/11 的 Filee，免费离线转换 {formatTotal} 种格式。"
   },
   "convert": {
-    "title": "{from} 转 {to} — 免费离线批量转换 | Filee",
+    "title": "{from} 转 {to}：免费离线批量转换 | Filee",
     "description": "用 Filee 在 Windows 10/11 上免费把 {from} 转成 {to}：拖放即可，支持批量转换，离线运行，文件不上传。{engineShort}",
     "descBuiltIn": "内置功能，无需额外安装。",
     "descOptional": "使用免费的 {engine} 引擎。",
@@ -200,7 +200,7 @@
     "whatTitle": "Filee 如何处理 {from} → {to}",
     "points": {
       "builtIn": "内置：安装 Filee 后即可使用，无需额外下载。",
-      "optional": "使用 {engine}：Filee 下载到自身文件夹、只需下载一次的免费可选引擎{sizeParen}。不会调用电脑上已安装的程序。",
+      "optional": "使用 {engine}：免费的可选引擎{sizeParen}，只需下载一次，保存在 Filee 自己的文件夹中。不会调用电脑上已安装的程序。",
       "via": "引擎：{via}",
       "batch": "批量：一个或上百个文件并行转换，某个失败也不影响其他文件。",
       "local": "隐私：文件在你的电脑上转换，从不上传，没有网络也能用。",
@@ -282,7 +282,7 @@
         "code": "filee formats heic"
       },
       {
-        "title": "你的预设（ID 和名称）",
+        "title": "查看你的预设（ID 和名称）",
         "code": "filee presets"
       }
     ],
@@ -335,7 +335,7 @@
       {
         "name": "watch",
         "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
-        "text": "转换放入文件夹的每个文件，直到按下 Ctrl+C。不加 `-o` 时，转换后的文件保存在其中的 `converted` 文件夹。",
+        "text": "持续转换放入文件夹的每个文件，按 Ctrl+C 停止。不加 `-o` 时，转换后的文件保存在该文件夹下的 `converted` 文件夹中。",
         "options": [
           [
             "-t, --to <format>",
@@ -370,7 +370,7 @@
       {
         "name": "formats",
         "usage": "filee formats [<format>]",
-        "text": "列出所有格式的 ID 和扩展名，或某个格式能转换成什么，也会列出安装可选引擎后能增加的目标。",
+        "text": "列出所有格式的 ID 和扩展名，或某个格式能转换成什么，以及安装可选引擎后还能转换成的格式。",
         "options": []
       },
       {
@@ -389,10 +389,10 @@
     "watchTitle": "自动转换文件夹",
     "watchLead": "下载、扫描、其他应用导出的文件，放进文件夹就会自动转换。",
     "watchPoints": [
-      "文件完整后才转换：大小不再变化且没有被其他程序打开，所以正在下载或长时间复制的文件也不会出问题。",
+      "文件完整后才转换，也就是大小不再变化、没有其他程序占用，所以正在下载或复制很久的文件也不会出问题。",
       "忽略临时和隐藏文件（`.crdownload`、`.part`、`.tmp`、`~$` 文件）以及 Filee 不认识的格式。",
-      "转换后的文件保存到所监视文件夹中的 `converted` 文件夹，或 `-o` 指定的位置。",
-      "使用 `--move-originals` 时，转换过的原文件会移到 `originals`：文件夹就像收件箱，启动时已在等待的文件也会被转换。"
+      "转换后的文件保存到监视文件夹下的 `converted` 文件夹，或 `-o` 指定的位置。",
+      "使用 `--move-originals` 时，转换过的原文件会移到 `originals`，文件夹就像收件箱一样；启动时已在等待的文件也会转换。"
     ],
     "watchAppTitle": "或者在应用中后台运行",
     "watchAppText": "Filee 的 **自动转换文件夹** 页面无需终端也能做到：添加文件夹并为每个文件夹选择预设，Filee 在托盘中运行时就会自动转换。",
@@ -420,14 +420,14 @@
     "psTitle": "PowerShell 示例",
     "notesTitle": "须知",
     "notes": [
-      "与应用使用相同的引擎和预设：在 Filee 中创建或修改的预设可以立即通过 `--preset` 按 ID 或名称使用。",
+      "与应用共用引擎和预设。在 Filee 中创建或修改的预设，马上就能用 `--preset` 按 ID 或名称调用。",
       "可选引擎（FFmpeg、LibreOffice 等）在应用的“设置 → 引擎”中安装。用 `filee formats <格式>` 可查看哪些转换需要引擎。",
       "通配符由 filee 自己展开，所以在命令提示符中也能像在 PowerShell 中一样使用 `*.heic`。含空格的路径请加引号。",
-      "不上传任何文件，也不需要联网：与应用一样在你的电脑上转换。",
-      "消息使用英文，脚本和日志在任何电脑上都一致。"
+      "和应用一样在你的电脑上转换，不上传任何文件，也不需要联网。",
+      "命令行消息统一用英文，因此脚本和日志在任何电脑上都一样。"
     ],
-    "ctaTitle": "获取带 filee 命令的 Filee",
-    "ctaText": "命令行随 Windows 10/11 版 Filee 一起提供：免费、开源、离线可用。"
+    "ctaTitle": "下载 Filee，获取 filee 命令",
+    "ctaText": "命令行随 Windows 10/11 版 Filee 一起提供，免费开源，可离线使用。"
   },
   "langBanner": "此页面也提供简体中文版本。"
 }
