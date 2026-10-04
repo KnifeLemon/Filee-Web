@@ -5,7 +5,7 @@
 //
 // Texts are { en, ko, 'zh-CN' } objects made with T(). Placeholders like {formatTotal} are filled by vars() below.
 
-export const VERSION = '1.5.1';
+export const VERSION = '1.5.2';
 export const LANGS = ['en', 'ko', 'zh-CN'];
 
 const T = (en, ko, zh) => ({ en, ko, 'zh-CN': zh });
