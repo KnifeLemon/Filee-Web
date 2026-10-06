@@ -1142,9 +1142,9 @@ export const FAQ = [
       '온라인 변환 사이트는 파일을 남의 서버에 올리고, 크기와 개수를 제한하는 경우가 많으며, 빠른 인터넷이 필요합니다. Filee는 내 PC에서 변환하므로 개인 파일이 밖으로 나가지 않고, 큰 동영상이나 수백 개의 파일도 문제없으며, 인터넷 없이도 광고 없이 무료로 쓸 수 있어요.',
       '在线转换网站要把文件上传到别人的服务器，常常限制文件大小和数量，还依赖网速。Filee 在你的电脑上转换：私密文件不外泄，大视频和上百个文件都没问题，没有网络也能用，而且免费、无广告。') },
   { q: T('Which operating systems are supported?', '어떤 운영체제에서 쓸 수 있나요?', '支持哪些操作系统？'),
-    a: T('The stable release supports Windows 10 and Windows 11, 64-bit (x64). Linux and macOS builds for x64 and ARM64 are in development; desktop integration and conversion results still need testing. Select your operating system and processor in the download section to check for a matching release file. If none is published, the site links to all releases. The format catalog and examples currently describe Windows.',
-      '정식 버전은 Windows 10과 Windows 11 64비트(x64)를 지원합니다. Linux와 macOS의 x64·ARM64 빌드는 개발 중이며, 데스크톱 연동과 변환 결과를 더 테스트해야 합니다. 다운로드에서 운영체제와 프로세서를 고르면 해당 배포 파일이 있는지 확인할 수 있어요. 아직 공개되지 않았다면 전체 릴리스로 안내합니다. 지원 형식 목록과 예시는 현재 Windows 기준입니다.',
-      '正式版支持 Windows 10 和 Windows 11，64 位（x64）。Linux 和 macOS 的 x64、ARM64 构建仍在开发中，桌面集成和转换结果还需要测试。在下载区选择操作系统和处理器即可检查对应的发布文件；尚未发布时会提供全部版本链接。格式目录和示例目前以 Windows 版为准。') },
+    a: T('Windows 10 and 11 (64-bit) is the stable release. macOS 14 or later (Apple silicon and Intel) and Linux (x64 and ARM64) are previews: the macOS app isn\'t notarized yet, so macOS asks you to allow it once under Privacy & Security, and on Linux the drag gesture needs an X11 session (on Wayland, use the drop zone and the right-click action). Pick your system in the download section.',
+      'Windows 10·11(64비트)은 정식 버전이에요. macOS 14 이상(Apple Silicon·Intel)과 Linux(x64·ARM64)는 미리보기예요. macOS 앱은 아직 공증을 받지 않아 처음 한 번 개인정보 보호 및 보안에서 허용해야 하고, Linux에서 드래그 제스처는 X11 세션에서 동작해요(Wayland에서는 드롭 영역과 우클릭 메뉴를 쓰세요). 다운로드에서 운영체제를 고르면 돼요.',
+      'Windows 10 和 11（64 位）为正式版。macOS 14 或更高版本（Apple 芯片和 Intel）以及 Linux（x64 和 ARM64）为预览版：macOS 应用尚未公证，首次需在“隐私与安全性”中允许一次；Linux 上的拖动手势需要 X11 会话（Wayland 下请使用拖放区和右键菜单）。在下载区选择你的系统即可。') },
 ];
 
 /* ───────── Home page bits ───────── */

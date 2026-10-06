@@ -6,7 +6,7 @@
   "name": "English",
   "meta": {
     "title": "Free File Converter for Windows: Convert Files Offline | Filee",
-    "description": "Free file converter for Windows 10/11. Convert images, PDF, Word, Excel, video, audio, e-books, archives and HWP offline by drag and drop. Open source.",
+    "description": "Free file converter for Windows (macOS and Linux preview). Convert images, PDF, Word, Excel, video, audio, e-books and HWP offline by drag and drop.",
     "ogAlt": "Filee: a donut of formats opens at the cursor while dragging a file",
     "appAlternateName": "Filee file converter",
     "keywords": "file converter, free file converter, offline file converter, Windows file converter, image converter, PDF converter, video converter, audio converter, HEIC to JPG, PDF to Word, HWP converter"
@@ -26,11 +26,11 @@
   },
   "hero": {
     "badge": "New in {versionShort}: uses the FFmpeg or calibre you already have, multi-page TIFF",
-    "kicker": "Free file converter for Windows",
+    "kicker": "Free file converter for Windows, macOS and Linux",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
     "download": "Choose a download",
-    "downloadNote": "Windows 10/11 · 64-bit · Free",
+    "downloadNote": "Windows 10/11 · macOS and Linux preview · Free",
     "formats": "Browse {formatCount} formats"
   },
   "demo": {
@@ -110,7 +110,7 @@
       ["Price", "Free"],
       ["License", "MIT (open source)"],
       ["Version", "{version}"],
-      ["Platform", "Windows 10/11 x64 · Linux and macOS in development"],
+      ["Platform", "Windows 10/11 x64 · macOS 14+ and Linux x64/ARM64 (preview)"],
       ["Works offline", "Yes, files never leave your PC"],
       ["Formats", "{formatTotal} in {categoryCount} categories"],
       ["Built in", "{builtinTotal} formats, nothing else to install"],
@@ -132,11 +132,11 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "Windows is the stable release. Linux and macOS builds are in development and still need testing. The format catalog, examples and screenshots describe Windows.",
-    "developmentLabel": "Development build",
-    "developmentButton": "Download development build",
+    "platformNote": "Windows is the stable release. macOS and Linux are previews: the macOS app isn't notarized yet (allow it once under Privacy & Security), and on Linux the drag gesture needs an X11 session. The examples and screenshots show Windows.",
+    "developmentLabel": "Preview",
+    "developmentButton": "Download the preview",
     "checking": "Checking release files…",
-    "missing": "No {target} build is attached to the latest release. Check all releases for development builds.",
+    "missing": "The latest release has no {target} file. Check all releases.",
     "unavailable": "Release files could not be checked. Open all releases to confirm which builds are available.",
     "latest": "Latest version",
     "all": "All releases",

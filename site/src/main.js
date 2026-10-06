@@ -498,6 +498,19 @@ async function getJson(url) {
   }
 }
 
+/**
+ * The visitor's system as a first guess (they can change it). A Mac is taken as Apple silicon: browsers on Intel and
+ * Apple silicon Macs report the same platform, and Apple silicon is what Apple sells now.
+ */
+function guessTarget() {
+  const platform = (navigator.userAgentData?.platform || navigator.platform || '').toLowerCase();
+  const agent = navigator.userAgent.toLowerCase();
+  if (platform.includes('mac')) return 'osx-arm64';
+  if (platform.includes('linux') && !agent.includes('android'))
+    return /aarch64|arm64/.test(platform + agent) ? 'linux-arm64' : 'linux-x64';
+  return 'win-x64';
+}
+
 /** Each selection resolves only an asset for that operating system and processor. */
 function setupGitHub() {
   const api = 'https://api.github.com/repos/KnifeLemon/Filee';
@@ -512,7 +525,7 @@ function setupGitHub() {
   const t = page.download;
   if (!t) return;
   const selectors = [...document.querySelectorAll('select[data-download-target]')];
-  let selected = 'win-x64', release = null, failed = false;
+  let selected = guessTarget(), release = null, failed = false;
   try {
     const saved = sessionStorage.getItem('filee-download-target');
     if (DOWNLOAD_TARGETS.includes(saved)) selected = saved;
