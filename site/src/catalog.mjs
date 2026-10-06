@@ -1141,10 +1141,10 @@ export const FAQ = [
     a: T('Online converters upload your files to someone else\'s server, often limit file size and count, and depend on a fast connection. Filee converts on your PC: private files stay private, large videos and hundreds of files are no problem, and it works without internet, for free and without ads.',
       '온라인 변환 사이트는 파일을 남의 서버에 올리고, 크기와 개수를 제한하는 경우가 많으며, 빠른 인터넷이 필요합니다. Filee는 내 PC에서 변환하므로 개인 파일이 밖으로 나가지 않고, 큰 동영상이나 수백 개의 파일도 문제없으며, 인터넷 없이도 광고 없이 무료로 쓸 수 있어요.',
       '在线转换网站要把文件上传到别人的服务器，常常限制文件大小和数量，还依赖网速。Filee 在你的电脑上转换：私密文件不外泄，大视频和上百个文件都没问题，没有网络也能用，而且免费、无广告。') },
-  { q: T('Which Windows versions are supported?', '어떤 Windows에서 쓸 수 있나요?', '支持哪些 Windows 版本？'),
-    a: T('Windows 10 and Windows 11, 64-bit (x64). When a new version is out, Filee tells you and installs it from inside the app after one click. A macOS version is planned.',
-      'Windows 10과 Windows 11 64비트(x64)를 지원합니다. 새 버전이 나오면 앱이 알려 주고, 버튼 한 번이면 앱 안에서 설치해요. macOS 버전도 계획 중이에요.',
-      '支持 Windows 10 和 Windows 11 64 位（x64）。有新版本时 Filee 会提醒你，点一下即可在应用内完成安装。macOS 版本正在计划中。') },
+  { q: T('Which operating systems are supported?', '어떤 운영체제에서 쓸 수 있나요?', '支持哪些操作系统？'),
+    a: T('The stable release supports Windows 10 and Windows 11, 64-bit (x64). Linux and macOS builds for x64 and ARM64 are in development; desktop integration and conversion results still need testing. Select your operating system and processor in the download section to check for a matching release file. If none is published, the site links to all releases. The format catalog and examples currently describe Windows.',
+      '정식 버전은 Windows 10과 Windows 11 64비트(x64)를 지원합니다. Linux와 macOS의 x64·ARM64 빌드는 개발 중이며, 데스크톱 연동과 변환 결과를 더 테스트해야 합니다. 다운로드에서 운영체제와 프로세서를 고르면 해당 배포 파일이 있는지 확인할 수 있어요. 아직 공개되지 않았다면 전체 릴리스로 안내합니다. 지원 형식 목록과 예시는 현재 Windows 기준입니다.',
+      '正式版支持 Windows 10 和 Windows 11，64 位（x64）。Linux 和 macOS 的 x64、ARM64 构建仍在开发中，桌面集成和转换结果还需要测试。在下载区选择操作系统和处理器即可检查对应的发布文件；尚未发布时会提供全部版本链接。格式目录和示例目前以 Windows 版为准。') },
 ];
 
 /* ───────── Home page bits ───────── */

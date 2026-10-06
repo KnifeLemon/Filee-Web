@@ -18,9 +18,10 @@ function facts(en) {
   const v = vars(EN);
   return [
     `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (64-bit) that converts files offline on the user's own PC; files are never uploaded.`,
+    `Windows x64 is the stable release. Linux and macOS x64/ARM64 builds are in development and still require native testing; desktop integration and format support are not yet verified as equivalent. The website's download selector offers a native file only when the matching asset exists in the latest release; otherwise it links to all releases. The format counts, examples and screenshots below describe Windows.`,
     `Filee converts ${s.formatTotal} file formats in ${s.categoryCount} categories: ${v.categoryList}.`,
     `${s.builtinTotal} of those formats work right after installation. The others use optional engines, picked in the installer or downloaded inside the app when needed: ${engineDetails(EN)}.`,
-    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files, and it never uses those programs even when installed. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
+    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files. It never uses Microsoft Office or Hancom Office. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
     `How it works: hold a modifier key (Ctrl by default, configurable) and drag files; a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals.`,
     `Other ways to convert: "Convert with Filee" in the Windows 11 top-level right-click menu, Send To, a keyboard shortcut on selected files, and the drop zone in the main window.`,
     `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
@@ -65,6 +66,7 @@ ${PAIRS.map(p => `- [${pairMeta(t, p).h1}](${SITE}${paths.convert(t, pairSlug(p)
 ## Download
 
 - [Windows installer, latest release](${DOWNLOAD}) (free; Windows 10/11, x64)
+- [Choose an operating system and processor](${SITE}/#download) (Linux and macOS are development builds; availability depends on published release assets)
 - [All releases and release notes](${REPO}/releases)
 
 ## Website

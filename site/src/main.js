@@ -2,6 +2,8 @@
 // real installer link, the language suggestion and card tilt. No dependencies; without JavaScript every page is
 // still complete and readable, and download buttons lead to the latest release page.
 
+import { DOWNLOAD_TARGETS, downloadChoice, releaseSummary } from './downloads.mjs';
+
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(pointer: fine)').matches;
 const readJson = id => {
@@ -496,25 +498,9 @@ async function getJson(url) {
   }
 }
 
-/**
- * The Windows installer among a release's assets. Since 1.1.0 its name carries the version
- * (Filee-1.1.0-win-Setup.exe); older releases used Filee-win-Setup.exe.
- */
-function findInstaller(assets = []) {
-  for (const pattern of [/^Filee-[\w.-]*win-Setup\.exe$/i, /-win-Setup\.exe$/i, /Setup\.exe$/i]) {
-    const asset = assets.find(a => pattern.test(a.name));
-    if (asset) return asset;
-  }
-  return null;
-}
-
-/**
- * Latest version, installer size and stars from the GitHub API. Download buttons point at the latest release page
- * in the HTML and are upgraded to the installer itself when the API answers.
- */
+/** Each selection resolves only an asset for that operating system and processor. */
 function setupGitHub() {
   const api = 'https://api.github.com/repos/KnifeLemon/Filee';
-  const releaseDownloads = 'https://github.com/KnifeLemon/Filee/releases/download/';
   const compact = n => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10_000 ? 0 : 1).replace(/\.0$/, '')}k` : String(n));
 
   cached('filee-repo', async () => ({ stars: (await getJson(api)).stargazers_count }))
@@ -523,20 +509,50 @@ function setupGitHub() {
     })
     .catch(() => {});
 
-  cached('filee-release-v2', async () => {
-    const release = await getJson(`${api}/releases/latest`);
-    const setup = findInstaller(release.assets);
-    return { tag: release.tag_name, size: setup?.size ?? 0, url: setup?.browser_download_url ?? '' };
-  })
-    .then(({ tag, size, url }) => {
-      const version = tag.startsWith('v') ? tag : `v${tag}`;
-      document.querySelectorAll('[data-version]').forEach(el => { el.textContent = version; });
-      const mb = size ? ` · ${Math.round(size / 1_048_576)} MB` : '';
-      document.querySelectorAll('[data-version-full]').forEach(el => { el.textContent = version + mb; });
-      document.querySelectorAll('[data-latest]').forEach(el => { el.hidden = false; });
-      if (url.startsWith(releaseDownloads)) document.querySelectorAll('[data-download]').forEach(a => { a.href = url; });
-    })
-    .catch(() => {});
+  const t = page.download;
+  if (!t) return;
+  const selectors = [...document.querySelectorAll('select[data-download-target]')];
+  let selected = 'win-x64', release = null, failed = false;
+  try {
+    const saved = sessionStorage.getItem('filee-download-target');
+    if (DOWNLOAD_TARGETS.includes(saved)) selected = saved;
+  } catch { /* storage unavailable */ }
+
+  const render = () => {
+    const choice = downloadChoice(release, selected, failed);
+    const target = t.targets[selected];
+    const version = release?.tag_name ? release.tag_name.replace(/^v?/, 'v') : '';
+    const size = choice.asset?.size ? ` · ${Math.round(choice.asset.size / 1_048_576)} MB` : '';
+    const status = choice.state === 'available'
+      ? `${target} · ${version}${size}${choice.development ? ` · ${t.developmentLabel}` : ''}`
+      : t[choice.state].replace('{target}', target);
+    selectors.forEach(select => { select.value = selected; });
+    document.querySelectorAll('[data-download]').forEach(link => {
+      link.href = choice.url;
+      link.dataset.downloadTarget = selected;
+      const label = link.querySelector('[data-download-label]');
+      if (label) label.textContent = choice.state === 'available'
+        ? (choice.development ? t.developmentButton : t.button) : t.all;
+    });
+    document.querySelectorAll('[data-download-status]').forEach(node => { node.textContent = status; node.hidden = false; });
+    document.querySelectorAll('[data-version]').forEach(node => { node.textContent = version; });
+    document.querySelectorAll('[data-version-full]').forEach(node => { node.textContent = version + size; });
+    document.querySelectorAll('[data-latest]').forEach(node => { node.hidden = !version; });
+  };
+
+  selectors.forEach(select => {
+    select.closest('[data-download-picker]').hidden = false;
+    select.addEventListener('change', () => {
+      if (!DOWNLOAD_TARGETS.includes(select.value)) return;
+      selected = select.value;
+      try { sessionStorage.setItem('filee-download-target', selected); } catch { /* storage unavailable */ }
+      render();
+    });
+  });
+  render();
+  cached('filee-release-v3', async () => releaseSummary(await getJson(`${api}/releases/latest`)))
+    .then(value => { release = releaseSummary(value); render(); })
+    .catch(() => { failed = true; render(); });
 }
 
 /**
@@ -573,6 +589,7 @@ function setupDownloadGuide() {
   document.addEventListener('click', e => {
     const link = e.target.closest?.('[data-download]');
     if (!link || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    if (link.dataset.downloadTarget !== 'win-x64') return;
     if (!/\.exe$/i.test(new URL(link.href).pathname)) return; // still the release page: it explains itself
     if (!dialog) build();
     retry.href = link.href;
