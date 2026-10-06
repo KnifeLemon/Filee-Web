@@ -6,10 +6,10 @@ import { REPO, SITE } from './layout.mjs';
 
 /** Used when the GitHub API does not answer during the build. */
 const FALLBACK = {
-  version: '1.5.2',
-  date: '2026-10-04',
-  setup: { name: 'Filee-1.5.2-win-Setup.exe', size: 107_333_517 },
-  portable: { name: 'Filee-1.5.2-win-Portable.zip', size: 153_253_368 },
+  version: '1.6.0',
+  date: '2026-10-06',
+  setup: { name: 'Filee-1.6.0-win-Setup.exe', size: 107_344_648 },
+  portable: { name: 'Filee-1.6.0-win-Portable.zip', size: 153_277_762 },
 };
 
 /** Version, release date and the installer / portable zip of the latest release. */
