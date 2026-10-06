@@ -167,7 +167,9 @@ export async function build() {
   const languages = await loadLanguages();
   checkLanguageKeys(languages);
   const css = minifyCss(await readFile(join(ROOT, 'src', 'styles.css'), 'utf8'));
-  const js = await readFile(join(ROOT, 'src', 'main.js'), 'utf8');
+  const downloads = await readFile(join(ROOT, 'src', 'downloads.mjs'), 'utf8');
+  const downloadsName = `downloads.${hash(downloads)}.js`;
+  const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8')).replace("'./downloads.mjs'", `'./${downloadsName}'`);
   const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js` };
   const today = new Date().toISOString().slice(0, 10);
   const pages = pageList();
@@ -177,6 +179,7 @@ export async function build() {
   await mkdir(join(DIST, 'assets'), { recursive: true });
   await writeFile(join(DIST, 'assets', assets.css), css);
   await writeFile(join(DIST, 'assets', assets.js), js);
+  await writeFile(join(DIST, 'assets', downloadsName), downloads);
 
   // Written in parallel: on Windows each file write is slow on its own (antivirus scanning), not the rendering.
   const jobs = pages.flatMap(page => languages.map(async t => {

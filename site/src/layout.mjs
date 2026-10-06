@@ -2,6 +2,7 @@
 // building blocks used by every page type (home, format catalog, conversion pages, command line guide).
 
 import { CATEGORIES, FORMATS, PAIRS, label, pairSlug } from './catalog.mjs';
+import { DOWNLOAD_TARGETS } from './downloads.mjs';
 
 export const SITE = 'https://filee.sh';
 export const REPO = 'https://github.com/KnifeLemon/Filee';
@@ -142,6 +143,7 @@ export function renderDocument({ t, languages, assets, title, description, alter
     lang: t.lang,
     langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name })),
     afterDownload: t.download.after,
+    download: t.download,
   };
   return `<!doctype html>
 <html lang="${t.htmlLang}">
@@ -290,7 +292,15 @@ export function downloadCard(t, { title, text, button }) {
       ${LOGO}
       <h2>${escape(title)}</h2>
       <p>${escape(text)}</p>
-      <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download>${icon('windows')}<span>${escape(button)}</span></a>
+      <div class="download-picker" data-download-picker hidden>
+        <label for="download-target">${escape(t.download.selector)}</label>
+        <select id="download-target" data-download-target aria-describedby="download-platform-note download-status">
+          ${DOWNLOAD_TARGETS.map(target => `<option value="${target}">${escape(t.download.targets[target])}</option>`).join('')}
+        </select>
+      </div>
+      <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download aria-describedby="download-status">${icon('download')}<span data-download-label>${escape(button)}</span></a>
+      <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
+      <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
       <p class="download-meta"><span data-latest hidden>${escape(t.download.latest)}: <b data-version-full></b></span>
         <a href="${REPO}/releases">${escape(t.download.all)}</a>
         <a href="${REPO}">${escape(t.download.source)}</a>
@@ -304,4 +314,3 @@ export function pairLinks(t, pairs, cls = 'pills') {
   if (!pairs.length) return '';
   return `<ul class="${cls}">${pairs.map(p => `<li><a class="pill" href="${paths.convert(t, pairSlug(p))}">${escape(pairName(t, p))}</a></li>`).join('')}</ul>`;
 }
-

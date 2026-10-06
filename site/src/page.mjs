@@ -166,7 +166,7 @@ export function renderPage(t, languages, assets) {
       <h1 class="hero-title"><span class="kicker">${escape(f(t.hero.kicker))}</span> ${t.hero.title.map((w, i) => `<span class="word" style="--i:${i}">${escape(w)}</span>`).join(' ')}</h1>
       <p class="lead" data-reveal>${escape(f(t.hero.lead))}</p>
       <div class="cta" data-reveal>
-        <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download>${icon('windows')}<span>${escape(t.hero.download)}</span></a>
+        <a class="btn btn-primary btn-large" href="#download">${icon('download')}<span>${escape(t.hero.download)}</span></a>
         <a class="btn btn-ghost btn-large" href="${paths.formats(t)}">${icon('stack')}<span>${escape(f(t.hero.formats))}</span></a>
       </div>
       <p class="cta-note" data-reveal><span data-version></span>${escape(t.hero.downloadNote)}</p>
@@ -331,4 +331,3 @@ export function renderNotFound(languages, assets) {
 </html>
 `;
 }
-

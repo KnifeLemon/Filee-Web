@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node build.mjs",
-    "check": "node build.mjs && node check.mjs",
+    "check": "node --test downloads.test.mjs && node build.mjs && node check.mjs",
     "dev": "node serve.mjs",
     "preview": "node build.mjs && wrangler dev",
     "deploy": "node build.mjs && wrangler deploy && node indexnow.mjs"
