@@ -26,7 +26,7 @@
   <script type="module">
     import { CUTS, MOMENTS, useScreenshots } from './promo.js';
     import { encodeMp4 } from './mp4.js';
-    import { renderStill, STILL_NAMES } from './stills.js';
+    import { renderProductHunt, renderStill, PRODUCT_HUNT_NAMES, STILL_NAMES } from './stills.js';
 
     const fonts = [
       ['NotoSans', 'NotoSans-Regular.ttf', 400], ['NotoSans', 'NotoSans-Medium.ttf', 500], ['NotoSans', 'NotoSans-Bold.ttf', 700],
@@ -45,6 +45,8 @@
       'toolbar-en': await load('assets/page-toolbar-en.png'),
       'toolbar-ko': await load('assets/page-toolbar-ko.png'),
       'toolbar-zh-CN': await load('assets/page-toolbar-zh-CN.png'),
+      // The current README screenshot (with the search boxes) for the Product Hunt gallery.
+      'ph-toolbar': await load('/repo/docs/media/page-toolbar-en.png'),
     };
     useScreenshots(shots);
 
@@ -138,6 +140,21 @@
           renderStill(ctx, name, lang, shots);
           const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
           const file = `${folder}/${name}-${lang}.png`;
+          await save(file, blob);
+          saved.push(file);
+        }
+        return saved;
+      },
+      /** Product Hunt gallery (1270×760 at 2×) and thumbnail (240×240 at 2×), English. */
+      async productHunt(folder = 'producthunt') {
+        const saved = [];
+        for (const name of PRODUCT_HUNT_NAMES) {
+          const [w, h] = name === 'ph-thumb' ? [240, 240] : [1270, 760];
+          canvas.width = w * 2;
+          canvas.height = h * 2;
+          renderProductHunt(ctx, name, shots, 2);
+          const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+          const file = `${folder}/${name}.png`;
           await save(file, blob);
           saved.push(file);
         }

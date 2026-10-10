@@ -187,6 +187,185 @@ const SLIDES = {
   },
 };
 
+// Product Hunt gallery (1270×760, rendered at 2×) and thumbnail (240×240). English only: the listing is in English.
+
+/** White card with a soft shadow, the base of the Product Hunt panels. */
+function card(ctx, x, y, w, h, r = 24) {
+  ctx.save();
+  shadow(ctx, 40, 14, 0.14);
+  roundRect(ctx, x, y, w, h, r);
+  ctx.fillStyle = 'rgba(255,255,255,0.94)';
+  ctx.fill();
+  ctx.restore();
+}
+
+/** A screenshot region in a rounded frame, scaled to width w. */
+function screenshot(ctx, img, crop, x, y, w) {
+  const h = w * crop.h / crop.w;
+  ctx.save();
+  shadow(ctx, 50, 18, 0.2);
+  roundRect(ctx, x, y, w, h, 18);
+  ctx.fillStyle = C.white;
+  ctx.fill();
+  ctx.shadowColor = 'transparent';
+  roundRect(ctx, x, y, w, h, 18);
+  ctx.clip();
+  ctx.drawImage(img, crop.x, crop.y, crop.w, crop.h, x, y, w, h);
+  ctx.restore();
+  return h;
+}
+
+function phFooter(ctx, W, H) {
+  drawLogo(ctx, 52, H - 44, 36);
+  text(ctx, 'filee.sh', 80, H - 44, { size: 20, weight: 700, color: C.accentDark, align: 'left' });
+  text(ctx, 'Free · Open source (MIT) · Windows, macOS, Linux', W - 44, H - 44, { size: 17, weight: 600, color: C.muted, align: 'right' });
+}
+
+const PRODUCT_HUNT = {
+  'ph-1': (ctx, W, H, s) => {
+    const left = 80;
+    drawLogo(ctx, left + 40, 130, 80);
+    text(ctx, 'Filee', left + 96, 132, { size: 54, weight: 800, align: 'left', letter: -2 });
+    let y = 260;
+    y += headline(ctx, 'Hold a key, drag,\nconvert.', left, y, 64, 1, { align: 'left' });
+    y += 14;
+    headline(ctx, 'A free file converter that opens at your cursor. It runs offline and saves next to the original.',
+      left, y, 25, 1, { align: 'left', color: C.muted, weight: 600, maxWidth: 560 });
+    let x = left;
+    for (const label of ['JPG', 'PDF', 'DOCX', 'MP4', 'HEIC'])
+      x += pill(ctx, x, 600, label, { size: 22, color: C.accentDark, background: C.white, align: 'left' }) + 12;
+    hero(ctx, W - 330, H / 2 + 10, 255, s);
+    keycap(ctx, W - 610, 120, 'Ctrl', { pressed: 1, size: 0.9 });
+  },
+  'ph-2': (ctx, W, H, s) => {
+    headline(ctx, 'Three steps, no app window to open', W / 2, 78, 44, 1, { maxWidth: W - 120 });
+    const cardW = 350;
+    const gap = 40;
+    const top = 150;
+    const cardH = 440;
+    const steps = [
+      ['Hold Ctrl (Option on Mac)', 'and drag files from your file manager'],
+      ['Drop them on a format', 'The donut shows only formats that fit the files'],
+      ['Done, next to the original', 'Nothing is uploaded'],
+    ];
+    steps.forEach(([title, sub], i) => {
+      const x = W / 2 - (cardW * 3 + gap * 2) / 2 + i * (cardW + gap);
+      card(ctx, x, top, cardW, cardH);
+      const cx = x + cardW / 2;
+      const vy = top + 160;
+      if (i === 0) {
+        keycap(ctx, cx - 70, vy - 60, 'Ctrl', { pressed: 1, size: 0.85 });
+        keycap(ctx, cx + 70, vy - 60, 'Option', { pressed: 1, size: 0.85 });
+        fileIcon(ctx, cx - 40, vy - 10, 80, 'jpg');
+        cursor(ctx, cx + 20, vy + 50, { pressed: true, scale: 0.8 });
+      } else if (i === 1) {
+        donut(ctx, cx, vy, 120, IMAGE_ITEMS, { open: 1, hover: 1, hoverAmount: 1, title: s.oneJpg, hint: '' });
+      } else {
+        fileIcon(ctx, cx - 120, vy - 50, 80, 'jpg');
+        ctx.save();
+        ctx.lineWidth = 6;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = C.accent;
+        ctx.beginPath();
+        ctx.moveTo(cx - 22, vy);
+        ctx.lineTo(cx + 22, vy);
+        ctx.moveTo(cx + 8, vy - 14);
+        ctx.lineTo(cx + 22, vy);
+        ctx.lineTo(cx + 8, vy + 14);
+        ctx.stroke();
+        ctx.restore();
+        fileIcon(ctx, cx + 40, vy - 50, 80, 'webp', { glow: 1 });
+      }
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x + 44, top + 44, 20, 0, Math.PI * 2);
+      ctx.fillStyle = [C.accent, C.accentMid, C.green][i];
+      ctx.fill();
+      ctx.restore();
+      text(ctx, String(i + 1), x + 44, top + 45, { size: 22, weight: 800, color: C.white });
+      const titleH = headline(ctx, title, cx, top + 315, 26, 1, { maxWidth: cardW - 40 });
+      headline(ctx, sub, cx, top + 315 + titleH + 4, 19, 1, { color: C.muted, weight: 600, maxWidth: cardW - 50 });
+    });
+    phFooter(ctx, W, H);
+  },
+  'ph-3': (ctx, W, H, s, shots) => {
+    const left = 70;
+    let y = 150;
+    y += headline(ctx, 'Make the donut yours', left, y, 46, 1, { align: 'left', maxWidth: 420 });
+    y += 16;
+    headline(ctx, 'Choose the formats for each kind of file, put them in your order and set the quality once.',
+      left, y, 22, 1, { align: 'left', color: C.muted, weight: 600, maxWidth: 390 });
+    ['Profiles per file type', 'Presets with your settings', 'Search as you type'].forEach((label, i) =>
+      pill(ctx, left, 470 + i * 64, label, { size: 20, color: C.accentDark, background: C.white, align: 'left' }));
+    const img = shots['ph-toolbar'] ?? shots['toolbar-en'];
+    if (img)
+      screenshot(ctx, img, { x: 0, y: 0, w: 1080, h: 820 }, 500, 70, 720);
+    phFooter(ctx, W, H);
+  },
+  'ph-4': (ctx, W, H) => {
+    headline(ctx, '180 formats, no other software', W / 2, 92, 46, 1, { maxWidth: W - 120 });
+    headline(ctx, 'Images, PDF, Word, Excel, PowerPoint, HWP, e-books, archives, fonts and CAD without Office. Video and audio with an optional FFmpeg download.',
+      W / 2, 162, 21, 1, { color: C.muted, weight: 600, maxWidth: 900 });
+    const types = ['jpg', 'png', 'heic', 'webp', 'pdf', 'md', 'docx', 'xlsx', 'pptx', 'hwpx', 'mp4', 'mp3'];
+    const size = 104;
+    const gapX = 60;
+    const rowW = size * 6 + gapX * 5;
+    types.forEach((type, i) => {
+      const col = i % 6;
+      const row = Math.floor(i / 6);
+      fileIcon(ctx, W / 2 - rowW / 2 + col * (size + gapX), 260 + row * 190, size, type);
+    });
+    pill(ctx, W / 2, 660, '🔒  Works offline. Your files never leave your computer.', { size: 22, color: C.white, background: C.green });
+  },
+  'ph-5': (ctx, W, H) => {
+    headline(ctx, 'More than the drag', W / 2, 100, 46, 1, { maxWidth: W - 120 });
+    const cards = [
+      ['Right-click menu', '"Convert with Filee" in File Explorer, Finder, Nautilus, Dolphin and more'],
+      ['Watch folders', 'Files that land in a folder convert themselves once they finish copying'],
+      ['Command line', 'Same engines and presets, with JSON output for scripts'],
+    ];
+    const cardW = 350;
+    const gap = 40;
+    const top = 180;
+    cards.forEach(([title, sub], i) => {
+      const x = W / 2 - (cardW * 3 + gap * 2) / 2 + i * (cardW + gap);
+      card(ctx, x, top, cardW, 250);
+      headline(ctx, title, x + 36, top + 56, 28, 1, { align: 'left', color: C.accentDark, maxWidth: cardW - 72 });
+      headline(ctx, sub, x + 36, top + 112, 20, 1, { align: 'left', color: C.muted, weight: 600, maxWidth: cardW - 72 });
+      if (i === 2) {
+        roundRect(ctx, x + 28, top + 176, cardW - 56, 46, 10);
+        ctx.fillStyle = '#26243A';
+        ctx.fill();
+        ctx.save();
+        ctx.font = '600 16px Consolas, "Cascadia Mono", monospace';
+        ctx.fillStyle = '#E8E6F8';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('filee convert *.heic --to jpg', x + 42, top + 200, cardW - 84);
+        ctx.restore();
+      }
+    });
+    const platforms = ['Windows 10/11', 'macOS 14+ (preview)', 'Linux x64 / ARM64 (preview)'];
+    pillRow(ctx, W / 2, 530, platforms, 20, i => ({ size: 22, background: [C.accent, C.accentMid, C.accentDark][i] }));
+    text(ctx, 'Free and open source (MIT)  ·  filee.sh  ·  github.com/KnifeLemon/Filee', W / 2, 630, { size: 22, weight: 700, color: C.accentDark });
+  },
+  'ph-thumb': (ctx, W, H) => {
+    drawLogo(ctx, W / 2, H / 2, W * 0.78);
+  },
+};
+
+export const PRODUCT_HUNT_NAMES = Object.keys(PRODUCT_HUNT);
+
+/** Draws a Product Hunt image on ctx, whose canvas is `scale` times the logical size. */
+export function renderProductHunt(ctx, name, shots, scale = 2) {
+  const W = ctx.canvas.width / scale;
+  const H = ctx.canvas.height / scale;
+  ctx.save();
+  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+  background(ctx, W, H, 1.3);
+  PRODUCT_HUNT[name](ctx, W, H, STRINGS.en, shots);
+  ctx.restore();
+}
+
 export const STILL_NAMES = Object.keys(SLIDES);
 export const STILL_SIZES = { og: [1200, 630], social: [1280, 640] };
 
