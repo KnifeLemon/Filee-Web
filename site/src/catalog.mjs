@@ -22,7 +22,7 @@ export const L = (value, lang) => (value == null || typeof value === 'string' ? 
 export const ENGINES = {
   ffmpeg: {
     name: 'FFmpeg', sizeMB: 100, url: 'https://ffmpeg.org/',
-    for: T('video and audio', '동영상·오디오', '视频和音频'),
+    for: T('video and audio, and saving HEIC', '동영상·오디오와 HEIC 저장', '视频和音频，以及保存 HEIC'),
   },
   libreoffice: {
     name: 'LibreOffice', sizeMB: 420, url: 'https://www.libreoffice.org/',
@@ -104,6 +104,12 @@ export const OPTIONS = {
     short: T('render DPI', '해상도(DPI)', '渲染 DPI'),
     long: T('Pages are rendered at 150 DPI by default; choose 300 DPI for print quality.', '페이지는 기본 150DPI로 그리며, 인쇄용이면 300DPI를 고르세요.', '页面默认以 150 DPI 渲染，打印质量可选 300 DPI。'),
   },
+  longImage: {
+    short: T('one long image', '긴 이미지 한 장', '拼成长图'),
+    long: T('The Long image preset stacks all pages into one tall image, e.g. to post a whole document at once.',
+      '긴 이미지 프리셋은 모든 페이지를 위아래로 이어 이미지 한 장으로 만들어요. 문서를 한 번에 올릴 때 좋아요.',
+      '长图预设会把所有页面上下拼成一张图片，适合一次性发布整份文档。'),
+  },
   vectorPdf: {
     short: T('vector PDF', '벡터 PDF', '矢量 PDF'),
     long: T('The PDF stays vector, so it is sharp at any zoom and in print.', 'PDF에서도 벡터가 유지되어 확대하거나 인쇄해도 선명합니다.', 'PDF 仍为矢量，任意放大或打印都清晰。'),
@@ -137,6 +143,12 @@ export const OPTIONS = {
   noAutocad: {
     short: T('no AutoCAD needed', '오토캐드 불필요', '无需 AutoCAD'),
     long: T('No AutoCAD or DWG viewer needed.', '오토캐드나 DWG 뷰어가 필요 없습니다.', '无需 AutoCAD 或 DWG 看图软件。'),
+  },
+  lossless: {
+    short: T('no re-encoding', '재인코딩 없음', '无需重新编码'),
+    long: T('When the new format can hold the video and sound as they are (an iPhone MOV → MP4), they are only rewrapped: no quality lost, HDR kept, done in seconds.',
+      '아이폰 MOV → MP4처럼 영상과 소리를 새 형식에 그대로 담을 수 있으면 다시 인코딩하지 않고 포장만 바꿔요. 화질 손실 없이 HDR도 그대로, 몇 초면 끝나요.',
+      '像 iPhone 的 MOV 转 MP4 这样，视频和声音能原样放进新格式时，只重新封装，不重新编码。画质不损失，HDR 保留，几秒就完成。'),
   },
   res720: {
     short: T('720p option', '720p 옵션', '720p 选项'),
@@ -278,6 +290,8 @@ export const CATEGORIES = [
         extras: ['quality', 'resize', 'dpi', 'grayscale', 'metadata', 'icoSizes', 'tiff', 'merge'] },
       { label: T('Camera RAW', '카메라 RAW', '相机 RAW'), from: RAW_IDS, to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick',
         extras: ['quality', 'resize', 'metadata'] },
+      { from: ['jpg', 'png', 'webp', 'avif', 'tiff', 'bmp', 'gif', 'psd', 'tga', 'ppm', 'jxl', 'jp2', ...RAW_IDS], to: ['heic'],
+        engine: 'ffmpeg', extras: ['quality', 'resize', 'metadata'] },
     ],
   },
   {
@@ -333,7 +347,7 @@ export const CATEGORIES = [
       }),
     ],
     routes: [
-      { from: ['pdf'], to: ['png', 'jpg', 'tiff'], engine: 'builtin', via: 'PDFium', extras: ['renderDpi', 'pages'] },
+      { from: ['pdf'], to: ['png', 'jpg', 'tiff'], engine: 'builtin', via: 'PDFium', extras: ['renderDpi', 'pages', 'longImage'] },
       { from: ['pdf'], to: ['docx', 'hwpx', 'epub', 'txt', 'md', 'html', 'cbz'], engine: 'builtin', extras: ['editable'] },
       { from: ['pdf'], to: [], engine: 'builtin', via: 'PDFsharp', extras: ['merge', 'split', 'pages'] },
       { from: ['pdf'], to: ['eps', 'ps'], engine: 'ghostscript' },
@@ -621,7 +635,7 @@ export const CATEGORIES = [
     ],
     routes: [
       { from: ['mp4', 'mov', 'mkv', 'webm', 'avi', 'wmv', 'flv', 'mpg', 'ts', 'm2ts', '3gp', '3g2', 'ogv', 'vob', 'mod', 'dv', 'mxf', 'rm', 'swf', 'wtv'],
-        to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['res720', 'extractAudio'] },
+        to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['lossless', 'res720', 'extractAudio'] },
     ],
   },
   {
@@ -818,6 +832,10 @@ export const PAIRS = [
     tip: T('Choose PNG when you want to keep editing the photo without adding a round of JPG compression. PNG is lossless, so expect files several times larger than the HEIC original.',
       '사진을 더 편집할 계획이라면 JPG 압축을 한 번 더 거치지 않도록 PNG로 바꾸세요. PNG는 무손실이라 원본 HEIC보다 몇 배 큰 파일이 됩니다.',
       '如果还要继续编辑照片，转成 PNG 可以避免再经历一次 JPG 压缩。PNG 是无损格式，文件通常会比原始 HEIC 大好几倍。') },
+  { from: 'jpg', to: 'heic', options: ['quality', 'resize', 'metadata'],
+    tip: T('HEIC keeps a photo in about half the space of a JPG at the same quality, the way iPhones save photos. Saving HEIC needs the free FFmpeg engine (about 100 MB, downloaded once in the app). EXIF, the colour profile and the orientation are kept.',
+      'HEIC는 같은 화질에서 JPG의 절반 정도 용량으로 사진을 저장해요. 아이폰이 사진을 저장하는 방식이에요. HEIC로 저장하려면 무료 FFmpeg 엔진(약 100MB, 앱에서 한 번 다운로드)이 필요하고, EXIF·색 프로필·방향은 그대로 유지돼요.',
+      'HEIC 在同等画质下只占 JPG 约一半的空间，iPhone 就是这样保存照片的。保存 HEIC 需要免费的 FFmpeg 引擎（约 100 MB，在应用中下载一次），EXIF、色彩配置文件和方向都会保留。') },
   { from: 'webp', to: 'png', popular: true, options: ['resize'],
     tip: T('Images saved from websites are often WebP. Converting to PNG keeps the full quality and any transparency, so the result works in every editor, slide deck and document.',
       '웹사이트에서 저장한 이미지는 WEBP인 경우가 많습니다. PNG로 바꾸면 화질과 투명 배경이 그대로 유지되어 어떤 편집 프로그램·슬라이드·문서에도 넣을 수 있어요.',
@@ -884,11 +902,11 @@ export const PAIRS = [
       'EPS는 PostScript 해석기가 있어야 볼 수 있는데, Filee는 Ghostscript로 이를 처리합니다. PDF에도 벡터 그림이 그대로 남아 어디서나 열리고 인쇄해도 선명해요. PostScript(.ps) 파일도 똑같이 변환됩니다.',
       'EPS 需要 PostScript 解释器才能显示，Filee 使用 Ghostscript 来处理。生成的 PDF 保留矢量图形，到处都能打开，打印依然清晰。PostScript（.ps）文件也同样可以转换。') },
   // PDF
-  { from: 'pdf', to: 'jpg', popular: true, options: ['renderDpi', 'pages', 'quality'],
+  { from: 'pdf', to: 'jpg', popular: true, options: ['renderDpi', 'pages', 'quality', 'longImage'],
     tip: T('Every page becomes its own JPG, so a 10-page PDF gives you 10 images. Handy for chats, slides and social posts that accept images but not PDF.',
       'PDF의 각 페이지가 JPG 한 장씩으로 저장되어, 10쪽짜리 PDF라면 이미지 10장이 생깁니다. 메신저·슬라이드·SNS처럼 PDF는 안 되고 이미지만 받는 곳에 올릴 때 편리해요.',
       'PDF 的每一页都会保存为一张 JPG，10 页的 PDF 就得到 10 张图片，方便发到只接受图片、不接受 PDF 的聊天软件、幻灯片或社交媒体。') },
-  { from: 'pdf', to: 'png', options: ['renderDpi', 'pages'],
+  { from: 'pdf', to: 'png', options: ['renderDpi', 'pages', 'longImage'],
     tip: T('PNG keeps text and lines crisp without JPG artefacts, which suits slides, diagrams, sheet music and pages you want to annotate or put into a presentation.',
       'PNG는 JPG 특유의 뭉개짐 없이 글자와 선이 선명해, 슬라이드·도표·악보나 메모를 달거나 발표 자료에 넣을 페이지에 알맞습니다.',
       'PNG 不会出现 JPG 的压缩痕迹，文字和线条清晰，适合幻灯片、图表、乐谱，以及需要批注或放进演示文稿的页面。') },
@@ -1023,10 +1041,10 @@ export const PAIRS = [
     tip: T('Save the soundtrack of a lecture, concert or interview as an MP3 that plays everywhere: in the car, on an old player or in a transcription tool.',
       '강의·공연·인터뷰 영상에서 소리만 뽑아 차 안, 옛 플레이어, 받아쓰기 도구 어디서나 재생되는 MP3로 저장하세요.',
       '把讲座、演唱会或访谈视频的声音保存为 MP3，在车里、旧播放器或语音转文字工具中都能播放。') },
-  { from: 'mov', to: 'mp4', popular: true, options: [],
-    tip: T('iPhone and Mac videos are MOV files. As MP4 they play on Android phones, smart TVs, older Windows apps and upload forms that reject MOV, and the MP4 720p preset shrinks 4K clips for sharing.',
-      '아이폰과 맥으로 찍은 영상은 MOV입니다. MP4로 바꾸면 안드로이드 폰, 스마트 TV, 오래된 Windows 프로그램, MOV를 받지 않는 업로드 양식에서도 재생되고, MP4 720p 프리셋으로 4K 영상을 공유하기 좋게 줄일 수도 있습니다.',
-      'iPhone 和 Mac 拍的视频是 MOV 格式。转成 MP4 后，安卓手机、智能电视、旧版 Windows 软件以及不接受 MOV 的上传表单都能播放；MP4 720p 预设还能把 4K 视频缩小，方便分享。') },
+  { from: 'mov', to: 'mp4', popular: true, options: ['lossless'],
+    tip: T('iPhone and Mac videos are MOV files. As MP4 they play on Android phones, smart TVs, older Windows apps and upload forms that reject MOV. The video and sound usually fit MP4 as they are, so Filee only rewraps them: no quality lost, HDR kept, done in seconds. The MP4 720p preset shrinks 4K clips for sharing.',
+      '아이폰과 맥으로 찍은 영상은 MOV입니다. MP4로 바꾸면 안드로이드 폰, 스마트 TV, 오래된 Windows 프로그램, MOV를 받지 않는 업로드 양식에서도 재생돼요. 영상과 소리는 대개 MP4에 그대로 들어가서 다시 인코딩하지 않고 포장만 바꾸니, 화질 손실 없이 HDR도 그대로 몇 초면 끝나요. MP4 720p 프리셋으로 4K 영상을 공유하기 좋게 줄일 수도 있습니다.',
+      'iPhone 和 Mac 拍的视频是 MOV 格式。转成 MP4 后，安卓手机、智能电视、旧版 Windows 软件以及不接受 MOV 的上传表单都能播放。视频和声音通常能原样放进 MP4，所以只重新封装，不重新编码，画质不损失，HDR 保留，几秒就完成。MP4 720p 预设还能把 4K 视频缩小，方便分享。') },
   { from: 'mkv', to: 'mp4', options: ['res720'],
     tip: T('MKV recordings, for example from OBS, often won\'t import into video editors or play on TVs, while MP4 is accepted almost everywhere. The conversion runs locally, so long recordings never have to be uploaded.',
       'OBS 등으로 녹화한 MKV는 편집 프로그램에 안 들어가거나 TV에서 재생되지 않을 때가 많지만, MP4는 거의 어디서나 받아요. PC에서 변환하니 긴 녹화 파일을 업로드할 필요가 없습니다.',
