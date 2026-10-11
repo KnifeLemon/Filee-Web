@@ -142,6 +142,8 @@
     "all": "全部版本",
     "source": "源代码",
     "signing": "Code signing policy",
+    "sponsor": "赞助开发",
+    "sponsorText": "Filee 免费，并将一直免费。",
     "after": {
       "title": "下载已开始",
       "steps": [
@@ -160,6 +162,7 @@
     "license": "MIT 许可证",
     "notices": "第三方声明",
     "signing": "Code signing policy",
+    "sponsor": "赞助 Filee",
     "issues": "反馈问题",
     "made": "由 KnifeLemon 和各位贡献者开发。",
     "formats": "格式目录",

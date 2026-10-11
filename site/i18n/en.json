@@ -142,6 +142,8 @@
     "all": "All releases",
     "source": "Source code",
     "signing": "Code signing policy",
+    "sponsor": "Sponsor its development",
+    "sponsorText": "Filee is free and stays free.",
     "after": {
       "title": "Your download has started",
       "steps": [
@@ -160,6 +162,7 @@
     "license": "MIT License",
     "notices": "Third-party notices",
     "signing": "Code signing policy",
+    "sponsor": "Sponsor Filee",
     "issues": "Report an issue",
     "made": "Built by KnifeLemon and contributors.",
     "formats": "All formats",

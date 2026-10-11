@@ -14,6 +14,12 @@ export const REPO = 'https://github.com/KnifeLemon/Filee';
 export const DOWNLOAD = `${REPO}/releases/latest`;
 
 /** Filee's AlternativeTo page (footer badge; the badge SVGs are kept in public/media/badges, the CSP allows no other hosts). */
+/**
+ * Where to sponsor Filee: Fairy for Korean pages (Korean cards and easy-pay), GitHub Sponsors elsewhere (cards from
+ * anywhere).
+ */
+const SPONSOR = { ko: 'https://fairy.hada.io/@filee', default: 'https://github.com/sponsors/KnifeLemon' };
+const sponsorUrl = t => SPONSOR[t.lang] ?? SPONSOR.default;
 const ALTERNATIVETO = 'https://alternativeto.net/software/filee-1/about/?utm_source=badge&utm_medium=referral';
 
 export const escape = value => String(value)
@@ -241,6 +247,7 @@ function footer(t, languages, alternates) {
       <a href="${REPO}/blob/main/LICENSE">${escape(t.footer.license)}</a>
       <a href="${REPO}/blob/main/THIRD-PARTY-NOTICES.md">${escape(t.footer.notices)}</a>
       <a href="${REPO}#code-signing-policy">${escape(t.footer.signing)}</a>
+      <a href="${sponsorUrl(t)}" rel="noopener">${escape(t.footer.sponsor)}</a>
     </nav>
     <nav class="footer-popular" aria-label="${escape(t.footer.popular)}">
       <strong>${escape(t.footer.popular)}</strong>
@@ -305,6 +312,7 @@ export function downloadCard(t, { title, text, button }) {
         <a href="${REPO}/releases">${escape(t.download.all)}</a>
         <a href="${REPO}">${escape(t.download.source)}</a>
         <a href="${REPO}#code-signing-policy">${escape(t.download.signing)}</a></p>
+      <p class="download-sponsor">${escape(t.download.sponsorText)} <a href="${sponsorUrl(t)}" rel="noopener">${escape(t.download.sponsor)}</a></p>
     </div>
   </section>`;
 }

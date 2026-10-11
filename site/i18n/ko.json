@@ -142,6 +142,8 @@
     "all": "모든 릴리스",
     "source": "소스 코드",
     "signing": "Code signing policy",
+    "sponsor": "개발 응원하기",
+    "sponsorText": "Filee는 앞으로도 무료예요.",
     "after": {
       "title": "다운로드가 시작됐어요",
       "steps": [
@@ -160,6 +162,7 @@
     "license": "MIT 라이선스",
     "notices": "서드파티 고지",
     "signing": "Code signing policy",
+    "sponsor": "Filee 후원하기",
     "issues": "문제 신고",
     "made": "KnifeLemon과 기여자들이 만듭니다.",
     "formats": "지원 형식 전체",
