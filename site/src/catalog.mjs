@@ -96,6 +96,12 @@ export const OPTIONS = {
     short: T('split pages', '페이지 나누기', '拆分页面'),
     long: T('The split preset saves every page as its own PDF in a subfolder.', '나누기 프리셋은 페이지마다 PDF를 하나씩 하위 폴더에 저장합니다.', '拆分预设会把每一页单独存成 PDF，放在子文件夹中。'),
   },
+  removeBackground: {
+    short: T('remove background', '배경 제거', '去除背景'),
+    long: T('The Remove background preset makes a plain backdrop transparent: the paper behind a signature or stamp, the backdrop of a logo.',
+      '배경 제거 프리셋은 서명·도장 뒤의 종이나 로고 뒤의 단색 배경을 투명하게 만들어요.',
+      '去除背景预设可将签名、印章后面的纸张或标志后面的纯色背景变为透明。'),
+  },
   pages: {
     short: T('page ranges', '페이지 범위', '页码范围'),
     long: T('Page ranges such as 1-3,5 limit the conversion to the pages you need.', '‘1-3,5’ 같은 페이지 범위로 필요한 페이지만 변환할 수 있어요.', '可用“1-3,5”这样的页码范围只转换需要的页面。'),
@@ -287,7 +293,7 @@ export const CATEGORIES = [
     routes: [
       { from: ['jpg', 'png', 'webp', 'avif', 'heic', 'tiff', 'bmp', 'gif', 'ico', 'psd', 'psb', 'tga', 'ppm', 'jxl', 'jp2', 'xcf', 'icns'],
         to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick',
-        extras: ['quality', 'resize', 'dpi', 'grayscale', 'metadata', 'icoSizes', 'tiff', 'merge'] },
+        extras: ['quality', 'resize', 'dpi', 'grayscale', 'metadata', 'removeBackground', 'icoSizes', 'tiff', 'merge'] },
       { label: T('Camera RAW', '카메라 RAW', '相机 RAW'), from: RAW_IDS, to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick',
         extras: ['quality', 'resize', 'metadata'] },
       { from: ['jpg', 'png', 'webp', 'avif', 'tiff', 'bmp', 'gif', 'psd', 'tga', 'ppm', 'jxl', 'jp2', ...RAW_IDS], to: ['heic'],
@@ -848,7 +854,7 @@ export const PAIRS = [
     tip: T('Screenshots and exported photos saved as PNG can be many megabytes. Photos usually get much smaller as JPG; for text-heavy screenshots and logos, PNG often stays the better format.',
       'PNG로 저장된 스크린샷이나 사진은 몇 MB씩 되기도 합니다. 사진이라면 JPG로 바꿔 용량을 크게 줄일 수 있고, 글자가 많은 스크린샷이나 로고는 PNG가 더 나은 경우가 많습니다.',
       '存成 PNG 的截图和照片往往有好几 MB。照片转成 JPG 通常能大幅缩小体积；文字较多的截图和 Logo 则往往更适合保留 PNG。') },
-  { from: 'jpg', to: 'png', options: ['resize', 'metadata'],
+  { from: 'jpg', to: 'png', options: ['resize', 'metadata', 'removeBackground'],
     tip: T('Converting JPG to PNG doesn\'t bring back detail lost to JPG compression, but it stops further loss: every later edit and save stays lossless. Convert before you retouch an image or add transparency in an editor.',
       'JPG를 PNG로 바꿔도 이미 압축으로 잃은 디테일이 돌아오지는 않지만, 이후 편집하고 저장할 때 더 이상 화질이 떨어지지 않습니다. 이미지를 보정하거나 편집기에서 배경을 투명하게 만들기 전에 바꿔 두세요.',
       'JPG 转 PNG 并不能找回压缩时丢失的细节，但之后每次编辑、保存都不会再损失画质。适合在修图或在编辑器里添加透明背景之前转换。') },

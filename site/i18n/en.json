@@ -71,7 +71,7 @@
       { "icon": "doors", "title": "Batch conversion", "text": "Drop 1 file or 100. They're converted in parallel, a failure never stops the rest, and presets can merge everything into one PDF or one ZIP." },
       { "icon": "lock", "title": "100% on your PC", "text": "Nothing is uploaded. Filee works offline, so private documents, photos and recordings never leave your computer." },
       { "icon": "windows", "title": "Right where you work", "text": "The drag gesture, Convert with Filee in the right-click menu (on Windows 11 also in the top-level menu), Send To, a keyboard shortcut or the drop zone in the main window." },
-      { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder, file names and the original file dates." },
+      { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, DPI, grayscale, metadata, background removal, TIFF compression, ICO sizes, PDF merge, split, page ranges and one long image, 720p video, MP3 bitrate, output folder, file names and the original file dates." },
       { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left. Already have FFmpeg, calibre or Pandoc? Filee finds them and skips the download." },
       { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Korean and Simplified Chinese. Filee tells you about new versions; every release lists its changes and contributors." }
     ]
@@ -117,7 +117,7 @@
       ["Optional engines", "{engineNames}"],
       ["Command line", "filee convert and filee watch, added to PATH by Setup"],
       ["Languages", "English, Korean, Simplified Chinese"],
-      ["Updates", "Installed from inside the app after one click"]
+      ["Updates", "Installed from inside the app after one click; each says if it's required, recommended or optional"]
     ]
   },
   "download": {
@@ -372,7 +372,7 @@
           ],
           [
             "-r, --recursive",
-            "Also watch sub folders"
+            "Also watch sub folders (their files keep the sub folder in the output)"
           ],
           [
             "--move-originals",
@@ -416,7 +416,7 @@
     "watchPoints": [
       "Files are converted once they are complete, no longer growing and not open in another program, so downloads and long copies are safe.",
       "Temporary and hidden files (`.crdownload`, `.part`, `.tmp`, `~$` files) and formats Filee doesn't know are ignored.",
-      "Converted files go to a `converted` folder inside the watched folder, or wherever `-o` points.",
+      "Converted files go to a `converted` folder inside the watched folder, or wherever `-o` points. With `-r` files from sub folders keep their sub folder there (`2025\\a.png` → `converted\\2025\\a.pdf`).",
       "With `--move-originals` each converted source moves to `originals`, so the folder works like an inbox. Files already waiting there are converted at start."
     ],
     "watchAppTitle": "Or in the app, in the background",
