@@ -554,7 +554,9 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .nav-inner { padding: 10px 16px; gap: 10px; }
-  .nav .github, .nav .btn-small span, .lang-menu summary span { display: none; }
+  .nav .btn-small span, .lang-menu summary span { display: none; }
+  /* GitHub stays on phones, as a compact icon with the star count */
+  .nav .github { padding: 7px 11px; gap: 6px; font-size: 13px; }
   .hero, .section { padding-left: 16px; padding-right: 16px; }
   .steps, .bento, .gallery, .specs { grid-template-columns: 1fr; }
   .gallery { grid-auto-flow: column; grid-auto-columns: 86%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
