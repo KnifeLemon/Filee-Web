@@ -14,6 +14,7 @@ import { renderFormatsPage } from './src/formats-page.mjs';
 import { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE, paths } from './src/layout.mjs';
 import { llmsFullTxt, llmsTxt } from './src/llms.mjs';
 import { latestRelease, padXml } from './src/pad.mjs';
+import { loadSupporters, logoFiles } from './src/sponsors.mjs';
 import { renderNotFound, renderPage } from './src/page.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
@@ -170,7 +171,9 @@ export async function build() {
   const downloads = await readFile(join(ROOT, 'src', 'downloads.mjs'), 'utf8');
   const downloadsName = `downloads.${hash(downloads)}.js`;
   const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8')).replace("'./downloads.mjs'", `'./${downloadsName}'`);
-  const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js` };
+  // Pages get the hashed asset names, and the supporters for the home page's sponsor section.
+  const supporters = await loadSupporters();
+  const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js`, supporters };
   const today = new Date().toISOString().slice(0, 10);
   const pages = pageList();
 
@@ -180,6 +183,8 @@ export async function build() {
   await writeFile(join(DIST, 'assets', assets.css), css);
   await writeFile(join(DIST, 'assets', assets.js), js);
   await writeFile(join(DIST, 'assets', downloadsName), downloads);
+  if (logoFiles(supporters).length) await mkdir(join(DIST, 'media', 'sponsors'), { recursive: true });
+  await Promise.all(logoFiles(supporters).map(l => writeFile(join(DIST, 'media', 'sponsors', l.file), l.bytes)));
 
   // Written in parallel: on Windows each file write is slow on its own (antivirus scanning), not the rendering.
   const jobs = pages.flatMap(page => languages.map(async t => {

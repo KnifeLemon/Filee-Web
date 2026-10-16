@@ -433,6 +433,18 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
 .popular { padding: 26px 28px; }
 .popular h3, .related h3, .cat-guides h3, .details-side h3 { font-size: 17px; letter-spacing: -0.01em; }
 .guides-label { margin-top: 26px; font-weight: 700; }
+.supporters { max-width: 880px; margin: 0 auto; text-align: center; }
+.supporters ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+.supporters-logos { gap: 14px; }
+.supporter-logo { display: flex; align-items: center; justify-content: center; min-width: 160px; height: 88px; padding: 18px 26px; border-radius: 18px; background: color-mix(in srgb, var(--surface) 82%, transparent); border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color 0.2s, transform 0.2s; }
+a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); transform: translateY(-2px); }
+.supporter-logo img { display: block; height: 48px; width: auto; max-width: 220px; object-fit: contain; }
+.supporter-logo b { font-size: 18px; }
+/* A logo without a dark version keeps a light tile in the dark theme. */
+@media (prefers-color-scheme: dark) { .supporter-logo.light-only { background: #f4f3f0; } }
+.supporters-names { gap: 6px 18px; margin-top: 24px !important; color: var(--muted); font-weight: 600; }
+.supporters-names a { color: inherit; }
+.supporters-join { margin-top: 24px; font-size: 15px; }
 .faq { max-width: 880px; margin: 0 auto; display: grid; gap: 10px; }
 .faq details { border-radius: 18px; transition: border-color 0.3s; }
 .faq details[open] { border-color: color-mix(in srgb, var(--accent) 35%, transparent); }

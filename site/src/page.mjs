@@ -7,6 +7,7 @@ import {
 import {
   DOWNLOAD, LOGO, REPO, SITE, alternatesOf, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
 } from './layout.mjs';
+import { NOBODY, supportersSection } from './sponsors.mjs';
 import { md, terminal } from './cli-page.mjs';
 
 export { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE } from './layout.mjs';
@@ -278,6 +279,8 @@ export function renderPage(t, languages, assets) {
       ${t.specs.rows.map(([k, value]) => `<div><dt>${escape(k)}</dt><dd>${escape(f(value))}</dd></div>`).join('')}
     </dl>
   </section>
+
+  ${supportersSection(t, assets.supporters ?? NOBODY)}
 
   ${downloadCard(t, { title: t.download.title, text: f(t.download.text), button: t.download.button })}`;
 

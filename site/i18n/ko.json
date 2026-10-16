@@ -157,6 +157,12 @@
       "close": "닫기"
     }
   },
+  "supporters": {
+      "title": "후원해 주신 분들",
+      "lead": "Filee는 후원해 주시는 분들 덕분에 무료로 유지돼요.",
+      "join": "후원하기",
+      "readme": "/blob/main/README.ko.md#후원하기"
+  },
   "footer": {
     "tagline": "끌어서 놓으면, 변환 끝.",
     "license": "MIT 라이선스",

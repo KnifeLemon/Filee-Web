@@ -157,6 +157,12 @@
       "close": "关闭"
     }
   },
+  "supporters": {
+      "title": "赞助者",
+      "lead": "Filee 能保持免费，离不开各位赞助者的支持。",
+      "join": "成为赞助者",
+      "readme": "/blob/main/README.zh-CN.md#赞助"
+  },
   "footer": {
     "tagline": "拖一下，放一下，转好了。",
     "license": "MIT 许可证",

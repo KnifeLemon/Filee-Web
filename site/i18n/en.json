@@ -157,6 +157,12 @@
       "close": "Close"
     }
   },
+  "supporters": {
+      "title": "Sponsors",
+      "lead": "Filee is free thanks to the people and companies who support it.",
+      "join": "Become a sponsor",
+      "readme": "#sponsor"
+  },
   "footer": {
     "tagline": "Drag. Drop. Converted.",
     "license": "MIT License",
