@@ -122,7 +122,7 @@
   },
   "download": {
     "title": "지금 바로 시작하세요",
-    "text": "설치하면 대부분의 형식을 바로 변환할 수 있어요. 추가 엔진은 설치할 때 고르거나 필요할 때 앱 안에서 받아요: {engineDetails}.",
+    "text": "설치하면 대부분의 형식을 바로 변환해요.\n동영상·오디오나 드문 형식용 엔진은 필요할 때 앱에서 받아요.",
     "button": "Windows용 다운로드",
     "selector": "운영체제와 프로세서",
     "targets": {
@@ -132,16 +132,14 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "Windows는 정식 버전이에요. macOS와 Linux는 미리보기예요. macOS 앱은 아직 공증을 받지 않아 처음 한 번 개인정보 보호 및 보안에서 허용해야 하고, Linux에서 드래그 제스처는 X11 세션에서 동작해요. 사용 예시와 화면은 Windows 기준이에요.",
+    "platformNote": "macOS와 Linux는 미리보기 버전이에요.",
     "developmentLabel": "미리보기",
     "developmentButton": "미리보기 다운로드",
     "checking": "배포 파일 확인 중…",
     "missing": "최신 릴리스에 {target} 파일이 없어요. 전체 릴리스에서 확인해 주세요.",
     "unavailable": "배포 파일을 확인하지 못했습니다. 전체 릴리스에서 제공되는 빌드를 확인하세요.",
-    "latest": "최신 버전",
     "all": "모든 릴리스",
     "source": "소스 코드",
-    "signing": "Code signing policy",
     "sponsor": "개발 응원하기",
     "sponsorText": "Filee는 앞으로도 무료예요.",
     "after": {

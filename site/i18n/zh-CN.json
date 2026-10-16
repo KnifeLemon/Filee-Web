@@ -122,7 +122,7 @@
   },
   "download": {
     "title": "下载 Filee",
-    "text": "大多数格式装好即用。可选引擎可以在安装时勾选，也可以等需要时在应用内下载：{engineDetails}。",
+    "text": "大多数格式装好即用。\n视频、音频和少见格式所需的引擎，可在需要时在应用内下载。",
     "button": "下载 Windows 版",
     "selector": "操作系统和处理器",
     "targets": {
@@ -132,16 +132,14 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "Windows 版为正式版，macOS 和 Linux 为预览版。macOS 应用尚未公证，首次需在“隐私与安全性”中允许一次；Linux 上的拖动手势需要 X11 会话。使用示例和截图以 Windows 版为准。",
+    "platformNote": "macOS 和 Linux 为预览版。",
     "developmentLabel": "预览版",
     "developmentButton": "下载预览版",
     "checking": "正在检查发布文件…",
     "missing": "最新版本中没有 {target} 文件。请查看全部版本。",
     "unavailable": "未能检查发布文件。请打开全部版本，确认有哪些构建可供下载。",
-    "latest": "最新版本",
     "all": "全部版本",
     "source": "源代码",
-    "signing": "Code signing policy",
     "sponsor": "赞助开发",
     "sponsorText": "Filee 免费，并将一直免费。",
     "after": {

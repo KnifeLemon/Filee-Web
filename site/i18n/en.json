@@ -122,7 +122,7 @@
   },
   "download": {
     "title": "Download Filee",
-    "text": "Most formats work right after installing. Optional engines are picked in the installer or downloaded in the app when you need them: {engineDetails}.",
+    "text": "Most formats convert right after installing.\nEngines for video, audio and rare formats are added in the app when you need them.",
     "button": "Download for Windows",
     "selector": "Operating system and processor",
     "targets": {
@@ -132,16 +132,14 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "Windows is the stable release. macOS and Linux are previews: the macOS app isn't notarized yet (allow it once under Privacy & Security), and on Linux the drag gesture needs an X11 session. The examples and screenshots show Windows.",
+    "platformNote": "macOS and Linux are previews.",
     "developmentLabel": "Preview",
     "developmentButton": "Download the preview",
     "checking": "Checking release files…",
     "missing": "The latest release has no {target} file. Check all releases.",
     "unavailable": "Release files could not be checked. Open all releases to confirm which builds are available.",
-    "latest": "Latest version",
     "all": "All releases",
     "source": "Source code",
-    "signing": "Code signing policy",
     "sponsor": "Sponsor its development",
     "sponsorText": "Filee is free and stays free.",
     "after": {

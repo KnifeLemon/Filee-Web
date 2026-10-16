@@ -298,7 +298,7 @@ export function downloadCard(t, { title, text, button }) {
     <div class="download-card" data-reveal>
       ${LOGO}
       <h2>${escape(title)}</h2>
-      <p>${escape(text)}</p>
+      <p>${escape(text).replaceAll('\n', '<br>')}</p>
       <div class="download-picker" data-download-picker hidden>
         <label for="download-target">${escape(t.download.selector)}</label>
         <select id="download-target" data-download-target aria-describedby="download-platform-note download-status">
@@ -308,10 +308,8 @@ export function downloadCard(t, { title, text, button }) {
       <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download aria-describedby="download-status">${icon('download')}<span data-download-label>${escape(button)}</span></a>
       <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
       <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
-      <p class="download-meta"><span data-latest hidden>${escape(t.download.latest)}: <b data-version-full></b></span>
-        <a href="${REPO}/releases">${escape(t.download.all)}</a>
-        <a href="${REPO}">${escape(t.download.source)}</a>
-        <a href="${REPO}#code-signing-policy">${escape(t.download.signing)}</a></p>
+      <p class="download-meta"><a href="${REPO}/releases">${escape(t.download.all)}</a>
+        <a href="${REPO}">${escape(t.download.source)}</a></p>
       <p class="download-sponsor">${escape(t.download.sponsorText)} <a href="${sponsorUrl(t)}" rel="noopener">${escape(t.download.sponsor)}</a></p>
     </div>
   </section>`;
