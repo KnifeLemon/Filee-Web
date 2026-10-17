@@ -25,7 +25,7 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {versionShort}: uses the FFmpeg or calibre you already have, multi-page TIFF",
+    "badge": "New in {versionShort}: subtitles, data and 3D models, Trace to SVG, rotate and flip",
     "kicker": "Free file converter for Windows, macOS and Linux",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
@@ -65,13 +65,13 @@
   "features": {
     "title": "What Filee does",
     "items": [
-      { "icon": "donut", "title": "A donut at your cursor", "text": "The formats appear where you already are, with no app window in the way. A modifier key, mouse button, hold gesture or keyboard shortcut opens it." },
-      { "icon": "stack", "title": "{formatCount} formats, one gesture", "text": "Images, PDF, Word, Excel, PowerPoint, HWP, e-books, video, audio, archives, CAD drawings and fonts. Filee plans the route between formats automatically." },
+      { "icon": "donut", "title": "A donut at your cursor", "text": "The formats appear where you already are, with no app window in the way. A modifier key, mouse button, hold gesture or keyboard shortcut opens it. One slice can hold a group of presets." },
+      { "icon": "stack", "title": "{formatCount} formats, one gesture", "text": "Images, PDF, Word, Excel, PowerPoint, HWP, e-books, video, audio, subtitles, data files, 3D models, archives, CAD drawings and fonts. Filee plans the route between formats automatically." },
       { "icon": "document", "title": "No Office needed", "text": "Word, Excel and PowerPoint files convert without Microsoft Office or LibreOffice, and HWP without Hancom Office. Filee doesn't use Office or Hancom Office even when they are installed." },
       { "icon": "doors", "title": "Batch conversion", "text": "Drop 1 file or 100. They're converted in parallel, a failure never stops the rest, and presets can merge everything into one PDF or one ZIP." },
       { "icon": "lock", "title": "100% on your PC", "text": "Nothing is uploaded. Filee works offline, so private documents, photos and recordings never leave your computer." },
       { "icon": "windows", "title": "Right where you work", "text": "The drag gesture, Convert with Filee in the right-click menu (on Windows 11 also in the top-level menu), Send To, a keyboard shortcut or the drop zone in the main window." },
-      { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, DPI, grayscale, metadata, background removal, TIFF compression, ICO sizes, PDF merge, split, page ranges and one long image, 720p video, MP3 bitrate, output folder, file names and the original file dates." },
+      { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG, TIFF compression, ICO sizes, PDF merge, split, page ranges and one long image, 720p, HEVC and AV1 video, MP3 bitrate, output folder, file names and the original file dates." },
       { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left. Already have FFmpeg, calibre or Pandoc? Filee finds them and skips the download." },
       { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Korean and Simplified Chinese. Filee tells you about new versions; every release lists its changes and contributors." }
     ]
@@ -186,7 +186,7 @@
   },
   "catalog": {
     "title": "Supported File Formats: {formatTotal} Formats in {categoryCount} Categories | Filee",
-    "description": "All {formatTotal} formats Filee converts on Windows: images, PDF, documents, HWP, video, audio, e-books, archives, CAD and fonts, with what each converts to.",
+    "description": "All {formatTotal} formats Filee converts on Windows: images, PDF, documents, HWP, video, audio, subtitles, data, 3D, e-books, archives, CAD and fonts, and their targets.",
     "crumb": "Formats",
     "h1": "Format catalog",
     "lead": "{formatTotal} formats in {categoryCount} categories. {builtinTotal} of them work right after install; the rest use a free optional engine that Filee downloads only when you need it.",

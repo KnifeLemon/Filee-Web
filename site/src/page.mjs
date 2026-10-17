@@ -2,7 +2,7 @@
 // Texts come from i18n/<lang>.json, every format fact and count from catalog.mjs.
 
 import {
-  CATEGORIES, DEMO_DONUTS, ENGINES, FAQ, MARQUEE, PAIRS, VERSION, L, enginesOf, fill, label, vars,
+  CATEGORIES, DEMO_DONUTS, ENGINES, FAQ, MARQUEE, PAIRS, VERSION, L, countFormats, enginesOf, fill, label, vars,
 } from './catalog.mjs';
 import {
   DOWNLOAD, LOGO, REPO, SITE, alternatesOf, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
@@ -124,7 +124,7 @@ function categoryCards(t) {
     return `<li data-reveal style="--i:${i % 4}"><a class="cat-card" href="${catalog}#${c.id}" style="--cat:${c.color}">
       ${icon(c.icon, 'cat-icon')}
       <span class="cat-name">${escape(L(c.name, t.lang))}</span>
-      <span class="cat-count">${escape(fill(t.formats.count, { n: c.formats.length }))}</span>
+      <span class="cat-count">${escape(fill(t.formats.count, { n: countFormats(c.formats) }))}</span>
       <span class="cat-sample">${escape(c.formats.filter(f => !f.raw).slice(0, 6).map(f => f.label).join(' · '))}</span>
       <span class="cat-tags">${engines.map(e => engineBadge(t, e, ENGINES)).join('')}</span>
     </a></li>`;

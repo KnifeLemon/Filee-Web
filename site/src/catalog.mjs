@@ -22,7 +22,7 @@ export const L = (value, lang) => (value == null || typeof value === 'string' ? 
 export const ENGINES = {
   ffmpeg: {
     name: 'FFmpeg', sizeMB: 100, url: 'https://ffmpeg.org/',
-    for: T('video and audio, and saving HEIC', '동영상·오디오와 HEIC 저장', '视频和音频，以及保存 HEIC'),
+    for: T('video and audio, subtitle extraction and saving HEIC', '동영상·오디오, 자막 추출, HEIC 저장', '视频和音频、提取字幕以及保存 HEIC'),
   },
   libreoffice: {
     name: 'LibreOffice', sizeMB: 420, url: 'https://www.libreoffice.org/',
@@ -38,7 +38,7 @@ export const ENGINES = {
   },
   pandoc: {
     name: 'Pandoc', sizeMB: 42, url: 'https://pandoc.org/',
-    for: T('LaTeX, reStructuredText and Word → Markdown', 'LaTeX·reStructuredText와 워드→마크다운 변환', 'LaTeX、reStructuredText 及 Word 转 Markdown'),
+    for: T('LaTeX, Org, AsciiDoc and other markup, Word → Markdown and Markdown → slides', 'LaTeX·Org·AsciiDoc 같은 마크업, 워드→마크다운, 마크다운→슬라이드', 'LaTeX、Org、AsciiDoc 等标记语言，Word 转 Markdown，Markdown 转幻灯片'),
   },
 };
 
@@ -95,6 +95,18 @@ export const OPTIONS = {
   split: {
     short: T('split pages', '페이지 나누기', '拆分页面'),
     long: T('The split preset saves every page as its own PDF in a subfolder.', '나누기 프리셋은 페이지마다 PDF를 하나씩 하위 폴더에 저장합니다.', '拆分预设会把每一页单独存成 PDF，放在子文件夹中。'),
+  },
+  rotate: {
+    short: T('rotate & flip', '회전·뒤집기', '旋转和翻转'),
+    long: T('Rotate and flip presets turn images left, right or 180° and mirror them, after the photo\'s own orientation.',
+      '회전·뒤집기 프리셋으로 이미지를 왼쪽·오른쪽·180°로 돌리거나 뒤집을 수 있어요. 사진의 원래 방향을 먼저 맞춘 뒤 돌려요.',
+      '旋转和翻转预设可把图片向左、向右或 180° 旋转，或镜像翻转。会先按照片自身的方向摆正再旋转。'),
+  },
+  trace: {
+    short: T('Trace to SVG', '벡터화', '描摹'),
+    long: T('Two presets trace a picture into vector shapes: Trace to SVG in up to 64 colours, and Line art to SVG in black for logos, signatures and scans. No other program is needed.',
+      '프리셋 두 개로 그림을 벡터 도형으로 바꿔요. ‘벡터화’는 최대 64색, ‘흑백 선화’는 로고·서명·스캔용 검은 선이에요. 다른 프로그램은 필요 없어요.',
+      '两个预设可把图片描摹成矢量图形。“描摹”最多 64 色，“黑白描摹”为黑色线条，适合 Logo、签名和扫描件。无需其他程序。'),
   },
   removeBackground: {
     short: T('remove background', '배경 제거', '去除背景'),
@@ -180,6 +192,46 @@ export const OPTIONS = {
     short: T('DRM-free books', 'DRM 없는 책', '无 DRM 书籍'),
     long: T('Works with DRM-free books only.', 'DRM이 없는 책만 변환할 수 있습니다.', '仅支持无 DRM 的书籍。'),
   },
+  alac: {
+    short: T('ALAC in M4A', 'M4A에 ALAC', 'M4A 中的 ALAC'),
+    long: T('M4A can hold lossless ALAC as well as AAC.', 'M4A에는 AAC뿐 아니라 무손실 ALAC도 담을 수 있어요.', 'M4A 除了 AAC，也可以保存无损的 ALAC。'),
+  },
+  codecs: {
+    short: T('HEVC / AV1', 'HEVC·AV1', 'HEVC / AV1'),
+    long: T('Video presets can encode HEVC (H.265) or AV1 for smaller files, keeping 10-bit and HDR video.',
+      '동영상 프리셋에서 HEVC(H.265)나 AV1을 골라 더 작게 만들 수 있어요. 10비트와 HDR 영상도 그대로예요.',
+      '视频预设可选择 HEVC（H.265）或 AV1，文件更小，并保留 10 位和 HDR 视频。'),
+  },
+  extractSubs: {
+    short: T('extract subtitles', '자막 추출', '提取字幕'),
+    long: T('The Extract subtitles preset on the video donut saves the first text subtitle track of a video as SRT.',
+      '동영상 도넛의 자막 추출 프리셋은 영상의 첫 번째 텍스트 자막 트랙을 SRT로 저장해요.',
+      '视频圆环上的“提取字幕”预设会把视频中第一条文本字幕轨保存为 SRT。'),
+  },
+  utf8: {
+    short: T('saved as UTF-8', 'UTF-8로 저장', '保存为 UTF-8'),
+    long: T('Results are saved as UTF-8. Korean files saved in CP949 (EUC-KR) are detected and read correctly.',
+      '결과는 UTF-8로 저장해요. CP949(EUC-KR)로 저장된 한국어 파일도 알아서 읽어요.',
+      '结果保存为 UTF-8。以 CP949（EUC-KR）保存的韩文文件也能自动识别。'),
+  },
+  tables: {
+    short: T('tables to CSV / Excel', '표는 CSV·엑셀로', '表格转 CSV/Excel'),
+    long: T('Data that is a table (a list of records) also converts to and from CSV and Excel.',
+      '표 모양의 데이터(레코드 목록)는 CSV·엑셀로, 또 CSV·엑셀에서 바꿀 수도 있어요.',
+      '表格形式的数据（记录列表）也能与 CSV 和 Excel 互相转换。'),
+  },
+  preview3d: {
+    short: T('picture preview', '그림 미리보기', '预览图'),
+    long: T('PNG or JPG gives a shaded picture of the model, seen from the front right and above.',
+      'PNG나 JPG로 바꾸면 모델을 오른쪽 앞 위에서 본 음영 그림이 만들어져요.',
+      '转成 PNG 或 JPG 会得到模型的着色图，视角为右前上方。'),
+  },
+  colours3d: {
+    short: T('colours and textures', '색과 텍스처', '颜色和纹理'),
+    long: T('Colours, textures and materials are kept where the target format can hold them. STL keeps only the shape.',
+      '대상 형식이 담을 수 있으면 색·텍스처·재질을 유지해요. STL은 모양만 담아요.',
+      '目标格式支持时会保留颜色、纹理和材质。STL 只保存形状。'),
+  },
 };
 
 /* ───────── Formats and routes, by category ───────── */
@@ -215,15 +267,19 @@ const RAW_ABOUT = {
   },
 };
 
-const IMG_WRITE = ['jpg', 'png', 'webp', 'avif', 'tiff', 'bmp', 'gif', 'ico', 'psd', 'tga', 'ppm', 'jxl', 'jp2', 'icns', 'pdf'];
+const IMG_WRITE = ['jpg', 'png', 'webp', 'avif', 'tiff', 'bmp', 'gif', 'ico', 'psd', 'tga', 'ppm', 'jxl', 'jp2', 'icns', 'pdf',
+  'apng', 'mng', 'qoi', 'dds', 'pcx', 'cur', 'xpm', 'xbm', 'wbmp', 'pam', 'pfm', 'sgi', 'ras', 'miff'];
+/** Raster images ImageMagick reads (every one can be traced into SVG). */
+const IMG_READ = ['jpg', 'png', 'webp', 'avif', 'heic', 'tiff', 'bmp', 'gif', 'ico', 'psd', 'psb', 'tga', 'ppm', 'jxl', 'jp2', 'xcf',
+  'icns', 'apng', 'mng', 'qoi', 'dds', 'pcx', 'cur', 'xpm', 'xbm', 'wbmp', 'pam', 'pfm', 'sgi', 'ras', 'miff', 'dcm', 'exr', 'hdr', 'pcd'];
 
 export const CATEGORIES = [
   {
     id: 'images', icon: 'image', color: '#378add',
     name: T('Images', '이미지', '图片'), plain: T('images', '이미지', '图片'),
-    intro: T('Photos and graphics, including iPhone HEIC, Photoshop PSD and camera RAW from all major brands. Resize, set quality and DPI, make grayscale copies or strip metadata while converting.',
-      '아이폰 HEIC, 포토샵 PSD, 주요 카메라 브랜드의 RAW까지 사진과 그래픽을 변환합니다. 변환하면서 크기·품질·DPI를 바꾸고, 흑백 사본을 만들거나 메타데이터를 지울 수 있어요.',
-      '照片和图形，包括 iPhone 的 HEIC、Photoshop 的 PSD 以及各大品牌相机的 RAW。转换时可调整尺寸、质量和 DPI，生成灰度副本或清除元数据。'),
+    intro: T('Photos and graphics, including iPhone HEIC, Photoshop PSD, camera RAW from all major brands, animated APNG and DICOM. Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.',
+      '아이폰 HEIC, 포토샵 PSD, 주요 카메라 브랜드의 RAW, 움직이는 APNG, DICOM까지 사진과 그래픽을 변환합니다. 변환하면서 크기·회전·품질·DPI를 바꾸거나 메타데이터를 지우고, 그림을 SVG로 벡터화할 수도 있어요.',
+      '照片和图形，包括 iPhone 的 HEIC、Photoshop 的 PSD、各大品牌相机的 RAW、动态 APNG 和 DICOM。转换时可调整尺寸、旋转、质量和 DPI，或清除元数据，还能把图片描摹成 SVG。'),
     formats: [
       fmt('jpg', 'JPG', ['jpg', 'jpeg', 'jpe', 'jfif'], {
         name: T('JPEG image', 'JPEG 이미지', 'JPEG 图像'),
@@ -249,7 +305,7 @@ export const CATEGORIES = [
           'AVIF는 AV1 동영상 코덱을 바탕으로 한 최신 이미지 형식입니다. JPG나 WEBP보다 압축률이 좋지만 오래된 프로그램과 기기에서는 아직 지원이 부족합니다.',
           'AVIF 是基于 AV1 视频编码的新一代图片格式，压缩率高于 JPG 和 WebP，但旧软件和设备的支持仍然有限。'),
       }),
-      fmt('heic', 'HEIC', ['heic', 'heif'], {
+      fmt('heic', 'HEIC', ['heic', 'heif', 'hif'], {
         display: 'HEIC/HEIF',
         name: T('HEIC / HEIF image', 'HEIC·HEIF 이미지', 'HEIC/HEIF 图像'),
         about: T('HEIC (HEIF) is the photo format iPhones and iPads use by default. Photos are often about half the size of a JPG, but many Windows apps, websites and older devices can\'t open them.',
@@ -288,24 +344,43 @@ export const CATEGORIES = [
           'ICNS는 macOS의 아이콘 형식입니다. ICO처럼 한 이미지를 여러 크기로 묶으며, 레티나 화면용 1024×1024까지 담아 맥 앱 아이콘에 쓰입니다.',
           'ICNS 是 macOS 的图标格式，与 ICO 类似，把同一图像的多个尺寸打包在一起，最大可达 Retina 屏幕用的 1024×1024，用作 Mac 应用图标。'),
       }),
+      fmt('apng', 'APNG', ['apng'], { brand: 'animated PNG' }),
+      fmt('mng', 'MNG', ['mng']),
+      fmt('qoi', 'QOI', ['qoi']),
+      fmt('dds', 'DDS', ['dds'], { brand: 'DirectDraw Surface' }),
+      fmt('pcx', 'PCX', ['pcx']),
+      fmt('cur', 'CUR', ['cur'], { brand: 'Windows cursor' }),
+      fmt('xpm', 'XPM', ['xpm']),
+      fmt('xbm', 'XBM', ['xbm']),
+      fmt('wbmp', 'WBMP', ['wbmp']),
+      fmt('pam', 'PAM', ['pam']),
+      fmt('pfm', 'PFM', ['pfm']),
+      fmt('sgi', 'SGI', ['sgi', 'rgb', 'rgba', 'bw']),
+      fmt('ras', 'Sun Raster', ['ras', 'sun'], { koJong: 0 }),
+      fmt('miff', 'MIFF', ['miff'], { brand: 'ImageMagick' }),
+      fmt('dcm', 'DICOM', ['dcm', 'dicom'], { brand: 'medical images' }),
+      fmt('exr', 'OpenEXR', ['exr']),
+      fmt('hdr', 'Radiance HDR', ['hdr']),
+      fmt('pcd', 'Photo CD', ['pcd'], { brand: 'Kodak' }),
       ...RAW.map(([id, label, brand]) => fmt(id, label, [id], { brand, raw: true, ...RAW_ABOUT[id] })),
     ],
     routes: [
-      { from: ['jpg', 'png', 'webp', 'avif', 'heic', 'tiff', 'bmp', 'gif', 'ico', 'psd', 'psb', 'tga', 'ppm', 'jxl', 'jp2', 'xcf', 'icns'],
+      { from: IMG_READ,
         to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick',
-        extras: ['quality', 'resize', 'dpi', 'grayscale', 'metadata', 'removeBackground', 'icoSizes', 'tiff', 'merge'] },
+        extras: ['quality', 'resize', 'dpi', 'grayscale', 'metadata', 'rotate', 'removeBackground', 'icoSizes', 'tiff', 'merge'] },
       { label: T('Camera RAW', '카메라 RAW', '相机 RAW'), from: RAW_IDS, to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick',
-        extras: ['quality', 'resize', 'metadata'] },
-      { from: ['jpg', 'png', 'webp', 'avif', 'tiff', 'bmp', 'gif', 'psd', 'tga', 'ppm', 'jxl', 'jp2', ...RAW_IDS], to: ['heic'],
+        extras: ['quality', 'resize', 'metadata', 'rotate'] },
+      { from: [...IMG_READ, ...RAW_IDS], to: ['svg'], engine: 'builtin', extras: ['trace'] },
+      { from: [...IMG_READ.filter(id => id !== 'heic'), ...RAW_IDS], to: ['heic'],
         engine: 'ffmpeg', extras: ['quality', 'resize', 'metadata'] },
     ],
   },
   {
     id: 'vector', icon: 'vector', color: '#d4537e',
     name: T('Vector graphics', '벡터 그래픽', '矢量图'), plain: T('vector graphics', '벡터 그래픽', '矢量图'),
-    intro: T('SVG, Windows metafiles, Illustrator, EPS/PostScript and drawings from CorelDRAW, Visio and LibreOffice Draw.',
-      'SVG, Windows 메타파일(EMF·WMF), 일러스트레이터, EPS·PostScript와 코렐드로·비지오·LibreOffice Draw 도면을 변환합니다.',
-      'SVG、Windows 图元文件（EMF/WMF）、Illustrator、EPS/PostScript，以及 CorelDRAW、Visio 和 LibreOffice Draw 的绘图。'),
+    intro: T('SVG, Windows metafiles, Illustrator, EPS/PostScript and drawings from CorelDRAW, Visio and LibreOffice Draw. SVG also becomes DXF or DWG for CAD.',
+      'SVG, Windows 메타파일(EMF·WMF), 일러스트레이터, EPS·PostScript와 코렐드로·비지오·LibreOffice Draw 도면을 변환합니다. SVG는 CAD용 DXF·DWG로도 바꿀 수 있어요.',
+      'SVG、Windows 图元文件（EMF/WMF）、Illustrator、EPS/PostScript，以及 CorelDRAW、Visio 和 LibreOffice Draw 的绘图。SVG 还能转成 CAD 用的 DXF 或 DWG。'),
     formats: [
       fmt('svg', 'SVG', ['svg'], {
         name: T('SVG vector graphic', 'SVG 벡터 그래픽', 'SVG 矢量图'),
@@ -328,14 +403,17 @@ export const CATEGORIES = [
       fmt('cgm', 'CGM', ['cgm']),
       fmt('vsd', 'VSD', ['vsd', 'vsdx'], { display: 'VSD/VSDX', brand: 'Microsoft Visio' }),
       fmt('odg', 'ODG', ['odg'], { brand: 'LibreOffice Draw' }),
+      fmt('fodg', 'FODG', ['fodg'], { brand: 'flat OpenDocument drawing' }),
     ],
     routes: [
-      { from: ['svg', 'svgz'], to: ['pdf', 'png', 'jpg'], engine: 'builtin', extras: ['vectorPdf'] },
+      { from: ['svg', 'svgz'], to: ['pdf', 'png', 'jpg', 'svg', 'svgz'], engine: 'builtin', extras: ['vectorPdf'] },
+      { from: ['svg', 'svgz'], to: ['dxf', 'dwg'], engine: 'builtin', extras: ['noAutocad'] },
+      { from: ['svg'], to: ['emf', 'wmf', 'odg'], engine: 'libreoffice' },
       { from: ['emf', 'wmf'], to: ['png', 'pdf'], engine: 'builtin' },
       { from: ['ai'], to: ['pdf', 'png'], engine: 'builtin',
         note: T('AI files saved with PDF content (Illustrator\'s default)', 'PDF 내용을 함께 저장한 AI 파일(일러스트레이터 기본값)', '包含 PDF 内容的 AI 文件（Illustrator 默认设置）') },
       { from: ['eps', 'ps'], to: ['pdf', 'png'], engine: 'ghostscript', extras: ['vectorPdf'] },
-      { from: ['cdr', 'cgm', 'vsd', 'odg'], to: ['pdf', 'svg', 'png'], engine: 'libreoffice' },
+      { from: ['cdr', 'cgm', 'vsd', 'odg', 'fodg'], to: ['pdf', 'svg', 'png'], engine: 'libreoffice' },
     ],
   },
   {
@@ -357,14 +435,16 @@ export const CATEGORIES = [
       { from: ['pdf'], to: ['docx', 'hwpx', 'epub', 'txt', 'md', 'html', 'cbz'], engine: 'builtin', extras: ['editable'] },
       { from: ['pdf'], to: [], engine: 'builtin', via: 'PDFsharp', extras: ['merge', 'split', 'pages'] },
       { from: ['pdf'], to: ['eps', 'ps'], engine: 'ghostscript' },
+      { from: ['pdf'], to: ['svg'], engine: 'libreoffice',
+        note: T('one page', '한 페이지', '单页') },
     ],
   },
   {
     id: 'documents', icon: 'document', color: '#2b579a',
     name: T('Documents', '문서', '文档'), plain: T('documents', '문서', '文档'),
-    intro: T('Word documents without Microsoft Office, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML).',
-      '마이크로소프트 오피스 없이 워드 문서를 변환하고, 오래되거나 드문 워드프로세서 형식은 추가 엔진 LibreOffice로, 저장한 이메일(EML)도 변환합니다.',
-      '无需 Microsoft Office 即可转换 Word 文档；旧版和少见的文字处理格式使用可选引擎 LibreOffice；还支持保存的电子邮件（EML）。'),
+    intro: T('Word documents without Microsoft Office, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).',
+      '마이크로소프트 오피스 없이 워드 문서를 변환하고, 오래되거나 드문 워드프로세서 형식은 추가 엔진 LibreOffice로, 저장한 이메일(EML·아웃룩 MSG)도 변환합니다.',
+      '无需 Microsoft Office 即可转换 Word 文档。旧版和少见的文字处理格式使用可选引擎 LibreOffice。还支持保存的电子邮件（EML 和 Outlook MSG）。'),
     formats: [
       fmt('docx', 'DOCX', ['docx'], {
         name: T('Word document', '워드 문서', 'Word 文档'),
@@ -374,6 +454,7 @@ export const CATEGORIES = [
       }),
       fmt('docm', 'DOCM', ['docm']),
       fmt('dotx', 'DOTX', ['dotx']),
+      fmt('dotm', 'DOTM', ['dotm']),
       fmt('doc', 'DOC', ['doc'], {
         koJong: 1,
         name: T('Word 97–2003 document', '워드 97~2003 문서', 'Word 97–2003 文档'),
@@ -381,13 +462,22 @@ export const CATEGORIES = [
           'DOC는 워드 97~2003의 바이너리 형식입니다. 오래된 자료, 관공서 서식, 옛 시스템에서 아직 만들어지지만 점점 DOCX로 바뀌고 있습니다.',
           'DOC 是 Word 97–2003 使用的二进制格式，旧资料、公文模板和老系统仍在产生这种文件，但正逐渐被 DOCX 取代。'),
       }),
+      fmt('dot', 'DOT', ['dot'], { brand: 'Word 97–2003 template' }),
       fmt('odt', 'ODT', ['odt'], { brand: 'OpenDocument' }),
+      fmt('fodt', 'FODT', ['fodt'], { brand: 'flat OpenDocument text' }),
+      fmt('ott', 'OTT', ['ott'], { brand: 'OpenDocument template' }),
       fmt('rtf', 'RTF', ['rtf']),
       fmt('wps', 'WPS', ['wps'], { brand: 'Microsoft Works / WPS Office' }),
       fmt('wpd', 'WPD', ['wpd'], { brand: 'WordPerfect' }),
       fmt('lwp', 'LWP', ['lwp'], { brand: 'Lotus Word Pro' }),
       fmt('abw', 'ABW', ['abw', 'zabw'], { brand: 'AbiWord' }),
       fmt('pages', 'Pages', ['pages'], { brand: 'Apple Pages' }),
+      fmt('sdw', 'SDW', ['sdw'], { brand: 'StarWriter' }),
+      fmt('cwk', 'ClarisWorks', ['cwk'], { brand: 'ClarisWorks / AppleWorks', koJong: 0 }),
+      fmt('mcw', 'MacWrite', ['mcw'], { koJong: 0 }),
+      fmt('602', 'T602', ['602']),
+      fmt('psw', 'Pocket Word', ['psw'], { koJong: 0 }),
+      fmt('pub', 'PUB', ['pub'], { brand: 'Microsoft Publisher', koJong: 1 }),
       fmt('eml', 'EML', ['eml'], {
         koJong: 2,
         name: T('E-mail message', '이메일 메시지', '电子邮件'),
@@ -395,12 +485,23 @@ export const CATEGORIES = [
           'EML은 이메일 한 통을 파일로 저장한 형식(MIME)으로, 머리글·본문·첨부 파일을 담습니다. 아웃룩, 썬더버드 등 대부분의 메일 프로그램에서 열 수 있습니다.',
           'EML 是把一封电子邮件保存为文件的格式（MIME），包含邮件头、正文和附件，Outlook、Thunderbird 等大多数邮件客户端都能打开。'),
       }),
+      fmt('msg', 'MSG', ['msg'], {
+        brand: 'Outlook',
+        name: T('Outlook message', '아웃룩 메시지', 'Outlook 邮件'),
+        about: T('MSG is the file Microsoft Outlook saves when you drag an e-mail out of it. Only Outlook opens it, so it is hard to read on a PC without Outlook or on a phone.',
+          'MSG는 아웃룩에서 메일을 끌어내 저장하면 생기는 파일입니다. 아웃룩에서만 열려서 아웃룩이 없는 PC나 휴대폰에서는 읽기 어렵습니다.',
+          'MSG 是从 Microsoft Outlook 中拖出邮件时保存的文件，只有 Outlook 能打开，在没有 Outlook 的电脑或手机上很难阅读。'),
+      }),
     ],
     routes: [
-      { from: ['docx', 'docm', 'dotx'], to: ['pdf', 'hwpx', 'hwp', 'epub', 'txt', 'html', 'png', 'jpg'], engine: 'builtin', extras: ['noOffice', 'merge'] },
+      { from: ['docx', 'docm', 'dotx', 'dotm'], to: ['pdf', 'hwpx', 'hwp', 'epub', 'txt', 'html', 'png', 'jpg'], engine: 'builtin', extras: ['noOffice', 'merge'] },
       { from: ['docx'], to: ['md'], engine: 'pandoc' },
-      { from: ['doc', 'odt', 'rtf', 'wps', 'wpd', 'lwp', 'abw', 'pages'], to: ['pdf', 'docx'], engine: 'libreoffice', extras: ['merge'] },
-      { from: ['eml'], to: ['pdf', 'html', 'txt'], engine: 'builtin', extras: ['attachments'] },
+      { from: ['doc', 'dot', 'odt', 'fodt', 'ott', 'rtf', 'wps', 'wpd', 'lwp', 'abw', 'pages', 'sdw', 'cwk', 'mcw', '602', 'psw'],
+        to: ['pdf', 'docx', 'odt'], engine: 'libreoffice', extras: ['merge'] },
+      { from: ['docx', 'doc', 'odt', 'rtf'], to: ['fodt', 'ott'], engine: 'libreoffice' },
+      { from: ['pub'], to: ['pdf', 'svg', 'png'], engine: 'libreoffice' },
+      { from: ['eml', 'msg'], to: ['pdf', 'html', 'txt', 'zip'], engine: 'builtin', extras: ['attachments'] },
+      { from: ['msg'], to: ['eml'], engine: 'builtin' },
     ],
   },
   {
@@ -445,13 +546,17 @@ export const CATEGORIES = [
           'XLSX 是 Excel 2007 起使用的 Microsoft Excel 工作簿格式，一个文件可包含多个带公式、格式、图表和图片的工作表。'),
       }),
       fmt('xlsm', 'XLSM', ['xlsm']),
-      fmt('xls', 'XLS', ['xls', 'xlt'], {
+      fmt('xltx', 'XLTX', ['xltx']),
+      fmt('xls', 'XLS', ['xls'], {
         name: T('Excel 97–2003 workbook', '엑셀 97~2003 통합 문서', 'Excel 97–2003 工作簿'),
         about: T('XLS is the binary workbook format of Excel 97–2003. Many older systems and bank or accounting exports still produce it.',
           'XLS는 엑셀 97~2003의 바이너리 통합 문서 형식입니다. 오래된 시스템이나 은행·회계 프로그램의 내보내기에서 아직 자주 나옵니다.',
           'XLS 是 Excel 97–2003 的二进制工作簿格式，很多旧系统以及银行、财务软件导出的文件仍是这种格式。'),
       }),
+      fmt('xlt', 'XLT', ['xlt'], { brand: 'Excel 97–2003 template' }),
       fmt('ods', 'ODS', ['ods'], { brand: 'OpenDocument' }),
+      fmt('ots', 'OTS', ['ots'], { brand: 'OpenDocument template' }),
+      fmt('fods', 'FODS', ['fods'], { brand: 'flat OpenDocument spreadsheet' }),
       fmt('csv', 'CSV', ['csv'], {
         name: T('Comma-separated values', 'CSV(쉼표로 구분된 값)', 'CSV（逗号分隔值）'),
         about: T('CSV is plain text with one table row per line. Every spreadsheet, database and programming language reads it, but it has no formatting, formulas or multiple sheets.',
@@ -461,11 +566,13 @@ export const CATEGORIES = [
       fmt('tsv', 'TSV', ['tsv', 'tab']),
       fmt('numbers', 'Numbers', ['numbers'], { brand: 'Apple Numbers', koJong: 0 }),
       fmt('et', 'ET', ['et'], { brand: 'WPS Spreadsheets' }),
+      fmt('sdc', 'SDC', ['sdc'], { brand: 'StarCalc' }),
     ],
     routes: [
-      { from: ['xlsx', 'xlsm', 'xls', 'ods', 'csv', 'tsv'], to: ['pdf', 'xlsx', 'csv', 'ods', 'hwpx', 'html'], engine: 'builtin',
+      { from: ['xlsx', 'xlsm', 'xltx', 'xls', 'xlt', 'ods', 'csv', 'tsv'], to: ['pdf', 'xlsx', 'csv', 'tsv', 'ods', 'json', 'hwpx', 'html'], engine: 'builtin',
         extras: ['noOffice', 'perSheet', 'merge'] },
-      { from: ['numbers', 'et'], to: ['pdf', 'xlsx'], engine: 'libreoffice' },
+      { from: ['numbers', 'et', 'sdc', 'fods', 'ots'], to: ['pdf', 'xlsx'], engine: 'libreoffice' },
+      { from: ['xlsx', 'xls', 'ods'], to: ['ots', 'xlt'], engine: 'libreoffice' },
     ],
   },
   {
@@ -491,20 +598,24 @@ export const CATEGORIES = [
           'PPT 是 PowerPoint 97–2003 的二进制格式，很多旧课件和存档的演示文稿仍是 PPT。'),
       }),
       fmt('odp', 'ODP', ['odp'], { brand: 'OpenDocument' }),
+      fmt('otp', 'OTP', ['otp'], { brand: 'OpenDocument template' }),
+      fmt('fodp', 'FODP', ['fodp'], { brand: 'flat OpenDocument presentation' }),
       fmt('key', 'Keynote', ['key'], { brand: 'Apple Keynote' }),
       fmt('dps', 'DPS', ['dps'], { brand: 'WPS Presentation' }),
+      fmt('sda', 'SDA', ['sda', 'sdd'], { brand: 'StarImpress / StarDraw' }),
     ],
     routes: [
-      { from: ['pptx', 'pptm', 'potx', 'ppsx'], to: ['pdf', 'png', 'jpg', 'hwpx'], engine: 'builtin', extras: ['noOffice', 'merge'] },
-      { from: ['ppt', 'odp', 'key', 'dps'], to: ['pdf', 'pptx'], engine: 'libreoffice', extras: ['merge'] },
+      { from: ['pptx', 'pptm', 'potx', 'ppsx'], to: ['pdf', 'png', 'jpg', 'docx', 'hwpx'], engine: 'builtin', extras: ['noOffice', 'merge'] },
+      { from: ['ppt', 'odp', 'otp', 'fodp', 'key', 'dps', 'sda'], to: ['pdf', 'pptx', 'odp'], engine: 'libreoffice', extras: ['merge'] },
+      { from: ['pptx', 'ppt', 'odp'], to: ['otp'], engine: 'libreoffice' },
     ],
   },
   {
     id: 'text', icon: 'text', color: '#5f5e5a',
     name: T('Text & markup', '텍스트·마크업', '文本与标记'), plain: T('text and markup', '텍스트·마크업', '文本与标记'),
-    intro: T('Plain text, Markdown and HTML to PDF, Word, HWPX and EPUB; reStructuredText and LaTeX with the optional Pandoc engine.',
-      '텍스트·마크다운·HTML을 PDF·워드·HWPX·EPUB으로, reStructuredText와 LaTeX는 추가 엔진 Pandoc으로 변환합니다.',
-      '把纯文本、Markdown 和 HTML 转成 PDF、Word、HWPX 和 EPUB；reStructuredText 和 LaTeX 使用可选引擎 Pandoc。'),
+    intro: T('Plain text, Markdown and HTML to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.',
+      '텍스트·마크다운·HTML을 PDF·워드·HWPX·EPUB으로 변환합니다. LaTeX, reStructuredText, Org, AsciiDoc, Typst, 주피터 같은 마크업은 추가 엔진 Pandoc을 쓰고, 마크다운을 파워포인트 슬라이드로도 만들어요.',
+      '把纯文本、Markdown 和 HTML 转成 PDF、Word、HWPX 和 EPUB。LaTeX、reStructuredText、Org、AsciiDoc、Typst、Jupyter 等标记语言使用可选引擎 Pandoc，它还能把 Markdown 转成 PowerPoint 幻灯片。'),
     formats: [
       fmt('txt', 'TXT', ['txt'], {
         name: T('Plain text', '텍스트 파일', '纯文本'),
@@ -528,19 +639,69 @@ export const CATEGORIES = [
       }),
       fmt('rst', 'reStructuredText', ['rst'], { koJong: 0 }),
       fmt('tex', 'LaTeX', ['tex', 'latex'], { koJong: 0 }),
+      fmt('org', 'Org', ['org'], { brand: 'Emacs Org mode' }),
+      fmt('adoc', 'AsciiDoc', ['adoc', 'asciidoc'], { koJong: 1 }),
+      fmt('typ', 'Typst', ['typ'], { koJong: 0 }),
+      fmt('mediawiki', 'MediaWiki', ['mediawiki', 'wiki'], { koJong: 0 }),
+      fmt('dbk', 'DocBook', ['dbk', 'docbook'], { koJong: 1 }),
+      fmt('ipynb', 'Jupyter', ['ipynb'], { brand: 'Jupyter notebook', koJong: 0 }),
+      fmt('textile', 'Textile', ['textile'], { koJong: 2 }),
+      fmt('man', 'Man page', ['man'], { brand: 'Unix manual page', koJong: 0 }),
+      fmt('opml', 'OPML', ['opml'], { koJong: 2 }),
     ],
     routes: [
       { from: ['txt', 'md', 'html'], to: ['pdf', 'docx', 'hwpx', 'epub'], engine: 'builtin', extras: ['merge'] },
-      { from: ['rst', 'tex'], to: ['docx', 'html', 'md'], engine: 'pandoc' },
-      { from: ['docx', 'html', 'md'], to: ['rst', 'tex'], engine: 'pandoc' },
+      { from: ['rst', 'tex', 'org', 'adoc', 'typ', 'mediawiki', 'dbk', 'ipynb', 'textile', 'man', 'opml'],
+        to: ['pdf', 'docx', 'hwpx', 'odt', 'html', 'md', 'epub', 'txt'], engine: 'pandoc' },
+      { from: ['docx', 'html', 'md'], to: ['rst', 'tex', 'org', 'adoc', 'typ', 'mediawiki', 'dbk', 'ipynb', 'textile', 'man', 'opml'], engine: 'pandoc' },
+      { from: ['md', 'rst', 'org', 'adoc', 'typ', 'mediawiki', 'textile', 'ipynb'], to: ['pptx'], engine: 'pandoc' },
+    ],
+  },
+  {
+    id: 'data', icon: 'data', color: '#4d7c0f',
+    name: T('Data', '데이터', '数据'), plain: T('data files', '데이터 파일', '数据文件'),
+    intro: T('JSON, JSON Lines, YAML, TOML and XML into each other, and tables to and from CSV and Excel. vCard contacts to and from CSV, also from old phones. Nothing to install.',
+      'JSON·JSON Lines·YAML·TOML·XML을 서로 바꾸고, 표 데이터는 CSV·엑셀과 오갈 수 있어요. vCard 연락처도 CSV로, CSV에서 vCard로 바꿔요. 옛 휴대폰 파일도 돼요. 따로 설치할 건 없어요.',
+      'JSON、JSON Lines、YAML、TOML 和 XML 互相转换，表格数据还能与 CSV、Excel 互转。vCard 联系人可与 CSV 互转，旧手机导出的也可以。无需安装其他软件。'),
+    formats: [
+      fmt('json', 'JSON', ['json'], {
+        koJong: 0,
+        name: T('JSON data', 'JSON 데이터', 'JSON 数据'),
+        about: T('JSON is the data format of the web: objects, lists, text and numbers in plain text. APIs, apps and settings files use it everywhere.',
+          'JSON은 웹의 대표 데이터 형식으로, 객체·목록·글자·숫자를 텍스트로 적습니다. API, 앱, 설정 파일 어디서나 쓰여요.',
+          'JSON 是网络上最常用的数据格式，用纯文本表示对象、列表、文字和数字，API、应用和配置文件到处都在用。'),
+      }),
+      fmt('jsonl', 'JSON Lines', ['jsonl', 'ndjson'], { koJong: 0 }),
+      fmt('yaml', 'YAML', ['yaml', 'yml'], {
+        koJong: 2,
+        name: T('YAML data', 'YAML 데이터', 'YAML 数据'),
+        about: T('YAML holds the same kind of data as JSON, written with indentation instead of brackets. Config files for Docker, Kubernetes, CI pipelines and many apps are YAML.',
+          'YAML은 JSON과 같은 데이터를 괄호 대신 들여쓰기로 적는 형식입니다. 도커·쿠버네티스·CI 파이프라인과 여러 앱의 설정 파일이 YAML이에요.',
+          'YAML 能保存和 JSON 相同的数据，用缩进代替括号。Docker、Kubernetes、CI 流水线和很多应用的配置文件都是 YAML。'),
+      }),
+      fmt('toml', 'TOML', ['toml'], { koJong: 2 }),
+      fmt('xml', 'XML', ['xml'], { koJong: 2 }),
+      fmt('vcf', 'vCard', ['vcf', 'vcard'], {
+        koJong: 0,
+        name: T('vCard contacts', 'vCard 연락처', 'vCard 联系人'),
+        about: T('vCard (.vcf) is the standard file for contacts. Phones, Outlook, Google Contacts and iCloud export address books as vCard, often many contacts in one file.',
+          'vCard(.vcf)는 연락처를 담는 표준 파일입니다. 휴대폰·아웃룩·구글 주소록·아이클라우드가 주소록을 vCard로 내보내고, 한 파일에 여러 명이 들어 있는 경우가 많아요.',
+          'vCard（.vcf）是保存联系人的标准文件。手机、Outlook、Google 通讯录和 iCloud 都以 vCard 导出通讯录，一个文件里常有很多联系人。'),
+      }),
+    ],
+    routes: [
+      { from: ['json', 'jsonl', 'yaml', 'toml', 'xml'], to: ['json', 'jsonl', 'yaml', 'toml', 'xml', 'csv', 'xlsx'], engine: 'builtin', extras: ['tables'] },
+      { from: ['csv', 'xlsx'], to: ['json', 'jsonl', 'yaml', 'toml', 'xml'], engine: 'builtin', extras: ['tables'] },
+      { from: ['vcf'], to: ['csv', 'xlsx'], engine: 'builtin', extras: ['utf8'] },
+      { from: ['csv'], to: ['vcf'], engine: 'builtin' },
     ],
   },
   {
     id: 'ebooks', icon: 'book', color: '#8a5cc2',
     name: T('E-books & comics', '전자책·만화', '电子书与漫画'), plain: T('e-books and comics', '전자책·만화', '电子书与漫画'),
-    intro: T('EPUB, Kindle (MOBI, AZW, AZW3), FictionBook and comic archives (CBZ, CBR, CB7…) to PDF, EPUB, Word and more. DRM-free books only.',
-      'EPUB, 킨들(MOBI·AZW·AZW3), FictionBook, 만화책 압축(CBZ·CBR·CB7 등)을 PDF·EPUB·워드 등으로 변환합니다. DRM이 없는 책만 가능합니다.',
-      '把 EPUB、Kindle（MOBI、AZW、AZW3）、FictionBook 和漫画压缩包（CBZ、CBR、CB7 等）转成 PDF、EPUB、Word 等格式，仅限无 DRM 的书籍。'),
+    intro: T('EPUB, Kindle (MOBI, AZW, AZW3), FictionBook and comic archives (CBZ, CBR, CB7…) to PDF, EPUB, Word and more, and KEPUB for Kobo readers. DRM-free books only.',
+      'EPUB, 킨들(MOBI·AZW·AZW3), FictionBook, 만화책 압축(CBZ·CBR·CB7 등)을 PDF·EPUB·워드 등으로, 코보 단말기용 KEPUB으로도 변환합니다. DRM이 없는 책만 가능합니다.',
+      '把 EPUB、Kindle（MOBI、AZW、AZW3）、FictionBook 和漫画压缩包（CBZ、CBR、CB7 等）转成 PDF、EPUB、Word 等格式，也能转成 Kobo 阅读器用的 KEPUB。仅限无 DRM 的书籍。'),
     formats: [
       fmt('epub', 'EPUB', ['epub'], {
         koJong: 1,
@@ -549,6 +710,7 @@ export const CATEGORIES = [
           'EPUB은 전자책의 개방형 표준 형식입니다. 화면 크기에 맞춰 글이 다시 배치되고 대부분의 전자책 단말기와 앱에서 읽을 수 있습니다.',
           'EPUB 是开放的电子书标准格式，文字会根据屏幕大小重新排版，大多数电子书阅读器和阅读应用都支持。'),
       }),
+      fmt('kepub', 'KEPUB', ['kepub.epub', 'kepub'], { brand: 'Kobo', koJong: 1 }),
       fmt('mobi', 'MOBI', ['mobi'], {
         name: T('Kindle / Mobipocket e-book', '킨들·모비포켓 전자책', 'Kindle/Mobipocket 电子书'),
         about: T('MOBI is the older Mobipocket e-book format that Amazon Kindle used for years. It is still common in older e-book collections, but Amazon has moved to AZW3/KFX and EPUB.',
@@ -575,24 +737,26 @@ export const CATEGORIES = [
       fmt('rb', 'RB', ['rb'], { brand: 'Rocket eBook' }),
       fmt('snb', 'SNB', ['snb'], { brand: 'Shanda Bambook' }),
       fmt('tcr', 'TCR', ['tcr'], { brand: 'Psion' }),
+      fmt('oeb', 'OEB', ['oeb', 'opf'], { brand: 'Open eBook' }),
     ],
     routes: [
-      { from: ['epub', 'mobi', 'azw', 'azw3', 'azw4', 'prc', 'fb2', 'cbz', 'cbr', 'cb7', 'cbt', 'cbc', 'htmlz', 'txtz'],
+      { from: ['epub', 'kepub', 'mobi', 'azw', 'azw3', 'azw4', 'prc', 'fb2', 'cbz', 'cbr', 'cb7', 'cbt', 'cbc', 'htmlz', 'txtz'],
         to: ['pdf', 'epub', 'docx', 'txt', 'html', 'hwpx'], engine: 'builtin', extras: ['drmFree'] },
+      { from: ['epub', 'mobi', 'azw3', 'fb2', 'docx', 'md'], to: ['kepub'], engine: 'builtin', extras: ['drmFree'] },
       { from: ['docx', 'txt', 'md', 'html'], to: ['epub'], engine: 'builtin' },
       { from: ['pdf'], to: ['cbz'], engine: 'builtin' },
       { from: ['epub', 'mobi', 'azw', 'azw3', 'azw4', 'prc', 'fb2', 'htmlz', 'txtz'], to: ['mobi', 'azw3'], engine: 'calibre', extras: ['drmFree'] },
-      { from: ['lit', 'lrf', 'chm', 'pdb', 'pml', 'rb', 'snb', 'tcr'], to: ['epub', 'pdf', 'docx', 'txt', 'html'], engine: 'calibre' },
+      { from: ['lit', 'lrf', 'chm', 'pdb', 'pml', 'rb', 'snb', 'tcr', 'oeb'], to: ['epub', 'pdf', 'docx', 'txt', 'html'], engine: 'calibre' },
     ],
   },
   {
     id: 'video', icon: 'video', color: '#9c36b5',
     name: T('Video', '동영상', '视频'), plain: T('video', '동영상', '视频'),
-    intro: T('All common video formats to MP4, WebM, MOV, MKV, AVI or GIF, with a 720p option and audio extraction to MP3 or M4A. Uses the optional FFmpeg engine.',
-      '주요 동영상 형식을 MP4·WEBM·MOV·MKV·AVI·GIF로 바꾸고, 720p로 줄이거나 MP3·M4A로 소리만 뽑을 수 있습니다. 추가 엔진 FFmpeg를 씁니다.',
-      '把常见视频格式转成 MP4、WebM、MOV、MKV、AVI 或 GIF，可缩小到 720p，也能提取 MP3/M4A 音频。使用可选引擎 FFmpeg。'),
+    intro: T('All common video formats to MP4 (H.264, HEVC or AV1), WebM, MOV, MKV, AVI, GIF or APNG, with a 720p option and audio extraction to MP3 or M4A. Uses the optional FFmpeg engine.',
+      '주요 동영상 형식을 MP4(H.264·HEVC·AV1)·WEBM·MOV·MKV·AVI·GIF·APNG로 바꾸고, 720p로 줄이거나 MP3·M4A로 소리만 뽑을 수 있습니다. 추가 엔진 FFmpeg를 씁니다.',
+      '把常见视频格式转成 MP4（H.264、HEVC 或 AV1）、WebM、MOV、MKV、AVI、GIF 或 APNG，可缩小到 720p，也能提取 MP3/M4A 音频。使用可选引擎 FFmpeg。'),
     formats: [
-      fmt('mp4', 'MP4', ['mp4', 'm4v'], {
+      fmt('mp4', 'MP4', ['mp4'], {
         name: T('MPEG-4 video', 'MPEG-4 동영상', 'MPEG-4 视频'),
         about: T('MP4 (MPEG-4 Part 14) is the most compatible video format. It plays on phones, TVs, browsers and every video site, usually with H.264 or H.265 video and AAC audio.',
           'MP4(MPEG-4 Part 14)는 가장 호환성이 좋은 동영상 형식입니다. 휴대폰·TV·브라우저·동영상 사이트 어디서나 재생되며, 보통 H.264/H.265 영상과 AAC 오디오를 담습니다.',
@@ -623,6 +787,7 @@ export const CATEGORIES = [
           'AVI는 1990년대에 나온 마이크로소프트의 동영상 컨테이너입니다. 캠코더·옛 카메라·보관 자료에 아직 많고, 용량이 크며 휴대폰에서 잘 재생되지 않는 경우가 많습니다.',
           'AVI 是微软 1990 年代推出的视频容器，旧摄像机、相机和存档里仍有很多 AVI 文件，通常体积大，手机上支持也不好。'),
       }),
+      fmt('m4v', 'M4V', ['m4v'], { brand: 'iTunes video' }),
       fmt('wmv', 'WMV', ['wmv', 'asf']),
       fmt('flv', 'FLV', ['flv', 'f4v']),
       fmt('mpg', 'MPEG', ['mpg', 'mpeg', 'mpe', 'm1v', 'm2v']),
@@ -637,19 +802,21 @@ export const CATEGORIES = [
       fmt('mxf', 'MXF', ['mxf']),
       fmt('rm', 'RM', ['rm', 'rmvb'], { display: 'RM/RMVB', brand: 'RealMedia' }),
       fmt('swf', 'SWF', ['swf'], { brand: 'Flash' }),
-      fmt('wtv', 'WTV', ['wtv', 'dvr-ms'], { brand: 'Windows Media Center' }),
+      fmt('wtv', 'WTV', ['wtv', 'dvr-ms', 'dvr'], { brand: 'Windows Media Center' }),
+      fmt('cavs', 'CAVS', ['cavs']),
     ],
     routes: [
-      { from: ['mp4', 'mov', 'mkv', 'webm', 'avi', 'wmv', 'flv', 'mpg', 'ts', 'm2ts', '3gp', '3g2', 'ogv', 'vob', 'mod', 'dv', 'mxf', 'rm', 'swf', 'wtv'],
-        to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['lossless', 'res720', 'extractAudio'] },
+      { from: ['mp4', 'm4v', 'mov', 'mkv', 'webm', 'avi', 'wmv', 'flv', 'mpg', 'ts', 'm2ts', '3gp', '3g2', 'ogv', 'vob', 'mod', 'dv', 'mxf', 'rm', 'swf', 'wtv', 'cavs'],
+        to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'apng', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['lossless', 'codecs', 'res720', 'extractAudio'] },
+      { from: ['gif', 'apng'], to: ['mp4', 'webm', 'mov'], engine: 'ffmpeg' },
     ],
   },
   {
     id: 'audio', icon: 'audio', color: '#0f9d8a',
     name: T('Audio', '오디오', '音频'), plain: T('audio', '오디오', '音频'),
-    intro: T('Music, recordings and voice memos to MP3, M4A, WAV, FLAC, OGG, Opus or AAC. Uses the optional FFmpeg engine.',
-      '음악·녹음·음성 메모를 MP3·M4A·WAV·FLAC·OGG·OPUS·AAC로 변환합니다. 추가 엔진 FFmpeg를 씁니다.',
-      '把音乐、录音和语音备忘录转成 MP3、M4A、WAV、FLAC、OGG、Opus 或 AAC。使用可选引擎 FFmpeg。'),
+    intro: T('Music, recordings and voice memos to MP3, M4A, WAV, FLAC, OGG, Opus, AAC or lossless WavPack and TTA. APE, DSD and DTS are read too. Uses the optional FFmpeg engine.',
+      '음악·녹음·음성 메모를 MP3·M4A·WAV·FLAC·OGG·OPUS·AAC와 무손실 WavPack·TTA로 변환합니다. APE·DSD·DTS도 읽어요. 추가 엔진 FFmpeg를 씁니다.',
+      '把音乐、录音和语音备忘录转成 MP3、M4A、WAV、FLAC、OGG、Opus、AAC 或无损的 WavPack、TTA，也能读取 APE、DSD 和 DTS。使用可选引擎 FFmpeg。'),
     formats: [
       fmt('mp3', 'MP3', ['mp3'], {
         name: T('MP3 audio', 'MP3 오디오', 'MP3 音频'),
@@ -691,10 +858,65 @@ export const CATEGORIES = [
       fmt('mp2', 'MP2', ['mp2', 'mpa']),
       fmt('dss', 'DSS', ['dss'], { brand: 'Olympus / Philips dictation' }),
       fmt('voc', 'VOC', ['voc']),
+      fmt('wv', 'WavPack', ['wv'], { koJong: 1 }),
+      fmt('tta', 'TTA', ['tta']),
+      fmt('w64', 'W64', ['w64'], { brand: 'Sony Wave64' }),
+      fmt('eac3', 'E-AC3', ['eac3', 'ec3'], { brand: 'Dolby Digital Plus' }),
+      fmt('ape', 'APE', ['ape'], { brand: "Monkey's Audio" }),
+      fmt('mpc', 'Musepack', ['mpc', 'mpp', 'mp+'], { koJong: 1 }),
+      fmt('tak', 'TAK', ['tak']),
+      fmt('dsf', 'DSF', ['dsf'], { brand: 'DSD' }),
+      fmt('dff', 'DFF', ['dff'], { brand: 'DSD' }),
+      fmt('dts', 'DTS', ['dts']),
+      fmt('spx', 'Speex', ['spx'], { koJong: 0 }),
     ],
     routes: [
-      { from: ['mp3', 'm4a', 'm4b', 'aac', 'wav', 'flac', 'ogg', 'opus', 'wma', 'aiff', 'ac3', 'amr', 'au', 'caf', 'weba', 'mka', 'mp2', 'dss', 'voc'],
-        to: ['mp3', 'm4a', 'wav', 'flac', 'ogg', 'opus', 'aac'], engine: 'ffmpeg', extras: ['mp3128'] },
+      { from: ['mp3', 'm4a', 'm4b', 'aac', 'wav', 'flac', 'ogg', 'opus', 'wma', 'aiff', 'ac3', 'amr', 'au', 'caf', 'weba', 'mka', 'mp2', 'dss', 'voc',
+        'wv', 'tta', 'w64', 'eac3', 'ape', 'mpc', 'tak', 'dsf', 'dff', 'dts', 'spx'],
+        to: ['mp3', 'm4a', 'wav', 'flac', 'ogg', 'opus', 'aac', 'wv', 'tta', 'w64', 'ac3', 'eac3'], engine: 'ffmpeg', extras: ['mp3128', 'alac'] },
+    ],
+  },
+  {
+    id: 'subtitles', icon: 'subtitles', color: '#4f46e5',
+    name: T('Subtitles', '자막', '字幕'), plain: T('subtitles', '자막', '字幕'),
+    intro: T('SRT, ASS, WebVTT, SAMI (SMI), LRC, TTML and MicroDVD into each other without any engine, saved as UTF-8; SSA and SCC are read. Korean SMI and SRT files in CP949 are read correctly. Subtitles in a video come out with FFmpeg.',
+      'SRT·ASS·WebVTT·SAMI(SMI)·LRC·TTML·MicroDVD를 엔진 없이 서로 바꾸고 UTF-8로 저장해요. SSA·SCC도 읽어요. CP949로 저장된 SMI·SRT도 제대로 읽어요. 동영상 속 자막은 FFmpeg로 꺼내요.',
+      'SRT、ASS、WebVTT、SAMI（SMI）、LRC、TTML 和 MicroDVD 无需引擎即可互相转换，保存为 UTF-8，也能读取 SSA 和 SCC。以 CP949 保存的韩文 SMI、SRT 也能正确读取。视频里的字幕用 FFmpeg 提取。'),
+    formats: [
+      fmt('srt', 'SRT', ['srt'], {
+        name: T('SubRip subtitles', 'SRT 자막', 'SRT 字幕'),
+        about: T('SRT (SubRip) is the most common subtitle file: numbered cues with start and end times and plain text. Nearly every player, editor and video site accepts it.',
+          'SRT(SubRip)는 가장 흔한 자막 파일로, 번호와 시작·끝 시간, 글자만 적은 단순한 형식입니다. 거의 모든 플레이어·편집 프로그램·동영상 사이트가 받아요.',
+          'SRT（SubRip）是最常见的字幕文件，只有编号、开始和结束时间以及文字。几乎所有播放器、剪辑软件和视频网站都支持。'),
+      }),
+      fmt('ass', 'ASS', ['ass'], {
+        name: T('Advanced SubStation Alpha subtitles', 'ASS 자막', 'ASS 字幕'),
+        about: T('ASS (Advanced SubStation Alpha) is the styled subtitle format of anime fansubs and Aegisub, with fonts, colours, positions and effects. Many devices and sites only take plain SRT.',
+          'ASS(Advanced SubStation Alpha)는 애니메이션 자막과 Aegisub에서 쓰는 꾸밈 자막 형식으로, 글꼴·색·위치·효과를 담아요. 많은 기기와 사이트는 단순한 SRT만 받아요.',
+          'ASS（Advanced SubStation Alpha）是动画字幕组和 Aegisub 常用的特效字幕格式，可设置字体、颜色、位置和效果，但很多设备和网站只接受简单的 SRT。'),
+      }),
+      fmt('ssa', 'SSA', ['ssa'], { brand: 'SubStation Alpha' }),
+      fmt('vtt', 'WebVTT', ['vtt'], {
+        name: T('WebVTT subtitles', 'WebVTT 자막', 'WebVTT 字幕'),
+        about: T('WebVTT (.vtt) is the subtitle format of HTML5 video. Web players, YouTube and online course platforms use it.',
+          'WebVTT(.vtt)는 HTML5 동영상의 자막 형식입니다. 웹 플레이어, 유튜브, 온라인 강의 플랫폼에서 써요.',
+          'WebVTT（.vtt）是 HTML5 视频的字幕格式，网页播放器、YouTube 和在线课程平台都在用。'),
+      }),
+      fmt('smi', 'SAMI', ['smi', 'sami'], {
+        display: 'SAMI (SMI)',
+        name: T('SAMI subtitles (SMI)', 'SMI(SAMI) 자막', 'SAMI 字幕（SMI）'),
+        about: T('SAMI (.smi) is Microsoft\'s HTML-like subtitle format. It is still the classic subtitle file in Korea, often saved in the old CP949 encoding that newer players show as broken text.',
+          'SMI(SAMI)는 마이크로소프트의 HTML 비슷한 자막 형식입니다. 한국에서 오래 써 온 자막 파일이라 옛 CP949 인코딩으로 저장된 경우가 많고, 요즘 플레이어에서는 글자가 깨지기도 해요.',
+          'SAMI（.smi）是微软推出的类似 HTML 的字幕格式，在韩国一直很常用，常以旧的 CP949 编码保存，新播放器可能显示乱码。'),
+      }),
+      fmt('lrc', 'LRC', ['lrc'], { brand: 'song lyrics' }),
+      fmt('ttml', 'TTML', ['ttml', 'dfxp'], { display: 'TTML/DFXP', koJong: 2 }),
+      fmt('sub', 'MicroDVD', ['sub'], { koJong: 0 }),
+      fmt('scc', 'SCC', ['scc'], { brand: 'Scenarist closed captions' }),
+    ],
+    routes: [
+      { from: ['srt', 'ass', 'ssa', 'vtt', 'smi', 'lrc', 'ttml', 'sub', 'scc'], to: ['srt', 'ass', 'vtt', 'smi', 'lrc', 'ttml', 'sub'], engine: 'builtin', extras: ['utf8'] },
+      { from: ['mkv', 'mp4', 'mov', 'webm'], to: ['srt', 'ass', 'vtt'], engine: 'ffmpeg', extras: ['extractSubs'] },
     ],
   },
   {
@@ -728,9 +950,13 @@ export const CATEGORIES = [
       fmt('tgz', 'TAR.GZ', ['tar.gz', 'tgz']),
       fmt('tbz2', 'TAR.BZ2', ['tar.bz2', 'tbz2']),
       fmt('txz', 'TAR.XZ', ['tar.xz', 'txz']),
+      fmt('tar7z', 'TAR.7Z', ['tar.7z']),
+      fmt('tlz', 'TAR.LZ', ['tar.lz', 'tlz']),
+      fmt('tz', 'TAR.Z', ['tar.z', 'tz']),
       fmt('gz', 'GZ', ['gz']),
-      fmt('bz2', 'BZ2', ['bz2']),
+      fmt('bz2', 'BZ2', ['bz2', 'bz']),
       fmt('xz', 'XZ', ['xz']),
+      fmt('lz', 'LZ', ['lz'], { brand: 'lzip' }),
       fmt('lzma', 'LZMA', ['lzma']),
       fmt('z', 'Z', ['z']),
       fmt('jar', 'JAR', ['jar'], { brand: 'Java' }),
@@ -744,9 +970,11 @@ export const CATEGORIES = [
       fmt('lha', 'LHA', ['lha', 'lzh'], { display: 'LHA/LZH' }),
       fmt('arj', 'ARJ', ['arj']),
       fmt('alz', 'ALZ', ['alz'], { brand: 'ALZip' }),
+      fmt('egg', 'EGG', ['egg'], { brand: 'ALZip' }),
     ],
     routes: [
-      { from: ['zip', '7z', 'rar', 'tar', 'tgz', 'tbz2', 'txz', 'gz', 'bz2', 'xz', 'lzma', 'z', 'jar', 'cab', 'cpio', 'deb', 'rpm', 'dmg', 'iso', 'img', 'lha', 'arj', 'alz'],
+      { from: ['zip', '7z', 'rar', 'tar', 'tgz', 'tbz2', 'txz', 'tar7z', 'tlz', 'tz', 'gz', 'bz2', 'xz', 'lz', 'lzma', 'z', 'jar', 'cab', 'cpio', 'deb', 'rpm',
+        'dmg', 'iso', 'img', 'lha', 'arj', 'alz', 'egg'],
         to: ['zip', '7z', 'tar', 'tgz'], engine: 'builtin', via: '7-Zip', extras: ['extract'] },
       { fromText: T('Any files', '아무 파일', '任意文件'), from: [], to: ['zip'], engine: 'builtin', extras: ['zipAll'] },
     ],
@@ -775,6 +1003,41 @@ export const CATEGORIES = [
       { from: ['dwg'], to: ['dxf'], engine: 'builtin', extras: ['noAutocad'] },
       { from: ['dxf'], to: ['dwg'], engine: 'builtin', extras: ['noAutocad'] },
       { from: ['dwg', 'dxf'], to: ['pdf', 'svg', 'png'], engine: 'builtin', extras: ['noAutocad', 'merge'] },
+    ],
+  },
+  {
+    id: 'models', icon: 'cube', color: '#be185d',
+    name: T('3D models', '3D 모델', '3D 模型'), plain: T('3D models', '3D 모델', '3D 模型'),
+    intro: T('GLB, glTF, STL, OBJ, 3MF and PLY into each other, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.',
+      'GLB·glTF·STL·OBJ·3MF·PLY를 서로 바꿔요. 형식이 담을 수 있으면 색·텍스처·재질도 유지하고, 음영을 넣은 PNG·JPG 그림으로도 만들어요. 따로 설치할 건 없어요.',
+      'GLB、glTF、STL、OBJ、3MF 和 PLY 互相转换，格式支持时保留颜色、纹理和材质，也能生成带阴影的 PNG 或 JPG 图片。无需安装其他软件。'),
+    formats: [
+      fmt('glb', 'GLB', ['glb'], {
+        name: T('glTF binary (GLB)', 'GLB(glTF 바이너리)', 'GLB（glTF 二进制）'),
+        about: T('GLB is the one-file version of glTF, the 3D format of the web, AR and game engines. Meshes, materials and textures are packed into a single compact file.',
+          'GLB는 웹·AR·게임 엔진의 3D 형식인 glTF를 파일 하나로 묶은 것입니다. 메시·재질·텍스처가 작은 파일 하나에 들어 있어요.',
+          'GLB 是 glTF 的单文件版本，glTF 是网页、AR 和游戏引擎常用的 3D 格式，网格、材质和纹理都打包在一个紧凑的文件里。'),
+      }),
+      fmt('gltf', 'glTF', ['gltf']),
+      fmt('stl', 'STL', ['stl'], {
+        koJong: 2,
+        name: T('STL 3D model', 'STL 3D 모델', 'STL 3D 模型'),
+        about: T('STL is the classic file for 3D printing. It stores only the triangles of a shape, with no colours or units, and every slicer and CAD program reads it.',
+          'STL은 3D 프린팅의 대표 파일입니다. 모양의 삼각형만 담고 색이나 단위는 없으며, 모든 슬라이서와 CAD 프로그램이 읽어요.',
+          'STL 是 3D 打印最经典的文件格式，只保存形状的三角形，没有颜色和单位，所有切片软件和 CAD 程序都能读取。'),
+      }),
+      fmt('obj', 'OBJ', ['obj'], {
+        name: T('Wavefront OBJ model', 'OBJ 3D 모델', 'OBJ 3D 模型'),
+        about: T('OBJ (Wavefront) is a plain-text 3D format almost every 3D program opens. Materials and textures sit next to it in an .mtl file and pictures.',
+          'OBJ(Wavefront)는 거의 모든 3D 프로그램이 여는 텍스트 3D 형식입니다. 재질과 텍스처는 옆의 .mtl 파일과 그림에 따로 담겨요.',
+          'OBJ（Wavefront）是几乎所有 3D 软件都能打开的纯文本 3D 格式，材质和纹理另存在旁边的 .mtl 文件和图片中。'),
+      }),
+      fmt('3mf', '3MF', ['3mf'], { brand: '3D printing' }),
+      fmt('ply', 'PLY', ['ply'], { brand: '3D scans' }),
+    ],
+    routes: [
+      { from: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], to: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], engine: 'builtin', extras: ['colours3d'] },
+      { from: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], to: ['png', 'jpg'], engine: 'builtin', extras: ['preview3d'] },
     ],
   },
   {
@@ -1111,6 +1374,71 @@ export const PAIRS = [
     tip: T('Some older programs, cutting and embroidery machines and game engines only accept TrueType fonts. Convert a whole OTF font family to TTF in one go, without a font editor.',
       '일부 오래된 프로그램, 커팅·자수 기계, 게임 엔진은 트루타입 글꼴만 받습니다. 글꼴 편집기 없이 OTF 글꼴 패밀리 전체를 한 번에 TTF로 바꿔 보세요.',
       '一些旧软件、切割和刺绣机器以及游戏引擎只接受 TrueType 字体。无需字体编辑器，就能把一整套 OTF 字体一次转成 TTF。') },
+  // Tracing (images → SVG) and SVG → CAD
+  { from: 'png', to: 'svg', popular: true, options: ['trace'],
+    tip: T('Use Line art to SVG for logos, signatures and scans: the ink becomes one black shape on a transparent background. Trace to SVG keeps up to 64 colours for icons and illustrations. Photos come out as flat patches, so tracing suits drawings best.',
+      '로고·서명·스캔은 흑백 선화 프리셋을 쓰세요. 잉크 부분이 투명 배경 위의 검은 도형 하나가 돼요. 아이콘·일러스트는 최대 64색을 남기는 벡터화 프리셋이 좋아요. 사진은 단색 조각처럼 바뀌니 그림에 알맞아요.',
+      'Logo、签名和扫描件请用“黑白描摹”预设，墨迹会变成透明背景上的一个黑色图形。图标和插画适合“描摹”预设，最多保留 64 种颜色。照片会变成色块，所以描摹最适合绘制的图形。') },
+  { from: 'jpg', to: 'svg', options: ['trace'],
+    tip: T('A JPG of a logo or a scanned sketch becomes an SVG that stays sharp at any size, ready for a cutting plotter, a website or a print shop. JPG noise turns into specks, so lower the Detail setting in the preset if the result looks busy.',
+      '로고 JPG나 스캔한 스케치를 어떤 크기에서도 선명한 SVG로 바꿔요. 커팅 플로터, 웹사이트, 인쇄소에 바로 쓸 수 있어요. JPG 노이즈는 작은 점이 되니 결과가 지저분하면 프리셋에서 세밀도를 낮추세요.',
+      '把 Logo 的 JPG 或扫描的草图转成任意尺寸都清晰的 SVG，可直接用于刻字机、网站或印厂。JPG 的噪点会变成小斑点，结果太杂时可在预设中调低细节。') },
+  { from: 'svg', to: 'dxf', options: ['noAutocad'],
+    tip: T('Laser cutters, CNC software and CAD programs read DXF. Filee writes the SVG\'s outlines in millimetres, so a shape 100 mm wide stays 100 mm. Curves become fine polylines. Fills, images and filters are left out.',
+      '레이저 커터·CNC 소프트웨어·CAD 프로그램은 DXF를 읽어요. Filee는 SVG의 윤곽선을 밀리미터 단위로 써서 100mm 도형은 그대로 100mm예요. 곡선은 촘촘한 폴리라인이 되고, 채우기·그림·필터는 빠져요.',
+      '激光切割机、CNC 软件和 CAD 程序都能读取 DXF。Filee 以毫米为单位写入 SVG 的轮廓，宽 100 mm 的图形仍是 100 mm。曲线会变成细密的多段线，填充、图片和滤镜不会保留。') },
+  // E-mail
+  { from: 'msg', to: 'pdf', options: ['attachments', 'merge'],
+    tip: T('E-mails dragged out of Outlook are MSG files that only Outlook opens. As PDF they keep the sender, recipients, date, subject and message, and open anywhere. Outlook isn\'t needed.',
+      '아웃룩에서 끌어낸 메일은 아웃룩에서만 열리는 MSG 파일이에요. PDF로 바꾸면 보낸 사람·받는 사람·날짜·제목·본문이 그대로 남고 어디서나 열려요. 아웃룩은 필요 없어요.',
+      '从 Outlook 拖出的邮件是只有 Outlook 才能打开的 MSG 文件。转成 PDF 后保留发件人、收件人、日期、主题和正文，到处都能打开。不需要 Outlook。') },
+  // Data
+  { from: 'json', to: 'yaml', options: [],
+    tip: T('YAML is easier to read and edit by hand, which is why config files use it. Keys keep their order, and text that would read back as a number or true/false is quoted.',
+      'YAML은 사람이 읽고 고치기 쉬워서 설정 파일에 많이 써요. 키 순서는 그대로이고, 다시 읽을 때 숫자나 true/false로 바뀔 글자는 따옴표로 감싸요.',
+      'YAML 更便于人工阅读和编辑，所以配置文件常用它。键的顺序保持不变，会被误读成数字或 true/false 的文字会加上引号。') },
+  { from: 'yaml', to: 'json', options: [],
+    tip: T('Turn a config file into JSON for an API, a script or a tool that only reads JSON. Anchors and aliases are resolved, and a file with several documents becomes one array. Comments are dropped, since JSON has none.',
+      'API·스크립트·JSON만 읽는 도구에 넣을 수 있게 설정 파일을 JSON으로 바꿔요. 앵커와 별칭은 풀어 쓰고, 문서가 여러 개면 배열 하나가 돼요. JSON에는 주석이 없어서 주석은 빠져요.',
+      '把配置文件转成 JSON，交给 API、脚本或只读 JSON 的工具。锚点和别名会展开，含多个文档的文件会变成一个数组。JSON 没有注释，所以注释会被去掉。') },
+  { from: 'json', to: 'csv', options: ['tables'],
+    tip: T('A JSON list of records becomes a table you can open in Excel: one row per record, one column per key. A wrapper like {"users": […]} is looked through. Data that isn\'t a table stops with a message instead of a broken file.',
+      '레코드 목록인 JSON을 엑셀에서 여는 표로 바꿔요. 레코드마다 한 행, 키마다 한 열이에요. {"users": […]}처럼 감싼 객체는 알아서 풀어요. 표가 아닌 데이터는 깨진 파일 대신 안내 메시지가 떠요.',
+      '记录列表形式的 JSON 会变成可在 Excel 中打开的表格，每条记录一行，每个键一列。{"users": […]} 这样的外层对象会自动展开。不是表格的数据会给出提示，而不会生成损坏的文件。') },
+  { from: 'vcf', to: 'csv', options: ['utf8'],
+    tip: T('Get an address book into Excel or a mailing tool: one row per contact with name, organization, email, phone, address and birthday. Contacts from old Korean phones in CP949 are read correctly.',
+      '주소록을 엑셀이나 메일 발송 도구로 옮길 때 좋아요. 연락처마다 한 행에 이름·회사·이메일·전화·주소·생일이 들어가요. CP949로 저장된 옛 휴대폰 연락처도 제대로 읽어요.',
+      '把通讯录导入 Excel 或群发工具时很方便。每个联系人一行，包含姓名、单位、邮箱、电话、地址和生日。旧手机以 CP949 保存的韩文联系人也能正确读取。') },
+  // Subtitles
+  { from: 'srt', to: 'vtt', popular: true, options: ['utf8'],
+    tip: T('Web players and online course platforms want WebVTT. Timing, line breaks and italics come across, and no engine is needed.',
+      '웹 플레이어와 온라인 강의 플랫폼은 WebVTT를 원해요. 시간, 줄바꿈, 기울임이 그대로 옮겨지고 엔진도 필요 없어요.',
+      '网页播放器和在线课程平台需要 WebVTT。时间、换行和斜体都会保留，无需任何引擎。') },
+  { from: 'smi', to: 'srt', options: ['utf8'],
+    tip: T('Many players, TVs and editors don\'t read SMI, and old Korean SMI files often show as broken text. Filee detects CP949, picks the language with the most lines and saves a clean UTF-8 SRT.',
+      '많은 플레이어·TV·편집 프로그램이 SMI를 못 읽고, 옛 SMI 자막은 글자가 깨지기도 해요. Filee는 CP949를 알아서 인식하고, 언어가 여럿이면 줄이 가장 많은 언어로 깔끔한 UTF-8 SRT를 만들어요.',
+      '很多播放器、电视和剪辑软件不支持 SMI，旧的韩文 SMI 还常显示乱码。Filee 会自动识别 CP949，多语言时选择行数最多的语言，保存为干净的 UTF-8 SRT。') },
+  { from: 'ass', to: 'srt', options: ['utf8'],
+    tip: T('When a TV, a phone or a video site refuses styled ASS subtitles, plain SRT works. Bold, italics, underline and colours are kept; positions, fonts and effects are dropped.',
+      'TV·휴대폰·동영상 사이트가 꾸밈 자막 ASS를 받지 않으면 단순한 SRT로 바꾸세요. 굵게·기울임·밑줄·색은 남고, 위치·글꼴·효과는 빠져요.',
+      '电视、手机或视频网站不接受带样式的 ASS 字幕时，转成简单的 SRT 即可。粗体、斜体、下划线和颜色会保留，位置、字体和特效会去掉。') },
+  { from: 'mkv', to: 'srt', options: ['extractSubs'],
+    tip: T('Take the subtitles out of a film to edit or translate them. The first text subtitle track is saved as SRT; picture-based subtitles (DVD, Blu-ray) can\'t be turned into text. Needs the free FFmpeg engine.',
+      '영화의 자막을 꺼내 고치거나 번역할 때 좋아요. 첫 번째 텍스트 자막 트랙을 SRT로 저장해요. DVD·블루레이의 그림 자막은 글자로 바꿀 수 없어요. 무료 FFmpeg 엔진이 필요해요.',
+      '想编辑或翻译电影字幕时，可以先把字幕提取出来。第一条文本字幕轨会保存为 SRT，DVD、蓝光的图形字幕无法转成文字。需要免费的 FFmpeg 引擎。') },
+  // 3D models
+  { from: 'stl', to: 'obj', options: ['colours3d'],
+    tip: T('Open a print file in a 3D program that prefers OBJ. STL has no units, so Filee reads it as millimetres and writes OBJ in millimetres too, with Y pointing up like most 3D programs.',
+      'OBJ를 더 잘 다루는 3D 프로그램에서 출력용 파일을 열 때 좋아요. STL에는 단위가 없어서 밀리미터로 읽고 OBJ도 밀리미터로 쓰며, 대부분의 3D 프로그램처럼 Y축이 위를 향해요.',
+      '想在更擅长 OBJ 的 3D 软件中打开打印文件时很方便。STL 没有单位，Filee 按毫米读取，OBJ 也以毫米写出，并像大多数 3D 软件一样以 Y 轴朝上。') },
+  { from: 'obj', to: 'stl', options: ['colours3d'],
+    tip: T('Slicers for 3D printers take STL. Faces of any shape are split into triangles, and Y-up becomes Z-up, so an upright model stands on the print bed. STL keeps only the shape, so colours and textures stay in the OBJ.',
+      '3D 프린터 슬라이서는 STL을 받아요. 어떤 모양의 면이든 삼각형으로 나누고, Y축 위를 Z축 위로 바꿔 똑바로 선 모델이 출력판 위에 서요. STL은 모양만 담으니 색과 텍스처는 OBJ에 남겨 두세요.',
+      '3D 打印的切片软件接受 STL。任意形状的面都会拆成三角形，Y 轴朝上会改为 Z 轴朝上，直立的模型会立在打印平台上。STL 只保存形状，颜色和纹理请保留在 OBJ 中。') },
+  { from: 'glb', to: 'obj', options: ['colours3d'],
+    tip: T('Bring a model from the web or a game engine into a program that reads OBJ. The .mtl file and the textures are written next to the .obj, so keep them together.',
+      '웹이나 게임 엔진의 모델을 OBJ를 읽는 프로그램으로 옮길 때 좋아요. .mtl 파일과 텍스처가 .obj 옆에 함께 저장되니 같이 보관하세요.',
+      '把网页或游戏引擎中的模型导入只读 OBJ 的软件时很方便。.mtl 文件和纹理会保存在 .obj 旁边，请把它们放在一起。') },
 ];
 
 /* ───────── FAQ (home page, FAQPage JSON-LD, llms-full.txt) ───────── */
@@ -1175,7 +1503,7 @@ export const FAQ = [
 
 /** Format chips in the home page marquee (two rows). */
 export const MARQUEE = ['jpg', 'png', 'heic', 'webp', 'avif', 'psd', 'cr2', 'svg', 'pdf', 'docx', 'hwp', 'hwpx', 'xlsx', 'csv', 'pptx', 'txt', 'md',
-  'epub', 'mobi', 'mp4', 'mov', 'mkv', 'webm', 'mp3', 'wav', 'flac', 'm4a', 'zip', 'rar', '7z', 'dwg', 'dxf', 'ttf', 'woff2', 'gif', 'ico'];
+  'epub', 'mobi', 'mp4', 'mov', 'mkv', 'webm', 'mp3', 'wav', 'flac', 'm4a', 'srt', 'json', 'zip', 'rar', '7z', 'dwg', 'dxf', 'stl', 'ttf', 'woff2', 'gif', 'ico'];
 
 /** Formats on each demo donut, like the app's default toolbars; `source` is the demo file's format (checked). */
 export const DEMO_DONUTS = {
@@ -1221,16 +1549,22 @@ export function targetsOf(from) {
 /** Engines a category uses, built in first. */
 export const enginesOf = cat => [...new Set(CATEGORY[cat].routes.map(r => r.engine))].sort((a, b) => (a === 'builtin' ? -1 : b === 'builtin' ? 1 : 0));
 
+/**
+ * Number of formats in a list, counted like the app (FormatRegistry): the camera RAW brands (CR2, NEF, ARW…) are one
+ * format, "RAW", there; they are listed one by one here so each gets its own chip and extensions.
+ */
+export const countFormats = formats => formats.filter(f => !f.raw).length + (formats.some(f => f.raw) ? 1 : 0);
+
 /** Counts shown on the site. */
 export function stats() {
   const all = CATEGORIES.flatMap(c => c.formats);
   const builtinSources = new Set(ALL_ROUTES.filter(r => r.engine === 'builtin').flatMap(r => r.from));
-  const formatTotal = all.length;
+  const formatTotal = countFormats(all);
   return {
     formatTotal,
     formatCount: `${Math.floor(formatTotal / 10) * 10}+`,
     categoryCount: CATEGORIES.length,
-    builtinTotal: all.filter(f => builtinSources.has(f.id)).length,
+    builtinTotal: countFormats(all.filter(f => builtinSources.has(f.id))),
     pairCount: PAIRS.length,
   };
 }

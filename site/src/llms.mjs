@@ -2,7 +2,7 @@
 // Everything is generated from catalog.mjs, so the facts match the pages.
 
 import {
-  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, VERSION, L, engineDetails, fill, joinList, pairSlug,
+  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, VERSION, L, countFormats, engineDetails, fill, joinList, pairSlug,
   routeFor, sizeText, stats, vars,
 } from './catalog.mjs';
 import { DOWNLOAD, REPO, SITE, paths } from './layout.mjs';
@@ -27,7 +27,7 @@ function facts(en) {
     `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
     `Command line: Setup can add the "filee" command to PATH. "filee convert <files, wildcards or folders> --to <format>" (or "--preset <preset>") converts with the app's engines and presets; "--json" prints the result for scripts; exit codes are 0 (nothing failed), 1 (some files failed), 2 (wrong arguments or a missing input) and 3 (nothing to convert). "filee watch <folder> --to <format>" converts files that land in a folder. Guide: ${SITE}/cli/`,
     `Watch folders: files that land in a chosen folder are converted automatically once they are complete, set up in the app or with "filee watch"; the originals can stay or move to an "originals" folder.`,
-    `Presets per file type: quality, resizing, DPI, grayscale, metadata, TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p video, MP3 bitrate, output folder and file names.`,
+    `Presets per file type: quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG (raster images to vector SVG, built in), TIFF compression, ICO sizes, PDF merge, split and page ranges, 720p, HEVC and AV1 video, MP3 bitrate, output folder and file names. A donut slice can hold a group of presets.`,
     `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Korean and Simplified Chinese.`,
     `Current version: ${VERSION}. The installer (Filee-<version>-win-Setup.exe) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in and optional engines; a portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. When a new version is out on GitHub Releases, the installed app downloads it, checks its SHA-256 and installs it after one click, keeping settings and engines; the portable ZIP is replaced by hand.`,
     en ? `Website: ${SITE}/ (English), ${SITE}/ko/ (Korean), ${SITE}/zh-cn/ (Simplified Chinese).` : '',
@@ -49,13 +49,13 @@ export function llmsTxt(languages) {
   const t = en(languages);
   return `# Filee
 
-> Filee is a free, open-source (MIT) file converter for Windows 10 and 11. It converts images, PDF, Word, Excel and PowerPoint files, Korean HWP/HWPX, e-books, video, audio, archives, CAD drawings and fonts offline on your PC: hold a key, drag files and drop them on a format.
+> Filee is a free, open-source (MIT) file converter for Windows 10 and 11. It converts images, PDF, Word, Excel and PowerPoint files, Korean HWP/HWPX, e-books, video, audio, subtitles, data files, 3D models, archives, CAD drawings and fonts offline on your PC: hold a key, drag files and drop them on a format.
 
 ${facts(true).map(line => `- ${line}`).join('\n')}
 
 ## Formats
 
-${CATEGORIES.map(c => `- ${L(c.name, EN)} (${c.formats.length}): ${L(c.intro, EN)}`).join('\n')}
+${CATEGORIES.map(c => `- ${L(c.name, EN)} (${countFormats(c.formats)}): ${L(c.intro, EN)}`).join('\n')}
 
 Full list with every format, extension, target and engine: [format catalog](${SITE}/formats/) and [llms-full.txt](${SITE}/llms-full.txt).
 
@@ -101,7 +101,7 @@ ${Object.values(ENGINES).map(e => `- ${e.name} (optional download${e.sizeMB ? `,
 
 ## Format catalog
 
-${CATEGORIES.map(c => `### ${L(c.name, EN)} (${c.formats.length} formats)
+${CATEGORIES.map(c => `### ${L(c.name, EN)} (${countFormats(c.formats)} formats)
 
 ${L(c.intro, EN)}
 

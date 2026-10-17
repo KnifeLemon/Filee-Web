@@ -2,6 +2,7 @@
 // and to pick up new versions on their own. Version, date, size and download links come from the latest GitHub
 // release at build time; if GitHub can't be reached the build uses FALLBACK (the release current when this was written).
 
+import { stats } from './catalog.mjs';
 import { REPO, SITE } from './layout.mjs';
 
 /** Used when the GitHub API does not answer during the build. */
@@ -34,20 +35,22 @@ export async function latestRelease() {
   }
 }
 
+const { formatTotal, categoryCount } = stats();
+
 const DESCRIPTIONS = {
-  45: 'Convert 180 file formats by drag and drop',
+  45: `Convert ${formatTotal} file formats by drag and drop`,
   80: 'Free, open-source file converter: drop files on a donut menu, convert offline',
   250: 'Free, open-source file converter for Windows. Hold a key, drag files and drop them on a format in a donut menu: '
-    + 'images, PDF, Office documents, HWP, e-books, video, audio, archives, CAD and fonts, 180 formats, converted offline.',
+    + `images, PDF, Office, HWP, e-books, video, audio, subtitles, data, 3D and more, ${formatTotal} formats, offline.`,
   450: 'Filee converts files on your own PC, without uploading them. Hold a key while dragging files and a donut-shaped '
     + 'menu of formats opens at the cursor; drop the files on one and the converted files appear next to the originals. '
-    + 'It handles 180 formats: images (HEIC, PSD, RAW), PDF, Word, Excel and PowerPoint without Office, Korean HWP, '
-    + 'e-books, video, audio, archives, CAD and fonts. No ads, no watermarks, no account.',
+    + `It handles ${formatTotal} formats: images (HEIC, PSD, RAW), PDF, Office files without Office, Korean HWP, e-books, `
+    + 'video, audio, subtitles, data files, 3D models, archives, CAD and fonts. No ads, no account.',
   2000: `Filee converts files on your own PC, without uploading them anywhere. Hold a key while dragging files and a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals. You can also convert from the File Explorer right-click menu (top level on Windows 11), Send To, a keyboard shortcut or the drop zone in the main window.
 
-Filee handles 180 formats in 14 categories: images, including iPhone HEIC, Photoshop PSD and camera RAW; PDF to images, Word or text, and PDF merge, split and page ranges; Word, Excel and PowerPoint without Microsoft Office; Korean HWP/HWPX without Hancom Office; e-books and comics (EPUB, MOBI, AZW3, FB2, CBZ, CBR); video and audio (MP4, MOV, MKV, WEBM, MP3, FLAC and more), video to GIF and audio extraction; archives (ZIP, 7Z, RAR, TAR); CAD drawings (DWG, DXF) and fonts (TTF, OTF, WOFF).
+Filee handles ${formatTotal} formats in ${categoryCount} categories: images, including iPhone HEIC, Photoshop PSD and camera RAW, and pictures traced into SVG; PDF to images, Word or text, and PDF merge, split and page ranges; Word, Excel and PowerPoint without Microsoft Office; Korean HWP/HWPX without Hancom Office; e-books and comics (EPUB, MOBI, AZW3, FB2, CBZ, CBR); video and audio (MP4, MOV, MKV, WEBM, MP3, FLAC and more), video to GIF and audio extraction; subtitles (SRT, ASS, WebVTT, SMI); data files (JSON, YAML, TOML, XML); 3D models (GLB, STL, OBJ, 3MF); archives (ZIP, 7Z, RAR, TAR); CAD drawings (DWG, DXF) and fonts (TTF, OTF, WOFF).
 
-It converts many files at once in parallel, and one failure doesn't stop the rest. Presets per file type set quality, size, DPI, metadata, PDF merging and splitting, ZIP packing, the output folder and file names. Large engines (FFmpeg, LibreOffice, calibre, Ghostscript, Pandoc) are optional: pick them in the installer or download them later in the app. No ads, no watermarks, no account and no file-size limits. The interface is available in English, Korean and Simplified Chinese, with light and dark themes. Filee is open source under the MIT license.`,
+It converts many files at once in parallel, and one failure doesn't stop the rest. Presets per file type set quality, size, rotation, DPI, metadata, PDF merging and splitting, ZIP packing, the output folder and file names. Large engines (FFmpeg, LibreOffice, calibre, Ghostscript, Pandoc) are optional: pick them in the installer or download them later in the app. No ads, no watermarks, no account and no file-size limits. The interface is available in English, Korean and Simplified Chinese, with light and dark themes. Filee is open source under the MIT license.`,
 };
 
 const KEYWORDS = 'file converter, image converter, pdf converter, video converter, document converter, heic to jpg, '

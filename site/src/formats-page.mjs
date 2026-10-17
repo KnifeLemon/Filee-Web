@@ -1,7 +1,7 @@
 // The format catalog (/formats/, /ko/formats/, /zh-cn/formats/): every category, every format, what it converts to,
 // which engine does it, and links to the conversion guides. Generated entirely from catalog.mjs.
 
-import { CATEGORIES, ENGINES, FORMATS, OPTIONS, PAIRS, BUILT_IN_ENGINES, L, fill, label, pairSlug, sizeText, stats, vars } from './catalog.mjs';
+import { CATEGORIES, ENGINES, FORMATS, OPTIONS, PAIRS, BUILT_IN_ENGINES, L, countFormats, fill, label, pairSlug, sizeText, stats, vars } from './catalog.mjs';
 import { SITE, alternatesOf, breadcrumbs, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument } from './layout.mjs';
 
 /** A format chip with its extensions (and maker) as a tooltip. */
@@ -33,7 +33,7 @@ function categorySection(t, c) {
   return `<section class="cat-section" id="${c.id}" style="--cat:${c.color}" data-reveal>
     <header class="cat-head">
       ${icon(c.icon, 'cat-icon')}
-      <div><h2>${escape(L(c.name, t.lang))}</h2><p class="cat-count">${escape(fill(t.formats.count, { n: c.formats.length }))}</p></div>
+      <div><h2>${escape(L(c.name, t.lang))}</h2><p class="cat-count">${escape(fill(t.formats.count, { n: countFormats(c.formats) }))}</p></div>
     </header>
     <p class="cat-intro">${escape(L(c.intro, t.lang))}</p>
     <div class="format-table route-table">
@@ -71,7 +71,7 @@ export function renderFormatsPage(t, languages, assets) {
       <li><b>${s.pairCount}</b><span>${escape(t.catalog.stats.guides)}</span></li>
     </ul>
     <nav class="cat-index" aria-label="${escape(t.catalog.jump)}">
-      ${CATEGORIES.map(c => `<a class="pill" href="#${c.id}" style="--cat:${c.color}">${icon(c.icon, 'pill-icon')}${escape(L(c.name, t.lang))} <small>${c.formats.length}</small></a>`).join('')}
+      ${CATEGORIES.map(c => `<a class="pill" href="#${c.id}" style="--cat:${c.color}">${icon(c.icon, 'pill-icon')}${escape(L(c.name, t.lang))} <small>${countFormats(c.formats)}</small></a>`).join('')}
     </nav>
   </section>
 

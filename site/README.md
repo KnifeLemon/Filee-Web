@@ -50,7 +50,7 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 |---|---|---|
 | Home | `/`, `/ko/`, `/zh-cn/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (61 pairs × 3 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (82 pairs × 3 languages) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -63,8 +63,9 @@ Open Graph tags and JSON-LD: `SoftwareApplication` + `FAQPage` + `VideoObject` o
 - `ENGINES`: the optional downloads (name, approximate size, what they are for). `sizeMB: null` hides the size.
 - `CATEGORIES`: per category its `formats` (id, label, extensions; `name`/`about` texts for formats used on
   conversion pages) and `routes`: `{ from: [...], to: [...], engine: 'builtin' | 'ffmpeg' | …, via, extras }`.
-  A format that appears in a route with `engine: 'builtin'` counts as built in. Counts ("180 formats", "111 built in")
-  are computed from these lists.
+  A format that appears in a route with `engine: 'builtin'` counts as built in. Counts ("244 formats", "136 built in")
+  are computed from these lists the way the app's `FormatRegistry` counts: the camera RAW brands (`raw: true`) are one
+  format, so the total matches the app's.
 - `OPTIONS`: preset/behaviour texts used in the tables (`short`) and on conversion pages (`long`).
 - `PAIRS`: the conversion guide pages. Each needs a route in `CATEGORIES` (the build fails otherwise), a `tip` in every
   language and `name`/`about` texts for both formats. `popular: true` lists it on the home page and in the footer.
