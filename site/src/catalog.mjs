@@ -5,7 +5,7 @@
 //
 // Texts are { en, ko, 'zh-CN' } objects made with T(). Placeholders like {formatTotal} are filled by vars() below.
 
-export const VERSION = '1.11.0';
+export const VERSION = '1.12.0';
 export const LANGS = ['en', 'ko', 'zh-CN'];
 
 const T = (en, ko, zh) => ({ en, ko, 'zh-CN': zh });
@@ -128,6 +128,18 @@ export const OPTIONS = {
       '긴 이미지 프리셋은 모든 페이지를 위아래로 이어 이미지 한 장으로 만들어요. 문서를 한 번에 올릴 때 좋아요.',
       '长图预设会把所有页面上下拼成一张图片，适合一次性发布整份文档。'),
   },
+  compress: {
+    short: T('compress PDF', 'PDF 압축', '压缩 PDF'),
+    long: T('The Compress PDF preset makes a PDF smaller while it stays a PDF: pictures are scaled down to 72, 150 or 300 dpi and photos saved again as JPEG, while text, fonts, links, bookmarks and forms stay. A PDF that can\'t get smaller is left as it was. With Ghostscript installed, Filee can try it too and keep the smaller result.',
+      'PDF 압축 프리셋은 PDF를 PDF 그대로 더 작게 만들어요. 그림은 72·150·300dpi로 줄이고 사진은 JPEG로 다시 저장하며, 글자·글꼴·링크·책갈피·양식은 그대로예요. 더 작아지지 않는 PDF는 원래대로 둬요. Ghostscript가 있으면 함께 시도해서 더 작은 결과를 남길 수도 있어요.',
+      '“压缩 PDF”预设可以让 PDF 变小，同时仍是 PDF。图片缩小到 72、150 或 300 dpi，照片重新存为 JPEG，文字、字体、链接、书签和表单保持不变。无法变小的 PDF 保持原样。装有 Ghostscript 时还可以用它试一次，保留更小的结果。'),
+  },
+  slides: {
+    short: T('a picture per slide', '페이지마다 슬라이드 그림', '每页一张幻灯片图片'),
+    long: T('PPTX (slides) puts a picture of each page on its own slide, at the page\'s size, with the page\'s text in the speaker notes. The slides look exactly like the PDF but aren\'t editable; convert to DOCX for editable text.',
+      'PPTX (슬라이드)는 페이지마다 그 크기 그대로 그림 한 장을 슬라이드에 넣고, 페이지의 글은 발표자 노트에 담아요. PDF와 똑같이 보이지만 편집은 안 돼요. 글을 고치려면 DOCX로 바꾸세요.',
+      '“PPTX（幻灯片）”把每一页按原尺寸作为一张图片放在单独的幻灯片上，页面文字放在演讲者备注中。幻灯片与 PDF 看起来完全一样，但无法编辑。需要编辑文字请转为 DOCX。'),
+  },
   vectorPdf: {
     short: T('vector PDF', '벡터 PDF', '矢量 PDF'),
     long: T('The PDF stays vector, so it is sharp at any zoom and in print.', 'PDF에서도 벡터가 유지되어 확대하거나 인쇄해도 선명합니다.', 'PDF 仍为矢量，任意放大或打印都清晰。'),
@@ -202,6 +214,18 @@ export const OPTIONS = {
       '동영상 프리셋에서 HEVC(H.265)나 AV1을 골라 더 작게 만들 수 있어요. 10비트와 HDR 영상도 그대로예요.',
       '视频预设可选择 HEVC（H.265）或 AV1，文件更小，并保留 10 位和 HDR 视频。'),
   },
+  hwEncode: {
+    short: T('hardware encoding', '하드웨어 인코딩', '硬件编码'),
+    long: T('Turn on Use hardware acceleration in a video preset to encode H.264 and HEVC on the graphics chip (NVENC, Quick Sync, AMF, VideoToolbox or VA-API): much faster and lighter on power, slightly larger at the same quality. It is off by default, and without a usable chip the video is encoded as before.',
+      '동영상 프리셋에서 ‘하드웨어 가속 사용’을 켜면 H.264·HEVC를 그래픽 칩(NVENC·Quick Sync·AMF·VideoToolbox·VA-API)으로 인코딩해요. 훨씬 빠르고 전력도 덜 쓰지만, 같은 화질이면 파일이 조금 커져요. 기본은 꺼져 있고, 쓸 수 있는 칩이 없으면 평소처럼 인코딩해요.',
+      '在视频预设中开启“使用硬件加速”后，H.264 和 HEVC 会用显卡（NVENC、Quick Sync、AMF、VideoToolbox 或 VA-API）编码，速度快得多，也更省电，同等画质下文件略大。默认关闭，没有可用的显卡时照常编码。'),
+  },
+  frames: {
+    short: T('every frame', '모든 프레임', '每一帧'),
+    long: T('Usually a video gives one still frame. The Extract frames presets, or Save every frame of a video in a PNG or JPG preset, save every frame (or every Nth) as pictures in a folder next to the video.',
+      '동영상은 정지 이미지 한 장이 돼요. 프레임 추출 프리셋이나 PNG·JPG 프리셋의 ‘동영상의 모든 프레임 저장하기’를 쓰면 프레임마다(또는 N번째 프레임마다) 그림을 동영상 옆 폴더에 저장해요.',
+      '视频默认得到一张静止画面。使用“提取帧”预设，或在 PNG/JPG 预设中勾选“保存视频的每一帧”，可把每一帧（或每 N 帧）存为图片，放在视频旁边的文件夹中。'),
+  },
   extractSubs: {
     short: T('extract subtitles', '자막 추출', '提取字幕'),
     long: T('The Extract subtitles preset on the video donut saves the first text subtitle track of a video as SRT.',
@@ -272,6 +296,9 @@ const IMG_WRITE = ['jpg', 'png', 'webp', 'avif', 'tiff', 'bmp', 'gif', 'ico', 'p
 /** Raster images ImageMagick reads (every one can be traced into SVG). */
 const IMG_READ = ['jpg', 'png', 'webp', 'avif', 'heic', 'tiff', 'bmp', 'gif', 'ico', 'psd', 'psb', 'tga', 'ppm', 'jxl', 'jp2', 'xcf',
   'icns', 'apng', 'mng', 'qoi', 'dds', 'pcx', 'cur', 'xpm', 'xbm', 'wbmp', 'pam', 'pfm', 'sgi', 'ras', 'miff', 'dcm', 'exr', 'hdr', 'pcd'];
+/** Video formats FFmpeg reads. */
+const VIDEO_READ = ['mp4', 'm4v', 'mov', 'mkv', 'webm', 'avi', 'wmv', 'flv', 'mpg', 'ts', 'm2ts', '3gp', '3g2', 'ogv', 'vob', 'mod', 'dv', 'mxf',
+  'rm', 'swf', 'wtv', 'cavs'];
 
 export const CATEGORIES = [
   {
@@ -419,9 +446,9 @@ export const CATEGORIES = [
   {
     id: 'pdf', icon: 'pdf', color: '#e5252a',
     name: T('PDF', 'PDF', 'PDF'), plain: T('PDF', 'PDF', 'PDF'),
-    intro: T('Turn PDFs into images, editable Word or HWPX documents, text or a comic archive, and merge, split or pick pages.',
-      'PDF를 이미지, 편집 가능한 워드·HWPX 문서, 텍스트, 만화책 압축(CBZ)으로 바꾸고, 합치기·나누기·페이지 고르기를 할 수 있습니다.',
-      '把 PDF 转成图片、可编辑的 Word 或 HWPX 文档、文本或漫画压缩包（CBZ），还能合并、拆分和挑选页面。'),
+    intro: T('Turn PDFs into images, editable Word or HWPX documents, PowerPoint slides, text or a comic archive, and merge, split, compress or pick pages.',
+      'PDF를 이미지, 편집 가능한 워드·HWPX 문서, 파워포인트 슬라이드, 텍스트, 만화책 압축(CBZ)으로 바꾸고, 합치기·나누기·압축·페이지 고르기를 할 수 있습니다.',
+      '把 PDF 转成图片、可编辑的 Word 或 HWPX 文档、PowerPoint 幻灯片、文本或漫画压缩包（CBZ），还能合并、拆分、压缩和挑选页面。'),
     formats: [
       fmt('pdf', 'PDF', ['pdf'], {
         name: T('PDF document', 'PDF 문서', 'PDF 文档'),
@@ -433,7 +460,8 @@ export const CATEGORIES = [
     routes: [
       { from: ['pdf'], to: ['png', 'jpg', 'tiff'], engine: 'builtin', via: 'PDFium', extras: ['renderDpi', 'pages', 'longImage'] },
       { from: ['pdf'], to: ['docx', 'hwpx', 'epub', 'txt', 'md', 'html', 'cbz'], engine: 'builtin', extras: ['editable'] },
-      { from: ['pdf'], to: [], engine: 'builtin', via: 'PDFsharp', extras: ['merge', 'split', 'pages'] },
+      { from: ['pdf'], to: ['pptx'], engine: 'builtin', extras: ['slides'] },
+      { from: ['pdf'], to: [], engine: 'builtin', via: 'PDFsharp', extras: ['merge', 'split', 'pages', 'compress'] },
       { from: ['pdf'], to: ['eps', 'ps'], engine: 'ghostscript' },
       { from: ['pdf'], to: ['svg'], engine: 'libreoffice',
         note: T('one page', '한 페이지', '单页') },
@@ -752,9 +780,9 @@ export const CATEGORIES = [
   {
     id: 'video', icon: 'video', color: '#9c36b5',
     name: T('Video', '동영상', '视频'), plain: T('video', '동영상', '视频'),
-    intro: T('All common video formats to MP4 (H.264, HEVC or AV1), WebM, MOV, MKV, AVI, GIF or APNG, with a 720p option and audio extraction to MP3 or M4A. Uses the optional FFmpeg engine.',
-      '주요 동영상 형식을 MP4(H.264·HEVC·AV1)·WEBM·MOV·MKV·AVI·GIF·APNG로 바꾸고, 720p로 줄이거나 MP3·M4A로 소리만 뽑을 수 있습니다. 추가 엔진 FFmpeg를 씁니다.',
-      '把常见视频格式转成 MP4（H.264、HEVC 或 AV1）、WebM、MOV、MKV、AVI、GIF 或 APNG，可缩小到 720p，也能提取 MP3/M4A 音频。使用可选引擎 FFmpeg。'),
+    intro: T('All common video formats to MP4 (H.264, HEVC or AV1), WebM, MOV, MKV, AVI, GIF or APNG, with a 720p option, hardware encoding on the graphics chip, audio extraction to MP3 or M4A and every frame saved as pictures. Uses the optional FFmpeg engine.',
+      '주요 동영상 형식을 MP4(H.264·HEVC·AV1)·WEBM·MOV·MKV·AVI·GIF·APNG로 바꾸고, 720p로 줄이거나 그래픽 칩으로 빠르게 인코딩하고, MP3·M4A로 소리만 뽑거나 모든 프레임을 그림으로 저장할 수 있습니다. 추가 엔진 FFmpeg를 씁니다.',
+      '把常见视频格式转成 MP4（H.264、HEVC 或 AV1）、WebM、MOV、MKV、AVI、GIF 或 APNG，可缩小到 720p、用显卡硬件编码、提取 MP3/M4A 音频，或把每一帧存为图片。使用可选引擎 FFmpeg。'),
     formats: [
       fmt('mp4', 'MP4', ['mp4'], {
         name: T('MPEG-4 video', 'MPEG-4 동영상', 'MPEG-4 视频'),
@@ -806,8 +834,10 @@ export const CATEGORIES = [
       fmt('cavs', 'CAVS', ['cavs']),
     ],
     routes: [
-      { from: ['mp4', 'm4v', 'mov', 'mkv', 'webm', 'avi', 'wmv', 'flv', 'mpg', 'ts', 'm2ts', '3gp', '3g2', 'ogv', 'vob', 'mod', 'dv', 'mxf', 'rm', 'swf', 'wtv', 'cavs'],
-        to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'apng', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['lossless', 'codecs', 'res720', 'extractAudio'] },
+      { from: VIDEO_READ,
+        to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'apng', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['lossless', 'codecs', 'hwEncode', 'res720', 'extractAudio'] },
+      { from: VIDEO_READ, to: ['png', 'jpg'], engine: 'ffmpeg', extras: ['frames'],
+        note: T('one still frame or every frame', '정지 이미지 한 장 또는 모든 프레임', '一张静止画面或每一帧') },
       { from: ['gif', 'apng'], to: ['mp4', 'webm', 'mov'], engine: 'ffmpeg' },
     ],
   },
@@ -1199,6 +1229,10 @@ export const PAIRS = [
     tip: T('Korean offices often need documents in Hangul format. Filee converts the PDF\'s text into an HWPX file you can open and edit in Hancom Hangul, without Hancom Office for the conversion; turn it into HWP afterwards if a form requires the old format.',
       '관공서나 회사에 한글 파일로 내야 할 때가 많죠. Filee는 PDF의 내용을 한글에서 열고 고칠 수 있는 HWPX로 바꿉니다. 변환에 한컴오피스는 필요 없고, HWP 형식이 필요하면 만들어진 HWPX를 다시 HWP로 바꾸면 됩니다.',
       '在韩国，公文和提交材料常常需要韩文（한글）格式。Filee 可以把 PDF 内容转成能在 Hancom 韩文软件中打开和编辑的 HWPX，转换过程不需要 Hancom Office；如需旧的 HWP 格式，再把 HWPX 转成 HWP 即可。') },
+  { from: 'pdf', to: 'pptx', options: ['slides'],
+    tip: T('Handy when a PDF has to be shown in PowerPoint or added to an existing deck: every page becomes a slide that looks exactly like the PDF, and the page\'s text waits in the speaker notes. The slides are pictures, so to change the wording convert the PDF to DOCX instead.',
+      'PDF를 파워포인트로 띄우거나 기존 발표 자료에 넣어야 할 때 좋아요. 페이지마다 PDF와 똑같이 보이는 슬라이드가 되고, 페이지의 글은 발표자 노트에 들어가요. 슬라이드는 그림이라서 문구를 고치려면 PDF를 DOCX로 바꾸세요.',
+      '需要在 PowerPoint 中放映 PDF，或把它加进现有演示文稿时很方便。每一页都变成与 PDF 看起来完全一样的幻灯片，页面文字放在演讲者备注中。幻灯片是图片，要修改文字请把 PDF 转为 DOCX。') },
   // Documents
   { from: 'docx', to: 'pdf', popular: true, options: [],
     tip: T('No Microsoft Word or LibreOffice needed: Filee reads the DOCX itself and lays out the pages with headers, footers, tables and pictures. Drop several documents on the merge preset to combine them into one PDF.',
@@ -1314,11 +1348,11 @@ export const PAIRS = [
     tip: T('iPhone and Mac videos are MOV files. As MP4 they play on Android phones, smart TVs, older Windows apps and upload forms that reject MOV. The video and sound usually fit MP4 as they are, so Filee only rewraps them: no quality lost, HDR kept, done in seconds. The MP4 720p preset shrinks 4K clips for sharing.',
       '아이폰과 맥으로 찍은 영상은 MOV입니다. MP4로 바꾸면 안드로이드 폰, 스마트 TV, 오래된 Windows 프로그램, MOV를 받지 않는 업로드 양식에서도 재생돼요. 영상과 소리는 대개 MP4에 그대로 들어가서 다시 인코딩하지 않고 포장만 바꾸니, 화질 손실 없이 HDR도 그대로 몇 초면 끝나요. MP4 720p 프리셋으로 4K 영상을 공유하기 좋게 줄일 수도 있습니다.',
       'iPhone 和 Mac 拍的视频是 MOV 格式。转成 MP4 后，安卓手机、智能电视、旧版 Windows 软件以及不接受 MOV 的上传表单都能播放。视频和声音通常能原样放进 MP4，所以只重新封装，不重新编码，画质不损失，HDR 保留，几秒就完成。MP4 720p 预设还能把 4K 视频缩小，方便分享。') },
-  { from: 'mkv', to: 'mp4', options: ['res720'],
+  { from: 'mkv', to: 'mp4', options: ['res720', 'hwEncode'],
     tip: T('MKV recordings, for example from OBS, often won\'t import into video editors or play on TVs, while MP4 is accepted almost everywhere. The conversion runs locally, so long recordings never have to be uploaded.',
       'OBS 등으로 녹화한 MKV는 편집 프로그램에 안 들어가거나 TV에서 재생되지 않을 때가 많지만, MP4는 거의 어디서나 받아요. PC에서 변환하니 긴 녹화 파일을 업로드할 필요가 없습니다.',
       '用 OBS 等软件录制的 MKV 常常导入不了剪辑软件，也无法在电视上播放，而 MP4 几乎到处都支持。转换在本地完成，长时间录像也不必上传。') },
-  { from: 'webm', to: 'mp4', options: ['res720'],
+  { from: 'webm', to: 'mp4', options: ['res720', 'hwEncode'],
     tip: T('Screen recordings and videos saved from the browser are often WebM, which many video editors, older players and messaging apps handle poorly. MP4 plays almost everywhere, and a whole batch of clips converts at once.',
       '화면 녹화나 브라우저에서 저장한 영상은 WEBM인 경우가 많은데, 편집 프로그램·오래된 플레이어·메신저에서 잘 안 될 때가 있습니다. MP4는 거의 어디서나 재생되고, 여러 클립도 한 번에 변환할 수 있어요.',
       '录屏和从浏览器保存的视频常常是 WebM，很多剪辑软件、旧播放器和聊天软件对它支持不好。MP4 几乎到处都能播放，还能一次批量转换多个片段。') },
@@ -1326,7 +1360,11 @@ export const PAIRS = [
     tip: T('Turn a short clip into an animated GIF for chats, documentation or bug reports. Keep it short: GIF stores every frame as a 256-colour image, so long or high-resolution videos make very large files.',
       '짧은 영상을 메신저·문서·버그 제보용 움직이는 GIF로 만드세요. GIF는 모든 프레임을 256색 이미지로 저장하므로 길거나 해상도가 높은 영상은 파일이 매우 커집니다.',
       '把短视频做成 GIF 动图，用于聊天、文档或问题反馈。GIF 会把每一帧存成 256 色图像，视频越长、分辨率越高，文件就越大。') },
-  { from: 'avi', to: 'mp4', options: ['res720'],
+  { from: 'mp4', to: 'jpg', options: ['frames'],
+    tip: T('A video dropped on JPG gives one still picture. To pick a thumbnail or go through a clip frame by frame, use the Extract frames (JPG) preset: the pictures land in a folder next to the video, every frame or every Nth. A video that would give more than 100,000 pictures or fill the disk is refused before it starts.',
+      '동영상을 JPG에 놓으면 정지 이미지 한 장이 만들어져요. 썸네일을 고르거나 프레임 단위로 살펴보려고 모든 프레임이 필요하면 프레임 추출 프리셋을 쓰세요. 모든 프레임이나 N번째 프레임마다 그림이 동영상 옆 폴더에 저장돼요. 그림이 10만 장을 넘거나 디스크를 가득 채울 동영상은 시작하기 전에 멈추고 알려 줘요.',
+      '把视频拖到 JPG 上会得到一张静止图片。要挑选缩略图或逐帧查看时，可用“提取帧”预设把每一帧（或每 N 帧）存为图片，放在视频旁边的文件夹中。超过 10 万张图片或会占满磁盘的视频会在开始前被拒绝。') },
+  { from: 'avi', to: 'mp4', options: ['res720', 'hwEncode'],
     tip: T('AVI files from old camcorders and cameras are large and often use codecs that phones and TVs no longer play. An MP4 with modern compression is usually much smaller and plays everywhere.',
       '예전 캠코더·카메라의 AVI 파일은 용량이 크고, 요즘 휴대폰이나 TV가 재생하지 못하는 코덱을 쓰는 경우가 많습니다. 최신 압축을 쓰는 MP4는 대개 훨씬 작고 어디서나 재생돼요.',
       '旧摄像机和相机的 AVI 文件体积大，而且常用手机和电视已不再支持的编码。采用现代压缩的 MP4 通常小得多，到处都能播放。') },

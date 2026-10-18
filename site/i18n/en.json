@@ -25,7 +25,7 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {versionShort}: subtitles, data and 3D models, Trace to SVG, rotate and flip",
+    "badge": "New in {versionShort}: PDF to PowerPoint, Compress PDF, every frame of a video, hardware encoding",
     "kicker": "Free file converter for Windows, macOS and Linux",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
@@ -71,7 +71,7 @@
       { "icon": "doors", "title": "Batch conversion", "text": "Drop 1 file or 100. They're converted in parallel, a failure never stops the rest, and presets can merge everything into one PDF or one ZIP." },
       { "icon": "lock", "title": "100% on your PC", "text": "Nothing is uploaded. Filee works offline, so private documents, photos and recordings never leave your computer." },
       { "icon": "windows", "title": "Right where you work", "text": "The drag gesture, Convert with Filee in the right-click menu (on Windows 11 also in the top-level menu), Send To, a keyboard shortcut or the drop zone in the main window." },
-      { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG, TIFF compression, ICO sizes, PDF merge, split, page ranges and one long image, 720p, HEVC and AV1 video, MP3 bitrate, output folder, file names and the original file dates." },
+      { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG, TIFF compression, ICO sizes, PDF merge, split, page ranges, compression and one long image, 720p, HEVC and AV1 video, hardware encoding, every frame as pictures, MP3 bitrate, output folder, file names and the original file dates." },
       { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left. Already have FFmpeg, calibre or Pandoc? Filee finds them and skips the download." },
       { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Korean and Simplified Chinese. Filee tells you about new versions; every release lists its changes and contributors." }
     ]
