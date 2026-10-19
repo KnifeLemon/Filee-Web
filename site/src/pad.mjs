@@ -50,7 +50,7 @@ const DESCRIPTIONS = {
 
 Filee handles ${formatTotal} formats in ${categoryCount} categories: images, including iPhone HEIC, Photoshop PSD and camera RAW, and pictures traced into SVG; PDF to images, Word, PowerPoint slides or text, and PDF merge, split, compression and page ranges; Word, Excel and PowerPoint without Microsoft Office; Korean HWP/HWPX without Hancom Office; e-books and comics (EPUB, MOBI, AZW3, FB2, CBZ, CBR); video and audio (MP4, MOV, MKV, WEBM, MP3, FLAC and more), video to GIF, every frame as pictures, hardware encoding and audio extraction; subtitles (SRT, ASS, WebVTT, SMI); data files (JSON, YAML, TOML, XML); 3D models (GLB, STL, OBJ, 3MF); archives (ZIP, 7Z, RAR, TAR); CAD drawings (DWG, DXF) and fonts (TTF, OTF, WOFF).
 
-It converts many files at once in parallel, and one failure doesn't stop the rest. Presets per file type set quality, size, rotation, DPI, metadata, PDF merging and splitting, ZIP packing, the output folder and file names. Large engines (FFmpeg, LibreOffice, calibre, Ghostscript, Pandoc) are optional: pick them in the installer or download them later in the app. No ads, no watermarks, no account and no file-size limits. The interface is available in English, Korean, Simplified Chinese and Polish, with light and dark themes. Filee is open source under the MIT license.`,
+It converts many files at once in parallel, and one failure doesn't stop the rest. Presets per file type set quality, size, rotation, DPI, metadata, PDF merging and splitting, ZIP packing, the output folder and file names. Large engines (FFmpeg, LibreOffice, calibre, Ghostscript, Pandoc) are optional: pick them in the installer or download them later in the app. No ads, no watermarks, no account and no file-size limits. The interface is available in English, Korean, Simplified Chinese, Polish, Spanish and Hindi, with light and dark themes. Filee is open source under the MIT license.`,
 };
 
 const KEYWORDS = 'file converter, image converter, pdf converter, video converter, document converter, heic to jpg, '
@@ -115,7 +115,7 @@ export function padXml(release) {
     ${tag('Program_Release_Status', 'Minor Update')}
     ${tag('Program_Install_Support', 'Install and Uninstall')}
     ${tag('Program_OS_Support', 'Windows 10,Windows 11')}
-    ${tag('Program_Language', 'English,Korean,Chinese')}
+    ${tag('Program_Language', 'English,Korean,Chinese,Polish,Spanish,Hindi')}
     ${tag('Program_Change_Info', `See ${REPO}/releases/tag/v${release.version}`)}
     ${tag('Program_Specific_Category', 'File Converters')}
     ${tag('Program_Category_Class', 'Utilities::File & Disk Management')}

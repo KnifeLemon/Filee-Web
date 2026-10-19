@@ -124,10 +124,13 @@ const verificationMeta = Object.entries(SITE_VERIFICATION)
 
 /**
  * Web fonts by languages.mjs → font. Inter from Google Fonts includes the Latin Extended subset (Polish ą ę ł ń ś ź ż,
- * Spanish ñ). Google Fonts is not reachable from mainland China: Chinese pages use the system fonts (font: null).
+ * Spanish ñ). Hindi pages add Noto Sans Devanagari from Google Fonts: Inter has no Devanagari, so the browser takes
+ * those letters from it (only its Devanagari subset is downloaded; see --font-hi in styles.css for the system fallbacks).
+ * Google Fonts is not reachable from mainland China: Chinese pages use the system fonts (font: null).
  */
 const FONTS = {
   inter: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">',
+  'inter-devanagari': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap">',
   pretendard: '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">',
 };
 

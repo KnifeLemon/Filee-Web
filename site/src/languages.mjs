@@ -51,6 +51,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' y ', lastBeforeI: ' e ' }, size: 'unos {mb} MB', paren: ' ({size})',
     engineFor: '{name} para {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'hi', path: '/hi/', htmlLang: 'hi', ogLocale: 'hi_IN', name: 'हिन्दी', englishName: 'Hindi',
+    match: ['hi'], aliases: [], font: 'inter-devanagari', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' और ' }, size: 'लगभग {mb} MB', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */
