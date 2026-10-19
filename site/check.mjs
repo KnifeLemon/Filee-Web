@@ -7,13 +7,15 @@ import { existsSync } from 'node:fs';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LANGUAGES } from './src/languages.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://filee.sh';
-const LANGS = ['en', 'ko', 'zh-CN'];
-/** Soft limits for search snippets (characters). CJK characters are wider, so their limits are lower. */
-const LIMITS = { en: { title: 70, description: 160 }, ko: { title: 45, description: 100 }, 'zh-CN': { title: 40, description: 90 } };
+/** <html lang> of every language (languages.mjs). */
+const LANGS = LANGUAGES.map(l => l.htmlLang);
+/** Soft limits for search snippets (characters), per language: CJK characters are wider, so their limits are lower. */
+const LIMITS = Object.fromEntries(LANGUAGES.map(l => [l.htmlLang, l.snippet]));
 
 const errors = [];
 const warnings = [];

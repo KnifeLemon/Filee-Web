@@ -3,12 +3,37 @@
 // Counts, lists, the format catalog, the conversion pages, the JSON-LD and llms.txt are all generated from here, so a
 // correction made here reaches every page. build.mjs runs validateCatalog() and stops on inconsistencies.
 //
-// Texts are { en, ko, 'zh-CN' } objects made with T(). Placeholders like {formatTotal} are filled by vars() below.
+// Texts are { en, ko, 'zh-CN', pl, … } objects made with T(en, ko, zh): English, Korean and Chinese are written here,
+// every other language comes from src/texts/<lang>.mjs, a dictionary from the English text to the translation.
+// validateCatalog() fails the build when a translation is missing, has other placeholders, or belongs to an English
+// text that no longer exists (so changing an English text means updating its translations). Placeholders like
+// {formatTotal} are filled by vars() below.
 
+import { LANGS, LANGUAGE } from './languages.mjs';
+
+export { LANGS };
 export const VERSION = '1.12.0';
-export const LANGS = ['en', 'ko', 'zh-CN'];
 
-const T = (en, ko, zh) => ({ en, ko, 'zh-CN': zh });
+/** Languages written as T() arguments; the others come from their dictionaries. */
+const INLINE = ['en', 'ko', 'zh-CN'];
+const DICTIONARIES = Object.fromEntries(await Promise.all(LANGS.filter(l => !INLINE.includes(l))
+  .map(async l => [l, (await import(`./texts/${l}.mjs`)).default])));
+/** Every T() text and its dictionary key, for validateCatalog(). */
+const TEXTS = [];
+
+/**
+ * A text in every language. context: only where the same English text needs another translation elsewhere (for
+ * example a name that is lower case in running text); the dictionaries then key it as "English [context]".
+ */
+const T = (en, ko, zh, context) => {
+  const text = { en, ko, 'zh-CN': zh };
+  const key = context ? `${en} [${context}]` : en;
+  for (const [lang, dictionary] of Object.entries(DICTIONARIES)) {
+    if (Object.hasOwn(dictionary, key)) text[lang] = dictionary[key];
+  }
+  TEXTS.push({ text, key });
+  return text;
+};
 
 /** Picks the text for lang from a T() object (plain strings are language neutral). */
 export const L = (value, lang) => (value == null || typeof value === 'string' ? value : value[lang] ?? value.en);
@@ -1011,7 +1036,7 @@ export const CATEGORIES = [
   },
   {
     id: 'cad', icon: 'cad', color: '#0e7490',
-    name: T('CAD drawings', 'CAD 도면', 'CAD 图纸'), plain: T('CAD drawings', 'CAD 도면', 'CAD 图纸'),
+    name: T('CAD drawings', 'CAD 도면', 'CAD 图纸'), plain: T('CAD drawings', 'CAD 도면', 'CAD 图纸', 'in running text'),
     intro: T('AutoCAD DWG and DXF: convert between them or to PDF, SVG and PNG, without AutoCAD.',
       '오토캐드 DWG·DXF를 서로 바꾸거나 PDF·SVG·PNG로 변환합니다. 오토캐드가 필요 없어요.',
       'AutoCAD 的 DWG 和 DXF 可互相转换，也可转成 PDF、SVG 和 PNG，无需 AutoCAD。'),
@@ -1037,7 +1062,7 @@ export const CATEGORIES = [
   },
   {
     id: 'models', icon: 'cube', color: '#be185d',
-    name: T('3D models', '3D 모델', '3D 模型'), plain: T('3D models', '3D 모델', '3D 模型'),
+    name: T('3D models', '3D 모델', '3D 模型'), plain: T('3D models', '3D 모델', '3D 模型', 'in running text'),
     intro: T('GLB, glTF, STL, OBJ, 3MF and PLY into each other, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.',
       'GLB·glTF·STL·OBJ·3MF·PLY를 서로 바꿔요. 형식이 담을 수 있으면 색·텍스처·재질도 유지하고, 음영을 넣은 PNG·JPG 그림으로도 만들어요. 따로 설치할 건 없어요.',
       'GLB、glTF、STL、OBJ、3MF 和 PLY 互相转换，格式支持时保留颜色、纹理和材质，也能生成带阴影的 PNG 或 JPG 图片。无需安装其他软件。'),
@@ -1612,25 +1637,31 @@ export const zhSpace = text => text
   .replace(/([一-鿿])([A-Za-z0-9])/g, '$1 $2')
   .replace(/([A-Za-z0-9%])([一-鿿])/g, '$1 $2');
 
-/** A list in running text: "a, b and c" / "a, b, c" / "a、b 和 c". */
+/** Applies the language's spacing rules (Chinese: a space between Han characters and Latin letters or digits). */
+const spaced = (text, lang) => (LANGUAGE[lang]?.cjkSpacing ? zhSpace(text) : text);
+
+/** A list in running text: "a, b and c" / "a, b, c" / "a、b 和 c" / "a, b i c" / "a, b y c" (languages.mjs → list). */
 export function joinList(items, lang) {
   if (items.length < 2) return items.join('');
-  if (lang === 'ko') return items.join(', ');
-  if (lang === 'zh-CN') return zhSpace(`${items.slice(0, -1).join('、')}和${items.at(-1)}`);
-  return `${items.slice(0, -1).join(', ')} and ${items.at(-1)}`;
+  const { sep, last, lastBeforeI } = LANGUAGE[lang].list;
+  // Spanish writes "e" instead of "y" before a word that starts with an "i" sound (imágenes, hilos, ICO).
+  const and = lastBeforeI && /^h?[iíIÍ](?![aeouáéóú])/.test(items.at(-1)) ? lastBeforeI : last;
+  return spaced(`${items.slice(0, -1).join(sep)}${and}${items.at(-1)}`, lang);
 }
 
-export const sizeText = (mb, lang) => (mb ? ({ en: `about ${mb} MB`, ko: `약 ${mb}MB`, 'zh-CN': `约 ${mb} MB` })[lang] : '');
+/** "about 100 MB" in a language ('' without a size). */
+export const sizeText = (mb, lang) => (mb
+  ? LANGUAGE[lang].size.replace('{mb}', new Intl.NumberFormat(LANGUAGE[lang].htmlLang).format(mb)) : '');
 
-/** "FFmpeg for video and audio (about 100 MB), …" */
+/** A size in brackets after a name: " (about 100 MB)", "(약 100MB)", "（约 100 MB）"; '' without a size. */
+export const sizeParen = (mb, lang) => (mb ? LANGUAGE[lang].paren.replace('{size}', sizeText(mb, lang)) : '');
+
+/** "FFmpeg for video and audio (about 100 MB); …" */
 export function engineDetails(lang) {
-  const items = Object.values(ENGINES).map(e => {
-    const size = sizeText(e.sizeMB, lang), what = L(e.for, lang);
-    if (lang === 'ko') return `${what}용 ${e.name}${size ? `(${size})` : ''}`;
-    if (lang === 'zh-CN') return zhSpace(`用于${what}的${e.name}${size ? `（${size}）` : ''}`);
-    return `${e.name} for ${what}${size ? ` (${size})` : ''}`;
-  });
-  return lang === 'ko' ? items.join(', ') : lang === 'zh-CN' ? items.join('；') : items.join('; ');
+  const { engineFor, engineSep } = LANGUAGE[lang];
+  return Object.values(ENGINES)
+    .map(e => spaced(engineFor.replace('{name}', e.name).replace('{what}', L(e.for, lang)).replace('{size}', sizeParen(e.sizeMB, lang)), lang))
+    .join(engineSep);
 }
 
 /** Placeholder values for texts in i18n/*.json and this file. */
@@ -1643,17 +1674,37 @@ export function vars(lang) {
     categoryList: joinList(CATEGORIES.map(c => L(c.plain, lang)), lang),
     engineNames: joinList(Object.values(ENGINES).map(e => e.name), lang),
     engineDetails: engineDetails(lang),
-    _zh: lang === 'zh-CN',
+    _lang: lang,
   };
 }
 
-/** Fills {name} placeholders; unknown names throw so typos surface in the build. Chinese gets CJK/Latin spacing. */
+/**
+ * The form of a count in a language: "one:# format|few:# formaty|many:# formatów" picks by the language's plural
+ * rules (Intl.PluralRules categories zero, one, two, few, many and other, the fallback); # is the number.
+ */
+function plural(n, spec, lang, text) {
+  const forms = {};
+  for (const part of spec.split('|')) {
+    const m = /^(zero|one|two|few|many|other):(.*)$/s.exec(part);
+    if (!m) throw new Error(`Plural form "${part}" needs a category (one:, few:, many:, other:…) in "${text}"`);
+    forms[m[1]] = m[2];
+  }
+  const form = forms[new Intl.PluralRules(LANGUAGE[lang]?.htmlLang ?? lang).select(Number(n))] ?? forms.other;
+  if (form == null) throw new Error(`No plural form for ${n} (and no other:) in "${text}"`);
+  return form.replaceAll('#', n);
+}
+
+/**
+ * Fills {name} placeholders and {name|one:…|other:…} counts (see plural()); unknown names throw so typos surface in
+ * the build. values._lang (set by vars()) picks the plural rules and the spacing (Chinese: CJK/Latin spacing).
+ */
 export function fill(text, values) {
-  const out = String(text).replace(/\{(\w+)\}/g, (_, key) => {
+  const lang = values._lang ?? 'en';
+  const out = String(text).replace(/\{(\w+)(?:\|([^{}]*))?\}/g, (_, key, forms) => {
     if (!(key in values)) throw new Error(`Unknown placeholder {${key}} in "${text}"`);
-    return values[key];
+    return forms == null ? values[key] : plural(values[key], forms, lang, text);
   });
-  return values._zh ? zhSpace(out) : out;
+  return spaced(out, lang);
 }
 
 /** Korean particles after a format label, from its reading (koJong). */
@@ -1673,7 +1724,9 @@ export function validateCatalog() {
     if (r.engine !== 'builtin' && !ENGINES[r.engine]) errors.push(`Route in ${r.cat} uses unknown engine "${r.engine}"`);
     for (const key of r.extras ?? []) if (!OPTIONS[key]) errors.push(`Route in ${r.cat} uses unknown option "${key}"`);
   }
-  const hasText = v => v && LANGS.every(l => typeof v[l] === 'string' && v[l].trim());
+  // That a text exists; textErrors() checks every T() text in every language.
+  const hasText = v => typeof v?.en === 'string' && v.en.trim() !== '';
+  errors.push(...textErrors());
   const seen = new Set();
   for (const p of PAIRS) {
     const slug = pairSlug(p);
@@ -1681,14 +1734,14 @@ export function validateCatalog() {
     seen.add(slug);
     if (!FORMATS[p.from] || !FORMATS[p.to]) { errors.push(`${slug}: unknown format`); continue; }
     if (!routeFor(p.from, p.to)) errors.push(`${slug}: no route converts ${p.from} to ${p.to}`);
-    if (!hasText(p.tip)) errors.push(`${slug}: tip missing in a language`);
+    if (!hasText(p.tip)) errors.push(`${slug}: tip missing`);
     for (const id of [p.from, p.to]) {
-      if (!hasText(FORMATS[id].about) || !hasText(FORMATS[id].name)) errors.push(`${slug}: format ${id} needs name and about in every language`);
+      if (!hasText(FORMATS[id].about) || !hasText(FORMATS[id].name)) errors.push(`${slug}: format ${id} needs a name and an about text`);
     }
     for (const key of p.options) if (!OPTIONS[key]) errors.push(`${slug}: unknown option "${key}"`);
   }
   for (const f of FAQ) {
-    if (!hasText(f.q) || !hasText(f.a)) errors.push(`FAQ "${f.q?.en}" is missing a language`);
+    if (!hasText(f.q) || !hasText(f.a)) errors.push(`FAQ "${f.q?.en}" needs a question and an answer`);
     for (const link of f.links ?? []) if (link !== 'formats' && link !== 'cli' && !PAIR[link]) errors.push(`FAQ links to unknown page ${link}`);
   }
   for (const id of MARQUEE) if (!FORMATS[id]) errors.push(`MARQUEE: unknown format ${id}`);
@@ -1699,7 +1752,30 @@ export function validateCatalog() {
       if (!to || !routeFor(donut.source, to)) errors.push(`DEMO_DONUTS.${profile}: ${donut.source} → ${itemLabel} is not supported`);
     }
   }
-  for (const c of CATEGORIES) if (!hasText(c.name) || !hasText(c.intro) || !hasText(c.plain)) errors.push(`Category ${c.id} is missing a language`);
-  for (const [key, o] of Object.entries(OPTIONS)) if (!hasText(o.short) || !hasText(o.long)) errors.push(`Option ${key} is missing a language`);
+  for (const c of CATEGORIES) if (!hasText(c.name) || !hasText(c.intro) || !hasText(c.plain)) errors.push(`Category ${c.id} needs name, intro and plain texts`);
+  for (const [key, o] of Object.entries(OPTIONS)) if (!hasText(o.short) || !hasText(o.long)) errors.push(`Option ${key} needs short and long texts`);
   if (errors.length) throw new Error(`Catalog errors:\n- ${errors.join('\n- ')}`);
+}
+
+/**
+ * Translations of the T() texts: every text in every language, the same {placeholders} as the English one, and no
+ * dictionary entry left over from an English text that was changed or removed.
+ */
+function textErrors() {
+  const errors = [];
+  const placeholders = text => [...String(text).matchAll(/\{(\w+)[|}]/g)].map(m => m[1]).sort().join(',');
+  const keys = new Set(TEXTS.map(({ key }) => key));
+  for (const { text, key } of TEXTS) {
+    for (const lang of LANGS) {
+      const where = INLINE.includes(lang) ? `T() text in ${lang}` : `src/texts/${lang}.mjs`;
+      if (typeof text[lang] !== 'string' || !text[lang].trim()) errors.push(`${where}: no translation of "${key}"`);
+      else if (placeholders(text[lang]) !== placeholders(text.en)) errors.push(`${where}: other placeholders than "${key}"`);
+    }
+  }
+  for (const [lang, dictionary] of Object.entries(DICTIONARIES)) {
+    for (const key of Object.keys(dictionary)) {
+      if (!keys.has(key)) errors.push(`src/texts/${lang}.mjs: "${key}" is not (or no longer) an English text of the catalog`);
+    }
+  }
+  return errors;
 }

@@ -1,17 +1,20 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in three languages, deployed to Cloudflare Workers (static assets).
+The Filee website: a static, dependency-free site in five languages (English, Korean, Simplified Chinese, Polish, Spanish), deployed to Cloudflare Workers (static assets).
 
 ```
 site/
   src/catalog.mjs           THE data module: app version, formats, what converts to what, engines, conversion
                             guide pairs, FAQ. Every format/support claim and every count on the site comes from here
-  i18n/{en,ko,zh-CN}.json   page text (UI and marketing copy), one file per language; {placeholders} are filled
+  src/languages.mjs         THE language list: code, URL prefix, names, html lang/hreflang, Open Graph locale, browser
+                            languages that pick it, short URLs, font, media language, list/size wording
+  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (pl, es): English text → translation
+  i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
   src/page.mjs              home page (hero, demo, features, format categories, HWP, FAQ, specs) and the 404 page
-  src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/
-  src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…)
+  src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
+  src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…)
   src/llms.mjs              llms.txt and llms-full.txt
   src/sponsors.mjs          home page sponsors: the app's sponsors.json and logos, read from GitHub at build time;
                             no section while nobody is listed (SPONSORS=<folder> reads a local copy)
@@ -38,19 +41,31 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 - **Formats, engines, counts, version**: edit `src/catalog.mjs` only (see below).
 - **Text**: edit `i18n/*.json`. Every language must have the same keys (the build checks it). `{formatTotal}`,
   `{engineNames}`, `{version}`… are filled from the catalog; conversion page templates also get `{from}`, `{to}`
-  and Korean particles (`{fromEul}` → "HEIC를", `{toRo}` → "JPG로").
-- **New language**: add `i18n/<lang>.json` with its own `path` (e.g. `/ja/`) and add it to `ORDER` in `build.mjs`,
-  plus the language's texts in the `T(en, ko, zh)` objects of `catalog.mjs`. Hreflang, the sitemap, the language
-  menu and the language suggestion pick it up automatically.
+  and Korean particles (`{fromEul}` → "HEIC를", `{toRo}` → "JPG로"). Counts take plural forms by the language's
+  rules: `{n|one:# format|other:# formats}`, Polish `{n|one:# format|few:# formaty|many:# formatów}` (categories of
+  `Intl.PluralRules`, `#` is the number).
+- **Catalog texts** (`T(en, ko, zh)` in `catalog.mjs`): English, Korean and Chinese are written in place; every other
+  language has a dictionary `src/texts/<lang>.mjs` of `[English text, translation]` pairs. Changing or adding an English
+  text makes the build fail until each dictionary has the new text (it names the missing and the stale entries), so
+  no language silently falls back to English. Where the same English text needs two translations, the T() call gets a
+  context and the dictionaries key it as `English [context]` (see `plain` of CAD drawings).
+- **New language** (e.g. Hindi):
+  1. Add it to `src/languages.mjs`: code, `path` (`/hi/`), name, `htmlLang`, `ogLocale`, the browser languages
+     that pick it (`match`), font, `media` (`'en'` until marketing/ renders its video, poster and OG image), the
+     list and size wording.
+  2. Add `i18n/hi.json` with every key of `en.json`.
+  3. Add `src/texts/hi.mjs` with every catalog text (copy `pl.mjs` and replace the right-hand side).
+  4. `npm run check`. Pages, hreflang, the sitemap, the language menu, the language redirect and suggestion, the 404
+     page, `_redirects` and llms.txt pick it up; the check names anything missing.
 - **Media**: the promo video, posters and images come from `marketing/` (see `marketing/README.md`).
 
 ## Pages
 
 | Page | URLs (per language) | From |
 |---|---|---|
-| Home | `/`, `/ko/`, `/zh-cn/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
+| Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 3 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 5 languages) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -119,7 +134,7 @@ npm run deploy
 ## SEO and GEO checklist
 
 - **Already built in**:
-  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`) for the home page, the format catalog and every conversion guide.
+  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`) for the home page, the format catalog and every conversion guide.
   - `hreflang` + `x-default`, canonical URLs, Open Graph and Twitter cards on every page.
   - JSON-LD: `SoftwareApplication` (with `softwareVersion` and `featureList` from the catalog), `FAQPage`,
     `VideoObject`, `WebSite`, `CollectionPage`, `HowTo` and `BreadcrumbList`.

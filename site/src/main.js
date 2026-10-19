@@ -618,15 +618,12 @@ function setupLanguageBanner() {
   try { if (localStorage.getItem(KEY)) return; } catch { return; }
   if (document.referrer && new URL(document.referrer).origin === location.origin) return;
 
+  // The site's language for a browser language tag (languages.mjs → match: "pl" matches pl and pl-PL).
   const map = tag => {
-    tag = tag.toLowerCase();
-    if (tag.startsWith('ko')) return 'ko';
-    if (tag === 'zh' || tag.startsWith('zh-cn') || tag.startsWith('zh-hans') || tag.startsWith('zh-sg')) return 'zh-CN';
-    if (tag.startsWith('en')) return 'en';
-    return null;
+    tag = String(tag || '').toLowerCase();
+    return page.langs.find(l => (l.match ?? []).some(m => tag === m || tag.startsWith(`${m}-`)));
   };
-  const preferred = (navigator.languages?.length ? navigator.languages : [navigator.language]).map(map).find(Boolean);
-  const target = page.langs.find(l => l.lang === preferred);
+  const target = (navigator.languages?.length ? navigator.languages : [navigator.language]).map(map).find(Boolean);
   if (!target || target.lang === page.lang) return;
 
   const banner = Object.assign(document.createElement('div'), { className: 'lang-banner', lang: target.lang });

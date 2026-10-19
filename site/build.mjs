@@ -16,20 +16,27 @@ import { llmsFullTxt, llmsTxt } from './src/llms.mjs';
 import { latestRelease, padXml } from './src/pad.mjs';
 import { loadSupporters, logoFiles } from './src/sponsors.mjs';
 import { renderNotFound, renderPage } from './src/page.mjs';
+import { LANGUAGES } from './src/languages.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, 'dist');
-/** Page order: English is the x-default at the root, the others live in sub-folders. */
-const ORDER = ['en', 'ko', 'zh-CN'];
 
 const hash = text => createHash('sha256').update(text).digest('hex').slice(0, 10);
 const minifyCss = css => css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n\s*/g, '\n').replace(/\n{2,}/g, '\n').trim();
 
+/**
+ * Every language of src/languages.mjs with its texts from i18n/<lang>.json, in that order (English first: the
+ * x-default at the root, the others in sub-folders). An i18n file without an entry there is an error.
+ */
 async function loadLanguages() {
-  const files = await readdir(join(ROOT, 'i18n'));
-  const languages = await Promise.all(files.filter(f => f.endsWith('.json'))
-    .map(async f => JSON.parse(await readFile(join(ROOT, 'i18n', f), 'utf8'))));
-  return languages.sort((a, b) => ORDER.indexOf(a.lang) - ORDER.indexOf(b.lang));
+  const files = (await readdir(join(ROOT, 'i18n'))).filter(f => f.endsWith('.json'));
+  const unknown = files.filter(f => !LANGUAGES.some(l => `${l.lang}.json` === f));
+  if (unknown.length) throw new Error(`i18n/${unknown.join(', i18n/')}: not in src/languages.mjs`);
+  return Promise.all(LANGUAGES.map(async language => {
+    if (!files.includes(`${language.lang}.json`)) throw new Error(`i18n/${language.lang}.json is missing`);
+    const texts = JSON.parse(await readFile(join(ROOT, 'i18n', `${language.lang}.json`), 'utf8'));
+    return { ...texts, ...language };
+  }));
 }
 
 /** Every language must have the same keys (and the same number of steps, rows…) as English. */
@@ -39,9 +46,11 @@ function checkLanguageKeys(languages) {
     if (value && typeof value === 'object') return Object.entries(value).flatMap(([k, v]) => shape(v, prefix ? `${prefix}.${k}` : k));
     return [prefix];
   };
-  const reference = new Set(shape(languages[0]));
+  // Only the i18n texts: the language data from languages.mjs (match, aliases…) differs by design.
+  const texts = l => Object.fromEntries(Object.entries(l).filter(([key]) => !LANGUAGES.some(language => Object.hasOwn(language, key))));
+  const reference = new Set(shape(texts(languages[0])));
   for (const l of languages.slice(1)) {
-    const keys = new Set(shape(l));
+    const keys = new Set(shape(texts(l)));
     const missing = [...reference].filter(k => !keys.has(k));
     const extra = [...keys].filter(k => !reference.has(k));
     if (missing.length || extra.length) throw new Error(`i18n/${l.lang}.json differs from ${languages[0].lang}.json: missing ${missing.join(', ') || '-'}; extra ${extra.join(', ') || '-'}`);
@@ -73,10 +82,10 @@ function sitemap(pages, languages, today) {
     <priority>${page.priority}</priority>
 ${alternates}${page.video ? `
     <video:video>
-      <video:thumbnail_loc>${SITE}/media/poster-${l.lang}.jpg</video:thumbnail_loc>
+      <video:thumbnail_loc>${SITE}/media/poster-${l.media}.jpg</video:thumbnail_loc>
       <video:title>${xml(l.video.title)}</video:title>
       <video:description>${xml(l.video.caption)}</video:description>
-      <video:content_loc>${SITE}/media/promo-${l.lang}.mp4</video:content_loc>
+      <video:content_loc>${SITE}/media/promo-${l.media}.mp4</video:content_loc>
       <video:duration>27</video:duration>
     </video:video>` : ''}
   </url>`);
@@ -149,16 +158,14 @@ function redirects(languages) {
     const base = paths.convert(l, '').replace(/\/+$/, '');
     return [`${base} ${paths.formats(l)} 301`, `${base}/ ${paths.formats(l)} 301`];
   });
+  // Short or differently spelled language prefixes (languages.mjs → aliases): /kr → /ko/, /zh-CN/… → /zh-cn/…
+  const aliases = languages.flatMap(l => l.aliases.map(alias => (alias.endsWith('/*')
+    ? `${alias} ${l.path}:splat 301` : `${alias} ${l.path} 301`)));
   return `/download ${DOWNLOAD} 302
 /github ${REPO} 302
 /releases ${REPO}/releases 302
 ${convertIndexes.join('\n')}
-/kr /ko/ 301
-/kr/* /ko/:splat 301
-/zh /zh-cn/ 301
-/cn /zh-cn/ 301
-/zh-CN /zh-cn/ 301
-/zh-CN/* /zh-cn/:splat 301
+${aliases.join('\n')}
 `;
 }
 

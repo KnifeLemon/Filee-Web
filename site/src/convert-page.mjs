@@ -1,9 +1,9 @@
-// Conversion guides (/convert/heic-to-jpg/, /ko/convert/heic-to-jpg/, …): one page per PAIRS entry and language.
+// Conversion guides (/convert/heic-to-jpg/, /ko/convert/heic-to-jpg/, /pl/convert/heic-to-jpg/, …): one page per PAIRS entry and language.
 // Every fact on the page (engine, options, format descriptions, other targets) comes from catalog.mjs; the sentence
 // templates come from i18n/<lang>.json → convert.
 
 import {
-  CATEGORY, ENGINES, FORMATS, OPTIONS, PAIR, PAIRS, L, fill, label, pairSlug, particles, routeFor, sizeText, targetsOf, vars,
+  CATEGORY, ENGINES, FORMATS, OPTIONS, PAIR, PAIRS, L, fill, label, pairSlug, particles, routeFor, sizeParen, sizeText, targetsOf, vars,
 } from './catalog.mjs';
 import {
   SITE, alternatesOf, breadcrumbs, downloadCard, engineBadge, escape, fileIcon, icon, pairLinks, paths, renderDocument,
@@ -16,12 +16,11 @@ export function pairVars(lang, pair) {
   const pf = particles(pair.from), pt = particles(pair.to);
   const engine = ENGINES[route.engine];
   const size = engine ? sizeText(engine.sizeMB, lang) : '';
-  const paren = { en: ` (${size})`, ko: `(${size})`, 'zh-CN': `（${size}）` }[lang];
   return {
     from, to,
     fromEul: from + pf.eul, fromRo: from + pf.ro, fromEun: from + pf.eun, fromWa: from + pf.wa,
     toEul: to + pt.eul, toRo: to + pt.ro,
-    engine: engine?.name ?? '', size, sizeParen: size ? paren : '',
+    engine: engine?.name ?? '', size, sizeParen: engine ? sizeParen(engine.sizeMB, lang) : '',
     category: L(CATEGORY[FORMATS[pair.from].cat].plain, lang),
   };
 }

@@ -8,6 +8,7 @@ import {
   DOWNLOAD, LOGO, REPO, SITE, alternatesOf, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
 } from './layout.mjs';
 import { NOBODY, supportersSection } from './sponsors.mjs';
+import { LANGUAGE } from './languages.mjs';
 import { md, terminal } from './cli-page.mjs';
 
 export { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE } from './layout.mjs';
@@ -63,7 +64,7 @@ function structuredData(t, languages) {
       installUrl: DOWNLOAD,
       releaseNotes: `${REPO}/releases`,
       codeRepository: REPO,
-      image: `${SITE}/media/og-${t.lang}.jpg`,
+      image: `${SITE}/media/og-${t.media}.jpg`,
       screenshot: t.gallery.shots.map(s => `${SITE}/media/screens/${s.src}.webp`),
       // What Filee converts, from the catalog (schema.org has no "supported formats" property for software).
       featureList: [
@@ -79,11 +80,11 @@ function structuredData(t, languages) {
       '@type': 'VideoObject',
       name: t.video.title,
       description: t.video.caption,
-      thumbnailUrl: `${SITE}/media/poster-${t.lang}.jpg`,
-      contentUrl: `${SITE}/media/promo-${t.lang}.mp4`,
+      thumbnailUrl: `${SITE}/media/poster-${t.media}.jpg`,
+      contentUrl: `${SITE}/media/promo-${t.media}.mp4`,
       uploadDate: VIDEO_DATE,
       duration: 'PT27S',
-      inLanguage: t.htmlLang,
+      inLanguage: LANGUAGE[t.media].htmlLang, // the video is in this language
     },
     {
       '@context': 'https://schema.org',
@@ -124,7 +125,7 @@ function categoryCards(t) {
     return `<li data-reveal style="--i:${i % 4}"><a class="cat-card" href="${catalog}#${c.id}" style="--cat:${c.color}">
       ${icon(c.icon, 'cat-icon')}
       <span class="cat-name">${escape(L(c.name, t.lang))}</span>
-      <span class="cat-count">${escape(fill(t.formats.count, { n: countFormats(c.formats) }))}</span>
+      <span class="cat-count">${escape(fill(t.formats.count, { _lang: t.lang, n: countFormats(c.formats) }))}</span>
       <span class="cat-sample">${escape(c.formats.filter(f => !f.raw).slice(0, 6).map(f => f.label).join(' · '))}</span>
       <span class="cat-tags">${engines.map(e => engineBadge(t, e, ENGINES)).join('')}</span>
     </a></li>`;
@@ -134,7 +135,7 @@ function categoryCards(t) {
 /** HWP section checklist: the HWP routes from the catalog plus the layout note. */
 function hwpPoints(t) {
   const hwp = CATEGORIES.find(c => c.id === 'hwp');
-  const sep = t.lang === 'zh-CN' ? '、' : ', ';
+  const { sep } = t.list;
   const route = r => `${r.from.map(id => label(id, t.lang)).join(sep)} → ${r.to.map(id => label(id, t.lang)).join(sep)}`;
   return [...hwp.routes.map(route), t.hwp.quality];
 }
@@ -154,11 +155,11 @@ export function renderPage(t, languages, assets) {
   const hwpGuides = ['hwp-to-pdf', 'hwp-to-docx', 'hwpx-to-pdf', 'hwp-to-hwpx', 'docx-to-hwpx', 'pdf-to-hwpx']
     .map(slug => PAIRS.find(p => `${p.from}-to-${p.to}` === slug)).filter(Boolean);
 
-  const extraHead = `<meta property="og:video" content="${SITE}/media/promo-${t.lang}.mp4">
+  const extraHead = `<meta property="og:video" content="${SITE}/media/promo-${t.media}.mp4">
 <meta property="og:video:type" content="video/mp4">
 <meta property="og:video:width" content="1280">
 <meta property="og:video:height" content="720">
-<link rel="preload" as="image" href="/media/poster-${t.lang}.jpg" fetchpriority="low">`;
+<link rel="preload" as="image" href="/media/poster-${t.media}.jpg" fetchpriority="low">`;
 
   const main = `
   <section class="hero">
@@ -194,7 +195,7 @@ export function renderPage(t, languages, assets) {
       <p>${escape(t.video.caption)}</p>
     </header>
     <div class="video-frame" data-reveal>
-      <video class="promo" data-src="/media/promo-${t.lang}.mp4" poster="/media/poster-${t.lang}.jpg" muted playsinline loop controls preload="none" width="1280" height="720" aria-label="${escape(t.video.title)}"></video>
+      <video class="promo" data-src="/media/promo-${t.media}.mp4" poster="/media/poster-${t.media}.jpg" muted playsinline loop controls preload="none" width="1280" height="720" aria-label="${escape(t.video.title)}"></video>
     </div>
   </section>
 
@@ -303,13 +304,8 @@ function faqLinks(t, item) {
   return `${pairLinks(t, pairs)}${catalog}${cli}`;
 }
 
-/** The 404 page: all three languages at once, since we can't know which one the visitor reads. */
+/** The 404 page: every language at once (i18n → notFound), since we can't know which one the visitor reads. */
 export function renderNotFound(languages, assets) {
-  const text = {
-    en: ['Page not found', "This page doesn't exist. Maybe it was dragged somewhere else.", 'Go to the home page', 'Browse all formats'],
-    ko: ['페이지를 찾을 수 없어요', '없는 페이지입니다. 어딘가로 끌려간 것 같아요.', '홈으로 가기', '지원 형식 보기'],
-    'zh-CN': ['找不到页面', '此页面不存在，可能被拖到别处了。', '返回首页', '查看全部格式'],
-  };
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -326,8 +322,8 @@ export function renderNotFound(languages, assets) {
   ${LOGO}
   <p class="not-found-code">404</p>
   ${languages.map(l => {
-    const [title, body, home, formats] = text[l.lang];
-    return `<section lang="${l.htmlLang}"><h1>${title}</h1><p>${body}</p><p class="not-found-links"><a class="btn btn-primary" href="${l.path}">${home}</a> <a class="btn btn-ghost" href="${paths.formats(l)}">${formats}</a></p></section>`;
+    const { title, text, home, formats } = l.notFound;
+    return `<section lang="${l.htmlLang}"><h1>${escape(title)}</h1><p>${escape(text)}</p><p class="not-found-links"><a class="btn btn-primary" href="${l.path}">${escape(home)}</a> <a class="btn btn-ghost" href="${paths.formats(l)}">${escape(formats)}</a></p></section>`;
   }).join('\n  ')}
 </main>
 </body>

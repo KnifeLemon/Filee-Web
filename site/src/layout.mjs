@@ -3,6 +3,7 @@
 
 import { CATEGORIES, FORMATS, PAIRS, label, pairSlug } from './catalog.mjs';
 import { DOWNLOAD_TARGETS } from './downloads.mjs';
+import { LANGUAGES } from './languages.mjs';
 
 export const SITE = 'https://filee.sh';
 export const REPO = 'https://github.com/KnifeLemon/Filee';
@@ -81,16 +82,20 @@ const JS_FLAG_SCRIPT = "document.documentElement.classList.add('js')";
 
 /**
  * On the English home page only (filee.sh/ typed or shared without a language): a visitor whose browser prefers
- * Korean or Simplified Chinese goes straight to /ko/ or /zh-cn/. Runs before anything renders. Not when the visitor
- * picked a language in the menu before (localStorage, see setupLanguageBanner), nor when coming from another page of
- * the site. Crawlers read English and stay, so every language keeps its own indexed URL (hreflang does the rest).
+ * another language of the site (languages.mjs → match) goes straight to its home page: /ko/, /zh-cn/, /pl/, /es/…
+ * The browser's languages are tried in order and the first one the site has wins (English: stay). Runs before
+ * anything renders. Not when the visitor picked a language in the menu before (localStorage, see
+ * setupLanguageBanner), nor when coming from another page of the site. Crawlers read English and stay, so every
+ * language keeps its own indexed URL (hreflang does the rest).
  */
+const LANG_MATCH = LANGUAGES.map(l => [l.match, l.path === '/' ? '' : l.path]);
 const LANG_REDIRECT_SCRIPT = "(function(){try{if(location.pathname!=='/'||localStorage.getItem('filee-lang-chosen'))return;"
   + "var r=document.referrer;if(r&&new URL(r).origin===location.origin)return;"
+  + `var m=${JSON.stringify(LANG_MATCH)};`
   + "var l=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language];"
-  + "for(var i=0;i<l.length;i++){var t=String(l[i]||'').toLowerCase();if(t.indexOf('en')===0)return;"
-  + "if(t.indexOf('ko')===0){location.replace('/ko/'+location.search+location.hash);return}"
-  + "if(t==='zh'||t.indexOf('zh-cn')===0||t.indexOf('zh-hans')===0||t.indexOf('zh-sg')===0){location.replace('/zh-cn/'+location.search+location.hash);return}}"
+  + "for(var i=0;i<l.length;i++){var t=String(l[i]||'').toLowerCase();"
+  + "for(var j=0;j<m.length;j++)for(var k=0;k<m[j][0].length;k++){var p=m[j][0][k];"
+  + "if(t===p||t.indexOf(p+'-')===0){if(m[j][1])location.replace(m[j][1]+location.search+location.hash);return}}}"
   + "}catch(e){}})()";
 
 /** Google Analytics 4 measurement ID; empty turns analytics off. */
@@ -117,16 +122,18 @@ const verificationMeta = Object.entries(SITE_VERIFICATION)
   .map(([name, value]) => `<meta name="${name}" content="${escape(value)}">`)
   .join('\n');
 
+/**
+ * Web fonts by languages.mjs → font. Inter from Google Fonts includes the Latin Extended subset (Polish ą ę ł ń ś ź ż,
+ * Spanish ñ). Google Fonts is not reachable from mainland China: Chinese pages use the system fonts (font: null).
+ */
 const FONTS = {
-  en: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">',
-  ko: '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">',
-  // Google Fonts is not reachable from mainland China: Chinese pages use the system fonts.
-  'zh-CN': '',
+  inter: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">',
+  pretendard: '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">',
 };
 
 /* ───────── URLs ───────── */
 
-/** Paths of the page types in language t (t.path is '/', '/ko/' or '/zh-cn/'). */
+/** Paths of the page types in language t (t.path is '/', '/ko/', '/zh-cn/', '/pl/'…). */
 export const paths = {
   home: t => t.path,
   formats: t => `${t.path}formats/`,
@@ -150,7 +157,7 @@ export function renderDocument({ t, languages, assets, title, description, alter
     + `<link rel="alternate" hreflang="x-default" href="${SITE}${alternates.en}">`;
   const pageData = {
     lang: t.lang,
-    langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name })),
+    langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name, match: l.match })),
     afterDownload: t.download.after,
     download: t.download,
   };
@@ -172,7 +179,7 @@ ${hreflang}
 <meta property="og:title" content="${escape(title)}">
 <meta property="og:description" content="${escape(description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/media/og-${t.lang}.jpg">
+<meta property="og:image" content="${SITE}/media/og-${t.media}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="${escape(t.meta.ogAlt)}">
@@ -182,7 +189,7 @@ ${extraHead}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escape(title)}">
 <meta name="twitter:description" content="${escape(description)}">
-<meta name="twitter:image" content="${SITE}/media/og-${t.lang}.jpg">
+<meta name="twitter:image" content="${SITE}/media/og-${t.media}.jpg">
 <meta name="theme-color" content="#7F77DD" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16151F" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
@@ -190,7 +197,7 @@ ${extraHead}
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-${FONTS[t.lang] ?? ''}
+${FONTS[t.font] ?? ''}
 <link rel="stylesheet" href="/assets/${assets.css}">
 ${jsonLd.length ? `<script type="application/ld+json">${json(jsonLd.length === 1 ? jsonLd[0] : jsonLd)}</script>` : ''}
 <script type="module" src="/assets/${assets.js}"></script>

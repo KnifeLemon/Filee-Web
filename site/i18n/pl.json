@@ -1,0 +1,463 @@
+{
+  "meta": {
+    "title": "Darmowy konwerter plików dla Windows – konwersja offline | Filee",
+    "description": "Darmowy konwerter plików dla Windows (macOS i Linux w wersji zapoznawczej). Obrazy, PDF, Word, Excel, wideo, audio, e-booki i HWP offline – przeciągnij i upuść.",
+    "ogAlt": "Filee: podczas przeciągania pliku przy kursorze otwiera się pierścień formatów",
+    "appAlternateName": "Konwerter plików Filee",
+    "keywords": "konwerter plików, darmowy konwerter plików, konwerter plików offline, konwerter plików Windows, konwerter obrazów, konwerter PDF, konwerter wideo, konwerter audio, HEIC na JPG, PDF na Word, konwerter HWP"
+  },
+  "nav": {
+    "features": "Funkcje",
+    "how": "Jak to działa",
+    "formats": "Formaty",
+    "cli": "Wiersz poleceń",
+    "hwp": "HWP",
+    "faq": "Pytania",
+    "download": "Pobierz",
+    "github": "GitHub",
+    "language": "Język",
+    "menu": "Menu",
+    "skip": "Przejdź do treści"
+  },
+  "hero": {
+    "badge": "Nowość w {versionShort}: PDF do PowerPointa, kompresja PDF, każda klatka filmu, kodowanie sprzętowe",
+    "kicker": "Darmowy konwerter plików dla Windows, macOS i Linuksa",
+    "title": ["Przeciągnij.", "Upuść.", "Gotowe."],
+    "lead": "Konwertuj obrazy, pliki PDF, Word, Excel i PowerPoint, filmy, muzykę, e-booki, archiwa i nie tylko – prosto na swoim komputerze. Przytrzymaj klawisz, przeciągnij pliki i upuść je na format. Bez przesyłania, bez konta, za darmo i open source.",
+    "download": "Wybierz wersję do pobrania",
+    "downloadNote": "Windows 10/11 · macOS i Linux w wersji zapoznawczej · Za darmo",
+    "formats": "Przeglądaj {formatCount} formatów"
+  },
+  "demo": {
+    "label": "Wypróbuj tutaj",
+    "hint": "Przeciągnij plik na scenę",
+    "hintTouch": "Przeciągnij plik palcem",
+    "files": [
+      { "name": "wycieczka.heic", "type": "heic", "profile": "image" },
+      { "name": "klip.mov", "type": "mov", "profile": "video" },
+      { "name": "raport.docx", "type": "docx", "profile": "document" }
+    ],
+    "center": { "image": "1 HEIC", "video": "1 MOV", "document": "1 DOCX", "hwp": "1 HWP" },
+    "close": "Puść w środku, aby anulować",
+    "done": "Przekonwertowano",
+    "cancelled": "Anulowano",
+    "output": "Przekonwertowane pliki",
+    "empty": "Tu pojawią się przekonwertowane pliki",
+    "keyboard": "Z klawiatury: zaznacz plik, naciśnij Enter, wybierz format strzałkami i naciśnij Enter, aby przekonwertować."
+  },
+  "video": {
+    "title": "Zobacz w 27 sekund",
+    "caption": "Ten sam gest konwertuje pojedyncze obrazy, całe serie dokumentów i pliki HWP bez Hancom Office."
+  },
+  "how": {
+    "title": "Konwersja plików w trzech krokach",
+    "steps": [
+      { "title": "Przytrzymaj klawisz i przeciągnij", "text": "Zaznacz pliki w Eksploratorze plików lub na pulpicie i przeciągnij je z wciśniętym Ctrl albo innym wybranym klawiszem modyfikującym." },
+      { "title": "Upuść na format", "text": "Przy kursorze otworzy się pierścień formatów pasujących do tych plików. Najedź na jeden z nich i puść." },
+      { "title": "Gotowe, obok oryginału", "text": "Pierścień postępu odlicza, a nowe pliki pojawiają się obok oryginałów. Wolisz menu? Kliknij prawym przyciskiem i wybierz „Konwertuj w Filee”." }
+    ]
+  },
+  "features": {
+    "title": "Co potrafi Filee",
+    "items": [
+      { "icon": "donut", "title": "Pierścień przy kursorze", "text": "Formaty pojawiają się tam, gdzie już jesteś, a okno aplikacji nie wchodzi w drogę. Otwiera go klawisz modyfikujący, przycisk myszy, gest przytrzymania lub skrót klawiszowy. Jeden wycinek może mieścić całą grupę ustawień wstępnych." },
+      { "icon": "stack", "title": "{formatCount} formatów, jeden gest", "text": "Obrazy, PDF, Word, Excel, PowerPoint, HWP, e-booki, wideo, audio, napisy, pliki danych, modele 3D, archiwa, rysunki CAD i czcionki. Filee samo wyznacza drogę między formatami." },
+      { "icon": "document", "title": "Bez Office", "text": "Pliki Word, Excel i PowerPoint konwertują się bez Microsoft Office i LibreOffice, a HWP bez Hancom Office. Filee nie używa Office ani Hancom Office, nawet jeśli są zainstalowane." },
+      { "icon": "doors", "title": "Konwersja wsadowa", "text": "Upuść 1 plik albo 100. Konwertują się równolegle, błąd jednego nie zatrzymuje reszty, a ustawienia wstępne mogą połączyć wszystko w jeden PDF lub jeden ZIP." },
+      { "icon": "lock", "title": "100% na Twoim komputerze", "text": "Nic nie jest przesyłane. Filee działa offline, więc prywatne dokumenty, zdjęcia i nagrania nigdy nie opuszczają Twojego komputera." },
+      { "icon": "windows", "title": "Tam, gdzie pracujesz", "text": "Gest przeciągania, „Konwertuj w Filee” w menu kontekstowym (w Windows 11 także w głównym menu), Wyślij do, skrót klawiszowy lub strefa upuszczania w oknie głównym." },
+      { "icon": "sliders", "title": "Ustawienia wstępne dla każdego typu plików", "text": "Jakość, zmiana rozmiaru, obracanie i odbijanie, DPI, skala szarości, metadane, usuwanie tła, wektoryzacja do SVG, kompresja TIFF, rozmiary ICO, łączenie i dzielenie PDF, zakresy stron, kompresja i jeden długi obraz, 720p, wideo HEVC i AV1, kodowanie sprzętowe, każda klatka jako obraz, bitrate MP3, folder wyjściowy, nazwy plików i oryginalne daty plików." },
+      { "icon": "download", "title": "Silniki na żądanie", "text": "Duże silniki są opcjonalne. Zaznacz je w instalatorze albo pobierz później w aplikacji: {engineNames}. Filee pokazuje ich wersje, prędkość pobierania i pozostały czas. Masz już FFmpeg, calibre lub Pandoc? Filee je znajdzie i pominie pobieranie." },
+      { "icon": "code", "title": "Darmowe i otwarte", "text": "Licencja MIT, bez reklam, bez konta. Po angielsku, koreańsku, chińsku (uproszczonym), polsku i hiszpańsku. Filee informuje o nowych wersjach; każde wydanie zawiera listę zmian i współtwórców." }
+    ]
+  },
+  "formats": {
+    "title": "{formatTotal|one:# format|few:# formaty|many:# formatów|other:# formatu} w {categoryCount|one:# kategorii|other:# kategoriach}",
+    "lead": "Filee samo znajduje najlepszą drogę między formatami, np. HWPX → PDF → PNG, i do każdego kroku używa silnika, który robi go najlepiej.",
+    "count": "{n|one:# format|few:# formaty|many:# formatów|other:# formatu}",
+    "popular": "Popularne konwersje",
+    "catalog": "Zobacz wszystkie formaty ({formatTotal}) w katalogu"
+  },
+  "hwp": {
+    "eyebrow": "Dla użytkowników HWP",
+    "title": "HWP i HWPX bez Hancom Office",
+    "text": "Filee samo odczytuje i zapisuje koreańskie dokumenty Hangul, więc nie musisz kupować licencji Hancom ani klikać okien zatwierdzania.",
+    "quality": "DOCX → HWPX zachowuje ustawienia strony, nagłówki i stopki, tabele ze scalonymi komórkami, pola tekstowe i obrazy",
+    "guides": "Poradniki HWP"
+  },
+  "gallery": {
+    "title": "Dopasuj pierścień do siebie",
+    "lead": "Układaj formaty na żywym pierścieniu metodą przeciągnij i upuść: osobny pasek dla każdego typu plików, znaczniki rozszerzeń i paski dla mieszanych zaznaczeń.",
+    "shots": [
+      { "src": "page-toolbar-en", "alt": "Edytor paska-pierścienia z profilami i ustawieniami wstępnymi" },
+      { "src": "page-home-en", "alt": "Ekran główny ze strefą upuszczania i ostatnimi konwersjami" },
+      { "src": "page-presets-en", "alt": "Edytor ustawień wstępnych z jakością i opcjami zapisu" },
+      { "src": "page-toolbar-dark", "alt": "Ciemny motyw" }
+    ]
+  },
+  "faq": {
+    "title": "Pytania i odpowiedzi",
+    "lead": "Krótkie odpowiedzi o cenie, prywatności, formatach i działaniu Filee."
+  },
+  "specs": {
+    "title": "W skrócie",
+    "rows": [
+      ["Cena", "Za darmo"],
+      ["Licencja", "MIT (open source)"],
+      ["Wersja", "{version}"],
+      ["Platforma", "Windows 10/11 x64 · macOS 14+ oraz Linux x64/ARM64 (wersje zapoznawcze)"],
+      ["Działa offline", "Tak, pliki nigdy nie opuszczają Twojego komputera"],
+      ["Formaty", "{formatTotal} w {categoryCount|one:# kategorii|other:# kategoriach}"],
+      ["Wbudowane", "{builtinTotal|one:# format|few:# formaty|many:# formatów|other:# formatu}, nic więcej do instalowania"],
+      ["Opcjonalne silniki", "{engineNames}"],
+      ["Wiersz poleceń", "filee convert i filee watch, dodawane do PATH przez instalator"],
+      ["Języki", "angielski, koreański, chiński uproszczony, polski, hiszpański"],
+      ["Aktualizacje", "Instalowane z poziomu aplikacji jednym kliknięciem; każda informuje, czy jest wymagana, zalecana czy opcjonalna"]
+    ]
+  },
+  "download": {
+    "title": "Pobierz Filee",
+    "text": "Większość formatów konwertuje się od razu po instalacji.\nSilniki do wideo, audio i rzadkich formatów dodasz w aplikacji, gdy będą potrzebne.",
+    "button": "Pobierz dla Windows",
+    "selector": "System operacyjny i procesor",
+    "targets": {
+      "win-x64": "Windows 10/11 · x64",
+      "linux-x64": "Linux · x64",
+      "linux-arm64": "Linux · ARM64",
+      "osx-arm64": "macOS · Apple Silicon (ARM64)",
+      "osx-x64": "macOS · Intel (x64)"
+    },
+    "platformNote": "macOS i Linux to wersje zapoznawcze.",
+    "developmentLabel": "Wersja zapoznawcza",
+    "developmentButton": "Pobierz wersję zapoznawczą",
+    "checking": "Sprawdzanie plików wydania…",
+    "missing": "Najnowsze wydanie nie zawiera pliku dla: {target}. Sprawdź wszystkie wydania.",
+    "unavailable": "Nie udało się sprawdzić plików wydania. Otwórz listę wszystkich wydań, aby zobaczyć dostępne wersje.",
+    "all": "Wszystkie wydania",
+    "source": "Kod źródłowy",
+    "sponsor": "Wesprzyj rozwój",
+    "sponsorText": "Filee jest darmowe i takie zostanie.",
+    "after": {
+      "title": "Pobieranie się rozpoczęło",
+      "steps": [
+        "Otwórz Filee-…-win-Setup.exe z folderu pobranych plików.",
+        "Jeśli Windows pokaże komunikat „System Windows ochronił ten komputer”, kliknij „Więcej informacji”, a potem „Uruchom mimo to”. Filee to młody projekt open source, który nie ma jeszcze certyfikatu podpisywania kodu; cały jego kod źródłowy jest na GitHubie.",
+        "Wybierz opcje i silniki w kreatorze instalacji. Po zakończeniu Filee się uruchomi."
+      ],
+      "star": "Podoba Ci się? Daj Filee gwiazdkę na GitHubie",
+      "issue": "Zgłoś problem lub zaproponuj funkcję",
+      "retry": "Pobieranie się nie rozpoczęło? Spróbuj ponownie",
+      "close": "Zamknij"
+    }
+  },
+  "supporters": {
+      "title": "Sponsorzy",
+      "lead": "Filee jest darmowe dzięki osobom i firmom, które je wspierają.",
+      "join": "Zostań sponsorem",
+      "readme": "#sponsor"
+  },
+  "footer": {
+    "tagline": "Przeciągnij. Upuść. Gotowe.",
+    "license": "Licencja MIT",
+    "notices": "Informacje o komponentach zewnętrznych",
+    "signing": "Zasady podpisywania kodu",
+    "sponsor": "Wesprzyj Filee",
+    "issues": "Zgłoś problem",
+    "made": "Stworzone przez KnifeLemon i współtwórców.",
+    "formats": "Wszystkie formaty",
+    "cli": "Wiersz poleceń",
+    "popular": "Popularne konwersje"
+  },
+  "common": {
+    "home": "Start",
+    "breadcrumb": "Ścieżka nawigacji",
+    "builtIn": "Wbudowany",
+    "builtInHint": "Działa od razu po instalacji, bez dodatkowego pobierania",
+    "optional": "Opcjonalny silnik",
+    "optionalHint": "Darmowy opcjonalny silnik, pobierany raz w Filee",
+    "free": "Za darmo",
+    "offline": "Offline",
+    "batch": "Wsadowo"
+  },
+  "catalog": {
+    "title": "Obsługiwane formaty plików: {formatTotal} w {categoryCount|one:# kategorii|other:# kategoriach} | Filee",
+    "description": "Wszystkie formaty ({formatTotal}), które Filee konwertuje w Windows: obrazy, PDF, dokumenty, HWP, wideo, audio, napisy, dane, 3D, e-booki, archiwa, CAD i czcionki.",
+    "crumb": "Formaty",
+    "h1": "Katalog formatów",
+    "lead": "{formatTotal|one:# format|few:# formaty|many:# formatów|other:# formatu} w {categoryCount|one:# kategorii|other:# kategoriach}. {builtinTotal|one:# z nich działa|few:# z nich działają|other:# z nich działa} od razu po instalacji; pozostałe korzystają z darmowego opcjonalnego silnika, który Filee pobiera dopiero wtedy, gdy jest potrzebny.",
+    "stats": { "formats": "{n|one:format|few:formaty|many:formatów|other:formatu}", "categories": "{n|one:kategoria|few:kategorie|many:kategorii|other:kategorii}", "builtin": "{n|one:wbudowany|few:wbudowane|other:wbudowanych}", "guides": "{n|one:poradnik krok po kroku|few:poradniki krok po kroku|other:poradników krok po kroku}" },
+    "jump": "Kategorie",
+    "legendBuiltIn": "Wbudowane: działa od razu po instalacji. Wbudowane silniki to m.in.",
+    "legendOptional": "Opcjonalny silnik: darmowe pobranie w Filee (Ustawienia → Silniki), zapisywane we własnym folderze Filee i możliwe do usunięcia w każdej chwili. Jeśli silnik jest już na Twoim komputerze (w PATH lub w Program Files), Filee użyje go zamiast tego; konkretną kopię wskażesz w Ustawienia → Silniki → Użyj mojej kopii.",
+    "engineCols": ["Silnik", "Zastosowanie", "Pobieranie"],
+    "from": "Z",
+    "to": "Konwertuje do",
+    "engine": "Silnik",
+    "guides": "Poradniki krok po kroku",
+    "ctaTitle": "Konwertuj każdy z nich jednym gestem",
+    "ctaText": "Pobierz Filee dla Windows 10/11 i konwertuj {formatCount} formatów offline, za darmo."
+  },
+  "convert": {
+    "title": "Konwerter {from} na {to}: darmowy, offline, wsadowy | Filee",
+    "description": "Konwertuj {from} na {to} za darmo w Windows 10/11: przeciągnij i upuść, wiele plików naraz, offline, bez przesyłania. {engineShort}",
+    "descBuiltIn": "Nic więcej do instalowania.",
+    "descOptional": "Używa darmowego silnika {engine}.",
+    "h1": "Konwerter {from} na {to}",
+    "lead": "Konwertuj pliki {from} na {to} w Windows 10 i 11: za darmo, offline i wsadowo. Przeciągnij pliki na {to} w pierścieniu formatów Filee, a pliki {to} pojawią się obok oryginałów.",
+    "crumb": "{from} na {to}",
+    "howButton": "Jak to działa",
+    "howTitle": "Jak przekonwertować {from} na {to} w Windows",
+    "steps": [
+      { "title": "Zaznacz pliki {from}", "text": "W Eksploratorze plików lub na pulpicie zaznacz jeden plik {from} albo dowolnie wiele." },
+      { "title": "Przytrzymaj Ctrl i przeciągnij", "text": "Przytrzymaj Ctrl (lub klawisz ustawiony w Filee) i przeciągnij pliki. Przy kursorze otworzy się pierścień formatów. Wolisz menu? Kliknij prawym przyciskiem i wybierz „Konwertuj w Filee”." },
+      { "title": "Upuść na {to}", "text": "Puść pliki nad {to}. Pierścień postępu odlicza, a każdy plik {to} zapisuje się obok swojego oryginału." }
+    ],
+    "stepEngine": "Za pierwszym razem Filee zaproponuje pobranie {engine} – darmowego silnika, którego używa do tej konwersji.",
+    "whatTitle": "Co Filee robi przy konwersji {from} → {to}",
+    "points": {
+      "builtIn": "Wbudowane: działa od razu po instalacji Filee, bez pobierania czegokolwiek.",
+      "optional": "Korzysta z {engine} – darmowego opcjonalnego silnika, który Filee pobiera raz do własnego folderu{sizeParen}. Jeśli {engine} jest już na Twoim komputerze, Filee go użyje i nic nie pobierze.",
+      "via": "Silnik: {via}.",
+      "batch": "Wsadowo: jeden plik lub setki, konwertowane równolegle; błąd jednego nie zatrzymuje reszty.",
+      "local": "Prywatnie: pliki są konwertowane na Twoim komputerze i nigdy nie są przesyłane, nawet bez internetu.",
+      "output": "Zapis obok oryginału albo w wybranym folderze i z wybranym wzorem nazwy pliku."
+    },
+    "alsoTo": "{from} można też zamienić na",
+    "aboutTitle": "O formatach {from} i {to}",
+    "aboutExt": "Rozszerzenia:",
+    "aboutMore": "Wszystkie formaty w kategorii: {category}",
+    "relatedTitle": "Powiązane konwersje",
+    "sameSource": "Inne konwersje z {from}",
+    "sameTarget": "Konwertuj inne formaty na {to}",
+    "sameCategory": "Więcej poradników w kategorii: {category}",
+    "ctaTitle": "Konwertuj {from} na {to} za darmo",
+    "ctaText": "Filee to darmowy konwerter plików open source dla Windows 10 i 11. Działa offline i konwertuje {formatCount} formatów jednym przeciągnięciem."
+  },
+  "auto": {
+    "eyebrow": "Do automatyzacji",
+    "title": "Konwertuj z wiersza poleceń albo zostaw to folderowi",
+    "text": "Polecenie filee konwertuje pliki, symbole wieloznaczne i całe foldery z użyciem Twoich ustawień wstępnych, wypisuje JSON dla skryptów i zwraca kody wyjścia. Obserwowane foldery konwertują wszystko, co do nich trafi – w aplikacji lub w terminalu.",
+    "points": [
+      "`filee convert *.heic --to jpg` z dowolnym z {formatCount} formatów",
+      "Pobrane pliki i skany konwertowane, gdy tylko są kompletne",
+      "Oryginały odkładane na bok, więc folder działa jak skrzynka odbiorcza",
+      "Wynik w JSON i kody wyjścia dla skryptów i zadań zaplanowanych"
+    ],
+    "guide": "Przeczytaj poradnik wiersza poleceń",
+    "terminal": "Przykład: obserwowany folder, który zamienia skany na PDF"
+  },
+  "cli": {
+    "title": "Wiersz poleceń Filee: konwersja plików i obserwowane foldery | Filee",
+    "description": "Darmowe polecenie filee w Windows: konwertuj offline pliki, foldery i symbole wieloznaczne, obserwuj foldery, a w skryptach używaj JSON i kodów wyjścia.",
+    "crumb": "Wiersz poleceń",
+    "h1": "Wiersz poleceń filee",
+    "lead": "Konwertuj pliki z Wiersza polecenia, PowerShella lub własnych skryptów tymi samymi silnikami i ustawieniami wstępnymi co w aplikacji albo zostaw folder, który konwertuje wszystko, co do niego trafi. Wszystko zostaje na Twoim komputerze.",
+    "tags": [
+      "Windows 10/11",
+      "Twoje ustawienia wstępne",
+      "Wynik JSON"
+    ],
+    "commandsButton": "Zobacz polecenia",
+    "terminalLabel": "Przykład: konwersja zdjęć HEIC do JPG w terminalu",
+    "setupTitle": "Konfiguracja polecenia filee",
+    "setup": [
+      {
+        "title": "Zostaw zaznaczone w instalatorze",
+        "text": "Na stronie opcji instalatora Filee zostaw zaznaczoną opcję **Add the \"filee\" command to PATH** (dodaj polecenie filee do PATH; domyślnie jest włączona). Filee jest już zainstalowane? Uruchom ponownie najnowszy instalator."
+      },
+      {
+        "title": "Otwórz nowy terminal",
+        "text": "Otwórz nowe okno Wiersza polecenia, PowerShella lub Windows Terminal (okno otwarte wcześniej nie widzi nowego PATH) i uruchom `filee version`."
+      },
+      {
+        "title": "Wersja przenośna lub bez PATH",
+        "text": "Wszystko jest w folderze Filee: uruchom tam `filee-cli.exe` albo sam dodaj jego folder `cli` do PATH. Aplikacja nie musi być uruchomiona."
+      }
+    ],
+    "quickTitle": "Szybki start",
+    "quickLead": "Podaj nazwy plików, symbole wieloznaczne, np. `*.heic`, lub całe foldery. Wyniki są zapisywane obok oryginałów, chyba że dodasz `-o`.",
+    "quick": [
+      {
+        "title": "Jedno zdjęcie do JPG",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "Każdy PNG do WebP z jakością 80, do jednego folderu",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "Folder z podfolderami z użyciem ustawienia wstępnego",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "Folder-skrzynka, który tworzy PDF-y",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "Na co można zamienić HEIC?",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "Twoje ustawienia wstępne według id i nazwy",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "Polecenia",
+    "optionsLabel": "Opcje",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "Konwertuje pliki, symbole wieloznaczne (`*.heic`) i foldery. W folderze konwertowane są pliki, które Filee zna; dodaj `-r`, aby objąć podfoldery. Podaj format docelowy albo jedno ze swoich ustawień wstępnych.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Format docelowy według id lub rozszerzenia: jpg, png, webp, pdf, docx, hwpx, mp4, mp3… (zob. `filee formats`)"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Ustawienie wstępne z aplikacji, według id lub nazwy (zob. `filee presets`)"
+          ],
+          [
+            "-o, --output <folder>",
+            "Zapis w tym folderze zamiast obok plików źródłowych"
+          ],
+          [
+            "-r, --recursive",
+            "Uwzględnij podfoldery"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "Jakość obrazu dla JPG, WebP, AVIF i innych formatów stratnych"
+          ],
+          [
+            "--overwrite",
+            "Zastępuj istniejące pliki wynikowe (domyślnie do nowej nazwy dodawany jest numer)"
+          ],
+          [
+            "--skip",
+            "Nie zmieniaj istniejących plików wynikowych"
+          ],
+          [
+            "--keep-dates",
+            "Nadaj przekonwertowanym plikom daty utworzenia i modyfikacji oryginałów"
+          ],
+          [
+            "--json",
+            "Wypisz wynik jako jeden dokument JSON, dla skryptów"
+          ],
+          [
+            "--quiet",
+            "Wypisuj tylko błędy"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Konwertuje każdy plik, który trafi do folderu, dopóki nie naciśniesz Ctrl+C. Przekonwertowane pliki trafiają do folderu `converted` wewnątrz niego, chyba że dodasz `-o`.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Format docelowy"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Ustawienie wstępne z aplikacji, według id lub nazwy"
+          ],
+          [
+            "-o, --output <folder>",
+            "Dokąd trafiają przekonwertowane pliki (domyślnie: `<folder>\\converted`)"
+          ],
+          [
+            "-r, --recursive",
+            "Obserwuj też podfoldery (ich pliki zachowują podfolder w wyniku)"
+          ],
+          [
+            "--move-originals",
+            "Przenoś każdy przekonwertowany plik źródłowy do `<folder>\\originals`, a przy starcie konwertuj pliki, które już czekają w folderze"
+          ],
+          [
+            "--settle <seconds>",
+            "Jak długo plik musi pozostać niezmieniony, zanim zostanie przekonwertowany (domyślnie 2 s)"
+          ],
+          [
+            "--keep-dates",
+            "Nadaj przekonwertowanym plikom daty utworzenia i modyfikacji oryginałów"
+          ],
+          [
+            "--quiet",
+            "Wypisuj tylko błędy"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "Wypisuje każdy format z jego id i rozszerzeniami albo to, na co można przekonwertować jeden format – łącznie z tym, co dodałby opcjonalny silnik.",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "Wypisuje wbudowane ustawienia wstępne i te utworzone w aplikacji, z ich id, nazwą i formatem docelowym.",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "Pokazuje, jak używać wszystkich poleceń lub jednego z nich, oraz zainstalowaną wersję.",
+        "options": []
+      }
+    ],
+    "watchTitle": "Obserwowane foldery",
+    "watchLead": "Niech folder konwertuje wszystko, co do niego włożysz: pobrane pliki, skany, eksporty z innych aplikacji.",
+    "watchPoints": [
+      "Pliki są konwertowane, gdy są kompletne – już nie rosną i nie są otwarte w innym programie – więc pobierane pliki i długie kopiowanie są bezpieczne.",
+      "Pliki tymczasowe i ukryte (`.crdownload`, `.part`, `.tmp`, pliki `~$`) oraz formaty nieznane Filee są pomijane.",
+      "Przekonwertowane pliki trafiają do folderu `converted` w obserwowanym folderze albo tam, gdzie wskazuje `-o`. Z `-r` pliki z podfolderów zachowują tam swój podfolder (`2025\\a.png` → `converted\\2025\\a.pdf`).",
+      "Z `--move-originals` każdy przekonwertowany plik źródłowy trafia do `originals`, więc folder działa jak skrzynka odbiorcza. Pliki, które już w nim czekają, są konwertowane przy starcie."
+    ],
+    "watchAppTitle": "Albo w aplikacji, w tle",
+    "watchAppText": "Strona **Obserwowane foldery** w Filee robi to samo bez terminala: dodaj foldery, wybierz dla każdego ustawienie wstępne, a pliki będą konwertowane, gdy Filee działa w zasobniku.",
+    "scriptsTitle": "Użycie w skryptach",
+    "scriptsLead": "`--json` wypisuje jeden dokument JSON z wynikiem każdego pliku, a kod wyjścia mówi skryptowi, jak poszło.",
+    "exitTitle": "Kody wyjścia",
+    "exitCodes": [
+      [
+        "0",
+        "Wszystko się udało"
+      ],
+      [
+        "1",
+        "Niektórych plików nie udało się przekonwertować (pozostałe zostały przekonwertowane)"
+      ],
+      [
+        "2",
+        "Błędne argumenty, nieznany format lub ustawienie wstępne albo brak danych wejściowych"
+      ],
+      [
+        "3",
+        "Nie ma czego konwertować"
+      ]
+    ],
+    "psTitle": "Przykład w PowerShellu",
+    "notesTitle": "Warto wiedzieć",
+    "notes": [
+      "Te same silniki i ustawienia wstępne co w aplikacji: ustawienie utworzone lub zmienione w Filee od razu działa z `--preset`, według id lub nazwy.",
+      "Opcjonalne silniki (FFmpeg, LibreOffice…) instaluje się w aplikacji w Ustawienia → Silniki. `filee formats <format>` pokazuje, które konwersje wymagają silnika.",
+      "Symbole wieloznaczne rozwija samo filee, więc `*.heic` działa zarówno w Wierszu polecenia, jak i w PowerShellu. Ścieżki ze spacjami ujmij w cudzysłów.",
+      "Nic nie jest przesyłane i internet nie jest potrzebny: pliki są konwertowane na Twoim komputerze, tak jak w aplikacji.",
+      "Komunikaty są po angielsku, więc skrypty i logi wyglądają tak samo na każdym komputerze."
+    ],
+    "ctaTitle": "Pobierz Filee z poleceniem filee",
+    "ctaText": "Wiersz poleceń jest częścią Filee dla Windows 10/11: za darmo, open source i offline."
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "text": "Ta strona nie istnieje. Może ktoś ją gdzieś przeciągnął.",
+    "home": "Przejdź na stronę główną",
+    "formats": "Przeglądaj wszystkie formaty"
+  },
+  "langBanner": "Ta strona jest dostępna także po polsku."
+}

@@ -33,7 +33,7 @@ function categorySection(t, c) {
   return `<section class="cat-section" id="${c.id}" style="--cat:${c.color}" data-reveal>
     <header class="cat-head">
       ${icon(c.icon, 'cat-icon')}
-      <div><h2>${escape(L(c.name, t.lang))}</h2><p class="cat-count">${escape(fill(t.formats.count, { n: countFormats(c.formats) }))}</p></div>
+      <div><h2>${escape(L(c.name, t.lang))}</h2><p class="cat-count">${escape(fill(t.formats.count, { _lang: t.lang, n: countFormats(c.formats) }))}</p></div>
     </header>
     <p class="cat-intro">${escape(L(c.intro, t.lang))}</p>
     <div class="format-table route-table">
@@ -65,10 +65,10 @@ export function renderFormatsPage(t, languages, assets) {
     <h1>${escape(t.catalog.h1)}</h1>
     <p class="lead">${escape(f(t.catalog.lead))}</p>
     <ul class="stat-row">
-      <li><b>${s.formatTotal}</b><span>${escape(t.catalog.stats.formats)}</span></li>
-      <li><b>${s.categoryCount}</b><span>${escape(t.catalog.stats.categories)}</span></li>
-      <li><b>${s.builtinTotal}</b><span>${escape(t.catalog.stats.builtin)}</span></li>
-      <li><b>${s.pairCount}</b><span>${escape(t.catalog.stats.guides)}</span></li>
+      <li><b>${s.formatTotal}</b><span>${escape(fill(t.catalog.stats.formats, { ...v, n: s.formatTotal }))}</span></li>
+      <li><b>${s.categoryCount}</b><span>${escape(fill(t.catalog.stats.categories, { ...v, n: s.categoryCount }))}</span></li>
+      <li><b>${s.builtinTotal}</b><span>${escape(fill(t.catalog.stats.builtin, { ...v, n: s.builtinTotal }))}</span></li>
+      <li><b>${s.pairCount}</b><span>${escape(fill(t.catalog.stats.guides, { ...v, n: s.pairCount }))}</span></li>
     </ul>
     <nav class="cat-index" aria-label="${escape(t.catalog.jump)}">
       ${CATEGORIES.map(c => `<a class="pill" href="#${c.id}" style="--cat:${c.color}">${icon(c.icon, 'pill-icon')}${escape(L(c.name, t.lang))} <small>${countFormats(c.formats)}</small></a>`).join('')}
