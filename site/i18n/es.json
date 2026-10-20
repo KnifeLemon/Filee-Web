@@ -68,7 +68,7 @@
       { "icon": "windows", "title": "Justo donde trabajas", "text": "El gesto de arrastre, «Convertir con Filee» en el menú contextual (en Windows 11 también en el menú principal), Enviar a, un atajo de teclado o la zona de suelta de la ventana principal." },
       { "icon": "sliders", "title": "Ajustes preestablecidos por tipo de archivo", "text": "Calidad, cambio de tamaño, girar y voltear, DPI, escala de grises, metadatos, quitar el fondo, trazar a SVG, compresión TIFF, tamaños de ICO, combinar y dividir PDF, rangos de páginas, compresión e imagen larga, 720p, vídeo HEVC y AV1, codificación por hardware, cada fotograma como imagen, tasa de bits de MP3, carpeta de salida, nombres de archivo y fechas originales de los archivos." },
       { "icon": "download", "title": "Motores a demanda", "text": "Los motores grandes son opcionales. Márcalos en el instalador o descárgalos después en la aplicación: {engineNames}. Filee muestra sus versiones, la velocidad de descarga y el tiempo restante. ¿Ya tienes FFmpeg, calibre o Pandoc? Filee los encuentra y se salta la descarga." },
-      { "icon": "code", "title": "Gratis y de código abierto", "text": "Licencia MIT, sin anuncios ni cuenta. En inglés, coreano, chino simplificado, polaco, español e hindi. Filee te avisa de las versiones nuevas; cada versión enumera sus cambios y colaboradores." }
+      { "icon": "code", "title": "Gratis y de código abierto", "text": "Licencia MIT, sin anuncios ni cuenta. En inglés, coreano, chino simplificado, polaco, español, hindi y japonés. Filee te avisa de las versiones nuevas; cada versión enumera sus cambios y colaboradores." }
     ]
   },
   "formats": {
@@ -111,7 +111,7 @@
       ["Integrados", "{builtinTotal|one:# formato|other:# formatos}, sin nada más que instalar"],
       ["Motores opcionales", "{engineNames}"],
       ["Línea de comandos", "filee convert y filee watch, añadidos al PATH por el instalador"],
-      ["Idiomas", "Inglés, coreano, chino simplificado, polaco, español, hindi"],
+      ["Idiomas", "Inglés, coreano, chino simplificado, polaco, español, hindi, japonés"],
       ["Actualizaciones", "Se instalan desde la propia aplicación con un clic; cada una indica si es obligatoria, recomendada u opcional"]
     ]
   },

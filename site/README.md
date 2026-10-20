@@ -1,6 +1,6 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in six languages (English, Korean, Simplified Chinese, Polish, Spanish, Hindi), deployed to Cloudflare Workers (static assets).
+The Filee website: a static, dependency-free site in seven languages (English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese), deployed to Cloudflare Workers (static assets).
 
 ```
 site/
@@ -8,13 +8,13 @@ site/
                             guide pairs, FAQ. Every format/support claim and every count on the site comes from here
   src/languages.mjs         THE language list: code, URL prefix, names, html lang/hreflang, Open Graph locale, browser
                             languages that pick it, short URLs, font, media language, list/size wording
-  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (pl, es, hi): English text → translation
+  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (pl, es, hi, ja): English text → translation
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
   src/page.mjs              home page (hero, demo, features, format categories, HWP, FAQ, specs) and the 404 page
   src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
-  src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…)
+  src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…)
   src/llms.mjs              llms.txt and llms-full.txt
   src/sponsors.mjs          home page sponsors: the app's sponsors.json and logos, read from GitHub at build time;
                             no section while nobody is listed (SPONSORS=<folder> reads a local copy)
@@ -49,13 +49,13 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
   text makes the build fail until each dictionary has the new text (it names the missing and the stale entries), so
   no language silently falls back to English. Where the same English text needs two translations, the T() call gets a
   context and the dictionaries key it as `English [context]` (see `plain` of CAD drawings).
-- **New language** (e.g. Japanese):
-  1. Add it to `src/languages.mjs`: code, `path` (`/ja/`), name, `htmlLang`, `ogLocale`, the browser languages
+- **New language** (e.g. Vietnamese):
+  1. Add it to `src/languages.mjs`: code, `path` (`/vi/`), name, `htmlLang`, `ogLocale`, the browser languages
      that pick it (`match`), font (a script Inter lacks needs fonts in `FONTS` of layout.mjs and `styles.css`, as
-     Hindi has), `media` (`'en'` until marketing/ renders its video, poster and OG image), the
+     Hindi and Japanese have), `media` (`'en'` until marketing/ renders its video, poster and OG image), the
      list and size wording.
-  2. Add `i18n/ja.json` with every key of `en.json`.
-  3. Add `src/texts/ja.mjs` with every catalog text (copy `pl.mjs` and replace the right-hand side).
+  2. Add `i18n/vi.json` with every key of `en.json`.
+  3. Add `src/texts/vi.mjs` with every catalog text (copy `pl.mjs` and replace the right-hand side).
   4. `npm run check`. Pages, hreflang, the sitemap, the language menu, the language redirect and suggestion, the 404
      page, `_redirects` and llms.txt pick it up; the check names anything missing.
   5. When the app has the language too, add it to the app's language lists: `features` and `specs` in every
@@ -66,9 +66,9 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 
 | Page | URLs (per language) | From |
 |---|---|---|
-| Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
+| Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 6 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 7 languages) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -137,7 +137,7 @@ npm run deploy
 ## SEO and GEO checklist
 
 - **Already built in**:
-  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`) for the home page, the format catalog and every conversion guide.
+  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`) for the home page, the format catalog and every conversion guide.
   - `hreflang` + `x-default`, canonical URLs, Open Graph and Twitter cards on every page.
   - JSON-LD: `SoftwareApplication` (with `softwareVersion` and `featureList` from the catalog), `FAQPage`,
     `VideoObject`, `WebSite`, `CollectionPage`, `HowTo` and `BreadcrumbList`.

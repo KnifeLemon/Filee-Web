@@ -22,6 +22,10 @@
   /* Hindi: Inter for Latin letters and digits, Devanagari from Noto Sans Devanagari (web font on Hindi pages) or the
      system's Devanagari font: Nirmala UI (Windows), Kohinoor Devanagari (macOS, iOS), Noto (Android, Linux). */
   --font-hi: Inter, "Noto Sans Devanagari", "Nirmala UI", "Kohinoor Devanagari", "Devanagari Sangam MN", Mangal, system-ui, sans-serif;
+  /* Japanese: Inter for Latin letters and digits, kana and kanji from Noto Sans JP (web font on Japanese pages) or the
+     system's Japanese font: Hiragino (macOS, iOS), Yu Gothic UI and Meiryo (Windows), Noto Sans CJK JP (Android, Linux).
+     A Japanese font comes before any Chinese one, so Han characters take Japanese shapes. */
+  --font-ja: Inter, "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, "Noto Sans CJK JP", system-ui, sans-serif;
   color-scheme: light;
 }
 
@@ -30,6 +34,9 @@
 .lang-hi { --font: var(--font-hi); }
 /* Hindi text on the other languages' pages: the language menu, the footer, the language banner and the 404 page. */
 [lang="hi"] { font-family: var(--font-hi); }
+/* Japanese pages: strict kinsoku (no line starting with a small kana or ー); Japanese text elsewhere gets the font. */
+.lang-ja { --font: var(--font-ja); line-break: strict; }
+[lang="ja"] { font-family: var(--font-ja); }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -64,6 +71,10 @@ h1, h2, h3 { line-height: 1.12; letter-spacing: -0.03em; margin: 0; }
 .lang-ko h1, .lang-ko h2, .lang-ko h3, .lang-zh-CN h1, .lang-zh-CN h2, .lang-zh-CN h3 { letter-spacing: -0.02em; word-break: keep-all; }
 /* Devanagari: no negative tracking (it breaks the joined headline), and room for vowel signs above and below. */
 .lang-hi h1, .lang-hi h2, .lang-hi h3 { letter-spacing: 0; line-height: 1.3; }
+/* Japanese has no spaces, so keep-all would never wrap. auto-phrase (Chromium) wraps headings between phrases instead
+   of inside a word; other browsers ignore it and wrap between characters as usual. */
+.lang-ja h1, .lang-ja h2, .lang-ja h3 { letter-spacing: -0.02em; line-height: 1.25; word-break: auto-phrase; }
+.lang-ja .badge { word-break: auto-phrase; }
 p { margin: 0; }
 .lang-ko p, .lang-ko li { word-break: keep-all; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -146,7 +157,7 @@ a.badge { text-decoration: none; transition: border-color 0.3s, transform 0.35s 
 a.badge:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); transform: translateY(-1px); }
 .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.18); }
 .hero-title { margin: 22px 0 22px; font-size: clamp(52px, 7.4vw, 100px); font-weight: 820; letter-spacing: -0.05em; line-height: 0.98; }
-.lang-ko .hero-title, .lang-zh-CN .hero-title { font-size: clamp(46px, 6.4vw, 88px); letter-spacing: -0.04em; line-height: 1.05; }
+.lang-ko .hero-title, .lang-zh-CN .hero-title, .lang-ja .hero-title { font-size: clamp(46px, 6.4vw, 88px); letter-spacing: -0.04em; line-height: 1.05; }
 .lang-hi .hero-title { font-size: clamp(44px, 6vw, 84px); letter-spacing: 0; line-height: 1.25; }
 .hero-title .kicker { display: block; margin-bottom: 18px; font-size: clamp(17px, 1.7vw, 22px); font-weight: 750; letter-spacing: -0.01em; line-height: 1.3; color: var(--accent-strong); animation: word-in 0.9s var(--ease-out) both; }
 @media (prefers-color-scheme: dark) { .hero-title .kicker { color: #c9c4ff; } }
@@ -469,7 +480,7 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
 .page-hero { max-width: var(--container); margin: 0 auto; padding: clamp(24px, 4vw, 56px) 24px 0; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
 .page-hero-wide { grid-template-columns: 1fr; row-gap: 0; }
 .page-hero h1 { margin: 14px 0 16px; font-size: clamp(38px, 5.4vw, 70px); font-weight: 820; letter-spacing: -0.045em; line-height: 1.02; }
-.lang-ko .page-hero h1, .lang-zh-CN .page-hero h1 { letter-spacing: -0.03em; line-height: 1.12; }
+.lang-ko .page-hero h1, .lang-zh-CN .page-hero h1, .lang-ja .page-hero h1 { letter-spacing: -0.03em; line-height: 1.12; }
 .lang-hi .page-hero h1 { letter-spacing: 0; line-height: 1.25; }
 .page-hero .lead { max-width: 42em; }
 .crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 14px; color: var(--muted); }

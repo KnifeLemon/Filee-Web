@@ -1,0 +1,463 @@
+{
+  "meta": {
+    "title": "無料ファイル変換ソフト Filee | Windowsでオフライン変換",
+    "description": "Windows用の無料ファイル変換ソフト（macOS・Linuxはプレビュー版）。画像、PDF、Word、Excel、動画、音声、電子書籍、HWPを、ドラッグ＆ドロップでオフライン変換。",
+    "ogAlt": "Filee：ファイルをドラッグすると、カーソル位置に形式のドーナツメニューが開く",
+    "appAlternateName": "Filee ファイル変換ソフト",
+    "keywords": "ファイル変換, ファイル変換ソフト, 無料 ファイル変換, オフライン ファイル変換, 拡張子 変換, 画像変換, PDF変換, 動画変換, 音声変換, HEIC JPG 変換, PDF Word 変換, フリーソフト"
+  },
+  "nav": {
+    "features": "機能",
+    "how": "使い方",
+    "formats": "対応形式",
+    "cli": "コマンドライン",
+    "hwp": "HWP",
+    "faq": "よくある質問",
+    "download": "ダウンロード",
+    "github": "GitHub",
+    "language": "言語",
+    "menu": "メニュー",
+    "skip": "本文へスキップ"
+  },
+  "hero": {
+    "badge": "{versionShort}の新機能：PDF→PowerPoint、PDF圧縮、動画の全フレーム保存、ハードウェアエンコード",
+    "kicker": "Windows・macOS・Linux対応の無料ファイル変換ソフト",
+    "title": ["ドラッグ。", "ドロップ。", "変換完了。"],
+    "lead": "画像、PDF、Word・Excel・PowerPointファイル、動画、音楽、電子書籍、アーカイブなどを、お使いのPC上でそのまま変換できます。キーを押しながらファイルをドラッグし、形式の上でドロップするだけ。アップロードもアカウントも不要で、無料のオープンソースです。",
+    "download": "ダウンロードを選ぶ",
+    "downloadNote": "Windows 10/11 · macOS・Linuxはプレビュー版 · 無料",
+    "formats": "{formatCount}種類の対応形式を見る"
+  },
+  "demo": {
+    "label": "ここで試す",
+    "hint": "ファイルをここへドラッグ",
+    "hintTouch": "指でファイルをドラッグ",
+    "files": [
+      { "name": "旅行.heic", "type": "heic", "profile": "image" },
+      { "name": "動画.mov", "type": "mov", "profile": "video" },
+      { "name": "資料.docx", "type": "docx", "profile": "document" }
+    ],
+    "center": { "image": "HEIC 1個", "video": "MOV 1個", "document": "DOCX 1個", "hwp": "HWP 1個" },
+    "close": "中央で離すとキャンセル",
+    "done": "変換完了",
+    "cancelled": "キャンセルしました",
+    "output": "変換したファイル",
+    "empty": "変換したファイルがここに表示されます",
+    "keyboard": "キーボードの場合：ファイルにフォーカスしてEnterキーを押し、矢印キーで形式を選んで、Enterキーで変換します。"
+  },
+  "video": {
+    "title": "27秒でわかるFilee",
+    "caption": "同じ操作で、1枚の画像も、まとめた文書も、Hancom OfficeなしでHWPファイルも変換できます。"
+  },
+  "how": {
+    "title": "3ステップでファイルを変換",
+    "steps": [
+      { "title": "キーを押しながらドラッグ", "text": "エクスプローラーやデスクトップでファイルを選び、Ctrlキー（または好きな修飾キー）を押しながらドラッグします。" },
+      { "title": "形式の上でドロップ", "text": "そのファイルに合う形式のドーナツメニューがカーソル位置に開きます。形式の上に移動して離すだけです。" },
+      { "title": "元のファイルの隣に完成", "text": "進行状況のリングが進み、元のファイルの隣に新しいファイルが現れます。メニューから操作したい場合は、右クリックして「Fileeで変換」を選びます。" }
+    ]
+  },
+  "features": {
+    "title": "Fileeでできること",
+    "items": [
+      { "icon": "donut", "title": "カーソル位置にドーナツメニュー", "text": "アプリのウィンドウを開かなくても、今いる場所に形式が表示されます。修飾キー、マウスボタン、長押し、キーボードショートカットで開けます。1つのスライスにプリセットのグループをまとめることもできます。" },
+      { "icon": "stack", "title": "{formatCount}種類の形式を1つの操作で", "text": "画像、PDF、Word、Excel、PowerPoint、HWP、電子書籍、動画、音声、字幕、データファイル、3Dモデル、アーカイブ、CAD図面、フォント。形式間の変換経路はFileeが自動で決めます。" },
+      { "icon": "document", "title": "Office不要", "text": "Word・Excel・PowerPointファイルはMicrosoft OfficeやLibreOfficeなしで、HWPはHancom Officeなしで変換できます。OfficeやHancom Officeがインストールされていても、Fileeはそれらを使いません。" },
+      { "icon": "doors", "title": "一括変換", "text": "1ファイルでも100ファイルでもドロップできます。並列で変換し、1つが失敗してもほかの変換は止まりません。プリセットで、すべてを1つのPDFや1つのZIPにまとめることもできます。" },
+      { "icon": "lock", "title": "100%お使いのPC上で", "text": "何もアップロードしません。Fileeはオフラインで動作するので、大切な文書、写真、録音がPCの外に出ることはありません。" },
+      { "icon": "windows", "title": "いつもの場所から", "text": "ドラッグ操作、右クリックメニューの「Fileeで変換」（Windows 11ではメインメニューにも表示可能）、「送る」、キーボードショートカット、メインウィンドウのドロップ領域から変換できます。" },
+      { "icon": "sliders", "title": "ファイルの種類ごとのプリセット", "text": "品質、サイズ変更、回転・反転、DPI、グレースケール、メタデータ、背景の削除、SVGトレース、TIFF圧縮、ICOのサイズ、PDFの結合・分割・ページ範囲・圧縮・縦長の画像、720p・HEVC・AV1動画、ハードウェアエンコード、全フレームの画像保存、MP3のビットレート、保存先フォルダー、ファイル名、元のファイルの日付。" },
+      { "icon": "download", "title": "エンジンは必要なときに", "text": "容量の大きいエンジンは任意です。インストーラーで選ぶか、あとからアプリ内でダウンロードできます：{engineNames}。バージョン、ダウンロード速度、残り時間も表示します。FFmpeg、calibre、Pandocをすでにお持ちなら、Fileeがそれを見つけて使うので、ダウンロードは不要です。" },
+      { "icon": "code", "title": "無料のオープンソース", "text": "MITライセンスで、広告もアカウントもありません。日本語、英語、韓国語、簡体字中国語、ポーランド語、スペイン語、ヒンディー語に対応。新しいバージョンが出るとお知らせし、リリースごとに変更点と貢献者を紹介しています。" }
+    ]
+  },
+  "formats": {
+    "title": "{categoryCount}カテゴリー、{formatTotal}種類の形式",
+    "lead": "Fileeは、たとえばHWPX → PDF → PNGのように形式間の最適な経路を自動で見つけ、各ステップを最も得意なエンジンで処理します。",
+    "count": "{n}形式",
+    "popular": "よく使われる変換",
+    "catalog": "{formatTotal}種類の形式をすべてカタログで見る"
+  },
+  "hwp": {
+    "eyebrow": "HWPをお使いの方へ",
+    "title": "Hancom OfficeなしでHWP・HWPXを変換",
+    "text": "Fileeは韓国のハングル文書を自前で読み書きするので、Hancomのライセンスを購入する必要も、許可ダイアログをクリックする必要もありません。",
+    "quality": "DOCX → HWPXでは、ページ設定、ヘッダーとフッター、結合セルを含む表、テキストボックス、画像を保持します",
+    "guides": "HWPの変換ガイド"
+  },
+  "gallery": {
+    "title": "ドーナツを自分好みに",
+    "lead": "ドラッグ＆ドロップで、実際のドーナツの上に形式を並べられます。ファイルの種類ごとのドーナツ、拡張子タグ、異なる形式をまとめて選択したとき用のドーナツも設定できます。",
+    "shots": [
+      { "src": "page-toolbar-en", "alt": "プロファイルとプリセットを並べるドーナツメニューの編集画面" },
+      { "src": "page-home-en", "alt": "ドロップ領域と最近の変換が表示されるホーム画面" },
+      { "src": "page-presets-en", "alt": "品質と出力オプションを設定するプリセットの編集画面" },
+      { "src": "page-toolbar-dark", "alt": "ダークテーマ" }
+    ]
+  },
+  "faq": {
+    "title": "よくある質問",
+    "lead": "価格、プライバシー、対応形式、Fileeの仕組みについての簡単な回答です。"
+  },
+  "specs": {
+    "title": "概要",
+    "rows": [
+      ["価格", "無料"],
+      ["ライセンス", "MIT（オープンソース）"],
+      ["バージョン", "{version}"],
+      ["プラットフォーム", "Windows 10/11 x64 · macOS 14以降、Linux x64/ARM64（プレビュー版）"],
+      ["オフライン動作", "対応。ファイルがPCの外に出ることはありません"],
+      ["対応形式", "{categoryCount}カテゴリー、{formatTotal}種類"],
+      ["内蔵", "{builtinTotal}種類の形式は追加インストール不要"],
+      ["追加エンジン", "{engineNames}"],
+      ["コマンドライン", "filee convert、filee watch（セットアップ時にPATHへ追加）"],
+      ["言語", "日本語、英語、韓国語、簡体字中国語、ポーランド語、スペイン語、ヒンディー語"],
+      ["アップデート", "ワンクリックでアプリ内からインストール。必須・推奨・任意を表示"]
+    ]
+  },
+  "download": {
+    "title": "Fileeをダウンロード",
+    "text": "ほとんどの形式は、インストール後すぐに変換できます。\n動画・音声や一般的でない形式用のエンジンは、必要になったときにアプリ内で追加できます。",
+    "button": "Windows版をダウンロード",
+    "selector": "OSとプロセッサー",
+    "targets": {
+      "win-x64": "Windows 10/11 · x64",
+      "linux-x64": "Linux · x64",
+      "linux-arm64": "Linux · ARM64",
+      "osx-arm64": "macOS · Apple Silicon (ARM64)",
+      "osx-x64": "macOS · Intel (x64)"
+    },
+    "platformNote": "macOSとLinuxはプレビュー版です。",
+    "developmentLabel": "プレビュー版",
+    "developmentButton": "プレビュー版をダウンロード",
+    "checking": "リリースファイルを確認中…",
+    "missing": "最新リリースに{target}のファイルがありません。すべてのリリースを確認してください。",
+    "unavailable": "リリースファイルを確認できませんでした。すべてのリリースを開いて、利用できるビルドを確認してください。",
+    "all": "すべてのリリース",
+    "source": "ソースコード",
+    "sponsor": "開発を支援する",
+    "sponsorText": "Fileeは無料で、これからも無料です。",
+    "after": {
+      "title": "ダウンロードが始まりました",
+      "steps": [
+        "ダウンロードしたFilee-…-win-Setup.exeを開きます。",
+        "「WindowsによってPCが保護されました」と表示された場合は、「詳細情報」をクリックしてから「実行」をクリックします。Fileeはまだコード署名証明書を持たない新しいオープンソースプロジェクトで、ソースコードはすべてGitHubで公開しています。",
+        "セットアップウィザードで必要なオプションとエンジンを選びます。完了するとFileeが起動します。"
+      ],
+      "star": "気に入ったら、GitHubでFileeにスターを",
+      "issue": "問題の報告・機能の提案",
+      "retry": "ダウンロードが始まらない場合はもう一度",
+      "close": "閉じる"
+    }
+  },
+  "supporters": {
+      "title": "スポンサー",
+      "lead": "Fileeが無料なのは、支援してくださる個人や企業のおかげです。",
+      "join": "スポンサーになる",
+      "readme": "#sponsor"
+  },
+  "footer": {
+    "tagline": "ドラッグ。ドロップ。変換完了。",
+    "license": "MITライセンス",
+    "notices": "サードパーティのライセンス情報",
+    "signing": "コード署名ポリシー",
+    "sponsor": "Fileeを支援",
+    "issues": "問題を報告",
+    "made": "KnifeLemonと貢献者が開発しています。",
+    "formats": "すべての形式",
+    "cli": "コマンドライン",
+    "popular": "よく使われる変換"
+  },
+  "common": {
+    "home": "ホーム",
+    "breadcrumb": "パンくずリスト",
+    "builtIn": "内蔵",
+    "builtInHint": "インストール後すぐに使えます。追加のダウンロードは不要",
+    "optional": "追加エンジン",
+    "optionalHint": "無料の追加エンジン。Filee内で一度ダウンロードするだけ",
+    "free": "無料",
+    "offline": "オフライン",
+    "batch": "一括変換"
+  },
+  "catalog": {
+    "title": "対応ファイル形式一覧：{formatTotal}種類・{categoryCount}カテゴリー | Filee",
+    "description": "FileeがWindowsで変換できる全{formatTotal}種類の形式：画像、PDF、文書、HWP、動画、音声、字幕、データ、3D、電子書籍、アーカイブ、CAD、フォントと、それぞれの変換先。",
+    "crumb": "対応形式",
+    "h1": "対応形式カタログ",
+    "lead": "{categoryCount}カテゴリー、{formatTotal}種類の形式に対応しています。そのうち{builtinTotal}種類はインストール後すぐに使え、残りは必要なときだけFileeがダウンロードする無料の追加エンジンを使います。",
+    "stats": { "formats": "形式", "categories": "カテゴリー", "builtin": "内蔵", "guides": "変換ガイド" },
+    "jump": "カテゴリー",
+    "legendBuiltIn": "内蔵：インストール後すぐに使えます。主な内蔵エンジン：",
+    "legendOptional": "追加エンジン：Filee内で無料でダウンロードでき（「設定」→「変換エンジン」）、Filee専用のフォルダーに保存され、いつでも削除できます。PCにすでにエンジンがある場合（PATH上またはProgram Files内）は、Fileeがそれを使います。特定のものを使うには「設定」→「変換エンジン」→「手元のプログラムを使う」で選びます。",
+    "engineCols": ["エンジン", "用途", "ダウンロード"],
+    "from": "変換元",
+    "to": "変換先",
+    "engine": "エンジン",
+    "guides": "変換ガイド",
+    "ctaTitle": "どの形式も1つの操作で変換",
+    "ctaText": "Windows 10/11用のFileeをダウンロードして、{formatCount}種類の形式を無料・オフラインで変換しましょう。"
+  },
+  "convert": {
+    "title": "{from}を{to}に変換：無料・オフライン・一括変換 | Filee",
+    "description": "Windows 10/11で{from}を{to}に無料で変換。ドラッグ＆ドロップで一括変換でき、オフラインで動作するのでアップロードも不要です。{engineShort}",
+    "descBuiltIn": "追加のインストールは不要です。",
+    "descOptional": "無料の{engine}エンジンを使用します。",
+    "h1": "{from}を{to}に変換",
+    "lead": "Windows 10/11で、{from}ファイルを{to}に無料・オフライン・一括で変換できます。Fileeの形式ドーナツで{to}の上にファイルをドラッグすると、元のファイルの隣に{to}ファイルが作成されます。",
+    "crumb": "{from} → {to}",
+    "howButton": "使い方を見る",
+    "howTitle": "Windowsで{from}を{to}に変換する方法",
+    "steps": [
+      { "title": "{from}ファイルを選択", "text": "エクスプローラーやデスクトップで、{from}ファイルを1つ、または好きなだけ選択します。" },
+      { "title": "Ctrlキーを押しながらドラッグ", "text": "Ctrlキー（またはFileeで設定したキー）を押しながらファイルをドラッグします。カーソル位置に形式のドーナツメニューが開きます。メニューから操作したい場合は、右クリックして「Fileeで変換」を選びます。" },
+      { "title": "{to}の上でドロップ", "text": "{to}の上でファイルを離します。進行状況のリングが進み、各{to}ファイルが元のファイルの隣に保存されます。" }
+    ],
+    "stepEngine": "初回は、この変換に使う無料のエンジン{engine}のダウンロードをFileeが提案します。",
+    "whatTitle": "{from} → {to}変換のポイント",
+    "points": {
+      "builtIn": "内蔵：Fileeをインストールすればすぐに使え、追加のダウンロードは不要です。",
+      "optional": "{engine}を使用します。Fileeが一度だけ専用フォルダーにダウンロードする無料の追加エンジンです{sizeParen}。{engine}がすでにPCにある場合はそれを使うため、何もダウンロードしません。",
+      "via": "エンジン：{via}。",
+      "batch": "一括変換：1ファイルでも数百ファイルでも並列で変換し、1つが失敗してもほかは止まりません。",
+      "local": "プライバシー：ファイルはPC上で変換され、アップロードされません。インターネットがなくても使えます。",
+      "output": "保存先：元のファイルの隣、または指定したフォルダーに、指定したファイル名のパターンで保存します。"
+    },
+    "alsoTo": "{from}はほかにも次の形式に変換できます",
+    "aboutTitle": "{from}と{to}について",
+    "aboutExt": "拡張子：",
+    "aboutMore": "{category}のすべての形式",
+    "relatedTitle": "関連する変換",
+    "sameSource": "{from}のその他の変換",
+    "sameTarget": "ほかの形式を{to}に変換",
+    "sameCategory": "{category}のその他のガイド",
+    "ctaTitle": "{from}を{to}に無料で変換",
+    "ctaText": "Fileeは、Windows 10/11向けの無料・オープンソースのファイル変換ソフトです。オフラインで動作し、{formatCount}種類の形式を1回のドラッグ＆ドロップで変換します。"
+  },
+  "auto": {
+    "eyebrow": "自動化に",
+    "title": "コマンドラインで変換、またはフォルダーにおまかせ",
+    "text": "fileeコマンドは、ファイル、ワイルドカード、フォルダー全体をプリセットで変換し、スクリプト用にJSONを出力して終了コードを返します。監視フォルダーは、アプリでもターミナルでも、追加されたファイルを自動で変換します。",
+    "points": [
+      "`filee convert *.heic --to jpg`で、{formatCount}種類のどの形式にも",
+      "ダウンロードやスキャンが完了したらすぐに変換",
+      "元のファイルを別の場所に移すので、フォルダーを受信箱のように使える",
+      "スクリプトやタスクスケジューラー向けのJSON出力と終了コード"
+    ],
+    "guide": "コマンドラインガイドを読む",
+    "terminal": "例：スキャンをPDFにする監視フォルダー"
+  },
+  "cli": {
+    "title": "Fileeのコマンドライン：ファイル変換とフォルダー監視 | Filee",
+    "description": "Windowsで無料のfileeコマンドを使って、ファイル、フォルダー、ワイルドカードをオフラインで変換。フォルダーの監視や、JSON出力と終了コードを使ったスクリプト化もできます。",
+    "crumb": "コマンドライン",
+    "h1": "fileeコマンドライン",
+    "lead": "コマンドプロンプト、PowerShell、自作のスクリプトから、アプリと同じエンジンとプリセットでファイルを変換できます。フォルダーに入ったファイルを自動で変換させることもできます。すべてPC上で完結します。",
+    "tags": [
+      "Windows 10/11",
+      "いつものプリセット",
+      "JSON出力"
+    ],
+    "commandsButton": "コマンドを見る",
+    "terminalLabel": "例：ターミナルでHEIC写真をJPGに変換",
+    "setupTitle": "fileeコマンドを使えるようにする",
+    "setup": [
+      {
+        "title": "セットアップでチェックを入れたままに",
+        "text": "Fileeインストーラーのオプションページで、**Add the \"filee\" command to PATH**（fileeコマンドをPATHに追加）にチェックを入れたままにします（既定でオン）。インストール済みの場合は、最新のインストーラーをもう一度実行してください。"
+      },
+      {
+        "title": "新しいターミナルを開く",
+        "text": "コマンドプロンプト、PowerShell、Windows ターミナルの新しいウィンドウを開き（すでに開いていたウィンドウには新しいPATHが反映されません）、`filee version`を実行します。"
+      },
+      {
+        "title": "ポータブル版やPATHを使わない場合",
+        "text": "必要なものはすべてFileeフォルダーにあります。そこで`filee-cli.exe`を実行するか、`cli`フォルダーを自分でPATHに追加してください。アプリを起動しておく必要はありません。"
+      }
+    ],
+    "quickTitle": "クイックスタート",
+    "quickLead": "ファイル名、`*.heic`のようなワイルドカード、フォルダー全体を指定できます。`-o`を付けない限り、結果は元のファイルの隣に保存されます。",
+    "quick": [
+      {
+        "title": "写真1枚をJPGに",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "すべてのPNGを品質80のWebPにして1つのフォルダーへ",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "フォルダーとサブフォルダーをプリセットで変換",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "PDFを作る受信箱フォルダー",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEICは何に変換できる？",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "プリセットの一覧（IDと名前）",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "コマンド",
+    "optionsLabel": "オプション",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "ファイル、ワイルドカード（`*.heic`）、フォルダーを変換します。フォルダーを指定すると、その中のFileeが認識できるファイルを変換します。サブフォルダーも含めるには`-r`を付けます。変換先の形式か、プリセットのどちらかを指定してください。",
+        "options": [
+          [
+            "-t, --to <format>",
+            "変換先の形式（IDまたは拡張子）：jpg、png、webp、pdf、docx、hwpx、mp4、mp3…（`filee formats`を参照）"
+          ],
+          [
+            "-p, --preset <preset>",
+            "アプリのプリセット。IDまたは名前で指定（`filee presets`を参照）"
+          ],
+          [
+            "-o, --output <folder>",
+            "元のファイルの隣ではなく、指定したフォルダーに保存"
+          ],
+          [
+            "-r, --recursive",
+            "サブフォルダーも含める"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "JPG、WebP、AVIFなど非可逆形式の画質"
+          ],
+          [
+            "--overwrite",
+            "既存の出力ファイルを上書き（既定では新しいファイル名に番号を付けます）"
+          ],
+          [
+            "--skip",
+            "既存の出力ファイルはそのままにする"
+          ],
+          [
+            "--keep-dates",
+            "変換後のファイルに元のファイルの作成日時と更新日時を引き継ぐ"
+          ],
+          [
+            "--json",
+            "結果をスクリプト向けに1つのJSONドキュメントとして出力"
+          ],
+          [
+            "--quiet",
+            "エラー以外は何も出力しない"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Ctrl+Cを押すまで、フォルダーに追加されたファイルをすべて変換します。`-o`を付けない限り、変換後のファイルはフォルダー内の`converted`フォルダーに保存されます。",
+        "options": [
+          [
+            "-t, --to <format>",
+            "変換先の形式"
+          ],
+          [
+            "-p, --preset <preset>",
+            "アプリのプリセット。IDまたは名前で指定"
+          ],
+          [
+            "-o, --output <folder>",
+            "変換後のファイルの保存先（既定：`<フォルダー>\\converted`）"
+          ],
+          [
+            "-r, --recursive",
+            "サブフォルダーも監視（出力でもサブフォルダーの構成を保持）"
+          ],
+          [
+            "--move-originals",
+            "変換した元のファイルを`<フォルダー>\\originals`に移動し、開始時にすでに入っているファイルも変換"
+          ],
+          [
+            "--settle <seconds>",
+            "ファイルが変化しなくなってから変換するまでの秒数（既定：2）"
+          ],
+          [
+            "--keep-dates",
+            "変換後のファイルに元のファイルの作成日時と更新日時を引き継ぐ"
+          ],
+          [
+            "--quiet",
+            "エラー以外は何も出力しない"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "すべての形式をIDと拡張子付きで一覧表示します。形式を指定すると、その形式の変換先を、追加エンジンで増えるものも含めて表示します。",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "内蔵プリセットとアプリで作成したプリセットを、ID、名前、変換先の形式とともに一覧表示します。",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "すべてのコマンドまたは特定のコマンドの使い方と、インストールされているバージョンを表示します。",
+        "options": []
+      }
+    ],
+    "watchTitle": "監視フォルダー",
+    "watchLead": "ダウンロード、スキャン、ほかのアプリからの書き出しなど、フォルダーに入れたものを自動で変換させましょう。",
+    "watchPoints": [
+      "ファイルは書き込みが完了してから変換されます。サイズが増えなくなり、ほかのプログラムで開かれていない状態になるまで待つので、ダウンロード中や時間のかかるコピーも安心です。",
+      "一時ファイルや隠しファイル（`.crdownload`、`.part`、`.tmp`、`~$`ファイル）と、Fileeが認識できない形式は無視します。",
+      "変換後のファイルは、監視フォルダー内の`converted`フォルダーか、`-o`で指定した場所に保存されます。`-r`を付けると、サブフォルダーのファイルはそのサブフォルダー構成のまま保存されます（`2025\\a.png` → `converted\\2025\\a.pdf`）。",
+      "`--move-originals`を付けると、変換した元のファイルが`originals`に移動するので、フォルダーを受信箱のように使えます。開始時にすでに入っているファイルも変換します。"
+    ],
+    "watchAppTitle": "アプリでバックグラウンド実行も",
+    "watchAppText": "Fileeの**監視フォルダー**ページなら、ターミナルなしで同じことができます。フォルダーを追加してそれぞれにプリセットを選べば、Fileeがタスクトレイで動作している間に変換されます。",
+    "scriptsTitle": "スクリプトで使う",
+    "scriptsLead": "`--json`は各ファイルの結果を含む1つのJSONドキュメントを出力し、終了コードで処理結果をスクリプトに伝えます。",
+    "exitTitle": "終了コード",
+    "exitCodes": [
+      [
+        "0",
+        "失敗なし"
+      ],
+      [
+        "1",
+        "一部のファイルが失敗（ほかは変換済み）"
+      ],
+      [
+        "2",
+        "引数の誤り、不明な形式やプリセット、または入力が見つからない"
+      ],
+      [
+        "3",
+        "変換するものがない"
+      ]
+    ],
+    "psTitle": "PowerShellの例",
+    "notesTitle": "知っておきたいこと",
+    "notes": [
+      "エンジンとプリセットはアプリと共通です。Fileeで作成・変更したプリセットは、すぐに`--preset`でIDまたは名前で使えます。",
+      "追加エンジン（FFmpeg、LibreOfficeなど）は、アプリの「設定」→「変換エンジン」でインストールします。どの変換にエンジンが必要かは`filee formats <形式>`で確認できます。",
+      "ワイルドカードはfilee自身が展開するので、`*.heic`はPowerShellと同じようにコマンドプロンプトでも使えます。スペースを含むパスは引用符で囲んでください。",
+      "アップロードはなく、インターネット接続も不要です。アプリと同じく、ファイルはPC上で変換されます。",
+      "メッセージは英語で表示されるため、どのPCでもスクリプトやログの内容が同じになります。"
+    ],
+    "ctaTitle": "fileeコマンド付きのFileeを入手",
+    "ctaText": "コマンドラインはWindows 10/11版のFileeに付属しています。無料、オープンソース、オフラインで使えます。"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "text": "このページは存在しません。どこかにドラッグされてしまったのかもしれません。",
+    "home": "ホームページへ",
+    "formats": "すべての形式を見る"
+  },
+  "langBanner": "このページは日本語でもご覧いただけます。"
+}

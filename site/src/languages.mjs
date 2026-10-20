@@ -57,6 +57,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' और ' }, size: 'लगभग {mb} MB', paren: ' ({size})',
     engineFor: '{name} – {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'ja', path: '/ja/', htmlLang: 'ja', ogLocale: 'ja_JP', name: '日本語', englishName: 'Japanese',
+    match: ['ja'], aliases: [], font: 'inter-japanese', media: 'en', snippet: { title: 40, description: 100 },
+    list: { sep: '、', last: '、' }, size: '約{mb} MB', paren: '（{size}）',
+    engineFor: '{what}用の{name}{size}', engineSep: '、',
+  },
 ];
 
 /** Language codes in page order. */
