@@ -63,6 +63,12 @@ export const LANGUAGES = [
     list: { sep: '、', last: '、' }, size: '約{mb} MB', paren: '（{size}）',
     engineFor: '{what}用の{name}{size}', engineSep: '、',
   },
+  {
+    lang: 'ru', path: '/ru/', htmlLang: 'ru', ogLocale: 'ru_RU', name: 'Русский', englishName: 'Russian',
+    match: ['ru'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' и ' }, size: 'около {mb} МБ', paren: ' ({size})',
+    engineFor: '{name} — {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

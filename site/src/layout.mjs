@@ -124,7 +124,8 @@ const verificationMeta = Object.entries(SITE_VERIFICATION)
 
 /**
  * Web fonts by languages.mjs → font. Inter from Google Fonts includes the Latin Extended subset (Polish ą ę ł ń ś ź ż,
- * Spanish ñ). Hindi pages add Noto Sans Devanagari from Google Fonts: Inter has no Devanagari, so the browser takes
+ * Spanish ñ) and the Cyrillic subset (Russian), each as an @font-face with its own unicode-range, so a page downloads
+ * only the subsets its letters need. Hindi pages add Noto Sans Devanagari from Google Fonts: Inter has no Devanagari, so the browser takes
  * those letters from it (only its Devanagari subset is downloaded; see --font-hi in styles.css for the system fallbacks).
  * Japanese pages add Noto Sans JP, so Han characters take Japanese glyph shapes rather than Chinese ones (see --font-ja).
  * It is a variable font cut into ~120 unicode-range slices: the browser downloads only the slices a page uses, and the
