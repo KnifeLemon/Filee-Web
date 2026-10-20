@@ -5,6 +5,7 @@ Everything promotional is rendered from code:
 - the carousel slides
 - the Open Graph cards
 - the README banner and animated demo
+- the feature demo clips (expand, flip, browser), rendered from the app's real donut
 
 The Filee app repository must sit next to this one (`repos/Filee` and `repos/filee-web`; set `FILEE_REPO` if it
 lives elsewhere): the renders use its fonts, and `export.py` writes the README media into its `docs/media`.
@@ -23,6 +24,8 @@ marketing/
   make-anim.py  packs PNG frames into the animated WebP used in the READMEs
   export.py     copies renders from out/ into site/public/media and the app repository's docs/media
   assets/       app screenshots and the logo used by the renders
+  demo-videos/  .NET generator of the feature demo clips (headless Avalonia against the app repository)
+  make-demo-videos.ps1  builds and runs it: out/demo-videos
   out/          render output (git-ignored)
 ```
 
@@ -65,6 +68,32 @@ python marketing/export.py      # → site/public/media and ../Filee/docs/media
 
 Repeat with `en` and `zh-CN`. Keep the studio tab in the foreground while encoding.
 
+## Feature demo clips
+
+Short loops of one feature each, drawn by Filee itself rather than recorded: `demo-videos/` builds against the app
+repository's `src/Filee.App`, opens the real donut window headlessly and steps its animation clock by hand at 60 fps, the
+way `RadialController` drives it during a drag. Around it goes a made-up desktop (a plain file manager, a browser on a
+`photos.example` page, the pointer, the dragged file, Ctrl and Tab keycaps). No captions: the clips only show.
+
+| Clip | Shows |
+|---|---|
+| `expand` | trip.jpg dragged with Ctrl: the donut opens, a group slice fans out its ring, dropped on WEBP (also `expand-dark`) |
+| `flip` | the hub says "Tab ↻ back", Tab turns the donut to its back face, dropped on Remove background |
+| `browser` | a picture dragged out of a web page: the download badge over the progress ring, then the files in Downloads |
+
+Requirements: the .NET SDK the app repository uses, its fonts (`pwsh build/fetch-fonts.ps1`) and FFmpeg (its
+`engines/ffmpeg` from `pwsh build/fetch-engines.ps1`, `-FFmpeg <exe>`, or the PATH).
+
+```powershell
+pwsh marketing/make-demo-videos.ps1                    # every clip → out/demo-videos (about 6 minutes)
+pwsh marketing/make-demo-videos.ps1 -Clips flip -Formats square -Stills 2,3.2 -Quick   # PNG frames only, to check a change
+python marketing/export.py demos                       # → site/public/media/demo-<clip>.webp and the app's What's new slides
+```
+
+Every build output, the app's projects' included, goes under `out/build`, so the app repository isn't written to. The
+generator takes the assembly name `Filee.App.Tests`: the app shows the internals the clips step (`DonutMenu.Advance`, the
+download badge) to its tests only. A clip lives in `demo-videos/<Name>Clip.cs`; after a UI change, render again.
+
 ## Where each file is used
 
 | File | Used for |
@@ -77,6 +106,9 @@ Repeat with `en` and `zh-CN`. Keep the studio tab in the foreground while encodi
 | `out/images/og-*.png` | Link previews for filee.sh (`og-*.jpg`) |
 | `out/images/social-*.png` | README banner (`docs/media/banner-*.jpg`); the English one is the GitHub social preview |
 | `out/demo-*.webp` | Animated demo in the READMEs |
+| `out/demo-videos/<clip>-square.mp4`, `<clip>-vertical.mp4` | Instagram, X, Reels, Shorts, TikTok (1:1 and 9:16, 1080 px, 60 fps) |
+| `out/demo-videos/<clip>.webp`, `<clip>.gif` | README, website, slides (820 px; ≤ 1.5 MB / ≤ 3 MB) |
+| `out/demo-videos/<clip>-640.webp` | The app's What's new slides (640 px, ≤ 400 KB; `export.py demos`) |
 
 Set the GitHub social preview in the repository's **Settings → General → Social preview**: upload
 `docs/media/social-preview.jpg`.

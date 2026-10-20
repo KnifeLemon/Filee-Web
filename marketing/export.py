@@ -2,8 +2,11 @@
 #   site/public/media  promo video, posters, Open Graph images, screenshots (WebP)
 #   docs/media         README banner, animated demo, GitHub social preview (in the Filee app repository)
 # Usage: python marketing/export.py        (needs Pillow; run after rendering, see marketing/README.md)
+#        python marketing/export.py demos  only the feature demo clips (make-demo-videos.ps1), see export_demos()
+import glob
 import os
 import shutil
+import sys
 
 from PIL import Image
 
@@ -29,6 +32,22 @@ def copy(source, target):
     shutil.copyfile(source, target)
     print(f'{os.path.relpath(target, ROOT)}  {os.path.getsize(target) // 1024} KB')
 
+
+def export_demos():
+    """The feature demo clips in out/demo-videos: the 820 px WebP onto the website (media/demo-<clip>.webp), and the
+    640 px one over the app's What's new slide of the same name (src/Filee.App/Assets/WhatsNew/<version>/<clip>.webp),
+    where a release has one."""
+    demos = os.path.join(OUT, 'demo-videos')
+    for source in sorted(glob.glob(os.path.join(demos, '*-640.webp'))):
+        clip = os.path.basename(source)[:-len('-640.webp')]
+        copy(os.path.join(demos, f'{clip}.webp'), os.path.join(SITE, f'demo-{clip}.webp'))
+        for slide in glob.glob(os.path.join(APP, 'src', 'Filee.App', 'Assets', 'WhatsNew', '*', f'{clip}.webp')):
+            copy(source, slide)
+
+
+if sys.argv[1:] == ['demos']:
+    export_demos()
+    sys.exit()
 
 os.makedirs(os.path.join(SITE, 'screens'), exist_ok=True)
 for lang in LANGS:

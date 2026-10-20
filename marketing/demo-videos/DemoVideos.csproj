@@ -1,0 +1,34 @@
+<!--
+  Renders the feature demo clips from Filee's real donut (see Program.cs and ../README.md).
+  Builds against the Filee app repository next to this one (../../../Filee), or FILEE_REPO. Build it through
+  ../make-demo-videos.ps1: that puts every build output, Filee's projects' too, under marketing/out/build, so nothing
+  is written into the app repository.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <FileeRepo Condition="'$(FILEE_REPO)' != ''">$(FILEE_REPO)</FileeRepo>
+    <FileeRepo Condition="'$(FileeRepo)' == ''">$(MSBuildThisFileDirectory)..\..\..\Filee</FileeRepo>
+    <FileeRepo>$([System.IO.Path]::GetFullPath('$(FileeRepo)'))</FileeRepo>
+    <!-- The Avalonia version Filee uses: the headless platform must match it. -->
+    <AvaloniaVersion>$([System.Text.RegularExpressions.Regex]::Match($([System.IO.File]::ReadAllText('$(FileeRepo)\Directory.Packages.props')), '&lt;AvaloniaVersion&gt;([^&lt;]+)').Groups[1].Value)</AvaloniaVersion>
+
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Filee.Marketing.DemoVideos</RootNamespace>
+    <!-- Filee.App shows its internals (DonutMenu.Advance, the download badge, …) to its test assembly only; the clips
+         step the donut's clock by hand as its tests do, so this assembly takes that name. -->
+    <AssemblyName>Filee.App.Tests</AssemblyName>
+    <!-- Filee's own repository settings don't reach here; its packages are pinned centrally over there. -->
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(FileeRepo)\src\Filee.App\Filee.App.csproj" />
+    <PackageReference Include="Avalonia.Headless" Version="$(AvaloniaVersion)" />
+    <!-- Where to look for FFmpeg (engines/ffmpeg from build/fetch-engines.ps1) when no FFmpeg is passed. -->
+    <AssemblyMetadata Include="FileeRepo" Value="$(FileeRepo)" />
+  </ItemGroup>
+</Project>
