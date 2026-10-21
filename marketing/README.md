@@ -82,7 +82,7 @@ show.
 | `expand` | trip.jpg dragged with Ctrl: the donut opens, a group slice fans out its ring, dropped on WEBP (also `expand-dark`) |
 | `flip` | the hub says "Tab ↻ back", Tab turns the donut to its back face, dropped on Remove background |
 | `browser` | a picture dragged out of a web page: the download badge over the progress ring, then the files in Downloads |
-| `crop` | the crop overlay over Pictures: a corner of the frame in, 1:1 on the aspect dial, Crop & Next, Crop & Save, the two cropped photos |
+| `crop` | trip.jpg and lake.jpg dragged with Ctrl onto the donut's Crop slice, the crop overlay: a corner of the frame in, A over the picture for the aspect dial at the pointer, 1:1, Crop & Next, Crop & Save, the two cropped photos |
 
 Requirements: the .NET SDK the app repository uses, its fonts (`pwsh build/fetch-fonts.ps1`) and FFmpeg (its
 `engines/ffmpeg` from `pwsh build/fetch-engines.ps1`, `-FFmpeg <exe>`, or the PATH).
