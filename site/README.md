@@ -1,6 +1,6 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in eight languages (English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese, Russian), deployed to Cloudflare Workers (static assets).
+The Filee website: a static, dependency-free site in ten languages (English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese), deployed to Cloudflare Workers (static assets).
 
 ```
 site/
@@ -8,14 +8,14 @@ site/
                             guide pairs, FAQ. Every format/support claim and every count on the site comes from here
   src/languages.mjs         THE language list: code, URL prefix, names, html lang/hreflang, Open Graph locale, browser
                             languages that pick it, short URLs, font, media language, list/size wording
-  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (pl, es, hi, ja, ru): English text → translation
+  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (pl, es, hi, ja, ru, ar, pt-BR): English text → translation
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
   src/page.mjs              home page (hero, demo, feature showcase, features, format categories, HWP, FAQ, specs) and the
                             404 page
   src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
-  src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…, /ru/…)
+  src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…, /ru/…, /ar/…, /pt-br/…)
   src/llms.mjs              llms.txt and llms-full.txt
   src/sponsors.mjs          sponsors: the app's sponsors.json and logos, read from GitHub at build time, shown in a
                             home page section, under the hero's download button and in the after-download dialog;
@@ -57,8 +57,12 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 - **New language** (e.g. Vietnamese):
   1. Add it to `src/languages.mjs`: code, `path` (`/vi/`), name, `htmlLang`, `ogLocale`, the browser languages
      that pick it (`match`), font (a script Inter lacks needs fonts in `FONTS` of layout.mjs and `styles.css`, as
-     Hindi and Japanese have), `media` (`'en'` until marketing/ renders its video, poster and OG image), the
-     list and size wording.
+     Hindi, Japanese and Arabic have), `dir: 'rtl'` for a right-to-left script, `media` (`'en'` until marketing/
+     renders its video, poster and OG image), the list and size wording.
+     Right to left: `<html dir="rtl">` mirrors the grid and flex layouts by itself because `styles.css` uses logical
+     properties (`margin-inline-start`, `padding-inline-end`, `inset-inline-end`, `text-align: start`); keep it that
+     way when adding styles. Arrows and chevrons are mirrored with `scale: -1 1` under `[dir="rtl"]`; the marquee,
+     file icons, terminals and code stay left to right. Arabic gets no letter-spacing (it breaks the joined letters).
   2. Add `i18n/vi.json` with every key of `en.json`.
   3. Add `src/texts/vi.mjs` with every catalog text (copy `pl.mjs` and replace the right-hand side).
   4. `npm run check`. Pages, hreflang, the sitemap, the language menu, the language redirect and suggestion, the 404
@@ -75,9 +79,9 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 
 | Page | URLs (per language) | From |
 |---|---|---|
-| Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
+| Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 8 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 10 languages) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -90,7 +94,7 @@ Open Graph tags and JSON-LD: `SoftwareApplication` + `FAQPage` + `VideoObject` o
 - `ENGINES`: the optional downloads (name, approximate size, what they are for). `sizeMB: null` hides the size.
 - `CATEGORIES`: per category its `formats` (id, label, extensions; `name`/`about` texts for formats used on
   conversion pages) and `routes`: `{ from: [...], to: [...], engine: 'builtin' | 'ffmpeg' | …, via, extras }`.
-  A format that appears in a route with `engine: 'builtin'` counts as built in. Counts ("244 formats", "136 built in")
+  A format that appears in a route with `engine: 'builtin'` counts as built in. Counts ("255 formats", "147 built in", "250+" where rounded down to tens)
   are computed from these lists the way the app's `FormatRegistry` counts: the camera RAW brands (`raw: true`) are one
   format, so the total matches the app's.
 - `OPTIONS`: preset/behaviour texts used in the tables (`short`) and on conversion pages (`long`).
@@ -109,6 +113,11 @@ Download buttons and `/download` point at `https://github.com/KnifeLemon/Filee/r
 GitHub API for the latest release and swaps in the `*-win-Setup.exe` asset. The answer is cached for an hour in
 `localStorage` (the API allows 60 unauthenticated requests per hour and IP); failures (offline, rate limit, timeout)
 are remembered for ten minutes and leave the release-page link in place.
+The version in front of the hero's platform line ("v2.0.0 · Windows 10/11 · …") and in the download status comes
+from that same answer, so it follows a new release by itself (within the hour of caching). `VERSION` in catalog.mjs
+(specs, JSON-LD `softwareVersion`, the "New in" badge) and the release texts are set by hand; `pad.xml` reads the
+latest release at build time. macOS packages are labelled previews (`PREVIEW_TARGETS` in `src/downloads.mjs`); Windows
+and Linux are full releases.
 
 ## Deploy to Cloudflare
 
@@ -146,7 +155,7 @@ npm run deploy
 ## SEO and GEO checklist
 
 - **Already built in**:
-  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`) for the home page, the format catalog and every conversion guide.
+  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/`) for the home page, the format catalog and every conversion guide.
   - `hreflang` + `x-default`, canonical URLs, Open Graph and Twitter cards on every page.
   - JSON-LD: `SoftwareApplication` (with `softwareVersion` and `featureList` from the catalog), `FAQPage`,
     `VideoObject`, `WebSite`, `CollectionPage`, `HowTo` and `BreadcrumbList`.

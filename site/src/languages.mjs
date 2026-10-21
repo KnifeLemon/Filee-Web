@@ -7,7 +7,7 @@
 
 /**
  * lang: language code used in file names (i18n/<lang>.json, src/texts/<lang>.mjs). path: URL prefix.
- * htmlLang: <html lang> and hreflang. ogLocale: Open Graph locale. name: the language's own name (menus).
+ * htmlLang: <html lang> and hreflang. dir: 'rtl' for right-to-left scripts (left out: left to right). ogLocale: Open Graph locale. name: the language's own name (menus).
  * englishName: for llms.txt. match: browser language tags that pick this language (a tag matches when it equals one
  * or starts with it plus "-", case-insensitive). aliases: extra short URLs redirected to the language ("/x/*" keeps
  * the rest of the path). font: web font (see FONTS in layout.mjs; null = system fonts). media: language of the
@@ -68,6 +68,18 @@ export const LANGUAGES = [
     match: ['ru'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
     list: { sep: ', ', last: ' и ' }, size: 'около {mb} МБ', paren: ' ({size})',
     engineFor: '{name} — {what}{size}', engineSep: '; ',
+  },
+  {
+    lang: 'ar', path: '/ar/', htmlLang: 'ar', dir: 'rtl', ogLocale: 'ar_AR', name: 'العربية', englishName: 'Arabic',
+    match: ['ar'], aliases: [], font: 'inter-arabic', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: '، ', last: ' و' }, size: 'نحو {mb} ميغابايت', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '؛ ',
+  },
+  {
+    lang: 'pt-BR', path: '/pt-br/', htmlLang: 'pt-BR', ogLocale: 'pt_BR', name: 'Português (Brasil)', englishName: 'Brazilian Portuguese',
+    match: ['pt'], aliases: ['/pt', '/br', '/pt-BR', '/pt-BR/*'], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' e ' }, size: 'cerca de {mb} MB', paren: ' ({size})',
+    engineFor: '{name} para {what}{size}', engineSep: '; ',
   },
 ];
 
