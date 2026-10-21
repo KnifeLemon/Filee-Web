@@ -1,5 +1,7 @@
 export const DOWNLOAD_TARGETS = ['win-x64', 'linux-x64', 'linux-arm64', 'osx-arm64', 'osx-x64'];
 export const RELEASES_URL = 'https://github.com/KnifeLemon/Filee/releases';
+/** Targets whose builds are previews (labelled so in the download section). Linux is a full release since 2.0.0. */
+export const PREVIEW_TARGETS = ['osx-arm64', 'osx-x64'];
 
 const versionTag = /^v?\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
 
@@ -43,6 +45,6 @@ export function downloadChoice(release, target, failed = false) {
     asset,
     url: asset?.url ?? RELEASES_URL,
     state: asset ? 'available' : failed ? 'unavailable' : release ? 'missing' : 'checking',
-    development: target !== 'win-x64',
+    development: PREVIEW_TARGETS.includes(target),
   };
 }

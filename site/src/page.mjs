@@ -62,7 +62,7 @@ function structuredData(t, languages) {
       description: fill(t.meta.description, v),
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File converter',
-      operatingSystem: 'Windows 10, Windows 11, macOS 14, Linux',
+      operatingSystem: 'Windows 10, Windows 11, Linux (Ubuntu 22.04+), macOS 13+ (preview)',
       processorRequirements: 'x64, ARM64',
       softwareVersion: VERSION,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -375,7 +375,7 @@ export function renderNotFound(languages, assets) {
   <p class="not-found-code">404</p>
   ${languages.map(l => {
     const { title, text, home, formats } = l.notFound;
-    return `<section lang="${l.htmlLang}"><h1>${escape(title)}</h1><p>${escape(text)}</p><p class="not-found-links"><a class="btn btn-primary" href="${l.path}">${escape(home)}</a> <a class="btn btn-ghost" href="${paths.formats(l)}">${escape(formats)}</a></p></section>`;
+    return `<section lang="${l.htmlLang}"${l.dir ? ` dir="${l.dir}"` : ''}><h1>${escape(title)}</h1><p>${escape(text)}</p><p class="not-found-links"><a class="btn btn-primary" href="${l.path}">${escape(home)}</a> <a class="btn btn-ghost" href="${paths.formats(l)}">${escape(formats)}</a></p></section>`;
   }).join('\n  ')}
 </main>
 </body>

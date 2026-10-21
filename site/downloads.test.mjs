@@ -38,13 +38,17 @@ test('an x64 asset cannot satisfy an ARM64 selection', () => {
   assert.equal(findDownloadAsset({ tag_name: tag, assets: [linux, macIntel] }, 'osx-arm64'), null);
 });
 
-test('published Unix assets remain development builds', () => {
-  for (const target of ['linux-x64', 'linux-arm64', 'osx-x64', 'osx-arm64']) {
+test('macOS builds are previews; Windows and Linux are full releases', () => {
+  for (const target of ['osx-x64', 'osx-arm64']) {
     const choice = downloadChoice(release, target);
     assert.equal(choice.state, 'available');
     assert.equal(choice.development, true);
   }
-  assert.equal(downloadChoice(release, 'win-x64').development, false);
+  for (const target of ['win-x64', 'linux-x64', 'linux-arm64']) {
+    const choice = downloadChoice(release, target);
+    assert.equal(choice.state, 'available');
+    assert.equal(choice.development, false);
+  }
 });
 
 test('the legacy Windows filename is supported without a generic Setup.exe fallback', () => {

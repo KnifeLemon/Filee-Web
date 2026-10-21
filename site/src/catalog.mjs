@@ -12,7 +12,7 @@
 import { LANGS, LANGUAGE } from './languages.mjs';
 
 export { LANGS };
-export const VERSION = '1.12.0';
+export const VERSION = '2.0.0';
 
 /** Languages written as T() arguments; the others come from their dictionaries. */
 const INLINE = ['en', 'ko', 'zh-CN'];
@@ -281,6 +281,30 @@ export const OPTIONS = {
       '대상 형식이 담을 수 있으면 색·텍스처·재질을 유지해요. STL은 모양만 담아요.',
       '目标格式支持时会保留颜色、纹理和材质。STL 只保存形状。'),
   },
+  hdrTone: {
+    short: T('HDR tone-mapped', 'HDR 톤 매핑', 'HDR 色调映射'),
+    long: T('HDR screenshots that Windows saves as JPEG XR are tone-mapped to normal brightness instead of being clipped.',
+      'Windows가 JPEG XR로 저장하는 HDR 스크린샷은 밝은 부분을 잘라 내지 않고 톤 매핑해서 평소 밝기로 바꿔요.',
+      'Windows 以 JPEG XR 保存的 HDR 截图会经过色调映射，转为正常亮度，而不是直接截断高光。'),
+  },
+  livePhoto: {
+    short: T('Live Photo video', '라이브 포토 동영상', '实况照片视频'),
+    long: T('The Extract Live Photo video preset saves the video of an iPhone Live Photo (a LIVP from iCloud, or a photo with its MOV) or an Android Motion Photo as MP4 or MOV. The other way round, the Live Photo (iPhone) and Motion Photo (Android) presets turn a short clip of a video into a moving photo; that is still experimental.',
+      '‘라이브 포토 동영상 추출’ 프리셋은 아이폰 라이브 포토(아이클라우드에서 받은 LIVP, 또는 MOV가 옆에 있는 사진)나 안드로이드 모션 포토의 동영상을 MP4·MOV로 저장해요. 반대로 ‘라이브 포토 (아이폰)’·‘모션 포토 (안드로이드)’ 프리셋은 동영상의 짧은 구간을 움직이는 사진으로 만들어요. 이건 아직 실험 기능이에요.',
+      '“提取实况/动态照片视频”预设可把 iPhone 实况照片（从 iCloud 下载的 LIVP，或旁边带有 MOV 的照片）或安卓动态照片中的视频保存为 MP4 或 MOV。反过来，“实况照片（iPhone）”和“动态照片（安卓）”预设可把视频中的一小段做成会动的照片，这项功能仍处于实验阶段。'),
+  },
+  wgs84: {
+    short: T('WGS 84 longitude / latitude', 'WGS 84 경위도', 'WGS 84 经纬度'),
+    long: T('Results are always in longitude and latitude (WGS 84). Shapefiles in UTM, Web Mercator, Lambert or Albers are converted, so they open in the right place; converting a file to its own format reprojects it.',
+      '결과는 언제나 경위도(WGS 84)예요. UTM·웹 메르카토르·람베르트·알베르스 좌표계의 Shapefile도 변환해서 제자리에 열리고, 같은 형식으로 변환하면 좌표계만 바꿔요.',
+      '结果始终为经纬度（WGS 84）。UTM、Web 墨卡托、兰伯特或阿尔伯斯坐标系的 Shapefile 会被转换，在地图上打开时位置正确；转换为同一格式即可重新投影。'),
+  },
+  geoZip: {
+    short: T('save as ZIP', 'ZIP으로 저장', '保存为 ZIP'),
+    long: T('A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.',
+      'Shapefile은 파일 다섯 개(.shp·.shx·.dbf·.prj·.cpg)로 이뤄져요. 프리셋의 ‘결과를 ZIP으로 저장’을 켜거나 설정에서 지리 정보 결과를 모두 ZIP으로 저장하게 하면 ZIP 하나로 함께 묶여요.',
+      'Shapefile 由五个文件组成（.shp、.shx、.dbf、.prj 和 .cpg）。在预设中勾选“将结果保存为 ZIP”，或在设置中对所有地理信息结果启用，它们就会打包进同一个 ZIP。'),
+  },
 };
 
 /* ───────── Formats and routes, by category ───────── */
@@ -329,9 +353,9 @@ export const CATEGORIES = [
   {
     id: 'images', icon: 'image', color: '#378add',
     name: T('Images', '이미지', '图片'), plain: T('images', '이미지', '图片'),
-    intro: T('Photos and graphics, including iPhone HEIC, Photoshop PSD, camera RAW from all major brands, animated APNG and DICOM. Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.',
-      '아이폰 HEIC, 포토샵 PSD, 주요 카메라 브랜드의 RAW, 움직이는 APNG, DICOM까지 사진과 그래픽을 변환합니다. 변환하면서 크기·회전·품질·DPI를 바꾸거나 메타데이터를 지우고, 그림을 SVG로 벡터화할 수도 있어요.',
-      '照片和图形，包括 iPhone 的 HEIC、Photoshop 的 PSD、各大品牌相机的 RAW、动态 APNG 和 DICOM。转换时可调整尺寸、旋转、质量和 DPI，或清除元数据，还能把图片描摹成 SVG。'),
+    intro: T('Photos and graphics, including iPhone HEIC and Live Photos, Photoshop PSD, camera RAW from all major brands, animated APNG, DICOM and the HDR screenshots of Windows (JPEG XR). Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.',
+      '아이폰 HEIC와 라이브 포토, 포토샵 PSD, 주요 카메라 브랜드의 RAW, 움직이는 APNG, DICOM, Windows의 HDR 스크린샷(JPEG XR)까지 사진과 그래픽을 변환합니다. 변환하면서 크기·회전·품질·DPI를 바꾸거나 메타데이터를 지우고, 그림을 SVG로 벡터화할 수도 있어요.',
+      '照片和图形，包括 iPhone 的 HEIC 和实况照片、Photoshop 的 PSD、各大品牌相机的 RAW、动态 APNG、DICOM 以及 Windows 的 HDR 截图（JPEG XR）。转换时可调整尺寸、旋转、质量和 DPI，或清除元数据，还能把图片描摹成 SVG。'),
     formats: [
       fmt('jpg', 'JPG', ['jpg', 'jpeg', 'jpe', 'jfif'], {
         name: T('JPEG image', 'JPEG 이미지', 'JPEG 图像'),
@@ -414,6 +438,8 @@ export const CATEGORIES = [
       fmt('exr', 'OpenEXR', ['exr']),
       fmt('hdr', 'Radiance HDR', ['hdr']),
       fmt('pcd', 'Photo CD', ['pcd'], { brand: 'Kodak' }),
+      fmt('jxr', 'JPEG XR', ['jxr', 'wdp', 'hdp'], { brand: 'Windows HDR screenshots' }),
+      fmt('livp', 'LIVP', ['livp'], { display: 'Live Photo (LIVP)', brand: 'iPhone Live Photo from iCloud' }),
       ...RAW.map(([id, label, brand]) => fmt(id, label, [id], { brand, raw: true, ...RAW_ABOUT[id] })),
     ],
     routes: [
@@ -423,8 +449,14 @@ export const CATEGORIES = [
       { label: T('Camera RAW', '카메라 RAW', '相机 RAW'), from: RAW_IDS, to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick',
         extras: ['quality', 'resize', 'metadata', 'rotate'] },
       { from: [...IMG_READ, ...RAW_IDS], to: ['svg'], engine: 'builtin', extras: ['trace'] },
-      { from: [...IMG_READ.filter(id => id !== 'heic'), ...RAW_IDS], to: ['heic'],
+      { from: [...IMG_READ.filter(id => id !== 'heic'), ...RAW_IDS, 'jxr'], to: ['heic'],
         engine: 'ffmpeg', extras: ['quality', 'resize', 'metadata'] },
+      { from: ['jxr'], to: [...IMG_WRITE, 'svg'], engine: 'builtin', via: 'Windows Imaging Component', extras: ['hdrTone', 'quality', 'resize'],
+        note: T('Windows only', 'Windows 전용', '仅限 Windows') },
+      { from: ['livp'], to: IMG_WRITE, engine: 'builtin', via: 'ImageMagick', extras: ['quality', 'resize', 'metadata'],
+        note: T('the photo of the Live Photo', '라이브 포토의 사진', '实况照片中的照片') },
+      { from: ['livp'], to: ['mp4', 'mov'], engine: 'ffmpeg', extras: ['livePhoto'],
+        note: T('the video of the Live Photo', '라이브 포토의 동영상', '实况照片中的视频') },
     ],
   },
   {
@@ -495,9 +527,9 @@ export const CATEGORIES = [
   {
     id: 'documents', icon: 'document', color: '#2b579a',
     name: T('Documents', '문서', '文档'), plain: T('documents', '문서', '文档'),
-    intro: T('Word documents without Microsoft Office, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).',
-      '마이크로소프트 오피스 없이 워드 문서를 변환하고, 오래되거나 드문 워드프로세서 형식은 추가 엔진 LibreOffice로, 저장한 이메일(EML·아웃룩 MSG)도 변환합니다.',
-      '无需 Microsoft Office 即可转换 Word 文档。旧版和少见的文字处理格式使用可选引擎 LibreOffice。还支持保存的电子邮件（EML 和 Outlook MSG）。'),
+    intro: T('Word documents without Microsoft Office, Chinese OFD e-invoices, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).',
+      '마이크로소프트 오피스 없이 워드 문서와 중국 OFD 전자 세금계산서를 변환하고, 오래되거나 드문 워드프로세서 형식은 추가 엔진 LibreOffice로, 저장한 이메일(EML·아웃룩 MSG)도 변환합니다.',
+      '无需 Microsoft Office 即可转换 Word 文档和 OFD 电子发票。旧版和少见的文字处理格式使用可选引擎 LibreOffice。还支持保存的电子邮件（EML 和 Outlook MSG）。'),
     formats: [
       fmt('docx', 'DOCX', ['docx'], {
         name: T('Word document', '워드 문서', 'Word 文档'),
@@ -521,6 +553,7 @@ export const CATEGORIES = [
       fmt('ott', 'OTT', ['ott'], { brand: 'OpenDocument template' }),
       fmt('rtf', 'RTF', ['rtf']),
       fmt('wps', 'WPS', ['wps'], { brand: 'Microsoft Works / WPS Office' }),
+      fmt('ofd', 'OFD', ['ofd'], { brand: 'Chinese e-invoices and official documents (GB/T 33190)' }),
       fmt('wpd', 'WPD', ['wpd'], { brand: 'WordPerfect' }),
       fmt('lwp', 'LWP', ['lwp'], { brand: 'Lotus Word Pro' }),
       fmt('abw', 'ABW', ['abw', 'zabw'], { brand: 'AbiWord' }),
@@ -549,6 +582,7 @@ export const CATEGORIES = [
     routes: [
       { from: ['docx', 'docm', 'dotx', 'dotm'], to: ['pdf', 'hwpx', 'hwp', 'epub', 'txt', 'html', 'png', 'jpg'], engine: 'builtin', extras: ['noOffice', 'merge'] },
       { from: ['docx'], to: ['md'], engine: 'pandoc' },
+      { from: ['ofd'], to: ['pdf', 'docx', 'hwpx', 'txt', 'md', 'html', 'epub'], engine: 'builtin', extras: ['noOffice'] },
       { from: ['doc', 'dot', 'odt', 'fodt', 'ott', 'rtf', 'wps', 'wpd', 'lwp', 'abw', 'pages', 'sdw', 'cwk', 'mcw', '602', 'psw'],
         to: ['pdf', 'docx', 'odt'], engine: 'libreoffice', extras: ['merge'] },
       { from: ['docx', 'doc', 'odt', 'rtf'], to: ['fodt', 'ott'], engine: 'libreoffice' },
@@ -643,6 +677,7 @@ export const CATEGORIES = [
       }),
       fmt('pptm', 'PPTM', ['pptm']),
       fmt('potx', 'POTX', ['potx']),
+      fmt('potm', 'POTM', ['potm']),
       fmt('ppsx', 'PPSX', ['ppsx']),
       fmt('ppt', 'PPT', ['ppt', 'pps', 'pot'], {
         name: T('PowerPoint 97–2003 presentation', '파워포인트 97~2003 프레젠테이션', 'PowerPoint 97–2003 演示文稿'),
@@ -658,7 +693,7 @@ export const CATEGORIES = [
       fmt('sda', 'SDA', ['sda', 'sdd'], { brand: 'StarImpress / StarDraw' }),
     ],
     routes: [
-      { from: ['pptx', 'pptm', 'potx', 'ppsx'], to: ['pdf', 'png', 'jpg', 'docx', 'hwpx'], engine: 'builtin', extras: ['noOffice', 'merge'] },
+      { from: ['pptx', 'pptm', 'potx', 'potm', 'ppsx'], to: ['pdf', 'png', 'jpg', 'docx', 'hwpx'], engine: 'builtin', extras: ['noOffice', 'merge'] },
       { from: ['ppt', 'odp', 'otp', 'fodp', 'key', 'dps', 'sda'], to: ['pdf', 'pptx', 'odp'], engine: 'libreoffice', extras: ['merge'] },
       { from: ['pptx', 'ppt', 'odp'], to: ['otp'], engine: 'libreoffice' },
     ],
@@ -666,11 +701,11 @@ export const CATEGORIES = [
   {
     id: 'text', icon: 'text', color: '#5f5e5a',
     name: T('Text & markup', '텍스트·마크업', '文本与标记'), plain: T('text and markup', '텍스트·마크업', '文本与标记'),
-    intro: T('Plain text, Markdown and HTML to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.',
-      '텍스트·마크다운·HTML을 PDF·워드·HWPX·EPUB으로 변환합니다. LaTeX, reStructuredText, Org, AsciiDoc, Typst, 주피터 같은 마크업은 추가 엔진 Pandoc을 쓰고, 마크다운을 파워포인트 슬라이드로도 만들어요.',
-      '把纯文本、Markdown 和 HTML 转成 PDF、Word、HWPX 和 EPUB。LaTeX、reStructuredText、Org、AsciiDoc、Typst、Jupyter 等标记语言使用可选引擎 Pandoc，它还能把 Markdown 转成 PowerPoint 幻灯片。'),
+    intro: T('Plain text, Markdown, HTML and saved web pages (MHTML) to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.',
+      '텍스트·마크다운·HTML과 저장한 웹 페이지(MHTML)를 PDF·워드·HWPX·EPUB으로 변환합니다. LaTeX, reStructuredText, Org, AsciiDoc, Typst, 주피터 같은 마크업은 추가 엔진 Pandoc을 쓰고, 마크다운을 파워포인트 슬라이드로도 만들어요.',
+      '把纯文本、Markdown、HTML 和保存的网页（MHTML）转成 PDF、Word、HWPX 和 EPUB。LaTeX、reStructuredText、Org、AsciiDoc、Typst、Jupyter 等标记语言使用可选引擎 Pandoc，它还能把 Markdown 转成 PowerPoint 幻灯片。'),
     formats: [
-      fmt('txt', 'TXT', ['txt'], {
+      fmt('txt', 'TXT', ['txt', 'log', 'py', 'pac', 'bat', 'command'], {
         name: T('Plain text', '텍스트 파일', '纯文本'),
         about: T('TXT is plain text without any formatting, the simplest and most portable document format. The only thing that can differ is the character encoding (UTF-8, UTF-16 or a legacy code page).',
           'TXT는 서식이 전혀 없는 순수 텍스트로, 가장 단순하고 어디서나 열리는 문서 형식입니다. 다를 수 있는 건 문자 인코딩(UTF-8, UTF-16, CP949 같은 옛 코드 페이지)뿐입니다.',
@@ -690,6 +725,7 @@ export const CATEGORIES = [
           'HTML은 웹 페이지를 만드는 언어입니다. 저장한 .html 파일은 어느 브라우저에서나 열리지만, 모양이 브라우저와 연결된 스타일·이미지에 따라 달라지고 오프라인에서는 일부가 빠질 수 있습니다.',
           'HTML 是网页的语言。保存的 .html 文件可以在任何浏览器中打开，但显示效果取决于浏览器以及外链的样式和图片，离线时可能缺失。'),
       }),
+      fmt('mhtml', 'MHTML', ['mhtml', 'mht'], { brand: 'web page saved as a single file' }),
       fmt('rst', 'reStructuredText', ['rst'], { koJong: 0 }),
       fmt('tex', 'LaTeX', ['tex', 'latex'], { koJong: 0 }),
       fmt('org', 'Org', ['org'], { brand: 'Emacs Org mode' }),
@@ -704,6 +740,12 @@ export const CATEGORIES = [
     ],
     routes: [
       { from: ['txt', 'md', 'html'], to: ['pdf', 'docx', 'hwpx', 'epub'], engine: 'builtin', extras: ['merge'] },
+      { from: ['txt'], to: ['txt'], engine: 'builtin', extras: ['utf8'],
+        note: T('LOG files and scripts (PY, PAC, BAT, COMMAND) are read as text and never run',
+          'LOG 파일과 스크립트(PY·PAC·BAT·COMMAND)는 텍스트로만 읽고 실행하지 않아요',
+          'LOG 文件和脚本（PY、PAC、BAT、COMMAND）只作为文本读取，绝不会运行') },
+      { from: ['mhtml'], to: ['html', 'pdf', 'docx', 'hwpx', 'txt', 'md', 'epub'], engine: 'builtin',
+        note: T('the saved page, with its pictures', '저장한 페이지를 그림과 함께', '保存的网页，连同其中的图片') },
       { from: ['rst', 'tex', 'org', 'adoc', 'typ', 'mediawiki', 'dbk', 'ipynb', 'textile', 'man', 'opml'],
         to: ['pdf', 'docx', 'hwpx', 'odt', 'html', 'md', 'epub', 'txt'], engine: 'pandoc' },
       { from: ['docx', 'html', 'md'], to: ['rst', 'tex', 'org', 'adoc', 'typ', 'mediawiki', 'dbk', 'ipynb', 'textile', 'man', 'opml'], engine: 'pandoc' },
@@ -843,7 +885,7 @@ export const CATEGORIES = [
       fmt('m4v', 'M4V', ['m4v'], { brand: 'iTunes video' }),
       fmt('wmv', 'WMV', ['wmv', 'asf']),
       fmt('flv', 'FLV', ['flv', 'f4v']),
-      fmt('mpg', 'MPEG', ['mpg', 'mpeg', 'mpe', 'm1v', 'm2v']),
+      fmt('mpg', 'MPEG', ['mpg', 'mpeg', 'mpe', 'm1v', 'm2v', 'dat'], { brand: 'MPEG-1/2, Video CD (.dat)' }),
       fmt('ts', 'TS', ['ts']),
       fmt('m2ts', 'M2TS', ['m2ts', 'mts', 'm2t'], { display: 'M2TS/MTS' }),
       fmt('3gp', '3GP', ['3gp', '3gpp']),
@@ -861,7 +903,7 @@ export const CATEGORIES = [
     routes: [
       { from: VIDEO_READ,
         to: ['mp4', 'webm', 'mov', 'mkv', 'avi', 'gif', 'apng', 'mp3', 'm4a'], engine: 'ffmpeg', extras: ['lossless', 'codecs', 'hwEncode', 'res720', 'extractAudio'] },
-      { from: VIDEO_READ, to: ['png', 'jpg'], engine: 'ffmpeg', extras: ['frames'],
+      { from: VIDEO_READ, to: ['png', 'jpg'], engine: 'ffmpeg', extras: ['frames', 'livePhoto'],
         note: T('one still frame or every frame', '정지 이미지 한 장 또는 모든 프레임', '一张静止画面或每一帧') },
       { from: ['gif', 'apng'], to: ['mp4', 'webm', 'mov'], engine: 'ffmpeg' },
     ],
@@ -981,7 +1023,7 @@ export const CATEGORIES = [
       'ZIP·7Z·RAR·TAR, 디스크 이미지를 비롯한 여러 압축 형식을 내장 7-Zip 엔진으로 다시 묶거나 풀고, 여러 파일을 ZIP 하나로 묶을 수 있습니다.',
       '用自带的 7-Zip 引擎重新打包或解压 ZIP、7Z、RAR、TAR、磁盘映像等多种压缩格式，也能把任意文件打包成一个 ZIP。'),
     formats: [
-      fmt('zip', 'ZIP', ['zip'], {
+      fmt('zip', 'ZIP', ['zip', 'wbpz'], {
         koJong: 1,
         name: T('ZIP archive', 'ZIP 압축 파일', 'ZIP 压缩包'),
         about: T('ZIP is the universal archive format. Windows, macOS, phones and nearly every upload form open it without extra software.',
@@ -1002,8 +1044,8 @@ export const CATEGORIES = [
           'RAR 是 WinRAR 的专有压缩格式，常见于分卷下载的文件。新版 Windows 11 可以打开 RAR，但不能创建，而且很多工具只接受 ZIP。'),
       }),
       fmt('tar', 'TAR', ['tar']),
-      fmt('tgz', 'TAR.GZ', ['tar.gz', 'tgz']),
-      fmt('tbz2', 'TAR.BZ2', ['tar.bz2', 'tbz2']),
+      fmt('tgz', 'TAR.GZ', ['tar.gz', 'tgz', 'taz']),
+      fmt('tbz2', 'TAR.BZ2', ['tar.bz2', 'tbz2', 'tar.bz', 'tbz']),
       fmt('txz', 'TAR.XZ', ['tar.xz', 'txz']),
       fmt('tar7z', 'TAR.7Z', ['tar.7z']),
       fmt('tlz', 'TAR.LZ', ['tar.lz', 'tlz']),
@@ -1063,9 +1105,9 @@ export const CATEGORIES = [
   {
     id: 'models', icon: 'cube', color: '#be185d',
     name: T('3D models', '3D 모델', '3D 模型'), plain: T('3D models', '3D 모델', '3D 模型', 'in running text'),
-    intro: T('GLB, glTF, STL, OBJ, 3MF and PLY into each other, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.',
-      'GLB·glTF·STL·OBJ·3MF·PLY를 서로 바꿔요. 형식이 담을 수 있으면 색·텍스처·재질도 유지하고, 음영을 넣은 PNG·JPG 그림으로도 만들어요. 따로 설치할 건 없어요.',
-      'GLB、glTF、STL、OBJ、3MF 和 PLY 互相转换，格式支持时保留颜色、纹理和材质，也能生成带阴影的 PNG 或 JPG 图片。无需安装其他软件。'),
+    intro: T('GLB, glTF, STL, OBJ, 3MF and PLY into each other, and FBX into any of them, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.',
+      'GLB·glTF·STL·OBJ·3MF·PLY를 서로 바꾸고, FBX도 이 형식들로 바꿔요. 형식이 담을 수 있으면 색·텍스처·재질도 유지하고, 음영을 넣은 PNG·JPG 그림으로도 만들어요. 따로 설치할 건 없어요.',
+      'GLB、glTF、STL、OBJ、3MF 和 PLY 互相转换，FBX 也能转成其中任意一种，格式支持时保留颜色、纹理和材质，也能生成带阴影的 PNG 或 JPG 图片。无需安装其他软件。'),
     formats: [
       fmt('glb', 'GLB', ['glb'], {
         name: T('glTF binary (GLB)', 'GLB(glTF 바이너리)', 'GLB（glTF 二进制）'),
@@ -1089,10 +1131,11 @@ export const CATEGORIES = [
       }),
       fmt('3mf', '3MF', ['3mf'], { brand: '3D printing' }),
       fmt('ply', 'PLY', ['ply'], { brand: '3D scans' }),
+      fmt('fbx', 'FBX', ['fbx'], { brand: 'Autodesk FBX' }),
     ],
     routes: [
-      { from: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], to: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], engine: 'builtin', extras: ['colours3d'] },
-      { from: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], to: ['png', 'jpg'], engine: 'builtin', extras: ['preview3d'] },
+      { from: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply', 'fbx'], to: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply'], engine: 'builtin', extras: ['colours3d'] },
+      { from: ['glb', 'gltf', 'stl', 'obj', '3mf', 'ply', 'fbx'], to: ['png', 'jpg'], engine: 'builtin', extras: ['preview3d'] },
     ],
   },
   {
@@ -1125,6 +1168,27 @@ export const CATEGORIES = [
     ],
     routes: [
       { from: ['ttf', 'otf', 'woff', 'woff2', 'eot'], to: ['ttf', 'otf', 'woff', 'woff2', 'eot'], engine: 'builtin' },
+    ],
+  },
+  {
+    id: 'geo', icon: 'map', color: '#16a34a',
+    name: T('Geospatial data', '지리 정보', '地理信息'), plain: T('geospatial data', '지리 정보', '地理信息数据'),
+    intro: T('Maps and GPS data: GeoJSON, KML, KMZ, GPX and Shapefile into each other and to CSV, Excel and JSON, and a CSV with coordinates back into a map file. Vector data only (points, lines and areas), always saved in longitude and latitude. Nothing to install.',
+      '지도·GPS 데이터 GeoJSON·KML·KMZ·GPX·Shapefile을 서로 바꾸고 CSV·엑셀·JSON으로도 만들며, 좌표가 있는 CSV는 다시 지도 파일로 바꿔요. 벡터 데이터(점·선·면)만 다루고 결과는 언제나 경위도로 저장해요. 따로 설치할 건 없어요.',
+      '地图和 GPS 数据：GeoJSON、KML、KMZ、GPX 和 Shapefile 互相转换，也可转成 CSV、Excel 和 JSON，带坐标的 CSV 还能转回地图文件。仅支持矢量数据（点、线、面），结果始终以经纬度保存。无需安装其他软件。'),
+    formats: [
+      fmt('geojson', 'GeoJSON', ['geojson'], { brand: 'web maps, GIS' }),
+      fmt('kml', 'KML', ['kml'], { brand: 'Google Earth' }),
+      fmt('kmz', 'KMZ', ['kmz'], { brand: 'Google Earth (zipped KML)' }),
+      fmt('gpx', 'GPX', ['gpx'], { brand: 'GPS tracks and waypoints' }),
+      fmt('shp', 'Shapefile', ['shp'], { brand: 'Esri Shapefile (.shp with .dbf, .prj, .cpg)' }),
+    ],
+    routes: [
+      { from: ['geojson', 'kml', 'kmz', 'gpx', 'shp'], to: ['geojson', 'kml', 'kmz', 'gpx', 'shp', 'csv'], engine: 'builtin', extras: ['wgs84', 'geoZip'] },
+      { from: ['geojson', 'kml', 'kmz', 'gpx', 'shp'], to: ['xlsx', 'json'], engine: 'builtin', via: 'CSV',
+        note: T('one row per feature, with its coordinates', '지형지물마다 좌표와 함께 한 행씩', '每个要素一行，附带坐标') },
+      { from: ['csv'], to: ['geojson', 'kml', 'kmz', 'gpx', 'shp'], engine: 'builtin', extras: ['wgs84'],
+        note: T('a CSV with longitude and latitude columns or WKT', '경도·위도 열이나 WKT 열이 있는 CSV', '包含经度、纬度列或 WKT 列的 CSV') },
     ],
   },
 ];
@@ -1531,9 +1595,9 @@ export const FAQ = [
       '용량이 큰 엔진은 설치 파일에 넣지 않았어요. 설치할 때 엔진 선택 화면에서 고르거나, 필요할 때 Filee 안에서 받을 수 있습니다: {engineDetails}. 엔진은 Filee 전용 폴더에 저장되고 언제든 지울 수 있으며, 앱에서 버전·다운로드 속도·남은 시간을 볼 수 있어요. FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice가 PC에 이미 있으면(PATH, Scoop, Program Files) 그걸 쓰고 내려받지 않아요. Filee가 테스트한 버전보다 오래됐으면 업데이트를 권하고, 특정 프로그램은 설정 → 엔진 → 내 프로그램 쓰기에서 고를 수 있어요.',
       '体积较大的引擎不包含在安装包中。可以在安装程序的引擎页面勾选，也可以在需要时在 Filee 里下载：{engineDetails}。引擎保存在 Filee 自己的文件夹中，随时可以删除，应用内会显示版本、下载速度和剩余时间。如果电脑上已有 FFmpeg、calibre、Pandoc、Ghostscript 或 LibreOffice（PATH、Scoop 或 Program Files 中），Filee 会直接使用，不再下载；版本比测试版本旧时会建议更新。也可以在“设置 → 引擎 → 使用我的程序”中指定某个程序。') },
   { q: T('Does installing Filee need administrator rights?', 'Filee를 설치하려면 관리자 권한이 필요한가요?', '安装 Filee 需要管理员权限吗？'),
-    a: T('Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. If you can\'t install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.',
-      '설치할 때 한 번만 필요해요. 설치 프로그램이 모든 사용자를 위해 Program Files에 설치하고, Windows 11에서는 탐색기 기본 메뉴에 “Filee로 변환”을 추가합니다. 설치 후 Filee는 일반 사용자 권한으로 실행돼요. 프로그램을 설치할 수 없다면 포터블 ZIP을 원하는 곳에 풀고 Filee.exe를 실행하세요.',
-      '只在安装时需要一次。安装程序会为所有用户安装到 Program Files，并在 Windows 11 上把“用 Filee 转换”添加到资源管理器主菜单。之后 Filee 以普通用户身份运行。如果无法安装程序，可以使用便携版 ZIP：解压到任意位置后运行 Filee.exe。') },
+    a: T('Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. For silent installs, run the installer with /VERYSILENT /SUPPRESSMSGBOXES. If you can\'t install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.',
+      '설치할 때 한 번만 필요해요. 설치 프로그램이 모든 사용자를 위해 Program Files에 설치하고, Windows 11에서는 탐색기 기본 메뉴에 “Filee로 변환”을 추가합니다. 설치 후 Filee는 일반 사용자 권한으로 실행돼요. 조용히 설치하려면 설치 프로그램을 /VERYSILENT /SUPPRESSMSGBOXES로 실행하세요. 프로그램을 설치할 수 없다면 포터블 ZIP을 원하는 곳에 풀고 Filee.exe를 실행하세요.',
+      '只在安装时需要一次。安装程序会为所有用户安装到 Program Files，并在 Windows 11 上把“用 Filee 转换”添加到资源管理器主菜单。之后 Filee 以普通用户身份运行。静默安装时，请用 /VERYSILENT /SUPPRESSMSGBOXES 参数运行安装程序。如果无法安装程序，可以使用便携版 ZIP：解压到任意位置后运行 Filee.exe。') },
   { q: T('Can I convert many files at once?', '여러 파일을 한 번에 변환할 수 있나요?', '可以一次转换很多文件吗？'),
     a: T('Yes. Select as many files as you like and drop them once: Filee converts them in parallel, a failed file never stops the others, and presets can merge everything into one PDF or pack it into one ZIP.',
       '네. 원하는 만큼 파일을 골라 한 번에 놓으면 동시에 변환합니다. 한 파일이 실패해도 나머지는 계속되고, 프리셋으로 전부 PDF 하나로 합치거나 ZIP 하나로 묶을 수도 있어요.',
@@ -1557,9 +1621,9 @@ export const FAQ = [
       '온라인 변환 사이트는 파일을 남의 서버에 올리고, 크기와 개수를 제한하는 경우가 많으며, 빠른 인터넷이 필요합니다. Filee는 내 PC에서 변환하므로 개인 파일이 밖으로 나가지 않고, 큰 동영상이나 수백 개의 파일도 문제없으며, 인터넷 없이도 광고 없이 무료로 쓸 수 있어요.',
       '在线转换网站要把文件上传到别人的服务器，常常限制文件大小和数量，还依赖网速。Filee 在你的电脑上转换：私密文件不外泄，大视频和上百个文件都没问题，没有网络也能用，而且免费、无广告。') },
   { q: T('Which operating systems are supported?', '어떤 운영체제에서 쓸 수 있나요?', '支持哪些操作系统？'),
-    a: T('Windows 10 and 11 (64-bit) is the stable release. macOS 14 or later (Apple silicon and Intel) and Linux (x64 and ARM64) are previews: the macOS app isn\'t notarized yet, so macOS asks you to allow it once under Privacy & Security, and on Linux the drag gesture needs an X11 session (on Wayland, use the drop zone and the right-click action). Pick your system in the download section.',
-      'Windows 10·11(64비트)은 정식 버전이에요. macOS 14 이상(Apple Silicon·Intel)과 Linux(x64·ARM64)는 미리보기예요. macOS 앱은 아직 공증을 받지 않아 처음 한 번 개인정보 보호 및 보안에서 허용해야 하고, Linux에서 드래그 제스처는 X11 세션에서 동작해요(Wayland에서는 드롭 영역과 우클릭 메뉴를 쓰세요). 다운로드에서 운영체제를 고르면 돼요.',
-      'Windows 10 和 11（64 位）为正式版。macOS 14 或更高版本（Apple 芯片和 Intel）以及 Linux（x64 和 ARM64）为预览版：macOS 应用尚未公证，首次需在“隐私与安全性”中允许一次；Linux 上的拖动手势需要 X11 会话（Wayland 下请使用拖放区和右键菜单）。在下载区选择你的系统即可。') },
+    a: T('Windows 10 and 11 (64-bit) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager\'s right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn\'t notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.',
+      'Windows 10·11(64비트)과 Linux(x64·ARM64, Ubuntu 22.04 이상)는 정식 버전이에요. Linux에서 드래그 제스처는 X11 세션에서 동작하고, KDE Plasma의 Wayland에서는 실험 기능이에요. 다른 Wayland 데스크톱에서는 드롭 영역과 파일 관리자의 우클릭 메뉴를 쓰세요. macOS 13 이상(Apple Silicon·Intel)은 미리보기예요. 앱이 아직 공증을 받지 않아 처음 한 번 개인정보 보호 및 보안에서 허용해야 해요. 다운로드에서 운영체제를 고르면 돼요.',
+      'Windows 10 和 11（64 位）以及 Linux（x64 和 ARM64，Ubuntu 22.04 或更高版本）为正式版。Linux 上的拖动手势需要 X11 会话；在 KDE Plasma 的 Wayland 下为实验功能，其他 Wayland 桌面请使用拖放区和文件管理器的右键菜单。macOS 13 或更高版本（Apple 芯片和 Intel）为预览版：应用尚未公证，首次需在“隐私与安全性”中允许一次。在下载区选择你的系统即可。') },
 ];
 
 /* ───────── Home page bits ───────── */

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Free File Converter for Windows: Convert Files Offline | Filee",
-    "description": "Free file converter for Windows (macOS and Linux preview). Convert images, PDF, Word, Excel, video, audio, e-books and HWP offline by drag and drop.",
+    "description": "Free file converter for Windows and Linux (macOS preview). Convert images, PDF, Word, Excel, video, audio, e-books and HWP offline by drag and drop.",
     "ogAlt": "Filee: a donut of formats opens at the cursor while dragging a file",
     "appAlternateName": "Filee file converter",
     "keywords": "file converter, free file converter, offline file converter, Windows file converter, image converter, PDF converter, video converter, audio converter, HEIC to JPG, PDF to Word, HWP converter"
@@ -20,12 +20,12 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {versionShort}: PDF to PowerPoint, Compress PDF, every frame of a video, hardware encoding",
+    "badge": "New in {versionShort}: drag from the browser, crop before converting, a flip side on the donut, Linux",
     "kicker": "Free file converter for Windows, macOS and Linux",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
     "download": "Choose a download",
-    "downloadNote": "Windows 10/11 · macOS and Linux preview · Free",
+    "downloadNote": "Windows 10/11 · Linux · macOS preview · Free",
     "sponsored": "Sponsored by",
     "formats": "Browse {formatCount} formats"
   },
@@ -95,14 +95,14 @@
     "title": "What Filee does",
     "items": [
       { "icon": "donut", "title": "A donut at your cursor", "text": "The formats appear where you already are, with no app window in the way. A modifier key, mouse button, hold gesture or keyboard shortcut opens it. One slice can hold a group of presets." },
-      { "icon": "stack", "title": "{formatCount} formats, one gesture", "text": "Images, PDF, Word, Excel, PowerPoint, HWP, e-books, video, audio, subtitles, data files, 3D models, archives, CAD drawings and fonts. Filee plans the route between formats automatically." },
+      { "icon": "stack", "title": "{formatCount} formats, one gesture", "text": "Images, PDF, Word, Excel, PowerPoint, HWP, e-books, video, audio, subtitles, data files, 3D models, maps, archives, CAD drawings and fonts. Filee plans the route between formats automatically." },
       { "icon": "document", "title": "No Office needed", "text": "Word, Excel and PowerPoint files convert without Microsoft Office or LibreOffice, and HWP without Hancom Office. Filee doesn't use Office or Hancom Office even when they are installed." },
       { "icon": "doors", "title": "Batch conversion", "text": "Drop 1 file or 100. They're converted in parallel, a failure never stops the rest, and presets can merge everything into one PDF or one ZIP." },
       { "icon": "lock", "title": "100% on your PC", "text": "Nothing is uploaded. Filee works offline, so private documents, photos and recordings never leave your computer." },
       { "icon": "windows", "title": "Right where you work", "text": "The drag gesture, Convert with Filee in the right-click menu (on Windows 11 also in the top-level menu), Send To, a keyboard shortcut or the drop zone in the main window." },
       { "icon": "sliders", "title": "Presets per file type", "text": "Quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG, TIFF compression, ICO sizes, PDF merge, split, page ranges, compression and one long image, 720p, HEVC and AV1 video, hardware encoding, every frame as pictures, MP3 bitrate, output folder, file names and the original file dates." },
       { "icon": "download", "title": "Engines on demand", "text": "Large engines are optional. Tick them in the installer or download them in the app later: {engineNames}. Filee shows their versions, download speed and time left. Already have FFmpeg, calibre or Pandoc? Filee finds them and skips the download." },
-      { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese and Russian. Filee tells you about new versions; every release lists its changes and contributors." }
+      { "icon": "code", "title": "Free and open source", "text": "MIT licensed, no ads, no account. In English, Español, 日本語, 한국어, 简体中文, Polski, हिन्दी, Русский, العربية and Português (Brasil). Filee tells you about new versions; every release lists its changes and contributors." }
     ]
   },
   "formats": {
@@ -139,13 +139,13 @@
       ["Price", "Free"],
       ["License", "MIT (open source)"],
       ["Version", "{version}"],
-      ["Platform", "Windows 10/11 x64 · macOS 14+ and Linux x64/ARM64 (preview)"],
+      ["Platform", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (preview)"],
       ["Works offline", "Yes, files never leave your PC"],
       ["Formats", "{formatTotal} in {categoryCount} categories"],
       ["Built in", "{builtinTotal} formats, nothing else to install"],
       ["Optional engines", "{engineNames}"],
       ["Command line", "filee convert and filee watch, added to PATH by Setup"],
-      ["Languages", "English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese, Russian"],
+      ["Languages", "English, Español, 日本語, 한국어, 简体中文, Polski, हिन्दी, Русский, العربية, Português (Brasil)"],
       ["Updates", "Installed from inside the app after one click; each says if it's required, recommended or optional"]
     ]
   },
@@ -153,6 +153,7 @@
     "title": "Download Filee",
     "text": "Most formats convert right after installing.\nEngines for video, audio and rare formats are added in the app when you need them.",
     "button": "Download for Windows",
+    "linuxButton": "Download for Linux",
     "selector": "Operating system and processor",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
@@ -161,7 +162,7 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "macOS and Linux are previews.",
+    "platformNote": "macOS is a preview. Linux needs Ubuntu 22.04 or later; drag gestures need X11 (experimental on KDE Plasma with Wayland).",
     "developmentLabel": "Preview",
     "developmentButton": "Download the preview",
     "checking": "Checking release files…",
@@ -218,7 +219,7 @@
   },
   "catalog": {
     "title": "Supported File Formats: {formatTotal} Formats in {categoryCount} Categories | Filee",
-    "description": "All {formatTotal} formats Filee converts on Windows: images, PDF, documents, HWP, video, audio, subtitles, data, 3D, e-books, archives, CAD and fonts, and their targets.",
+    "description": "All {formatTotal} formats Filee converts: images, PDF, documents, HWP, video, audio, subtitles, data, 3D, maps, e-books, archives, CAD and fonts, and their targets.",
     "crumb": "Formats",
     "h1": "Format catalog",
     "lead": "{formatTotal} formats in {categoryCount} categories. {builtinTotal} of them work right after install; the rest use a free optional engine that Filee downloads only when you need it.",

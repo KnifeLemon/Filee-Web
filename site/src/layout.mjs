@@ -68,6 +68,7 @@ const ICONS = {
   font: { d: 'M10.2 4h3.6L20 20h-3l-1.4-4H8.4L7 20H4zm-1 9.4h5.6L12 6.2z' },
   subtitles: { d: 'M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1 8v2h3v-2zm4.5 0v2H18v-2zM6 15.5v2h8v-2zm9.5 0v2H18v-2z' },
   data: { d: 'M10 3H8a2 2 0 0 0-2 2v4.5C6 10.3 5.3 11 4.5 11H4v2h.5c.8 0 1.5.7 1.5 1.5V19a2 2 0 0 0 2 2h2v-2H8v-4.5c0-1.1-.6-2-1.4-2.5.8-.5 1.4-1.4 1.4-2.5V5h2zm4 0h2a2 2 0 0 1 2 2v4.5c0 .8.7 1.5 1.5 1.5h.5v2h-.5c-.8 0-1.5.7-1.5 1.5V19a2 2 0 0 1-2 2h-2v-2h2v-4.5c0-1.1.6-2 1.4-2.5-.8-.5-1.4-1.4-1.4-2.5V5h-2z' },
+  map: 'M15,19L9,16.89V5L15,7.11M20.5,3C20.44,3 20.39,3 20.34,3L15,5.1L9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21C3.55,21 3.61,21 3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3Z',
   cube: { d: 'M12 2l9 5v10l-9 5-9-5V7zm0 2.3L5.6 7.8 12 11.3l6.4-3.5zM5 9.5v6.3l6 3.3v-6.3zm14 0l-6 3.3v6.3l6-3.3z' },
 };
 
@@ -133,12 +134,14 @@ const verificationMeta = Object.entries(SITE_VERIFICATION)
  * Japanese pages add Noto Sans JP, so Han characters take Japanese glyph shapes rather than Chinese ones (see --font-ja).
  * It is a variable font cut into ~120 unicode-range slices: the browser downloads only the slices a page uses, and the
  * 400..800 range keeps one @font-face per slice (listing five weights would repeat every slice five times in the CSS).
+ * Arabic pages add Noto Sans Arabic the same way (Inter has no Arabic letters; see --font-ar in styles.css).
  * Google Fonts is not reachable from mainland China: Chinese pages use the system fonts (font: null).
  */
 const FONTS = {
   inter: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">',
   'inter-devanagari': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap">',
   'inter-japanese': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400..800&display=swap">',
+  'inter-arabic': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap">',
   pretendard: '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">',
 };
 
@@ -168,14 +171,14 @@ export function renderDocument({ t, languages, assets, title, description, alter
     + `<link rel="alternate" hreflang="x-default" href="${SITE}${alternates.en}">`;
   const pageData = {
     lang: t.lang,
-    langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name, match: l.match })),
+    langs: languages.map(l => ({ lang: l.lang, dir: l.dir ?? 'ltr', path: alternates[l.lang], banner: l.langBanner, name: l.name, match: l.match })),
     afterDownload: t.download.after,
     download: t.download,
     // The sponsors' logos for the after-download dialog; left out while no sponsor is listed.
     sponsors: dialogSponsors(assets.supporters ?? NOBODY),
   };
   return `<!doctype html>
-<html lang="${t.htmlLang}">
+<html lang="${t.htmlLang}"${t.dir ? ` dir="${t.dir}"` : ''}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

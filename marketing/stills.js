@@ -12,9 +12,9 @@ const EXTRA = {
     howTitle: 'Ctrl + drag. Done.',
     steps: ['Hold Ctrl and drag a file', 'Drop it on a format', 'Saved next to the original'],
     formatsTitle: 'Photos, videos and HWP',
-    formatsSub: '180 formats: images, documents, HWP, video, audio',
+    formatsSub: '250+ formats: images, documents, HWP, video, audio',
     ctaTitle: 'Get it free',
-    ctaSub: 'Free · Open source (MIT) · Windows 10/11',
+    ctaSub: 'Free · Open source (MIT) · Windows 10/11 · Linux',
     ctaButton: 'Download at filee.sh',
     privacy: 'Your files never leave your PC',
   },
@@ -23,9 +23,9 @@ const EXTRA = {
     howTitle: 'Ctrl + 드래그, 끝.',
     steps: ['Ctrl 누르고 파일 끌기', '원하는 형식에 놓기', '원본 옆에 바로 저장'],
     formatsTitle: '사진부터 영상, 한글 문서까지',
-    formatsSub: '이미지 · 문서 · 한글 · 영상 · 오디오 · 180가지 형식',
+    formatsSub: '이미지 · 문서 · 한글 · 영상 · 오디오 · 250가지 이상 형식',
     ctaTitle: '지금 무료로 받아보세요',
-    ctaSub: '무료 · 오픈소스 (MIT) · Windows 10/11',
+    ctaSub: '무료 · 오픈소스 (MIT) · Windows 10/11 · Linux',
     ctaButton: 'filee.sh 에서 다운로드',
     privacy: '파일은 내 PC 밖으로 나가지 않아요',
   },
@@ -34,9 +34,9 @@ const EXTRA = {
     howTitle: 'Ctrl + 拖动，完成。',
     steps: ['按住 Ctrl 拖动文件', '放到目标格式上', '直接保存在原文件旁'],
     formatsTitle: '照片、视频到 HWP 文档',
-    formatsSub: '图片 · 文档 · HWP · 视频 · 音频 · 180 种格式',
+    formatsSub: '图片 · 文档 · HWP · 视频 · 音频 · 250 多种格式',
     ctaTitle: '免费下载',
-    ctaSub: '免费 · 开源 (MIT) · Windows 10/11',
+    ctaSub: '免费 · 开源 (MIT) · Windows 10/11 · Linux',
     ctaButton: '前往 filee.sh 下载',
     privacy: '文件不会离开你的电脑',
   },
@@ -218,7 +218,7 @@ function screenshot(ctx, img, crop, x, y, w) {
 function phFooter(ctx, W, H) {
   drawLogo(ctx, 52, H - 44, 36);
   text(ctx, 'filee.sh', 80, H - 44, { size: 20, weight: 700, color: C.accentDark, align: 'left' });
-  text(ctx, 'Free · Open source (MIT) · Windows, macOS, Linux', W - 44, H - 44, { size: 17, weight: 600, color: C.muted, align: 'right' });
+  text(ctx, 'Free · Open source (MIT) · Windows, Linux, macOS (preview)', W - 44, H - 44, { size: 17, weight: 600, color: C.muted, align: 'right' });
 }
 
 const PRODUCT_HUNT = {
@@ -303,7 +303,7 @@ const PRODUCT_HUNT = {
     phFooter(ctx, W, H);
   },
   'ph-4': (ctx, W, H) => {
-    headline(ctx, '180 formats, no other software', W / 2, 92, 46, 1, { maxWidth: W - 120 });
+    headline(ctx, '250+ formats, no other software', W / 2, 92, 46, 1, { maxWidth: W - 120 });
     headline(ctx, 'Images, PDF, Word, Excel, PowerPoint, HWP, e-books, archives, fonts and CAD without Office. Video and audio with an optional FFmpeg download.',
       W / 2, 162, 21, 1, { color: C.muted, weight: 600, maxWidth: 900 });
     const types = ['jpg', 'png', 'heic', 'webp', 'pdf', 'md', 'docx', 'xlsx', 'pptx', 'hwpx', 'mp4', 'mp3'];
@@ -344,7 +344,7 @@ const PRODUCT_HUNT = {
         ctx.restore();
       }
     });
-    const platforms = ['Windows 10/11', 'macOS 14+ (preview)', 'Linux x64 / ARM64 (preview)'];
+    const platforms = ['Windows 10/11', 'Linux x64 / ARM64', 'macOS 13+ (preview)'];
     pillRow(ctx, W / 2, 530, platforms, 20, i => ({ size: 22, background: [C.accent, C.accentMid, C.accentDark][i] }));
     text(ctx, 'Free and open source (MIT)  ·  filee.sh  ·  github.com/KnifeLemon/Filee', W / 2, 630, { size: 22, weight: 700, color: C.accentDark });
   },

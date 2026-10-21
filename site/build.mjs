@@ -114,7 +114,7 @@ Sitemap: ${SITE}/sitemap.xml
 const manifest = JSON.stringify({
   name: 'Filee',
   short_name: 'Filee',
-  description: 'Free drag & drop file converter for Windows',
+  description: 'Free drag & drop file converter for Windows and Linux',
   start_url: '/',
   display: 'browser',
   theme_color: '#7F77DD',

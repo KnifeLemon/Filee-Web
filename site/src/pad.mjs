@@ -45,12 +45,12 @@ const DESCRIPTIONS = {
   450: 'Filee converts files on your own PC, without uploading them. Hold a key while dragging files and a donut-shaped '
     + 'menu of formats opens at the cursor; drop the files on one and the converted files appear next to the originals. '
     + `It handles ${formatTotal} formats: images (HEIC, PSD, RAW), PDF, Office files without Office, Korean HWP, e-books, `
-    + 'video, audio, subtitles, data files, 3D models, archives, CAD and fonts. No ads, no account.',
+    + 'video, audio, subtitles, data, 3D models, maps, archives, CAD and fonts. No ads, no account.',
   2000: `Filee converts files on your own PC, without uploading them anywhere. Hold a key while dragging files and a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals. You can also convert from the File Explorer right-click menu (top level on Windows 11), Send To, a keyboard shortcut or the drop zone in the main window.
 
-Filee handles ${formatTotal} formats in ${categoryCount} categories: images, including iPhone HEIC, Photoshop PSD and camera RAW, and pictures traced into SVG; PDF to images, Word, PowerPoint slides or text, and PDF merge, split, compression and page ranges; Word, Excel and PowerPoint without Microsoft Office; Korean HWP/HWPX without Hancom Office; e-books and comics (EPUB, MOBI, AZW3, FB2, CBZ, CBR); video and audio (MP4, MOV, MKV, WEBM, MP3, FLAC and more), video to GIF, every frame as pictures, hardware encoding and audio extraction; subtitles (SRT, ASS, WebVTT, SMI); data files (JSON, YAML, TOML, XML); 3D models (GLB, STL, OBJ, 3MF); archives (ZIP, 7Z, RAR, TAR); CAD drawings (DWG, DXF) and fonts (TTF, OTF, WOFF).
+Filee handles ${formatTotal} formats in ${categoryCount} categories: images, including iPhone HEIC, Photoshop PSD and camera RAW, and pictures traced into SVG; PDF to images, Word, PowerPoint slides or text, and PDF merge, split, compression and page ranges; Word, Excel and PowerPoint without Microsoft Office; Korean HWP/HWPX without Hancom Office; e-books and comics (EPUB, MOBI, AZW3, FB2, CBZ, CBR); video and audio (MP4, MOV, MKV, WEBM, MP3, FLAC and more), video to GIF, every frame as pictures, hardware encoding and audio extraction; subtitles (SRT, ASS, WebVTT, SMI); data files (JSON, YAML, TOML, XML); 3D models (GLB, STL, OBJ, 3MF, FBX); maps and GPS data (GeoJSON, KML, GPX, Shapefile); archives (ZIP, 7Z, RAR, TAR); CAD drawings (DWG, DXF) and fonts (TTF, OTF, WOFF).
 
-It converts many files at once in parallel, and one failure doesn't stop the rest. Presets per file type set quality, size, rotation, DPI, metadata, PDF merging and splitting, ZIP packing, the output folder and file names. Large engines (FFmpeg, LibreOffice, calibre, Ghostscript, Pandoc) are optional: pick them in the installer or download them later in the app. No ads, no watermarks, no account and no file-size limits. The interface is available in English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese and Russian, with light and dark themes. Filee is open source under the MIT license.`,
+It converts many files at once in parallel, and one failure doesn't stop the rest. Presets per file type set quality, size, rotation, DPI, metadata, PDF merging and splitting, ZIP packing, the output folder and file names. Large engines (FFmpeg, LibreOffice, calibre, Ghostscript, Pandoc) are optional: pick them in the installer or download them later in the app. No ads, no watermarks, no account and no file-size limits. The interface is available in English, Spanish, Japanese, Korean, Simplified Chinese, Polish, Hindi, Russian, Arabic and Brazilian Portuguese, with light and dark themes. Filee also runs on Linux (x64 and ARM64) and, as a preview, on macOS 13+. It is open source under the MIT license.`,
 };
 
 const KEYWORDS = 'file converter, image converter, pdf converter, video converter, document converter, heic to jpg, '
@@ -112,10 +112,10 @@ export function padXml(release) {
     ${tag('Program_Cost_Other_Code', 'USD')}
     ${tag('Program_Cost_Other', '0')}
     ${tag('Program_Type', 'Freeware')}
-    ${tag('Program_Release_Status', 'Minor Update')}
+    ${tag('Program_Release_Status', /^\d+\.0\.0$/.test(release.version) ? 'Major Update' : 'Minor Update')}
     ${tag('Program_Install_Support', 'Install and Uninstall')}
     ${tag('Program_OS_Support', 'Windows 10,Windows 11')}
-    ${tag('Program_Language', 'English,Korean,Chinese,Polish,Spanish,Hindi,Japanese,Russian')}
+    ${tag('Program_Language', 'English,Spanish,Japanese,Korean,Chinese,Polish,Hindi,Russian,Arabic,Portuguese')}
     ${tag('Program_Change_Info', `See ${REPO}/releases/tag/v${release.version}`)}
     ${tag('Program_Specific_Category', 'File Converters')}
     ${tag('Program_Category_Class', 'Utilities::File & Disk Management')}

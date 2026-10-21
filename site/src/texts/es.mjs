@@ -145,6 +145,18 @@ export default dictionary([
   [`colours and textures`, `colores y texturas`],
   [`Colours, textures and materials are kept where the target format can hold them. STL keeps only the shape.`,
     `Los colores, las texturas y los materiales se conservan cuando el formato de destino los admite. STL solo guarda la forma.`],
+  [`HDR tone-mapped`, `mapeo de tonos HDR`],
+  [`HDR screenshots that Windows saves as JPEG XR are tone-mapped to normal brightness instead of being clipped.`,
+    `Las capturas de pantalla HDR que Windows guarda como JPEG XR se llevan a un brillo normal con mapeo de tonos, en lugar de recortar las luces.`],
+  [`Live Photo video`, `vídeo de Live Photo`],
+  [`The Extract Live Photo video preset saves the video of an iPhone Live Photo (a LIVP from iCloud, or a photo with its MOV) or an Android Motion Photo as MP4 or MOV. The other way round, the Live Photo (iPhone) and Motion Photo (Android) presets turn a short clip of a video into a moving photo; that is still experimental.`,
+    `El ajuste preestablecido «Extraer vídeo de Live Photo» guarda como MP4 o MOV el vídeo de una Live Photo de iPhone (un LIVP de iCloud o una foto con su MOV) o de una Motion Photo de Android. En sentido contrario, los ajustes preestablecidos «Live Photo (iPhone)» y «Motion Photo (Android)» convierten un fragmento corto de un vídeo en una foto en movimiento; esto todavía es experimental.`],
+  [`WGS 84 longitude / latitude`, `longitud / latitud WGS 84`],
+  [`Results are always in longitude and latitude (WGS 84). Shapefiles in UTM, Web Mercator, Lambert or Albers are converted, so they open in the right place; converting a file to its own format reprojects it.`,
+    `Los resultados siempre están en longitud y latitud (WGS 84). Los Shapefile en UTM, Web Mercator, Lambert o Albers se convierten para que se abran en el lugar correcto; convertir un archivo a su propio formato lo reproyecta.`],
+  [`save as ZIP`, `guardar como ZIP`],
+  [`A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.`,
+    `Un Shapefile son cinco archivos (.shp, .shx, .dbf, .prj y .cpg). Con «Guardar el resultado como ZIP» en un ajuste preestablecido, o con «Guardar todo resultado geoespacial como ZIP» en Ajustes → General, viajan juntos en un solo ZIP.`],
 
   // Camera RAW
   [`Canon CR2 RAW photo`, `Foto RAW Canon CR2`],
@@ -157,8 +169,8 @@ export default dictionary([
   // Images
   [`Images`, `Imágenes`],
   [`images`, `imágenes`],
-  [`Photos and graphics, including iPhone HEIC, Photoshop PSD, camera RAW from all major brands, animated APNG and DICOM. Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.`,
-    `Fotos y gráficos, incluidos HEIC de iPhone, PSD de Photoshop, RAW de cámara de las principales marcas, APNG animado y DICOM. Al convertir puedes cambiar el tamaño, girar, ajustar la calidad y los DPI o quitar los metadatos, o trazar una imagen a SVG.`],
+  [`Photos and graphics, including iPhone HEIC and Live Photos, Photoshop PSD, camera RAW from all major brands, animated APNG, DICOM and the HDR screenshots of Windows (JPEG XR). Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.`,
+    `Fotos y gráficos, incluidos HEIC y Live Photos de iPhone, PSD de Photoshop, RAW de cámara de las principales marcas, APNG animado, DICOM y las capturas HDR de Windows (JPEG XR). Al convertir puedes cambiar el tamaño, girar, ajustar la calidad y los DPI o quitar los metadatos, o trazar una imagen a SVG.`],
   [`JPEG image`, `Imagen JPEG`],
   [`JPEG is the most widely used photo format. Its lossy compression keeps files small, but every save at lower quality discards some detail, and it has no transparency.`,
     `JPEG es el formato de foto más usado. Su compresión con pérdida mantiene los archivos pequeños, pero cada guardado con menor calidad descarta algo de detalle, y no admite transparencia.`],
@@ -187,6 +199,9 @@ export default dictionary([
   [`ICNS is the icon format of macOS. Like ICO it bundles several sizes of one image, up to 1024×1024 for Retina displays, and is used for app icons on the Mac.`,
     `ICNS es el formato de iconos de macOS. Como ICO, agrupa varios tamaños de una imagen, hasta 1024×1024 para pantallas Retina, y se usa para los iconos de las apps en el Mac.`],
   [`Camera RAW`, `RAW de cámara`],
+  [`Windows only`, `solo en Windows`],
+  [`the photo of the Live Photo`, `la foto de la Live Photo`],
+  [`the video of the Live Photo`, `el vídeo de la Live Photo`],
 
   // Vector graphics
   [`Vector graphics`, `Gráficos vectoriales`],
@@ -214,8 +229,8 @@ export default dictionary([
   // Documents
   [`Documents`, `Documentos`],
   [`documents`, `documentos`],
-  [`Word documents without Microsoft Office, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).`,
-    `Documentos de Word sin Microsoft Office, formatos de procesadores de texto antiguos y poco comunes con el motor opcional LibreOffice, y correos electrónicos guardados (EML y Outlook MSG).`],
+  [`Word documents without Microsoft Office, Chinese OFD e-invoices, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).`,
+    `Documentos de Word sin Microsoft Office, facturas electrónicas chinas OFD, formatos de procesadores de texto antiguos y poco comunes con el motor opcional LibreOffice, y correos electrónicos guardados (EML y Outlook MSG).`],
   [`Word document`, `Documento de Word`],
   [`DOCX is the Microsoft Word format since Word 2007 (Office Open XML). It is the most common format for editable documents such as reports, letters and forms.`,
     `DOCX es el formato de Microsoft Word desde Word 2007 (Office Open XML). Es el formato más habitual para documentos editables como informes, cartas y formularios.`],
@@ -271,8 +286,8 @@ export default dictionary([
   // Text & markup
   [`Text & markup`, `Texto y marcado`],
   [`text and markup`, `texto y marcado`],
-  [`Plain text, Markdown and HTML to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.`,
-    `Texto sin formato, Markdown y HTML a PDF, Word, HWPX y EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter y otros lenguajes de marcado usan el motor opcional Pandoc, que también convierte Markdown en diapositivas de PowerPoint.`],
+  [`Plain text, Markdown, HTML and saved web pages (MHTML) to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.`,
+    `Texto sin formato, Markdown, HTML y páginas web guardadas (MHTML) a PDF, Word, HWPX y EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter y otros lenguajes de marcado usan el motor opcional Pandoc, que también convierte Markdown en diapositivas de PowerPoint.`],
   [`Plain text`, `Texto sin formato`],
   [`TXT is plain text without any formatting, the simplest and most portable document format. The only thing that can differ is the character encoding (UTF-8, UTF-16 or a legacy code page).`,
     `TXT es texto sin ningún formato, el formato de documento más sencillo y portátil. Lo único que puede variar es la codificación de caracteres (UTF-8, UTF-16 o una página de códigos antigua).`],
@@ -282,6 +297,9 @@ export default dictionary([
   [`Web page (HTML)`, `Página web (HTML)`],
   [`HTML is the language of web pages. A saved .html file opens in any browser, but how it looks depends on the browser and on linked styles and images, which may be missing offline.`,
     `HTML es el lenguaje de las páginas web. Un archivo .html guardado se abre en cualquier navegador, pero su aspecto depende del navegador y de los estilos e imágenes enlazados, que pueden faltar sin conexión.`],
+  [`LOG files and scripts (PY, PAC, BAT, COMMAND) are read as text and never run`,
+    `los archivos LOG y los scripts (PY, PAC, BAT, COMMAND) se leen como texto y nunca se ejecutan`],
+  [`the saved page, with its pictures`, `la página guardada, con sus imágenes`],
 
   // Data
   [`Data`, `Datos`],
@@ -399,8 +417,8 @@ export default dictionary([
   // 3D models
   [`3D models`, `Modelos 3D`],
   [`3D models [in running text]`, `modelos 3D`],
-  [`GLB, glTF, STL, OBJ, 3MF and PLY into each other, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.`,
-    `GLB, glTF, STL, OBJ, 3MF y PLY entre sí, con colores, texturas y materiales cuando el formato los conserva, y a una imagen sombreada en PNG o JPG. No hay nada que instalar.`],
+  [`GLB, glTF, STL, OBJ, 3MF and PLY into each other, and FBX into any of them, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.`,
+    `GLB, glTF, STL, OBJ, 3MF y PLY entre sí, y FBX a cualquiera de ellos, con colores, texturas y materiales cuando el formato los conserva, y a una imagen sombreada en PNG o JPG. No hay nada que instalar.`],
   [`glTF binary (GLB)`, `glTF binario (GLB)`],
   [`GLB is the one-file version of glTF, the 3D format of the web, AR and game engines. Meshes, materials and textures are packed into a single compact file.`,
     `GLB es la versión en un solo archivo de glTF, el formato 3D de la web, la realidad aumentada y los motores de videojuegos. Las mallas, los materiales y las texturas van en un único archivo compacto.`],
@@ -425,6 +443,14 @@ export default dictionary([
   [`Web font (WOFF2)`, `Tipografía web (WOFF2)`],
   [`WOFF2 is the compressed web font format supported by all modern browsers. It is typically about 30 % smaller than WOFF, so pages load faster.`,
     `WOFF2 es el formato comprimido de tipografías web compatible con todos los navegadores modernos. Suele ocupar un 30 % menos que WOFF, así que las páginas cargan más rápido.`],
+
+  // Geospatial data
+  [`Geospatial data`, `Datos geoespaciales`],
+  [`geospatial data`, `datos geoespaciales`],
+  [`Maps and GPS data: GeoJSON, KML, KMZ, GPX and Shapefile into each other and to CSV, Excel and JSON, and a CSV with coordinates back into a map file. Vector data only (points, lines and areas), always saved in longitude and latitude. Nothing to install.`,
+    `Mapas y datos GPS: GeoJSON, KML, KMZ, GPX y Shapefile entre sí y a CSV, Excel y JSON, y un CSV con coordenadas de vuelta a un archivo de mapa. Solo datos vectoriales (puntos, líneas y áreas), siempre guardados en longitud y latitud. No hay nada que instalar.`],
+  [`one row per feature, with its coordinates`, `una fila por elemento, con sus coordenadas`],
+  [`a CSV with longitude and latitude columns or WKT`, `un CSV con columnas de longitud y latitud o WKT`],
 
   // Camera RAW group (conversion pages)
   [`Camera RAW photo`, `Foto RAW de cámara`],
@@ -660,8 +686,8 @@ export default dictionary([
     `Los motores grandes no van en el instalador. Márcalos en la página de motores del instalador o descárgalos dentro de Filee cuando los necesites: {engineDetails}. Se guardan en la carpeta propia de Filee y se pueden quitar en cualquier momento, y la aplicación muestra sus versiones, la velocidad de descarga y el tiempo restante. Si FFmpeg, calibre, Pandoc, Ghostscript o LibreOffice ya están en tu PC (en el PATH, Scoop incluido, o en Program Files), Filee los usa y se salta la descarga, y te avisa cuando esa copia es más antigua que la versión con la que se ha probado. En Ajustes → Motores → Usar mi copia puedes elegir una concreta.`],
   [`Does installing Filee need administrator rights?`,
     `¿Instalar Filee requiere permisos de administrador?`],
-  [`Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. If you can't install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.`,
-    `Solo una vez, durante la instalación. El instalador pone Filee en Program Files para todos los usuarios y, en Windows 11, añade «Convertir con Filee» a la parte superior del menú del Explorador de archivos. Después, Filee se ejecuta con tu usuario normal. Si no puedes instalar programas, usa el ZIP portátil: descomprímelo en cualquier sitio y ejecuta Filee.exe.`],
+  [`Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. For silent installs, run the installer with /VERYSILENT /SUPPRESSMSGBOXES. If you can't install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.`,
+    `Solo una vez, durante la instalación. El instalador pone Filee en Program Files para todos los usuarios y, en Windows 11, añade «Convertir con Filee» a la parte superior del menú del Explorador de archivos. Después, Filee se ejecuta con tu usuario normal. Para una instalación silenciosa, ejecuta el instalador con /VERYSILENT /SUPPRESSMSGBOXES. Si no puedes instalar programas, usa el ZIP portátil: descomprímelo en cualquier sitio y ejecuta Filee.exe.`],
   [`Can I convert many files at once?`,
     `¿Puedo convertir muchos archivos a la vez?`],
   [`Yes. Select as many files as you like and drop them once: Filee converts them in parallel, a failed file never stops the others, and presets can merge everything into one PDF or pack it into one ZIP.`,
@@ -684,6 +710,6 @@ export default dictionary([
     `Los conversores en línea suben tus archivos al servidor de otra persona, a menudo limitan el tamaño y el número de archivos y dependen de una conexión rápida. Filee convierte en tu PC: los archivos privados siguen siendo privados, los vídeos grandes y los cientos de archivos no son ningún problema, y funciona sin internet, gratis y sin anuncios.`],
   [`Which operating systems are supported?`,
     `¿Qué sistemas operativos son compatibles?`],
-  [`Windows 10 and 11 (64-bit) is the stable release. macOS 14 or later (Apple silicon and Intel) and Linux (x64 and ARM64) are previews: the macOS app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security, and on Linux the drag gesture needs an X11 session (on Wayland, use the drop zone and the right-click action). Pick your system in the download section.`,
-    `La versión estable es para Windows 10 y 11 (64 bits). macOS 14 o posterior (Apple silicon e Intel) y Linux (x64 y ARM64) son versiones preliminares: la app de macOS aún no está notarizada, así que macOS te pide permitirla una vez en Privacidad y seguridad, y en Linux el gesto de arrastre necesita una sesión X11 (en Wayland, usa la zona de suelta y la acción del menú contextual). Elige tu sistema en la sección de descarga.`],
+  [`Windows 10 and 11 (64-bit) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager's right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.`,
+    `Windows 10 y 11 (64 bits) y Linux (x64 y ARM64, Ubuntu 22.04 o posterior) son versiones completas. En Linux, el gesto de arrastre necesita una sesión X11; en KDE Plasma con Wayland es experimental, y en otros escritorios Wayland funcionan la zona de suelta y el menú contextual del gestor de archivos. macOS 13 o posterior (Apple silicon e Intel) es una versión preliminar: la app aún no está notarizada, así que macOS te pide permitirla una vez en Privacidad y seguridad. Elige tu sistema en la sección de descarga.`],
 ]);

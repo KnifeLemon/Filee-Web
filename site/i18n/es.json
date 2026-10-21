@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Conversor de archivos gratis para Windows, sin conexión | Filee",
-    "description": "Conversor de archivos gratis para Windows (macOS y Linux en versión preliminar). Convierte imágenes, PDF, Word, Excel, vídeo, audio y HWP sin conexión.",
+    "description": "Conversor de archivos gratis para Windows y Linux (macOS en versión preliminar). Convierte imágenes, PDF, Word, Excel, vídeo, audio y HWP sin conexión.",
     "ogAlt": "Filee: al arrastrar un archivo se abre junto al cursor un menú circular de formatos",
     "appAlternateName": "Conversor de archivos Filee",
     "keywords": "conversor de archivos, conversor de archivos gratis, conversor sin conexión, conversor de archivos para Windows, conversor de imágenes, conversor de PDF, conversor de vídeo, conversor de audio, HEIC a JPG, PDF a Word, conversor HWP"
@@ -20,12 +20,12 @@
     "skip": "Saltar al contenido"
   },
   "hero": {
-    "badge": "Novedades de la {versionShort}: PDF a PowerPoint, comprimir PDF, cada fotograma de un vídeo, codificación por hardware",
+    "badge": "Novedades de la {versionShort}: arrastrar desde el navegador, recortar antes de convertir, el reverso del menú circular, Linux",
     "kicker": "Conversor de archivos gratis para Windows, macOS y Linux",
     "title": ["Arrastra.", "Suelta.", "Convertido."],
     "lead": "Convierte imágenes, PDF, archivos de Word, Excel y PowerPoint, vídeos, música, libros electrónicos, archivos comprimidos y mucho más, directamente en tu PC. Mantén pulsada una tecla, arrastra los archivos y suéltalos sobre un formato. Sin subidas, sin cuenta, gratis y de código abierto.",
     "download": "Elige una descarga",
-    "downloadNote": "Windows 10/11 · macOS y Linux en versión preliminar · Gratis",
+    "downloadNote": "Windows 10/11 · Linux · macOS en versión preliminar · Gratis",
     "sponsored": "Patrocinado por",
     "formats": "Explora {formatCount} formatos"
   },
@@ -95,14 +95,14 @@
     "title": "Lo que hace Filee",
     "items": [
       { "icon": "donut", "title": "Un menú circular junto al cursor", "text": "Los formatos aparecen donde ya estás, sin ninguna ventana de por medio. Se abre con una tecla modificadora, un botón del ratón, un gesto de mantener pulsado o un atajo de teclado. Una porción puede contener un grupo de ajustes preestablecidos." },
-      { "icon": "stack", "title": "{formatCount} formatos, un solo gesto", "text": "Imágenes, PDF, Word, Excel, PowerPoint, HWP, libros electrónicos, vídeo, audio, subtítulos, archivos de datos, modelos 3D, archivos comprimidos, planos CAD y tipografías. Filee planifica automáticamente el camino entre formatos." },
+      { "icon": "stack", "title": "{formatCount} formatos, un solo gesto", "text": "Imágenes, PDF, Word, Excel, PowerPoint, HWP, libros electrónicos, vídeo, audio, subtítulos, archivos de datos, modelos 3D, datos geoespaciales, archivos comprimidos, planos CAD y tipografías. Filee planifica automáticamente el camino entre formatos." },
       { "icon": "document", "title": "Sin Office", "text": "Los archivos de Word, Excel y PowerPoint se convierten sin Microsoft Office ni LibreOffice, y los HWP sin Hancom Office. Filee no usa Office ni Hancom Office aunque estén instalados." },
       { "icon": "doors", "title": "Conversión por lotes", "text": "Suelta 1 archivo o 100. Se convierten en paralelo, un fallo nunca detiene al resto y los ajustes preestablecidos pueden combinarlo todo en un PDF o un ZIP." },
       { "icon": "lock", "title": "100 % en tu PC", "text": "No se sube nada. Filee funciona sin conexión, así que tus documentos privados, fotos y grabaciones nunca salen de tu ordenador." },
       { "icon": "windows", "title": "Justo donde trabajas", "text": "El gesto de arrastre, «Convertir con Filee» en el menú contextual (en Windows 11 también en el menú principal), Enviar a, un atajo de teclado o la zona de suelta de la ventana principal." },
       { "icon": "sliders", "title": "Ajustes preestablecidos por tipo de archivo", "text": "Calidad, cambio de tamaño, girar y voltear, DPI, escala de grises, metadatos, quitar el fondo, trazar a SVG, compresión TIFF, tamaños de ICO, combinar y dividir PDF, rangos de páginas, compresión e imagen larga, 720p, vídeo HEVC y AV1, codificación por hardware, cada fotograma como imagen, tasa de bits de MP3, carpeta de salida, nombres de archivo y fechas originales de los archivos." },
       { "icon": "download", "title": "Motores a demanda", "text": "Los motores grandes son opcionales. Márcalos en el instalador o descárgalos después en la aplicación: {engineNames}. Filee muestra sus versiones, la velocidad de descarga y el tiempo restante. ¿Ya tienes FFmpeg, calibre o Pandoc? Filee los encuentra y se salta la descarga." },
-      { "icon": "code", "title": "Gratis y de código abierto", "text": "Licencia MIT, sin anuncios ni cuenta. En inglés, coreano, chino simplificado, polaco, español, hindi, japonés y ruso. Filee te avisa de las versiones nuevas; cada versión enumera sus cambios y colaboradores." }
+      { "icon": "code", "title": "Gratis y de código abierto", "text": "Licencia MIT, sin anuncios ni cuenta. En English, Español, 日本語, 한국어, 简体中文, Polski, हिन्दी, Русский, العربية y Português (Brasil). Filee te avisa de las versiones nuevas; cada versión enumera sus cambios y colaboradores." }
     ]
   },
   "formats": {
@@ -139,13 +139,13 @@
       ["Precio", "Gratis"],
       ["Licencia", "MIT (código abierto)"],
       ["Versión", "{version}"],
-      ["Plataforma", "Windows 10/11 x64 · macOS 14+ y Linux x64/ARM64 (versión preliminar)"],
+      ["Plataforma", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (versión preliminar)"],
       ["Funciona sin conexión", "Sí, los archivos nunca salen de tu PC"],
       ["Formatos", "{formatTotal} en {categoryCount|one:# categoría|other:# categorías}"],
       ["Integrados", "{builtinTotal|one:# formato|other:# formatos}, sin nada más que instalar"],
       ["Motores opcionales", "{engineNames}"],
       ["Línea de comandos", "filee convert y filee watch, añadidos al PATH por el instalador"],
-      ["Idiomas", "Inglés, coreano, chino simplificado, polaco, español, hindi, japonés, ruso"],
+      ["Idiomas", "English, Español, 日本語, 한국어, 简体中文, Polski, हिन्दी, Русский, العربية, Português (Brasil)"],
       ["Actualizaciones", "Se instalan desde la propia aplicación con un clic; cada una indica si es obligatoria, recomendada u opcional"]
     ]
   },
@@ -153,6 +153,7 @@
     "title": "Descargar Filee",
     "text": "La mayoría de los formatos se convierten nada más instalar.\nLos motores para vídeo, audio y formatos poco comunes se añaden en la aplicación cuando los necesites.",
     "button": "Descargar para Windows",
+    "linuxButton": "Descargar para Linux",
     "selector": "Sistema operativo y procesador",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
@@ -161,7 +162,7 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "macOS y Linux están en versión preliminar.",
+    "platformNote": "macOS está en versión preliminar. Linux necesita Ubuntu 22.04 o posterior; los gestos de arrastre requieren X11 (experimental en KDE Plasma con Wayland).",
     "developmentLabel": "Versión preliminar",
     "developmentButton": "Descargar la versión preliminar",
     "checking": "Comprobando los archivos de la versión…",
@@ -218,7 +219,7 @@
   },
   "catalog": {
     "title": "Formatos de archivo compatibles: {formatTotal} en {categoryCount|one:# categoría|other:# categorías} | Filee",
-    "description": "Los {formatTotal} formatos que Filee convierte en Windows: imágenes, PDF, documentos, HWP, vídeo, audio, subtítulos, datos, 3D, libros electrónicos, CAD y más.",
+    "description": "Los {formatTotal} formatos que Filee convierte: imágenes, PDF, documentos, HWP, vídeo, audio, subtítulos, datos, 3D, datos geoespaciales, libros electrónicos, CAD y más.",
     "crumb": "Formatos",
     "h1": "Catálogo de formatos",
     "lead": "{formatTotal|one:# formato|other:# formatos} en {categoryCount|one:# categoría|other:# categorías}. De ellos, {builtinTotal|one:# funciona|other:# funcionan} nada más instalar; el resto usa un motor opcional gratuito que Filee descarga solo cuando lo necesitas.",

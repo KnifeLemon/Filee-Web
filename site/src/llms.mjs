@@ -17,8 +17,8 @@ function facts(languages) {
   const s = stats();
   const v = vars(EN);
   return [
-    `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (64-bit), with preview builds for macOS 14+ and Linux (x64 and ARM64). It converts files offline on the user's own computer; files are never uploaded.`,
-    `Windows x64 is the stable release. macOS (Apple silicon and Intel) and Linux (x64 and ARM64) packages are previews: the macOS app is not notarized yet, and on Linux the drag gesture needs an X11 session. The format counts, examples and screenshots describe Windows.`,
+    `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (64-bit) and Linux (x64 and ARM64), with a preview build for macOS 13+. It converts files offline on the user's own computer; files are never uploaded.`,
+    `Windows x64 and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and other Wayland desktops use the drop zone and the file manager's right-click menu. macOS 13+ packages (Apple silicon and Intel) are previews: the app is not notarized yet. The format counts, examples and screenshots describe Windows (JPEG XR, EMF/WMF and the Explorer menu are Windows only).`,
     `Filee converts ${s.formatTotal} file formats in ${s.categoryCount} categories: ${v.categoryList}.`,
     `${s.builtinTotal} of those formats work right after installation. The others use optional engines, picked in the installer or downloaded inside the app when needed: ${engineDetails(EN)}.`,
     `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files. It never uses Microsoft Office or Hancom Office. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
@@ -28,8 +28,8 @@ function facts(languages) {
     `Command line: Setup can add the "filee" command to PATH. "filee convert <files, wildcards or folders> --to <format>" (or "--preset <preset>") converts with the app's engines and presets; "--json" prints the result for scripts; exit codes are 0 (nothing failed), 1 (some files failed), 2 (wrong arguments or a missing input) and 3 (nothing to convert). "filee watch <folder> --to <format>" converts files that land in a folder. Guide: ${SITE}/cli/`,
     `Watch folders: files that land in a chosen folder are converted automatically once they are complete, set up in the app or with "filee watch"; the originals can stay or move to an "originals" folder.`,
     `Presets per file type: quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG (raster images to vector SVG, built in), TIFF compression, ICO sizes, PDF merge, split, page ranges and compression (Compress PDF: pictures at 72, 150 or 300 dpi, built in), 720p, HEVC and AV1 video, hardware video encoding (H.264 and HEVC on NVENC, Quick Sync, AMF, VideoToolbox or VA-API), every frame of a video saved as PNG or JPG pictures, MP3 bitrate, output folder and file names. A donut slice can hold a group of presets.`,
-    `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Korean, Simplified Chinese, Polish, Spanish, Hindi, Japanese and Russian.`,
-    `Current version: ${VERSION}. The installer (Filee-<version>-win-Setup.exe) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in and optional engines; a portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. When a new version is out on GitHub Releases, the installed app downloads it, checks its SHA-256 and installs it after one click, keeping settings and engines; the portable ZIP is replaced by hand.`,
+    `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Spanish (Español), Japanese (日本語), Korean (한국어), Simplified Chinese (简体中文), Polish (Polski), Hindi (हिन्दी), Russian (Русский), Arabic (العربية, right to left) and Brazilian Portuguese (Português (Brasil)).`,
+    `Current version: ${VERSION}. On Windows, Filee's own installer (Filee-<version>-win-Setup.exe, in the app's languages) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in, the filee command and optional engines; silent installs use /VERYSILENT /SUPPRESSMSGBOXES. A portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. Linux and macOS packages (Filee-<version>-linux-x64.tar.gz, linux-arm64, osx-arm64, osx-x64) are unpacked and installed with ./install.sh. When a new version is out on GitHub Releases, the installed app downloads it, checks its SHA-256 and installs it after one click, keeping settings and engines; the portable ZIP is replaced by hand.`,
     `Website: ${languages.map(l => `${SITE}${l.path} (${l.englishName})`).join(', ')}.`,
   ].filter(Boolean);
 }
@@ -49,7 +49,7 @@ export function llmsTxt(languages) {
   const t = en(languages);
   return `# Filee
 
-> Filee is a free, open-source (MIT) file converter for Windows 10 and 11. It converts images, PDF, Word, Excel and PowerPoint files, Korean HWP/HWPX, e-books, video, audio, subtitles, data files, 3D models, archives, CAD drawings and fonts offline on your PC: hold a key, drag files and drop them on a format.
+> Filee is a free, open-source (MIT) file converter for Windows 10 and 11 and Linux (macOS preview). It converts images, PDF, Word, Excel and PowerPoint files, Korean HWP/HWPX, e-books, video, audio, subtitles, data files, 3D models, geospatial data, archives, CAD drawings and fonts offline on your PC: hold a key, drag files and drop them on a format.
 
 ${facts(languages).map(line => `- ${line}`).join('\n')}
 
@@ -66,7 +66,7 @@ ${PAIRS.map(p => `- [${pairMeta(t, p).h1}](${SITE}${paths.convert(t, pairSlug(p)
 ## Download
 
 - [Windows installer, latest release](${DOWNLOAD}) (free; Windows 10/11, x64)
-- [Choose an operating system and processor](${SITE}/#download) (macOS and Linux are previews)
+- [Choose an operating system and processor](${SITE}/#download) (Linux x64/ARM64 for Ubuntu 22.04+; macOS 13+ is a preview)
 - [All releases and release notes](${REPO}/releases)
 
 ## Website
@@ -87,7 +87,7 @@ export function llmsFullTxt(languages) {
   const v = vars(EN);
   return `# Filee: full format catalog, engines and FAQ
 
-> Filee is a free, open-source (MIT) file converter for Windows 10 and 11 that converts ${s.formatTotal} file formats offline on the user's own PC. This file lists every format Filee ${VERSION} reads, what each converts to, which engine does the work, the conversion guides and the FAQ. Short version: ${SITE}/llms.txt
+> Filee is a free, open-source (MIT) file converter for Windows 10 and 11 and Linux (macOS preview) that converts ${s.formatTotal} file formats offline on the user's own PC. This file lists every format Filee ${VERSION} reads, what each converts to, which engine does the work, the conversion guides and the FAQ. Short version: ${SITE}/llms.txt
 
 ## Facts
 

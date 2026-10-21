@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "무료 파일 변환기 Filee | 이미지·PDF·동영상·문서·HWP 변환 프로그램",
-    "description": "이미지·PDF·동영상·오디오·문서·HWP·전자책·압축 파일을 끌어다 놓기만 하면 바로 변환하는 무료 파일 변환기. 업로드 없이 내 PC에서 오프라인으로 변환합니다.",
+    "description": "Windows·Linux용 무료 파일 변환기(macOS 미리보기). 이미지·PDF·동영상·오디오·문서·HWP·전자책·압축 파일을 끌어다 놓으면 업로드 없이 오프라인으로 변환합니다.",
     "ogAlt": "Filee: 파일을 끌면 커서 위치에 변환 형식 도넛이 열립니다",
     "appAlternateName": "Filee 파일 변환기",
     "keywords": "파일 변환기, 파일 변환 프로그램, 무료 파일 변환, 확장자 변환, 이미지 변환, PDF 변환, 동영상 변환, HWP 변환, HEIC JPG 변환, 한글 PDF 변환"
@@ -20,12 +20,12 @@
     "skip": "본문으로 건너뛰기"
   },
   "hero": {
-    "badge": "{versionShort} 새 기능: PDF → 파워포인트, PDF 압축, 동영상 프레임 추출, 하드웨어 인코딩",
+    "badge": "{versionShort} 새 기능: 브라우저에서 바로 끌기, 변환 전 자르기, 도넛 뒷면, Linux",
     "kicker": "Windows·macOS·Linux용 무료 파일 변환기",
     "title": ["끌어서", "놓으면,", "변환 끝."],
     "lead": "이미지, PDF, 워드·엑셀·파워포인트, 동영상, 음악, 전자책, 압축 파일까지 내 PC에서 바로 변환하세요. 키를 누른 채 파일을 끌어다 원하는 형식에 놓으면 끝. 업로드도, 가입도 없는 무료 오픈소스입니다.",
     "download": "다운로드 선택",
-    "downloadNote": "Windows 10/11 · macOS·Linux 미리보기 · 무료",
+    "downloadNote": "Windows 10/11 · Linux · macOS 미리보기 · 무료",
     "sponsored": "후원사",
     "formats": "지원 형식 {formatTotal}가지 보기"
   },
@@ -95,14 +95,14 @@
     "title": "변환기에 필요한 건 다, 필요 없는 건 없이",
     "items": [
       { "icon": "donut", "title": "커서 위에 뜨는 도넛", "text": "프로그램 창을 열 필요가 없어요. 수정키, 마우스 버튼, 길게 누르기, 단축키 중 무엇으로든 지금 커서 위치에 형식이 열려요. 한 칸에 프리셋 여러 개를 묶어 둘 수도 있어요." },
-      { "icon": "stack", "title": "{formatTotal}가지 형식, 동작 하나", "text": "이미지, PDF, 워드·엑셀·파워포인트, 한글, 전자책, 동영상, 오디오, 자막, 데이터 파일, 3D 모델, 압축 파일, CAD 도면, 글꼴까지. 형식 사이의 변환 경로는 Filee가 알아서 찾아요." },
+      { "icon": "stack", "title": "{formatTotal}가지 형식, 동작 하나", "text": "이미지, PDF, 워드·엑셀·파워포인트, 한글, 전자책, 동영상, 오디오, 자막, 데이터 파일, 3D 모델, 지리 정보, 압축 파일, CAD 도면, 글꼴까지. 형식 사이의 변환 경로는 Filee가 알아서 찾아요." },
       { "icon": "document", "title": "오피스 없어도 OK", "text": "워드·엑셀·파워포인트 파일은 MS 오피스나 LibreOffice 없이, 한글 파일은 한컴오피스 없이 변환해요. 오피스나 한컴오피스가 설치되어 있어도 쓰지 않아요." },
       { "icon": "doors", "title": "일괄 변환", "text": "1개든 100개든 한 번에. 여러 파일을 동시에 변환하고, 하나가 실패해도 나머지는 계속 변환해요. PDF 하나나 ZIP 하나로 묶을 수도 있어요." },
       { "icon": "lock", "title": "100% 내 PC에서", "text": "아무것도 업로드하지 않아요. 인터넷 없이 동작해 개인 문서·사진·녹음 파일이 PC 밖으로 나가지 않아요." },
       { "icon": "windows", "title": "쓰던 자리에서 바로", "text": "드래그 동작, 우클릭 메뉴의 Filee 변환(Windows 11은 첫 메뉴에도), 보내기 메뉴, 단축키, 메인 창의 드롭 영역 어디서든 변환할 수 있어요." },
       { "icon": "sliders", "title": "파일 종류별 프리셋", "text": "품질, 크기 조정, 회전·뒤집기, DPI, 흑백, 메타데이터, 배경 제거, SVG 벡터화, TIFF 압축, ICO 크기, PDF 합치기·나누기·페이지 범위·압축·긴 이미지, 720p·HEVC·AV1 동영상, 하드웨어 인코딩, 동영상 프레임 추출, MP3 비트레이트, 저장 위치, 파일 이름, 원본 파일 날짜 유지까지 프리셋으로 정해 둘 수 있어요." },
       { "icon": "download", "title": "엔진은 필요할 때만", "text": "큰 엔진({engineNames})은 설치할 때 고르거나 나중에 앱에서 받는 추가 기능이에요. 버전과 다운로드 속도, 남은 시간도 보여 줘요. FFmpeg, calibre, Pandoc이 이미 있으면 알아서 찾아 쓰고 내려받지 않아요." },
-      { "icon": "code", "title": "무료 오픈소스", "text": "MIT 라이선스이고, 광고도 가입도 없어요. 한국어·영어·중국어 간체·폴란드어·스페인어·힌디어·일본어·러시아어를 지원하고, 새 버전이 나오면 알려 드려요. 릴리스마다 변경 사항과 기여자를 정리해 둬요." }
+      { "icon": "code", "title": "무료 오픈소스", "text": "MIT 라이선스이고, 광고도 가입도 없어요. English·Español·日本語·한국어·简体中文·Polski·हिन्दी·Русский·العربية·Português (Brasil)로 쓸 수 있고, 새 버전이 나오면 알려 드려요. 릴리스마다 변경 사항과 기여자를 정리해 둬요." }
     ]
   },
   "formats": {
@@ -139,13 +139,13 @@
       ["가격", "무료"],
       ["라이선스", "MIT (오픈소스)"],
       ["버전", "{version}"],
-      ["운영체제", "Windows 10/11 x64 · macOS 14 이상, Linux x64/ARM64(미리보기)"],
+      ["운영체제", "Windows 10/11 x64 · Linux x64/ARM64(Ubuntu 22.04 이상) · macOS 13 이상(미리보기)"],
       ["오프라인", "지원 (파일이 PC 밖으로 나가지 않음)"],
       ["지원 형식", "{categoryCount}개 분야 {formatTotal}가지"],
       ["기본 내장", "{builtinTotal}가지 형식은 추가 설치 없이"],
       ["추가 엔진", "{engineNames}"],
       ["명령줄", "filee convert, filee watch (설치할 때 PATH에 추가)"],
-      ["언어", "한국어, 영어, 중국어 간체, 폴란드어, 스페인어, 힌디어, 일본어, 러시아어"],
+      ["언어", "English, Español, 日本語, 한국어, 简体中文, Polski, हिन्दी, Русский, العربية, Português (Brasil)"],
       ["업데이트", "버튼 한 번으로 앱 안에서 설치, 필수·권장·선택 여부 표시"]
     ]
   },
@@ -153,6 +153,7 @@
     "title": "지금 바로 시작하세요",
     "text": "설치하면 대부분의 형식을 바로 변환해요.\n동영상·오디오나 드문 형식용 엔진은 필요할 때 앱에서 받아요.",
     "button": "Windows용 다운로드",
+    "linuxButton": "Linux용 다운로드",
     "selector": "운영체제와 프로세서",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
@@ -161,7 +162,7 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "macOS와 Linux는 미리보기 버전이에요.",
+    "platformNote": "macOS는 미리보기 버전이에요. Linux는 Ubuntu 22.04 이상이 필요하고, 드래그 제스처는 X11에서 작동해요(KDE Plasma의 Wayland에서는 실험 기능).",
     "developmentLabel": "미리보기",
     "developmentButton": "미리보기 다운로드",
     "checking": "배포 파일 확인 중…",
@@ -218,7 +219,7 @@
   },
   "catalog": {
     "title": "지원 형식 전체 목록: {formatTotal}가지 파일 형식 변환 | Filee",
-    "description": "Filee가 지원하는 {formatTotal}가지 형식. 이미지·PDF·문서·HWP·동영상·오디오·자막·데이터·3D·전자책·압축·CAD·글꼴을 무엇으로 바꿀 수 있는지 한눈에 보세요.",
+    "description": "Filee가 지원하는 {formatTotal}가지 형식. 이미지·PDF·문서·HWP·동영상·오디오·자막·데이터·3D·지리 정보·전자책·압축·CAD·글꼴을 무엇으로 바꿀 수 있는지 한눈에 보세요.",
     "crumb": "지원 형식",
     "h1": "지원 형식 목록",
     "lead": "{categoryCount}개 분야, {formatTotal}가지 형식. 이 중 {builtinTotal}가지는 설치 직후 바로 쓸 수 있고, 나머지는 필요할 때만 받는 무료 추가 엔진을 씁니다.",

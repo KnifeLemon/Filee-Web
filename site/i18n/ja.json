@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "無料ファイル変換ソフト Filee | Windowsでオフライン変換",
-    "description": "Windows用の無料ファイル変換ソフト（macOS・Linuxはプレビュー版）。画像、PDF、Word、Excel、動画、音声、電子書籍、HWPを、ドラッグ＆ドロップでオフライン変換。",
+    "description": "Windows・Linux用の無料ファイル変換ソフト（macOSはプレビュー版）。画像、PDF、Word、Excel、動画、音声、電子書籍、HWPを、ドラッグ＆ドロップでオフライン変換。",
     "ogAlt": "Filee：ファイルをドラッグすると、カーソル位置に形式のドーナツメニューが開く",
     "appAlternateName": "Filee ファイル変換ソフト",
     "keywords": "ファイル変換, ファイル変換ソフト, 無料 ファイル変換, オフライン ファイル変換, 拡張子 変換, 画像変換, PDF変換, 動画変換, 音声変換, HEIC JPG 変換, PDF Word 変換, フリーソフト"
@@ -20,12 +20,12 @@
     "skip": "本文へスキップ"
   },
   "hero": {
-    "badge": "{versionShort}の新機能：PDF→PowerPoint、PDF圧縮、動画の全フレーム保存、ハードウェアエンコード",
+    "badge": "{versionShort}の新機能：ブラウザーから直接ドラッグ、変換前のトリミング、ドーナツメニューの裏面、Linux",
     "kicker": "Windows・macOS・Linux対応の無料ファイル変換ソフト",
     "title": ["ドラッグ。", "ドロップ。", "変換完了。"],
     "lead": "画像、PDF、Word・Excel・PowerPointファイル、動画、音楽、電子書籍、アーカイブなどを、お使いのPC上でそのまま変換できます。キーを押しながらファイルをドラッグし、形式の上でドロップするだけ。アップロードもアカウントも不要で、無料のオープンソースです。",
     "download": "ダウンロードを選ぶ",
-    "downloadNote": "Windows 10/11 · macOS・Linuxはプレビュー版 · 無料",
+    "downloadNote": "Windows 10/11 · Linux · macOSはプレビュー版 · 無料",
     "sponsored": "スポンサー",
     "formats": "{formatCount}種類の対応形式を見る"
   },
@@ -95,14 +95,14 @@
     "title": "Fileeでできること",
     "items": [
       { "icon": "donut", "title": "カーソル位置にドーナツメニュー", "text": "アプリのウィンドウを開かなくても、今いる場所に形式が表示されます。修飾キー、マウスボタン、長押し、キーボードショートカットで開けます。1つのスライスにプリセットのグループをまとめることもできます。" },
-      { "icon": "stack", "title": "{formatCount}種類の形式を1つの操作で", "text": "画像、PDF、Word、Excel、PowerPoint、HWP、電子書籍、動画、音声、字幕、データファイル、3Dモデル、アーカイブ、CAD図面、フォント。形式間の変換経路はFileeが自動で決めます。" },
+      { "icon": "stack", "title": "{formatCount}種類の形式を1つの操作で", "text": "画像、PDF、Word、Excel、PowerPoint、HWP、電子書籍、動画、音声、字幕、データファイル、3Dモデル、地理空間データ、アーカイブ、CAD図面、フォント。形式間の変換経路はFileeが自動で決めます。" },
       { "icon": "document", "title": "Office不要", "text": "Word・Excel・PowerPointファイルはMicrosoft OfficeやLibreOfficeなしで、HWPはHancom Officeなしで変換できます。OfficeやHancom Officeがインストールされていても、Fileeはそれらを使いません。" },
       { "icon": "doors", "title": "一括変換", "text": "1ファイルでも100ファイルでもドロップできます。並列で変換し、1つが失敗してもほかの変換は止まりません。プリセットで、すべてを1つのPDFや1つのZIPにまとめることもできます。" },
       { "icon": "lock", "title": "100%お使いのPC上で", "text": "何もアップロードしません。Fileeはオフラインで動作するので、大切な文書、写真、録音がPCの外に出ることはありません。" },
       { "icon": "windows", "title": "いつもの場所から", "text": "ドラッグ操作、右クリックメニューの「Fileeで変換」（Windows 11ではメインメニューにも表示可能）、「送る」、キーボードショートカット、メインウィンドウのドロップ領域から変換できます。" },
       { "icon": "sliders", "title": "ファイルの種類ごとのプリセット", "text": "品質、サイズ変更、回転・反転、DPI、グレースケール、メタデータ、背景の削除、SVGトレース、TIFF圧縮、ICOのサイズ、PDFの結合・分割・ページ範囲・圧縮・縦長の画像、720p・HEVC・AV1動画、ハードウェアエンコード、全フレームの画像保存、MP3のビットレート、保存先フォルダー、ファイル名、元のファイルの日付。" },
       { "icon": "download", "title": "エンジンは必要なときに", "text": "容量の大きいエンジンは任意です。インストーラーで選ぶか、あとからアプリ内でダウンロードできます：{engineNames}。バージョン、ダウンロード速度、残り時間も表示します。FFmpeg、calibre、Pandocをすでにお持ちなら、Fileeがそれを見つけて使うので、ダウンロードは不要です。" },
-      { "icon": "code", "title": "無料のオープンソース", "text": "MITライセンスで、広告もアカウントもありません。日本語、英語、韓国語、簡体字中国語、ポーランド語、スペイン語、ヒンディー語、ロシア語に対応。新しいバージョンが出るとお知らせし、リリースごとに変更点と貢献者を紹介しています。" }
+      { "icon": "code", "title": "無料のオープンソース", "text": "MITライセンスで、広告もアカウントもありません。English、Español、日本語、한국어、简体中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)に対応。新しいバージョンが出るとお知らせし、リリースごとに変更点と貢献者を紹介しています。" }
     ]
   },
   "formats": {
@@ -139,13 +139,13 @@
       ["価格", "無料"],
       ["ライセンス", "MIT（オープンソース）"],
       ["バージョン", "{version}"],
-      ["プラットフォーム", "Windows 10/11 x64 · macOS 14以降、Linux x64/ARM64（プレビュー版）"],
+      ["プラットフォーム", "Windows 10/11 x64 · Linux x64/ARM64（Ubuntu 22.04以降） · macOS 13以降（プレビュー版）"],
       ["オフライン動作", "対応。ファイルがPCの外に出ることはありません"],
       ["対応形式", "{categoryCount}カテゴリー、{formatTotal}種類"],
       ["内蔵", "{builtinTotal}種類の形式は追加インストール不要"],
       ["追加エンジン", "{engineNames}"],
       ["コマンドライン", "filee convert、filee watch（セットアップ時にPATHへ追加）"],
-      ["言語", "日本語、英語、韓国語、簡体字中国語、ポーランド語、スペイン語、ヒンディー語、ロシア語"],
+      ["言語", "English、Español、日本語、한국어、简体中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)"],
       ["アップデート", "ワンクリックでアプリ内からインストール。必須・推奨・任意を表示"]
     ]
   },
@@ -153,6 +153,7 @@
     "title": "Fileeをダウンロード",
     "text": "ほとんどの形式は、インストール後すぐに変換できます。\n動画・音声や一般的でない形式用のエンジンは、必要になったときにアプリ内で追加できます。",
     "button": "Windows版をダウンロード",
+    "linuxButton": "Linux版をダウンロード",
     "selector": "OSとプロセッサー",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
@@ -161,7 +162,7 @@
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
       "osx-x64": "macOS · Intel (x64)"
     },
-    "platformNote": "macOSとLinuxはプレビュー版です。",
+    "platformNote": "macOSはプレビュー版です。LinuxはUbuntu 22.04以降が必要で、ドラッグジェスチャーにはX11が必要です（KDE PlasmaのWaylandでは実験的機能）。",
     "developmentLabel": "プレビュー版",
     "developmentButton": "プレビュー版をダウンロード",
     "checking": "リリースファイルを確認中…",
@@ -218,7 +219,7 @@
   },
   "catalog": {
     "title": "対応ファイル形式一覧：{formatTotal}種類・{categoryCount}カテゴリー | Filee",
-    "description": "FileeがWindowsで変換できる全{formatTotal}種類の形式：画像、PDF、文書、HWP、動画、音声、字幕、データ、3D、電子書籍、アーカイブ、CAD、フォントと、それぞれの変換先。",
+    "description": "Fileeが変換できる全{formatTotal}種類の形式：画像、PDF、文書、HWP、動画、音声、字幕、データ、3D、地理空間データ、電子書籍、アーカイブ、CAD、フォントと、それぞれの変換先。",
     "crumb": "対応形式",
     "h1": "対応形式カタログ",
     "lead": "{categoryCount}カテゴリー、{formatTotal}種類の形式に対応しています。そのうち{builtinTotal}種類はインストール後すぐに使え、残りは必要なときだけFileeがダウンロードする無料の追加エンジンを使います。",

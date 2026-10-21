@@ -145,6 +145,18 @@ export default dictionary([
   [`colours and textures`, `रंग और टेक्सचर`],
   [`Colours, textures and materials are kept where the target format can hold them. STL keeps only the shape.`,
     `जहाँ टारगेट फ़ॉर्मैट उन्हें रख सकता है, वहाँ रंग, टेक्सचर और मटीरियल बने रहते हैं। STL केवल आकृति रखता है।`],
+  [`HDR tone-mapped`, `HDR टोन मैपिंग`],
+  [`HDR screenshots that Windows saves as JPEG XR are tone-mapped to normal brightness instead of being clipped.`,
+    `Windows जिन HDR स्क्रीनशॉट को JPEG XR के रूप में सेव करता है, उनके चमकीले हिस्से काटे नहीं जाते, बल्कि टोन मैपिंग से उन्हें सामान्य ब्राइटनेस पर लाया जाता है।`],
+  [`Live Photo video`, `लाइव फ़ोटो वीडियो`],
+  [`The Extract Live Photo video preset saves the video of an iPhone Live Photo (a LIVP from iCloud, or a photo with its MOV) or an Android Motion Photo as MP4 or MOV. The other way round, the Live Photo (iPhone) and Motion Photo (Android) presets turn a short clip of a video into a moving photo; that is still experimental.`,
+    `“लाइव फ़ोटो वीडियो निकालें” प्रीसेट iPhone लाइव फ़ोटो (iCloud से मिली LIVP फ़ाइल, या अपनी MOV फ़ाइल के साथ रखी फ़ोटो) या Android मोशन फ़ोटो का वीडियो MP4 या MOV के रूप में सेव करता है। उल्टी दिशा में, “लाइव फ़ोटो (iPhone)” और “मोशन फ़ोटो (Android)” प्रीसेट किसी वीडियो के छोटे हिस्से को चलती फ़ोटो में बदलते हैं; यह सुविधा अभी प्रायोगिक है।`],
+  [`WGS 84 longitude / latitude`, `WGS 84 देशांतर / अक्षांश`],
+  [`Results are always in longitude and latitude (WGS 84). Shapefiles in UTM, Web Mercator, Lambert or Albers are converted, so they open in the right place; converting a file to its own format reprojects it.`,
+    `नतीजे हमेशा देशांतर और अक्षांश (WGS 84) में होते हैं। UTM, Web Mercator, Lambert या Albers वाली Shapefile फ़ाइलें बदली जाती हैं, ताकि वे सही जगह पर खुलें; किसी फ़ाइल को उसी के फ़ॉर्मैट में कन्वर्ट करने पर उसे रीप्रोजेक्ट किया जाता है।`],
+  [`save as ZIP`, `ZIP में सेव`],
+  [`A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.`,
+    `Shapefile पाँच फ़ाइलों (.shp, .shx, .dbf, .prj और .cpg) से बनती है। प्रीसेट में “नतीजे को ZIP के रूप में सहेजें” या सेटिंग्स → सामान्य में “हर भू-स्थानिक नतीजे को ZIP के रूप में सहेजें” चालू करने पर ये सब एक ही ZIP में साथ रहती हैं।`],
 
   // Camera RAW
   [`Canon CR2 RAW photo`, `Canon CR2 RAW फ़ोटो`],
@@ -157,8 +169,8 @@ export default dictionary([
   // Images
   [`Images`, `इमेज`],
   [`images`, `इमेज`],
-  [`Photos and graphics, including iPhone HEIC, Photoshop PSD, camera RAW from all major brands, animated APNG and DICOM. Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.`,
-    `फ़ोटो और ग्राफ़िक्स, जिनमें iPhone HEIC, Photoshop PSD, सभी बड़े ब्रांड के कैमरा RAW, एनिमेटेड APNG और DICOM शामिल हैं। कन्वर्ट करते समय आकार बदलें, घुमाएँ, क्वालिटी और DPI तय करें या मेटाडेटा हटाएँ, या किसी तस्वीर को SVG में ट्रेस करें।`],
+  [`Photos and graphics, including iPhone HEIC and Live Photos, Photoshop PSD, camera RAW from all major brands, animated APNG, DICOM and the HDR screenshots of Windows (JPEG XR). Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.`,
+    `फ़ोटो और ग्राफ़िक्स, जिनमें iPhone HEIC और लाइव फ़ोटो, Photoshop PSD, सभी बड़े ब्रांड के कैमरा RAW, एनिमेटेड APNG, DICOM और Windows के HDR स्क्रीनशॉट (JPEG XR) शामिल हैं। कन्वर्ट करते समय आकार बदलें, घुमाएँ, क्वालिटी और DPI तय करें या मेटाडेटा हटाएँ, या किसी तस्वीर को SVG में ट्रेस करें।`],
   [`JPEG image`, `JPEG इमेज`],
   [`JPEG is the most widely used photo format. Its lossy compression keeps files small, but every save at lower quality discards some detail, and it has no transparency.`,
     `JPEG सबसे ज़्यादा इस्तेमाल होने वाला फ़ोटो फ़ॉर्मैट है। इसका लॉसी कंप्रेशन फ़ाइलों को छोटा रखता है, लेकिन कम क्वालिटी पर हर बार सेव करने से कुछ विवरण खो जाता है, और इसमें पारदर्शिता नहीं होती।`],
@@ -187,6 +199,9 @@ export default dictionary([
   [`ICNS is the icon format of macOS. Like ICO it bundles several sizes of one image, up to 1024×1024 for Retina displays, and is used for app icons on the Mac.`,
     `ICNS, macOS का आइकन फ़ॉर्मैट है। ICO की तरह इसमें एक इमेज के कई आकार होते हैं, Retina डिस्प्ले के लिए 1024×1024 तक, और Mac पर ऐप आइकन के लिए इसका इस्तेमाल होता है।`],
   [`Camera RAW`, `कैमरा RAW`],
+  [`Windows only`, `केवल Windows`],
+  [`the photo of the Live Photo`, `लाइव फ़ोटो की फ़ोटो`],
+  [`the video of the Live Photo`, `लाइव फ़ोटो का वीडियो`],
 
   // Vector graphics
   [`Vector graphics`, `वेक्टर ग्राफ़िक्स`],
@@ -214,8 +229,8 @@ export default dictionary([
   // Documents
   [`Documents`, `दस्तावेज़`],
   [`documents`, `दस्तावेज़`],
-  [`Word documents without Microsoft Office, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).`,
-    `Microsoft Office के बिना Word दस्तावेज़, वैकल्पिक LibreOffice इंजन से पुराने और दुर्लभ वर्ड-प्रोसेसर फ़ॉर्मैट, और सेव किए गए ई-मेल (EML और Outlook MSG)।`],
+  [`Word documents without Microsoft Office, Chinese OFD e-invoices, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).`,
+    `Microsoft Office के बिना Word दस्तावेज़, चीनी OFD ई-इनवॉइस, वैकल्पिक LibreOffice इंजन से पुराने और दुर्लभ वर्ड-प्रोसेसर फ़ॉर्मैट, और सेव किए गए ई-मेल (EML और Outlook MSG)।`],
   [`Word document`, `Word दस्तावेज़`],
   [`DOCX is the Microsoft Word format since Word 2007 (Office Open XML). It is the most common format for editable documents such as reports, letters and forms.`,
     `DOCX, Word 2007 से Microsoft Word का फ़ॉर्मैट है (Office Open XML)। रिपोर्ट, पत्र और फ़ॉर्म जैसे संपादन योग्य दस्तावेज़ों के लिए यह सबसे आम फ़ॉर्मैट है।`],
@@ -271,8 +286,8 @@ export default dictionary([
   // Text & markup
   [`Text & markup`, `टेक्स्ट और मार्कअप`],
   [`text and markup`, `टेक्स्ट और मार्कअप`],
-  [`Plain text, Markdown and HTML to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.`,
-    `सादा टेक्स्ट, Markdown और HTML से PDF, Word, HWPX और EPUB। LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter और अन्य मार्कअप के लिए वैकल्पिक Pandoc इंजन इस्तेमाल होता है, जो Markdown को PowerPoint स्लाइड में भी बदलता है।`],
+  [`Plain text, Markdown, HTML and saved web pages (MHTML) to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.`,
+    `सादा टेक्स्ट, Markdown, HTML और सेव किए गए वेब पेज (MHTML) से PDF, Word, HWPX और EPUB। LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter और अन्य मार्कअप के लिए वैकल्पिक Pandoc इंजन इस्तेमाल होता है, जो Markdown को PowerPoint स्लाइड में भी बदलता है।`],
   [`Plain text`, `सादा टेक्स्ट`],
   [`TXT is plain text without any formatting, the simplest and most portable document format. The only thing that can differ is the character encoding (UTF-8, UTF-16 or a legacy code page).`,
     `TXT बिना किसी फ़ॉर्मैटिंग वाला सादा टेक्स्ट है, सबसे सरल और हर जगह चलने वाला दस्तावेज़ फ़ॉर्मैट। इसमें केवल कैरेक्टर एन्कोडिंग अलग हो सकती है (UTF-8, UTF-16 या कोई पुराना कोड पेज)।`],
@@ -282,6 +297,9 @@ export default dictionary([
   [`Web page (HTML)`, `वेब पेज (HTML)`],
   [`HTML is the language of web pages. A saved .html file opens in any browser, but how it looks depends on the browser and on linked styles and images, which may be missing offline.`,
     `HTML वेब पेजों की भाषा है। सेव की गई .html फ़ाइल किसी भी ब्राउज़र में खुलती है, लेकिन वह कैसी दिखेगी, यह ब्राउज़र पर और लिंक की गई स्टाइल और इमेज पर निर्भर करता है, जो ऑफ़लाइन होने पर गायब हो सकती हैं।`],
+  [`LOG files and scripts (PY, PAC, BAT, COMMAND) are read as text and never run`,
+    `LOG फ़ाइलें और स्क्रिप्ट (PY, PAC, BAT, COMMAND) सिर्फ़ टेक्स्ट के रूप में पढ़ी जाती हैं, कभी चलाई नहीं जातीं`],
+  [`the saved page, with its pictures`, `सेव किया गया पेज, उसकी तस्वीरों के साथ`],
 
   // Data
   [`Data`, `डेटा`],
@@ -399,8 +417,8 @@ export default dictionary([
   // 3D models
   [`3D models`, `3D मॉडल`],
   [`3D models [in running text]`, `3D मॉडल`],
-  [`GLB, glTF, STL, OBJ, 3MF and PLY into each other, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.`,
-    `GLB, glTF, STL, OBJ, 3MF और PLY एक-दूसरे में, जहाँ फ़ॉर्मैट उन्हें रख सके वहाँ रंग, टेक्सचर और मटीरियल के साथ, और शेडेड PNG या JPG तस्वीर में। कुछ भी इंस्टॉल करने की ज़रूरत नहीं।`],
+  [`GLB, glTF, STL, OBJ, 3MF and PLY into each other, and FBX into any of them, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.`,
+    `GLB, glTF, STL, OBJ, 3MF और PLY एक-दूसरे में, और FBX इनमें से किसी में भी, जहाँ फ़ॉर्मैट उन्हें रख सके वहाँ रंग, टेक्सचर और मटीरियल के साथ, और शेडेड PNG या JPG तस्वीर में। कुछ भी इंस्टॉल करने की ज़रूरत नहीं।`],
   [`glTF binary (GLB)`, `glTF बाइनरी (GLB)`],
   [`GLB is the one-file version of glTF, the 3D format of the web, AR and game engines. Meshes, materials and textures are packed into a single compact file.`,
     `GLB, glTF का एक-फ़ाइल वाला संस्करण है, जो वेब, AR और गेम इंजनों का 3D फ़ॉर्मैट है। मेश, मटीरियल और टेक्सचर एक ही छोटी फ़ाइल में पैक होते हैं।`],
@@ -425,6 +443,14 @@ export default dictionary([
   [`Web font (WOFF2)`, `वेब फ़ॉन्ट (WOFF2)`],
   [`WOFF2 is the compressed web font format supported by all modern browsers. It is typically about 30 % smaller than WOFF, so pages load faster.`,
     `WOFF2 कंप्रेस्ड वेब फ़ॉन्ट फ़ॉर्मैट है, जिसका सभी आधुनिक ब्राउज़र समर्थन करते हैं। यह आम तौर पर WOFF से लगभग 30 % छोटा होता है, इसलिए पेज जल्दी लोड होते हैं।`],
+
+  // Geospatial data
+  [`Geospatial data`, `भू-स्थानिक डेटा`],
+  [`geospatial data`, `भू-स्थानिक डेटा`],
+  [`Maps and GPS data: GeoJSON, KML, KMZ, GPX and Shapefile into each other and to CSV, Excel and JSON, and a CSV with coordinates back into a map file. Vector data only (points, lines and areas), always saved in longitude and latitude. Nothing to install.`,
+    `मैप और GPS डेटा: GeoJSON, KML, KMZ, GPX और Shapefile एक-दूसरे में और CSV, Excel और JSON में, और निर्देशांक वाली CSV वापस मैप फ़ाइल में। केवल वेक्टर डेटा (बिंदु, रेखाएँ और क्षेत्र), जो हमेशा देशांतर और अक्षांश में सेव होता है। कुछ भी इंस्टॉल करने की ज़रूरत नहीं।`],
+  [`one row per feature, with its coordinates`, `हर फ़ीचर के लिए एक पंक्ति, उसके निर्देशांकों के साथ`],
+  [`a CSV with longitude and latitude columns or WKT`, `देशांतर और अक्षांश कॉलम या WKT वाली CSV`],
 
   // Camera RAW group (conversion pages)
   [`Camera RAW photo`, `कैमरा RAW फ़ोटो`],
@@ -660,8 +686,8 @@ export default dictionary([
     `बड़े इंजन इंस्टॉलर में शामिल नहीं हैं। उन्हें इंस्टॉलर के इंजन वाले पेज पर चुनें, या जब भी ज़रूरत हो Filee के अंदर डाउनलोड करें: {engineDetails}। वे Filee के अपने फ़ोल्डर में सेव होते हैं और कभी भी हटाए जा सकते हैं, और ऐप उनके संस्करण, डाउनलोड स्पीड और बचा हुआ समय दिखाता है। अगर FFmpeg, calibre, Pandoc, Ghostscript या LibreOffice पहले से आपके PC पर है (PATH में, Scoop समेत, या Program Files में), तो Filee उसी को इस्तेमाल करता है और डाउनलोड नहीं करता, और अगर वह कॉपी उस संस्करण से पुरानी हो जिसके साथ Filee का परीक्षण हुआ है, तो यह बताता है। सेटिंग्स → इंजन → मेरी कॉपी इस्तेमाल करें… से कोई खास कॉपी चुनी जा सकती है।`],
   [`Does installing Filee need administrator rights?`,
     `क्या Filee इंस्टॉल करने के लिए एडमिनिस्ट्रेटर अधिकार चाहिए?`],
-  [`Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. If you can't install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.`,
-    `केवल एक बार, इंस्टॉल करते समय। इंस्टॉलर Filee को सभी यूज़र के लिए Program Files में रखता है और Windows 11 पर फ़ाइल एक्सप्लोरर मेनू में सबसे ऊपर “Filee से कन्वर्ट करें” जोड़ता है। इसके बाद Filee आपके सामान्य यूज़र के रूप में चलता है। अगर आप प्रोग्राम इंस्टॉल नहीं कर सकते, तो पोर्टेबल ZIP इस्तेमाल करें: इसे कहीं भी खोलें और Filee.exe चलाएँ।`],
+  [`Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. For silent installs, run the installer with /VERYSILENT /SUPPRESSMSGBOXES. If you can't install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.`,
+    `केवल एक बार, इंस्टॉल करते समय। इंस्टॉलर Filee को सभी यूज़र के लिए Program Files में रखता है और Windows 11 पर फ़ाइल एक्सप्लोरर मेनू में सबसे ऊपर “Filee से कन्वर्ट करें” जोड़ता है। इसके बाद Filee आपके सामान्य यूज़र के रूप में चलता है। साइलेंट इंस्टॉल के लिए इंस्टॉलर को /VERYSILENT /SUPPRESSMSGBOXES के साथ चलाएँ। अगर आप प्रोग्राम इंस्टॉल नहीं कर सकते, तो पोर्टेबल ZIP इस्तेमाल करें: इसे कहीं भी खोलें और Filee.exe चलाएँ।`],
   [`Can I convert many files at once?`,
     `क्या एक साथ कई फ़ाइलें कन्वर्ट की जा सकती हैं?`],
   [`Yes. Select as many files as you like and drop them once: Filee converts them in parallel, a failed file never stops the others, and presets can merge everything into one PDF or pack it into one ZIP.`,
@@ -684,6 +710,6 @@ export default dictionary([
     `ऑनलाइन कन्वर्टर आपकी फ़ाइलें किसी और के सर्वर पर अपलोड करते हैं, अक्सर फ़ाइल के आकार और संख्या को सीमित करते हैं, और तेज़ कनेक्शन पर निर्भर रहते हैं। Filee आपके PC पर कन्वर्ट करता है: निजी फ़ाइलें निजी रहती हैं, बड़े वीडियो और सैकड़ों फ़ाइलें कोई समस्या नहीं, और यह इंटरनेट के बिना, मुफ़्त और बिना विज्ञापनों के काम करता है।`],
   [`Which operating systems are supported?`,
     `कौन-से ऑपरेटिंग सिस्टम समर्थित हैं?`],
-  [`Windows 10 and 11 (64-bit) is the stable release. macOS 14 or later (Apple silicon and Intel) and Linux (x64 and ARM64) are previews: the macOS app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security, and on Linux the drag gesture needs an X11 session (on Wayland, use the drop zone and the right-click action). Pick your system in the download section.`,
-    `Windows 10 और 11 (64-बिट) स्थिर रिलीज़ है। macOS 14 या उसके बाद का संस्करण (Apple silicon और Intel) और Linux (x64 और ARM64) प्रीव्यू हैं: macOS ऐप अभी नोटराइज़ नहीं है, इसलिए macOS आपसे एक बार Privacy & Security में इसे अनुमति देने को कहता है, और Linux पर ड्रैग जेस्चर के लिए X11 सेशन चाहिए (Wayland पर ड्रॉप ज़ोन और राइट-क्लिक एक्शन इस्तेमाल करें)। डाउनलोड सेक्शन में अपना सिस्टम चुनें।`],
+  [`Windows 10 and 11 (64-bit) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager's right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.`,
+    `Windows 10 और 11 (64-बिट) और Linux (x64 और ARM64, Ubuntu 22.04 या उसके बाद का संस्करण) पूरी रिलीज़ हैं। Linux पर ड्रैग जेस्चर के लिए X11 सेशन चाहिए; Wayland वाले KDE Plasma पर यह प्रायोगिक है, और दूसरे Wayland डेस्कटॉप पर ड्रॉप ज़ोन और फ़ाइल मैनेजर का राइट-क्लिक मेनू काम करते हैं। macOS 13 या उसके बाद का संस्करण (Apple silicon और Intel) प्रीव्यू है: ऐप अभी नोटराइज़ नहीं है, इसलिए macOS आपसे एक बार Privacy & Security में इसे अनुमति देने को कहता है। डाउनलोड सेक्शन में अपना सिस्टम चुनें।`],
 ]);

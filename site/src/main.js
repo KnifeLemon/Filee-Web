@@ -535,7 +535,8 @@ async function animateShowcase(section) {
   gsap.matchMedia().add({ wide: '(min-width: 981px)', narrow: '(max-width: 980px)' }, ({ conditions: { wide } }) => {
     rows.forEach((row, i) => {
       const clip = row.querySelector('.clip');
-      const side = i % 2 ? -1 : 1;
+      // Odd rows have the clip on the far side (the left in right-to-left pages), so it leans the other way there.
+      const side = (i % 2 ? -1 : 1) * (document.documentElement.dir === 'rtl' ? -1 : 1);
       // The clip rises, straightens and grows into place as its row scrolls up; the picture inside settles from a
       // slight zoom, the glow behind drifts slower than the page.
       const scrub = { trigger: row, start: 'top bottom', end: wide ? 'center 55%' : 'top 35%', scrub: 0.6 };
@@ -651,7 +652,7 @@ function setupGitHub() {
       link.dataset.downloadTarget = selected;
       const label = link.querySelector('[data-download-label]');
       if (label) label.textContent = choice.state === 'available'
-        ? (choice.development ? t.developmentButton : t.button) : t.all;
+        ? (choice.development ? t.developmentButton : selected.startsWith('linux-') ? t.linuxButton : t.button) : t.all;
     });
     document.querySelectorAll('[data-download-status]').forEach(node => { node.textContent = status; node.hidden = false; });
     document.querySelectorAll('[data-version]').forEach(node => { node.textContent = version; });
@@ -757,10 +758,10 @@ function setupLanguageBanner() {
   const target = (navigator.languages?.length ? navigator.languages : [navigator.language]).map(map).find(Boolean);
   if (!target || target.lang === page.lang) return;
 
-  const banner = Object.assign(document.createElement('div'), { className: 'lang-banner', lang: target.lang });
+  const banner = Object.assign(document.createElement('div'), { className: 'lang-banner', lang: target.lang, dir: target.dir ?? 'ltr' });
   banner.setAttribute('role', 'note');
   const text = Object.assign(document.createElement('span'), { textContent: target.banner });
-  const link = Object.assign(document.createElement('a'), { href: target.path, textContent: `${target.name} →`, hreflang: target.lang });
+  const link = Object.assign(document.createElement('a'), { href: target.path, textContent: `${target.name} ${target.dir === 'rtl' ? '←' : '→'}`, hreflang: target.lang });
   link.addEventListener('click', remember);
   const dismiss = Object.assign(document.createElement('button'), { type: 'button', textContent: '×' });
   dismiss.setAttribute('aria-label', 'Close');

@@ -129,6 +129,18 @@ export default dictionary([
   [`colours and textures`, `色とテクスチャー`],
   [`Colours, textures and materials are kept where the target format can hold them. STL keeps only the shape.`,
     `色、テクスチャー、マテリアルは、変換先の形式が対応していれば保持されます。STLは形状のみを保持します。`],
+  [`HDR tone-mapped`, `HDRトーンマッピング`],
+  [`HDR screenshots that Windows saves as JPEG XR are tone-mapped to normal brightness instead of being clipped.`,
+    `WindowsがJPEG XRで保存するHDRスクリーンショットは、明るい部分を切り捨てずに、トーンマッピングで通常の明るさに変換します。`],
+  [`Live Photo video`, `Live Photoの動画`],
+  [`The Extract Live Photo video preset saves the video of an iPhone Live Photo (a LIVP from iCloud, or a photo with its MOV) or an Android Motion Photo as MP4 or MOV. The other way round, the Live Photo (iPhone) and Motion Photo (Android) presets turn a short clip of a video into a moving photo; that is still experimental.`,
+    `「Live Photoの動画を抽出」プリセットは、iPhoneのLive Photo（iCloudから入手したLIVP、またはMOVが隣にある写真）やAndroidのモーションフォトの動画をMP4またはMOVで保存します。逆に「Live Photo（iPhone）」と「モーションフォト（Android）」のプリセットは、動画の短い区間を動く写真にします。こちらはまだ実験的な機能です。`],
+  [`WGS 84 longitude / latitude`, `WGS 84の経緯度`],
+  [`Results are always in longitude and latitude (WGS 84). Shapefiles in UTM, Web Mercator, Lambert or Albers are converted, so they open in the right place; converting a file to its own format reprojects it.`,
+    `変換結果は常に経緯度（WGS 84）になります。UTM、Web Mercator、Lambert、Albersの座標系のShapefileも変換されるので、正しい位置に表示されます。同じ形式に変換すると、座標系だけを変換（再投影）できます。`],
+  [`save as ZIP`, `ZIPで保存`],
+  [`A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.`,
+    `Shapefileは5つのファイル（.shp、.shx、.dbf、.prj、.cpg）で構成されます。プリセットの「変換結果をZIPで保存」か、「設定」→「一般」の「地理空間データの変換結果はすべてZIPで保存する」を使うと、1つのZIPにまとめて保存されます。`],
 
   // Camera RAW
   [`Canon CR2 RAW photo`, `Canon CR2 RAW写真`],
@@ -141,8 +153,8 @@ export default dictionary([
   // Images
   [`Images`, `画像`],
   [`images`, `画像`],
-  [`Photos and graphics, including iPhone HEIC, Photoshop PSD, camera RAW from all major brands, animated APNG and DICOM. Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.`,
-    `iPhoneのHEIC、PhotoshopのPSD、主要メーカーのカメラRAW、アニメーションAPNG、DICOMを含む写真やグラフィック。変換時にサイズ変更、回転、品質やDPIの設定、メタデータの削除ができ、画像をSVGにトレースすることもできます。`],
+  [`Photos and graphics, including iPhone HEIC and Live Photos, Photoshop PSD, camera RAW from all major brands, animated APNG, DICOM and the HDR screenshots of Windows (JPEG XR). Resize, rotate, set quality and DPI or strip metadata while converting, or trace a picture into an SVG.`,
+    `iPhoneのHEICとLive Photo、PhotoshopのPSD、主要メーカーのカメラRAW、アニメーションAPNG、DICOM、WindowsのHDRスクリーンショット（JPEG XR）を含む写真やグラフィック。変換時にサイズ変更、回転、品質やDPIの設定、メタデータの削除ができ、画像をSVGにトレースすることもできます。`],
   [`JPEG image`, `JPEG画像`],
   [`JPEG is the most widely used photo format. Its lossy compression keeps files small, but every save at lower quality discards some detail, and it has no transparency.`,
     `JPEGは最も広く使われている写真形式です。非可逆圧縮でファイルを小さく保てますが、低い品質で保存するたびに細部が失われ、透過にも対応していません。`],
@@ -171,6 +183,9 @@ export default dictionary([
   [`ICNS is the icon format of macOS. Like ICO it bundles several sizes of one image, up to 1024×1024 for Retina displays, and is used for app icons on the Mac.`,
     `ICNSはmacOSのアイコン形式です。ICOと同じく1つの画像を複数のサイズでまとめ、Retinaディスプレイ向けに最大1024×1024まで格納でき、Macのアプリアイコンに使われます。`],
   [`Camera RAW`, `カメラRAW`],
+  [`Windows only`, `Windowsのみ`],
+  [`the photo of the Live Photo`, `Live Photoの写真`],
+  [`the video of the Live Photo`, `Live Photoの動画`],
 
   // Vector graphics
   [`Vector graphics`, `ベクター画像`],
@@ -197,8 +212,8 @@ export default dictionary([
   // Documents
   [`Documents`, `文書`],
   [`documents`, `文書`],
-  [`Word documents without Microsoft Office, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).`,
-    `Microsoft OfficeなしでWord文書を、追加のLibreOfficeエンジンで古い形式や一般的でないワープロ形式を変換し、保存したメール（EMLとOutlook MSG）にも対応します。`],
+  [`Word documents without Microsoft Office, Chinese OFD e-invoices, older and rare word-processor formats with the optional LibreOffice engine, and saved e-mails (EML and Outlook MSG).`,
+    `Microsoft OfficeなしでWord文書と中国のOFD電子インボイスを、追加のLibreOfficeエンジンで古い形式や一般的でないワープロ形式を変換し、保存したメール（EMLとOutlook MSG）にも対応します。`],
   [`Word document`, `Word文書`],
   [`DOCX is the Microsoft Word format since Word 2007 (Office Open XML). It is the most common format for editable documents such as reports, letters and forms.`,
     `DOCXは、Word 2007以降のMicrosoft Wordの形式（Office Open XML）です。報告書、手紙、申請書など、編集可能な文書で最も一般的な形式です。`],
@@ -254,8 +269,8 @@ export default dictionary([
   // Text & markup
   [`Text & markup`, `テキスト・マークアップ`],
   [`text and markup`, `テキストとマークアップ`],
-  [`Plain text, Markdown and HTML to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.`,
-    `プレーンテキスト、Markdown、HTMLをPDF、Word、HWPX、EPUBに変換。LaTeX、reStructuredText、Org、AsciiDoc、Typst、Jupyterなどのマークアップは追加のPandocエンジンを使い、MarkdownからPowerPointのスライドも作成できます。`],
+  [`Plain text, Markdown, HTML and saved web pages (MHTML) to PDF, Word, HWPX and EPUB. LaTeX, reStructuredText, Org, AsciiDoc, Typst, Jupyter and other markup use the optional Pandoc engine, which also turns Markdown into PowerPoint slides.`,
+    `プレーンテキスト、Markdown、HTML、保存したWebページ（MHTML）をPDF、Word、HWPX、EPUBに変換。LaTeX、reStructuredText、Org、AsciiDoc、Typst、Jupyterなどのマークアップは追加のPandocエンジンを使い、MarkdownからPowerPointのスライドも作成できます。`],
   [`Plain text`, `プレーンテキスト`],
   [`TXT is plain text without any formatting, the simplest and most portable document format. The only thing that can differ is the character encoding (UTF-8, UTF-16 or a legacy code page).`,
     `TXTは書式のないプレーンテキストで、最もシンプルで扱いやすい文書形式です。違いが出るのは文字コード（UTF-8、UTF-16、または従来のコードページ）だけです。`],
@@ -265,6 +280,9 @@ export default dictionary([
   [`Web page (HTML)`, `Webページ（HTML）`],
   [`HTML is the language of web pages. A saved .html file opens in any browser, but how it looks depends on the browser and on linked styles and images, which may be missing offline.`,
     `HTMLはWebページの言語です。保存した.htmlファイルはどのブラウザーでも開けますが、見た目はブラウザーや、リンクされたスタイルや画像に左右され、オフラインではそれらが欠けることがあります。`],
+  [`LOG files and scripts (PY, PAC, BAT, COMMAND) are read as text and never run`,
+    `LOGファイルとスクリプト（PY、PAC、BAT、COMMAND）はテキストとして読み込むだけで、実行はしません`],
+  [`the saved page, with its pictures`, `保存したページ（画像を含む）`],
 
   // Data
   [`Data`, `データ`],
@@ -382,8 +400,8 @@ export default dictionary([
   // 3D models
   [`3D models`, `3Dモデル`],
   [`3D models [in running text]`, `3Dモデル`],
-  [`GLB, glTF, STL, OBJ, 3MF and PLY into each other, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.`,
-    `GLB、glTF、STL、OBJ、3MF、PLYを相互に変換し、形式が対応していれば色、テクスチャー、マテリアルも保持します。陰影付きのPNGやJPG画像にも変換できます。インストールは不要です。`],
+  [`GLB, glTF, STL, OBJ, 3MF and PLY into each other, and FBX into any of them, with colours, textures and materials where the format keeps them, and to a shaded PNG or JPG picture. Nothing to install.`,
+    `GLB、glTF、STL、OBJ、3MF、PLYを相互に変換し、FBXもそのいずれかに変換できます。形式が対応していれば色、テクスチャー、マテリアルも保持します。陰影付きのPNGやJPG画像にも変換できます。インストールは不要です。`],
   [`glTF binary (GLB)`, `glTFバイナリ（GLB）`],
   [`GLB is the one-file version of glTF, the 3D format of the web, AR and game engines. Meshes, materials and textures are packed into a single compact file.`,
     `GLBはglTFの1ファイル版で、Web、AR、ゲームエンジン向けの3D形式です。メッシュ、マテリアル、テクスチャーを1つのコンパクトなファイルにまとめます。`],
@@ -408,6 +426,14 @@ export default dictionary([
   [`Web font (WOFF2)`, `Webフォント（WOFF2）`],
   [`WOFF2 is the compressed web font format supported by all modern browsers. It is typically about 30 % smaller than WOFF, so pages load faster.`,
     `WOFF2は、すべての最新ブラウザーが対応する圧縮Webフォント形式です。通常はWOFFより約30%小さく、ページの読み込みが速くなります。`],
+
+  // Geospatial data
+  [`Geospatial data`, `地理空間データ`],
+  [`geospatial data`, `地理空間データ`],
+  [`Maps and GPS data: GeoJSON, KML, KMZ, GPX and Shapefile into each other and to CSV, Excel and JSON, and a CSV with coordinates back into a map file. Vector data only (points, lines and areas), always saved in longitude and latitude. Nothing to install.`,
+    `地図とGPSのデータ：GeoJSON、KML、KMZ、GPX、Shapefileを相互に変換し、CSV、Excel、JSONにも変換します。座標のあるCSVを地図ファイルに戻すこともできます。ベクターデータ（点、線、面）のみに対応し、常に経緯度で保存します。インストールは不要です。`],
+  [`one row per feature, with its coordinates`, `地物ごとに1行、座標付き`],
+  [`a CSV with longitude and latitude columns or WKT`, `経度・緯度の列またはWKTの列があるCSV`],
 
   // Camera RAW group (conversion pages)
   [`Camera RAW photo`, `カメラRAW写真`],
@@ -638,8 +664,8 @@ export default dictionary([
   [`Large engines are not in the installer. Tick them on the installer's engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee's own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.`,
     `容量の大きいエンジンはインストーラーに含まれていません。インストーラーのエンジンのページでチェックを入れるか、必要なときにFilee内でダウンロードしてください：{engineDetails}。エンジンはFilee専用のフォルダーに保存され、いつでも削除できます。アプリにはバージョン、ダウンロード速度、残り時間が表示されます。FFmpeg、calibre、Pandoc、Ghostscript、LibreOfficeがすでにPCのPATH上（Scoopを含む）やProgram Files内にある場合は、Fileeがそれを使ってダウンロードを省略し、テスト済みのバージョンより古い場合はお知らせします。特定のものを使うには「設定」→「変換エンジン」→「手元のプログラムを使う」で選びます。`],
   [`Does installing Filee need administrator rights?`, `Fileeのインストールに管理者権限は必要ですか？`],
-  [`Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. If you can't install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.`,
-    `インストール時に一度だけ必要です。インストーラーはFileeをすべてのユーザー向けにProgram Filesにインストールし、Windows 11ではエクスプローラーのメニューの最上部に「Fileeで変換」を追加します。その後、Fileeは通常のユーザー権限で動作します。プログラムをインストールできない場合は、ポータブル版のZIPを使ってください。好きな場所に展開して、Filee.exeを実行するだけです。`],
+  [`Only once, while installing. The installer puts Filee in Program Files for all users and, on Windows 11, adds “Convert with Filee” to the top of the File Explorer menu. Filee itself then runs as your normal user. For silent installs, run the installer with /VERYSILENT /SUPPRESSMSGBOXES. If you can't install programs, use the portable ZIP: unzip it anywhere and run Filee.exe.`,
+    `インストール時に一度だけ必要です。インストーラーはFileeをすべてのユーザー向けにProgram Filesにインストールし、Windows 11ではエクスプローラーのメニューの最上部に「Fileeで変換」を追加します。その後、Fileeは通常のユーザー権限で動作します。サイレントインストールするには、インストーラーを/VERYSILENT /SUPPRESSMSGBOXES付きで実行してください。プログラムをインストールできない場合は、ポータブル版のZIPを使ってください。好きな場所に展開して、Filee.exeを実行するだけです。`],
   [`Can I convert many files at once?`, `複数のファイルをまとめて変換できますか？`],
   [`Yes. Select as many files as you like and drop them once: Filee converts them in parallel, a failed file never stops the others, and presets can merge everything into one PDF or pack it into one ZIP.`,
     `はい。好きなだけファイルを選んで一度にドロップすれば、Fileeが並列で変換します。失敗したファイルがあってもほかの変換は止まらず、プリセットですべてを1つのPDFに結合したり、1つのZIPにまとめたりすることもできます。`],
@@ -656,6 +682,6 @@ export default dictionary([
   [`Online converters upload your files to someone else's server, often limit file size and count, and depend on a fast connection. Filee converts on your PC: private files stay private, large videos and hundreds of files are no problem, and it works without internet, for free and without ads.`,
     `オンライン変換サービスは、ファイルを他人のサーバーにアップロードし、ファイルサイズや数を制限することが多く、高速な回線も必要です。FileeはPC上で変換するので、プライベートなファイルは外に出ず、大きな動画や数百のファイルも問題なく、インターネットなしで、無料かつ広告なしで使えます。`],
   [`Which operating systems are supported?`, `どのOSに対応していますか？`],
-  [`Windows 10 and 11 (64-bit) is the stable release. macOS 14 or later (Apple silicon and Intel) and Linux (x64 and ARM64) are previews: the macOS app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security, and on Linux the drag gesture needs an X11 session (on Wayland, use the drop zone and the right-click action). Pick your system in the download section.`,
-    `Windows 10/11（64ビット）が安定版です。macOS 14以降（AppleシリコンとIntel）とLinux（x64とARM64）はプレビュー版です。macOS版はまだ公証を受けていないため、「プライバシーとセキュリティ」で一度許可する必要があります。Linuxではドラッグ操作にX11セッションが必要です（Waylandではドロップ領域と右クリックの操作を使ってください）。お使いのシステムはダウンロードセクションで選べます。`],
+  [`Windows 10 and 11 (64-bit) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager's right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.`,
+    `Windows 10/11（64ビット）とLinux（x64とARM64、Ubuntu 22.04以降）が正式版です。Linuxではドラッグ操作にX11セッションが必要です。KDE PlasmaのWaylandでは実験的な機能で、ほかのWaylandデスクトップではドロップ領域とファイルマネージャーの右クリックメニューを使えます。macOS 13以降（AppleシリコンとIntel）はプレビュー版です。アプリはまだ公証を受けていないため、「プライバシーとセキュリティ」で一度許可する必要があります。お使いのシステムはダウンロードセクションで選べます。`],
 ]);
