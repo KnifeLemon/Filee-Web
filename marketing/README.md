@@ -5,7 +5,7 @@ Everything promotional is rendered from code:
 - the carousel slides
 - the Open Graph cards
 - the README banner and animated demo
-- the feature demo clips (expand, flip, browser), rendered from the app's real donut
+- the feature demo clips (expand, flip, browser, crop), rendered from the app's real donut and crop overlay
 
 The Filee app repository must sit next to this one (`repos/Filee` and `repos/filee-web`; set `FILEE_REPO` if it
 lives elsewhere): the renders use its fonts, and `export.py` writes the README media into its `docs/media`.
@@ -72,14 +72,17 @@ Repeat with `en` and `zh-CN`. Keep the studio tab in the foreground while encodi
 
 Short loops of one feature each, drawn by Filee itself rather than recorded: `demo-videos/` builds against the app
 repository's `src/Filee.App`, opens the real donut window headlessly and steps its animation clock by hand at 60 fps, the
-way `RadialController` drives it during a drag. Around it goes a made-up desktop (a plain file manager, a browser on a
-`photos.example` page, the pointer, the dragged file, Ctrl and Tab keycaps). No captions: the clips only show.
+way `RadialController` drives it during a drag; the crop clip opens the real crop overlay the same way, with pointer
+input and its clock (`CropCanvas.Clock`) stepped by hand. Around it goes a made-up desktop (a plain file manager, a
+browser on a `photos.example` page, the pointer, the dragged file, Ctrl and Tab keycaps). No captions: the clips only
+show.
 
 | Clip | Shows |
 |---|---|
 | `expand` | trip.jpg dragged with Ctrl: the donut opens, a group slice fans out its ring, dropped on WEBP (also `expand-dark`) |
 | `flip` | the hub says "Tab ↻ back", Tab turns the donut to its back face, dropped on Remove background |
 | `browser` | a picture dragged out of a web page: the download badge over the progress ring, then the files in Downloads |
+| `crop` | the crop overlay over Pictures: a corner of the frame in, 1:1 on the aspect dial, Crop & Next, Crop & Save, the two cropped photos |
 
 Requirements: the .NET SDK the app repository uses, its fonts (`pwsh build/fetch-fonts.ps1`) and FFmpeg (its
 `engines/ffmpeg` from `pwsh build/fetch-engines.ps1`, `-FFmpeg <exe>`, or the PATH).
@@ -87,7 +90,7 @@ Requirements: the .NET SDK the app repository uses, its fonts (`pwsh build/fetch
 ```powershell
 pwsh marketing/make-demo-videos.ps1                    # every clip → out/demo-videos (about 6 minutes)
 pwsh marketing/make-demo-videos.ps1 -Clips flip -Formats square -Stills 2,3.2 -Quick   # PNG frames only, to check a change
-python marketing/export.py demos                       # → site/public/media/demo-<clip>.webp and the app's What's new slides
+python marketing/export.py demos                       # → site/public/media/demo-<clip>.webp and the app's What's new slides (not crop: the app renders that one)
 ```
 
 Every build output, the app's projects' included, goes under `out/build`, so the app repository isn't written to. The

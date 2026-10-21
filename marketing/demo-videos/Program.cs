@@ -4,6 +4,7 @@
 // Clips:  expand   a group slice fans out its ring (ExpandClip)
 //         flip     Tab turns the donut over to its back face (FlipClip)
 //         browser  a picture from a web page, with the download badge over the progress ring (BrowserClip)
+//         crop     the crop overlay: a corner in, 1:1 on the aspect dial, Crop & Next, Crop & Save (CropClip)
 //
 // Per clip and theme:  <clip>-square.mp4 (1080×1080) and <clip>-vertical.mp4 (1080×1920) for social video,
 //                      <clip>.webp (820 px, ≤ 1.5 MB), <clip>.gif (820 px, ≤ 3 MB) and <clip>-640.webp (≤ 400 KB)
@@ -46,6 +47,7 @@ Clip[] clips =
     new("expand", (format, painter, vm) => new ExpandClip(format, painter, vm), Dark: true, DemoData.Install),
     new("flip", (format, painter, vm) => new FlipClip(format, painter, vm), Dark: false, () => null),
     new("browser", (format, painter, vm) => new BrowserClip(format, painter, vm), Dark: false, () => null),
+    new("crop", (format, painter, _) => new CropClip(format, painter), Dark: false, () => null),
 ];
 
 // Filee's app with real Skia rendering and its own fonts, without a window system, and a throw-away data folder (the

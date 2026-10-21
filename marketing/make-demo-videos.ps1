@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Renders the feature demo clips (expand, flip, browser) from Filee's real donut UI into marketing/out/demo-videos.
+  Renders the feature demo clips (expand, flip, browser, crop) from Filee's real UI into marketing/out/demo-videos.
 
 .DESCRIPTION
   Builds and runs marketing/demo-videos against the Filee app repository next to this one (../Filee, or FILEE_REPO).

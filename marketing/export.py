@@ -33,14 +33,20 @@ def copy(source, target):
     print(f'{os.path.relpath(target, ROOT)}  {os.path.getsize(target) // 1024} KB')
 
 
+# Clips whose What's new slide the app renders itself (tests/Filee.App.Tests/WhatsNewMedia.cs): only the website gets them.
+APP_SLIDES = {'crop'}
+
+
 def export_demos():
     """The feature demo clips in out/demo-videos: the 820 px WebP onto the website (media/demo-<clip>.webp), and the
     640 px one over the app's What's new slide of the same name (src/Filee.App/Assets/WhatsNew/<version>/<clip>.webp),
-    where a release has one."""
+    where a release has one and the app doesn't render it (APP_SLIDES)."""
     demos = os.path.join(OUT, 'demo-videos')
     for source in sorted(glob.glob(os.path.join(demos, '*-640.webp'))):
         clip = os.path.basename(source)[:-len('-640.webp')]
         copy(os.path.join(demos, f'{clip}.webp'), os.path.join(SITE, f'demo-{clip}.webp'))
+        if clip in APP_SLIDES:
+            continue
         for slide in glob.glob(os.path.join(APP, 'src', 'Filee.App', 'Assets', 'WhatsNew', '*', f'{clip}.webp')):
             copy(source, slide)
 
