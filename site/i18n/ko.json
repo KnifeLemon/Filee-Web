@@ -26,6 +26,7 @@
     "lead": "이미지, PDF, 워드·엑셀·파워포인트, 동영상, 음악, 전자책, 압축 파일까지 내 PC에서 바로 변환하세요. 키를 누른 채 파일을 끌어다 원하는 형식에 놓으면 끝. 업로드도, 가입도 없는 무료 오픈소스입니다.",
     "download": "다운로드 선택",
     "downloadNote": "Windows 10/11 · macOS·Linux 미리보기 · 무료",
+    "sponsored": "후원사",
     "formats": "지원 형식 {formatTotal}가지 보기"
   },
   "demo": {
@@ -147,7 +148,8 @@
       "star": "마음에 드셨다면 GitHub에서 ⭐ 눌러 주세요",
       "issue": "문제 신고 · 기능 제안",
       "retry": "다운로드가 안 되나요? 다시 받기",
-      "close": "닫기"
+      "close": "닫기",
+      "thanks": "Filee를 무료로 지켜 주는 후원사"
     }
   },
   "supporters": {

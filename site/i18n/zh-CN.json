@@ -26,6 +26,7 @@
     "lead": "图片、PDF、Word/Excel/PowerPoint、视频、音乐、电子书、压缩包……都能直接在你的电脑上转换。按住一个键拖动文件，放到想要的格式上即可。无需上传、无需注册，免费开源。",
     "download": "选择下载版本",
     "downloadNote": "Windows 10/11 · macOS、Linux 预览版 · 免费",
+    "sponsored": "赞助商",
     "formats": "浏览全部 {formatTotal} 种格式"
   },
   "demo": {
@@ -147,7 +148,8 @@
       "star": "喜欢的话，请在 GitHub 上点个 ⭐",
       "issue": "报告问题 · 提出建议",
       "retry": "下载没有开始？点此重新下载",
-      "close": "关闭"
+      "close": "关闭",
+      "thanks": "Filee 能保持免费，多亏了"
     }
   },
   "supporters": {

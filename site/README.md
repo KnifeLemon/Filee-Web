@@ -16,8 +16,9 @@ site/
   src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
   src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…, /ru/…)
   src/llms.mjs              llms.txt and llms-full.txt
-  src/sponsors.mjs          home page sponsors: the app's sponsors.json and logos, read from GitHub at build time;
-                            no section while nobody is listed (SPONSORS=<folder> reads a local copy)
+  src/sponsors.mjs          sponsors: the app's sponsors.json and logos, read from GitHub at build time, shown in a
+                            home page section, under the hero's download button and in the after-download dialog;
+                            nothing while nobody is listed (SPONSORS=<folder> reads a local copy)
   src/styles.css            styles (light/dark, responsive, reduced motion)
   src/main.js               interactions: drag & drop demo, reveals, lazy video, GitHub release info and installer link
   public/                   copied as-is: media (video, posters, OG images, screenshots), icons

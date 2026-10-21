@@ -7,7 +7,7 @@ import {
 import {
   DOWNLOAD, LOGO, REPO, SITE, alternatesOf, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
 } from './layout.mjs';
-import { NOBODY, supportersSection } from './sponsors.mjs';
+import { NOBODY, heroSponsors, supportersSection } from './sponsors.mjs';
 import { LANGUAGE } from './languages.mjs';
 import { md, terminal } from './cli-page.mjs';
 
@@ -171,7 +171,7 @@ export function renderPage(t, languages, assets) {
         <a class="btn btn-primary btn-large" href="#download">${icon('download')}<span>${escape(t.hero.download)}</span></a>
         <a class="btn btn-ghost btn-large" href="${paths.formats(t)}">${icon('stack')}<span>${escape(f(t.hero.formats))}</span></a>
       </div>
-      <p class="cta-note" data-reveal><span data-version></span>${escape(t.hero.downloadNote)}</p>
+      <p class="cta-note" data-reveal><span data-version></span>${escape(t.hero.downloadNote)}</p>${heroSponsors(t, assets.supporters ?? NOBODY)}
     </div>
 
     <div class="demo" data-demo aria-label="${escape(t.demo.label)}">

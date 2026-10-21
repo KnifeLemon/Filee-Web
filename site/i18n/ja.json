@@ -26,6 +26,7 @@
     "lead": "画像、PDF、Word・Excel・PowerPointファイル、動画、音楽、電子書籍、アーカイブなどを、お使いのPC上でそのまま変換できます。キーを押しながらファイルをドラッグし、形式の上でドロップするだけ。アップロードもアカウントも不要で、無料のオープンソースです。",
     "download": "ダウンロードを選ぶ",
     "downloadNote": "Windows 10/11 · macOS・Linuxはプレビュー版 · 無料",
+    "sponsored": "スポンサー",
     "formats": "{formatCount}種類の対応形式を見る"
   },
   "demo": {
@@ -147,7 +148,8 @@
       "star": "気に入ったら、GitHubでFileeにスターを",
       "issue": "問題の報告・機能の提案",
       "retry": "ダウンロードが始まらない場合はもう一度",
-      "close": "閉じる"
+      "close": "閉じる",
+      "thanks": "Fileeの無料提供を支えるスポンサー"
     }
   },
   "supporters": {

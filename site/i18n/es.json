@@ -26,6 +26,7 @@
     "lead": "Convierte imágenes, PDF, archivos de Word, Excel y PowerPoint, vídeos, música, libros electrónicos, archivos comprimidos y mucho más, directamente en tu PC. Mantén pulsada una tecla, arrastra los archivos y suéltalos sobre un formato. Sin subidas, sin cuenta, gratis y de código abierto.",
     "download": "Elige una descarga",
     "downloadNote": "Windows 10/11 · macOS y Linux en versión preliminar · Gratis",
+    "sponsored": "Patrocinado por",
     "formats": "Explora {formatCount} formatos"
   },
   "demo": {
@@ -147,7 +148,8 @@
       "star": "¿Te gusta? Dale una estrella a Filee en GitHub",
       "issue": "Informa de un problema o sugiere una función",
       "retry": "¿No empezó la descarga? Inténtalo de nuevo",
-      "close": "Cerrar"
+      "close": "Cerrar",
+      "thanks": "Filee es gratis gracias a"
     }
   },
   "supporters": {

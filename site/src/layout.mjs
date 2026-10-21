@@ -4,6 +4,7 @@
 import { CATEGORIES, FORMATS, PAIRS, label, pairSlug } from './catalog.mjs';
 import { DOWNLOAD_TARGETS } from './downloads.mjs';
 import { LANGUAGES } from './languages.mjs';
+import { NOBODY, dialogSponsors } from './sponsors.mjs';
 
 export const SITE = 'https://filee.sh';
 export const REPO = 'https://github.com/KnifeLemon/Filee';
@@ -168,6 +169,8 @@ export function renderDocument({ t, languages, assets, title, description, alter
     langs: languages.map(l => ({ lang: l.lang, path: alternates[l.lang], banner: l.langBanner, name: l.name, match: l.match })),
     afterDownload: t.download.after,
     download: t.download,
+    // The sponsors' logos for the after-download dialog; left out while no sponsor is listed.
+    sponsors: dialogSponsors(assets.supporters ?? NOBODY),
   };
   return `<!doctype html>
 <html lang="${t.htmlLang}">

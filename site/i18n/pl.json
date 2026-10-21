@@ -26,6 +26,7 @@
     "lead": "Konwertuj obrazy, pliki PDF, Word, Excel i PowerPoint, filmy, muzykę, e-booki, archiwa i nie tylko – prosto na swoim komputerze. Przytrzymaj klawisz, przeciągnij pliki i upuść je na format. Bez przesyłania, bez konta, za darmo i open source.",
     "download": "Wybierz wersję do pobrania",
     "downloadNote": "Windows 10/11 · macOS i Linux w wersji zapoznawczej · Za darmo",
+    "sponsored": "Wspierają nas",
     "formats": "Przeglądaj {formatCount} formatów"
   },
   "demo": {
@@ -147,7 +148,8 @@
       "star": "Podoba Ci się? Daj Filee gwiazdkę na GitHubie",
       "issue": "Zgłoś problem lub zaproponuj funkcję",
       "retry": "Pobieranie się nie rozpoczęło? Spróbuj ponownie",
-      "close": "Zamknij"
+      "close": "Zamknij",
+      "thanks": "Filee jest darmowe dzięki"
     }
   },
   "supporters": {

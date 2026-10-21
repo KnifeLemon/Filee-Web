@@ -580,6 +580,30 @@ function setupDownloadGuide() {
   const el = (tag, props = {}) => Object.assign(document.createElement(tag), props);
   let dialog, retry;
 
+  // "Filee is free thanks to" and the sponsors' logos (with their dark-theme versions), linked as on the home page.
+  const sponsorLine = (text, sponsors) => {
+    const list = el('span', { className: 'download-guide-sponsor-list' });
+    for (const s of sponsors) {
+      let content;
+      if (s.logo) {
+        content = el('picture');
+        if (s.logoDark) content.append(el('source', { srcset: s.logoDark, media: '(prefers-color-scheme: dark)' }));
+        const img = el('img', { src: s.logo, alt: s.name, decoding: 'async' });
+        if (s.size) Object.assign(img, { width: s.size.width, height: s.size.height });
+        content.append(img);
+      } else {
+        content = el('b', { textContent: s.name });
+      }
+      const item = s.url ? el('a', { href: s.url, target: '_blank', rel: 'sponsored noopener' }) : el('span');
+      item.className = s.logo && !s.logoDark ? 'download-guide-sponsor light-only' : 'download-guide-sponsor';
+      item.append(content);
+      list.append(item);
+    }
+    const line = el('p', { className: 'download-guide-sponsors' });
+    line.append(el('span', { textContent: text }), list);
+    return line;
+  };
+
   const build = () => {
     dialog = el('dialog', { className: 'download-guide' });
     dialog.setAttribute('aria-labelledby', 'download-guide-title');
@@ -594,6 +618,7 @@ function setupDownloadGuide() {
       el('a', { className: 'btn btn-ghost', href: `${repo}/issues/new/choose`, target: '_blank', rel: 'noopener', textContent: t.issue }));
     retry = el('a', { className: 'download-guide-retry', textContent: t.retry });
     dialog.append(close, el('h2', { id: 'download-guide-title', textContent: t.title }), steps, actions, retry);
+    if (page.sponsors?.length) dialog.append(sponsorLine(t.thanks, page.sponsors));
     // A click on the backdrop (outside the panel) closes it.
     dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
     document.body.append(dialog);

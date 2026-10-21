@@ -26,6 +26,7 @@
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
     "download": "Choose a download",
     "downloadNote": "Windows 10/11 · macOS and Linux preview · Free",
+    "sponsored": "Sponsored by",
     "formats": "Browse {formatCount} formats"
   },
   "demo": {
@@ -147,7 +148,8 @@
       "star": "Like it? Star Filee on GitHub",
       "issue": "Report a problem or suggest a feature",
       "retry": "Download didn’t start? Try again",
-      "close": "Close"
+      "close": "Close",
+      "thanks": "Filee is free thanks to"
     }
   },
   "supporters": {
