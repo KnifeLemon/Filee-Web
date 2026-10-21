@@ -58,6 +58,39 @@
       { "title": "Done, next to the original", "text": "A progress ring counts up and the new files appear beside the originals. Prefer menus? Right-click and choose Convert with Filee." }
     ]
   },
+  "showcase": {
+    "eyebrow": "In motion",
+    "title": "See what Filee can do",
+    "lead": "Four short loops rendered from Filee's real interface, not mock-ups.",
+    "play": "Play clip",
+    "pause": "Pause clip",
+    "items": [
+      {
+        "title": "Drag, and the donut comes to you",
+        "text": "Hold Ctrl and drag a file: the formats that fit it open as a donut right at your cursor. Rest on a group slice and it fans out into a second ring; let go on WEBP and trip.webp appears beside the original.",
+        "hint": "Hold [Ctrl] and drag",
+        "alt": "Clip: trip.jpg is dragged with Ctrl held, the donut opens, the Formats group fans out and the file is dropped on WEBP."
+      },
+      {
+        "title": "Flip it for more tools",
+        "text": "Press Tab or turn the mouse wheel and the donut flips to its back face: crop, rotate, flip, grayscale, remove background, merge into one PDF or pack everything into one ZIP.",
+        "hint": "[Tab] or the mouse wheel",
+        "alt": "Clip: Tab flips the donut to its back face and trip.jpg is dropped on Remove background."
+      },
+      {
+        "title": "Straight from the browser",
+        "text": "Drag a picture out of a web page and drop it on a format. Filee downloads it, shows the speed and progress on the ring, and saves both the original and the converted file in Downloads.",
+        "hint": "Drag from any web page",
+        "alt": "Clip: a photo is dragged out of a web page onto JPG, a ring shows the download, then lake.webp and lake.jpg appear in Downloads."
+      },
+      {
+        "title": "Crop with the aspect dial",
+        "text": "Drop photos on Crop and frame them one after another. Press A over the picture and the aspect dial opens at your cursor: 1:1, 4:3, 3:2, 16:9 or the original. Then Crop & Next, Crop & Save, done.",
+        "hint": "[A] opens the aspect dial",
+        "alt": "Clip: two photos are dropped on Crop, A opens the aspect dial, 1:1 is picked and the cropped photos appear beside the originals."
+      }
+    ]
+  },
   "features": {
     "title": "What Filee does",
     "items": [
@@ -165,7 +198,9 @@
     "signing": "Code signing policy",
     "sponsor": "Sponsor Filee",
     "issues": "Report an issue",
-    "made": "Built by KnifeLemon and contributors.",
+    "made": "© {year} {name} and contributors",
+    "product": "Product",
+    "openSource": "Open source",
     "formats": "All formats",
     "cli": "Command line",
     "popular": "Popular conversions"

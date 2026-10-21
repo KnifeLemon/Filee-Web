@@ -1,6 +1,7 @@
-// filee.sh interactions: the drag & drop demo (home page), scroll reveals, lazy video, GitHub release info and the
-// real installer link, the language suggestion and card tilt. No dependencies; without JavaScript every page is
-// still complete and readable, and download buttons lead to the latest release page.
+// filee.sh interactions: the drag & drop demo (home page), scroll reveals, lazy video, the feature showcase, GitHub
+// release info and the real installer link, the language suggestion and card tilt. No dependencies but GSAP, which
+// only the showcase loads (vendor/, see build.mjs); without JavaScript every page is still complete and readable,
+// and download buttons lead to the latest release page.
 
 import { DOWNLOAD_TARGETS, downloadChoice, releaseSummary } from './downloads.mjs';
 
@@ -457,6 +458,111 @@ function setupVideo() {
   }, { threshold: 0.4 }).observe(video);
 }
 
+/* ───────── Showcase: feature clips with scroll motion ───────── */
+
+/**
+ * The home page's feature clips. Each video gets its source only when it scrolls into view (preload="none" until
+ * then, the poster image above it), plays muted while visible and pauses when it leaves. Its button pauses and plays
+ * it; with reduced motion nothing plays until that button is pressed. GSAP (served from this site, see build.mjs)
+ * is loaded only when the section comes near and only without reduced motion.
+ */
+function setupShowcase() {
+  const section = document.querySelector('[data-showcase]');
+  if (!section) return;
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const clips = new Map();
+  for (const clip of section.querySelectorAll('[data-clip]')) {
+    const video = clip.querySelector('video');
+    const button = clip.querySelector('.clip-toggle');
+    let wanted = !reduceMotion; // whether the clip should play while it is visible
+    let visible = false;
+    const sync = () => {
+      const playing = !video.paused;
+      clip.classList.toggle('is-playing', playing);
+      button.setAttribute('aria-label', playing ? section.dataset.pause : section.dataset.play);
+    };
+    const play = () => {
+      if (!video.getAttribute('src')) video.src = (dark && video.dataset.srcDark) || video.dataset.src;
+      video.play().catch(() => {});
+    };
+    video.addEventListener('playing', () => clip.classList.add('is-started'));
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    button.addEventListener('click', () => {
+      wanted = video.paused;
+      if (wanted) play(); else video.pause();
+    });
+    button.hidden = false;
+    clips.set(clip, isVisible => {
+      visible = isVisible;
+      if (visible && wanted) play();
+      else if (!visible && !video.paused) video.pause();
+    });
+  }
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    for (const entry of entries) clips.get(entry.target)?.(entry.isIntersecting);
+  }, { threshold: 0.35 });
+  clips.forEach((_, clip) => io.observe(clip));
+
+  if (reduceMotion || !section.dataset.gsap) return;
+  const near = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    near.disconnect();
+    animateShowcase(section).catch(() => {});
+  }, { rootMargin: '100% 0px' });
+  near.observe(section);
+}
+
+const loadScript = src => new Promise((resolve, reject) => {
+  const script = document.createElement('script');
+  script.src = src;
+  script.onload = resolve;
+  script.onerror = reject;
+  document.head.append(script);
+});
+
+/** Scroll-driven motion of the showcase rows (GSAP + ScrollTrigger). */
+async function animateShowcase(section) {
+  const [core, plugin] = section.dataset.gsap.split(' ');
+  await loadScript(core);
+  await loadScript(plugin);
+  const { gsap, ScrollTrigger } = window;
+  if (!gsap || !ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  section.classList.add('is-animated');
+  const rows = [...section.querySelectorAll('[data-feature]')];
+  gsap.matchMedia().add({ wide: '(min-width: 981px)', narrow: '(max-width: 980px)' }, ({ conditions: { wide } }) => {
+    rows.forEach((row, i) => {
+      const clip = row.querySelector('.clip');
+      const side = i % 2 ? -1 : 1;
+      // The clip rises, straightens and grows into place as its row scrolls up; the picture inside settles from a
+      // slight zoom, the glow behind drifts slower than the page.
+      const scrub = { trigger: row, start: 'top bottom', end: wide ? 'center 55%' : 'top 35%', scrub: 0.6 };
+      gsap.fromTo(clip, { y: wide ? 90 : 40, scale: 0.88, rotate: wide ? 3 * side : 0 },
+        { y: 0, scale: 1, rotate: 0, ease: 'none', scrollTrigger: scrub });
+      gsap.fromTo(clip.querySelectorAll('video, .clip-poster'), { scale: 1.14 }, { scale: 1, ease: 'none', scrollTrigger: { ...scrub } });
+      gsap.fromTo(row.querySelector('.feature-media'), { '--glow-y': '30%' }, {
+        '--glow-y': '-12%', ease: 'none', scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+      // The number pops in, then the copy rises line by line (on phones the number sits right above the title, so
+      // it only fades and scales there).
+      const reveal = { trigger: row, start: 'top 80%', toggleActions: 'play none none reverse' };
+      gsap.from(row.querySelector('.feature-index'), { autoAlpha: 0, scale: 0.6, duration: 0.7, ease: 'back.out(2)', scrollTrigger: reveal });
+      gsap.from(row.querySelectorAll('.feature-copy > *'), {
+        y: wide ? 34 : 22, autoAlpha: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.1, scrollTrigger: { ...reveal },
+      });
+      ScrollTrigger.create({ trigger: row, start: 'top 62%', end: 'bottom 38%', toggleClass: { targets: row, className: 'is-active' } });
+    });
+    if (wide) {
+      gsap.fromTo(section.querySelector('.showcase-rail i'), { scaleY: 0 }, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: section.querySelector('.showcase-list'), start: 'top 62%', end: 'bottom 62%', scrub: true },
+      });
+    }
+  });
+}
+
 const HOUR = 3_600_000;
 
 /**
@@ -703,6 +809,7 @@ setupNav();
 setupReveal();
 setupDemo();
 setupVideo();
+setupShowcase();
 setupTilt();
 setupGitHub();
 setupDownloadGuide();

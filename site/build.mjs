@@ -22,6 +22,14 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, 'dist');
 
 const hash = text => createHash('sha256').update(text).digest('hex').slice(0, 10);
+
+/**
+ * Third-party scripts kept in vendor/, served from the site's own origin (the Content-Security-Policy allows no
+ * script hosts but Google's analytics): GSAP and ScrollTrigger from the npm package gsap, dist/*.min.js, for the
+ * home page's showcase only (main.js loads them when that section comes near). To update, replace both files with
+ * the same version's.
+ */
+const VENDOR = [['gsap', 'vendor/gsap/gsap.min.js'], ['ScrollTrigger', 'vendor/gsap/ScrollTrigger.min.js']];
 const minifyCss = css => css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n\s*/g, '\n').replace(/\n{2,}/g, '\n').trim();
 
 /**
@@ -180,7 +188,11 @@ export async function build() {
   const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8')).replace("'./downloads.mjs'", `'./${downloadsName}'`);
   // Pages get the hashed asset names, and the supporters for the home page's sponsor section.
   const supporters = await loadSupporters();
-  const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js`, supporters };
+  const vendor = await Promise.all(VENDOR.map(async ([name, path]) => {
+    const text = await readFile(join(ROOT, path), 'utf8');
+    return { file: `${name}.${hash(text)}.js`, text };
+  }));
+  const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js`, gsap: vendor.map(v => v.file), supporters };
   const today = new Date().toISOString().slice(0, 10);
   const pages = pageList();
 
@@ -190,6 +202,7 @@ export async function build() {
   await writeFile(join(DIST, 'assets', assets.css), css);
   await writeFile(join(DIST, 'assets', assets.js), js);
   await writeFile(join(DIST, 'assets', downloadsName), downloads);
+  await Promise.all(vendor.map(v => writeFile(join(DIST, 'assets', v.file), v.text)));
   if (logoFiles(supporters).length) await mkdir(join(DIST, 'media', 'sponsors'), { recursive: true });
   await Promise.all(logoFiles(supporters).map(l => writeFile(join(DIST, 'media', 'sponsors', l.file), l.bytes)));
 

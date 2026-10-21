@@ -50,6 +50,8 @@ const ICONS = {
   star: 'M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z',
   arrow: 'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z',
   chevron: 'M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z',
+  play: 'M8,5.14V19.14L19,12.14L8,5.14Z',
+  pause: 'M14,19H18V5H14M6,19H10V5H6V19Z',
   // Category glyphs (even-odd): cut-outs are holes.
   image: { d: 'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM5 5v11l4-4.5 3 3.5 3.5-4.5L19 15.5V5zm4 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z' },
   vector: { d: 'M3 15h6v6H3zM15 3h6v6h-6zM5 15c0-5.5 4.5-10 10-10v2c-4.4 0-8 3.6-8 8z' },
@@ -254,29 +256,46 @@ function header(t, languages, alternates, current) {
 </header>`;
 }
 
+/** The site's author (footer line); the copyright year is the build's. */
+const AUTHOR = { name: 'Myeonggu Kim (KnifeLemon)', url: 'https://github.com/KnifeLemon' };
+
 function footer(t, languages, alternates) {
   const popular = PAIRS.filter(p => p.popular).slice(0, 12);
+  const column = (title, links) => `<nav class="footer-col" aria-label="${escape(title)}">
+      <h2>${escape(title)}</h2>
+      <ul>${links.map(([href, text, external]) => `<li><a href="${href}"${external ? ' rel="noopener"' : ''}>${escape(text)}</a></li>`).join('')}</ul>
+    </nav>`;
+  // "© 2026 {name} and contributors": the name links to the author's GitHub profile.
+  const made = escape(t.footer.made.replace('{year}', new Date().getFullYear()))
+    .replace('{name}', `<a href="${AUTHOR.url}" rel="noopener">${escape(AUTHOR.name)}</a>`);
   return `<footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand">${LOGO}<div><strong>Filee</strong><p>${escape(t.footer.tagline)}</p></div></div>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="${paths.formats(t)}">${escape(t.footer.formats)}</a>
-      <a href="${paths.cli(t)}">${escape(t.footer.cli)}</a>
-      <a href="${REPO}">GitHub</a>
-      <a href="${REPO}/releases">${escape(t.download.all)}</a>
-      <a href="${REPO}/issues">${escape(t.footer.issues)}</a>
-      <a href="${REPO}/blob/main/LICENSE">${escape(t.footer.license)}</a>
-      <a href="${REPO}/blob/main/THIRD-PARTY-NOTICES.md">${escape(t.footer.notices)}</a>
-      <a href="${REPO}#code-signing-policy">${escape(t.footer.signing)}</a>
-      <a href="${sponsorUrl(t)}" rel="noopener">${escape(t.footer.sponsor)}</a>
+    <div class="footer-brand">
+      <a class="footer-logo" href="${paths.home(t)}" aria-label="Filee">${LOGO}<strong>Filee</strong></a>
+      <p>${escape(t.footer.tagline)}</p>
+      <a class="footer-badge" href="${ALTERNATIVETO}" rel="noopener" target="_blank"><picture><source srcset="/media/badges/alternativeto-dark.svg" media="(prefers-color-scheme: dark)"><img src="/media/badges/alternativeto-light.svg" alt="Filee on AlternativeTo" width="141" height="48" loading="lazy" decoding="async"></picture></a>
+    </div>
+    ${column(t.footer.product, [
+      [paths.formats(t), t.footer.formats],
+      [paths.cli(t), t.footer.cli],
+      [`${REPO}/releases`, t.download.all],
+      [`${REPO}#code-signing-policy`, t.footer.signing],
+    ])}
+    ${column(t.footer.openSource, [
+      [REPO, 'GitHub'],
+      [`${REPO}/issues`, t.footer.issues],
+      [sponsorUrl(t), t.footer.sponsor, true],
+      [`${REPO}/blob/main/LICENSE`, t.footer.license],
+      [`${REPO}/blob/main/THIRD-PARTY-NOTICES.md`, t.footer.notices],
+    ])}
+    <nav class="footer-col footer-popular" aria-label="${escape(t.footer.popular)}">
+      <h2>${escape(t.footer.popular)}</h2>
+      <ul>${popular.map(p => `<li><a href="${paths.convert(t, pairSlug(p))}">${escape(pairName(t, p))}</a></li>`).join('')}</ul>
     </nav>
-    <nav class="footer-popular" aria-label="${escape(t.footer.popular)}">
-      <strong>${escape(t.footer.popular)}</strong>
-      ${popular.map(p => `<a href="${paths.convert(t, pairSlug(p))}">${escape(pairName(t, p))}</a>`).join('')}
-    </nav>
-    <nav class="footer-langs" aria-label="${escape(t.nav.language)}">${languages.map(l => `<a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}">${escape(l.name)}</a>`).join('')}</nav>
-    <a class="footer-badge" href="${ALTERNATIVETO}" rel="noopener" target="_blank"><picture><source srcset="/media/badges/alternativeto-dark.svg" media="(prefers-color-scheme: dark)"><img src="/media/badges/alternativeto-light.svg" alt="Filee on AlternativeTo" width="141" height="48" loading="lazy" decoding="async"></picture></a>
-    <p class="footer-made">${escape(t.footer.made)} © ${new Date().getFullYear()}</p>
+    <div class="footer-bottom">
+      <nav class="footer-langs" aria-label="${escape(t.nav.language)}">${icon('globe')}<ul>${languages.map(l => `<li><a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}"${l.lang === t.lang ? ' aria-current="page"' : ''}>${escape(l.name)}</a></li>`).join('')}</ul></nav>
+      <p class="footer-made">${made}</p>
+    </div>
   </div>
 </footer>`;
 }

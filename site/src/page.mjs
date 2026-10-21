@@ -22,6 +22,14 @@ const SCREEN_SIZES = {
 };
 const screenSize = name => SCREEN_SIZES[name] ?? [1080, 820];
 
+/**
+ * The feature showcase: one clip per t.showcase.items entry, in that order, from public/media/demos
+ * (marketing/export.py demos: <clip>.mp4 and its poster <clip>.webp, 720 px square). dark: a <clip>-dark version
+ * exists for dark pages.
+ */
+const SHOWCASE = [{ clip: 'expand', dark: true }, { clip: 'flip' }, { clip: 'browser' }, { clip: 'crop' }];
+const CLIP_SIZE = 720;
+
 /** The terminal on the home page's automation section (output as the filee command prints it). */
 const AUTO_SESSION = [
   '> filee watch . --to pdf --move-originals',
@@ -132,6 +140,48 @@ function categoryCards(t) {
   }).join('')}</ul>`;
 }
 
+/**
+ * "What Filee can do": the showcase rows, copy beside a looping clip. Without JavaScript the posters show; main.js
+ * attaches each video's source only when it scrolls into view and loads GSAP (assets.gsap) for the scroll motion.
+ */
+function showcase(t, assets) {
+  const s = t.showcase;
+  if (s.items.length !== SHOWCASE.length) throw new Error(`showcase: ${s.items.length} texts for ${SHOWCASE.length} clips`);
+  const keys = text => escape(text).replace(/\[([^\]]+)\]/g, '<kbd>$1</kbd>');
+  const rows = SHOWCASE.map(({ clip, dark }, i) => {
+    const item = s.items[i];
+    const media = `/media/demos/${clip}`;
+    return `
+      <li class="feature" data-feature>
+        <span class="feature-index" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+        <div class="feature-copy">
+          <h3>${escape(item.title)}</h3>
+          <p>${escape(item.text)}</p>
+          <p class="feature-hint">${keys(item.hint)}</p>
+        </div>
+        <div class="feature-media">
+          <div class="clip" data-clip>
+            <video muted loop playsinline preload="none" width="${CLIP_SIZE}" height="${CLIP_SIZE}" aria-label="${escape(item.alt)}" data-src="${media}.mp4"${dark ? ` data-src-dark="${media}-dark.mp4"` : ''}></video>
+            <picture class="clip-poster">${dark ? `<source srcset="${media}-dark.webp" media="(prefers-color-scheme: dark)">` : ''}<img src="${media}.webp" alt="" width="${CLIP_SIZE}" height="${CLIP_SIZE}" loading="lazy" decoding="async"></picture>
+            <button class="clip-toggle" type="button" aria-label="${escape(s.play)}" hidden>${icon('play', 'icon icon-play')}${icon('pause', 'icon icon-pause')}</button>
+          </div>
+        </div>
+      </li>`;
+  }).join('');
+  return `<section class="section showcase" id="showcase" data-showcase data-gsap="${assets.gsap.map(name => `/assets/${name}`).join(' ')}" data-play="${escape(s.play)}" data-pause="${escape(s.pause)}">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">${escape(s.eyebrow)}</p>
+      <h2>${escape(s.title)}</h2>
+      <p>${escape(s.lead)}</p>
+    </header>
+    <div class="showcase-body">
+      <div class="showcase-rail" aria-hidden="true"><i></i></div>
+      <ol class="showcase-list">${rows}
+      </ol>
+    </div>
+  </section>`;
+}
+
 /** HWP section checklist: the HWP routes from the catalog plus the layout note. */
 function hwpPoints(t) {
   const hwp = CATEGORIES.find(c => c.id === 'hwp');
@@ -205,6 +255,8 @@ export function renderPage(t, languages, assets) {
       ${t.how.steps.map((step, i) => `<li class="step" data-reveal style="--i:${i}"><span class="step-number">${i + 1}</span><h3>${escape(step.title)}</h3><p>${escape(step.text)}</p></li>`).join('')}
     </ol>
   </section>
+
+  ${showcase(t, assets)}
 
   <section class="section" id="features">
     <header class="section-head" data-reveal><h2>${escape(t.features.title)}</h2></header>

@@ -58,6 +58,39 @@
       { "title": "Gotowe, obok oryginału", "text": "Pierścień postępu odlicza, a nowe pliki pojawiają się obok oryginałów. Wolisz menu? Kliknij prawym przyciskiem i wybierz „Konwertuj w Filee”." }
     ]
   },
+  "showcase": {
+    "eyebrow": "W ruchu",
+    "title": "Filee w akcji",
+    "lead": "Cztery krótkie pętle wyrenderowane z prawdziwego interfejsu Filee, a nie makiety.",
+    "play": "Odtwórz klip",
+    "pause": "Wstrzymaj klip",
+    "items": [
+      {
+        "title": "Przeciągnij, a pierścień sam się pojawi",
+        "text": "Przytrzymaj Ctrl i przeciągnij plik: pasujące formaty otwierają się w pierścieniu tuż przy kursorze. Zatrzymaj się na wycinku z grupą, a rozwinie się drugi pierścień; puść na WEBP, a obok oryginału pojawi się trip.webp.",
+        "hint": "Przytrzymaj [Ctrl] i przeciągnij",
+        "alt": "Klip: trip.jpg przeciągany z wciśniętym Ctrl, pierścień się otwiera, grupa formatów się rozwija, a plik trafia na WEBP."
+      },
+      {
+        "title": "Odwróć go po więcej narzędzi",
+        "text": "Naciśnij Tab lub obróć kółko myszy, a pierścień obróci się na drugą stronę: kadrowanie, obracanie, odbicie, skala szarości, usuwanie tła, łączenie w jeden PDF i pakowanie do jednego ZIP.",
+        "hint": "[Tab] lub kółko myszy",
+        "alt": "Klip: Tab odwraca pierścień na drugą stronę, a trip.jpg trafia na „Usuń tło”."
+      },
+      {
+        "title": "Prosto z przeglądarki",
+        "text": "Przeciągnij obraz ze strony internetowej i upuść go na format. Filee go pobierze, pokaże prędkość i postęp na pierścieniu, a oryginał i przekonwertowany plik zapisze w Pobranych.",
+        "hint": "Przeciągnij z dowolnej strony",
+        "alt": "Klip: zdjęcie przeciągnięte ze strony na JPG, pierścień pokazuje pobieranie, a w Pobranych pojawiają się lake.webp i lake.jpg."
+      },
+      {
+        "title": "Kadrowanie z tarczą proporcji",
+        "text": "Upuść zdjęcia na Kadruj i ustawiaj kadr jedno po drugim. Naciśnij A nad obrazem, a tarcza proporcji otworzy się przy kursorze: 1:1, 4:3, 3:2, 16:9 lub oryginalne. Potem „Kadruj i dalej”, „Kadruj i zapisz” i gotowe.",
+        "hint": "[A] otwiera tarczę proporcji",
+        "alt": "Klip: dwa zdjęcia upuszczone na Kadruj, A otwiera tarczę proporcji, wybrane 1:1, a przycięte zdjęcia pojawiają się obok oryginałów."
+      }
+    ]
+  },
   "features": {
     "title": "Co potrafi Filee",
     "items": [
@@ -165,7 +198,9 @@
     "signing": "Zasady podpisywania kodu",
     "sponsor": "Wesprzyj Filee",
     "issues": "Zgłoś problem",
-    "made": "Stworzone przez KnifeLemon i współtwórców.",
+    "made": "© {year} {name} i współtwórcy",
+    "product": "Produkt",
+    "openSource": "Open source",
     "formats": "Wszystkie formaty",
     "cli": "Wiersz poleceń",
     "popular": "Popularne konwersje"

@@ -58,6 +58,39 @@
       { "title": "Listo, junto al original", "text": "Un anillo de progreso avanza y los archivos nuevos aparecen junto a los originales. ¿Prefieres los menús? Haz clic derecho y elige «Convertir con Filee»." }
     ]
   },
+  "showcase": {
+    "eyebrow": "En movimiento",
+    "title": "Mira Filee en acción",
+    "lead": "Cuatro bucles cortos generados con la interfaz real de Filee, no maquetas.",
+    "play": "Reproducir clip",
+    "pause": "Pausar clip",
+    "items": [
+      {
+        "title": "Arrastra y el menú circular aparece",
+        "text": "Mantén Ctrl y arrastra un archivo: los formatos que le sirven se abren en un menú circular junto al cursor. Detente en una porción de grupo y se despliega un segundo anillo; suelta en WEBP y trip.webp aparece junto al original.",
+        "hint": "Mantén [Ctrl] y arrastra",
+        "alt": "Clip: se arrastra trip.jpg con Ctrl pulsado, se abre el menú circular, el grupo Formatos se despliega y el archivo se suelta en WEBP."
+      },
+      {
+        "title": "Dale la vuelta para ver más",
+        "text": "Pulsa Tab o gira la rueda del ratón y el menú circular muestra su reverso: recortar, girar, voltear, grises, quitar fondo, combinar en un PDF o reunirlo todo en un ZIP.",
+        "hint": "[Tab] o la rueda del ratón",
+        "alt": "Clip: Tab da la vuelta al menú circular y trip.jpg se suelta en Quitar fondo."
+      },
+      {
+        "title": "Directo desde el navegador",
+        "text": "Arrastra una imagen fuera de una página web y suéltala en un formato. Filee la descarga, muestra la velocidad y el progreso en el anillo y guarda el original y el archivo convertido en Descargas.",
+        "hint": "Arrastra desde cualquier página",
+        "alt": "Clip: se arrastra una foto de una página web a JPG, un anillo muestra la descarga y luego aparecen lake.webp y lake.jpg en Descargas."
+      },
+      {
+        "title": "Recorta con el dial de proporciones",
+        "text": "Suelta fotos en Recortar y encuadra una tras otra. Pulsa A sobre la imagen y el dial de proporciones se abre junto al cursor: 1:1, 4:3, 3:2, 16:9 o la original. Luego «Recortar y seguir», «Recortar y guardar» y listo.",
+        "hint": "[A] abre el dial de proporciones",
+        "alt": "Clip: dos fotos se sueltan en Recortar, A abre el dial de proporciones, se elige 1:1 y las fotos recortadas aparecen junto a los originales."
+      }
+    ]
+  },
   "features": {
     "title": "Lo que hace Filee",
     "items": [
@@ -165,7 +198,9 @@
     "signing": "Política de firma de código",
     "sponsor": "Patrocina Filee",
     "issues": "Informar de un problema",
-    "made": "Creado por KnifeLemon y colaboradores.",
+    "made": "© {year} {name} y colaboradores",
+    "product": "Producto",
+    "openSource": "Código abierto",
     "formats": "Todos los formatos",
     "cli": "Línea de comandos",
     "popular": "Conversiones populares"

@@ -12,7 +12,8 @@ site/
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
-  src/page.mjs              home page (hero, demo, features, format categories, HWP, FAQ, specs) and the 404 page
+  src/page.mjs              home page (hero, demo, feature showcase, features, format categories, HWP, FAQ, specs) and the
+                            404 page
   src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
   src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…, /ru/…)
   src/llms.mjs              llms.txt and llms-full.txt
@@ -20,8 +21,11 @@ site/
                             home page section, under the hero's download button and in the after-download dialog;
                             nothing while nobody is listed (SPONSORS=<folder> reads a local copy)
   src/styles.css            styles (light/dark, responsive, reduced motion)
-  src/main.js               interactions: drag & drop demo, reveals, lazy video, GitHub release info and installer link
-  public/                   copied as-is: media (video, posters, OG images, screenshots), icons
+  src/main.js               interactions: drag & drop demo, reveals, lazy video, the showcase's clips and scroll motion,
+                            GitHub release info and installer link
+  public/                   copied as-is: media (video, posters, OG images, screenshots, showcase clips), icons
+  vendor/gsap/              GSAP and ScrollTrigger (npm gsap 3.15.0, dist/*.min.js), served from this site as hashed
+                            assets; only the showcase loads them, and not with reduced motion
   build.mjs                 → dist/: all pages, hashed assets, sitemap.xml, robots.txt, llms(-full).txt, 404,
                             _headers, _redirects; stops on catalog or i18n inconsistencies
   check.mjs                 checks dist/: titles, descriptions, canonical, hreflang reciprocity, JSON-LD, links, sitemap
@@ -61,7 +65,11 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
      page, `_redirects` and llms.txt pick it up; the check names anything missing.
   5. When the app has the language too, add it to the app's language lists: `features` and `specs` in every
      `i18n/*.json`, `src/llms.mjs` and `src/pad.mjs`.
-- **Media**: the promo video, posters and images come from `marketing/` (see `marketing/README.md`).
+- **Media**: the promo video, posters and images come from `marketing/` (see `marketing/README.md`); the showcase clips
+  (`public/media/demos/<clip>.mp4` and their `.webp` posters) from `python marketing/export.py demos`.
+- **GSAP**: to update, replace both files in `vendor/gsap/` with the same version's `dist/gsap.min.js` and
+  `dist/ScrollTrigger.min.js` from the npm package `gsap`. The build gives them hashed names under `/assets/`, so the
+  Content-Security-Policy stays `script-src 'self'` (plus the analytics hashes).
 
 ## Pages
 
