@@ -94,6 +94,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' et ' }, size: 'environ {mb} Mo', paren: ' ({size})',
     engineFor: '{name} pour {what}{size}', engineSep: ' ; ',
   },
+  {
+    lang: 'ne', path: '/ne/', htmlLang: 'ne', ogLocale: 'ne_NP', name: 'नेपाली', englishName: 'Nepali',
+    match: ['ne'], aliases: [], font: 'inter-devanagari', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' र ' }, size: 'करिब {mb} MB', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

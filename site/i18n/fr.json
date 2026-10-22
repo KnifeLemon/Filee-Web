@@ -102,7 +102,7 @@
       { "icon": "windows", "title": "Là où vous travaillez", "text": "Le geste de glisser, « Convertir avec Filee » dans le menu du clic droit (sous Windows 11, aussi dans le menu principal), Envoyer vers, un raccourci clavier ou la zone de dépôt de la fenêtre principale." },
       { "icon": "sliders", "title": "Des préréglages par type de fichier", "text": "Qualité, redimensionnement, rotation et retournement, DPI, niveaux de gris, métadonnées, suppression de l'arrière-plan, Vectoriser en SVG, compression TIFF, tailles d'ICO, fusion, division, plages de pages et compression de PDF, image longue, vidéo 720p, HEVC et AV1, accélération matérielle, chaque image d'une vidéo en photos, débit MP3, dossier de sortie, noms de fichiers et dates d'origine des fichiers." },
       { "icon": "download", "title": "Des moteurs à la demande", "text": "Les gros moteurs sont facultatifs. Cochez-les dans le programme d'installation ou téléchargez-les plus tard dans l'application : {engineNames}. Filee affiche leurs versions, la vitesse de téléchargement et le temps restant. Vous avez déjà FFmpeg, calibre ou Pandoc ? Filee les trouve et saute le téléchargement." },
-      { "icon": "code", "title": "Gratuit et open source", "text": "Licence MIT, sans publicité, sans compte. En English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil) et Français. Filee vous signale les nouvelles versions ; chaque version liste ses changements et ses contributeurs." }
+      { "icon": "code", "title": "Gratuit et open source", "text": "Licence MIT, sans publicité, sans compte. En English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français et नेपाली. Filee vous signale les nouvelles versions ; chaque version liste ses changements et ses contributeurs." }
     ]
   },
   "formats": {
@@ -145,7 +145,7 @@
       ["Intégrés", "{builtinTotal} formats, rien d'autre à installer"],
       ["Moteurs facultatifs", "{engineNames}"],
       ["Ligne de commande", "filee convert et filee watch, ajoutées au PATH par le programme d'installation"],
-      ["Langues", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français"],
+      ["Langues", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली"],
       ["Mises à jour", "Installées depuis l'application en un clic ; chacune indique si elle est obligatoire, recommandée ou facultative"]
     ]
   },

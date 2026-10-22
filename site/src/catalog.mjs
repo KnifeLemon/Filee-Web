@@ -1715,7 +1715,7 @@ export function joinList(items, lang) {
 
 /** "about 100 MB" in a language ('' without a size). */
 export const sizeText = (mb, lang) => (mb
-  ? LANGUAGE[lang].size.replace('{mb}', new Intl.NumberFormat(LANGUAGE[lang].htmlLang).format(mb)) : '');
+  ? LANGUAGE[lang].size.replace('{mb}', new Intl.NumberFormat(`${LANGUAGE[lang].htmlLang}-u-nu-latn`).format(mb)) : '');
 
 /** A size in brackets after a name: " (about 100 MB)", "(약 100MB)", "（约 100 MB）"; '' without a size. */
 export const sizeParen = (mb, lang) => (mb ? LANGUAGE[lang].paren.replace('{size}', sizeText(mb, lang)) : '');
