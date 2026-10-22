@@ -750,10 +750,15 @@ function setupLanguageBanner() {
   try { if (localStorage.getItem(KEY)) return; } catch { return; }
   if (document.referrer && new URL(document.referrer).origin === location.origin) return;
 
-  // The site's language for a browser language tag (languages.mjs → match: "pl" matches pl and pl-PL).
+  // The site's language for a browser language tag (languages.mjs → match: "pl" matches pl and pl-PL). The longest
+  // match wins, so zh-TW takes Traditional Chinese although "zh" alone means Simplified.
   const map = tag => {
     tag = String(tag || '').toLowerCase();
-    return page.langs.find(l => (l.match ?? []).some(m => tag === m || tag.startsWith(`${m}-`)));
+    let best = null, length = 0;
+    for (const l of page.langs)
+      for (const m of l.match ?? [])
+        if ((tag === m || tag.startsWith(`${m}-`)) && m.length > length) { best = l; length = m.length; }
+    return best;
   };
   const target = (navigator.languages?.length ? navigator.languages : [navigator.language]).map(map).find(Boolean);
   if (!target || target.lang === page.lang) return;

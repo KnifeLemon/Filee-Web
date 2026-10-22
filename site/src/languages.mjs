@@ -9,7 +9,7 @@
  * lang: language code used in file names (i18n/<lang>.json, src/texts/<lang>.mjs). path: URL prefix.
  * htmlLang: <html lang> and hreflang. dir: 'rtl' for right-to-left scripts (left out: left to right). ogLocale: Open Graph locale. name: the language's own name (menus).
  * englishName: for llms.txt. match: browser language tags that pick this language (a tag matches when it equals one
- * or starts with it plus "-", case-insensitive). aliases: extra short URLs redirected to the language ("/x/*" keeps
+ * or starts with it plus "-", case-insensitive; the longest match wins, so "zh-tw" beats "zh"). aliases: extra short URLs redirected to the language ("/x/*" keeps
  * the rest of the path). font: web font (see FONTS in layout.mjs; null = system fonts). media: language of the
  * promo video, poster and Open Graph image in public/media. snippet: soft length limits for titles and descriptions
  * (check.mjs warns above them).
@@ -38,6 +38,13 @@ export const LANGUAGES = [
     snippet: { title: 40, description: 90 },
     list: { sep: '、', last: '和' }, size: '约 {mb} MB', paren: '（{size}）',
     engineFor: '用于{what}的{name}{size}', engineSep: '；', cjkSpacing: true,
+  },
+  {
+    lang: 'zh-TW', path: '/zh-tw/', htmlLang: 'zh-TW', ogLocale: 'zh_TW', name: '繁體中文', englishName: 'Traditional Chinese',
+    match: ['zh-tw', 'zh-hant', 'zh-hk', 'zh-mo'], aliases: ['/tw', '/zh-TW', '/zh-TW/*'], font: null, media: 'en',
+    snippet: { title: 40, description: 90 },
+    list: { sep: '、', last: '和' }, size: '約 {mb} MB', paren: '（{size}）',
+    engineFor: '用於{what}的{name}{size}', engineSep: '；', cjkSpacing: true,
   },
   {
     lang: 'pl', path: '/pl/', htmlLang: 'pl', ogLocale: 'pl_PL', name: 'Polski', englishName: 'Polish',
@@ -80,6 +87,12 @@ export const LANGUAGES = [
     match: ['pt'], aliases: ['/pt', '/br', '/pt-BR', '/pt-BR/*'], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
     list: { sep: ', ', last: ' e ' }, size: 'cerca de {mb} MB', paren: ' ({size})',
     engineFor: '{name} para {what}{size}', engineSep: '; ',
+  },
+  {
+    lang: 'fr', path: '/fr/', htmlLang: 'fr', ogLocale: 'fr_FR', name: 'Français', englishName: 'French',
+    match: ['fr'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' et ' }, size: 'environ {mb} Mo', paren: ' ({size})',
+    engineFor: '{name} pour {what}{size}', engineSep: ' ; ',
   },
 ];
 

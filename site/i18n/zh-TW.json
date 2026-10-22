@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "title": "免費檔案轉換器 Filee | 離線格式轉換工具",
+    "description": "免費檔案轉換器 Filee：拖放即可離線轉換圖片、PDF、Word、Excel、影片、音訊、電子書和 HWP，支援 Windows 和 Linux，另有 macOS 預覽版。",
+    "ogAlt": "Filee：拖曳檔案時，游標處會開啟格式圓環",
+    "appAlternateName": "Filee 檔案轉換器",
+    "keywords": "檔案轉換器, 格式轉換器, 免費檔案轉換, 離線檔案轉換, Windows 檔案轉換, 圖片格式轉換, PDF 轉換, 影片格式轉換, 音訊轉換, HEIC 轉 JPG, PDF 轉 Word, HWP 轉換"
+  },
+  "nav": {
+    "features": "功能",
+    "how": "使用方式",
+    "formats": "支援格式",
+    "cli": "命令列",
+    "hwp": "HWP",
+    "faq": "常見問題",
+    "download": "下載",
+    "github": "GitHub",
+    "language": "語言",
+    "menu": "選單",
+    "skip": "跳到主要內容"
+  },
+  "hero": {
+    "badge": "{versionShort} 新功能：從瀏覽器拖放、轉換前先裁剪、環形工具列背面、Linux 版",
+    "kicker": "適用於 Windows、macOS、Linux 的免費檔案轉換器",
+    "title": ["拖一拖，", "放一放，", "轉換完成。"],
+    "lead": "圖片、PDF、Word、Excel 和 PowerPoint 檔案、影片、音樂、電子書、壓縮檔等，都能直接在你的電腦上轉換。按住一個鍵拖曳檔案，放到想要的格式上即可。不必上傳、不用註冊，免費且開放原始碼。",
+    "download": "選擇下載版本",
+    "downloadNote": "Windows 10/11 · Linux · macOS 預覽版 · 免費",
+    "sponsored": "贊助商",
+    "formats": "瀏覽全部 {formatTotal} 種格式"
+  },
+  "demo": {
+    "label": "在這裡試試看",
+    "hint": "把檔案拖到這裡",
+    "hintTouch": "用手指拖曳檔案",
+    "files": [
+      { "name": "旅行.heic", "type": "heic", "profile": "image" },
+      { "name": "影片.mov", "type": "mov", "profile": "video" },
+      { "name": "報告.docx", "type": "docx", "profile": "document" }
+    ],
+    "center": { "image": "1 個 HEIC", "video": "1 個 MOV", "document": "1 個 DOCX", "hwp": "1 個 HWP" },
+    "close": "在中間放開即可取消",
+    "done": "已轉換",
+    "cancelled": "已取消",
+    "output": "轉換結果",
+    "empty": "轉換後的檔案會顯示在這裡",
+    "keyboard": "鍵盤操作：選取檔案後按 Enter，用方向鍵選擇格式，再按 Enter 轉換。"
+  },
+  "video": {
+    "title": "27 秒看懂 Filee",
+    "caption": "單張圖片、大量文件，還有不用 Hancom Office 的 HWP 轉換，都只要同一個手勢。"
+  },
+  "how": {
+    "title": "一個手勢，三個步驟",
+    "steps": [
+      { "title": "按住按鍵拖曳", "text": "在檔案總管或桌面上選取檔案，按住 Ctrl（或你選擇的其他修飾鍵）拖曳。" },
+      { "title": "放到格式上", "text": "游標處會開啟適合這些檔案的格式圓環，移到想要的格式上放開即可。" },
+      { "title": "完成，就在原始檔案旁", "text": "進度環走完後，新檔案就出現在原始檔案旁邊。習慣用選單？按右鍵選擇「用 Filee 轉換」即可。" }
+    ]
+  },
+  "showcase": {
+    "eyebrow": "實際操作",
+    "title": "看看 Filee 能做什麼",
+    "lead": "四段短片，全部取自 Filee 的實際介面，不是示意圖。",
+    "play": "播放短片",
+    "pause": "暫停短片",
+    "items": [
+      {
+        "title": "一拖曳，圓環就出現",
+        "text": "按住 Ctrl 拖曳檔案，適合它的格式會以圓環形式在游標處展開。停在群組格上，外圈會再展開一圈；在 WEBP 上放開，trip.webp 就出現在原始檔案旁邊。",
+        "hint": "按住 [Ctrl] 拖曳",
+        "alt": "短片：按住 Ctrl 拖曳 trip.jpg，格式圓環開啟，「格式」群組展開，檔案放到 WEBP 上。"
+      },
+      {
+        "title": "翻過來，工具更多",
+        "text": "按 Tab 鍵或轉動滑鼠滾輪，圓環就翻到背面：裁剪、旋轉、翻轉、灰階、去除背景、合併為一個 PDF，或打包成一個 ZIP。",
+        "hint": "[Tab] 或滑鼠滾輪",
+        "alt": "短片：按 Tab 把圓環翻到背面，再把 trip.jpg 放到「去除背景」上。"
+      },
+      {
+        "title": "直接從瀏覽器拖曳",
+        "text": "從網頁拖出一張圖片，放到某個格式上。Filee 會下載它，在圓環上顯示速度和進度，並把原始檔案和轉換後的檔案一起儲存到「下載」資料夾。",
+        "hint": "從任何網頁拖出",
+        "alt": "短片：把網頁上的照片拖到 JPG 上，圓環顯示下載進度，接著「下載」資料夾中出現 lake.webp 和 lake.jpg。"
+      },
+      {
+        "title": "用比例轉盤裁剪",
+        "text": "把照片放到「裁剪」上，逐張調整取景範圍。在圖片上按 A，比例轉盤就在游標處開啟：1:1、4:3、3:2、16:9 或原始比例。再按「裁剪並下一張」、「裁剪並儲存」，就完成了。",
+        "hint": "按 [A] 開啟比例轉盤",
+        "alt": "短片：兩張照片放到「裁剪」上，按 A 開啟比例轉盤並選擇 1:1，裁剪後的照片出現在原始檔案旁邊。"
+      }
+    ]
+  },
+  "features": {
+    "title": "轉換器該有的都有，不該有的一概沒有",
+    "items": [
+      { "icon": "donut", "title": "游標旁的格式圓環", "text": "格式就出現在你所在的位置，不必開啟應用程式視窗。可以用修飾鍵、滑鼠按鍵、長按手勢或鍵盤快速鍵開啟。一格還能放一組預設。" },
+      { "icon": "stack", "title": "{formatTotal} 種格式，一個手勢", "text": "圖片、PDF、Word、Excel、PowerPoint、HWP、電子書、影片、音訊、字幕、資料檔、3D 模型、地圖、壓縮檔、CAD 圖紙和字型。Filee 會自動規劃格式之間的轉換路線。" },
+      { "icon": "document", "title": "不需要 Office", "text": "Word、Excel 和 PowerPoint 檔案不需要 Microsoft Office 或 LibreOffice，HWP 也不需要 Hancom Office 就能轉換。即使電腦裝了 Office 或 Hancom Office，Filee 也不會使用。" },
+      { "icon": "doors", "title": "批次轉換", "text": "1 個檔案或 100 個都行。平行轉換，某個檔案失敗也不會中斷其他檔案，還能用預設把全部合併成一個 PDF 或一個 ZIP。" },
+      { "icon": "lock", "title": "100% 在你的電腦上", "text": "不上傳任何檔案。Filee 離線運作，私人文件、照片和錄音都不會離開你的電腦。" },
+      { "icon": "windows", "title": "就在你工作的地方", "text": "拖曳手勢、右鍵選單中的「用 Filee 轉換」（Windows 11 也能放進主選單）、「傳送到」、鍵盤快速鍵，或主視窗的拖放區域。" },
+      { "icon": "sliders", "title": "依檔案類型設定預設", "text": "品質、調整大小、旋轉和翻轉、DPI、灰階、中繼資料、去除背景、描摹為 SVG、TIFF 壓縮、ICO 尺寸、PDF 合併、拆分、頁面範圍、壓縮和長圖、720p、HEVC 和 AV1 影片、硬體編碼、將每個影格存成圖片、MP3 位元率、儲存位置、檔名，以及保留原始檔案日期。" },
+      { "icon": "download", "title": "引擎按需下載", "text": "大型引擎是可選的，可以在安裝時勾選，也可以之後在應用程式中下載：{engineNames}。Filee 會顯示版本、下載速度和剩餘時間。已經有 FFmpeg、calibre 或 Pandoc？Filee 會自動找到並跳過下載。" },
+      { "icon": "code", "title": "免費且開放原始碼", "text": "採用 MIT 授權條款，沒有廣告，不需要帳號。提供 English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil) 和 Français 介面。有新版本時 Filee 會通知你，每個版本都會列出變更內容和貢獻者。" }
+    ]
+  },
+  "formats": {
+    "title": "{categoryCount} 大類，{formatTotal} 種格式",
+    "lead": "Filee 會自動找出格式之間的最佳路線，例如 HWPX → PDF → PNG，每一步都使用最擅長的引擎。",
+    "count": "{n} 種格式",
+    "popular": "熱門轉換",
+    "catalog": "在格式目錄中查看全部 {formatTotal} 種格式"
+  },
+  "hwp": {
+    "eyebrow": "給 HWP 使用者",
+    "title": "不需要 Hancom Office 也能轉換 HWP 和 HWPX",
+    "text": "Filee 自行讀寫韓文 Hangul（한글）文件，不必購買 Hancom 授權，也不會跳出確認視窗。",
+    "quality": "DOCX → HWPX 保留版面設定、頁首和頁尾、含合併儲存格的表格、文字方塊和圖片",
+    "guides": "HWP 轉換指南"
+  },
+  "gallery": {
+    "title": "打造專屬你的環形工具列",
+    "lead": "直接在圓環上拖放排列格式：每種檔案類型一個工具列，可編輯副檔名標籤，也能為混合選取設定工具列。",
+    "shots": [
+      { "src": "page-toolbar-en", "alt": "用設定檔和預設編輯環形工具列" },
+      { "src": "page-home-en", "alt": "有拖放區域和最近轉換記錄的首頁" },
+      { "src": "page-presets-en", "alt": "設定品質和輸出選項的預設編輯器" },
+      { "src": "page-toolbar-dark", "alt": "深色主題" }
+    ]
+  },
+  "faq": {
+    "title": "常見問題",
+    "lead": "關於價格、隱私、支援格式和 Filee 運作方式的簡短解答。"
+  },
+  "specs": {
+    "title": "概覽",
+    "rows": [
+      ["價格", "免費"],
+      ["授權條款", "MIT（開放原始碼）"],
+      ["版本", "{version}"],
+      ["平台", "Windows 10/11 x64 · Linux x64/ARM64（Ubuntu 22.04 以上） · macOS 13 以上（預覽版）"],
+      ["離線使用", "可以，檔案不會離開你的電腦"],
+      ["支援格式", "{categoryCount} 大類共 {formatTotal} 種"],
+      ["內建", "{builtinTotal} 種格式，不需另外安裝"],
+      ["可選引擎", "{engineNames}"],
+      ["命令列", "filee convert 和 filee watch，由安裝程式加入 PATH"],
+      ["語言", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français"],
+      ["更新", "在應用程式內按一下即可安裝，並標示為必要、建議或可選"]
+    ]
+  },
+  "download": {
+    "title": "下載 Filee",
+    "text": "大多數格式安裝後即可轉換。\n影片、音訊和少見格式所需的引擎，可在需要時於應用程式內加入。",
+    "button": "下載 Windows 版",
+    "linuxButton": "下載 Linux 版",
+    "selector": "作業系統和處理器",
+    "targets": {
+      "win-x64": "Windows 10/11 · x64",
+      "linux-x64": "Linux · x64",
+      "linux-arm64": "Linux · ARM64",
+      "osx-arm64": "macOS · Apple 晶片 (ARM64)",
+      "osx-x64": "macOS · Intel (x64)"
+    },
+    "platformNote": "macOS 為預覽版。Linux 需要 Ubuntu 22.04 或更新版本；拖曳手勢需要 X11（在 KDE Plasma 的 Wayland 下為實驗性功能）。",
+    "developmentLabel": "預覽版",
+    "developmentButton": "下載預覽版",
+    "checking": "正在檢查發行檔案…",
+    "missing": "最新版本中沒有 {target} 檔案。請查看所有版本。",
+    "unavailable": "無法檢查發行檔案。請開啟所有版本，確認有哪些版本可供下載。",
+    "all": "所有版本",
+    "source": "原始碼",
+    "sponsor": "贊助開發",
+    "sponsorText": "Filee 免費，並將一直免費。",
+    "after": {
+      "title": "已開始下載",
+      "steps": [
+        "從下載資料夾開啟 Filee-…-win-Setup.exe。",
+        "如果 Windows 顯示「Windows 已保護您的電腦」，請按「其他資訊」，再按「仍要執行」。Filee 是剛起步的開放原始碼專案，目前還沒有程式碼簽章憑證；所有原始碼都公開在 GitHub 上。",
+        "在安裝精靈中選擇需要的選項和引擎，完成後 Filee 會自動啟動。"
+      ],
+      "star": "喜歡嗎？在 GitHub 上給 Filee 一顆星",
+      "issue": "回報問題 · 提出建議",
+      "retry": "沒有開始下載？再試一次",
+      "close": "關閉",
+      "thanks": "Filee 能保持免費，要感謝"
+    }
+  },
+  "supporters": {
+      "title": "贊助者",
+      "lead": "Filee 能保持免費，要感謝支持它的個人和企業。",
+      "join": "成為贊助者",
+      "readme": "/blob/main/README.zh-TW.md#贊助"
+  },
+  "footer": {
+    "tagline": "拖一拖，放一放，轉換完成。",
+    "license": "MIT 授權條款",
+    "notices": "第三方聲明",
+    "signing": "程式碼簽章政策",
+    "sponsor": "贊助 Filee",
+    "issues": "回報問題",
+    "made": "© {year} {name} 及所有貢獻者",
+    "product": "產品",
+    "openSource": "開放原始碼",
+    "formats": "格式目錄",
+    "cli": "命令列",
+    "popular": "熱門轉換"
+  },
+  "common": {
+    "home": "首頁",
+    "breadcrumb": "導覽路徑",
+    "builtIn": "內建",
+    "builtInHint": "安裝後即可使用，不需另外下載",
+    "optional": "可選引擎",
+    "optionalHint": "免費的可選引擎，在 Filee 內下載一次即可",
+    "free": "免費",
+    "offline": "離線",
+    "batch": "批次"
+  },
+  "catalog": {
+    "title": "支援的檔案格式一覽：{formatTotal} 種格式 | Filee 檔案轉換器",
+    "description": "Filee 支援的全部 {formatTotal} 種格式：圖片、PDF、文件、HWP、影片、音訊、字幕、資料、3D、地圖、電子書、壓縮檔、CAD 和字型，以及各自能轉成什麼。",
+    "crumb": "格式目錄",
+    "h1": "格式目錄",
+    "lead": "{categoryCount} 大類，共 {formatTotal} 種格式。其中 {builtinTotal} 種安裝後即可使用，其餘使用免費的可選引擎，只在需要時由 Filee 下載。",
+    "stats": { "formats": "格式", "categories": "大類", "builtin": "內建", "guides": "轉換指南" },
+    "jump": "分類",
+    "legendBuiltIn": "內建：安裝後即可使用。內建引擎包括",
+    "legendOptional": "可選引擎：在 Filee 內免費下載（設定 → 轉換引擎），儲存在 Filee 自己的資料夾中，可隨時刪除。如果電腦上已有該引擎（在 PATH 或 Program Files 中），Filee 會改用它；要指定某個程式，請在「設定 → 轉換引擎 → 使用我的程式」中選擇。",
+    "engineCols": ["引擎", "用途", "下載大小"],
+    "from": "來源格式",
+    "to": "可轉換為",
+    "engine": "引擎",
+    "guides": "逐步轉換指南",
+    "ctaTitle": "所有格式，一個手勢",
+    "ctaText": "下載適用於 Windows 10/11 的 Filee，免費離線轉換 {formatTotal} 種格式。"
+  },
+  "convert": {
+    "title": "{from} 轉 {to}：免費離線批次轉換 | Filee",
+    "description": "用 Filee 在 Windows 10/11 上免費把 {from} 轉成 {to}：拖放即可，支援批次轉換，離線執行，檔案不上傳。{engineShort}",
+    "descBuiltIn": "內建功能，不需另外安裝。",
+    "descOptional": "使用免費的 {engine} 引擎。",
+    "h1": "{from} 轉 {to}",
+    "lead": "在 Windows 10 和 11 上免費把 {from} 檔案轉換為 {to}，離線、批次都可以。把檔案拖到 Filee 格式圓環的 {to} 上放開，{to} 檔案就會出現在原始檔案旁邊。",
+    "crumb": "{from} 轉 {to}",
+    "howButton": "查看步驟",
+    "howTitle": "如何在 Windows 上把 {from} 轉換為 {to}",
+    "steps": [
+      { "title": "選取 {from} 檔案", "text": "在檔案總管或桌面上，選取一個或任意多個 {from} 檔案。" },
+      { "title": "按住 Ctrl 拖曳", "text": "按住 Ctrl（或你在 Filee 中設定的鍵）拖曳檔案，游標處會開啟格式圓環。習慣用選單？按右鍵選擇「用 Filee 轉換」即可。" },
+      { "title": "放到 {to} 上", "text": "在 {to} 上放開檔案。進度環走完後，每個 {to} 檔案都會儲存在原始檔案旁邊。" }
+    ],
+    "stepEngine": "第一次使用時，Filee 會提示下載 {engine}，也就是這項轉換所用的免費引擎。",
+    "whatTitle": "Filee 如何處理 {from} → {to}",
+    "points": {
+      "builtIn": "內建：安裝 Filee 後即可使用，不需另外下載。",
+      "optional": "使用 {engine}：免費的可選引擎{sizeParen}，Filee 只需下載一次，儲存在自己的資料夾中。電腦上已有 {engine} 時會直接使用，不會下載任何東西。",
+      "via": "引擎：{via}",
+      "batch": "批次：一個或上百個檔案平行轉換，某個失敗也不會中斷其他檔案。",
+      "local": "隱私：檔案在你的電腦上轉換，絕不上傳，沒有網路也能用。",
+      "output": "輸出：儲存在原始檔案旁，或儲存到你指定的資料夾，並依你設定的規則命名。"
+    },
+    "alsoTo": "{from} 也可以轉換為",
+    "aboutTitle": "認識 {from} 和 {to}",
+    "aboutExt": "副檔名：",
+    "aboutMore": "查看全部{category}格式",
+    "relatedTitle": "相關轉換",
+    "sameSource": "{from} 的其他轉換",
+    "sameTarget": "其他格式轉 {to}",
+    "sameCategory": "更多{category}轉換指南",
+    "ctaTitle": "免費把 {from} 轉換為 {to}",
+    "ctaText": "Filee 是適用於 Windows 10 和 11 的免費開放原始碼檔案轉換器，離線運作，拖放一次即可轉換 {formatTotal} 種格式。"
+  },
+  "auto": {
+    "eyebrow": "自動化",
+    "title": "用命令列轉換，或交給資料夾自動完成",
+    "text": "filee 命令可以用你的預設轉換檔案、萬用字元和整個資料夾，為指令碼輸出 JSON 並傳回結束代碼。自動轉換資料夾會轉換放進來的檔案，在應用程式或終端機中都能使用。",
+    "points": [
+      "`filee convert *.heic --to jpg`，{formatCount} 種格式都能用",
+      "下載和掃描的檔案一完成就自動轉換",
+      "原始檔案移到別處，資料夾就像收件匣",
+      "為指令碼和排程工作提供 JSON 輸出和結束代碼"
+    ],
+    "guide": "閱讀命令列指南",
+    "terminal": "範例：把掃描檔轉成 PDF 的自動轉換資料夾"
+  },
+  "cli": {
+    "title": "Filee 命令列：轉換檔案、自動轉換資料夾 | Filee",
+    "description": "在 Windows 上用免費的 filee 命令離線轉換檔案、資料夾和萬用字元，設定自動轉換資料夾，並以 JSON 輸出和結束代碼撰寫指令碼。",
+    "crumb": "命令列",
+    "h1": "filee 命令列",
+    "lead": "在命令提示字元、PowerShell 或你自己的指令碼中，用與應用程式相同的引擎和預設轉換檔案，或讓資料夾自動轉換放進來的檔案。一切都在你的電腦上完成。",
+    "tags": [
+      "Windows 10/11",
+      "沿用你的預設",
+      "JSON 輸出"
+    ],
+    "commandsButton": "查看命令",
+    "terminalLabel": "範例：在終端機中把 HEIC 照片轉換為 JPG",
+    "setupTitle": "設定 filee 命令",
+    "setup": [
+      {
+        "title": "在安裝程式中保持勾選",
+        "text": "在 Filee 安裝程式的選項頁面，保持勾選 **將「filee」命令新增到 PATH**（預設已勾選）。已經安裝過了？再執行一次最新的安裝程式即可。"
+      },
+      {
+        "title": "開啟新的終端機",
+        "text": "開啟新的命令提示字元、PowerShell 或 Windows 終端機視窗（先前已開啟的視窗看不到新的 PATH），然後執行 `filee version`。"
+      },
+      {
+        "title": "可攜版或不使用 PATH",
+        "text": "所需檔案都在 Filee 資料夾中：直接執行其中的 `filee-cli.exe`，或自行把它的 `cli` 資料夾加入 PATH。Filee 應用程式不需要在執行中。"
+      }
+    ],
+    "quickTitle": "快速上手",
+    "quickLead": "可以傳入檔名、`*.heic` 這樣的萬用字元或整個資料夾。沒有加上 `-o` 時，結果會儲存在原始檔案旁邊。",
+    "quick": [
+      {
+        "title": "把一張照片轉成 JPG",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "所有 PNG 轉成品質 80 的 WebP，存到同一個資料夾",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "用預設轉換資料夾及其子資料夾",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "自動產生 PDF 的收件匣資料夾",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEIC 能轉換成什麼？",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "查看你的預設（ID 和名稱）",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "命令",
+    "optionsLabel": "選項",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "轉換檔案、萬用字元（`*.heic`）和資料夾。指定資料夾時會轉換其中 Filee 認得的檔案，加上 `-r` 則包括子資料夾。目標格式和預設擇一指定。",
+        "options": [
+          [
+            "-t, --to <format>",
+            "目標格式（ID 或副檔名）：jpg、png、webp、pdf、docx、hwpx、mp4、mp3…（見 `filee formats`）"
+          ],
+          [
+            "-p, --preset <preset>",
+            "應用程式中的預設，依 ID 或名稱指定（見 `filee presets`）"
+          ],
+          [
+            "-o, --output <folder>",
+            "儲存到該資料夾，而不是來源檔案旁邊"
+          ],
+          [
+            "-r, --recursive",
+            "包括子資料夾"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "JPG、WebP、AVIF 等有損圖片格式的品質"
+          ],
+          [
+            "--overwrite",
+            "取代已存在的輸出檔案（預設會在新檔名後加上編號）"
+          ],
+          [
+            "--skip",
+            "保留已存在的輸出檔案，不做變更"
+          ],
+          [
+            "--keep-dates",
+            "讓轉換後的檔案沿用原始檔案的建立和修改日期"
+          ],
+          [
+            "--json",
+            "以一個 JSON 文件輸出結果，方便指令碼讀取"
+          ],
+          [
+            "--quiet",
+            "除了錯誤以外不輸出任何內容"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "持續轉換放進資料夾的每個檔案，直到按下 Ctrl+C。沒有加上 `-o` 時，轉換後的檔案會儲存到該資料夾內的 `converted` 資料夾。",
+        "options": [
+          [
+            "-t, --to <format>",
+            "目標格式"
+          ],
+          [
+            "-p, --preset <preset>",
+            "應用程式中的預設，依 ID 或名稱指定"
+          ],
+          [
+            "-o, --output <folder>",
+            "轉換後檔案的儲存位置（預設：`<資料夾>\\converted`）"
+          ],
+          [
+            "-r, --recursive",
+            "同時監視子資料夾（轉換結果也保留相同的子資料夾結構）"
+          ],
+          [
+            "--move-originals",
+            "把轉換過的來源檔案移到 `<資料夾>\\originals`，並在啟動時轉換已在那裡等待的檔案"
+          ],
+          [
+            "--settle <seconds>",
+            "檔案須維持多少秒不變才會轉換（預設 2）"
+          ],
+          [
+            "--keep-dates",
+            "讓轉換後的檔案沿用原始檔案的建立和修改日期"
+          ],
+          [
+            "--quiet",
+            "除了錯誤以外不輸出任何內容"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "列出每種格式的 ID 和副檔名，或某個格式能轉換成什麼，包括安裝可選引擎後會增加的轉換。",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "列出內建預設和你在應用程式中建立的預設，包括 ID、名稱和目標格式。",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "顯示所有命令或其中一個命令的用法，以及已安裝的版本。",
+        "options": []
+      }
+    ],
+    "watchTitle": "自動轉換資料夾",
+    "watchLead": "讓資料夾自動轉換你放進去的檔案：下載的檔案、掃描檔、其他應用程式匯出的檔案。",
+    "watchPoints": [
+      "檔案完整後才會轉換，也就是大小不再變化、沒有被其他程式開啟，因此正在下載或需要長時間複製的檔案也不會出問題。",
+      "暫存檔和隱藏檔（`.crdownload`、`.part`、`.tmp`、`~$` 檔案）以及 Filee 不認得的格式會被略過。",
+      "轉換後的檔案會儲存到監視資料夾內的 `converted` 資料夾，或 `-o` 指定的位置。加上 `-r` 時，子資料夾中的檔案會保留原本的子資料夾結構（`2025\\a.png` → `converted\\2025\\a.pdf`）。",
+      "使用 `--move-originals` 時，轉換過的來源檔案會移到 `originals`，資料夾就像收件匣一樣。啟動時已在那裡等待的檔案也會轉換。"
+    ],
+    "watchAppTitle": "或在應用程式中於背景執行",
+    "watchAppText": "Filee 的 **自動轉換資料夾** 頁面不需要終端機也能做到：新增資料夾、為每個資料夾選擇預設，Filee 在系統匣中執行時就會自動轉換。",
+    "scriptsTitle": "在指令碼中使用",
+    "scriptsLead": "`--json` 會輸出一個包含每個檔案結果的 JSON 文件，結束代碼則會告訴指令碼執行結果。",
+    "exitTitle": "結束代碼",
+    "exitCodes": [
+      [
+        "0",
+        "沒有任何失敗"
+      ],
+      [
+        "1",
+        "部分檔案失敗（其餘已轉換）"
+      ],
+      [
+        "2",
+        "參數錯誤、未知的格式或預設，或缺少輸入檔案"
+      ],
+      [
+        "3",
+        "沒有可轉換的檔案"
+      ]
+    ],
+    "psTitle": "PowerShell 範例",
+    "notesTitle": "須知",
+    "notes": [
+      "與應用程式共用引擎和預設：在 Filee 中建立或修改的預設，馬上就能用 `--preset` 依 ID 或名稱呼叫。",
+      "可選引擎（FFmpeg、LibreOffice…）在應用程式的「設定 → 轉換引擎」中安裝。`filee formats <格式>` 會顯示哪些轉換需要引擎。",
+      "萬用字元由 filee 自行展開，所以 `*.heic` 在命令提示字元和 PowerShell 中都能用。含空格的路徑請加上引號。",
+      "不上傳任何檔案，也不需要網路：和應用程式一樣，在你的電腦上轉換。",
+      "訊息一律使用英文，因此指令碼和記錄在每台電腦上都一樣。"
+    ],
+    "ctaTitle": "下載 Filee，取得 filee 命令",
+    "ctaText": "命令列隨 Windows 10/11 版 Filee 一起提供：免費、開放原始碼、可離線使用。"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "text": "這個頁面不存在，可能被拖到別的地方了。",
+    "home": "回到首頁",
+    "formats": "瀏覽所有格式"
+  },
+  "langBanner": "此頁面也提供繁體中文版本。"
+}

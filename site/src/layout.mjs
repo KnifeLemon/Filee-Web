@@ -97,9 +97,10 @@ const LANG_REDIRECT_SCRIPT = "(function(){try{if(location.pathname!=='/'||localS
   + "var r=document.referrer;if(r&&new URL(r).origin===location.origin)return;"
   + `var m=${JSON.stringify(LANG_MATCH)};`
   + "var l=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language];"
-  + "for(var i=0;i<l.length;i++){var t=String(l[i]||'').toLowerCase();"
+  + "for(var i=0;i<l.length;i++){var t=String(l[i]||'').toLowerCase(),b=null,n=0;"
   + "for(var j=0;j<m.length;j++)for(var k=0;k<m[j][0].length;k++){var p=m[j][0][k];"
-  + "if(t===p||t.indexOf(p+'-')===0){if(m[j][1])location.replace(m[j][1]+location.search+location.hash);return}}}"
+  + "if((t===p||t.indexOf(p+'-')===0)&&p.length>n){b=m[j];n=p.length}}"
+  + "if(b){if(b[1])location.replace(b[1]+location.search+location.hash);return}}"
   + "}catch(e){}})()";
 
 /** Google Analytics 4 measurement ID; empty turns analytics off. */
