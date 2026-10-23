@@ -100,6 +100,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' र ' }, size: 'करिब {mb} MB', paren: ' ({size})',
     engineFor: '{name} – {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'th', path: '/th/', htmlLang: 'th', ogLocale: 'th_TH', name: 'ไทย', englishName: 'Thai',
+    match: ['th'], aliases: [], font: 'inter-thai', media: 'en', snippet: { title: 60, description: 140 },
+    list: { sep: ', ', last: ' และ ' }, size: 'ประมาณ {mb} MB', paren: ' ({size})',
+    engineFor: '{name} สำหรับ {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */
