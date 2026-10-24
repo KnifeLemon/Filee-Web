@@ -176,7 +176,7 @@
       "title": "Votre téléchargement a commencé",
       "steps": [
         "Ouvrez Filee-…-win-Setup.exe depuis vos téléchargements.",
-        "Si Windows affiche « Windows a protégé votre ordinateur », cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ». Filee est un jeune projet open source qui n'a pas encore de certificat de signature de code ; tout son code source est sur GitHub.",
+        "Si Windows affiche « Windows a protégé votre ordinateur », cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ». Depuis la 2.1.0, les fichiers Windows de Filee sont signés (« Open Source Developer MYEONGGU KIM »), mais SmartScreen peut encore afficher un avertissement pour une nouvelle version tant qu'elle n'a pas été assez téléchargée ; les versions jusqu'à la 2.0.0 ne sont pas signées. Tout son code source est sur GitHub.",
         "Choisissez les options et les moteurs voulus dans l'assistant d'installation. Filee démarre une fois l'installation terminée."
       ],
       "star": "Vous aimez ? Mettez une étoile à Filee sur GitHub",

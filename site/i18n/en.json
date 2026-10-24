@@ -176,7 +176,7 @@
       "title": "Your download has started",
       "steps": [
         "Open Filee-…-win-Setup.exe from your downloads.",
-        "If Windows shows “Windows protected your PC”, click “More info”, then “Run anyway”. Filee is a young open-source project without a code-signing certificate yet; all of its source code is on GitHub.",
+        "If Windows shows “Windows protected your PC”, click “More info”, then “Run anyway”. From 2.1.0 on, Filee's Windows files are code-signed (“Open Source Developer MYEONGGU KIM”), but SmartScreen can still warn about a new release until it has been downloaded enough; releases up to 2.0.0 are not signed. All of the source code is on GitHub.",
         "Pick the options and engines you want in the setup wizard. Filee starts when it is done."
       ],
       "star": "Like it? Star Filee on GitHub",

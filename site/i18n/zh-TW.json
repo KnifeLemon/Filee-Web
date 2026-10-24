@@ -176,7 +176,7 @@
       "title": "已開始下載",
       "steps": [
         "從下載資料夾開啟 Filee-…-win-Setup.exe。",
-        "如果 Windows 顯示「Windows 已保護您的電腦」，請按「其他資訊」，再按「仍要執行」。Filee 是剛起步的開放原始碼專案，目前還沒有程式碼簽章憑證；所有原始碼都公開在 GitHub 上。",
+        "如果 Windows 顯示「Windows 已保護您的電腦」，請按「其他資訊」，再按「仍要執行」。從 2.1.0 起，Filee 的 Windows 檔案都有程式碼簽章（「Open Source Developer MYEONGGU KIM」），但新版本在下載次數夠多之前，SmartScreen 仍可能發出警告；2.0.0 及更早的版本沒有簽章。所有原始碼都公開在 GitHub 上。",
         "在安裝精靈中選擇需要的選項和引擎，完成後 Filee 會自動啟動。"
       ],
       "star": "喜歡嗎？在 GitHub 上給 Filee 一顆星",

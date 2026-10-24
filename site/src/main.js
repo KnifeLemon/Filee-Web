@@ -677,7 +677,8 @@ function setupGitHub() {
 
 /**
  * After a click on a download button that fetches the installer itself: the download starts as usual, and a panel
- * explains the SmartScreen prompt of the (not yet code-signed) installer and points to GitHub for a star or an issue,
+ * explains the SmartScreen prompt a new release can still get (signed from 2.1.0 on, unsigned up to 2.0.0) and points
+ * to GitHub for a star or an issue,
  * which visitors who download from here would otherwise never see.
  */
 function setupDownloadGuide() {

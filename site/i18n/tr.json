@@ -176,7 +176,7 @@
       "title": "İndirmeniz başladı",
       "steps": [
         "İndirilenler klasörünüzden Filee-…-win-Setup.exe dosyasını açın.",
-        "Windows “Windows bilgisayarınızı korudu” uyarısını gösterirse “Ek bilgi” bağlantısına, ardından “Yine de çalıştır” düğmesine tıklayın. Filee henüz kod imzalama sertifikası olmayan genç bir açık kaynak projesidir; kaynak kodunun tamamı GitHub'dadır.",
+        "Windows “Windows bilgisayarınızı korudu” uyarısını gösterirse “Ek bilgi” bağlantısına, ardından “Yine de çalıştır” düğmesine tıklayın. 2.1.0'dan itibaren Filee'nin Windows dosyaları kod imzalıdır (“Open Source Developer MYEONGGU KIM”), ancak yeni bir sürüm yeterince indirilene kadar SmartScreen yine de uyarı gösterebilir; 2.0.0'a kadarki sürümler imzalı değildir. Kaynak kodunun tamamı GitHub'dadır.",
         "Kurulum sihirbazında istediğiniz seçenekleri ve motorları seçin. Kurulum bitince Filee başlar."
       ],
       "star": "Beğendiniz mi? GitHub'da Filee'ye yıldız verin",
