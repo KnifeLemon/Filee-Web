@@ -106,6 +106,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' และ ' }, size: 'ประมาณ {mb} MB', paren: ' ({size})',
     engineFor: '{name} สำหรับ {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'tr', path: '/tr/', htmlLang: 'tr', ogLocale: 'tr_TR', name: 'Türkçe', englishName: 'Turkish',
+    match: ['tr'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' ve ' }, size: 'yaklaşık {mb} MB', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

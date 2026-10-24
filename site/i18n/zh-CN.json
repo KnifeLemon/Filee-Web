@@ -102,7 +102,7 @@
       { "icon": "windows", "title": "多种转换入口", "text": "拖动手势、右键菜单中的 Filee 转换（Windows 11 还可加入第一层菜单）、“发送到”、快捷键，或主窗口的拖放区。" },
       { "icon": "sliders", "title": "按文件类型设置预设", "text": "质量、缩放、旋转和翻转、DPI、灰度、元数据、去除背景、描摹为 SVG、TIFF 压缩、ICO 尺寸、PDF 合并/拆分/页码范围/压缩/长图、720p/HEVC/AV1 视频、硬件编码、提取视频帧、MP3 码率、保存位置、文件名以及保留原文件日期。" },
       { "icon": "download", "title": "引擎按需下载", "text": "大型引擎是可选的，可以在安装时勾选，也可以之后在应用内下载：{engineNames}。下载时能看到版本、速度和剩余时间。已经有 FFmpeg、calibre 或 Pandoc？Filee 会自动找到并使用，不再下载。" },
-      { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持 English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली 和 ไทย。有新版本时会提醒你，每个版本都会列出更新内容和贡献者。" }
+      { "icon": "code", "title": "免费开源", "text": "MIT 许可，无广告、无需注册。支持 English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย 和 Türkçe。有新版本时会提醒你，每个版本都会列出更新内容和贡献者。" }
     ]
   },
   "formats": {
@@ -145,7 +145,7 @@
       ["内置", "{builtinTotal} 种格式无需额外安装"],
       ["可选引擎", "{engineNames}"],
       ["命令行", "filee convert、filee watch（安装时添加到 PATH）"],
-      ["语言", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย"],
+      ["语言", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe"],
       ["更新", "点一下即可在应用内安装，并标明必要、建议或可选"]
     ]
   },

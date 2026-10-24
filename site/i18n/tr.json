@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "title": "Ücretsiz Dosya Dönüştürücü: Windows'ta Çevrimdışı Dönüştürme | Filee",
+    "description": "Windows ve Linux için ücretsiz dosya dönüştürücü (macOS önizleme). Görsel, PDF, Word, Excel, video, ses, e-kitap ve HWP'yi sürükleyerek çevrimdışı dönüştürün.",
+    "ogAlt": "Filee: dosya sürüklenirken imlecin yanında biçimlerden oluşan bir halka açılır",
+    "appAlternateName": "Filee dosya dönüştürücü",
+    "keywords": "dosya dönüştürücü, ücretsiz dosya dönüştürücü, çevrimdışı dosya dönüştürücü, Windows dosya dönüştürücü, görsel dönüştürücü, resim dönüştürücü, PDF dönüştürücü, video dönüştürücü, ses dönüştürücü, HEIC JPG dönüştürme, PDF Word dönüştürme, HWP dönüştürücü"
+  },
+  "nav": {
+    "features": "Özellikler",
+    "how": "Nasıl çalışır",
+    "formats": "Biçimler",
+    "cli": "Komut satırı",
+    "hwp": "HWP",
+    "faq": "SSS",
+    "download": "İndir",
+    "github": "GitHub",
+    "language": "Dil",
+    "menu": "Menü",
+    "skip": "İçeriğe geç"
+  },
+  "hero": {
+    "badge": "{versionShort} sürümünde yeni: tarayıcıdan sürükleme, dönüştürmeden önce kırpma, halkanın arka yüzü, Linux",
+    "kicker": "Windows, macOS ve Linux için ücretsiz dosya dönüştürücü",
+    "title": ["Sürükle.", "Bırak.", "Dönüştür."],
+    "lead": "Görselleri, PDF'leri, Word, Excel ve PowerPoint dosyalarını, videoları, müzikleri, e-kitapları, arşivleri ve daha fazlasını doğrudan bilgisayarınızda dönüştürün. Bir tuşu basılı tutun, dosyaları sürükleyin ve bir biçimin üzerine bırakın. Yükleme yok, hesap yok; ücretsiz ve açık kaynaklı.",
+    "download": "İndirmeyi seçin",
+    "downloadNote": "Windows 10/11 · Linux · macOS önizleme · Ücretsiz",
+    "sponsored": "Destekleyenler",
+    "formats": "{formatCount} biçime göz atın"
+  },
+  "demo": {
+    "label": "Burada deneyin",
+    "hint": "Bir dosyayı sahneye sürükleyin",
+    "hintTouch": "Bir dosyayı parmağınızla sürükleyin",
+    "files": [
+      { "name": "gezi.heic", "type": "heic", "profile": "image" },
+      { "name": "klip.mov", "type": "mov", "profile": "video" },
+      { "name": "rapor.docx", "type": "docx", "profile": "document" }
+    ],
+    "center": { "image": "1 HEIC", "video": "1 MOV", "document": "1 DOCX", "hwp": "1 HWP" },
+    "close": "İptal etmek için ortada bırakın",
+    "done": "Dönüştürüldü",
+    "cancelled": "İptal edildi",
+    "output": "Dönüştürülen dosyalar",
+    "empty": "Dönüştürdüğünüz dosyalar burada görünür",
+    "keyboard": "Klavyeyle: bir dosyaya odaklanın, Enter'a basın, ok tuşlarıyla seçin ve dönüştürmek için yine Enter'a basın."
+  },
+  "video": {
+    "title": "27 saniyede Filee",
+    "caption": "Aynı hareket tek bir görseli, toplu belgeleri ve Hancom Office olmadan HWP dosyalarını dönüştürür."
+  },
+  "how": {
+    "title": "Üç adımda dosya dönüştürün",
+    "steps": [
+      { "title": "Bir tuşu basılı tutup sürükleyin", "text": "Dosya Gezgini'nde veya masaüstünde dosyaları seçin ve Ctrl tuşunu ya da seçtiğiniz başka bir değiştirici tuşu basılı tutarak sürükleyin." },
+      { "title": "Bir biçimin üzerine bırakın", "text": "İmlecin yanında bu dosyalara uyan biçimlerden oluşan bir halka açılır. Birinin üzerine gelin ve bırakın." },
+      { "title": "Bitti, özgün dosyanın yanında", "text": "İlerleme halkası dolar ve yeni dosyalar özgün dosyaların yanında belirir. Menüleri mi tercih edersiniz? Sağ tıklayıp “Filee ile dönüştür” seçeneğini seçin." }
+    ]
+  },
+  "showcase": {
+    "eyebrow": "İş başında",
+    "title": "Filee neler yapabilir, görün",
+    "lead": "Filee'nin gerçek arayüzünden alınmış dört kısa döngü; maket değil.",
+    "play": "Klibi oynat",
+    "pause": "Klibi duraklat",
+    "items": [
+      {
+        "title": "Sürükleyin, halka size gelsin",
+        "text": "Ctrl tuşunu basılı tutup bir dosyayı sürükleyin: dosyaya uyan biçimler tam imlecinizin yanında halka olarak açılır. Bir grup diliminin üzerinde bekleyin, ikinci bir halka hâlinde açılsın; WEBP üzerinde bırakın, trip.webp özgün dosyanın yanında belirsin.",
+        "hint": "[Ctrl] basılıyken sürükleyin",
+        "alt": "Klip: trip.jpg Ctrl basılıyken sürüklenir, halka açılır, Biçimler grubu genişler ve dosya WEBP üzerine bırakılır."
+      },
+      {
+        "title": "Daha fazla araç için çevirin",
+        "text": "Tab'a basın veya fare tekerleğini çevirin, halka arka yüzüne döner: kırpma, döndürme, çevirme, gri tonlama, arka planı kaldırma, tek PDF'de birleştirme ya da her şeyi tek ZIP'e koyma.",
+        "hint": "[Tab] veya fare tekerleği",
+        "alt": "Klip: Tab halkayı arka yüzüne çevirir ve trip.jpg Arka planı kaldır dilimine bırakılır."
+      },
+      {
+        "title": "Doğrudan tarayıcıdan",
+        "text": "Bir web sayfasından görsel sürükleyip bir biçimin üzerine bırakın. Filee görseli indirir, hızı ve ilerlemeyi halkada gösterir; hem özgün dosyayı hem de dönüştürülmüş dosyayı İndirilenler klasörüne kaydeder.",
+        "hint": "Herhangi bir web sayfasından sürükleyin",
+        "alt": "Klip: bir fotoğraf web sayfasından JPG üzerine sürüklenir, bir halka indirmeyi gösterir, ardından İndirilenler'de lake.webp ve lake.jpg belirir."
+      },
+      {
+        "title": "Oran kadranıyla kırpın",
+        "text": "Fotoğrafları Kırp dilimine bırakın ve sırayla kadrajlayın. Görselin üzerinde A'ya basın, oran kadranı imlecinizin yanında açılır: 1:1, 4:3, 3:2, 16:9 veya özgün oran. Ardından Kırp ve ilerle, Kırp ve kaydet; hepsi bu.",
+        "hint": "[A] oran kadranını açar",
+        "alt": "Klip: iki fotoğraf Kırp dilimine bırakılır, A oran kadranını açar, 1:1 seçilir ve kırpılan fotoğraflar özgün dosyaların yanında belirir."
+      }
+    ]
+  },
+  "features": {
+    "title": "Filee neler yapar",
+    "items": [
+      { "icon": "donut", "title": "İmlecinizin yanında bir halka", "text": "Biçimler zaten bulunduğunuz yerde belirir; araya giren bir uygulama penceresi yoktur. Halkayı bir değiştirici tuş, fare düğmesi, basılı tutma hareketi veya klavye kısayolu açar. Tek bir dilim, bir grup ön ayarı barındırabilir." },
+      { "icon": "stack", "title": "{formatCount} biçim, tek hareket", "text": "Görseller, PDF, Word, Excel, PowerPoint, HWP, e-kitaplar, video, ses, altyazılar, veri dosyaları, 3B modeller, haritalar, arşivler, CAD çizimleri ve yazı tipleri. Filee biçimler arasındaki yolu kendiliğinden planlar." },
+      { "icon": "document", "title": "Office gerekmez", "text": "Word, Excel ve PowerPoint dosyaları Microsoft Office veya LibreOffice olmadan, HWP ise Hancom Office olmadan dönüştürülür. Filee, Office veya Hancom Office kurulu olsa bile onları kullanmaz." },
+      { "icon": "doors", "title": "Toplu dönüştürme", "text": "1 dosya da bırakın, 100 dosya da. Hepsi paralel olarak dönüştürülür, bir hata diğerlerini asla durdurmaz ve ön ayarlar her şeyi tek PDF'de ya da tek ZIP'te toplayabilir." },
+      { "icon": "lock", "title": "%100 bilgisayarınızda", "text": "Hiçbir şey yüklenmez. Filee çevrimdışı çalışır; gizli belgeleriniz, fotoğraflarınız ve kayıtlarınız bilgisayarınızdan asla çıkmaz." },
+      { "icon": "windows", "title": "Tam çalıştığınız yerde", "text": "Sürükleme hareketi, sağ tık menüsündeki “Filee ile dönüştür” (Windows 11'de ana menüde de), Gönder menüsü, bir klavye kısayolu veya ana penceredeki bırakma alanı." },
+      { "icon": "sliders", "title": "Dosya türüne göre ön ayarlar", "text": "Kalite, yeniden boyutlandırma, döndürme ve çevirme, DPI, gri tonlama, üst veri, arka plan kaldırma, SVG'ye vektörleştirme, TIFF sıkıştırması, ICO boyutları, PDF birleştirme, bölme, sayfa aralıkları, sıkıştırma ve tek uzun görsel, 720p, HEVC ve AV1 video, donanım kodlama, videonun her karesini görsel olarak kaydetme, MP3 bit hızı, çıktı klasörü, dosya adları ve özgün dosya tarihleri." },
+      { "icon": "download", "title": "İhtiyaç olunca motorlar", "text": "Büyük motorlar isteğe bağlıdır. Kurulumda işaretleyin ya da daha sonra uygulamadan indirin: {engineNames}. Filee sürümlerini, indirme hızını ve kalan süreyi gösterir. FFmpeg, calibre veya Pandoc zaten kurulu mu? Filee onları bulur ve indirmeyi atlar." },
+      { "icon": "code", "title": "Ücretsiz ve açık kaynaklı", "text": "MIT lisanslı; reklam yok, hesap yok. English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย ve Türkçe dillerinde. Filee yeni sürümleri size bildirir; her sürüm değişikliklerini ve katkıda bulunanları listeler." }
+    ]
+  },
+  "formats": {
+    "title": "{categoryCount} kategoride {formatTotal} biçim",
+    "lead": "Filee biçimler arasındaki en iyi yolu kendiliğinden bulur, örneğin HWPX → PDF → PNG, ve her adımı en iyi yapan motoru kullanır.",
+    "count": "{n|one:# biçim|other:# biçim}",
+    "popular": "Popüler dönüştürmeler",
+    "catalog": "Katalogdaki {formatTotal} biçimin tümünü görün"
+  },
+  "hwp": {
+    "eyebrow": "HWP kullanıcıları için",
+    "title": "Hancom Office olmadan HWP ve HWPX",
+    "text": "Filee Korece Hangul belgelerini kendisi okur ve yazar; satın alınacak bir Hancom lisansı ya da onaylanacak bir izin penceresi yoktur.",
+    "quality": "DOCX → HWPX dönüştürmesi sayfa düzenini, üst ve alt bilgileri, birleştirilmiş hücreli tabloları, metin kutularını ve görselleri korur",
+    "guides": "HWP rehberleri"
+  },
+  "gallery": {
+    "title": "Halkayı kendinize göre düzenleyin",
+    "lead": "Biçimleri canlı bir halkada sürükleyip bırakarak düzenleyin: her dosya türü için bir araç çubuğu, uzantı etiketleri ve karışık seçimler için araç çubukları.",
+    "shots": [
+      { "src": "page-toolbar-en", "alt": "Profiller ve ön ayarlarla halka araç çubuğu düzenleyicisi" },
+      { "src": "page-home-en", "alt": "Bırakma alanı ve son dönüştürmelerle ana ekran" },
+      { "src": "page-presets-en", "alt": "Kalite ve çıktı seçenekleriyle ön ayar düzenleyicisi" },
+      { "src": "page-toolbar-dark", "alt": "Koyu tema" }
+    ]
+  },
+  "faq": {
+    "title": "Sorular ve yanıtlar",
+    "lead": "Fiyat, gizlilik, biçimler ve Filee'nin nasıl çalıştığı hakkında kısa yanıtlar."
+  },
+  "specs": {
+    "title": "Bir bakışta",
+    "rows": [
+      ["Fiyat", "Ücretsiz"],
+      ["Lisans", "MIT (açık kaynak)"],
+      ["Sürüm", "{version}"],
+      ["Platform", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (önizleme)"],
+      ["Çevrimdışı çalışır", "Evet, dosyalar bilgisayarınızdan çıkmaz"],
+      ["Biçimler", "{categoryCount} kategoride {formatTotal}"],
+      ["Yerleşik", "{builtinTotal} biçim, başka bir şey kurmanız gerekmez"],
+      ["İsteğe bağlı motorlar", "{engineNames}"],
+      ["Komut satırı", "filee convert ve filee watch, Kurulum tarafından PATH'e eklenir"],
+      ["Diller", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe"],
+      ["Güncellemeler", "Tek tıklamayla uygulamanın içinden kurulur; her güncelleme gerekli, önerilen veya isteğe bağlı olduğunu belirtir"]
+    ]
+  },
+  "download": {
+    "title": "Filee'yi indirin",
+    "text": "Biçimlerin çoğu kurulumdan hemen sonra dönüştürülebilir.\nVideo, ses ve nadir biçimler için motorlar, ihtiyaç duyduğunuzda uygulamadan eklenir.",
+    "button": "Windows için indir",
+    "linuxButton": "Linux için indir",
+    "selector": "İşletim sistemi ve işlemci",
+    "targets": {
+      "win-x64": "Windows 10/11 · x64",
+      "linux-x64": "Linux · x64",
+      "linux-arm64": "Linux · ARM64",
+      "osx-arm64": "macOS · Apple Silicon (ARM64)",
+      "osx-x64": "macOS · Intel (x64)"
+    },
+    "platformNote": "macOS sürümü önizlemedir. Linux için Ubuntu 22.04 veya üstü gerekir; sürükleme hareketleri X11 gerektirir (Wayland ile KDE Plasma'da deneyseldir).",
+    "developmentLabel": "Önizleme",
+    "developmentButton": "Önizlemeyi indir",
+    "checking": "Sürüm dosyaları denetleniyor…",
+    "missing": "En son sürümde {target} dosyası yok. Tüm sürümlere göz atın.",
+    "unavailable": "Sürüm dosyaları denetlenemedi. Hangi derlemelerin bulunduğunu görmek için tüm sürümleri açın.",
+    "all": "Tüm sürümler",
+    "source": "Kaynak kodu",
+    "sponsor": "Geliştirilmesine sponsor olun",
+    "sponsorText": "Filee ücretsizdir ve ücretsiz kalır.",
+    "after": {
+      "title": "İndirmeniz başladı",
+      "steps": [
+        "İndirilenler klasörünüzden Filee-…-win-Setup.exe dosyasını açın.",
+        "Windows “Windows bilgisayarınızı korudu” uyarısını gösterirse “Ek bilgi” bağlantısına, ardından “Yine de çalıştır” düğmesine tıklayın. Filee henüz kod imzalama sertifikası olmayan genç bir açık kaynak projesidir; kaynak kodunun tamamı GitHub'dadır.",
+        "Kurulum sihirbazında istediğiniz seçenekleri ve motorları seçin. Kurulum bitince Filee başlar."
+      ],
+      "star": "Beğendiniz mi? GitHub'da Filee'ye yıldız verin",
+      "issue": "Sorun bildirin veya özellik önerin",
+      "retry": "İndirme başlamadı mı? Yeniden deneyin",
+      "close": "Kapat",
+      "thanks": "Filee'nin ücretsiz olmasını sağlayanlar"
+    }
+  },
+  "supporters": {
+      "title": "Sponsorlar",
+      "lead": "Filee, onu destekleyen kişiler ve şirketler sayesinde ücretsizdir.",
+      "join": "Sponsor olun",
+      "readme": "#sponsor"
+  },
+  "footer": {
+    "tagline": "Sürükle. Bırak. Dönüştür.",
+    "license": "MIT Lisansı",
+    "notices": "Üçüncü taraf bildirimleri",
+    "signing": "Kod imzalama politikası",
+    "sponsor": "Filee'ye sponsor olun",
+    "issues": "Sorun bildirin",
+    "made": "© {year} {name} ve katkıda bulunanlar",
+    "product": "Ürün",
+    "openSource": "Açık kaynak",
+    "formats": "Tüm biçimler",
+    "cli": "Komut satırı",
+    "popular": "Popüler dönüştürmeler"
+  },
+  "common": {
+    "home": "Ana sayfa",
+    "breadcrumb": "Gezinti yolu",
+    "builtIn": "Yerleşik",
+    "builtInHint": "Kurulumdan hemen sonra çalışır, ek indirme gerekmez",
+    "optional": "İsteğe bağlı motor",
+    "optionalHint": "Filee içinden bir kez indirilen ücretsiz, isteğe bağlı motor",
+    "free": "Ücretsiz",
+    "offline": "Çevrimdışı",
+    "batch": "Toplu"
+  },
+  "catalog": {
+    "title": "Desteklenen Dosya Biçimleri: {categoryCount} Kategoride {formatTotal} Biçim | Filee",
+    "description": "Filee'nin dönüştürdüğü {formatTotal} biçimin tümü ve hedefleri: görsel, PDF, belge, HWP, video, ses, altyazı, veri, 3B, harita, e-kitap, arşiv, CAD ve yazı tipi.",
+    "crumb": "Biçimler",
+    "h1": "Biçim kataloğu",
+    "lead": "{categoryCount} kategoride {formatTotal} biçim. Bunların {builtinTotal} tanesi kurulumdan hemen sonra çalışır; geri kalanlar, Filee'nin yalnızca ihtiyaç duyduğunuzda indirdiği ücretsiz, isteğe bağlı bir motor kullanır.",
+    "stats": { "formats": "biçim", "categories": "kategori", "builtin": "yerleşik", "guides": "adım adım rehber" },
+    "jump": "Kategoriler",
+    "legendBuiltIn": "Yerleşik: kurulumdan hemen sonra çalışır. Yerleşik motorlardan bazıları:",
+    "legendOptional": "İsteğe bağlı motor: Filee içinden ücretsiz olarak indirilir (Ayarlar → Dönüştürme motorları), Filee'nin kendi klasörüne kaydedilir ve istediğiniz zaman kaldırılabilir. Motor bilgisayarınızda zaten varsa (PATH'te veya Program Files'ta) Filee onu kullanır; belirli bir kopyayı Ayarlar → Dönüştürme motorları → Kendi kopyamı kullan ile seçebilirsiniz.",
+    "engineCols": ["Motor", "Kullanım alanı", "İndirme"],
+    "from": "Kaynak",
+    "to": "Dönüştürülebildiği biçimler",
+    "engine": "Motor",
+    "guides": "Adım adım rehberler",
+    "ctaTitle": "Hepsini tek bir hareketle dönüştürün",
+    "ctaText": "Filee'yi Windows 10/11 için indirin ve {formatCount} biçimi ücretsiz, çevrimdışı dönüştürün."
+  },
+  "convert": {
+    "title": "{from} → {to} Dönüştürücü: Ücretsiz, Çevrimdışı, Toplu | Filee",
+    "description": "{from} dosyalarını Windows 10/11'de ücretsiz olarak {to} biçimine dönüştürün: sürükle-bırak, toplu, çevrimdışı, yükleme yok. {engineShort}",
+    "descBuiltIn": "Ek kurulum gerekmez.",
+    "descOptional": "Ücretsiz {engine} motorunu kullanır.",
+    "h1": "{from} → {to} dönüştürücü",
+    "lead": "{from} dosyalarını Windows 10 ve 11'de {to} biçimine dönüştürün: ücretsiz, çevrimdışı ve toplu olarak. Dosyaları Filee'nin biçim halkasındaki {to} dilimine sürükleyin; {to} dosyaları özgün dosyaların yanında belirir.",
+    "crumb": "{from} → {to}",
+    "howButton": "Nasıl çalışır",
+    "howTitle": "Windows'ta {from} dosyaları {to} biçimine nasıl dönüştürülür",
+    "steps": [
+      { "title": "{from} dosyalarınızı seçin", "text": "Dosya Gezgini'nde veya masaüstünde bir {from} dosyası ya da istediğiniz kadar dosya seçin." },
+      { "title": "Ctrl tuşunu basılı tutup sürükleyin", "text": "Ctrl tuşunu (veya Filee'de ayarladığınız tuşu) basılı tutun ve dosyaları sürükleyin. İmlecin yanında biçimlerden oluşan bir halka açılır. Menüleri mi tercih edersiniz? Sağ tıklayıp “Filee ile dönüştür” seçeneğini seçin." },
+      { "title": "{to} dilimine bırakın", "text": "Dosyaları {to} diliminin üzerinde bırakın. İlerleme halkası dolar ve her {to} dosyası kendi özgün dosyasının yanına kaydedilir." }
+    ],
+    "stepEngine": "Filee ilk seferde, bu dönüştürme için kullandığı ücretsiz {engine} motorunu indirmeyi önerir.",
+    "whatTitle": "Filee {from} → {to} için neler yapar",
+    "points": {
+      "builtIn": "Yerleşik: Filee kurulduktan hemen sonra çalışır, başka bir şey indirmeniz gerekmez.",
+      "optional": "Ücretsiz ve isteğe bağlı {engine} motoru{sizeParen} kullanılır; Filee onu kendi klasörüne bir kez indirir. {engine} bilgisayarınızda zaten varsa Filee onu kullanır ve hiçbir şey indirilmez.",
+      "via": "Motor: {via}.",
+      "batch": "Toplu: tek dosya ya da yüzlercesi paralel olarak dönüştürülür; bir hata diğerlerini asla durdurmaz.",
+      "local": "Gizlilik: dosyalar bilgisayarınızda dönüştürülür ve internet olmasa bile asla yüklenmez.",
+      "output": "Özgün dosyanın yanına ya da seçtiğiniz bir klasöre, seçtiğiniz dosya adı kalıbıyla kaydedilir."
+    },
+    "alsoTo": "{from} şu biçimlere de dönüştürülebilir",
+    "aboutTitle": "{from} ve {to} hakkında",
+    "aboutExt": "Uzantılar:",
+    "aboutMore": "Tüm {category} biçimleri",
+    "relatedTitle": "İlgili dönüştürmeler",
+    "sameSource": "Diğer {from} dönüştürmeleri",
+    "sameTarget": "Diğer biçimleri {to} biçimine dönüştürün",
+    "sameCategory": "Diğer {category} rehberleri",
+    "ctaTitle": "{from} dosyalarını ücretsiz olarak {to} biçimine dönüştürün",
+    "ctaText": "Filee, Windows 10 ve 11 için ücretsiz ve açık kaynaklı bir dosya dönüştürücüdür. Çevrimdışı çalışır ve tek bir sürükle-bırakla {formatCount} biçimi dönüştürür."
+  },
+  "auto": {
+    "eyebrow": "Otomasyon için",
+    "title": "Komut satırından dönüştürün ya da işi bir klasöre bırakın",
+    "text": "filee komutu dosyaları, joker karakterleri ve klasörlerin tamamını ön ayarlarınızla dönüştürür, betikler için JSON yazdırır ve çıkış kodları döndürür. İzlenen klasörler, içlerine gelen her şeyi uygulamada veya bir terminalde dönüştürür.",
+    "points": [
+      "{formatCount} biçimin herhangi biriyle `filee convert *.heic --to jpg`",
+      "İndirmeler ve taramalar tamamlanır tamamlanmaz dönüştürülür",
+      "Özgün dosyalar kenara taşınır; klasör bir gelen kutusu gibi çalışır",
+      "Betikler ve zamanlanmış görevler için JSON çıktısı ve çıkış kodları"
+    ],
+    "guide": "Komut satırı rehberini okuyun",
+    "terminal": "Örnek: taramaları PDF'ye dönüştüren izlenen klasör"
+  },
+  "cli": {
+    "title": "Filee Komut Satırı: Dosya Dönüştürme ve İzlenen Klasörler | Filee",
+    "description": "Ücretsiz filee komutuyla Windows'ta dosyaları, klasörleri ve joker karakterleri çevrimdışı dönüştürün, klasör izleyin, JSON ve çıkış kodlarıyla betik yazın.",
+    "crumb": "Komut satırı",
+    "h1": "filee komut satırı",
+    "lead": "Dosyaları Komut İstemi'nden, PowerShell'den veya kendi betiklerinizden, uygulamayla aynı motorlar ve ön ayarlarla dönüştürün ya da bir klasörü içine gelen her şeyi dönüştürmeye bırakın. Her şey bilgisayarınızda kalır.",
+    "tags": [
+      "Windows 10/11",
+      "Ön ayarlarınız",
+      "JSON çıktısı"
+    ],
+    "commandsButton": "Komutlara göz atın",
+    "terminalLabel": "Örnek: terminalde HEIC fotoğrafları JPG'ye dönüştürme",
+    "setupTitle": "filee komutunu kurun",
+    "setup": [
+      {
+        "title": "Kurulumda işaretli bırakın",
+        "text": "Filee kurulumunun Seçenekler sayfasında **“filee” komutunu PATH'e ekle** seçeneğini işaretli bırakın (varsayılan olarak açıktır). Filee zaten kurulu mu? En son kurulum dosyasını yeniden çalıştırın."
+      },
+      {
+        "title": "Yeni bir terminal açın",
+        "text": "Yeni bir Komut İstemi, PowerShell veya Windows Terminal penceresi açın (önceden açık olan pencere yeni PATH'i görmez) ve `filee version` komutunu çalıştırın."
+      },
+      {
+        "title": "Taşınabilir sürüm veya PATH olmadan",
+        "text": "Her şey Filee klasöründedir: `filee-cli.exe` dosyasını orada çalıştırın ya da `cli` klasörünü PATH'e kendiniz ekleyin. Uygulamanın çalışıyor olması gerekmez."
+      }
+    ],
+    "quickTitle": "Hızlı başlangıç",
+    "quickLead": "Dosya adları, `*.heic` gibi joker karakterler veya klasörlerin tamamını verin. `-o` eklemediğiniz sürece sonuçlar özgün dosyaların yanına kaydedilir.",
+    "quick": [
+      {
+        "title": "Bir fotoğrafı JPG'ye",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "Tüm PNG'leri kalite 80 ile WebP'ye, tek bir klasöre",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "Bir klasörü alt klasörleriyle birlikte bir ön ayarla",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "PDF oluşturan bir gelen kutusu klasörü",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEIC nelere dönüştürülebilir?",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "Ön ayarlarınız, kimlik ve adlarıyla",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "Komutlar",
+    "optionsLabel": "Seçenekler",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "Dosyaları, joker karakterleri (`*.heic`) ve klasörleri dönüştürür. Bir klasör verildiğinde içindeki, Filee'nin tanıdığı dosyalar dönüştürülür; alt klasörler için `-r` ekleyin. Bir hedef biçim ya da ön ayarlarınızdan birini verin.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Kimliği veya uzantısıyla hedef biçim: jpg, png, webp, pdf, docx, hwpx, mp4, mp3… (bkz. `filee formats`)"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Uygulamadaki bir ön ayar, kimliği veya adıyla (bkz. `filee presets`)"
+          ],
+          [
+            "-o, --output <folder>",
+            "Kaynakların yanı yerine bu klasöre kaydeder"
+          ],
+          [
+            "-r, --recursive",
+            "Alt klasörleri dahil eder"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "JPG, WebP, AVIF ve diğer kayıplı biçimler için görsel kalitesi"
+          ],
+          [
+            "--overwrite",
+            "Var olan çıktı dosyalarının üzerine yazar (varsayılan olarak yeni ada bir numara eklenir)"
+          ],
+          [
+            "--skip",
+            "Var olan çıktı dosyalarına dokunmaz"
+          ],
+          [
+            "--keep-dates",
+            "Dönüştürülen dosyalara özgün dosyaların oluşturulma ve değiştirilme tarihlerini verir"
+          ],
+          [
+            "--json",
+            "Sonucu betikler için tek bir JSON belgesi olarak yazdırır"
+          ],
+          [
+            "--quiet",
+            "Hatalar dışında hiçbir şey yazdırmaz"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Ctrl+C'ye basana kadar klasöre gelen her dosyayı dönüştürür. `-o` eklemediğiniz sürece dönüştürülen dosyalar klasörün içindeki `converted` klasörüne gider.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Hedef biçim"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Uygulamadaki bir ön ayar, kimliği veya adıyla"
+          ],
+          [
+            "-o, --output <folder>",
+            "Dönüştürülen dosyaların gideceği yer (varsayılan: `<folder>\\converted`)"
+          ],
+          [
+            "-r, --recursive",
+            "Alt klasörleri de izler (dosyaları çıktıda alt klasörlerini korur)"
+          ],
+          [
+            "--move-originals",
+            "Dönüştürülen her kaynağı `<folder>\\originals` klasörüne taşır ve başlangıçta orada bekleyen dosyaları da dönüştürür"
+          ],
+          [
+            "--settle <seconds>",
+            "Bir dosyanın dönüştürülmeden önce ne kadar süre değişmeden kalması gerektiği (varsayılan 2)"
+          ],
+          [
+            "--keep-dates",
+            "Dönüştürülen dosyalara özgün dosyaların oluşturulma ve değiştirilme tarihlerini verir"
+          ],
+          [
+            "--quiet",
+            "Hatalar dışında hiçbir şey yazdırmaz"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "Her biçimi kimliği ve uzantılarıyla ya da tek bir biçimin nelere dönüştürülebildiğini, isteğe bağlı bir motorun ekleyecekleri dahil listeler.",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "Yerleşik ön ayarları ve uygulamada oluşturduklarınızı kimlik, ad ve hedef biçimleriyle listeler.",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "Tüm komutların veya birinin nasıl kullanılacağını ve kurulu sürümü gösterir.",
+        "options": []
+      }
+    ],
+    "watchTitle": "İzlenen klasörler",
+    "watchLead": "İçine koyduğunuz her şeyi bir klasöre dönüştürtün: indirmeler, taramalar, başka uygulamalardan dışa aktarılan dosyalar.",
+    "watchPoints": [
+      "Dosyalar tamamlandığında, yani artık büyümediğinde ve başka bir programda açık olmadığında dönüştürülür; indirmeler ve uzun kopyalamalar güvendedir.",
+      "Geçici ve gizli dosyalar (`.crdownload`, `.part`, `.tmp`, `~$` dosyaları) ile Filee'nin tanımadığı biçimler yok sayılır.",
+      "Dönüştürülen dosyalar izlenen klasörün içindeki `converted` klasörüne ya da `-o` ile belirttiğiniz yere gider. `-r` ile alt klasörlerdeki dosyalar orada da alt klasörlerini korur (`2025\\a.png` → `converted\\2025\\a.pdf`).",
+      "`--move-originals` ile dönüştürülen her kaynak `originals` klasörüne taşınır; klasör bir gelen kutusu gibi çalışır. Başlangıçta orada bekleyen dosyalar da dönüştürülür."
+    ],
+    "watchAppTitle": "Ya da uygulamada, arka planda",
+    "watchAppText": "Filee'deki **İzlenen klasörler** sayfası aynı işi terminal olmadan yapar: klasör ekleyin, her biri için bir ön ayar seçin; Filee sistem tepsisinde çalıştığı sürece dosyalar dönüştürülür.",
+    "scriptsTitle": "Betiklerde kullanın",
+    "scriptsLead": "`--json` her dosyanın sonucunu içeren tek bir JSON belgesi yazdırır; çıkış kodu da betiğinize işin nasıl gittiğini söyler.",
+    "exitTitle": "Çıkış kodları",
+    "exitCodes": [
+      [
+        "0",
+        "Hiçbir şey başarısız olmadı"
+      ],
+      [
+        "1",
+        "Bazı dosyalar başarısız oldu (diğerleri dönüştürüldü)"
+      ],
+      [
+        "2",
+        "Hatalı bağımsız değişkenler, bilinmeyen bir biçim veya ön ayar ya da eksik bir girdi"
+      ],
+      [
+        "3",
+        "Dönüştürülecek bir şey yok"
+      ]
+    ],
+    "psTitle": "PowerShell örneği",
+    "notesTitle": "Bilmekte fayda var",
+    "notes": [
+      "Uygulamayla aynı motorlar ve ön ayarlar: Filee'de oluşturduğunuz veya değiştirdiğiniz bir ön ayar, kimliği ya da adıyla `--preset` ile hemen çalışır.",
+      "İsteğe bağlı motorlar (FFmpeg, LibreOffice…) uygulamada Ayarlar → Dönüştürme motorları bölümünden kurulur. `filee formats <format>` hangi dönüştürmelerin motor gerektirdiğini gösterir.",
+      "Joker karakterleri filee kendisi açar; bu yüzden `*.heic` PowerShell'de olduğu gibi Komut İstemi'nde de çalışır. Boşluk içeren yolları tırnak içine alın.",
+      "Hiçbir şey yüklenmez ve internet gerekmez: dosyalar uygulamada olduğu gibi bilgisayarınızda dönüştürülür.",
+      "İletiler İngilizcedir; böylece betikler ve günlükler her bilgisayarda aynı okunur."
+    ],
+    "ctaTitle": "filee komutuyla birlikte Filee'yi edinin",
+    "ctaText": "Komut satırı, Windows 10/11 için Filee ile birlikte gelir: ücretsiz, açık kaynaklı ve çevrimdışı."
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "text": "Bu sayfa yok. Belki de başka bir yere sürüklenmiştir.",
+    "home": "Ana sayfaya git",
+    "formats": "Tüm biçimlere göz at"
+  },
+  "langBanner": "Bu sayfa Türkçe olarak da mevcut."
+}

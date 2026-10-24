@@ -1,6 +1,6 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in fourteen languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai), deployed to Cloudflare Workers (static assets).
+The Filee website: a static, dependency-free site in fifteen languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish), deployed to Cloudflare Workers (static assets).
 
 ```
 site/
@@ -8,7 +8,7 @@ site/
                             guide pairs, FAQ. Every format/support claim and every count on the site comes from here
   src/languages.mjs         THE language list: code, URL prefix, names, html lang/hreflang, Open Graph locale, browser
                             languages that pick it, short URLs, font, media language, list/size wording
-  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (zh-TW, pl, es, hi, ja, ru, ar, pt-BR, fr, ne, th): English text → translation
+  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (zh-TW, pl, es, hi, ja, ru, ar, pt-BR, fr, ne, th, tr): English text → translation
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
@@ -81,7 +81,7 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 |---|---|---|
 | Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 14 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 15 languages) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -155,7 +155,7 @@ npm run deploy
 ## SEO and GEO checklist
 
 - **Already built in**:
-  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/`, `/zh-tw/`, `/fr/`, `/ne/`, `/th/`) for the home page, the format catalog and every conversion guide.
+  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/`, `/zh-tw/`, `/fr/`, `/ne/`, `/th/`, `/tr/`) for the home page, the format catalog and every conversion guide.
   - `hreflang` + `x-default`, canonical URLs, Open Graph and Twitter cards on every page.
   - JSON-LD: `SoftwareApplication` (with `softwareVersion` and `featureList` from the catalog), `FAQPage`,
     `VideoObject`, `WebSite`, `CollectionPage`, `HowTo` and `BreadcrumbList`.
