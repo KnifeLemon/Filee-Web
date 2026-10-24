@@ -102,7 +102,7 @@
       { "icon": "windows", "title": "就在你工作的地方", "text": "拖曳手勢、右鍵選單中的「用 Filee 轉換」（Windows 11 也能放進主選單）、「傳送到」、鍵盤快速鍵，或主視窗的拖放區域。" },
       { "icon": "sliders", "title": "依檔案類型設定預設", "text": "品質、調整大小、旋轉和翻轉、DPI、灰階、中繼資料、去除背景、描摹為 SVG、TIFF 壓縮、ICO 尺寸、PDF 合併、拆分、頁面範圍、壓縮和長圖、720p、HEVC 和 AV1 影片、硬體編碼、將每個影格存成圖片、MP3 位元率、儲存位置、檔名，以及保留原始檔案日期。" },
       { "icon": "download", "title": "引擎按需下載", "text": "大型引擎是可選的，可以在安裝時勾選，也可以之後在應用程式中下載：{engineNames}。Filee 會顯示版本、下載速度和剩餘時間。已經有 FFmpeg、calibre 或 Pandoc？Filee 會自動找到並跳過下載。" },
-      { "icon": "code", "title": "免費且開放原始碼", "text": "採用 MIT 授權條款，沒有廣告，不需要帳號。提供 English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย 和 Türkçe 介面。有新版本時 Filee 會通知你，每個版本都會列出變更內容和貢獻者。" }
+      { "icon": "code", "title": "免費且開放原始碼", "text": "採用 MIT 授權條款，沒有廣告，不需要帳號。提供 English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe 和 Português (Portugal) 介面。有新版本時 Filee 會通知你，每個版本都會列出變更內容和貢獻者。" }
     ]
   },
   "formats": {
@@ -145,7 +145,7 @@
       ["內建", "{builtinTotal} 種格式，不需另外安裝"],
       ["可選引擎", "{engineNames}"],
       ["命令列", "filee convert 和 filee watch，由安裝程式加入 PATH"],
-      ["語言", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe"],
+      ["語言", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe、Português (Portugal)"],
       ["更新", "在應用程式內按一下即可安裝，並標示為必要、建議或可選"]
     ]
   },

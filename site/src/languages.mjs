@@ -84,7 +84,7 @@ export const LANGUAGES = [
   },
   {
     lang: 'pt-BR', path: '/pt-br/', htmlLang: 'pt-BR', ogLocale: 'pt_BR', name: 'Português (Brasil)', englishName: 'Brazilian Portuguese',
-    match: ['pt'], aliases: ['/pt', '/br', '/pt-BR', '/pt-BR/*'], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    match: ['pt-br'], aliases: ['/pt', '/br', '/pt-BR', '/pt-BR/*'], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
     list: { sep: ', ', last: ' e ' }, size: 'cerca de {mb} MB', paren: ' ({size})',
     engineFor: '{name} para {what}{size}', engineSep: '; ',
   },
@@ -111,6 +111,13 @@ export const LANGUAGES = [
     match: ['tr'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
     list: { sep: ', ', last: ' ve ' }, size: 'yaklaşık {mb} MB', paren: ' ({size})',
     engineFor: '{name} – {what}{size}', engineSep: '; ',
+  },
+  {
+    // European Portuguese takes a plain "pt" and every other pt-* tag (pt-PT, pt-AO, pt-MZ…); pt-BR keeps "pt-br".
+    lang: 'pt-PT', path: '/pt-pt/', htmlLang: 'pt-PT', ogLocale: 'pt_PT', name: 'Português (Portugal)', englishName: 'European Portuguese',
+    match: ['pt'], aliases: ['/pt-PT', '/pt-PT/*'], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' e ' }, size: 'cerca de {mb} MB', paren: ' ({size})',
+    engineFor: '{name} para {what}{size}', engineSep: '; ',
   },
 ];
 

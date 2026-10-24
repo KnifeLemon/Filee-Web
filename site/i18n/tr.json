@@ -102,7 +102,7 @@
       { "icon": "windows", "title": "Tam çalıştığınız yerde", "text": "Sürükleme hareketi, sağ tık menüsündeki “Filee ile dönüştür” (Windows 11'de ana menüde de), Gönder menüsü, bir klavye kısayolu veya ana penceredeki bırakma alanı." },
       { "icon": "sliders", "title": "Dosya türüne göre ön ayarlar", "text": "Kalite, yeniden boyutlandırma, döndürme ve çevirme, DPI, gri tonlama, üst veri, arka plan kaldırma, SVG'ye vektörleştirme, TIFF sıkıştırması, ICO boyutları, PDF birleştirme, bölme, sayfa aralıkları, sıkıştırma ve tek uzun görsel, 720p, HEVC ve AV1 video, donanım kodlama, videonun her karesini görsel olarak kaydetme, MP3 bit hızı, çıktı klasörü, dosya adları ve özgün dosya tarihleri." },
       { "icon": "download", "title": "İhtiyaç olunca motorlar", "text": "Büyük motorlar isteğe bağlıdır. Kurulumda işaretleyin ya da daha sonra uygulamadan indirin: {engineNames}. Filee sürümlerini, indirme hızını ve kalan süreyi gösterir. FFmpeg, calibre veya Pandoc zaten kurulu mu? Filee onları bulur ve indirmeyi atlar." },
-      { "icon": "code", "title": "Ücretsiz ve açık kaynaklı", "text": "MIT lisanslı; reklam yok, hesap yok. English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย ve Türkçe dillerinde. Filee yeni sürümleri size bildirir; her sürüm değişikliklerini ve katkıda bulunanları listeler." }
+      { "icon": "code", "title": "Ücretsiz ve açık kaynaklı", "text": "MIT lisanslı; reklam yok, hesap yok. English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe ve Português (Portugal) dillerinde. Filee yeni sürümleri size bildirir; her sürüm değişikliklerini ve katkıda bulunanları listeler." }
     ]
   },
   "formats": {
@@ -145,7 +145,7 @@
       ["Yerleşik", "{builtinTotal} biçim, başka bir şey kurmanız gerekmez"],
       ["İsteğe bağlı motorlar", "{engineNames}"],
       ["Komut satırı", "filee convert ve filee watch, Kurulum tarafından PATH'e eklenir"],
-      ["Diller", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe"],
+      ["Diller", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal)"],
       ["Güncellemeler", "Tek tıklamayla uygulamanın içinden kurulur; her güncelleme gerekli, önerilen veya isteğe bağlı olduğunu belirtir"]
     ]
   },
