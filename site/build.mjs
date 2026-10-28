@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PAIRS, pairSlug, validateCatalog } from './src/catalog.mjs';
+import { PAIRS, pairSlug, useVersion, validateCatalog } from './src/catalog.mjs';
 import { renderCliPage } from './src/cli-page.mjs';
 import { renderConvertPage } from './src/convert-page.mjs';
 import { renderFormatsPage } from './src/formats-page.mjs';
@@ -182,6 +182,8 @@ export async function build() {
   validateCatalog();
   const languages = await loadLanguages();
   checkLanguageKeys(languages);
+  const release = await latestRelease();
+  useVersion(release.version);
   const css = minifyCss(await readFile(join(ROOT, 'src', 'styles.css'), 'utf8'));
   const downloads = await readFile(join(ROOT, 'src', 'downloads.mjs'), 'utf8');
   const downloadsName = `downloads.${hash(downloads)}.js`;
@@ -220,7 +222,7 @@ export async function build() {
   await writeFile(join(DIST, 'llms.txt'), llmsTxt(languages));
   await writeFile(join(DIST, 'llms-full.txt'), llmsFullTxt(languages));
   await writeFile(join(DIST, 'site.webmanifest'), manifest);
-  await writeFile(join(DIST, 'pad.xml'), padXml(await latestRelease()));
+  await writeFile(join(DIST, 'pad.xml'), padXml(release));
   await writeFile(join(DIST, '_headers'), headers());
   await writeFile(join(DIST, '_redirects'), redirects(languages));
   console.log(`Built ${count} pages (${pages.length} × ${languages.length} languages) into dist/ in ${Date.now() - started} ms`);

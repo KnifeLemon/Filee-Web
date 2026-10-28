@@ -20,7 +20,7 @@
     "skip": "İçeriğe geç"
   },
   "hero": {
-    "badge": "{versionShort} sürümünde yeni: tarayıcıdan sürükleme, dönüştürmeden önce kırpma, halkanın arka yüzü, Linux",
+    "badge": "{newIn} sürümünde yeni: görselleri düzenleme, pikselleştirme veya bulanıklaştırma, görselleri birleştirme, MB cinsinden boyut sınırı",
     "kicker": "Windows, macOS ve Linux için ücretsiz dosya dönüştürücü",
     "title": ["Sürükle.", "Bırak.", "Dönüştür."],
     "lead": "Görselleri, PDF'leri, Word, Excel ve PowerPoint dosyalarını, videoları, müzikleri, e-kitapları, arşivleri ve daha fazlasını doğrudan bilgisayarınızda dönüştürün. Bir tuşu basılı tutun, dosyaları sürükleyin ve bir biçimin üzerine bırakın. Yükleme yok, hesap yok; ücretsiz ve açık kaynaklı.",

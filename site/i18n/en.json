@@ -20,7 +20,7 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {versionShort}: drag from the browser, crop before converting, a flip side on the donut, Linux",
+    "badge": "New in {newIn}: edit pictures, pixelate or blur, merge images, a size limit in MB",
     "kicker": "Free file converter for Windows, macOS and Linux",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
