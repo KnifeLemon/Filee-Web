@@ -15,5 +15,7 @@
     { "pattern": "filee.sh", "custom_domain": true }
   ],
   "workers_dev": false,
-  "preview_urls": true
+  "preview_urls": true,
+  // Pull request builds run `npx wrangler preview`, which needs this block (empty: everything else stays as above).
+  "previews": {}
 }
