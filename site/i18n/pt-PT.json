@@ -153,6 +153,7 @@
     "title": "Descarregar o Filee",
     "text": "A maioria dos formatos converte logo após a instalação.\nOs motores para vídeo, áudio e formatos raros são adicionados na aplicação quando precisares.",
     "button": "Descarregar para Windows",
+    "store": "Obter na Microsoft Store",
     "linuxButton": "Descarregar para Linux",
     "selector": "Sistema operativo e processador",
     "targets": {

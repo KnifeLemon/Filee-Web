@@ -14,6 +14,12 @@ export const REPO = 'https://github.com/KnifeLemon/Filee';
  * GitHub API when it can.
  */
 export const DOWNLOAD = `${REPO}/releases/latest`;
+/**
+ * Filee on the Microsoft Store (an EXE app: the same signed Setup). The badge is Microsoft's own in the page's language,
+ * unchanged, kept in public/media/badges/ms-store; cid=site tells installs from the website apart in Partner Center.
+ */
+export const STORE = 'https://apps.microsoft.com/detail/XPDCN05L89WS0C?referrer=appbadge&cid=site&mode=full';
+const STORE_BADGE_WIDTH = { tr: 180 }; // the others are 161 × 44
 
 /** Filee's AlternativeTo page (footer badge; the badge SVGs are kept in public/media/badges, the CSP allows no other hosts). */
 /**
@@ -351,6 +357,7 @@ export function downloadCard(t, { title, text, button }) {
         </select>
       </div>
       <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download aria-describedby="download-status">${icon('download')}<span data-download-label>${escape(button)}</span></a>
+      <a class="store-badge" href="${escape(STORE)}" rel="noopener" target="_blank" data-store-badge><img src="/media/badges/ms-store/${t.lang}.svg" alt="${escape(t.download.store)}" width="${STORE_BADGE_WIDTH[t.lang] ?? 161}" height="44" loading="lazy" decoding="async"></a>
       <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
       <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
       <p class="download-meta"><a href="${REPO}/releases">${escape(t.download.all)}</a>

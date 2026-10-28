@@ -153,6 +153,7 @@
     "title": "Pobierz Filee",
     "text": "Większość formatów konwertuje się od razu po instalacji.\nSilniki do wideo, audio i rzadkich formatów dodasz w aplikacji, gdy będą potrzebne.",
     "button": "Pobierz dla Windows",
+    "store": "Pobierz ze sklepu Microsoft Store",
     "linuxButton": "Pobierz dla Linuksa",
     "selector": "System operacyjny i procesor",
     "targets": {
