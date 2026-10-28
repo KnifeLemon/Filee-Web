@@ -20,7 +20,7 @@
     "skip": "Aller au contenu"
   },
   "hero": {
-    "badge": "Nouveau dans la {versionShort} : glisser depuis le navigateur, recadrer avant de convertir, un verso pour le menu circulaire, Linux",
+    "badge": "Nouveau dans la {newIn} : modifier des images, pixelliser ou flouter, assembler des images, une limite de taille en Mo",
     "kicker": "Convertisseur de fichiers gratuit pour Windows, macOS et Linux",
     "title": ["Glissez.", "Déposez.", "Converti."],
     "lead": "Convertissez images, PDF, fichiers Word, Excel et PowerPoint, vidéos, musique, livres numériques, archives et bien plus, directement sur votre PC. Maintenez une touche, faites glisser les fichiers et déposez-les sur un format. Aucun envoi en ligne, aucun compte, gratuit et open source.",

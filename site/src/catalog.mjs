@@ -12,7 +12,18 @@
 import { LANGS, LANGUAGE } from './languages.mjs';
 
 export { LANGS };
-export const VERSION = '2.0.0';
+/**
+ * The latest release, set from GitHub at build time (useVersion); this value is the fallback when GitHub can't be
+ * reached.
+ */
+export let VERSION = '2.2.0';
+/** The release the hero badge's "New in …" list (hero.badge) is about. Update both together at a release. */
+export const NEW_IN = '2.2';
+
+/** Sets VERSION to the latest release before the pages are rendered (build.mjs). */
+export function useVersion(version) {
+  VERSION = version;
+}
 
 /** Languages written as T() arguments; the others come from their dictionaries. */
 const INLINE = ['en', 'ko', 'zh-CN'];
@@ -1739,6 +1750,7 @@ export function vars(lang) {
     ...s,
     version: VERSION,
     versionShort: VERSION.split('.').slice(0, 2).join('.'),
+    newIn: NEW_IN,
     categoryList: joinList(CATEGORIES.map(c => L(c.plain, lang)), lang),
     engineNames: joinList(Object.values(ENGINES).map(e => e.name), lang),
     engineDetails: engineDetails(lang),

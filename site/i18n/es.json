@@ -20,7 +20,7 @@
     "skip": "Saltar al contenido"
   },
   "hero": {
-    "badge": "Novedades de la {versionShort}: arrastrar desde el navegador, recortar antes de convertir, el reverso del menú circular, Linux",
+    "badge": "Novedades de la {newIn}: editar imágenes, pixelar o difuminar, unir imágenes, un límite de tamaño en MB",
     "kicker": "Conversor de archivos gratis para Windows, macOS y Linux",
     "title": ["Arrastra.", "Suelta.", "Convertido."],
     "lead": "Convierte imágenes, PDF, archivos de Word, Excel y PowerPoint, vídeos, música, libros electrónicos, archivos comprimidos y mucho más, directamente en tu PC. Mantén pulsada una tecla, arrastra los archivos y suéltalos sobre un formato. Sin subidas, sin cuenta, gratis y de código abierto.",

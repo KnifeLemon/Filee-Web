@@ -20,7 +20,7 @@
     "skip": "Pular para o conteúdo"
   },
   "hero": {
-    "badge": "Novidades da {versionShort}: arraste do navegador, recorte antes de converter, um verso no menu circular, Linux",
+    "badge": "Novidades da {newIn}: editar imagens, pixelizar ou desfocar, juntar imagens, limite de tamanho em MB",
     "kicker": "Conversor de arquivos grátis para Windows, macOS e Linux",
     "title": ["Arraste.", "Solte.", "Convertido."],
     "lead": "Converta imagens, PDFs, arquivos de Word, Excel e PowerPoint, vídeos, músicas, e-books, arquivos compactados e muito mais, direto no seu PC. Segure uma tecla, arraste os arquivos e solte num formato. Sem upload, sem conta, grátis e de código aberto.",

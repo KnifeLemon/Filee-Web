@@ -20,7 +20,7 @@
     "skip": "Zum Inhalt springen"
   },
   "hero": {
-    "badge": "Neu in {versionShort}: aus dem Browser ziehen, vor dem Konvertieren zuschneiden, eine Rückseite für das Ringmenü, Linux",
+    "badge": "Neu in {newIn}: Bilder bearbeiten, verpixeln oder weichzeichnen, Bilder zusammenführen, ein Größenlimit in MB",
     "kicker": "Kostenloser Dateikonverter für Windows, macOS und Linux",
     "title": ["Ziehen.", "Ablegen.", "Fertig."],
     "lead": "Konvertiere Bilder, PDFs, Word-, Excel- und PowerPoint-Dateien, Videos, Musik, E-Books, Archive und mehr direkt auf deinem PC. Taste gedrückt halten, Dateien ziehen und auf einem Format ablegen. Kein Upload, kein Konto, kostenlos und quelloffen.",

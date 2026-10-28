@@ -20,7 +20,7 @@
     "skip": "跳到正文"
   },
   "hero": {
-    "badge": "{versionShort} 新增从浏览器拖入，转换前裁剪，圆环背面，Linux 版",
+    "badge": "{newIn} 新增编辑图片、马赛克/模糊、合并图片、按 MB 设置大小上限",
     "kicker": "适用于 Windows、macOS、Linux 的免费文件转换器",
     "title": ["拖一下，", "放一下，", "转好了。"],
     "lead": "图片、PDF、Word/Excel/PowerPoint、视频、音乐、电子书、压缩包……都能直接在你的电脑上转换。按住一个键拖动文件，放到想要的格式上即可。无需上传、无需注册，免费开源。",
