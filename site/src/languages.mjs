@@ -119,6 +119,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' e ' }, size: 'cerca de {mb} MB', paren: ' ({size})',
     engineFor: '{name} para {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'de', path: '/de/', htmlLang: 'de', ogLocale: 'de_DE', name: 'Deutsch', englishName: 'German',
+    match: ['de'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' und ' }, size: 'ca. {mb} MB', paren: ' ({size})',
+    engineFor: '{name} für {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

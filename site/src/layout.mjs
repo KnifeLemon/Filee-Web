@@ -19,7 +19,7 @@ export const DOWNLOAD = `${REPO}/releases/latest`;
  * unchanged, kept in public/media/badges/ms-store; cid=site tells installs from the website apart in Partner Center.
  */
 export const STORE = 'https://apps.microsoft.com/detail/XPDCN05L89WS0C?referrer=appbadge&cid=site&mode=full';
-const STORE_BADGE_WIDTH = { tr: 180 }; // the others are 161 × 44
+const STORE_BADGE_WIDTH = { tr: 180, de: 183 }; // the others are 161 × 44
 
 /** Filee's AlternativeTo page (footer badge; the badge SVGs are kept in public/media/badges, the CSP allows no other hosts). */
 /**
