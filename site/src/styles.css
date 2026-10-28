@@ -444,6 +444,9 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
 .download-picker select { width: 100%; padding: 12px; border: 1px solid var(--muted); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; }
 .download-picker select:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; }
 .download-card > [data-download] { max-width: 100%; white-space: normal; }
+.store-badge { display: block; width: fit-content; margin: 14px auto 0; }
+.store-badge[hidden] { display: none; }
+.store-badge img { display: block; height: 48px; width: auto; }
 .download-card > .download-status { margin: 14px auto 0; font-size: 14px; }
 .download-card > .download-platform-note { margin: 16px auto 0; font-size: 14px; }
 .download-meta { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-size: 14px; color: var(--muted); }

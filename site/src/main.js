@@ -654,6 +654,8 @@ function setupGitHub() {
       if (label) label.textContent = choice.state === 'available'
         ? (choice.development ? t.developmentButton : selected.startsWith('linux-') ? t.linuxButton : t.button) : t.all;
     });
+    // The Store has the Windows app only.
+    document.querySelectorAll('[data-store-badge]').forEach(badge => { badge.hidden = !selected.startsWith('win-'); });
     document.querySelectorAll('[data-download-status]').forEach(node => { node.textContent = status; node.hidden = false; });
     document.querySelectorAll('[data-version]').forEach(node => { node.textContent = version; });
     document.querySelectorAll('[data-version-full]').forEach(node => { node.textContent = version + size; });

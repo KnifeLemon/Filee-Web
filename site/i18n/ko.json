@@ -153,6 +153,7 @@
     "title": "지금 바로 시작하세요",
     "text": "설치하면 대부분의 형식을 바로 변환해요.\n동영상·오디오나 드문 형식용 엔진은 필요할 때 앱에서 받아요.",
     "button": "Windows용 다운로드",
+    "store": "Microsoft Store에서 받기",
     "linuxButton": "Linux용 다운로드",
     "selector": "운영체제와 프로세서",
     "targets": {

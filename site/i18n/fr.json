@@ -153,6 +153,7 @@
     "title": "Télécharger Filee",
     "text": "La plupart des formats se convertissent dès l'installation.\nLes moteurs pour la vidéo, l'audio et les formats rares s'ajoutent dans l'application quand vous en avez besoin.",
     "button": "Télécharger pour Windows",
+    "store": "Obtenir sur le Microsoft Store",
     "linuxButton": "Télécharger pour Linux",
     "selector": "Système d'exploitation et processeur",
     "targets": {

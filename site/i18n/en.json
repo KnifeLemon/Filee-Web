@@ -153,6 +153,7 @@
     "title": "Download Filee",
     "text": "Most formats convert right after installing.\nEngines for video, audio and rare formats are added in the app when you need them.",
     "button": "Download for Windows",
+    "store": "Get it from Microsoft Store",
     "linuxButton": "Download for Linux",
     "selector": "Operating system and processor",
     "targets": {

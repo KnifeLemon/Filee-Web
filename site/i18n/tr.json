@@ -153,6 +153,7 @@
     "title": "Filee'yi indirin",
     "text": "Biçimlerin çoğu kurulumdan hemen sonra dönüştürülebilir.\nVideo, ses ve nadir biçimler için motorlar, ihtiyaç duyduğunuzda uygulamadan eklenir.",
     "button": "Windows için indir",
+    "store": "Microsoft Store'dan edinin",
     "linuxButton": "Linux için indir",
     "selector": "İşletim sistemi ve işlemci",
     "targets": {

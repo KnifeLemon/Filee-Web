@@ -153,6 +153,7 @@
     "title": "Fileeをダウンロード",
     "text": "ほとんどの形式は、インストール後すぐに変換できます。\n動画・音声や一般的でない形式用のエンジンは、必要になったときにアプリ内で追加できます。",
     "button": "Windows版をダウンロード",
+    "store": "Microsoft Store から入手",
     "linuxButton": "Linux版をダウンロード",
     "selector": "OSとプロセッサー",
     "targets": {
