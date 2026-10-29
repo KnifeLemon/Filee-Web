@@ -125,6 +125,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' und ' }, size: 'ca. {mb} MB', paren: ' ({size})',
     engineFor: '{name} für {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'it', path: '/it/', htmlLang: 'it', ogLocale: 'it_IT', name: 'Italiano', englishName: 'Italian',
+    match: ['it'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' e ' }, size: 'circa {mb} MB', paren: ' ({size})',
+    engineFor: '{name} per {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

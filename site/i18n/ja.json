@@ -102,7 +102,7 @@
       { "icon": "windows", "title": "いつもの場所から", "text": "ドラッグ操作、右クリックメニューの「Fileeで変換」（Windows 11ではメインメニューにも表示可能）、「送る」、キーボードショートカット、メインウィンドウのドロップ領域から変換できます。" },
       { "icon": "sliders", "title": "ファイルの種類ごとのプリセット", "text": "品質、サイズ変更、回転・反転、DPI、グレースケール、メタデータ、背景の削除、SVGトレース、TIFF圧縮、ICOのサイズ、PDFの結合・分割・ページ範囲・圧縮・縦長の画像、720p・HEVC・AV1動画、ハードウェアエンコード、全フレームの画像保存、MP3のビットレート、保存先フォルダー、ファイル名、元のファイルの日付。" },
       { "icon": "download", "title": "エンジンは必要なときに", "text": "容量の大きいエンジンは任意です。インストーラーで選ぶか、あとからアプリ内でダウンロードできます：{engineNames}。バージョン、ダウンロード速度、残り時間も表示します。FFmpeg、calibre、Pandocをすでにお持ちなら、Fileeがそれを見つけて使うので、ダウンロードは不要です。" },
-      { "icon": "code", "title": "無料のオープンソース", "text": "MITライセンスで、広告もアカウントもありません。English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe、Português (Portugal)、Deutschに対応。新しいバージョンが出るとお知らせし、リリースごとに変更点と貢献者を紹介しています。" }
+      { "icon": "code", "title": "無料のオープンソース", "text": "MITライセンスで、広告もアカウントもありません。English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe、Português (Portugal)、Deutsch、Italianoに対応。新しいバージョンが出るとお知らせし、リリースごとに変更点と貢献者を紹介しています。" }
     ]
   },
   "formats": {
@@ -145,7 +145,7 @@
       ["内蔵", "{builtinTotal}種類の形式は追加インストール不要"],
       ["追加エンジン", "{engineNames}"],
       ["コマンドライン", "filee convert、filee watch（セットアップ時にPATHへ追加）"],
-      ["言語", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe、Português (Portugal)、Deutsch"],
+      ["言語", "English、Español、日本語、한국어、简体中文、繁體中文、Polski、हिन्दी、Русский、العربية、Português (Brasil)、Français、नेपाली、ไทย、Türkçe、Português (Portugal)、Deutsch、Italiano"],
       ["アップデート", "ワンクリックでアプリ内からインストール。必須・推奨・任意を表示"]
     ]
   },
