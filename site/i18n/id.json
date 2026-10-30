@@ -1,0 +1,502 @@
+{
+  "meta": {
+    "title": "Konverter File Gratis untuk Windows: Konversi File Offline | Filee",
+    "description": "Konverter file gratis untuk Windows dan Linux (preview macOS). Konversi gambar, PDF, Word, Excel, video, audio, e-book, dan HWP offline dengan drag & drop.",
+    "ogAlt": "Filee: menu donut berisi format terbuka di kursor saat file diseret",
+    "appAlternateName": "Konverter file Filee",
+    "keywords": "konverter file, konverter file gratis, konverter file offline, konverter file Windows, konverter gambar, konverter PDF, konverter video, konverter audio, HEIC ke JPG, PDF ke Word, konverter HWP"
+  },
+  "nav": {
+    "features": "Fitur",
+    "how": "Cara kerja",
+    "formats": "Format",
+    "cli": "Baris perintah",
+    "hwp": "HWP",
+    "faq": "FAQ",
+    "download": "Unduh",
+    "github": "GitHub",
+    "language": "Bahasa",
+    "menu": "Menu",
+    "skip": "Lewati ke konten"
+  },
+  "hero": {
+    "badge": "Baru di {newIn}: edit gambar, pikselasi atau buramkan, gabungkan gambar, batas ukuran dalam MB",
+    "kicker": "Konverter file gratis untuk Windows, macOS, dan Linux",
+    "title": ["Seret.", "Lepas.", "Terkonversi."],
+    "lead": "Konversi gambar, PDF, file Word, Excel, dan PowerPoint, video, musik, e-book, arsip, dan lainnya, langsung di PC Anda. Tahan sebuah tombol, seret file, lalu lepaskan di sebuah format. Tanpa unggahan, tanpa akun, gratis, dan open source.",
+    "download": "Pilih unduhan",
+    "downloadNote": "Windows 10/11 · Linux · Preview macOS · Gratis",
+    "sponsored": "Didukung oleh",
+    "formats": "Jelajahi {formatCount} format"
+  },
+  "demo": {
+    "label": "Coba di sini",
+    "hint": "Seret file ke panggung",
+    "hintTouch": "Seret file dengan jari Anda",
+    "files": [
+      { "name": "perjalanan.heic", "type": "heic", "profile": "image" },
+      { "name": "clip.mov", "type": "mov", "profile": "video" },
+      { "name": "laporan.docx", "type": "docx", "profile": "document" }
+    ],
+    "center": { "image": "1 HEIC", "video": "1 MOV", "document": "1 DOCX", "hwp": "1 HWP" },
+    "close": "Lepaskan di tengah untuk membatalkan",
+    "done": "Terkonversi",
+    "cancelled": "Dibatalkan",
+    "output": "File hasil konversi",
+    "empty": "File hasil konversi Anda muncul di sini",
+    "keyboard": "Dengan keyboard: fokuskan sebuah file, tekan Enter, pilih dengan tombol panah, lalu Enter untuk mengonversi."
+  },
+  "video": {
+    "title": "Lihat dalam 27 detik",
+    "caption": "Gestur yang sama mengonversi satu gambar, sekumpulan dokumen, dan file HWP tanpa Hancom Office."
+  },
+  "how": {
+    "title": "Konversi file dalam tiga langkah",
+    "steps": [
+      { "title": "Tahan tombol dan seret", "text": "Pilih file di File Explorer atau di desktop, lalu seret sambil menahan Ctrl, atau tombol pengubah lain pilihan Anda." },
+      { "title": "Lepaskan di sebuah format", "text": "Menu donut berisi format yang cocok untuk file tersebut terbuka di kursor Anda. Arahkan ke salah satunya lalu lepaskan." },
+      { "title": "Selesai, di samping file asli", "text": "Cincin progres berjalan dan file baru muncul di samping file aslinya. Lebih suka menu? Klik kanan dan pilih Konversi dengan Filee." }
+    ]
+  },
+  "showcase": {
+    "eyebrow": "Dalam aksi",
+    "title": "Lihat apa yang bisa dilakukan Filee",
+    "lead": "Empat klip pendek yang direkam dari antarmuka Filee yang asli, bukan mock-up.",
+    "play": "Putar klip",
+    "pause": "Jeda klip",
+    "items": [
+      {
+        "title": "Seret, dan donut datang kepada Anda",
+        "text": "Tahan Ctrl dan seret sebuah file: format yang cocok terbuka sebagai donut tepat di kursor Anda. Berhenti di irisan grup dan irisan itu mengembang menjadi cincin kedua; lepaskan di WEBP dan trip.webp muncul di samping file aslinya.",
+        "hint": "Tahan [Ctrl] dan seret",
+        "alt": "Klip: trip.jpg diseret sambil menahan Ctrl, donut terbuka, grup Format mengembang, dan file dilepas di WEBP."
+      },
+      {
+        "title": "Balik untuk alat lainnya",
+        "text": "Tekan Tab atau putar roda mouse dan donut berbalik ke sisi belakangnya: pangkas, putar, balik, skala abu-abu, hapus latar belakang, gabungkan menjadi satu PDF, atau kemas semuanya menjadi satu ZIP.",
+        "hint": "[Tab] atau roda mouse",
+        "alt": "Klip: Tab membalik donut ke sisi belakangnya dan trip.jpg dilepas di Hapus latar belakang."
+      },
+      {
+        "title": "Langsung dari browser",
+        "text": "Seret gambar keluar dari halaman web dan lepaskan di sebuah format. Filee mengunduhnya, menampilkan kecepatan dan progres di cincin, lalu menyimpan file asli maupun file hasil konversi di folder Downloads.",
+        "hint": "Seret dari halaman web mana pun",
+        "alt": "Klip: sebuah foto diseret keluar dari halaman web ke JPG, cincin menampilkan unduhan, lalu lake.webp dan lake.jpg muncul di Downloads."
+      },
+      {
+        "title": "Pangkas dengan pemilih rasio aspek",
+        "text": "Lepaskan foto di Pangkas dan bingkai satu per satu. Tekan A di atas gambar dan pemilih rasio aspek terbuka di kursor Anda: 1:1, 4:3, 3:2, 16:9, atau asli. Lalu Pangkas & Berikutnya, Pangkas & Simpan, selesai.",
+        "hint": "[A] membuka pemilih rasio aspek",
+        "alt": "Klip: dua foto dilepas di Pangkas, A membuka pemilih rasio aspek, 1:1 dipilih, dan foto yang telah dipangkas muncul di samping file aslinya."
+      }
+    ]
+  },
+  "features": {
+    "title": "Apa yang dilakukan Filee",
+    "items": [
+      { "icon": "donut", "title": "Menu donut di kursor Anda", "text": "Format muncul di tempat Anda berada, tanpa jendela aplikasi yang menghalangi. Tombol pengubah, tombol mouse, gestur tahan, atau pintasan keyboard membukanya. Satu irisan dapat berisi sekelompok preset." },
+      { "icon": "stack", "title": "{formatCount} format, satu gestur", "text": "Gambar, PDF, Word, Excel, PowerPoint, HWP, e-book, video, audio, subtitle, file data, model 3D, peta, arsip, gambar CAD, dan font. Filee merencanakan jalur antarformat secara otomatis." },
+      { "icon": "document", "title": "Tanpa Office", "text": "File Word, Excel, dan PowerPoint dikonversi tanpa Microsoft Office atau LibreOffice, dan HWP tanpa Hancom Office. Filee tidak menggunakan Office maupun Hancom Office meskipun keduanya terpasang." },
+      { "icon": "doors", "title": "Konversi massal", "text": "Lepaskan 1 file atau 100. Semuanya dikonversi secara paralel, satu kegagalan tidak pernah menghentikan yang lain, dan preset dapat menggabungkan semuanya menjadi satu PDF atau satu ZIP." },
+      { "icon": "lock", "title": "100% di PC Anda", "text": "Tidak ada yang diunggah. Filee bekerja offline, sehingga dokumen pribadi, foto, dan rekaman tidak pernah meninggalkan komputer Anda." },
+      { "icon": "windows", "title": "Tepat di tempat Anda bekerja", "text": "Gestur seret, Konversi dengan Filee di menu klik kanan (di Windows 11 juga di menu tingkat atas), Kirim ke, pintasan keyboard, atau area drop zone di jendela utama." },
+      { "icon": "sliders", "title": "Preset per tipe file", "text": "Kualitas, ubah ukuran, putar dan balik, DPI, skala abu-abu, metadata, hapus latar belakang, Vektorisasi ke SVG, kompresi TIFF, ukuran ICO, penggabungan, pemisahan, rentang halaman, kompresi PDF dan satu gambar panjang, 720p, video HEVC dan AV1, encoding perangkat keras, setiap bingkai sebagai gambar, bitrate MP3, folder output, nama file, dan tanggal file asli." },
+      { "icon": "download", "title": "Engine sesuai kebutuhan", "text": "Engine berukuran besar bersifat opsional. Centang di installer atau unduh nanti di aplikasi: {engineNames}. Filee menampilkan versinya, kecepatan unduhan, dan sisa waktunya. Sudah punya FFmpeg, calibre, atau Pandoc? Filee menemukannya dan melewati unduhan." },
+      { "icon": "code", "title": "Gratis dan open source", "text": "Berlisensi MIT, tanpa iklan, tanpa akun. Tersedia dalam English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, dan Bahasa Indonesia. Filee memberi tahu Anda tentang versi baru; setiap rilis mencantumkan perubahan dan kontributornya." }
+    ]
+  },
+  "formats": {
+    "title": "{formatTotal} format dalam {categoryCount} kategori",
+    "lead": "Filee menemukan jalur terbaik antarformat secara otomatis, misalnya HWPX → PDF → PNG, dan menggunakan engine yang paling baik untuk setiap langkahnya.",
+    "count": "{n|other:# format}",
+    "popular": "Konversi populer",
+    "catalog": "Lihat semua {formatTotal} format di katalog"
+  },
+  "hwp": {
+    "eyebrow": "Untuk pengguna HWP",
+    "title": "HWP dan HWPX tanpa Hancom Office",
+    "text": "Filee membaca dan menulis dokumen Hangul Korea sendiri, jadi tidak perlu membeli lisensi Hancom dan tidak ada dialog persetujuan yang harus diklik.",
+    "quality": "DOCX → HWPX mempertahankan pengaturan halaman, header dan footer, tabel dengan sel gabungan, kotak teks, dan gambar",
+    "guides": "Panduan HWP"
+  },
+  "gallery": {
+    "title": "Jadikan donut milik Anda",
+    "lead": "Susun format pada donut secara langsung dengan drag & drop: satu toolbar per tipe file, tag ekstensi, dan toolbar untuk pilihan file campuran.",
+    "shots": [
+      { "src": "page-toolbar-en", "alt": "Editor toolbar donut dengan profil dan preset" },
+      { "src": "page-home-en", "alt": "Layar beranda dengan area drop zone dan konversi terkini" },
+      { "src": "page-presets-en", "alt": "Editor preset dengan opsi kualitas dan output" },
+      { "src": "page-toolbar-dark", "alt": "Tema gelap" }
+    ]
+  },
+  "faq": {
+    "title": "Tanya & jawab",
+    "lead": "Jawaban singkat tentang harga, privasi, format, dan cara kerja Filee."
+  },
+  "specs": {
+    "title": "Sekilas",
+    "rows": [
+      ["Harga", "Gratis"],
+      ["Lisensi", "MIT (open source)"],
+      ["Versi", "{version}"],
+      ["Platform", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (preview)"],
+      ["Bekerja offline", "Ya, file tidak pernah meninggalkan PC Anda"],
+      ["Format", "{formatTotal} dalam {categoryCount} kategori"],
+      ["Bawaan", "{builtinTotal} format, tanpa perlu memasang apa pun"],
+      ["Engine opsional", "{engineNames}"],
+      ["Baris perintah", "filee convert dan filee watch, ditambahkan ke PATH oleh Setup"],
+      ["Bahasa", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia"],
+      ["Pembaruan", "Dipasang dari dalam aplikasi dengan satu klik; setiap pembaruan menyebutkan apakah wajib, disarankan, atau opsional"]
+    ]
+  },
+  "download": {
+    "title": "Unduh Filee",
+    "text": "Sebagian besar format langsung dapat dikonversi setelah instalasi.\nEngine untuk video, audio, dan format langka ditambahkan di aplikasi saat Anda membutuhkannya.",
+    "button": "Unduh untuk Windows",
+    "store": "Unduh dari Microsoft Store",
+    "linuxButton": "Unduh untuk Linux",
+    "selector": "Sistem operasi dan prosesor",
+    "targets": {
+      "win-x64": "Windows 10/11 · x64",
+      "linux-x64": "Linux · x64",
+      "linux-arm64": "Linux · ARM64",
+      "osx-arm64": "macOS · Apple Silicon (ARM64)",
+      "osx-x64": "macOS · Intel (x64)"
+    },
+    "platformNote": "macOS masih berupa preview. Linux memerlukan Ubuntu 22.04 atau lebih baru; gestur seret memerlukan X11 (eksperimental di KDE Plasma dengan Wayland).",
+    "developmentLabel": "Preview",
+    "developmentButton": "Unduh versi preview",
+    "checking": "Memeriksa file rilis…",
+    "missing": "Rilis terbaru tidak memiliki file {target}. Periksa semua rilis.",
+    "unavailable": "File rilis tidak dapat diperiksa. Buka semua rilis untuk memastikan build mana yang tersedia.",
+    "all": "Semua rilis",
+    "source": "Kode sumber",
+    "sponsor": "Dukung pengembangannya",
+    "sponsorText": "Filee gratis dan akan tetap gratis.",
+    "after": {
+      "title": "Unduhan Anda telah dimulai",
+      "steps": [
+        "Buka Filee-…-win-Setup.exe dari folder unduhan Anda.",
+        "Jika Windows menampilkan “Windows melindungi PC Anda”, klik “Info selengkapnya”, lalu “Tetap jalankan”. Sejak 2.1.0, file Windows Filee ditandatangani secara digital (“Open Source Developer MYEONGGU KIM”), tetapi SmartScreen masih dapat memberi peringatan untuk rilis baru sampai rilis tersebut cukup sering diunduh; rilis hingga 2.0.0 tidak ditandatangani. Seluruh kode sumber tersedia di GitHub.",
+        "Pilih opsi dan engine yang Anda inginkan di wizard instalasi. Filee akan terbuka setelah selesai."
+      ],
+      "star": "Suka? Beri bintang Filee di GitHub",
+      "issue": "Laporkan masalah atau usulkan fitur",
+      "retry": "Unduhan tidak dimulai? Coba lagi",
+      "close": "Tutup",
+      "thanks": "Filee gratis berkat"
+    }
+  },
+  "supporters": {
+      "title": "Sponsor",
+      "lead": "Filee gratis berkat orang-orang dan perusahaan yang mendukungnya.",
+      "join": "Jadi sponsor",
+      "readme": "#sponsor"
+  },
+  "footer": {
+    "tagline": "Seret, lepas, terkonversi.",
+    "license": "Lisensi MIT",
+    "notices": "Pemberitahuan pihak ketiga",
+    "signing": "Kebijakan penandatanganan kode",
+    "sponsor": "Sponsori Filee",
+    "issues": "Laporkan masalah",
+    "made": "© {year} {name} dan kontributor",
+    "product": "Produk",
+    "openSource": "Open source",
+    "formats": "Semua format",
+    "cli": "Baris perintah",
+    "popular": "Konversi populer"
+  },
+  "common": {
+    "home": "Beranda",
+    "breadcrumb": "Navigasi remah roti",
+    "builtIn": "Bawaan",
+    "builtInHint": "Langsung berfungsi setelah instalasi, tanpa unduhan tambahan",
+    "optional": "Engine opsional",
+    "optionalHint": "Engine opsional gratis, diunduh sekali di dalam Filee",
+    "free": "Gratis",
+    "offline": "Offline",
+    "batch": "Massal"
+  },
+  "catalog": {
+    "title": "Format File yang Didukung: {formatTotal} Format dalam {categoryCount} Kategori | Filee",
+    "description": "Semua {formatTotal} format yang dikonversi Filee: gambar, PDF, dokumen, HWP, video, audio, subtitle, data, 3D, peta, e-book, arsip, CAD, dan font, beserta tujuannya.",
+    "crumb": "Format",
+    "h1": "Katalog format",
+    "lead": "{formatTotal} format dalam {categoryCount} kategori. {builtinTotal} di antaranya langsung berfungsi setelah instalasi; sisanya menggunakan engine opsional gratis yang hanya diunduh Filee saat Anda membutuhkannya.",
+    "stats": { "formats": "format", "categories": "kategori", "builtin": "bawaan", "guides": "panduan langkah demi langkah" },
+    "jump": "Kategori",
+    "legendBuiltIn": "Bawaan: langsung berfungsi setelah instalasi. Engine bawaan meliputi",
+    "legendOptional": "Engine opsional: unduhan gratis di dalam Filee (Pengaturan → Engine), disimpan di folder milik Filee sendiri dan dapat dihapus kapan saja. Jika engine sudah ada di PC Anda (di PATH atau di Program Files), Filee menggunakannya; Pengaturan → Engine → Gunakan salinan saya… memilih salinan tertentu.",
+    "engineCols": ["Engine", "Digunakan untuk", "Unduhan"],
+    "from": "Dari",
+    "to": "Dikonversi ke",
+    "engine": "Engine",
+    "guides": "Panduan langkah demi langkah",
+    "ctaTitle": "Konversi semuanya dengan satu gestur",
+    "ctaText": "Unduh Filee untuk Windows 10/11 dan konversi {formatCount} format secara offline, gratis."
+  },
+  "convert": {
+    "title": "Konverter {from} ke {to}: Gratis, Offline, Massal | Filee",
+    "description": "Konversi {from} ke {to} gratis di Windows 10/11: drag & drop, konversi massal, bekerja offline, tanpa unggahan. {engineShort}",
+    "descBuiltIn": "Tanpa perlu memasang apa pun.",
+    "descOptional": "Menggunakan engine gratis {engine}.",
+    "h1": "Konverter {from} ke {to}",
+    "lead": "Konversi file {from} ke {to} di Windows 10 dan 11: gratis, offline, dan massal. Seret file ke {to} di menu donut format Filee dan file {to} muncul di samping file aslinya.",
+    "crumb": "{from} ke {to}",
+    "howButton": "Cara kerja",
+    "howTitle": "Cara mengonversi {from} ke {to} di Windows",
+    "steps": [
+      { "title": "Pilih file {from} Anda", "text": "Di File Explorer atau di desktop, pilih satu file {from} atau sebanyak yang Anda mau." },
+      { "title": "Tahan Ctrl dan seret", "text": "Tahan Ctrl (atau tombol yang Anda atur di Filee) lalu seret file. Menu donut berisi format terbuka di kursor. Lebih suka menu? Klik kanan dan pilih Konversi dengan Filee." },
+      { "title": "Lepaskan di {to}", "text": "Lepaskan file di atas {to}. Cincin progres berjalan, dan setiap file {to} disimpan di samping file aslinya." }
+    ],
+    "stepEngine": "Pada penggunaan pertama, Filee menawarkan untuk mengunduh {engine}, engine gratis yang digunakan untuk konversi ini.",
+    "whatTitle": "Yang dilakukan Filee untuk {from} → {to}",
+    "points": {
+      "builtIn": "Bawaan: langsung berfungsi setelah Filee dipasang, tanpa perlu mengunduh apa pun.",
+      "optional": "Menggunakan {engine}, engine opsional gratis yang diunduh Filee sekali ke foldernya sendiri{sizeParen}. Jika {engine} sudah ada di PC Anda, Filee menggunakannya dan tidak ada yang diunduh.",
+      "via": "Engine: {via}.",
+      "batch": "Massal: satu file atau ratusan, dikonversi secara paralel; satu kegagalan tidak pernah menghentikan yang lain.",
+      "local": "Privat: file dikonversi di PC Anda dan tidak pernah diunggah, bahkan tanpa internet.",
+      "output": "Disimpan di samping file asli, atau di folder dan dengan pola nama file pilihan Anda."
+    },
+    "alsoTo": "{from} juga dapat menjadi",
+    "aboutTitle": "Tentang {from} dan {to}",
+    "aboutExt": "Ekstensi:",
+    "aboutMore": "Semua format {category}",
+    "relatedTitle": "Konversi terkait",
+    "sameSource": "Konversi {from} lainnya",
+    "sameTarget": "Konversi format lain ke {to}",
+    "sameCategory": "Panduan {category} lainnya",
+    "ctaTitle": "Konversi {from} ke {to} secara gratis",
+    "ctaText": "Filee adalah konverter file gratis dan open source untuk Windows 10 dan 11. Bekerja offline dan mengonversi {formatCount} format dengan sekali drag & drop."
+  },
+  "auto": {
+    "eyebrow": "Untuk otomatisasi",
+    "title": "Konversi dari baris perintah, atau biarkan folder yang mengerjakannya",
+    "text": "Perintah filee mengonversi file, wildcard, dan seluruh folder dengan preset Anda, mencetak JSON untuk skrip, dan mengembalikan exit code. Folder pantau mengonversi apa pun yang masuk ke dalamnya, di aplikasi atau di terminal.",
+    "points": [
+      "`filee convert *.heic --to jpg` dengan salah satu dari {formatCount} format",
+      "Unduhan dan hasil pindaian dikonversi begitu selesai",
+      "File asli dipindahkan ke samping, sehingga folder bekerja seperti kotak masuk",
+      "Output JSON dan exit code untuk skrip dan tugas terjadwal"
+    ],
+    "guide": "Baca panduan baris perintah",
+    "terminal": "Contoh: folder pantau yang mengubah hasil pindaian menjadi PDF"
+  },
+  "cli": {
+    "title": "Baris Perintah Filee: Konversi File dan Folder Pantau | Filee",
+    "description": "Perintah filee gratis di Windows: konversi file, folder, dan wildcard secara offline, pantau folder, dan buat skrip konversi dengan output JSON dan exit code.",
+    "crumb": "Baris perintah",
+    "h1": "Baris perintah filee",
+    "lead": "Konversi file dari Command Prompt, PowerShell, atau skrip Anda sendiri dengan engine dan preset yang sama seperti di aplikasi, atau biarkan sebuah folder mengonversi apa pun yang masuk ke dalamnya. Semuanya tetap di PC Anda.",
+    "tags": [
+      "Windows 10/11",
+      "Preset Anda",
+      "Output JSON"
+    ],
+    "commandsButton": "Lihat perintahnya",
+    "terminalLabel": "Contoh: mengonversi foto HEIC ke JPG di terminal",
+    "setupTitle": "Siapkan perintah filee",
+    "setup": [
+      {
+        "title": "Biarkan tetap dicentang di Setup",
+        "text": "Di halaman opsi installer Filee, biarkan **Tambahkan perintah “filee” ke PATH** tetap dicentang (aktif secara bawaan). Sudah terpasang? Jalankan lagi installer terbaru."
+      },
+      {
+        "title": "Buka terminal baru",
+        "text": "Buka jendela Command Prompt, PowerShell, atau Windows Terminal yang baru (jendela yang sudah terbuka tidak melihat PATH yang baru) dan jalankan `filee version`."
+      },
+      {
+        "title": "Portabel atau tanpa PATH",
+        "text": "Semuanya ada di folder Filee: jalankan `filee-cli.exe` di sana, atau tambahkan sendiri folder `cli`-nya ke PATH. Aplikasi tidak perlu sedang berjalan."
+      }
+    ],
+    "quickTitle": "Mulai cepat",
+    "quickLead": "Berikan nama file, wildcard seperti `*.heic`, atau seluruh folder. Hasil disimpan di samping file asli kecuali Anda menambahkan `-o`.",
+    "quick": [
+      {
+        "title": "Satu foto ke JPG",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "Semua PNG ke WebP dengan kualitas 80, ke dalam satu folder",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "Sebuah folder beserta subfoldernya dengan sebuah preset",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "Folder kotak masuk yang membuat PDF",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEIC bisa menjadi apa saja?",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "Preset Anda, berdasarkan id dan nama",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "Perintah",
+    "optionsLabel": "Opsi",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "Mengonversi file, wildcard (`*.heic`), dan folder. Untuk folder, file di dalamnya yang dikenali Filee akan dikonversi; tambahkan `-r` untuk subfoldernya. Berikan format tujuan atau salah satu preset Anda.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Format tujuan berdasarkan id atau ekstensi: jpg, png, webp, pdf, docx, hwpx, mp4, mp3… (lihat `filee formats`)"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Preset dari aplikasi, berdasarkan id atau nama (lihat `filee presets`)"
+          ],
+          [
+            "-o, --output <folder>",
+            "Simpan di folder tersebut, bukan di samping file sumber"
+          ],
+          [
+            "-r, --recursive",
+            "Sertakan subfolder"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "Kualitas gambar untuk JPG, WebP, AVIF, dan format lossy lainnya"
+          ],
+          [
+            "--overwrite",
+            "Timpa file output yang sudah ada (secara bawaan sebuah angka ditambahkan ke nama baru)"
+          ],
+          [
+            "--skip",
+            "Biarkan file output yang sudah ada"
+          ],
+          [
+            "--keep-dates",
+            "Berikan tanggal dibuat dan diubah dari file asli ke file hasil konversi"
+          ],
+          [
+            "--json",
+            "Cetak hasil sebagai satu dokumen JSON, untuk skrip"
+          ],
+          [
+            "--quiet",
+            "Hanya cetak pesan error"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Mengonversi setiap file yang masuk ke folder sampai Anda menekan Ctrl+C. File hasil konversi masuk ke folder `converted` di dalamnya kecuali Anda menambahkan `-o`.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Format tujuan"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Preset dari aplikasi, berdasarkan id atau nama"
+          ],
+          [
+            "-o, --output <folder>",
+            "Tempat file hasil konversi disimpan (bawaan: `<folder>\\converted`)"
+          ],
+          [
+            "-r, --recursive",
+            "Pantau juga subfolder (file di dalamnya tetap berada di subfoldernya pada output)"
+          ],
+          [
+            "--move-originals",
+            "Pindahkan setiap file sumber yang sudah dikonversi ke `<folder>\\originals`, dan konversi file yang sudah menunggu di sana saat mulai"
+          ],
+          [
+            "--settle <seconds>",
+            "Berapa lama file harus tidak berubah sebelum dikonversi (bawaan 2)"
+          ],
+          [
+            "--keep-dates",
+            "Berikan tanggal dibuat dan diubah dari file asli ke file hasil konversi"
+          ],
+          [
+            "--quiet",
+            "Hanya cetak pesan error"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "Menampilkan semua format beserta id dan ekstensinya, atau format tujuan dari satu format, termasuk tambahan dari engine opsional.",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "Menampilkan preset bawaan dan preset yang Anda buat di aplikasi, beserta id, nama, dan format tujuannya.",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "Menampilkan cara menggunakan semua perintah atau salah satunya, serta versi yang terpasang.",
+        "options": []
+      }
+    ],
+    "watchTitle": "Folder pantau",
+    "watchLead": "Biarkan sebuah folder mengonversi apa pun yang Anda masukkan: unduhan, hasil pindaian, ekspor dari aplikasi lain.",
+    "watchPoints": [
+      "File dikonversi setelah lengkap, tidak lagi bertambah ukurannya, dan tidak sedang dibuka di program lain, sehingga unduhan dan proses salin yang lama tetap aman.",
+      "File sementara dan tersembunyi (`.crdownload`, `.part`, `.tmp`, file `~$`) serta format yang tidak dikenali Filee diabaikan.",
+      "File hasil konversi masuk ke folder `converted` di dalam folder yang dipantau, atau ke tempat yang ditunjuk `-o`. Dengan `-r`, file dari subfolder tetap berada di subfoldernya di sana (`2025\\a.png` → `converted\\2025\\a.pdf`).",
+      "Dengan `--move-originals`, setiap file sumber yang sudah dikonversi dipindahkan ke `originals`, sehingga folder bekerja seperti kotak masuk. File yang sudah menunggu di sana dikonversi saat mulai."
+    ],
+    "watchAppTitle": "Atau di aplikasi, di latar belakang",
+    "watchAppText": "Halaman **Folder pantau** di Filee melakukan hal yang sama tanpa terminal: tambahkan folder, pilih preset untuk masing-masing, dan file akan dikonversi selama Filee berjalan di baki sistem.",
+    "scriptsTitle": "Gunakan dalam skrip",
+    "scriptsLead": "`--json` mencetak satu dokumen JSON berisi hasil setiap file, dan exit code memberi tahu skrip Anda bagaimana hasilnya.",
+    "exitTitle": "Exit code",
+    "exitCodes": [
+      [
+        "0",
+        "Tidak ada yang gagal"
+      ],
+      [
+        "1",
+        "Beberapa file gagal (yang lain berhasil dikonversi)"
+      ],
+      [
+        "2",
+        "Argumen salah, format atau preset tidak dikenal, atau input tidak ditemukan"
+      ],
+      [
+        "3",
+        "Tidak ada yang perlu dikonversi"
+      ]
+    ],
+    "psTitle": "Contoh PowerShell",
+    "notesTitle": "Perlu diketahui",
+    "notes": [
+      "Engine dan preset yang sama seperti di aplikasi: preset yang Anda buat atau ubah di Filee langsung dapat digunakan dengan `--preset`, berdasarkan id atau nama.",
+      "Engine opsional (FFmpeg, LibreOffice…) dipasang di aplikasi melalui Pengaturan → Engine. `filee formats <format>` menunjukkan konversi mana yang memerlukannya.",
+      "Wildcard diuraikan oleh filee sendiri, sehingga `*.heic` berfungsi di Command Prompt maupun di PowerShell. Beri tanda kutip pada path yang mengandung spasi.",
+      "Tidak ada yang diunggah dan tidak perlu internet: file dikonversi di PC Anda, sama seperti di aplikasi.",
+      "Pesan ditampilkan dalam bahasa Inggris, sehingga skrip dan log terbaca sama di setiap PC."
+    ],
+    "ctaTitle": "Dapatkan Filee dengan perintah filee",
+    "ctaText": "Baris perintah disertakan dalam Filee untuk Windows 10/11: gratis, open source, dan offline."
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "text": "Halaman ini tidak ada. Mungkin sudah diseret ke tempat lain.",
+    "home": "Ke beranda",
+    "formats": "Jelajahi semua format"
+  },
+  "langBanner": "Halaman ini juga tersedia dalam Bahasa Indonesia."
+}
