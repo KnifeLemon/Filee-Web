@@ -131,6 +131,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' e ' }, size: 'circa {mb} MB', paren: ' ({size})',
     engineFor: '{name} per {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'id', path: '/id/', htmlLang: 'id', ogLocale: 'id_ID', name: 'Bahasa Indonesia', englishName: 'Indonesian',
+    match: ['id'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ', dan ' }, size: 'sekitar {mb} MB', paren: ' ({size})',
+    engineFor: '{name} untuk {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

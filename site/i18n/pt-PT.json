@@ -102,7 +102,7 @@
       { "icon": "windows", "title": "Mesmo onde trabalhas", "text": "O gesto de arrastar, Converter com o Filee no menu de contexto (no Windows 11, também no menu principal), Enviar para, um atalho de teclado ou a zona de largada da janela principal." },
       { "icon": "sliders", "title": "Predefinições por tipo de ficheiro", "text": "Qualidade, redimensionamento, rodar e inverter, DPI, escala de cinzentos, metadados, remoção do fundo, Vetorizar para SVG, compressão TIFF, tamanhos de ICO, juntar e dividir PDF, intervalos de páginas, compressão e uma só imagem longa, 720p, vídeo HEVC e AV1, codificação por hardware, cada fotograma como imagem, taxa de bits do MP3, pasta de saída, nomes de ficheiro e as datas originais dos ficheiros." },
       { "icon": "download", "title": "Motores quando precisares", "text": "Os motores grandes são opcionais. Seleciona-os no instalador ou descarrega-os mais tarde na aplicação: {engineNames}. O Filee mostra as versões, a velocidade de transferência e o tempo restante. Já tens o FFmpeg, o calibre ou o Pandoc? O Filee encontra-os e salta a transferência." },
-      { "icon": "code", "title": "Gratuito e de código aberto", "text": "Licença MIT, sem anúncios, sem conta. Em English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch e Italiano. O Filee avisa-te quando sai uma nova versão; cada versão lista as alterações e quem contribuiu." }
+      { "icon": "code", "title": "Gratuito e de código aberto", "text": "Licença MIT, sem anúncios, sem conta. Em English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano e Bahasa Indonesia. O Filee avisa-te quando sai uma nova versão; cada versão lista as alterações e quem contribuiu." }
     ]
   },
   "formats": {
@@ -145,7 +145,7 @@
       ["Integrados", "{builtinTotal} formatos, sem mais nada para instalar"],
       ["Motores opcionais", "{engineNames}"],
       ["Linha de comandos", "filee convert e filee watch, adicionados ao PATH pelo instalador"],
-      ["Idiomas", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano"],
+      ["Idiomas", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia"],
       ["Atualizações", "Instaladas a partir da aplicação com um clique; cada uma indica se é necessária, recomendada ou opcional"]
     ]
   },
