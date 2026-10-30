@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "失敗なし"
+        "失敗・キャンセルされたファイルなし（スキップされたファイルはあり得る）"
       ],
       [
         "1",
-        "一部のファイルが失敗（ほかは変換済み）"
+        "一部のファイルが失敗またはキャンセル（どれかは`--json`の各ファイルの`state`で確認）"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "PowerShellの例",
+    "agentTitle": "AIエージェントからFileeを使う",
+    "agentText": [
+      "FileeにはAgent Skill（[`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee)）が付属しています。コーディングエージェントに`filee`コマンドの使い方を教えるもので、Fileeがインストールされているかを確認し、`filee formats <形式> --json`で変換できるかを問い合わせ、`--json`と`-o`を付けて変換し、結果を読み取ります。",
+      "使うには、`skills/filee`フォルダーをエージェントのスキルフォルダーにコピーします。Codexの場合、自分だけで使うなら`~/.agents/skills/`、プロジェクト内なら`.agents/skills/`です。Claude Codeでは`~/.claude/skills/`またはプロジェクトの`.claude/skills/`を使います（[ドキュメント](https://code.claude.com/docs/en/skills)）。Agent Skillsに対応したほかのエージェントは独自のフォルダーを使うので、それぞれのドキュメントを確認してください。",
+      "このスキルは、終了コードだけを信用しないようエージェントに指示します。エージェントはJSONの`converted`、`state`、`outputs`を読み取り、Fileeにまだないエンジンが必要なファイルがあれば、「設定」→「変換エンジン」で入手するようユーザーに依頼します。"
+    ],
     "notesTitle": "知っておきたいこと",
     "notes": [
       "エンジンとプリセットはアプリと共通です。Fileeで作成・変更したプリセットは、すぐに`--preset`でIDまたは名前で使えます。",

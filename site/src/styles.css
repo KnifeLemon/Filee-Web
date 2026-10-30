@@ -788,8 +788,11 @@ pre.code { direction: ltr; text-align: left; margin-top: 12px; padding: 14px 16p
 .cli-scripts { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 20px; align-items: start; }
 .cli-scripts-side { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; min-width: 0; }
 #watch .details-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
-.cli-scripts h3, #notes h2 { font-size: 20px; letter-spacing: -0.01em; }
-#notes h2 { font-size: clamp(24px, 2.6vw, 30px); }
+.cli-scripts h3, #notes h2, #ai-agents h2 { font-size: 20px; letter-spacing: -0.01em; }
+#notes h2, #ai-agents h2 { font-size: clamp(24px, 2.6vw, 30px); }
+#ai-agents p { margin-top: 14px; }
+#ai-agents a { color: var(--accent-strong); text-underline-offset: 3px; }
+@media (prefers-color-scheme: dark) { #ai-agents a { color: #c9c4ff; } }
 .details-side .terminal { margin-top: 18px; }
 .details-side .terminal pre { font-size: 12.5px; }
 
