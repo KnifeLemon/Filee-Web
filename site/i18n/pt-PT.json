@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "Nada falhou"
+        "Nenhum ficheiro falhou nem foi cancelado (alguns podem ter sido ignorados)"
       ],
       [
         "1",
-        "Alguns ficheiros falharam (os outros foram convertidos)"
+        "Alguns ficheiros falharam ou foram cancelados (o `state` de cada ficheiro no `--json` diz quais)"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "Exemplo no PowerShell",
+    "agentTitle": "Usar o Filee a partir de um agente de IA",
+    "agentText": [
+      "O Filee inclui uma Agent Skill em [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee). Ensina os agentes de programação a usar o comando `filee`: verificar se o Filee está instalado, perguntar a `filee formats <format> --json` se uma conversão é possível, converter com `--json` e `-o` e ler o resultado.",
+      "Para a usares, copia a pasta `skills/filee` para a pasta de skills do teu agente. No Codex, é `~/.agents/skills/` só para ti, ou `.agents/skills/` dentro de um projeto. No Claude Code, usa `~/.claude/skills/` ou a pasta `.claude/skills/` do projeto ([documentação](https://code.claude.com/docs/en/skills)). Outros agentes compatíveis com Agent Skills têm a sua própria pasta, por isso consulta a documentação deles.",
+      "A skill diz ao agente para não confiar apenas no código de saída. O agente lê `converted`, `state` e `outputs` do JSON e, quando um ficheiro precisa de um motor que o Filee ainda não tem, pede-te que o obtenhas em Definições → Motores."
+    ],
     "notesTitle": "Bom saber",
     "notes": [
       "Os mesmos motores e predefinições da aplicação: uma predefinição que crias ou alteras no Filee funciona logo com `--preset`, por id ou por nome.",

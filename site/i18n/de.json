@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "Nichts ist fehlgeschlagen"
+        "Keine Datei ist fehlgeschlagen oder wurde abgebrochen (einige wurden eventuell übersprungen)"
       ],
       [
         "1",
-        "Einige Dateien sind fehlgeschlagen (die anderen wurden konvertiert)"
+        "Einige Dateien sind fehlgeschlagen oder wurden abgebrochen (welche, zeigt der `state` jeder Datei in `--json`)"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "PowerShell-Beispiel",
+    "agentTitle": "Filee aus einem KI-Agenten nutzen",
+    "agentText": [
+      "Filee liefert einen Agent Skill in [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee) mit. Er zeigt Coding-Agenten, wie sie den Befehl `filee` verwenden: prüfen, ob Filee installiert ist, mit `filee formats <format> --json` fragen, ob eine Konvertierung möglich ist, mit `--json` und `-o` konvertieren und das Ergebnis lesen.",
+      "Kopiere dazu den Ordner `skills/filee` in den Skills-Ordner deines Agenten. Bei Codex ist das `~/.agents/skills/` nur für dich oder `.agents/skills/` in einem Projekt. Bei Claude Code nimm `~/.claude/skills/` oder den Ordner `.claude/skills/` des Projekts ([Dokumentation](https://code.claude.com/docs/en/skills)). Andere Agenten, die Agent Skills unterstützen, haben ihren eigenen Ordner, schau also in ihre Dokumentation.",
+      "Der Skill sagt dem Agenten, sich nicht allein auf den Exit-Code zu verlassen. Er liest `converted`, `state` und `outputs` aus dem JSON, und wenn eine Datei ein Modul braucht, das Filee noch nicht hat, bittet er dich, es unter Einstellungen → Module zu holen."
+    ],
     "notesTitle": "Gut zu wissen",
     "notes": [
       "Dieselben Module und Vorlagen wie in der App: Eine Vorlage, die du in Filee erstellst oder änderst, funktioniert sofort mit `--preset`, per ID oder Name.",

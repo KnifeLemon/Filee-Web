@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "Nothing failed"
+        "No file failed or was cancelled (some may have been skipped)"
       ],
       [
         "1",
-        "Some files failed (the others were converted)"
+        "Some files failed or were cancelled (each file's `state` in `--json` says which)"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "PowerShell example",
+    "agentTitle": "Using Filee from an AI agent",
+    "agentText": [
+      "Filee ships an Agent Skill in [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee). It teaches coding agents how to run the `filee` command: check that Filee is installed, ask `filee formats <format> --json` whether a conversion is possible, convert with `--json` and `-o`, and read the result.",
+      "To use it, copy the `skills/filee` folder into your agent's skills folder. For Codex that's `~/.agents/skills/` for you alone, or `.agents/skills/` inside a project. For Claude Code, use `~/.claude/skills/` or the project's `.claude/skills/` ([documentation](https://code.claude.com/docs/en/skills)). Other agents that support Agent Skills have their own folder, so check their docs.",
+      "The skill tells the agent not to trust the exit code alone. It reads `converted`, `state` and `outputs` from the JSON, and when a file needs an engine Filee doesn't have yet, it asks you to get it in Settings → Engines."
+    ],
     "notesTitle": "Good to know",
     "notes": [
       "Same engines and presets as the app: a preset you make or change in Filee works with `--preset` right away, by id or by name.",

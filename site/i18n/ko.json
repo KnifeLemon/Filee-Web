@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "실패한 파일 없음"
+        "실패하거나 취소된 파일 없음(건너뛴 파일은 있을 수 있음)"
       ],
       [
         "1",
-        "일부 파일 실패(나머지는 변환됨)"
+        "일부 파일이 실패하거나 취소됨(`--json`에서 파일마다 `state`로 확인)"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "PowerShell 예시",
+    "agentTitle": "AI 에이전트에서 Filee 쓰기",
+    "agentText": [
+      "Filee에는 Agent Skill이 [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee)에 들어 있어요. 코딩 에이전트에게 `filee` 명령을 쓰는 법을 알려 줘요. Filee가 설치되어 있는지 확인하고, `filee formats <형식> --json`으로 변환할 수 있는지 물어본 다음, `--json`과 `-o`를 붙여 변환하고 결과를 읽어요.",
+      "쓰려면 `skills/filee` 폴더를 에이전트의 스킬 폴더에 복사하세요. Codex는 나만 쓸 때 `~/.agents/skills/`, 프로젝트 안에서 쓸 때 `.agents/skills/`예요. Claude Code는 `~/.claude/skills/`나 프로젝트의 `.claude/skills/`를 쓰세요([문서](https://code.claude.com/docs/en/skills)). Agent Skills를 지원하는 다른 에이전트는 저마다 폴더가 다르니 해당 문서를 확인하세요.",
+      "스킬은 에이전트가 종료 코드만 믿지 않게 해요. JSON에서 `converted`, `state`, `outputs`를 읽고, Filee에 아직 없는 엔진이 필요한 파일이 있으면 설정 → 엔진에서 받아 달라고 요청해요."
+    ],
     "notesTitle": "알아 두면 좋은 점",
     "notes": [
       "앱과 같은 엔진과 프리셋을 써요. Filee에서 만들거나 고친 프리셋을 바로 `--preset`에 ID나 이름으로 쓸 수 있어요.",

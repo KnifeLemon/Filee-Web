@@ -1,13 +1,16 @@
 // The command line guide (/cli/, /ko/cli/, /zh-cn/cli/): setting up the "filee" command, quick start, every
-// command and option, watch folders, JSON output and exit codes. Texts come from i18n/<lang>.json (t.cli).
+// command and option, watch folders, JSON output and exit codes, using it from an AI agent. Texts come from
+// i18n/<lang>.json (t.cli).
 
 import { VERSION, fill, vars } from './catalog.mjs';
 import { SITE, alternatesOf, breadcrumbs, downloadCard, escape, icon, paths, renderDocument } from './layout.mjs';
 
-/** Escaped text with `code` and **bold** spans (the guide's texts name commands, options and Setup labels). */
+/** Escaped text with `code` and **bold** spans (the guide's texts name commands, options and Setup labels) and
+ * [text](https://…) links. */
 export const md = text => escape(text)
   .replace(/`([^`]+)`/g, '<code>$1</code>')
-  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+  .replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '<a href="$2" rel="noopener">$1</a>');
 
 /** A terminal window: lines starting with "> " are typed commands (the prompt is drawn), the rest is output. */
 export function terminal(lines, label, prompt = '>') {
@@ -158,6 +161,13 @@ export function renderCliPage(t, languages, assets) {
           ${codeBlock(POWERSHELL_SAMPLE)}
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-tight" id="ai-agents">
+    <div class="details-copy" data-reveal>
+      <h2>${escape(c.agentTitle)}</h2>
+      ${c.agentText.map(p => `<p>${md(p)}</p>`).join('')}
     </div>
   </section>
 

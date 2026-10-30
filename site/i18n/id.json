@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "Tidak ada yang gagal"
+        "Tidak ada file yang gagal atau dibatalkan (mungkin ada yang dilewati)"
       ],
       [
         "1",
-        "Beberapa file gagal (yang lain berhasil dikonversi)"
+        "Beberapa file gagal atau dibatalkan (`state` tiap file di `--json` menunjukkan yang mana)"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "Contoh PowerShell",
+    "agentTitle": "Menggunakan Filee dari agen AI",
+    "agentText": [
+      "Filee menyertakan Agent Skill di [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee). Skill ini mengajari agen coding cara menjalankan perintah `filee`: memeriksa bahwa Filee terpasang, menanyakan ke `filee formats <format> --json` apakah konversi bisa dilakukan, mengonversi dengan `--json` dan `-o`, lalu membaca hasilnya.",
+      "Untuk menggunakannya, salin folder `skills/filee` ke folder skills agen Anda. Untuk Codex, foldernya `~/.agents/skills/` untuk Anda sendiri, atau `.agents/skills/` di dalam proyek. Untuk Claude Code, gunakan `~/.claude/skills/` atau `.claude/skills/` milik proyek ([dokumentasi](https://code.claude.com/docs/en/skills)). Agen lain yang mendukung Agent Skills punya foldernya sendiri, jadi periksa dokumentasinya.",
+      "Skill ini meminta agen agar tidak hanya mengandalkan exit code. Agen membaca `converted`, `state`, dan `outputs` dari JSON, dan jika sebuah file memerlukan engine yang belum dimiliki Filee, agen akan meminta Anda memasangnya di Pengaturan → Engine."
+    ],
     "notesTitle": "Perlu diketahui",
     "notes": [
       "Engine dan preset yang sama seperti di aplikasi: preset yang Anda buat atau ubah di Filee langsung dapat digunakan dengan `--preset`, berdasarkan id atau nama.",

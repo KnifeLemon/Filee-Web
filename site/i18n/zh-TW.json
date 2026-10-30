@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "沒有任何失敗"
+        "沒有檔案失敗或被取消（可能有略過的檔案）"
       ],
       [
         "1",
-        "部分檔案失敗（其餘已轉換）"
+        "部分檔案失敗或被取消（可在 `--json` 中查看每個檔案的 `state`）"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "PowerShell 範例",
+    "agentTitle": "在 AI 代理程式中使用 Filee",
+    "agentText": [
+      "Filee 附帶一個 Agent Skill：[`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee)。它會教程式設計代理程式如何執行 `filee` 指令：確認 Filee 已安裝、用 `filee formats <格式> --json` 詢問能否轉換、加上 `--json` 和 `-o` 進行轉換，再讀取結果。",
+      "使用方式：將 `skills/filee` 資料夾複製到代理程式的 skills 資料夾。Codex 只給自己用時放在 `~/.agents/skills/`，在專案中則放在 `.agents/skills/`。Claude Code 請使用 `~/.claude/skills/` 或專案的 `.claude/skills/`（[說明文件](https://code.claude.com/docs/en/skills)）。其他支援 Agent Skills 的代理程式各有自己的資料夾，請查看它們的說明文件。",
+      "這個技能會提醒代理程式不要只看結束代碼。它會讀取 JSON 中的 `converted`、`state` 和 `outputs`；若某個檔案需要 Filee 尚未安裝的引擎，它會請你到「設定 → 轉換引擎」中取得。"
+    ],
     "notesTitle": "須知",
     "notes": [
       "與應用程式共用引擎和預設：在 Filee 中建立或修改的預設，馬上就能用 `--preset` 依 ID 或名稱呼叫。",

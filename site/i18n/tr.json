@@ -465,11 +465,11 @@
     "exitCodes": [
       [
         "0",
-        "Hiçbir şey başarısız olmadı"
+        "Hiçbir dosya başarısız olmadı veya iptal edilmedi (bazıları atlanmış olabilir)"
       ],
       [
         "1",
-        "Bazı dosyalar başarısız oldu (diğerleri dönüştürüldü)"
+        "Bazı dosyalar başarısız oldu veya iptal edildi (hangileri olduğunu `--json` içindeki her dosyanın `state` değeri gösterir)"
       ],
       [
         "2",
@@ -481,6 +481,12 @@
       ]
     ],
     "psTitle": "PowerShell örneği",
+    "agentTitle": "Filee'yi bir yapay zekâ ajanından kullanma",
+    "agentText": [
+      "Filee, [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee) içinde bir Agent Skill ile gelir. Bu skill, kodlama ajanlarına `filee` komutunu nasıl çalıştıracaklarını öğretir: Filee'nin kurulu olduğunu denetlemek, bir dönüştürmenin mümkün olup olmadığını `filee formats <format> --json` ile sormak, `--json` ve `-o` ile dönüştürmek ve sonucu okumak.",
+      "Kullanmak için `skills/filee` klasörünü ajanınızın skills klasörüne kopyalayın. Codex için bu, yalnızca sizin için `~/.agents/skills/`, bir projenin içinde ise `.agents/skills/` klasörüdür. Claude Code için `~/.claude/skills/` veya projenin `.claude/skills/` klasörünü kullanın ([belgeler](https://code.claude.com/docs/en/skills)). Agent Skills'i destekleyen diğer ajanların kendi klasörleri vardır; onların belgelerine bakın.",
+      "Skill, ajana yalnızca çıkış koduna güvenmemesini söyler. Ajan JSON'dan `converted`, `state` ve `outputs` değerlerini okur; bir dosya Filee'de henüz olmayan bir motor gerektirdiğinde sizden onu Ayarlar → Dönüştürme motorları bölümünden edinmenizi ister."
+    ],
     "notesTitle": "Bilmekte fayda var",
     "notes": [
       "Uygulamayla aynı motorlar ve ön ayarlar: Filee'de oluşturduğunuz veya değiştirdiğiniz bir ön ayar, kimliği ya da adıyla `--preset` ile hemen çalışır.",
