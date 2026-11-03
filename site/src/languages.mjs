@@ -137,6 +137,12 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ', dan ' }, size: 'sekitar {mb} MB', paren: ' ({size})',
     engineFor: '{name} untuk {what}{size}', engineSep: '; ',
   },
+  {
+    lang: 'vi', path: '/vi/', htmlLang: 'vi', ogLocale: 'vi_VN', name: 'Tiếng Việt', englishName: 'Vietnamese',
+    match: ['vi'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' và ' }, size: 'khoảng {mb} MB', paren: ' ({size})',
+    engineFor: '{name} cho {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

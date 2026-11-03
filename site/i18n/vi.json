@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "title": "Trình chuyển đổi tệp miễn phí cho Windows, chạy ngoại tuyến | Filee",
+    "description": "Chuyển đổi tệp miễn phí trên Windows và Linux (macOS bản xem trước): kéo thả ảnh, PDF, Word, Excel, video, âm thanh, sách điện tử và HWP, chạy ngoại tuyến.",
+    "ogAlt": "Filee: một vòng tròn định dạng mở ra tại con trỏ khi kéo tệp",
+    "appAlternateName": "Trình chuyển đổi tệp Filee",
+    "keywords": "chuyển đổi tệp, phần mềm chuyển đổi tệp miễn phí, chuyển đổi tệp ngoại tuyến, chuyển đổi tệp trên Windows, chuyển đổi ảnh, chuyển đổi PDF, chuyển đổi video, chuyển đổi âm thanh, HEIC sang JPG, PDF sang Word, chuyển đổi HWP"
+  },
+  "nav": {
+    "features": "Tính năng",
+    "how": "Cách hoạt động",
+    "formats": "Định dạng",
+    "cli": "Dòng lệnh",
+    "hwp": "HWP",
+    "faq": "Hỏi đáp",
+    "download": "Tải xuống",
+    "github": "GitHub",
+    "language": "Ngôn ngữ",
+    "menu": "Menu",
+    "skip": "Chuyển đến nội dung"
+  },
+  "hero": {
+    "badge": "Mới trong {newIn}: chú thích ảnh, cắt khung video, nhiều trang trên một tờ, phụ đề và bản dịch bằng AI cục bộ",
+    "kicker": "Trình chuyển đổi tệp miễn phí cho Windows, macOS và Linux",
+    "title": ["Kéo.", "Thả.", "Xong."],
+    "lead": "Chuyển đổi ảnh, PDF, tệp Word, Excel và PowerPoint, video, nhạc, sách điện tử, tệp nén và nhiều loại khác ngay trên máy tính của bạn. Giữ một phím, kéo tệp rồi thả vào một định dạng. Không tải lên, không cần tài khoản, miễn phí và mã nguồn mở.",
+    "download": "Chọn bản tải xuống",
+    "downloadNote": "Windows 10/11 · Linux · macOS bản xem trước · Miễn phí",
+    "sponsored": "Được tài trợ bởi",
+    "formats": "Xem {formatCount} định dạng"
+  },
+  "demo": {
+    "label": "Thử ngay tại đây",
+    "hint": "Kéo một tệp vào khung này",
+    "hintTouch": "Kéo một tệp bằng ngón tay",
+    "files": [
+      { "name": "trip.heic", "type": "heic", "profile": "image" },
+      { "name": "clip.mov", "type": "mov", "profile": "video" },
+      { "name": "report.docx", "type": "docx", "profile": "document" }
+    ],
+    "center": { "image": "1 HEIC", "video": "1 MOV", "document": "1 DOCX", "hwp": "1 HWP" },
+    "close": "Thả vào giữa để hủy",
+    "done": "Đã chuyển đổi",
+    "cancelled": "Đã hủy",
+    "output": "Tệp đã chuyển đổi",
+    "empty": "Các tệp đã chuyển đổi sẽ hiện ở đây",
+    "keyboard": "Dùng bàn phím: chọn một tệp, nhấn Enter, chọn bằng các phím mũi tên, rồi nhấn Enter để chuyển đổi."
+  },
+  "video": {
+    "title": "Xem trong 27 giây",
+    "caption": "Cùng một thao tác chuyển đổi từng ảnh, cả loạt tài liệu và tệp HWP mà không cần Hancom Office."
+  },
+  "how": {
+    "title": "Chuyển đổi tệp trong ba bước",
+    "steps": [
+      { "title": "Giữ phím và kéo", "text": "Chọn tệp trong File Explorer hoặc trên màn hình nền rồi kéo trong khi giữ Ctrl, hoặc bất kỳ phím bổ trợ nào bạn chọn." },
+      { "title": "Thả vào một định dạng", "text": "Một vòng tròn gồm các định dạng hợp với những tệp đó mở ra ngay tại con trỏ. Di chuyển tới một định dạng rồi buông tay." },
+      { "title": "Xong, ngay cạnh bản gốc", "text": "Một vòng tiến trình chạy lên và tệp mới xuất hiện cạnh bản gốc. Thích dùng menu hơn? Nhấp chuột phải và chọn Chuyển đổi bằng Filee." }
+    ]
+  },
+  "showcase": {
+    "eyebrow": "Xem tận mắt",
+    "title": "Xem Filee làm được gì",
+    "lead": "Bốn đoạn clip ngắn quay từ giao diện thật của Filee, không phải bản dựng minh họa.",
+    "play": "Phát clip",
+    "pause": "Tạm dừng clip",
+    "items": [
+      {
+        "title": "Kéo, và vòng tròn tự tìm đến bạn",
+        "text": "Giữ Ctrl và kéo một tệp: các định dạng hợp với tệp mở thành một vòng tròn ngay tại con trỏ. Dừng lại trên một phần nhóm, nó sẽ xòe ra thành vòng thứ hai; thả vào WEBP và trip.webp xuất hiện cạnh bản gốc.",
+        "hint": "Giữ [Ctrl] và kéo",
+        "alt": "Clip: trip.jpg được kéo trong khi giữ Ctrl, vòng tròn mở ra, nhóm Định dạng xòe ra và tệp được thả vào WEBP."
+      },
+      {
+        "title": "Lật vòng tròn để có thêm công cụ",
+        "text": "Nhấn Tab hoặc xoay con lăn chuột, vòng tròn sẽ lật sang mặt sau: cắt, xoay, lật, thang độ xám, xóa nền, ghép thành một PDF hoặc gói tất cả vào một tệp ZIP.",
+        "hint": "[Tab] hoặc con lăn chuột",
+        "alt": "Clip: Tab lật vòng tròn sang mặt sau và trip.jpg được thả vào Xóa nền."
+      },
+      {
+        "title": "Thẳng từ trình duyệt",
+        "text": "Kéo một bức ảnh ra khỏi trang web và thả vào một định dạng. Filee tải ảnh xuống, hiện tốc độ và tiến trình trên vòng tròn, rồi lưu cả bản gốc lẫn tệp đã chuyển đổi vào thư mục Tải xuống.",
+        "hint": "Kéo từ bất kỳ trang web nào",
+        "alt": "Clip: một bức ảnh được kéo từ trang web vào JPG, một vòng tròn hiện quá trình tải xuống, rồi lake.webp và lake.jpg xuất hiện trong Tải xuống."
+      },
+      {
+        "title": "Cắt với vòng chọn tỷ lệ",
+        "text": "Thả ảnh vào Cắt và căn khung từng ảnh một. Nhấn A khi trỏ vào ảnh, vòng chọn tỷ lệ mở ra ngay tại con trỏ: 1:1, 4:3, 3:2, 16:9 hoặc Gốc. Rồi Cắt & tiếp, Cắt & lưu, xong.",
+        "hint": "[A] mở vòng chọn tỷ lệ",
+        "alt": "Clip: hai ảnh được thả vào Cắt, phím A mở vòng chọn tỷ lệ, chọn 1:1 và các ảnh đã cắt xuất hiện cạnh bản gốc."
+      }
+    ]
+  },
+  "whatsNew": {
+    "title": "Có gì mới trong Filee {release}",
+    "lead": "Những điểm nổi bật của bản phát hành này, qua các đoạn clip ngắn quay từ chính ứng dụng.",
+    "items": [
+      { "title": "Chú thích trên ảnh", "text": "Vẽ mũi tên, khung, tô sáng, chữ và số thứ tự ngay trên ảnh. Thêm Chú thích vào một vòng tròn trong Cài đặt → Thanh công cụ vòng tròn." },
+      { "title": "Cắt khung video", "text": "Gỡ viền đen được tự động tìm thấy, hoặc cắt theo tỉ lệ 16:9, 9:16, 4:3, 1:1 hay 21:9. Video HDR vẫn giữ HDR." },
+      { "title": "Số trang mỗi tờ", "text": "Đặt 2, 4, 6, 8 hoặc 9 trang PDF lên mỗi tờ. Các trang vẫn là vector nên chữ vẫn sắc nét." },
+      { "title": "Chỉ những định dạng bạn dùng", "text": "Tắt các lĩnh vực bạn không làm, như CAD, 3D hay phông chữ, trong Cài đặt → Lĩnh vực. Định dạng của chúng sẽ biến mất khỏi vòng tròn và các danh sách." },
+      { "title": "Phụ đề và bản dịch ngay trên máy tính", "text": "Tạo phụ đề SRT từ video, và dịch tài liệu, sách điện tử và phụ đề bằng AI cục bộ. Không có gì rời khỏi máy tính của bạn." },
+      { "title": "Và thêm một chút nữa", "text": "Sao chép hoặc di chuyển vào thư mục, cắt phối cảnh, tệp CMYK để in, tệp Krita và Minecraft, cùng tiếng Ý, tiếng Indonesia và tiếng Việt." }
+    ]
+  },
+  "features": {
+    "title": "Filee làm được gì",
+    "items": [
+      { "icon": "donut", "title": "Vòng tròn ngay tại con trỏ", "text": "Các định dạng hiện ra ngay nơi bạn đang làm việc, không có cửa sổ ứng dụng nào chắn ngang. Mở bằng phím bổ trợ, nút chuột, thao tác nhấn giữ hoặc phím tắt bàn phím. Một phần có thể chứa cả một nhóm cấu hình sẵn." },
+      { "icon": "stack", "title": "{formatCount} định dạng, một thao tác", "text": "Ảnh, PDF, Word, Excel, PowerPoint, HWP, sách điện tử, video, âm thanh, phụ đề, tệp dữ liệu, mô hình 3D, bản đồ, tệp nén, bản vẽ CAD và phông chữ. Filee tự tìm đường chuyển đổi giữa các định dạng." },
+      { "icon": "document", "title": "Không cần Office", "text": "Tệp Word, Excel và PowerPoint được chuyển đổi mà không cần Microsoft Office hay LibreOffice, còn HWP thì không cần Hancom Office. Filee không dùng Office hay Hancom Office kể cả khi máy đã cài." },
+      { "icon": "doors", "title": "Chuyển đổi hàng loạt", "text": "Thả 1 tệp hay 100 tệp. Các tệp được chuyển đổi song song, một tệp lỗi không bao giờ làm dừng các tệp còn lại, và cấu hình sẵn có thể ghép tất cả thành một PDF hoặc một tệp ZIP." },
+      { "icon": "lock", "title": "100% trên máy tính của bạn", "text": "Không có gì được tải lên. Filee hoạt động ngoại tuyến, nên tài liệu riêng tư, ảnh và bản ghi âm không bao giờ rời khỏi máy tính của bạn." },
+      { "icon": "windows", "title": "Ngay nơi bạn làm việc", "text": "Thao tác kéo, Chuyển đổi bằng Filee trong menu chuột phải (trên Windows 11 có cả ở menu chính), Gửi tới, phím tắt bàn phím hoặc vùng thả trong cửa sổ chính." },
+      { "icon": "sliders", "title": "Cấu hình sẵn cho từng loại tệp", "text": "Chất lượng, đổi kích thước, xoay và lật, DPI, thang độ xám, siêu dữ liệu, xóa nền, Dò nét sang SVG, nén TIFF, kích thước ICO, ghép, tách, khoảng trang, nén PDF và ảnh dài, video 720p, HEVC và AV1, mã hóa phần cứng, lưu mọi khung hình thành ảnh, bitrate MP3, thư mục lưu, tên tệp và ngày của tệp gốc." },
+      { "icon": "download", "title": "Bộ xử lý khi cần", "text": "Các bộ xử lý lớn là tùy chọn. Đánh dấu chọn trong trình cài đặt hoặc tải xuống sau trong ứng dụng: {engineNames}. Filee hiện phiên bản, tốc độ tải xuống và thời gian còn lại. Đã có FFmpeg, calibre hoặc Pandoc? Filee sẽ tìm thấy và bỏ qua bước tải xuống." },
+      { "icon": "code", "title": "Miễn phí và mã nguồn mở", "text": "Giấy phép MIT, không quảng cáo, không cần tài khoản. Có bằng English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia và Tiếng Việt. Filee báo cho bạn khi có phiên bản mới; mỗi bản phát hành đều liệt kê các thay đổi và những người đóng góp." }
+    ]
+  },
+  "formats": {
+    "title": "{formatTotal} định dạng thuộc {categoryCount} loại",
+    "lead": "Filee tự tìm đường chuyển đổi tốt nhất giữa các định dạng, ví dụ HWPX → PDF → PNG, và dùng bộ xử lý làm tốt nhất cho từng bước.",
+    "count": "{n|other:# định dạng}",
+    "popular": "Chuyển đổi phổ biến",
+    "catalog": "Xem cả {formatTotal} định dạng trong danh mục"
+  },
+  "hwp": {
+    "eyebrow": "Dành cho người dùng HWP",
+    "title": "HWP và HWPX không cần Hancom Office",
+    "text": "Filee tự đọc và ghi tài liệu Hangul của Hàn Quốc, nên không cần mua giấy phép Hancom và không phải bấm qua hộp thoại xin phép nào.",
+    "quality": "DOCX → HWPX giữ thiết lập trang, đầu trang và chân trang, bảng có ô gộp, hộp văn bản và hình ảnh",
+    "guides": "Hướng dẫn HWP"
+  },
+  "gallery": {
+    "title": "Tùy biến vòng tròn theo ý bạn",
+    "lead": "Sắp xếp định dạng trên một vòng tròn trực quan bằng kéo và thả: mỗi loại tệp một thanh công cụ, thẻ phần mở rộng, và thanh công cụ cho vùng chọn hỗn hợp.",
+    "shots": [
+      { "src": "page-toolbar-en", "alt": "Trình chỉnh sửa thanh công cụ vòng tròn với hồ sơ và cấu hình sẵn" },
+      { "src": "page-home-en", "alt": "Màn hình chính với vùng thả và các lần chuyển đổi gần đây" },
+      { "src": "page-presets-en", "alt": "Trình chỉnh sửa cấu hình sẵn với các tùy chọn chất lượng và đầu ra" },
+      { "src": "page-toolbar-dark", "alt": "Chủ đề tối" }
+    ]
+  },
+  "faq": {
+    "title": "Hỏi & đáp",
+    "lead": "Câu trả lời ngắn gọn về giá, quyền riêng tư, định dạng và cách Filee hoạt động."
+  },
+  "specs": {
+    "title": "Tóm tắt",
+    "rows": [
+      ["Giá", "Miễn phí"],
+      ["Giấy phép", "MIT (mã nguồn mở)"],
+      ["Phiên bản", "{version}"],
+      ["Nền tảng", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (bản xem trước)"],
+      ["Hoạt động ngoại tuyến", "Có, tệp không bao giờ rời khỏi máy tính của bạn"],
+      ["Định dạng", "{formatTotal} định dạng thuộc {categoryCount} loại"],
+      ["Tích hợp sẵn", "{builtinTotal} định dạng, không cần cài thêm gì"],
+      ["Bộ xử lý tùy chọn", "{engineNames}"],
+      ["Dòng lệnh", "filee convert và filee watch, được trình cài đặt thêm vào PATH"],
+      ["Ngôn ngữ", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt"],
+      ["Cập nhật", "Cài ngay trong ứng dụng chỉ với một cú nhấp; mỗi bản cập nhật cho biết là bắt buộc, khuyến nghị hay tùy chọn"]
+    ]
+  },
+  "download": {
+    "title": "Tải xuống Filee",
+    "text": "Hầu hết định dạng chuyển đổi được ngay sau khi cài đặt.\nBộ xử lý cho video, âm thanh và định dạng hiếm được thêm trong ứng dụng khi bạn cần.",
+    "button": "Tải xuống cho Windows",
+    "store": "Tải xuống từ Microsoft Store",
+    "linuxButton": "Tải xuống cho Linux",
+    "selector": "Hệ điều hành và CPU",
+    "targets": {
+      "win-x64": "Windows 10/11 · x64",
+      "linux-x64": "Linux · x64",
+      "linux-arm64": "Linux · ARM64",
+      "osx-arm64": "macOS · Apple Silicon (ARM64)",
+      "osx-x64": "macOS · Intel (x64)"
+    },
+    "platformNote": "macOS đang là bản xem trước. Linux cần Ubuntu 22.04 trở lên; thao tác kéo cần X11 (đang thử nghiệm trên KDE Plasma với Wayland).",
+    "developmentLabel": "Bản xem trước",
+    "developmentButton": "Tải bản xem trước",
+    "checking": "Đang kiểm tra các tệp phát hành…",
+    "missing": "Bản phát hành mới nhất không có tệp cho {target}. Hãy xem tất cả các bản phát hành.",
+    "unavailable": "Không kiểm tra được các tệp phát hành. Hãy mở danh sách tất cả bản phát hành để xem có những bản dựng nào.",
+    "all": "Tất cả bản phát hành",
+    "source": "Mã nguồn",
+    "sponsor": "Tài trợ cho việc phát triển",
+    "sponsorText": "Filee miễn phí và sẽ luôn miễn phí.",
+    "after": {
+      "title": "Tệp đã bắt đầu tải xuống",
+      "steps": [
+        "Mở Filee-…-win-Setup.exe trong thư mục tải xuống.",
+        "Nếu Windows hiện “Windows đã bảo vệ PC của bạn”, hãy nhấp “Thông tin thêm”, rồi “Vẫn chạy”. Từ bản 2.1.0, các tệp Windows của Filee đều được ký số (“Open Source Developer MYEONGGU KIM”), nhưng SmartScreen vẫn có thể cảnh báo với một bản phát hành mới cho đến khi nó được tải xuống đủ nhiều; các bản đến 2.0.0 chưa được ký. Toàn bộ mã nguồn có trên GitHub.",
+        "Chọn các tùy chọn và bộ xử lý bạn muốn trong trình cài đặt. Filee sẽ khởi động khi cài xong."
+      ],
+      "star": "Thấy hữu ích? Hãy gắn sao cho Filee trên GitHub",
+      "issue": "Báo lỗi hoặc đề xuất tính năng",
+      "retry": "Chưa thấy tải xuống? Thử lại",
+      "close": "Đóng",
+      "thanks": "Filee miễn phí là nhờ"
+    }
+  },
+  "supporters": {
+      "title": "Nhà tài trợ",
+      "lead": "Filee miễn phí là nhờ những cá nhân và công ty ủng hộ dự án.",
+      "join": "Trở thành nhà tài trợ",
+      "readme": "#sponsor"
+  },
+  "footer": {
+    "tagline": "Kéo, thả, xong.",
+    "license": "Giấy phép MIT",
+    "notices": "Thông báo của bên thứ ba",
+    "signing": "Chính sách ký mã",
+    "sponsor": "Tài trợ Filee",
+    "issues": "Báo lỗi",
+    "made": "© {year} {name} và những người đóng góp",
+    "product": "Sản phẩm",
+    "openSource": "Mã nguồn mở",
+    "formats": "Tất cả định dạng",
+    "cli": "Dòng lệnh",
+    "popular": "Chuyển đổi phổ biến"
+  },
+  "common": {
+    "home": "Trang chủ",
+    "breadcrumb": "Đường dẫn",
+    "builtIn": "Tích hợp",
+    "builtInHint": "Dùng được ngay sau khi cài, không cần tải thêm",
+    "optional": "Bộ xử lý tùy chọn",
+    "optionalHint": "Bộ xử lý tùy chọn miễn phí, tải một lần ngay trong Filee",
+    "free": "Miễn phí",
+    "offline": "Ngoại tuyến",
+    "batch": "Hàng loạt"
+  },
+  "catalog": {
+    "title": "Định dạng tệp được hỗ trợ: {formatTotal} định dạng, {categoryCount} loại | Filee",
+    "description": "Cả {formatTotal} định dạng Filee chuyển đổi: ảnh, PDF, tài liệu, HWP, video, âm thanh, phụ đề, dữ liệu, 3D, bản đồ, sách điện tử, tệp nén, CAD, phông chữ và đích.",
+    "crumb": "Định dạng",
+    "h1": "Danh mục định dạng",
+    "lead": "{formatTotal} định dạng thuộc {categoryCount} loại. {builtinTotal} định dạng dùng được ngay sau khi cài; số còn lại dùng một bộ xử lý tùy chọn miễn phí mà Filee chỉ tải xuống khi bạn cần.",
+    "stats": { "formats": "định dạng", "categories": "loại", "builtin": "tích hợp", "guides": "hướng dẫn từng bước" },
+    "jump": "Các loại",
+    "legendBuiltIn": "Tích hợp: dùng được ngay sau khi cài. Các bộ xử lý tích hợp gồm",
+    "legendOptional": "Bộ xử lý tùy chọn: tải miễn phí ngay trong Filee (Cài đặt → Bộ xử lý), lưu trong thư mục riêng của Filee và có thể gỡ bỏ bất cứ lúc nào. Nếu máy tính đã có bộ xử lý đó (trong PATH hoặc Program Files), Filee sẽ dùng bản đó; Cài đặt → Bộ xử lý → Dùng bản của tôi… để chọn một bản cụ thể.",
+    "engineCols": ["Bộ xử lý", "Dùng cho", "Tải xuống"],
+    "from": "Từ",
+    "to": "Chuyển đổi sang",
+    "engine": "Bộ xử lý",
+    "guides": "Hướng dẫn từng bước",
+    "ctaTitle": "Chuyển đổi bất kỳ định dạng nào chỉ với một thao tác",
+    "ctaText": "Tải Filee cho Windows 10/11 và chuyển đổi {formatCount} định dạng ngoại tuyến, miễn phí."
+  },
+  "convert": {
+    "title": "Chuyển {from} sang {to}: miễn phí, ngoại tuyến, hàng loạt | Filee",
+    "description": "Chuyển {from} sang {to} miễn phí trên Windows 10/11: kéo và thả, chuyển hàng loạt, chạy ngoại tuyến, không tải lên. {engineShort}",
+    "descBuiltIn": "Không cần cài thêm gì.",
+    "descOptional": "Dùng bộ xử lý miễn phí {engine}.",
+    "h1": "Chuyển đổi {from} sang {to}",
+    "lead": "Chuyển đổi tệp {from} sang {to} trên Windows 10 và 11: miễn phí, ngoại tuyến và hàng loạt. Kéo tệp vào {to} trên vòng tròn định dạng của Filee, các tệp {to} sẽ xuất hiện cạnh bản gốc.",
+    "crumb": "{from} sang {to}",
+    "howButton": "Cách hoạt động",
+    "howTitle": "Cách chuyển đổi {from} sang {to} trên Windows",
+    "steps": [
+      { "title": "Chọn tệp {from}", "text": "Trong File Explorer hoặc trên màn hình nền, chọn một tệp {from} hoặc bao nhiêu tệp tùy ý." },
+      { "title": "Giữ Ctrl và kéo", "text": "Giữ Ctrl (hoặc phím bạn đã đặt trong Filee) và kéo các tệp. Một vòng tròn định dạng mở ra tại con trỏ. Thích dùng menu hơn? Nhấp chuột phải và chọn Chuyển đổi bằng Filee." },
+      { "title": "Thả vào {to}", "text": "Thả các tệp lên {to}. Một vòng tiến trình chạy lên, và mỗi tệp {to} được lưu cạnh bản gốc của nó." }
+    ],
+    "stepEngine": "Ở lần đầu, Filee sẽ đề nghị tải xuống {engine}, bộ xử lý miễn phí dùng cho kiểu chuyển đổi này.",
+    "whatTitle": "Filee làm gì khi chuyển {from} → {to}",
+    "points": {
+      "builtIn": "Tích hợp: dùng được ngay sau khi cài Filee, không cần tải thêm gì.",
+      "optional": "Dùng {engine}, một bộ xử lý tùy chọn miễn phí mà Filee tải một lần vào thư mục riêng của mình{sizeParen}. Nếu máy tính đã có {engine}, Filee sẽ dùng bản đó và không tải gì cả.",
+      "via": "Bộ xử lý: {via}.",
+      "batch": "Hàng loạt: một tệp hay hàng trăm tệp đều được chuyển đổi song song; một tệp lỗi không bao giờ làm dừng các tệp còn lại.",
+      "local": "Riêng tư: tệp được chuyển đổi trên máy tính của bạn và không bao giờ bị tải lên, kể cả khi không có mạng.",
+      "output": "Lưu cạnh bản gốc, hoặc vào một thư mục và theo mẫu tên tệp do bạn chọn."
+    },
+    "alsoTo": "{from} cũng có thể chuyển thành",
+    "aboutTitle": "Về {from} và {to}",
+    "aboutExt": "Phần mở rộng:",
+    "aboutMore": "Tất cả định dạng {category}",
+    "relatedTitle": "Chuyển đổi liên quan",
+    "sameSource": "Các chuyển đổi {from} khác",
+    "sameTarget": "Chuyển định dạng khác sang {to}",
+    "sameCategory": "Thêm hướng dẫn về {category}",
+    "ctaTitle": "Chuyển đổi {from} sang {to} miễn phí",
+    "ctaText": "Filee là trình chuyển đổi tệp miễn phí, mã nguồn mở cho Windows 10 và 11. Ứng dụng hoạt động ngoại tuyến và chuyển đổi {formatCount} định dạng chỉ bằng một lần kéo thả."
+  },
+  "auto": {
+    "eyebrow": "Cho tự động hóa",
+    "title": "Chuyển đổi từ dòng lệnh, hoặc để một thư mục tự làm",
+    "text": "Lệnh filee chuyển đổi tệp, ký tự đại diện và cả thư mục bằng cấu hình sẵn của bạn, in JSON cho tập lệnh và trả về mã thoát. Thư mục theo dõi chuyển đổi mọi tệp được đưa vào, trong ứng dụng hoặc trong terminal.",
+    "points": [
+      "`filee convert *.heic --to jpg` với bất kỳ định dạng nào trong {formatCount} định dạng",
+      "Tệp tải xuống và bản quét được chuyển đổi ngay khi hoàn tất",
+      "Bản gốc được dời sang chỗ khác, nên thư mục hoạt động như một hộp thư đến",
+      "Đầu ra JSON và mã thoát cho tập lệnh và tác vụ theo lịch"
+    ],
+    "guide": "Đọc hướng dẫn dòng lệnh",
+    "terminal": "Ví dụ: một thư mục theo dõi biến bản quét thành PDF"
+  },
+  "cli": {
+    "title": "Dòng lệnh Filee: chuyển đổi tệp và theo dõi thư mục | Filee",
+    "description": "Dùng lệnh filee miễn phí trên Windows để chuyển đổi tệp, thư mục và ký tự đại diện ngoại tuyến, theo dõi thư mục và viết tập lệnh với JSON và mã thoát.",
+    "crumb": "Dòng lệnh",
+    "h1": "Dòng lệnh filee",
+    "lead": "Chuyển đổi tệp từ Command Prompt, PowerShell hoặc tập lệnh của riêng bạn với cùng bộ xử lý và cấu hình sẵn như ứng dụng, hoặc để một thư mục tự chuyển đổi mọi tệp được đưa vào. Mọi thứ đều ở lại trên máy tính của bạn.",
+    "tags": [
+      "Windows 10/11",
+      "Cấu hình sẵn của bạn",
+      "Đầu ra JSON"
+    ],
+    "commandsButton": "Xem các lệnh",
+    "terminalLabel": "Ví dụ: chuyển ảnh HEIC sang JPG trong terminal",
+    "setupTitle": "Thiết lập lệnh filee",
+    "setup": [
+      {
+        "title": "Giữ nguyên dấu chọn trong trình cài đặt",
+        "text": "Ở trang tùy chọn của trình cài đặt Filee, giữ nguyên dấu chọn ở **Thêm lệnh “filee” vào PATH** (mặc định đã bật). Đã cài rồi? Hãy chạy lại trình cài đặt mới nhất."
+      },
+      {
+        "title": "Mở một terminal mới",
+        "text": "Mở một cửa sổ Command Prompt, PowerShell hoặc Windows Terminal mới (cửa sổ đã mở từ trước sẽ không thấy PATH mới) rồi chạy `filee version`."
+      },
+      {
+        "title": "Bản di động hoặc không có PATH",
+        "text": "Mọi thứ đều nằm trong thư mục Filee: chạy `filee-cli.exe` ở đó, hoặc tự thêm thư mục `cli` của nó vào PATH. Ứng dụng không cần đang chạy."
+      }
+    ],
+    "quickTitle": "Bắt đầu nhanh",
+    "quickLead": "Truyền vào tên tệp, ký tự đại diện như `*.heic` hoặc cả thư mục. Kết quả được lưu cạnh bản gốc, trừ khi bạn thêm `-o`.",
+    "quick": [
+      {
+        "title": "Một ảnh sang JPG",
+        "code": "filee convert photo.heic --to jpg"
+      },
+      {
+        "title": "Mọi tệp PNG sang WebP chất lượng 80, vào một thư mục",
+        "code": "filee convert *.png --to webp --quality 80 -o converted"
+      },
+      {
+        "title": "Một thư mục và các thư mục con, dùng một cấu hình sẵn",
+        "code": "filee convert D:\\Scans --recursive --preset to-pdf"
+      },
+      {
+        "title": "Một thư mục hộp thư đến tạo ra PDF",
+        "code": "filee watch D:\\Inbox --to pdf --move-originals"
+      },
+      {
+        "title": "HEIC có thể chuyển thành gì?",
+        "code": "filee formats heic"
+      },
+      {
+        "title": "Cấu hình sẵn của bạn, theo id và tên",
+        "code": "filee presets"
+      }
+    ],
+    "commandsTitle": "Các lệnh",
+    "optionsLabel": "Tùy chọn",
+    "commands": [
+      {
+        "name": "convert",
+        "usage": "filee convert <files or folders...> (--to <format> | --preset <preset>) [options]",
+        "text": "Chuyển đổi tệp, ký tự đại diện (`*.heic`) và thư mục. Với một thư mục, các tệp bên trong mà Filee nhận ra sẽ được chuyển đổi; thêm `-r` để gồm cả thư mục con. Hãy chỉ định một định dạng đích hoặc một cấu hình sẵn của bạn.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Định dạng đích theo id hoặc phần mở rộng: jpg, png, webp, pdf, docx, hwpx, mp4, mp3… (xem `filee formats`)"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Một cấu hình sẵn từ ứng dụng, theo id hoặc theo tên (xem `filee presets`)"
+          ],
+          [
+            "-o, --output <folder>",
+            "Lưu vào đó thay vì cạnh tệp nguồn"
+          ],
+          [
+            "-r, --recursive",
+            "Gồm cả thư mục con"
+          ],
+          [
+            "-q, --quality <1-100>",
+            "Chất lượng ảnh cho JPG, WebP, AVIF và các định dạng nén mất dữ liệu khác"
+          ],
+          [
+            "--overwrite",
+            "Thay thế tệp đầu ra đã có (mặc định, một con số được thêm vào tên mới)"
+          ],
+          [
+            "--skip",
+            "Để nguyên tệp đầu ra đã có"
+          ],
+          [
+            "--keep-dates",
+            "Gán cho tệp đã chuyển đổi ngày tạo và ngày sửa đổi của bản gốc"
+          ],
+          [
+            "--json",
+            "In kết quả thành một tài liệu JSON, dành cho tập lệnh"
+          ],
+          [
+            "--quiet",
+            "Chỉ in lỗi"
+          ]
+        ]
+      },
+      {
+        "name": "watch",
+        "usage": "filee watch <folder> (--to <format> | --preset <preset>) [options]",
+        "text": "Chuyển đổi mọi tệp được đưa vào thư mục cho đến khi bạn nhấn Ctrl+C. Tệp đã chuyển đổi được đặt vào thư mục `converted` bên trong, trừ khi bạn thêm `-o`.",
+        "options": [
+          [
+            "-t, --to <format>",
+            "Định dạng đích"
+          ],
+          [
+            "-p, --preset <preset>",
+            "Một cấu hình sẵn từ ứng dụng, theo id hoặc theo tên"
+          ],
+          [
+            "-o, --output <folder>",
+            "Nơi đặt tệp đã chuyển đổi (mặc định: `<folder>\\converted`)"
+          ],
+          [
+            "-r, --recursive",
+            "Theo dõi cả thư mục con (tệp của chúng giữ thư mục con trong đầu ra)"
+          ],
+          [
+            "--move-originals",
+            "Chuyển mỗi tệp nguồn đã chuyển đổi vào `<folder>\\originals`, và chuyển đổi các tệp đang chờ sẵn ở đó khi bắt đầu"
+          ],
+          [
+            "--settle <seconds>",
+            "Thời gian một tệp phải giữ nguyên không đổi trước khi được chuyển đổi (mặc định 2)"
+          ],
+          [
+            "--keep-dates",
+            "Gán cho tệp đã chuyển đổi ngày tạo và ngày sửa đổi của bản gốc"
+          ],
+          [
+            "--quiet",
+            "Chỉ in lỗi"
+          ]
+        ]
+      },
+      {
+        "name": "formats",
+        "usage": "filee formats [<format>]",
+        "text": "Liệt kê mọi định dạng cùng id và phần mở rộng, hoặc những gì một định dạng chuyển đổi được sang, kể cả những gì một bộ xử lý tùy chọn sẽ bổ sung.",
+        "options": []
+      },
+      {
+        "name": "presets",
+        "usage": "filee presets",
+        "text": "Liệt kê các cấu hình sẵn mặc định và những cấu hình bạn đã tạo trong ứng dụng, cùng id, tên và định dạng đích.",
+        "options": []
+      },
+      {
+        "name": "help",
+        "usage": "filee help [<command>]\nfilee version",
+        "text": "Hiển thị cách dùng tất cả các lệnh hoặc một lệnh, và phiên bản đã cài.",
+        "options": []
+      }
+    ],
+    "watchTitle": "Thư mục theo dõi",
+    "watchLead": "Để một thư mục chuyển đổi mọi thứ bạn đưa vào: tệp tải xuống, bản quét, tệp xuất từ ứng dụng khác.",
+    "watchPoints": [
+      "Tệp được chuyển đổi khi đã hoàn tất, không còn tăng dung lượng và không bị chương trình khác mở, nên tệp đang tải xuống và tệp sao chép lâu đều an toàn.",
+      "Tệp tạm và tệp ẩn (`.crdownload`, `.part`, `.tmp`, tệp `~$`) cùng các định dạng Filee không biết sẽ bị bỏ qua.",
+      "Tệp đã chuyển đổi được đặt vào thư mục `converted` bên trong thư mục theo dõi, hoặc nơi `-o` chỉ tới. Với `-r`, tệp từ thư mục con giữ nguyên thư mục con ở đó (`2025\\a.png` → `converted\\2025\\a.pdf`).",
+      "Với `--move-originals`, mỗi tệp nguồn đã chuyển đổi được chuyển vào `originals`, nên thư mục hoạt động như một hộp thư đến. Các tệp đang chờ sẵn ở đó được chuyển đổi khi bắt đầu."
+    ],
+    "watchAppTitle": "Hoặc trong ứng dụng, chạy nền",
+    "watchAppText": "Trang **Thư mục theo dõi** trong Filee làm điều tương tự mà không cần terminal: thêm thư mục, chọn cấu hình sẵn cho từng thư mục, và tệp được chuyển đổi trong khi Filee chạy ở khay hệ thống.",
+    "scriptsTitle": "Dùng trong tập lệnh",
+    "scriptsLead": "`--json` in một tài liệu JSON chứa kết quả của từng tệp, còn mã thoát cho tập lệnh của bạn biết mọi việc diễn ra thế nào.",
+    "exitTitle": "Mã thoát",
+    "exitCodes": [
+      [
+        "0",
+        "Không có tệp nào lỗi hoặc bị hủy (có thể một số tệp đã bị bỏ qua)"
+      ],
+      [
+        "1",
+        "Một số tệp lỗi hoặc bị hủy (`state` của từng tệp trong `--json` cho biết tệp nào)"
+      ],
+      [
+        "2",
+        "Đối số sai, định dạng hoặc cấu hình sẵn không xác định, hoặc thiếu đầu vào"
+      ],
+      [
+        "3",
+        "Không có gì để chuyển đổi"
+      ]
+    ],
+    "psTitle": "Ví dụ PowerShell",
+    "agentTitle": "Dùng Filee từ một tác tử AI",
+    "agentText": [
+      "Filee đi kèm một Agent Skill trong [`skills/filee/SKILL.md`](https://github.com/KnifeLemon/Filee/tree/main/skills/filee). Skill này hướng dẫn các tác tử lập trình cách chạy lệnh `filee`: kiểm tra Filee đã được cài chưa, hỏi `filee formats <format> --json` xem một kiểu chuyển đổi có làm được không, chuyển đổi với `--json` và `-o`, rồi đọc kết quả.",
+      "Để dùng, hãy sao chép thư mục `skills/filee` vào thư mục skills của tác tử. Với Codex, đó là `~/.agents/skills/` cho riêng bạn, hoặc `.agents/skills/` bên trong một dự án. Với Claude Code, dùng `~/.claude/skills/` hoặc `.claude/skills/` của dự án ([tài liệu](https://code.claude.com/docs/en/skills)). Các tác tử khác hỗ trợ Agent Skills có thư mục riêng, hãy xem tài liệu của chúng.",
+      "Skill dặn tác tử không chỉ dựa vào mã thoát. Tác tử đọc `converted`, `state` và `outputs` từ JSON, và khi một tệp cần bộ xử lý mà Filee chưa có, nó sẽ nhờ bạn cài trong Cài đặt → Bộ xử lý."
+    ],
+    "notesTitle": "Nên biết",
+    "notes": [
+      "Cùng bộ xử lý và cấu hình sẵn như ứng dụng: cấu hình sẵn bạn tạo hoặc sửa trong Filee dùng được ngay với `--preset`, theo id hoặc theo tên.",
+      "Bộ xử lý tùy chọn (FFmpeg, LibreOffice…) được cài trong ứng dụng ở Cài đặt → Bộ xử lý. `filee formats <format>` cho biết kiểu chuyển đổi nào cần đến chúng.",
+      "Ký tự đại diện do chính filee mở rộng, nên `*.heic` dùng được trong Command Prompt cũng như trong PowerShell. Hãy đặt đường dẫn có dấu cách trong dấu ngoặc kép.",
+      "Không có gì được tải lên và không cần Internet: tệp được chuyển đổi trên máy tính của bạn, như trong ứng dụng.",
+      "Thông báo hiển thị bằng tiếng Anh, nên tập lệnh và nhật ký đọc như nhau trên mọi máy tính."
+    ],
+    "ctaTitle": "Tải Filee kèm lệnh filee",
+    "ctaText": "Dòng lệnh đi kèm Filee cho Windows 10/11: miễn phí, mã nguồn mở và ngoại tuyến."
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "text": "Trang này không tồn tại. Có lẽ nó đã bị kéo đi đâu mất rồi.",
+    "home": "Về trang chủ",
+    "formats": "Xem tất cả định dạng"
+  },
+  "langBanner": "Trang này cũng có bằng tiếng Việt."
+}

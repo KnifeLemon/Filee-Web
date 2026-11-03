@@ -114,7 +114,7 @@
       { "icon": "windows", "title": "Tam, gdzie pracujesz", "text": "Gest przeciągania, „Konwertuj w Filee” w menu kontekstowym (w Windows 11 także w głównym menu), Wyślij do, skrót klawiszowy lub strefa upuszczania w oknie głównym." },
       { "icon": "sliders", "title": "Ustawienia wstępne dla każdego typu plików", "text": "Jakość, zmiana rozmiaru, obracanie i odbijanie, DPI, skala szarości, metadane, usuwanie tła, wektoryzacja do SVG, kompresja TIFF, rozmiary ICO, łączenie i dzielenie PDF, zakresy stron, kompresja i jeden długi obraz, 720p, wideo HEVC i AV1, kodowanie sprzętowe, każda klatka jako obraz, bitrate MP3, folder wyjściowy, nazwy plików i oryginalne daty plików." },
       { "icon": "download", "title": "Silniki na żądanie", "text": "Duże silniki są opcjonalne. Zaznacz je w instalatorze albo pobierz później w aplikacji: {engineNames}. Filee pokazuje ich wersje, prędkość pobierania i pozostały czas. Masz już FFmpeg, calibre lub Pandoc? Filee je znajdzie i pominie pobieranie." },
-      { "icon": "code", "title": "Darmowe i otwarte", "text": "Licencja MIT, bez reklam, bez konta. W językach: English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano i Bahasa Indonesia. Filee informuje o nowych wersjach; każde wydanie zawiera listę zmian i współtwórców." }
+      { "icon": "code", "title": "Darmowe i otwarte", "text": "Licencja MIT, bez reklam, bez konta. W językach: English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia i Tiếng Việt. Filee informuje o nowych wersjach; każde wydanie zawiera listę zmian i współtwórców." }
     ]
   },
   "formats": {
@@ -157,7 +157,7 @@
       ["Wbudowane", "{builtinTotal|one:# format|few:# formaty|many:# formatów|other:# formatu}, nic więcej do instalowania"],
       ["Opcjonalne silniki", "{engineNames}"],
       ["Wiersz poleceń", "filee convert i filee watch, dodawane do PATH przez instalator"],
-      ["Języki", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia"],
+      ["Języki", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt"],
       ["Aktualizacje", "Instalowane z poziomu aplikacji jednym kliknięciem; każda informuje, czy jest wymagana, zalecana czy opcjonalna"]
     ]
   },
