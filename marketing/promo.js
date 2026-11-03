@@ -147,6 +147,20 @@ function boxGradient(ctx, [x0, y0, x1, y1], [from, to], vertical = false) {
 }
 
 let logoLayer;
+let logoPart;
+
+/** A canvas of at least width × height, cleared, for drawing the logo in device pixels. */
+function scratch(canvas, width, height) {
+  canvas ??= document.createElement('canvas');
+  if (canvas.width < width || canvas.height < height) {
+    canvas.width = Math.max(canvas.width, width);
+    canvas.height = Math.max(canvas.height, height);
+  }
+  const context = canvas.getContext('2d');
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  context.clearRect(0, 0, width, height);
+  return canvas;
+}
 
 /**
  * The logo at (cx, cy), size wide. progress < 1 assembles it: the slices fly in one after the other, then the file
@@ -161,61 +175,78 @@ function drawLogo(ctx, cx, cy, size, { progress = 1, spin = 0 } = {}) {
   const device = Math.hypot(m.a, m.b);
   const centre = m.transformPoint(new DOMPoint(cx, cy));
   const half = Math.ceil(size * device); // room for the pieces flying in and the shadow
-  logoLayer ??= document.createElement('canvas');
-  if (logoLayer.width < half * 2 || logoLayer.height < half * 2) {
-    logoLayer.width = Math.max(logoLayer.width, half * 2);
-    logoLayer.height = Math.max(logoLayer.height, half * 2);
-  }
-  const layer = logoLayer.getContext('2d');
-  layer.setTransform(1, 0, 0, 1, 0, 0);
-  layer.clearRect(0, 0, half * 2, half * 2);
   const left = Math.round(centre.x) - half;
   const top = Math.round(centre.y) - half;
-  layer.setTransform(m.a, m.b, m.c, m.d, centre.x - left, centre.y - top);
-
   const scale = size / 512;
-  layer.rotate(spin);
-  layer.scale(scale, scale);
-  layer.translate(-256, -256);
-  layer.lineJoin = 'round';
+  logoLayer = scratch(logoLayer, half * 2, half * 2);
+  const layer = logoLayer.getContext('2d');
+  const place = context => {
+    context.setTransform(m.a, m.b, m.c, m.d, centre.x - left, centre.y - top);
+    context.rotate(spin);
+    context.scale(scale, scale);
+    context.translate(-256, -256);
+    context.lineJoin = 'round';
+    context.globalAlpha = 1;
+  };
+  // A part that fades in is drawn whole on its own canvas first and put on the layer at its opacity: drawn straight
+  // at that opacity, its stroke would show through where it overlaps the fill.
+  const part = (alpha, paint) => {
+    if (alpha >= 1) {
+      layer.save();
+      place(layer);
+      paint(layer);
+      layer.restore();
+      return;
+    }
+    logoPart = scratch(logoPart, half * 2, half * 2);
+    const context = logoPart.getContext('2d');
+    place(context);
+    paint(context);
+    layer.save();
+    layer.setTransform(1, 0, 0, 1, 0, 0);
+    layer.globalAlpha = alpha;
+    layer.drawImage(logoPart, 0, 0, half * 2, half * 2, 0, 0, half * 2, half * 2);
+    layer.restore();
+  };
+
   LOGO_PATHS.forEach((piece, i) => {
     const p = spring(clamp(progress * 1.6 - i * 0.12));
     if (p <= 0)
       return;
-    layer.save();
     // Pieces fly in from further out along their direction.
     const bounds = [[256, 110], [400, 150], [410, 350], [256, 400], [110, 350], [100, 150]][i];
     const dx = (bounds[0] - 256) * (1 - p) * 1.6;
     const dy = (bounds[1] - 256) * (1 - p) * 1.6;
-    layer.globalAlpha = clamp(p * 1.5);
-    layer.translate(piece.dx + dx, piece.dy + dy);
-    layer.fillStyle = layer.strokeStyle = boxGradient(layer, piece.box, piece.colors);
-    layer.lineWidth = 24;
-    layer.fill(piece.path);
-    layer.stroke(piece.path);
-    layer.restore();
+    part(clamp(p * 1.5), context => {
+      context.translate(piece.dx + dx, piece.dy + dy);
+      context.fillStyle = context.strokeStyle = boxGradient(context, piece.box, piece.colors);
+      context.lineWidth = 24;
+      context.fill(piece.path);
+      context.stroke(piece.path);
+    });
   });
   const fileProgress = easeOut(clamp(progress * 1.6 - 0.8));
   if (fileProgress > 0) {
-    layer.globalAlpha = fileProgress;
-    layer.translate(256, 256);
-    layer.scale(fileProgress, fileProgress);
-    layer.translate(-256, -256);
-    layer.fillStyle = layer.strokeStyle = boxGradient(layer, [227, 217, 285, 295], ['#4B41AA', '#2D2675'], true);
-    layer.lineWidth = 10;
-    layer.fill(LOGO_FILE);
-    layer.stroke(LOGO_FILE);
-    layer.fillStyle = layer.strokeStyle = '#C9C4F7';
-    layer.lineWidth = 4;
-    layer.fill(LOGO_FOLD);
-    layer.stroke(LOGO_FOLD);
-    layer.fillStyle = '#FFFFFF';
-    for (const [y, width, opacity] of LOGO_LINES) {
-      layer.globalAlpha = fileProgress * opacity;
-      layer.beginPath();
-      layer.roundRect(235, y, width, 5, 2.5);
-      layer.fill();
-    }
+    part(fileProgress, context => {
+      context.translate(256, 256);
+      context.scale(fileProgress, fileProgress);
+      context.translate(-256, -256);
+      context.fillStyle = context.strokeStyle = boxGradient(context, [227, 217, 285, 295], ['#4B41AA', '#2D2675'], true);
+      context.lineWidth = 10;
+      context.fill(LOGO_FILE);
+      context.stroke(LOGO_FILE);
+      context.fillStyle = context.strokeStyle = '#C9C4F7';
+      context.lineWidth = 4;
+      context.fill(LOGO_FOLD);
+      context.stroke(LOGO_FOLD);
+      context.fillStyle = '#FFFFFF';
+      for (const [y, width, opacity] of LOGO_LINES) {
+        context.globalAlpha = opacity;
+        context.beginPath();
+        context.roundRect(235, y, width, 5, 2.5);
+        context.fill();
+      }
+    });
   }
 
   // feDropShadow dy 6, stdDeviation 7, #2D2675 at 10 %; a canvas shadow's blur is twice the deviation, and shadows
