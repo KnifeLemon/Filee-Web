@@ -20,7 +20,7 @@
     "skip": "Przejdź do treści"
   },
   "hero": {
-    "badge": "Nowość w {newIn}: edycja obrazów, pikselizacja i rozmycie, łączenie obrazów, limit rozmiaru w MB",
+    "badge": "Nowość w {newIn}: adnotacje na obrazach, kadrowanie wideo, kilka stron na arkuszu, napisy i tłumaczenia z lokalną AI",
     "kicker": "Darmowy konwerter plików dla Windows, macOS i Linuksa",
     "title": ["Przeciągnij.", "Upuść.", "Gotowe."],
     "lead": "Konwertuj obrazy, pliki PDF, Word, Excel i PowerPoint, filmy, muzykę, e-booki, archiwa i nie tylko – prosto na swoim komputerze. Przytrzymaj klawisz, przeciągnij pliki i upuść je na format. Bez przesyłania, bez konta, za darmo i open source.",

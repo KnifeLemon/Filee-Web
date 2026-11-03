@@ -20,7 +20,7 @@
     "skip": "Saltar para o conteúdo"
   },
   "hero": {
-    "badge": "Novidades da {newIn}: editar imagens, pixelizar ou desfocar, juntar imagens, limite de tamanho em MB",
+    "badge": "Novidades da {newIn}: anotar imagens, recortar vídeos, várias páginas por folha, legendas e traduções com IA local",
     "kicker": "Conversor de ficheiros gratuito para Windows, macOS e Linux",
     "title": ["Arrasta.", "Larga.", "Já está."],
     "lead": "Converte imagens, PDF, ficheiros de Word, Excel e PowerPoint, vídeos, músicas, livros digitais, ficheiros comprimidos e muito mais, diretamente no teu computador. Mantém uma tecla premida, arrasta os ficheiros e larga-os num formato. Sem envios, sem conta, gratuito e de código aberto.",
