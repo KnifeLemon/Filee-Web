@@ -24,16 +24,23 @@ const C = {
 
 const FONT = '"NotoSans", "NotoSansKR", "NotoSansSC", sans-serif';
 
+// The logo, from the app's src/Filee.App/Assets/Icons/filee.svg: six slices and the file, each filled with a gradient
+// and stroked in the same gradient with round joins (that stroke is what rounds the corners), over a faint drop shadow.
+// The SVG's gradients run over each shape's bounding box (objectBoundingBox), so every piece keeps its box here.
+const LOGO_LIGHT = ['#A39CF4', '#6C63D8'];
+const LOGO_DARK = ['#8179E6', '#4F46B5'];
+const LOGO_GREEN = ['#3FD6A0', '#13875F'];
 const LOGO_PATHS = [
-  ['#7F77DD', 0, 0, 'M154.61 65.27 A216 216 0 0 1 357.39 65.27 L304.82 164.17 A104 104 0 0 0 207.18 164.17 Z'],
-  ['#1D9E75', 13.86, -8, 'M373.66 67.74 A222 222 0 0 1 477.86 248.23 L359.94 252.36 A104 104 0 0 0 311.12 167.81 Z'],
-  ['#7F77DD', 0, 0, 'M471.87 263.56 A216 216 0 0 1 370.48 439.17 L311.12 344.19 A104 104 0 0 0 359.94 259.64 Z'],
-  ['#6A62C9', 0, 0, 'M357.39 446.73 A216 216 0 0 1 154.61 446.73 L207.18 347.83 A104 104 0 0 0 304.82 347.83 Z'],
-  ['#7F77DD', 0, 0, 'M141.52 439.17 A216 216 0 0 1 40.13 263.56 L152.06 259.64 A104 104 0 0 0 200.88 344.19 Z'],
-  ['#6A62C9', 0, 0, 'M40.13 248.44 A216 216 0 0 1 141.52 72.83 L200.88 167.81 A104 104 0 0 0 152.06 252.36 Z'],
-].map(([fill, dx, dy, d]) => ({ fill, dx, dy, path: new Path2D(d) }));
-const LOGO_FILE = new Path2D('M222 212 h44 l24 24 v64 h-68 z');
-const LOGO_FOLD = new Path2D('M266 212 v24 h24 z');
+  [LOGO_LIGHT, 0, 0, [169.99, 52, 342.01, 147.76], 'M169.99 71.02 A204 204 0 0 1 342.01 71.02 L297.71 147.76 A116 116 0 0 0 214.29 147.76 Z'],
+  [LOGO_GREEN, 10.39, -6, [328.89, 89.02, 459.2, 238], 'M373.19 89.02 A204 204 0 0 1 459.20 238.00 L370.59 238.00 A116 116 0 0 0 328.89 165.76 Z'],
+  [LOGO_LIGHT, 0, 0, [328.89, 274, 459.2, 422.98], 'M459.20 274.00 A204 204 0 0 1 373.19 422.98 L328.89 346.24 A116 116 0 0 0 370.59 274.00 Z'],
+  [LOGO_DARK, 0, 0, [169.99, 364.24, 342.01, 460], 'M342.01 440.98 A204 204 0 0 1 169.99 440.98 L214.29 364.24 A116 116 0 0 0 297.71 364.24 Z'],
+  [LOGO_LIGHT, 0, 0, [52.8, 274, 183.11, 422.98], 'M138.81 422.98 A204 204 0 0 1 52.80 274.00 L141.41 274.00 A116 116 0 0 0 183.11 346.24 Z'],
+  [LOGO_DARK, 0, 0, [52.8, 89.02, 183.11, 238], 'M52.80 238.00 A204 204 0 0 1 138.81 89.02 L183.11 165.76 A116 116 0 0 0 141.41 238.00 Z'],
+].map(([colors, dx, dy, box, d]) => ({ colors, box, dx, dy, path: new Path2D(d) }));
+const LOGO_FILE = new Path2D('M227 217 H262 L285 240 V295 H227 Z');
+const LOGO_FOLD = new Path2D('M262 217 V240 H285 Z');
+const LOGO_LINES = [[256, 42, 0.55], [268, 32, 0.4], [280, 38, 0.3]]; // y, width, opacity of the file's three lines
 
 const TYPE_COLORS = {
   jpg: '#E0913C', webp: '#7F77DD', png: '#378ADD', docx: '#2B579A', pptx: '#D24726', xlsx: '#217346',
@@ -124,39 +131,103 @@ function shadow(ctx, blur, y, alpha = 0.16) {
   ctx.shadowOffsetY = y;
 }
 
+/**
+ * A gradient like the SVG's objectBoundingBox one from the top left (0 0) to (1 1) of box [x0, y0, x1, y1]: its lines of
+ * equal colour run parallel to the box's other diagonal, so the end point is not simply the bottom right corner when the
+ * box isn't square. vertical: from (0 0) to (0 1).
+ */
+function boxGradient(ctx, [x0, y0, x1, y1], [from, to], vertical = false) {
+  const nx = vertical ? 0 : 1 / (2 * (x1 - x0));
+  const ny = vertical ? 1 / (y1 - y0) : 1 / (2 * (y1 - y0));
+  const n2 = nx * nx + ny * ny;
+  const gradient = ctx.createLinearGradient(x0, y0, x0 + nx / n2, y0 + ny / n2);
+  gradient.addColorStop(0, from);
+  gradient.addColorStop(1, to);
+  return gradient;
+}
+
+let logoLayer;
+
+/**
+ * The logo at (cx, cy), size wide. progress < 1 assembles it: the slices fly in one after the other, then the file
+ * grows in the middle. The pieces are drawn on a layer first and the layer is put down with the SVG's drop shadow, so
+ * the shadow falls from the logo as a whole (as the SVG's filter does), not piece by piece.
+ */
 function drawLogo(ctx, cx, cy, size, { progress = 1, spin = 0 } = {}) {
+  if (progress <= 0 || size <= 0)
+    return;
+  // The layer is in device pixels, so the logo stays as sharp as the canvas it lands on.
+  const m = ctx.getTransform();
+  const device = Math.hypot(m.a, m.b);
+  const centre = m.transformPoint(new DOMPoint(cx, cy));
+  const half = Math.ceil(size * device); // room for the pieces flying in and the shadow
+  logoLayer ??= document.createElement('canvas');
+  if (logoLayer.width < half * 2 || logoLayer.height < half * 2) {
+    logoLayer.width = Math.max(logoLayer.width, half * 2);
+    logoLayer.height = Math.max(logoLayer.height, half * 2);
+  }
+  const layer = logoLayer.getContext('2d');
+  layer.setTransform(1, 0, 0, 1, 0, 0);
+  layer.clearRect(0, 0, half * 2, half * 2);
+  const left = Math.round(centre.x) - half;
+  const top = Math.round(centre.y) - half;
+  layer.setTransform(m.a, m.b, m.c, m.d, centre.x - left, centre.y - top);
+
   const scale = size / 512;
-  ctx.save();
-  ctx.translate(cx, cy);
-  ctx.rotate(spin);
-  ctx.scale(scale, scale);
-  ctx.translate(-256, -256);
+  layer.rotate(spin);
+  layer.scale(scale, scale);
+  layer.translate(-256, -256);
+  layer.lineJoin = 'round';
   LOGO_PATHS.forEach((piece, i) => {
     const p = spring(clamp(progress * 1.6 - i * 0.12));
     if (p <= 0)
       return;
-    ctx.save();
+    layer.save();
     // Pieces fly in from further out along their direction.
     const bounds = [[256, 110], [400, 150], [410, 350], [256, 400], [110, 350], [100, 150]][i];
     const dx = (bounds[0] - 256) * (1 - p) * 1.6;
     const dy = (bounds[1] - 256) * (1 - p) * 1.6;
-    ctx.globalAlpha *= clamp(p * 1.5);
-    ctx.translate(piece.dx + dx, piece.dy + dy);
-    ctx.fillStyle = piece.fill;
-    ctx.fill(piece.path);
-    ctx.restore();
+    layer.globalAlpha = clamp(p * 1.5);
+    layer.translate(piece.dx + dx, piece.dy + dy);
+    layer.fillStyle = layer.strokeStyle = boxGradient(layer, piece.box, piece.colors);
+    layer.lineWidth = 24;
+    layer.fill(piece.path);
+    layer.stroke(piece.path);
+    layer.restore();
   });
   const fileProgress = easeOut(clamp(progress * 1.6 - 0.8));
   if (fileProgress > 0) {
-    ctx.globalAlpha *= fileProgress;
-    ctx.translate(256, 256);
-    ctx.scale(fileProgress, fileProgress);
-    ctx.translate(-256, -256);
-    ctx.fillStyle = C.accentDark;
-    ctx.fill(LOGO_FILE);
-    ctx.fillStyle = C.accentSoft;
-    ctx.fill(LOGO_FOLD);
+    layer.globalAlpha = fileProgress;
+    layer.translate(256, 256);
+    layer.scale(fileProgress, fileProgress);
+    layer.translate(-256, -256);
+    layer.fillStyle = layer.strokeStyle = boxGradient(layer, [227, 217, 285, 295], ['#4B41AA', '#2D2675'], true);
+    layer.lineWidth = 10;
+    layer.fill(LOGO_FILE);
+    layer.stroke(LOGO_FILE);
+    layer.fillStyle = layer.strokeStyle = '#C9C4F7';
+    layer.lineWidth = 4;
+    layer.fill(LOGO_FOLD);
+    layer.stroke(LOGO_FOLD);
+    layer.fillStyle = '#FFFFFF';
+    for (const [y, width, opacity] of LOGO_LINES) {
+      layer.globalAlpha = fileProgress * opacity;
+      layer.beginPath();
+      layer.roundRect(235, y, width, 5, 2.5);
+      layer.fill();
+    }
   }
+
+  // feDropShadow dy 6, stdDeviation 7, #2D2675 at 10 %; a canvas shadow's blur is twice the deviation, and shadows
+  // are measured in device pixels.
+  const unit = scale * device;
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.shadowColor = 'rgba(45, 38, 117, 0.10)';
+  ctx.shadowBlur = 14 * unit;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 6 * unit;
+  ctx.drawImage(logoLayer, 0, 0, half * 2, half * 2, left, top, half * 2, half * 2);
   ctx.restore();
 }
 

@@ -23,7 +23,8 @@ marketing/
   server.mjs    local server that serves the studio and saves renders into out/
   make-anim.py  packs PNG frames into the animated WebP used in the READMEs
   export.py     copies renders from out/ into site/public/media and the app repository's docs/media
-  assets/       app screenshots and the logo used by the renders
+  assets/       app screenshots and a copy of the app's logo (filee.svg, filee.png); the renders draw the logo
+                in code from the same paths and colours (drawLogo in promo.js), so a new logo goes there too
   demo-videos/  .NET generator of the feature demo clips (headless Avalonia against the app repository)
   make-demo-videos.ps1  builds and runs it: out/demo-videos
   out/          render output (git-ignored)
@@ -58,7 +59,7 @@ await studio.stills('ko')
 await studio.still('ko', '1920x1080', studio.moments.drag, 'posters/poster-ko.png')
 
 // Frames for the README animation → out/anim-ko/, then pack them:
-await studio.frames('ko', '1920x1080', 2.8, 9.7, 15, 'anim-ko', 0.46875)
+await studio.frames('ko', '1920x1080', 2.8, 10.1, 15, 'anim-ko', 0.46875)   // 110 frames
 ```
 
 ```bash

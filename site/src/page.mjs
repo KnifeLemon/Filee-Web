@@ -5,7 +5,7 @@ import {
   CATEGORIES, DEMO_DONUTS, ENGINES, FAQ, MARQUEE, PAIRS, VERSION, L, countFormats, enginesOf, fill, label, vars,
 } from './catalog.mjs';
 import {
-  DOWNLOAD, LOGO, REPO, SITE, alternatesOf, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
+  DOWNLOAD, REPO, SITE, alternatesOf, brandLogo, downloadCard, engineBadge, escape, icon, pairLinks, paths, renderDocument,
 } from './layout.mjs';
 import { NOBODY, heroSponsors, supportersSection } from './sponsors.mjs';
 import { LANGUAGE } from './languages.mjs';
@@ -371,7 +371,7 @@ export function renderNotFound(languages, assets) {
 <body class="not-found">
 <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i></div>
 <main class="not-found-card">
-  ${LOGO}
+  ${brandLogo('not-found')}
   <p class="not-found-code">404</p>
   ${languages.map(l => {
     const { title, text, home, formats } = l.notFound;
