@@ -36,7 +36,28 @@ export const escape = value => String(value)
 /** JSON for <script> blocks: `<` escaped so text can never close the element. */
 export const json = value => JSON.stringify(value).replaceAll('<', '\\u003c');
 
-export const LOGO = `<svg class="logo" viewBox="0 0 512 512" aria-hidden="true"><path fill="#7F77DD" d="M154.61 65.27A216 216 0 0 1 357.39 65.27L304.82 164.17A104 104 0 0 0 207.18 164.17Z"/><path transform="translate(13.86,-8)" fill="#1D9E75" d="M373.66 67.74A222 222 0 0 1 477.86 248.23L359.94 252.36A104 104 0 0 0 311.12 167.81Z"/><path fill="#7F77DD" d="M471.87 263.56A216 216 0 0 1 370.48 439.17L311.12 344.19A104 104 0 0 0 359.94 259.64Z"/><path fill="#6A62C9" d="M357.39 446.73A216 216 0 0 1 154.61 446.73L207.18 347.83A104 104 0 0 0 304.82 347.83Z"/><path fill="#7F77DD" d="M141.52 439.17A216 216 0 0 1 40.13 263.56L152.06 259.64A104 104 0 0 0 200.88 344.19Z"/><path fill="#6A62C9" d="M40.13 248.44A216 216 0 0 1 141.52 72.83L200.88 167.81A104 104 0 0 0 152.06 252.36Z"/><path fill="#3C3489" d="M222 212h44l24 24v64h-68z"/><path fill="#AFA9EC" d="M266 212v24h24z"/></svg>`;
+/**
+ * The logo (the app's src/Filee.App/Assets/Icons/filee.svg): six slices and the file, filled with gradients and
+ * rounded by a stroke in the same gradient with round joins, over a faint drop shadow. A page can show it several
+ * times (nav, download card, footer), so the gradient and filter ids carry the place it is shown in and never collide.
+ */
+export function brandLogo(place) {
+  const id = name => `logo-${place}-${name}`;
+  const gradient = (name, from, to, vertical) =>
+    `<linearGradient id="${id(name)}" x1="0" y1="0" x2="${vertical ? 0 : 1}" y2="1"><stop offset="0" stop-color="${from}"/><stop offset="1" stop-color="${to}"/></linearGradient>`;
+  const slice = (d, fill, move) =>
+    `<path d="${d}" fill="url(#${id(fill)})" stroke="url(#${id(fill)})"${move ? ` transform="translate(${move})"` : ''}/>`;
+  return `<svg class="logo" viewBox="0 0 512 512" aria-hidden="true"><defs>${gradient('gl', '#A39CF4', '#6C63D8')}${gradient('gd', '#8179E6', '#4F46B5')}${gradient('gg', '#3FD6A0', '#13875F')}${gradient('doc', '#4B41AA', '#2D2675', true)}<filter id="${id('sh')}" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#2D2675" flood-opacity="0.10"/></filter></defs>`
+    + `<g filter="url(#${id('sh')})" stroke-width="24" stroke-linejoin="round">`
+    + slice('M169.99 71.02A204 204 0 0 1 342.01 71.02L297.71 147.76A116 116 0 0 0 214.29 147.76Z', 'gl')
+    + slice('M373.19 89.02A204 204 0 0 1 459.2 238L370.59 238A116 116 0 0 0 328.89 165.76Z', 'gg', '10.39 -6')
+    + slice('M459.2 274A204 204 0 0 1 373.19 422.98L328.89 346.24A116 116 0 0 0 370.59 274Z', 'gl')
+    + slice('M342.01 440.98A204 204 0 0 1 169.99 440.98L214.29 364.24A116 116 0 0 0 297.71 364.24Z', 'gd')
+    + slice('M138.81 422.98A204 204 0 0 1 52.8 274L141.41 274A116 116 0 0 0 183.11 346.24Z', 'gl')
+    + slice('M52.8 238A204 204 0 0 1 138.81 89.02L183.11 165.76A116 116 0 0 0 141.41 238Z', 'gd')
+    + `</g><g filter="url(#${id('sh')})" stroke-linejoin="round"><path d="M227 217H262L285 240V295H227Z" fill="url(#${id('doc')})" stroke="url(#${id('doc')})" stroke-width="10"/><path d="M262 217V240H285Z" fill="#C9C4F7" stroke="#C9C4F7" stroke-width="4"/></g>`
+    + '<g fill="#fff"><rect x="235" y="256" width="42" height="5" rx="2.5" opacity="0.55"/><rect x="235" y="268" width="32" height="5" rx="2.5" opacity="0.4"/><rect x="235" y="280" width="38" height="5" rx="2.5" opacity="0.3"/></g></svg>';
+}
 
 /** 24×24 icons: Material Design icons (Apache-2.0) and simple category glyphs drawn for this site (even-odd fill). */
 const ICONS = {
@@ -246,7 +267,7 @@ function header(t, languages, alternates, current) {
   const link = (href, text, key) => `<a href="${href}"${current === key ? ' aria-current="page"' : ''}>${escape(text)}</a>`;
   return `<header class="nav" data-nav>
   <div class="nav-inner">
-    <a class="brand" href="${home}" aria-label="Filee">${LOGO}<span>Filee</span></a>
+    <a class="brand" href="${home}" aria-label="Filee">${brandLogo('nav')}<span>Filee</span></a>
     <nav class="nav-links" aria-label="${escape(t.nav.menu)}">
       ${link(`${home}#how`, t.nav.how, 'how')}
       ${link(`${home}#features`, t.nav.features, 'features')}
@@ -282,7 +303,7 @@ function footer(t, languages, alternates) {
   return `<footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class="footer-logo" href="${paths.home(t)}" aria-label="Filee">${LOGO}<strong>Filee</strong></a>
+      <a class="footer-logo" href="${paths.home(t)}" aria-label="Filee">${brandLogo('footer')}<strong>Filee</strong></a>
       <p>${escape(t.footer.tagline)}</p>
       <a class="footer-badge" href="${ALTERNATIVETO}" rel="noopener" target="_blank"><picture><source srcset="/media/badges/alternativeto-dark.svg" media="(prefers-color-scheme: dark)"><img src="/media/badges/alternativeto-light.svg" alt="Filee on AlternativeTo" width="141" height="48" loading="lazy" decoding="async"></picture></a>
     </div>
@@ -347,7 +368,7 @@ export function fileIcon(id, lang, cls = '') {
 export function downloadCard(t, { title, text, button }) {
   return `<section class="section download" id="download">
     <div class="download-card" data-reveal>
-      ${LOGO}
+      ${brandLogo('download')}
       <h2>${escape(title)}</h2>
       <p>${escape(text).replaceAll('\n', '<br>')}</p>
       <div class="download-picker" data-download-picker hidden>
