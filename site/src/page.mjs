@@ -30,6 +30,14 @@ const screenSize = name => SCREEN_SIZES[name] ?? [1080, 820];
 const SHOWCASE = [{ clip: 'expand', dark: true }, { clip: 'flip' }, { clip: 'browser' }, { clip: 'crop' }];
 const CLIP_SIZE = 720;
 
+/**
+ * "What's new": the app's What's new slides of a release (src/Filee.App/Assets/WhatsNew/<version>/slides.json), one
+ * clip per t.whatsNew.items entry, in that order, from public/media/whats-new/<release> (marketing/export.py
+ * whats-new <version>: <clip>.mp4 and its poster <clip>.webp, 768 × 432, light theme only). The texts are the app's.
+ */
+const WHATS_NEW = { release: '2.3', clips: ['annotate', 'crop_video', 'sheets', 'fields', 'translate', 'more'] };
+const WIDE_CLIP = [768, 432];
+
 /** The terminal on the home page's automation section (output as the filee command prints it). */
 const AUTO_SESSION = [
   '> filee watch . --to pdf --move-originals',
@@ -141,6 +149,18 @@ function categoryCards(t) {
 }
 
 /**
+ * A looping clip with its poster and a play/pause button. main.js (setupClips) gives the video its source only when it
+ * scrolls into view; without JavaScript the poster shows. dark: a <media>-dark version exists for dark pages.
+ */
+function clip({ media, label, play, dark = false, size: [width, height] = [CLIP_SIZE, CLIP_SIZE], className = '' }) {
+  return `<div class="clip${className ? ` ${className}` : ''}" data-clip>
+            <video muted loop playsinline preload="none" width="${width}" height="${height}" aria-label="${escape(label)}" data-src="${media}.mp4"${dark ? ` data-src-dark="${media}-dark.mp4"` : ''}></video>
+            <picture class="clip-poster">${dark ? `<source srcset="${media}-dark.webp" media="(prefers-color-scheme: dark)">` : ''}<img src="${media}.webp" alt="" width="${width}" height="${height}" loading="lazy" decoding="async"></picture>
+            <button class="clip-toggle" type="button" aria-label="${escape(play)}" hidden>${icon('play', 'icon icon-play')}${icon('pause', 'icon icon-pause')}</button>
+          </div>`;
+}
+
+/**
  * "What Filee can do": the showcase rows, copy beside a looping clip. Without JavaScript the posters show; main.js
  * attaches each video's source only when it scrolls into view and loads GSAP (assets.gsap) for the scroll motion.
  */
@@ -148,9 +168,9 @@ function showcase(t, assets) {
   const s = t.showcase;
   if (s.items.length !== SHOWCASE.length) throw new Error(`showcase: ${s.items.length} texts for ${SHOWCASE.length} clips`);
   const keys = text => escape(text).replace(/\[([^\]]+)\]/g, '<kbd>$1</kbd>');
-  const rows = SHOWCASE.map(({ clip, dark }, i) => {
+  const rows = SHOWCASE.map(({ clip: name, dark }, i) => {
     const item = s.items[i];
-    const media = `/media/demos/${clip}`;
+    const media = `/media/demos/${name}`;
     return `
       <li class="feature" data-feature>
         <span class="feature-index" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
@@ -160,15 +180,11 @@ function showcase(t, assets) {
           <p class="feature-hint">${keys(item.hint)}</p>
         </div>
         <div class="feature-media">
-          <div class="clip" data-clip>
-            <video muted loop playsinline preload="none" width="${CLIP_SIZE}" height="${CLIP_SIZE}" aria-label="${escape(item.alt)}" data-src="${media}.mp4"${dark ? ` data-src-dark="${media}-dark.mp4"` : ''}></video>
-            <picture class="clip-poster">${dark ? `<source srcset="${media}-dark.webp" media="(prefers-color-scheme: dark)">` : ''}<img src="${media}.webp" alt="" width="${CLIP_SIZE}" height="${CLIP_SIZE}" loading="lazy" decoding="async"></picture>
-            <button class="clip-toggle" type="button" aria-label="${escape(s.play)}" hidden>${icon('play', 'icon icon-play')}${icon('pause', 'icon icon-pause')}</button>
-          </div>
+          ${clip({ media, label: item.alt, play: s.play, dark })}
         </div>
       </li>`;
   }).join('');
-  return `<section class="section showcase" id="showcase" data-showcase data-gsap="${assets.gsap.map(name => `/assets/${name}`).join(' ')}" data-play="${escape(s.play)}" data-pause="${escape(s.pause)}">
+  return `<section class="section showcase" id="showcase" data-showcase data-clips data-gsap="${assets.gsap.map(name => `/assets/${name}`).join(' ')}" data-play="${escape(s.play)}" data-pause="${escape(s.pause)}">
     <header class="section-head" data-reveal>
       <p class="eyebrow">${escape(s.eyebrow)}</p>
       <h2>${escape(s.title)}</h2>
@@ -179,6 +195,30 @@ function showcase(t, assets) {
       <ol class="showcase-list">${rows}
       </ol>
     </div>
+  </section>`;
+}
+
+/** "What's new in Filee <release>": the release's What's new clips (WHATS_NEW) as cards, each with its title and text. */
+function whatsNew(t) {
+  const w = t.whatsNew;
+  const { release, clips } = WHATS_NEW;
+  if (w.items.length !== clips.length) throw new Error(`whatsNew: ${w.items.length} texts for ${clips.length} clips`);
+  const cards = clips.map((name, i) => {
+    const item = w.items[i];
+    return `
+      <li class="news-card" data-reveal style="--i:${i}">
+        ${clip({ media: `/media/whats-new/${release}/${name}`, label: item.title, play: t.showcase.play, size: WIDE_CLIP, className: 'clip-wide' })}
+        <h3>${escape(item.title)}</h3>
+        <p>${escape(item.text)}</p>
+      </li>`;
+  }).join('');
+  return `<section class="section whats-new" id="whats-new" data-clips data-play="${escape(t.showcase.play)}" data-pause="${escape(t.showcase.pause)}">
+    <header class="section-head" data-reveal>
+      <h2>${escape(fill(w.title, { ...vars(t.lang), release }))}</h2>
+      <p>${escape(w.lead)}</p>
+    </header>
+    <ul class="news-grid">${cards}
+    </ul>
   </section>`;
 }
 
@@ -257,6 +297,8 @@ export function renderPage(t, languages, assets) {
   </section>
 
   ${showcase(t, assets)}
+
+  ${whatsNew(t)}
 
   <section class="section" id="features">
     <header class="section-head" data-reveal><h2>${escape(t.features.title)}</h2></header>

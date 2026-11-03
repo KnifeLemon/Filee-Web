@@ -20,7 +20,7 @@
     "skip": "Przejdź do treści"
   },
   "hero": {
-    "badge": "Nowość w {newIn}: edycja obrazów, pikselizacja i rozmycie, łączenie obrazów, limit rozmiaru w MB",
+    "badge": "Nowość w {newIn}: adnotacje na obrazach, kadrowanie wideo, kilka stron na arkuszu, napisy i tłumaczenia z lokalną AI",
     "kicker": "Darmowy konwerter plików dla Windows, macOS i Linuksa",
     "title": ["Przeciągnij.", "Upuść.", "Gotowe."],
     "lead": "Konwertuj obrazy, pliki PDF, Word, Excel i PowerPoint, filmy, muzykę, e-booki, archiwa i nie tylko – prosto na swoim komputerze. Przytrzymaj klawisz, przeciągnij pliki i upuść je na format. Bez przesyłania, bez konta, za darmo i open source.",
@@ -89,6 +89,18 @@
         "hint": "[A] otwiera tarczę proporcji",
         "alt": "Klip: dwa zdjęcia upuszczone na Kadruj, A otwiera tarczę proporcji, wybrane 1:1, a przycięte zdjęcia pojawiają się obok oryginałów."
       }
+    ]
+  },
+  "whatsNew": {
+    "title": "Nowości w Filee {release}",
+    "lead": "Najważniejsze nowości tej wersji w krótkich klipach prosto z aplikacji.",
+    "items": [
+      { "title": "Adnotacje na obrazach", "text": "Rysuj strzałki, ramki, zakreślenia, tekst i numery bezpośrednio na obrazie. Dodaj Adnotacje do pierścienia w Ustawienia → Pasek-pierścień." },
+      { "title": "Kadrowanie wideo", "text": "Usuń automatycznie wykryte czarne pasy albo wykadruj do 16:9, 9:16, 4:3, 1:1 lub 21:9. Wideo HDR zostaje w HDR." },
+      { "title": "Stron na arkusz", "text": "Umieść 2, 4, 6, 8 lub 9 stron PDF na każdym arkuszu. Strony pozostają wektorowe, więc tekst jest ostry." },
+      { "title": "Tylko formaty, których używasz", "text": "Wyłącz w Ustawienia → Dziedziny to, czym się nie zajmujesz, np. CAD, 3D czy czcionki. Ich formaty znikną z pierścienia i z list." },
+      { "title": "Napisy i tłumaczenia na twoim komputerze", "text": "Twórz napisy SRT z wideo i tłumacz dokumenty, e-booki oraz napisy lokalną AI. Nic nie opuszcza twojego komputera." },
+      { "title": "I jeszcze trochę", "text": "Kopiowanie lub przenoszenie do folderu, kadrowanie z perspektywą, pliki CMYK do druku, pliki Krity i Minecrafta oraz włoski, indonezyjski i wietnamski." }
     ]
   },
   "features": {

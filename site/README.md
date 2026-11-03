@@ -12,7 +12,7 @@ site/
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
-  src/page.mjs              home page (hero, demo, feature showcase, features, format categories, HWP, FAQ, specs) and the
+  src/page.mjs              home page (hero, demo, feature showcase, what's new, features, format categories, HWP, FAQ, specs) and the
                             404 page
   src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
   src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…, /ru/…, /ar/…, /pt-br/…)
@@ -70,7 +70,9 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
   5. When the app has the language too, add it to the app's language lists: `features` and `specs` in every
      `i18n/*.json`, `src/llms.mjs` and `src/pad.mjs`.
 - **Media**: the promo video, posters and images come from `marketing/` (see `marketing/README.md`); the showcase clips
-  (`public/media/demos/<clip>.mp4` and their `.webp` posters) from `python marketing/export.py demos`.
+  (`public/media/demos/<clip>.mp4` and their `.webp` posters) from `python marketing/export.py demos`, the What's new
+  clips (`public/media/whats-new/<release>/`, the app's What's new slides; `WHATS_NEW` in `src/page.mjs`) from
+  `python marketing/export.py whats-new <version>`.
 - **GSAP**: to update, replace both files in `vendor/gsap/` with the same version's `dist/gsap.min.js` and
   `dist/ScrollTrigger.min.js` from the npm package `gsap`. The build gives them hashed names under `/assets/`, so the
   Content-Security-Policy stays `script-src 'self'` (plus the analytics hashes).

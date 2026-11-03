@@ -20,7 +20,7 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "badge": "New in {newIn}: edit pictures, pixelate or blur, merge images, a size limit in MB",
+    "badge": "New in {newIn}: annotate pictures, crop videos, pages per sheet, captions and translations with a local AI",
     "kicker": "Free file converter for Windows, macOS and Linux",
     "title": ["Drag.", "Drop.", "Converted."],
     "lead": "Convert images, PDFs, Word, Excel and PowerPoint files, videos, music, e-books, archives and more, right on your PC. Hold a key, drag the files and drop them on a format. No upload, no account, free and open source.",
@@ -89,6 +89,18 @@
         "hint": "[A] opens the aspect dial",
         "alt": "Clip: two photos are dropped on Crop, A opens the aspect dial, 1:1 is picked and the cropped photos appear beside the originals."
       }
+    ]
+  },
+  "whatsNew": {
+    "title": "What's new in Filee {release}",
+    "lead": "The highlights of this release, shown in short clips from the app itself.",
+    "items": [
+      { "title": "Annotate pictures", "text": "Draw arrows, boxes, highlights, text and numbers right on a picture. Add Annotate to a donut in Settings → Donut toolbar." },
+      { "title": "Crop videos", "text": "Remove black bars found on their own, or crop to 16:9, 9:16, 4:3, 1:1 or 21:9. HDR video stays HDR." },
+      { "title": "Pages per sheet", "text": "Put 2, 4, 6, 8 or 9 PDF pages on each sheet. The pages stay vector, so text stays sharp." },
+      { "title": "Only the formats you use", "text": "Turn off fields you don't work in, like CAD, 3D or fonts, in Settings → Fields. Their formats leave the donut and the lists." },
+      { "title": "Captions and translations on your PC", "text": "Make SRT captions from a video, and translate documents, e-books and subtitles with a local AI. Nothing leaves your PC." },
+      { "title": "And a little more", "text": "Copy or move to a folder, perspective crop, CMYK print files, Krita and Minecraft files, and Italian, Indonesian and Vietnamese." }
     ]
   },
   "features": {

@@ -20,7 +20,7 @@
     "skip": "Pular para o conteúdo"
   },
   "hero": {
-    "badge": "Novidades da {newIn}: editar imagens, pixelizar ou desfocar, juntar imagens, limite de tamanho em MB",
+    "badge": "Novidades da {newIn}: anotar imagens, recortar vídeos, várias páginas por folha, legendas e traduções com IA local",
     "kicker": "Conversor de arquivos grátis para Windows, macOS e Linux",
     "title": ["Arraste.", "Solte.", "Convertido."],
     "lead": "Converta imagens, PDFs, arquivos de Word, Excel e PowerPoint, vídeos, músicas, e-books, arquivos compactados e muito mais, direto no seu PC. Segure uma tecla, arraste os arquivos e solte num formato. Sem upload, sem conta, grátis e de código aberto.",
@@ -89,6 +89,18 @@
         "hint": "[A] abre o seletor de proporção",
         "alt": "Clipe: duas fotos são soltas em Recortar, A abre o seletor de proporção, 1:1 é escolhido e as fotos recortadas aparecem ao lado das originais."
       }
+    ]
+  },
+  "whatsNew": {
+    "title": "Novidades do Filee {release}",
+    "lead": "Os destaques desta versão, em clipes curtos tirados do próprio app.",
+    "items": [
+      { "title": "Anote suas imagens", "text": "Desenhe setas, molduras, destaques, texto e números direto na imagem. Adicione Anotar a um menu em Configurações → Menu circular." },
+      { "title": "Recorte vídeos", "text": "Remova as barras pretas encontradas automaticamente ou recorte em 16:9, 9:16, 4:3, 1:1 ou 21:9. Vídeo HDR continua HDR." },
+      { "title": "Páginas por folha", "text": "Coloque 2, 4, 6, 8 ou 9 páginas de PDF em cada folha. As páginas continuam vetoriais e o texto fica nítido." },
+      { "title": "Só os formatos que você usa", "text": "Em Configurações → Áreas, desative as que você não usa, como CAD, 3D ou fontes. Os formatos delas saem do menu circular e das listas." },
+      { "title": "Legendas e traduções no seu PC", "text": "Crie legendas SRT a partir de um vídeo e traduza documentos, e-books e legendas com uma IA local. Nada sai do seu PC." },
+      { "title": "E um pouco mais", "text": "Copiar ou mover para uma pasta, recorte com perspectiva, arquivos CMYK para impressão, arquivos do Krita e do Minecraft, além de italiano, indonésio e vietnamita." }
     ]
   },
   "features": {

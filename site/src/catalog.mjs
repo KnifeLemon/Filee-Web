@@ -18,7 +18,7 @@ export { LANGS };
  */
 export let VERSION = '2.2.0';
 /** The release the hero badge's "New in …" list (hero.badge) is about. Update both together at a release. */
-export const NEW_IN = '2.2';
+export const NEW_IN = '2.3';
 
 /** Sets VERSION to the latest release before the pages are rendered (build.mjs). */
 export function useVersion(version) {

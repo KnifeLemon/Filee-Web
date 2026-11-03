@@ -20,7 +20,7 @@
     "skip": "Vai al contenuto"
   },
   "hero": {
-    "badge": "Novità della {newIn}: modifica immagini, pixella o sfoca, unisci immagini, un limite di dimensione in MB",
+    "badge": "Novità della {newIn}: annota immagini, ritaglia video, più pagine per foglio, sottotitoli e traduzioni con IA locale",
     "kicker": "Convertitore di file gratuito per Windows, macOS e Linux",
     "title": ["Trascina.", "Rilascia.", "Converti."],
     "lead": "Converti immagini, PDF, file Word, Excel e PowerPoint, video, musica, e-book, archivi e molto altro, direttamente sul tuo PC. Tieni premuto un tasto, trascina i file e rilasciali su un formato. Nessun caricamento, nessun account, gratuito e open source.",
@@ -89,6 +89,18 @@
         "hint": "[A] apre il selettore delle proporzioni",
         "alt": "Clip: due foto vengono rilasciate su Ritaglia, A apre il selettore delle proporzioni, viene scelto 1:1 e le foto ritagliate compaiono accanto agli originali."
       }
+    ]
+  },
+  "whatsNew": {
+    "title": "Novità di Filee {release}",
+    "lead": "Le novità principali di questa versione, in brevi clip prese dall'app stessa.",
+    "items": [
+      { "title": "Annota le immagini", "text": "Disegna frecce, cornici, evidenziazioni, testo e numeri direttamente sull'immagine. Aggiungi Annota a un donut in Impostazioni → Barra donut." },
+      { "title": "Ritaglia i video", "text": "Rimuovi le bande nere trovate in automatico o ritaglia in 16:9, 9:16, 4:3, 1:1 o 21:9. I video HDR restano HDR." },
+      { "title": "Pagine per foglio", "text": "Metti 2, 4, 6, 8 o 9 pagine PDF su ogni foglio. Le pagine restano vettoriali e il testo resta nitido." },
+      { "title": "Solo i formati che usi", "text": "In Impostazioni → Settori disattiva quelli in cui non lavori, come CAD, 3D o caratteri. I loro formati spariscono dal donut e dagli elenchi." },
+      { "title": "Sottotitoli e traduzioni sul tuo PC", "text": "Crea sottotitoli SRT da un video e traduci documenti, ebook e sottotitoli con un'IA locale. Niente lascia il tuo PC." },
+      { "title": "E qualcosa in più", "text": "Copia o sposta in una cartella, ritaglio prospettico, file CMYK per la stampa, file di Krita e Minecraft, e in più italiano, indonesiano e vietnamita." }
     ]
   },
   "features": {
