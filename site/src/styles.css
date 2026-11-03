@@ -375,6 +375,17 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
   .clip:not(.is-started) .clip-toggle .icon { width: 30px; height: 30px; }
 }
 
+/* ───────── What's new: the release's clips from the app, as cards ───────── */
+.news-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.news-card {
+  min-width: 0; padding: 12px 12px 26px; border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 82%, transparent); border: 1px solid var(--line); backdrop-filter: blur(12px);
+}
+/* The clips are light-themed app windows: on dark pages the card around them is their frame. */
+.clip-wide { max-width: none; aspect-ratio: 16 / 9; border-radius: 14px; background: #f4f2ee; box-shadow: none; }
+.news-card h3 { margin: 20px 12px 8px; font-size: 20px; }
+.news-card p { margin: 0 12px; color: var(--muted); font-size: 16px; }
+
 .marquee { direction: ltr; display: grid; gap: 14px; margin-bottom: 40px; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
 .marquee-row { overflow: hidden; }
 .marquee-track { display: flex; gap: 12px; width: max-content; animation: marquee 48s linear infinite; }
@@ -694,6 +705,7 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
   .feature .feature-copy, .feature:nth-child(even) .feature-copy { grid-column: 1; grid-row: 2; justify-self: stretch; max-width: none; padding: 0; }
   .feature .feature-media, .feature:nth-child(even) .feature-media { grid-column: 1; grid-row: 3; padding: 0; }
   .clip, .feature:nth-child(even) .clip { max-width: none; margin: 0; }
+  .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
@@ -703,6 +715,7 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
   .nav .github { padding: 7px 11px; gap: 6px; font-size: 13px; }
   .hero, .section { padding-left: 16px; padding-right: 16px; }
   .steps, .bento, .gallery, .specs { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: minmax(0, 1fr); }
   .gallery { grid-auto-flow: column; grid-auto-columns: 86%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
   .gallery figure { scroll-snap-align: center; }
   .specs { padding: 6px 20px; }

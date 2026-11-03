@@ -92,6 +92,7 @@ Requirements: the .NET SDK the app repository uses, its fonts (`pwsh build/fetch
 pwsh marketing/make-demo-videos.ps1                    # every clip → out/demo-videos (about 6 minutes)
 pwsh marketing/make-demo-videos.ps1 -Clips flip -Formats square -Stills 2,3.2 -Quick   # PNG frames only, to check a change
 python marketing/export.py demos                       # → site/public/media/demos/<clip>.mp4 + .webp poster, and the app's What's new slides (not crop: the app renders that one)
+python marketing/export.py whats-new 2.3.0             # the app's What's new 2.3.0 slides → site/public/media/whats-new/2.3/<id>.mp4 + .webp poster
 ```
 
 Every build output, the app's projects' included, goes under `out/build`, so the app repository isn't written to. The
@@ -114,6 +115,7 @@ download badge) to its tests only. A clip lives in `demo-videos/<Name>Clip.cs`; 
 | `out/demo-videos/<clip>.webp`, `<clip>.gif` | README, slides (820 px; ≤ 1.5 MB / ≤ 3 MB) |
 | `site/public/media/demos/<clip>.mp4`, `.webp` | The website's showcase: the square clip at 720 px, 30 fps, H.264 without audio (about 100–260 KB) and its poster still (`export.py demos`, FFmpeg) |
 | `out/demo-videos/<clip>-640.webp` | The app's What's new slides (640 px, ≤ 400 KB; `export.py demos`) |
+| `site/public/media/whats-new/<release>/<id>.mp4`, `.webp` | The website's "What's new in Filee" section: the app's What's new slides of that release (`src/Filee.App/Assets/WhatsNew/<version>`, animated WebP) as H.264 at 768 × 432 with each frame's own duration, about 60–110 KB, and the slide's poster frame (`export.py whats-new <version>`, FFmpeg) |
 
 Set the GitHub social preview in the repository's **Settings → General → Social preview**: upload
 `docs/media/social-preview.jpg`.

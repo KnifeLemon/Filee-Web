@@ -91,6 +91,18 @@
       }
     ]
   },
+  "whatsNew": {
+    "title": "Filee {release} yenilikleri",
+    "lead": "Bu sürümün öne çıkanları, doğrudan uygulamadan alınmış kısa kliplerle.",
+    "items": [
+      { "title": "Resimlere not ekleyin", "text": "Resmin üzerine doğrudan ok, çerçeve, vurgu, metin ve numara çizin. Not ekle'yi Ayarlar → Halka araç çubuğu bölümünden bir halkaya ekleyin." },
+      { "title": "Videoları kırpın", "text": "Otomatik bulunan siyah bantları kaldırın ya da 16:9, 9:16, 4:3, 1:1 veya 21:9 oranında kırpın. HDR video HDR olarak kalır." },
+      { "title": "Yaprak başına sayfa", "text": "Her yaprağa 2, 4, 6, 8 veya 9 PDF sayfası yerleştirin. Sayfalar vektör olarak kalır, metin net görünür." },
+      { "title": "Yalnızca kullandığınız biçimler", "text": "CAD, 3B veya yazı tipleri gibi çalışmadığınız alanları Ayarlar → Alanlar bölümünden kapatın. Biçimleri halkadan ve listelerden kalkar." },
+      { "title": "Bilgisayarınızda altyazı ve çeviri", "text": "Videodan SRT altyazı oluşturun; belgeleri, e-kitapları ve altyazıları yerel bir yapay zekâyla çevirin. Hiçbir şey bilgisayarınızdan çıkmaz." },
+      { "title": "Ve biraz daha fazlası", "text": "Klasöre kopyalama veya taşıma, perspektif kırpma, baskı için CMYK dosyaları, Krita ve Minecraft dosyaları, ayrıca İtalyanca, Endonezce ve Vietnamca." }
+    ]
+  },
   "features": {
     "title": "Filee neler yapar",
     "items": [

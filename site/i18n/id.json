@@ -91,6 +91,18 @@
       }
     ]
   },
+  "whatsNew": {
+    "title": "Apa yang baru di Filee {release}",
+    "lead": "Sorotan rilis ini, dalam klip pendek langsung dari aplikasinya.",
+    "items": [
+      { "title": "Anotasi gambar", "text": "Gambar panah, bingkai, sorotan, teks, dan nomor langsung di atas gambar. Tambahkan Anotasi ke donut di Pengaturan → Toolbar donut." },
+      { "title": "Pangkas video", "text": "Hapus bilah hitam yang ditemukan otomatis, atau pangkas ke 16:9, 9:16, 4:3, 1:1, atau 21:9. Video HDR tetap HDR." },
+      { "title": "Halaman per lembar", "text": "Taruh 2, 4, 6, 8, atau 9 halaman PDF di setiap lembar. Halaman tetap vektor, jadi teks tetap tajam." },
+      { "title": "Hanya format yang Anda pakai", "text": "Matikan bidang yang tidak Anda kerjakan, seperti CAD, 3D, atau font, di Pengaturan → Bidang. Formatnya hilang dari donut dan daftar." },
+      { "title": "Subtitle dan terjemahan di PC Anda", "text": "Buat subtitle SRT dari video, dan terjemahkan dokumen, e-book, serta subtitle dengan AI lokal. Tidak ada yang keluar dari PC Anda." },
+      { "title": "Dan masih banyak lagi", "text": "Salin atau pindahkan ke folder, pangkas perspektif, file CMYK untuk cetak, file Krita dan Minecraft, serta bahasa Italia, Indonesia, dan Vietnam." }
+    ]
+  },
   "features": {
     "title": "Apa yang dilakukan Filee",
     "items": [

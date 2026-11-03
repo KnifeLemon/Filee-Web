@@ -91,6 +91,18 @@
       }
     ]
   },
+  "whatsNew": {
+    "title": "Novidades do Filee {release}",
+    "lead": "Os destaques desta versão, em vídeos curtos tirados da própria aplicação.",
+    "items": [
+      { "title": "Anota as tuas imagens", "text": "Desenha setas, molduras, destaques, texto e números diretamente na imagem. Adiciona Anotar a uma barra em Definições → Barra circular." },
+      { "title": "Recorta vídeos", "text": "Remove as barras pretas detetadas automaticamente ou recorta em 16:9, 9:16, 4:3, 1:1 ou 21:9. O vídeo HDR continua em HDR." },
+      { "title": "Páginas por folha", "text": "Coloca 2, 4, 6, 8 ou 9 páginas de PDF em cada folha. As páginas continuam vetoriais e o texto fica nítido." },
+      { "title": "Só os formatos que usas", "text": "Em Definições → Áreas, desativa as que não usas, como CAD, 3D ou tipos de letra. Os formatos delas saem da barra circular e das listas." },
+      { "title": "Legendas e traduções no teu computador", "text": "Cria legendas SRT a partir de um vídeo e traduz documentos, livros digitais e legendas com uma IA local. Nada sai do teu computador." },
+      { "title": "E mais algumas novidades", "text": "Copiar ou mover para uma pasta, recorte em perspetiva, ficheiros CMYK para impressão, ficheiros do Krita e do Minecraft, e ainda italiano, indonésio e vietnamita." }
+    ]
+  },
   "features": {
     "title": "O que o Filee faz",
     "items": [

@@ -4,6 +4,8 @@
 # Usage: python marketing/export.py        (needs Pillow; run after rendering, see marketing/README.md)
 #        python marketing/export.py demos  only the feature demo clips (make-demo-videos.ps1), see export_demos();
 #                                         needs FFmpeg too (FFMPEG, the app repository's engines or the PATH)
+#        python marketing/export.py whats-new <version>  only the app's What's new slides of that release as the
+#                                         website's clips, see export_whats_new(); needs FFmpeg too
 import glob
 import os
 import shutil
@@ -91,9 +93,66 @@ def export_demos():
             copy(source, slide)
 
 
+def export_whats_new(version):
+    """The app's What's new slides of a release (src/Filee.App/Assets/WhatsNew/<version>/slides.json, animated WebP)
+    for the website's "What's new in Filee" section (src/page.mjs → WHATS_NEW): media/whats-new/<major.minor>/<id>.mp4 (H.264,
+    no audio, faststart) with every frame held exactly as long as in the WebP, and <id>.webp, the poster still (the
+    slide's poster frame, else the first)."""
+    import json
+    import tempfile
+    source = os.path.join(APP, 'src', 'Filee.App', 'Assets', 'WhatsNew', version)
+    with open(os.path.join(source, 'slides.json'), encoding='utf-8') as f:
+        slides = json.load(f)['slides']
+    target = os.path.join(SITE, 'whats-new', '.'.join(version.split('.')[:2]))
+    os.makedirs(target, exist_ok=True)
+    exe = ffmpeg()
+    for slide in slides:
+        clip = slide['id']
+        anim = Image.open(os.path.join(source, slide['media']))
+        video = os.path.join(target, f'{clip}.mp4')
+        poster = os.path.join(target, f'{clip}.webp')
+        with tempfile.TemporaryDirectory() as frames:
+            # FFmpeg can't decode animated WebP, so the frames go out as PNGs. Each file's modification time carries
+            # its start in milliseconds (read as seconds by image2 -ts_from_file 1; setpts turns them back into
+            # milliseconds). The concat demuxer would round every frame to 1/25 s.
+            epoch, at = 1_000_000_000, 0
+
+            def frame(index, image, start):
+                name = os.path.join(frames, f'{index:04d}.png')
+                image.save(name)
+                os.utime(name, (epoch + start, epoch + start))
+
+            for i in range(anim.n_frames):
+                anim.seek(i)
+                anim.load()
+                image = anim.convert('RGB')
+                frame(i, image, at)
+                if i == slide.get('poster', 0):
+                    image.save(poster, 'WEBP', quality=78, method=6)
+                at += anim.info['duration']
+            # The closing hold (two seconds or so before the loop starts over) ends with the last picture again 50 ms
+            # before the end, and once more at the end: FFmpeg drops that final frame but takes the clip's length from it.
+            frame(anim.n_frames, image, at - 50)
+            frame(anim.n_frames + 1, image, at)
+            # No B-frames: with them FFmpeg's MP4 edit list cuts off the closing hold.
+            subprocess.run([exe, '-v', 'error', '-y', '-f', 'image2', '-ts_from_file', '1',
+                            '-i', os.path.join(frames, '%04d.png'), '-an',
+                            '-vf', 'settb=1/1000,setpts=(PTS-STARTPTS)/1000', '-vsync', 'vfr', '-r', '1000',
+                            '-c:v', 'libx264', '-preset', 'veryslow', '-crf', '24', '-profile:v', 'high', '-bf', '0',
+                            '-pix_fmt', 'yuv420p', '-video_track_timescale', '1000', '-movflags', '+faststart', video],
+                           check=True)
+        print(f'{os.path.relpath(video, ROOT)}  {os.path.getsize(video) // 1024} KB')
+        print(f'{os.path.relpath(poster, ROOT)}  {os.path.getsize(poster) // 1024} KB')
+
+
 if sys.argv[1:] == ['demos']:
     export_demos()
     sys.exit()
+if sys.argv[1:2] == ['whats-new'] and len(sys.argv) == 3:
+    export_whats_new(sys.argv[2])
+    sys.exit()
+if sys.argv[1:]:
+    sys.exit('Usage: python marketing/export.py [demos | whats-new <version>]')
 
 os.makedirs(os.path.join(SITE, 'screens'), exist_ok=True)
 for lang in LANGS:

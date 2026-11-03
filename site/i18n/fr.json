@@ -91,6 +91,18 @@
       }
     ]
   },
+  "whatsNew": {
+    "title": "Nouveautés de Filee {release}",
+    "lead": "Les nouveautés phares de cette version, en courts extraits tirés de l'application.",
+    "items": [
+      { "title": "Annoter les images", "text": "Dessinez flèches, cadres, surlignages, texte et numéros directement sur l'image. Ajoutez Annoter à un menu dans Paramètres → Menu circulaire." },
+      { "title": "Recadrer les vidéos", "text": "Supprimez les bandes noires détectées automatiquement ou recadrez en 16:9, 9:16, 4:3, 1:1 ou 21:9. Une vidéo HDR reste en HDR." },
+      { "title": "Pages par feuille", "text": "Placez 2, 4, 6, 8 ou 9 pages PDF sur chaque feuille. Les pages restent vectorielles et le texte reste net." },
+      { "title": "Seulement les formats qui vous servent", "text": "Dans Paramètres → Domaines, désactivez ceux où vous ne travaillez pas, comme la CAO, la 3D ou les polices. Leurs formats quittent le menu circulaire et les listes." },
+      { "title": "Sous-titres et traductions sur votre PC", "text": "Créez des sous-titres SRT à partir d'une vidéo et traduisez documents, livres numériques et sous-titres avec une IA locale. Rien ne quitte votre PC." },
+      { "title": "Et encore un peu plus", "text": "Copier ou déplacer dans un dossier, recadrage en perspective, fichiers CMJN pour l'impression, fichiers Krita et Minecraft, ainsi que l'italien, l'indonésien et le vietnamien." }
+    ]
+  },
   "features": {
     "title": "Ce que fait Filee",
     "items": [

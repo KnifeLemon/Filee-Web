@@ -461,17 +461,16 @@ function setupVideo() {
 /* ───────── Showcase: feature clips with scroll motion ───────── */
 
 /**
- * The home page's feature clips. Each video gets its source only when it scrolls into view (preload="none" until
- * then, the poster image above it), plays muted while visible and pauses when it leaves. Its button pauses and plays
- * it; with reduced motion nothing plays until that button is pressed. GSAP (served from this site, see build.mjs)
- * is loaded only when the section comes near and only without reduced motion.
+ * The home page's looping clips (the showcase and What's new: [data-clips] sections, with the play and pause labels as
+ * data-play and data-pause). Each video gets its source only when it scrolls into view (preload="none" until then, the
+ * poster image above it), plays muted while visible and pauses when it leaves. Its button pauses and plays it; with
+ * reduced motion nothing plays until that button is pressed.
  */
-function setupShowcase() {
-  const section = document.querySelector('[data-showcase]');
-  if (!section) return;
+function setupClips() {
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
   const clips = new Map();
-  for (const clip of section.querySelectorAll('[data-clip]')) {
+  for (const clip of document.querySelectorAll('[data-clips] [data-clip]')) {
+    const section = clip.closest('[data-clips]');
     const video = clip.querySelector('video');
     const button = clip.querySelector('.clip-toggle');
     let wanted = !reduceMotion; // whether the clip should play while it is visible
@@ -504,8 +503,15 @@ function setupShowcase() {
     for (const entry of entries) clips.get(entry.target)?.(entry.isIntersecting);
   }, { threshold: 0.35 });
   clips.forEach((_, clip) => io.observe(clip));
+}
 
-  if (reduceMotion || !section.dataset.gsap) return;
+/**
+ * The feature showcase's scroll motion: GSAP (served from this site, see build.mjs) is loaded only when the section
+ * comes near and only without reduced motion.
+ */
+function setupShowcase() {
+  const section = document.querySelector('[data-showcase]');
+  if (!section || reduceMotion || !section.dataset.gsap) return;
   const near = new IntersectionObserver(([entry]) => {
     if (!entry.isIntersecting) return;
     near.disconnect();
@@ -818,6 +824,7 @@ setupNav();
 setupReveal();
 setupDemo();
 setupVideo();
+setupClips();
 setupShowcase();
 setupTilt();
 setupGitHub();

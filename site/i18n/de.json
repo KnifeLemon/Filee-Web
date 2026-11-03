@@ -91,6 +91,18 @@
       }
     ]
   },
+  "whatsNew": {
+    "title": "Neu in Filee {release}",
+    "lead": "Die Highlights dieser Version, gezeigt in kurzen Clips direkt aus der App.",
+    "items": [
+      { "title": "Bilder beschriften", "text": "Zeichne Pfeile, Rahmen, Markierungen, Text und Nummern direkt aufs Bild. Leg Beschriften unter Einstellungen → Ringmenü auf ein Ringmenü." },
+      { "title": "Videos zuschneiden", "text": "Entferne automatisch erkannte schwarze Balken oder schneide auf 16:9, 9:16, 4:3, 1:1 oder 21:9 zu. HDR-Videos bleiben HDR." },
+      { "title": "Seiten pro Blatt", "text": "Bring 2, 4, 6, 8 oder 9 PDF-Seiten auf jedes Blatt. Die Seiten bleiben Vektoren, Text bleibt scharf." },
+      { "title": "Nur die Formate, die du brauchst", "text": "Schalte unter Einstellungen → Bereiche aus, womit du nicht arbeitest, etwa CAD, 3D oder Schriftarten. Ihre Formate verschwinden aus dem Ringmenü und den Listen." },
+      { "title": "Untertitel und Übersetzungen auf deinem PC", "text": "Erstelle SRT-Untertitel aus Videos und übersetze Dokumente, E-Books und Untertitel mit einer lokalen KI. Nichts verlässt deinen PC." },
+      { "title": "Und noch mehr", "text": "In Ordner kopieren oder verschieben, perspektivisch zuschneiden, CMYK-Druckdateien, Krita- und Minecraft-Dateien sowie Italienisch, Indonesisch und Vietnamesisch." }
+    ]
+  },
   "features": {
     "title": "Was Filee kann",
     "items": [
