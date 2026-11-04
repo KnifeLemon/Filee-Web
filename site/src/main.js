@@ -660,6 +660,11 @@ function setupGitHub() {
       if (label) label.textContent = choice.state === 'available'
         ? (choice.development ? t.developmentButton : selected.startsWith('linux-') ? t.linuxButton : t.button) : t.all;
     });
+    // The button downloads Windows files from the mirror (dl.filee.sh); the same file on GitHub stays one click away.
+    document.querySelectorAll('[data-download-github]').forEach(link => {
+      if (choice.github) link.href = choice.github;
+      link.hidden = !choice.github;
+    });
     // The Store has the Windows app only.
     document.querySelectorAll('[data-store-badge]').forEach(badge => { badge.hidden = !selected.startsWith('win-'); });
     document.querySelectorAll('[data-download-status]').forEach(node => { node.textContent = status; node.hidden = false; });

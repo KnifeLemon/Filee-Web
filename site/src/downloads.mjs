@@ -1,5 +1,11 @@
 export const DOWNLOAD_TARGETS = ['win-x64', 'linux-x64', 'linux-arm64', 'osx-arm64', 'osx-x64'];
 export const RELEASES_URL = 'https://github.com/KnifeLemon/Filee/releases';
+/**
+ * The download mirror (Cloudflare R2): the signing script (build/sign-release.ps1 in the app's repository, step 5)
+ * copies every release's Windows files to <MIRROR>/<version>/ and checks they are served there as is. GitHub's
+ * download route is slow for some visitors (Filee#454). Linux and macOS files are on GitHub only.
+ */
+export const MIRROR = 'https://dl.filee.sh';
 /** Targets whose builds are previews (labelled so in the download section). Linux is a full release since 2.0.0. */
 export const PREVIEW_TARGETS = ['osx-arm64', 'osx-x64'];
 
@@ -18,6 +24,23 @@ export function releaseSummary(release) {
   };
 }
 
+/** The Windows files the signing script copies to the mirror, for a version without the "v". */
+const mirroredNames = version => [`Filee-${version}-win-Setup.exe`, `Filee-${version}-win-Portable.zip`];
+
+/**
+ * The mirror's address of a release file, or null when the mirror doesn't carry it (the Linux and macOS packages,
+ * the legacy unversioned installer). Built only from the checked version and an exact file name, never from a URL.
+ */
+export function mirrorUrl(version, name) {
+  if (!versionTag.test(version ?? '') || version.startsWith('v') || !mirroredNames(version).includes(name)) return null;
+  const url = new URL(`${MIRROR}/${version}/${name}`);
+  return url.pathname === `/${version}/${name}` && !url.search && !url.hash ? url.href : null;
+}
+
+/**
+ * The selected target's file in a release: { name, url, size, github }. url is the mirror's address when the mirror
+ * carries the file, otherwise the GitHub asset; github is always the GitHub asset (the fallback link).
+ */
 export function findDownloadAsset(release, target) {
   if (!DOWNLOAD_TARGETS.includes(target) || release?.draft
       || !versionTag.test(release?.tag_name ?? '') || !Array.isArray(release?.assets)) return null;
@@ -32,7 +55,12 @@ export function findDownloadAsset(release, target) {
         const path = `/KnifeLemon/Filee/releases/download/${release.tag_name}/${name}`;
         if (url.origin !== 'https://github.com' || url.username || url.password || url.search || url.hash
             || decodeURIComponent(url.pathname) !== path) continue;
-        return { name, url: url.href, size: Number.isSafeInteger(asset.size) && asset.size > 0 ? asset.size : 0 };
+        return {
+          name,
+          url: mirrorUrl(version, name) ?? url.href,
+          size: Number.isSafeInteger(asset.size) && asset.size > 0 ? asset.size : 0,
+          github: url.href,
+        };
       } catch { /* malformed asset URL */ }
     }
   }
@@ -44,6 +72,8 @@ export function downloadChoice(release, target, failed = false) {
   return {
     asset,
     url: asset?.url ?? RELEASES_URL,
+    /** The same file on GitHub, offered next to the button when the button downloads from the mirror. */
+    github: asset && asset.url !== asset.github ? asset.github : null,
     state: asset ? 'available' : failed ? 'unavailable' : release ? 'missing' : 'checking',
     development: PREVIEW_TARGETS.includes(target),
   };

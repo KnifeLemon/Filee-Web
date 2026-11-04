@@ -183,6 +183,7 @@
     "unavailable": "Die Release-Dateien konnten nicht geprüft werden. Öffne alle Releases, um zu sehen, welche Builds verfügbar sind.",
     "all": "Alle Releases",
     "source": "Quellcode",
+    "github": "Von GitHub herunterladen",
     "sponsor": "Die Entwicklung unterstützen",
     "sponsorText": "Filee ist und bleibt kostenlos.",
     "after": {

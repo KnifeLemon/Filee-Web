@@ -183,6 +183,7 @@
     "unavailable": "File rilis tidak dapat diperiksa. Buka semua rilis untuk memastikan build mana yang tersedia.",
     "all": "Semua rilis",
     "source": "Kode sumber",
+    "github": "Unduh dari GitHub",
     "sponsor": "Dukung pengembangannya",
     "sponsorText": "Filee gratis dan akan tetap gratis.",
     "after": {

@@ -183,6 +183,7 @@
     "unavailable": "Impossibile verificare i file della versione. Apri tutte le versioni per vedere quali build sono disponibili.",
     "all": "Tutte le versioni",
     "source": "Codice sorgente",
+    "github": "Scarica da GitHub",
     "sponsor": "Sostieni lo sviluppo",
     "sponsorText": "Filee è gratuito e lo resterà.",
     "after": {
