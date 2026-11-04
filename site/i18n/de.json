@@ -166,6 +166,7 @@
     "text": "Die meisten Formate lassen sich direkt nach der Installation konvertieren.\nModule für Video, Audio und seltene Formate kommen in der App dazu, wenn du sie brauchst.",
     "button": "Für Windows herunterladen",
     "store": "Vom Microsoft Store herunterladen",
+    "winget": "Oder mit WinGet",
     "linuxButton": "Für Linux herunterladen",
     "selector": "Betriebssystem und Prozessor",
     "targets": {
