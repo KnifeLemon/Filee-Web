@@ -183,6 +183,7 @@
     "unavailable": "배포 파일을 확인하지 못했습니다. 전체 릴리스에서 제공되는 빌드를 확인하세요.",
     "all": "모든 릴리스",
     "source": "소스 코드",
+    "github": "GitHub에서 다운로드",
     "sponsor": "개발 응원하기",
     "sponsorText": "Filee는 앞으로도 무료예요.",
     "after": {

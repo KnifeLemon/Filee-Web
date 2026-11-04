@@ -112,13 +112,19 @@ Open Graph tags and JSON-LD: `SoftwareApplication` + `FAQPage` + `VideoObject` o
 
 Since 1.1.0 the installer's name carries the version (`Filee-1.1.0-win-Setup.exe`), so there is no fixed asset URL.
 Download buttons and `/download` point at `https://github.com/KnifeLemon/Filee/releases/latest`; `main.js` asks the
-GitHub API for the latest release and swaps in the `*-win-Setup.exe` asset. The answer is cached for an hour in
+GitHub API for the latest release and swaps in the selected system's file. Windows downloads come from our mirror,
+`https://dl.filee.sh/<version>/Filee-<version>-win-Setup.exe` (Cloudflare R2; the app's `build/sign-release.ps1` copies
+every release's Windows files there and checks they are served as is), because GitHub's download route is slow for
+some visitors (Filee#454). The mirror URL is built from the checked tag and the exact file name only, and only when the
+release has that asset on GitHub; a "Download from GitHub" link in the download section then offers the same file
+there. Linux and macOS files are on GitHub only. The answer is cached for an hour in
 `localStorage` (the API allows 60 unauthenticated requests per hour and IP); failures (offline, rate limit, timeout)
 are remembered for ten minutes and leave the release-page link in place.
 The version in front of the hero's platform line ("v2.0.0 · Windows 10/11 · …") and in the download status comes
 from that same answer, so it follows a new release by itself (within the hour of caching). `VERSION` in catalog.mjs
 (specs, JSON-LD `softwareVersion`, the "New in" badge) and the release texts are set by hand; `pad.xml` reads the
-latest release at build time. macOS packages are labelled previews (`PREVIEW_TARGETS` in `src/downloads.mjs`); Windows
+latest release at build time and links the Setup and portable zip on the mirror when the build finds them served there
+with the release's size (otherwise on GitHub). macOS packages are labelled previews (`PREVIEW_TARGETS` in `src/downloads.mjs`); Windows
 and Linux are full releases.
 
 ## Deploy to Cloudflare

@@ -183,6 +183,7 @@
     "unavailable": "Impossible de vérifier les fichiers de la version. Ouvrez la liste des versions pour voir quelles compilations sont disponibles.",
     "all": "Toutes les versions",
     "source": "Code source",
+    "github": "Télécharger depuis GitHub",
     "sponsor": "Soutenir son développement",
     "sponsorText": "Filee est gratuit et le restera.",
     "after": {

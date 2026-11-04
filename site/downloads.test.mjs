@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { downloadChoice, findDownloadAsset, releaseSummary, RELEASES_URL } from './src/downloads.mjs';
+import { downloadChoice, findDownloadAsset, mirrorUrl, releaseSummary, RELEASES_URL } from './src/downloads.mjs';
 
 const tag = 'v1.2.3';
 const asset = name => ({
@@ -15,16 +15,43 @@ const macArm = asset('Filee-1.2.3-osx-arm64.tar.gz');
 const macIntel = asset('Filee-1.2.3-osx-x64.tar.gz');
 const release = releaseSummary({ tag_name: tag, assets: [macArm, linux, windows, macIntel, linuxArm] });
 
+const mirrored = 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Setup.exe';
+
+test('the Windows installer downloads from the mirror, with the GitHub asset as the fallback', () => {
+  assert.deepEqual(findDownloadAsset(release, 'win-x64'), {
+    name: windows.name, url: mirrored, size: windows.size, github: windows.browser_download_url,
+  });
+  const choice = downloadChoice(release, 'win-x64');
+  assert.equal(choice.url, mirrored);
+  assert.equal(choice.github, windows.browser_download_url);
+});
+
 for (const [target, expected] of [
-  ['win-x64', windows], ['linux-x64', linux], ['linux-arm64', linuxArm],
-  ['osx-arm64', macArm], ['osx-x64', macIntel],
+  ['linux-x64', linux], ['linux-arm64', linuxArm], ['osx-arm64', macArm], ['osx-x64', macIntel],
 ]) {
-  test(`a mixed release selects the exact ${target} asset`, () => {
+  test(`a mixed release selects the exact ${target} asset on GitHub`, () => {
     assert.deepEqual(findDownloadAsset(release, target), {
-      name: expected.name, url: expected.browser_download_url, size: expected.size,
+      name: expected.name, url: expected.browser_download_url, size: expected.size, github: expected.browser_download_url,
     });
+    const choice = downloadChoice(release, target);
+    assert.equal(choice.url, expected.browser_download_url);
+    assert.equal(choice.github, null);
   });
 }
+
+test('mirror URLs exist only for the Windows files of a checked version', () => {
+  assert.equal(mirrorUrl('1.2.3', 'Filee-1.2.3-win-Setup.exe'), mirrored);
+  assert.equal(mirrorUrl('1.2.3', 'Filee-1.2.3-win-Portable.zip'), 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Portable.zip');
+  assert.equal(mirrorUrl('2.0.0-beta.1', 'Filee-2.0.0-beta.1-win-Setup.exe'),
+    'https://dl.filee.sh/2.0.0-beta.1/Filee-2.0.0-beta.1-win-Setup.exe');
+  for (const [version, name] of [
+    ['1.2.3', 'Filee-1.2.3-linux-x64.tar.gz'], ['1.2.3', 'Filee-1.2.3-osx-arm64.dmg'],
+    ['1.2.3', 'Filee-1.2.3-SHA256SUMS.txt'], ['1.2.3', 'Filee-win-Setup.exe'], ['1.2.3', 'Filee-1.2.2-win-Setup.exe'],
+    ['1.2.3', '../Filee-1.2.3-win-Setup.exe'], ['v1.2.3', 'Filee-v1.2.3-win-Setup.exe'],
+    ['1.2.3/..', 'Filee-1.2.3/..-win-Setup.exe'], ['1.2.3?x', 'Filee-1.2.3?x-win-Setup.exe'],
+    ['1.2.3#x', 'Filee-1.2.3#x-win-Setup.exe'], ['main', 'Filee-main-win-Setup.exe'], [undefined, 'Filee--win-Setup.exe'],
+  ]) assert.equal(mirrorUrl(version, name), null, `${version} ${name}`);
+});
 
 test('a missing Unix build never falls back to the Windows installer', () => {
   const choice = downloadChoice({ tag_name: tag, assets: [windows] }, 'linux-x64');
@@ -54,6 +81,9 @@ test('macOS builds are previews; Windows and Linux are full releases', () => {
 test('the legacy Windows filename is supported without a generic Setup.exe fallback', () => {
   const legacy = asset('Filee-win-Setup.exe');
   assert.equal(findDownloadAsset({ tag_name: tag, assets: [legacy] }, 'win-x64')?.name, legacy.name);
+  // Not on the mirror (it predates it): GitHub, and no separate fallback link.
+  assert.equal(downloadChoice({ tag_name: tag, assets: [legacy] }, 'win-x64').url, legacy.browser_download_url);
+  assert.equal(downloadChoice({ tag_name: tag, assets: [legacy] }, 'win-x64').github, null);
   assert.equal(findDownloadAsset({ tag_name: tag, assets: [legacy] }, 'linux-x64'), null);
   assert.equal(findDownloadAsset({ tag_name: tag, assets: [asset('Setup.exe')] }, 'win-x64'), null);
 });
@@ -81,8 +111,24 @@ for (const [index, url] of badUrls.entries()) {
     const cached = releaseSummary({ tag_name: tag, assets: [{ ...windows, browser_download_url: url }] });
     assert.equal(findDownloadAsset(cached, 'win-x64'), null);
     assert.equal(downloadChoice(cached, 'win-x64').url, RELEASES_URL);
+    assert.equal(downloadChoice(cached, 'win-x64').github, null);
   });
 }
+
+test('a mirror URL in the release data is never used as is', () => {
+  const planted = { ...windows, browser_download_url: 'https://dl.filee.sh/9.9.9/Filee-9.9.9-win-Setup.exe' };
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [planted] }, 'win-x64'), null);
+  const extra = { ...windows, url: 'https://example.test/x.exe', mirror: 'https://example.test/' };
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [extra] }, 'win-x64').url, mirrored);
+});
+
+test('the mirror URL follows the tag, not a mismatched asset name', () => {
+  const other = asset('Filee-1.2.4-win-Setup.exe');
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [other] }, 'win-x64'), null);
+  const pre = 'v2.0.0-beta.1', name = 'Filee-2.0.0-beta.1-win-Setup.exe';
+  const beta = { name, size: 1, browser_download_url: `https://github.com/KnifeLemon/Filee/releases/download/${pre}/${name}` };
+  assert.equal(findDownloadAsset({ tag_name: pre, assets: [beta] }, 'win-x64').url, `https://dl.filee.sh/2.0.0-beta.1/${name}`);
+});
 
 test('an API failure and an unfinished check both retain an honest releases fallback', () => {
   assert.equal(downloadChoice(null, 'osx-arm64').state, 'checking');
@@ -96,4 +142,20 @@ test('drafts, branch names and stale single-URL cache data are not release metad
   for (const value of [null, { tag_name: 'main', assets: [] }, { ...release, draft: true },
     { tag, size: windows.size, url: windows.browser_download_url }])
     assert.throws(() => releaseSummary(value), /Invalid release metadata/);
+});
+
+test('pad.xml links the Windows files on the mirror when the build found them there, otherwise on GitHub', async () => {
+  const { padXml } = await import('./src/pad.mjs');
+  const file = (name, mirrored) => ({ name, size: 1000, mirrored });
+  const urls = release => [...padXml(release).matchAll(/<(Primary|Secondary)_Download_URL>(.*?)</g)].map(m => m[2]);
+  const base = { version: '1.2.3', date: '2026-11-04' };
+  assert.deepEqual(urls({ ...base, setup: file('Filee-1.2.3-win-Setup.exe', true), portable: file('Filee-1.2.3-win-Portable.zip', true) }),
+    ['https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Setup.exe', 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Portable.zip']);
+  assert.deepEqual(urls({ ...base, setup: file('Filee-1.2.3-win-Setup.exe', false), portable: file('Filee-1.2.3-win-Portable.zip', true) }),
+    ['https://github.com/KnifeLemon/Filee/releases/download/v1.2.3/Filee-1.2.3-win-Setup.exe',
+      'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Portable.zip']);
+  // A name the mirror doesn't carry stays on GitHub even when marked as mirrored.
+  assert.deepEqual(urls({ ...base, setup: file('Filee-win-Setup.exe', true), portable: null }),
+    ['https://github.com/KnifeLemon/Filee/releases/download/v1.2.3/Filee-win-Setup.exe',
+      'https://github.com/KnifeLemon/Filee/releases/latest']);
 });

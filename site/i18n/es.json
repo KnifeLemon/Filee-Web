@@ -183,6 +183,7 @@
     "unavailable": "No se pudieron comprobar los archivos de la versión. Abre todas las versiones para ver qué compilaciones hay disponibles.",
     "all": "Todas las versiones",
     "source": "Código fuente",
+    "github": "Descargar desde GitHub",
     "sponsor": "Patrocina su desarrollo",
     "sponsorText": "Filee es gratis y seguirá siéndolo.",
     "after": {

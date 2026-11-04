@@ -183,6 +183,7 @@
     "unavailable": "Không kiểm tra được các tệp phát hành. Hãy mở danh sách tất cả bản phát hành để xem có những bản dựng nào.",
     "all": "Tất cả bản phát hành",
     "source": "Mã nguồn",
+    "github": "Tải xuống từ GitHub",
     "sponsor": "Tài trợ cho việc phát triển",
     "sponsorText": "Filee miễn phí và sẽ luôn miễn phí.",
     "after": {

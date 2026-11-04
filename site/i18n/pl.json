@@ -183,6 +183,7 @@
     "unavailable": "Nie udało się sprawdzić plików wydania. Otwórz listę wszystkich wydań, aby zobaczyć dostępne wersje.",
     "all": "Wszystkie wydania",
     "source": "Kod źródłowy",
+    "github": "Pobierz z GitHuba",
     "sponsor": "Wesprzyj rozwój",
     "sponsorText": "Filee jest darmowe i takie zostanie.",
     "after": {

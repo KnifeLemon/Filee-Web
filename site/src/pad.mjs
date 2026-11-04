@@ -1,17 +1,34 @@
 // pad.xml: the Portable Application Description (PAD 4.0) that download sites such as Softpedia read to list Filee
 // and to pick up new versions on their own. Version, date, size and download links come from the latest GitHub
 // release at build time; if GitHub can't be reached the build uses FALLBACK (the release current when this was written).
+// The Windows files are linked on the download mirror (dl.filee.sh: direct, stable URLs without GitHub's redirect)
+// when the build finds them served there with the release's size, otherwise on GitHub.
 
 import { stats } from './catalog.mjs';
+import { mirrorUrl } from './downloads.mjs';
 import { REPO, SITE } from './layout.mjs';
 
 /** Used when the GitHub API does not answer during the build. */
 const FALLBACK = {
   version: '2.2.0',
   date: '2026-10-28',
-  setup: { name: 'Filee-2.2.0-win-Setup.exe', size: 133_133_496 },
-  portable: { name: 'Filee-2.2.0-win-Portable.zip', size: 157_977_572 },
+  setup: { name: 'Filee-2.2.0-win-Setup.exe', size: 133_133_496, mirrored: true },
+  portable: { name: 'Filee-2.2.0-win-Portable.zip', size: 157_977_572, mirrored: true },
 };
+
+/** Whether the mirror serves the file as is: 200 without a redirect, the same size as the release asset. */
+async function mirrored(version, file) {
+  const url = mirrorUrl(version, file.name);
+  if (!url) return false;
+  try {
+    const response = await fetch(url, { method: 'HEAD', redirect: 'manual', signal: AbortSignal.timeout(10_000) });
+    if (response.status === 200 && Number(response.headers.get('content-length')) === file.size) return true;
+    console.warn(`pad.xml: ${url} answers ${response.status}, linking GitHub instead`);
+  } catch (error) {
+    console.warn(`pad.xml: ${url} not reachable (${error.message}), linking GitHub instead`);
+  }
+  return false;
+}
 
 /** Version, release date and the installer / portable zip of the latest release. */
 export async function latestRelease() {
@@ -20,15 +37,16 @@ export async function latestRelease() {
     const response = await fetch(api, { headers: { Accept: 'application/vnd.github+json' }, signal: AbortSignal.timeout(10_000) });
     if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
     const release = await response.json();
-    const asset = pattern => release.assets.find(a => pattern.test(a.name));
-    const setup = asset(/-win-Setup\.exe$/i), portable = asset(/-win-Portable\.zip$/i);
-    if (!setup) throw new Error('no installer in the latest release');
-    return {
-      version: release.tag_name.replace(/^v/i, ''),
-      date: release.published_at.slice(0, 10),
-      setup: { name: setup.name, size: setup.size },
-      portable: portable ? { name: portable.name, size: portable.size } : null,
+    const version = release.tag_name.replace(/^v/i, '');
+    const asset = async name => {
+      const found = release.assets.find(a => a.name === name);
+      if (!found) return null;
+      const file = { name, size: found.size };
+      return { ...file, mirrored: await mirrored(version, file) };
     };
+    const [setup, portable] = await Promise.all([asset(`Filee-${version}-win-Setup.exe`), asset(`Filee-${version}-win-Portable.zip`)]);
+    if (!setup) throw new Error('no installer in the latest release');
+    return { version, date: release.published_at.slice(0, 10), setup, portable };
   } catch (error) {
     console.warn(`pad.xml: using the fallback release (${error.message})`);
     return FALLBACK;
@@ -63,7 +81,8 @@ export function padXml(release) {
   for (const [limit, text] of Object.entries(DESCRIPTIONS)) {
     if (text.length > Number(limit)) throw new Error(`pad.xml: Char_Desc_${limit} is ${text.length} characters`);
   }
-  const download = name => `${REPO}/releases/download/v${release.version}/${name}`;
+  const download = file => (file.mirrored && mirrorUrl(release.version, file.name))
+    || `${REPO}/releases/download/v${release.version}/${file.name}`;
   const [year, month, day] = release.date.split('-');
   const tag = (name, value) => `<${name}>${escapeXml(value ?? '')}</${name}>`;
   const size = release.setup.size;
@@ -150,8 +169,8 @@ ${Object.entries(DESCRIPTIONS).map(([limit, text]) => `      ${tag(`Char_Desc_${
       ${tag('Application_XML_File_URL', `${SITE}/pad.xml`)}
     </Application_URLs>
     <Download_URLs>
-      ${tag('Primary_Download_URL', download(release.setup.name))}
-      ${tag('Secondary_Download_URL', release.portable ? download(release.portable.name) : `${REPO}/releases/latest`)}
+      ${tag('Primary_Download_URL', download(release.setup))}
+      ${tag('Secondary_Download_URL', release.portable ? download(release.portable) : `${REPO}/releases/latest`)}
       ${tag('Additional_Download_URL_1', `${REPO}/releases/latest`)}
       ${tag('Additional_Download_URL_2')}
     </Download_URLs>

@@ -381,7 +381,8 @@ export function downloadCard(t, { title, text, button }) {
       <a class="store-badge" href="${escape(STORE)}" rel="noopener" target="_blank" data-store-badge><img src="/media/badges/ms-store/${t.lang}.svg" alt="${escape(t.download.store)}" width="${STORE_BADGE_WIDTH[t.lang] ?? 161}" height="44" loading="lazy" decoding="async"></a>
       <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
       <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
-      <p class="download-meta"><a href="${REPO}/releases">${escape(t.download.all)}</a>
+      <p class="download-meta"><a href="${DOWNLOAD}" data-download-github hidden>${escape(t.download.github)}</a>
+        <a href="${REPO}/releases">${escape(t.download.all)}</a>
         <a href="${REPO}">${escape(t.download.source)}</a></p>
       <p class="download-sponsor">${escape(t.download.sponsorText)} <a href="${sponsorUrl(t)}" rel="noopener">${escape(t.download.sponsor)}</a></p>
     </div>

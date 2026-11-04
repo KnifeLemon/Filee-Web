@@ -183,6 +183,7 @@
     "unavailable": "Release files could not be checked. Open all releases to confirm which builds are available.",
     "all": "All releases",
     "source": "Source code",
+    "github": "Download from GitHub",
     "sponsor": "Sponsor its development",
     "sponsorText": "Filee is free and stays free.",
     "after": {

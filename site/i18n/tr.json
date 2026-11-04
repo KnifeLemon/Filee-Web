@@ -183,6 +183,7 @@
     "unavailable": "Sürüm dosyaları denetlenemedi. Hangi derlemelerin bulunduğunu görmek için tüm sürümleri açın.",
     "all": "Tüm sürümler",
     "source": "Kaynak kodu",
+    "github": "GitHub'dan indir",
     "sponsor": "Geliştirilmesine sponsor olun",
     "sponsorText": "Filee ücretsizdir ve ücretsiz kalır.",
     "after": {

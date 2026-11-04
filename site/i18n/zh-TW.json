@@ -183,6 +183,7 @@
     "unavailable": "無法檢查發行檔案。請開啟所有版本，確認有哪些版本可供下載。",
     "all": "所有版本",
     "source": "原始碼",
+    "github": "從 GitHub 下載",
     "sponsor": "贊助開發",
     "sponsorText": "Filee 免費，並將一直免費。",
     "after": {
