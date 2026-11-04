@@ -383,6 +383,10 @@
             "Kualitas gambar untuk JPG, WebP, AVIF, dan format lossy lainnya"
           ],
           [
+            "--pages <range>",
+            "Halaman PDF, misalnya `13-55` atau `1-3,8,12-15` (bawaan: halaman dari preset)"
+          ],
+          [
             "--overwrite",
             "Timpa file output yang sudah ada (secara bawaan sebuah angka ditambahkan ke nama baru)"
           ],
