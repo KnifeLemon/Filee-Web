@@ -166,6 +166,7 @@
     "text": "大多数格式装好即用。\n视频、音频和少见格式所需的引擎，可在需要时在应用内下载。",
     "button": "下载 Windows 版",
     "store": "从 Microsoft Store 获取",
+    "winget": "或使用 WinGet",
     "linuxButton": "下载 Linux 版",
     "selector": "操作系统和处理器",
     "targets": {

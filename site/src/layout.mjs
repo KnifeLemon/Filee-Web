@@ -379,6 +379,7 @@ export function downloadCard(t, { title, text, button }) {
       </div>
       <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download aria-describedby="download-status">${icon('download')}<span data-download-label>${escape(button)}</span></a>
       <a class="store-badge" href="${escape(STORE)}" rel="noopener" target="_blank" data-store-badge><img src="/media/badges/ms-store/${t.lang}.svg" alt="${escape(t.download.store)}" width="${STORE_BADGE_WIDTH[t.lang] ?? 161}" height="44" loading="lazy" decoding="async"></a>
+      <p class="download-winget" data-store-badge>${escape(t.download.winget)} <code>winget install KnifeLemon.Filee</code></p>
       <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
       <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
       <p class="download-meta"><a href="${DOWNLOAD}" data-download-github hidden>${escape(t.download.github)}</a>

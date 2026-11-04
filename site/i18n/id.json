@@ -166,6 +166,7 @@
     "text": "Sebagian besar format langsung dapat dikonversi setelah instalasi.\nEngine untuk video, audio, dan format langka ditambahkan di aplikasi saat Anda membutuhkannya.",
     "button": "Unduh untuk Windows",
     "store": "Unduh dari Microsoft Store",
+    "winget": "Atau dengan WinGet",
     "linuxButton": "Unduh untuk Linux",
     "selector": "Sistem operasi dan prosesor",
     "targets": {

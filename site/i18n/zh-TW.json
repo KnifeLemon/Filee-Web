@@ -166,6 +166,7 @@
     "text": "大多數格式安裝後即可轉換。\n影片、音訊和少見格式所需的引擎，可在需要時於應用程式內加入。",
     "button": "下載 Windows 版",
     "store": "從 Microsoft Store 取得",
+    "winget": "或使用 WinGet",
     "linuxButton": "下載 Linux 版",
     "selector": "作業系統和處理器",
     "targets": {

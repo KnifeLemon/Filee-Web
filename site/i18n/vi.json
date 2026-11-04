@@ -166,6 +166,7 @@
     "text": "Hầu hết định dạng chuyển đổi được ngay sau khi cài đặt.\nBộ xử lý cho video, âm thanh và định dạng hiếm được thêm trong ứng dụng khi bạn cần.",
     "button": "Tải xuống cho Windows",
     "store": "Tải xuống từ Microsoft Store",
+    "winget": "Hoặc dùng WinGet",
     "linuxButton": "Tải xuống cho Linux",
     "selector": "Hệ điều hành và CPU",
     "targets": {

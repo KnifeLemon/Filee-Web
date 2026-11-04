@@ -166,6 +166,7 @@
     "text": "A maioria dos formatos já converte logo depois da instalação.\nMotores para vídeo, áudio e formatos raros são adicionados no app quando você precisar.",
     "button": "Baixar para Windows",
     "store": "Baixe na Microsoft Store",
+    "winget": "Ou pelo WinGet",
     "linuxButton": "Baixar para Linux",
     "selector": "Sistema operacional e processador",
     "targets": {
