@@ -384,6 +384,10 @@
             "JPG, WebP, AVIF ve diğer kayıplı biçimler için görsel kalitesi"
           ],
           [
+            "--pages <range>",
+            "PDF'lerin sayfaları, örneğin `13-55` veya `1-3,8,12-15` (varsayılan olarak ön ayardakiler)"
+          ],
+          [
             "--overwrite",
             "Var olan çıktı dosyalarının üzerine yazar (varsayılan olarak yeni ada bir numara eklenir)"
           ],

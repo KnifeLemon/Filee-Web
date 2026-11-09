@@ -384,6 +384,10 @@
             "Chất lượng ảnh cho JPG, WebP, AVIF và các định dạng nén mất dữ liệu khác"
           ],
           [
+            "--pages <range>",
+            "Các trang của PDF, ví dụ `13-55` hoặc `1-3,8,12-15` (mặc định theo cấu hình sẵn)"
+          ],
+          [
             "--overwrite",
             "Thay thế tệp đầu ra đã có (mặc định, một con số được thêm vào tên mới)"
           ],

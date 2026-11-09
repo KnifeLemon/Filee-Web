@@ -384,6 +384,10 @@
             "Qualité d'image pour JPG, WebP, AVIF et les autres formats avec perte"
           ],
           [
+            "--pages <range>",
+            "Pages des PDF, par ex. `13-55` ou `1-3,8,12-15` (par défaut, celles du préréglage)"
+          ],
+          [
             "--overwrite",
             "Remplacer les fichiers de sortie existants (par défaut, un numéro est ajouté au nouveau nom)"
           ],
