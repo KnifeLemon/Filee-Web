@@ -162,7 +162,8 @@ const verificationMeta = Object.entries(SITE_VERIFICATION)
  * Japanese pages add Noto Sans JP, so Han characters take Japanese glyph shapes rather than Chinese ones (see --font-ja).
  * It is a variable font cut into ~120 unicode-range slices: the browser downloads only the slices a page uses, and the
  * 400..800 range keeps one @font-face per slice (listing five weights would repeat every slice five times in the CSS).
- * Arabic pages add Noto Sans Arabic the same way (Inter has no Arabic letters; see --font-ar in styles.css).
+ * Arabic and Persian pages add Noto Sans Arabic the same way (Inter has no Arabic letters; Noto Sans Arabic also has
+ * the Persian ones, پ چ ژ گ ک ی; see --font-ar in styles.css). Bengali pages add Noto Sans Bengali (see --font-bn).
  * Google Fonts is not reachable from mainland China: Chinese pages use the system fonts (font: null).
  */
 const FONTS = {
@@ -170,6 +171,7 @@ const FONTS = {
   'inter-devanagari': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap">',
   'inter-japanese': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400..800&display=swap">',
   'inter-arabic': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap">',
+  'inter-bengali': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap">',
   'inter-thai': '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap">',
   pretendard: '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">',
 };

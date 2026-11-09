@@ -1,6 +1,6 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in twenty languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish, European Portuguese, German, Italian, Indonesian, Vietnamese), deployed to Cloudflare Workers (static assets).
+The Filee website: a static, dependency-free site in twenty-two languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish, European Portuguese, German, Italian, Indonesian, Vietnamese, Bengali, Persian), deployed to Cloudflare Workers (static assets).
 
 ```
 site/
@@ -8,7 +8,7 @@ site/
                             guide pairs, FAQ. Every format/support claim and every count on the site comes from here
   src/languages.mjs         THE language list: code, URL prefix, names, html lang/hreflang, Open Graph locale, browser
                             languages that pick it, short URLs, font, media language, list/size wording
-  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (zh-TW, pl, es, hi, ja, ru, ar, pt-BR, fr, ne, th, tr, pt-PT, de, it, id, vi): English text → translation
+  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (zh-TW, pl, es, hi, ja, ru, ar, pt-BR, fr, ne, th, tr, pt-PT, de, it, id, vi, bn-BD, fa): English text → translation
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
@@ -57,12 +57,12 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 - **New language** (e.g. Vietnamese):
   1. Add it to `src/languages.mjs`: code, `path` (`/vi/`), name, `htmlLang`, `ogLocale`, the browser languages
      that pick it (`match`), font (a script Inter lacks needs fonts in `FONTS` of layout.mjs and `styles.css`, as
-     Hindi, Japanese and Arabic have), `dir: 'rtl'` for a right-to-left script, `media` (`'en'` until marketing/
+     Hindi, Japanese, Arabic and Bengali have), `dir: 'rtl'` for a right-to-left script, `media` (`'en'` until marketing/
      renders its video, poster and OG image), the list and size wording.
      Right to left: `<html dir="rtl">` mirrors the grid and flex layouts by itself because `styles.css` uses logical
      properties (`margin-inline-start`, `padding-inline-end`, `inset-inline-end`, `text-align: start`); keep it that
      way when adding styles. Arrows and chevrons are mirrored with `scale: -1 1` under `[dir="rtl"]`; the marquee,
-     file icons, terminals and code stay left to right. Arabic gets no letter-spacing (it breaks the joined letters).
+     file icons, terminals and code stay left to right. Arabic and Persian get no letter-spacing (it breaks the joined letters).
   2. Add `i18n/vi.json` with every key of `en.json`.
   3. Add `src/texts/vi.mjs` with every catalog text (copy `pl.mjs` and replace the right-hand side).
   4. `npm run check`. Pages, hreflang, the sitemap, the language menu, the language redirect and suggestion, the 404
@@ -83,7 +83,7 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 |---|---|---|
 | Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 20 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 22 languages) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -163,7 +163,7 @@ npm run deploy
 ## SEO and GEO checklist
 
 - **Already built in**:
-  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/`, `/zh-tw/`, `/fr/`, `/ne/`, `/th/`, `/tr/`, `/pt-pt/`, `/de/`, `/it/`, `/id/`, `/vi/`) for the home page, the format catalog and every conversion guide.
+  - Real per-language URLs (`/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/`, `/zh-tw/`, `/fr/`, `/ne/`, `/th/`, `/tr/`, `/pt-pt/`, `/de/`, `/it/`, `/id/`, `/vi/`, `/bn-bd/`, `/fa/`) for the home page, the format catalog and every conversion guide.
   - `hreflang` + `x-default`, canonical URLs, Open Graph and Twitter cards on every page.
   - JSON-LD: `SoftwareApplication` (with `softwareVersion` and `featureList` from the catalog), `FAQPage`,
     `VideoObject`, `WebSite`, `CollectionPage`, `HowTo` and `BreadcrumbList`.

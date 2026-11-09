@@ -114,7 +114,7 @@
       { "icon": "windows", "title": "Proprio dove lavori", "text": "Il gesto di trascinamento, Converti con Filee nel menu del clic destro (su Windows 11 anche nel menu principale), Invia a, una scorciatoia da tastiera o l'area di rilascio nella finestra principale." },
       { "icon": "sliders", "title": "Preset per tipo di file", "text": "Qualità, ridimensionamento, rotazione e capovolgimento, DPI, scala di grigi, metadati, rimozione dello sfondo, Vettorializza in SVG, compressione TIFF, dimensioni ICO, unione, divisione, intervalli di pagine e compressione dei PDF e un'unica immagine lunga, video 720p, HEVC e AV1, codifica hardware, ogni fotogramma come immagine, bitrate MP3, cartella di destinazione, nomi dei file e le date originali dei file." },
       { "icon": "download", "title": "Motori su richiesta", "text": "I motori di grandi dimensioni sono facoltativi. Selezionali nel programma di installazione o scaricali più tardi nell'app: {engineNames}. Filee mostra le loro versioni, la velocità di download e il tempo rimanente. Hai già FFmpeg, calibre o Pandoc? Filee li trova e salta il download." },
-      { "icon": "code", "title": "Gratuito e open source", "text": "Licenza MIT, niente pubblicità, nessun account. In English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia e Tiếng Việt. Filee ti avvisa delle nuove versioni; ogni versione elenca le modifiche e chi ha contribuito." }
+      { "icon": "code", "title": "Gratuito e open source", "text": "Licenza MIT, niente pubblicità, nessun account. In English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt, বাংলা (বাংলাদেশ) e فارسی. Filee ti avvisa delle nuove versioni; ogni versione elenca le modifiche e chi ha contribuito." }
     ]
   },
   "formats": {
@@ -157,7 +157,7 @@
       ["Integrati", "{builtinTotal} formati, senza installare altro"],
       ["Motori facoltativi", "{engineNames}"],
       ["Riga di comando", "filee convert e filee watch, aggiunti al PATH dall'installazione"],
-      ["Lingue", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt"],
+      ["Lingue", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt, বাংলা (বাংলাদেশ), فارسی"],
       ["Aggiornamenti", "Installati dall'app con un clic; ognuno indica se è obbligatorio, consigliato o facoltativo"]
     ]
   },
