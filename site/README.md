@@ -76,6 +76,10 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 - **GSAP**: to update, replace both files in `vendor/gsap/` with the same version's `dist/gsap.min.js` and
   `dist/ScrollTrigger.min.js` from the npm package `gsap`. The build gives them hashed names under `/assets/`, so the
   Content-Security-Policy stays `script-src 'self'` (plus the analytics hashes).
+- **Flags** in the language menu: `public/media/flags/<code>.svg` are the square (`flags/1x1/`) SVGs of the npm
+  package `flag-icons` 7.2.3 (MIT, `LICENSE.txt` beside them), drawn round by CSS. Each language names one in
+  `flag` in `src/languages.mjs`; a new language copies its country's file from the same version. `es.svg` is Spain's
+  plain red-yellow-red flag written by hand, because the package's one with the coat of arms is 92 KB.
 
 ## Pages
 

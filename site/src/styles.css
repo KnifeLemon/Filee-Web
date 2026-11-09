@@ -156,9 +156,19 @@ p { margin: 0; }
 .lang-menu summary::-webkit-details-marker { display: none; }
 .lang-menu summary .icon { width: 18px; height: 18px; flex: none; fill: currentColor; }
 .lang-menu summary:hover { color: var(--ink); background: var(--accent-soft); }
-.lang-menu ul { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); list-style: none; margin: 0; padding: 6px; min-width: 150px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
-.lang-menu a { display: block; padding: 9px 12px; border-radius: 10px; text-decoration: none; font-size: 15px; }
+/* An open menu lifts the header over the hero's demo donut and its drag ghost (z-index 55 and 60). */
+.nav:has(.lang-menu[open]) { z-index: 70; }
+/* Two columns that scroll inside the window once the languages outgrow it; one column on phones (below). */
+.lang-menu ul {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 20; list-style: none; margin: 0; padding: 6px;
+  display: grid; grid-template-columns: repeat(2, max-content); gap: 2px;
+  max-height: min(70vh, 520px); overflow: hidden auto; overscroll-behavior: contain; scrollbar-width: thin;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+}
+.lang-menu a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; text-decoration: none; font-size: 15px; white-space: nowrap; }
 .lang-menu a:hover, .lang-menu a[aria-current] { background: var(--accent-soft); }
+.lang-menu a[aria-current] { font-weight: 650; }
+.lang-menu .flag { width: 20px; height: 20px; flex: none; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
 
 /* ───────── Hero ───────── */
 .hero {
@@ -721,6 +731,8 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
   body { font-size: 16px; }
   .nav-inner { padding: 10px 16px; gap: 10px; }
   .nav .btn-small span, .lang-menu summary span { display: none; }
+  /* The language list spans the screen under the header, one column, scrolling. */
+  .lang-menu ul { position: fixed; top: 60px; inset-inline: 16px; grid-template-columns: minmax(0, 1fr); max-height: calc(100dvh - 84px); }
   /* GitHub stays on phones, as a compact icon with the star count */
   .nav .github { padding: 7px 11px; gap: 6px; font-size: 13px; }
   .hero, .section { padding-left: 16px; padding-right: 16px; }
