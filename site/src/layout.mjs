@@ -281,7 +281,7 @@ function header(t, languages, alternates, current) {
     <div class="nav-actions">
       <details class="lang-menu">
         <summary aria-label="${escape(t.nav.language)}">${icon('globe')}<span>${escape(t.name)}</span></summary>
-        <ul>${languages.map(l => `<li><a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}"${l.lang === t.lang ? ' aria-current="page"' : ''}>${escape(l.name)}</a></li>`).join('')}</ul>
+        <ul>${languages.map(l => `<li><a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}"${l.lang === t.lang ? ' aria-current="page"' : ''}><img class="flag" src="/media/flags/${l.flag}.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span>${escape(l.name)}</span></a></li>`).join('')}</ul>
       </details>
       <a class="btn btn-ghost github" href="${REPO}" rel="noopener">${icon('github')}<span class="stars" data-stars>GitHub</span></a>
       <a class="btn btn-primary btn-small" href="#download">${icon('download')}<span>${escape(t.nav.download)}</span></a>
