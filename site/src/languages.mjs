@@ -143,6 +143,20 @@ export const LANGUAGES = [
     list: { sep: ', ', last: ' và ' }, size: 'khoảng {mb} MB', paren: ' ({size})',
     engineFor: '{name} cho {what}{size}', engineSep: '; ',
   },
+  {
+    // Bengali as the app ships it (bn-BD), named as the app names it. Every Bengali browser tag (bn, bn-BD, bn-IN…)
+    // picks it, since it is the site's only Bengali.
+    lang: 'bn-BD', path: '/bn-bd/', htmlLang: 'bn-BD', ogLocale: 'bn_BD', name: 'বাংলা (বাংলাদেশ)', englishName: 'Bengali (Bangladesh)',
+    match: ['bn'], aliases: ['/bn', '/bn/*', '/bn-BD', '/bn-BD/*'], font: 'inter-bengali', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' ও ' }, size: 'প্রায় {mb} MB', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '; ',
+  },
+  {
+    lang: 'fa', path: '/fa/', htmlLang: 'fa', dir: 'rtl', ogLocale: 'fa_IR', name: 'فارسی', englishName: 'Persian',
+    match: ['fa'], aliases: [], font: 'inter-arabic', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: '، ', last: ' و ' }, size: 'حدود {mb} مگابایت', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '؛ ',
+  },
 ];
 
 /** Language codes in page order. */

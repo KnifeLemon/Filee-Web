@@ -114,7 +114,7 @@
       { "icon": "windows", "title": "Tepat di tempat Anda bekerja", "text": "Gestur seret, Konversi dengan Filee di menu klik kanan (di Windows 11 juga di menu tingkat atas), Kirim ke, pintasan keyboard, atau area drop zone di jendela utama." },
       { "icon": "sliders", "title": "Preset per tipe file", "text": "Kualitas, ubah ukuran, putar dan balik, DPI, skala abu-abu, metadata, hapus latar belakang, Vektorisasi ke SVG, kompresi TIFF, ukuran ICO, penggabungan, pemisahan, rentang halaman, kompresi PDF dan satu gambar panjang, 720p, video HEVC dan AV1, encoding perangkat keras, setiap bingkai sebagai gambar, bitrate MP3, folder output, nama file, dan tanggal file asli." },
       { "icon": "download", "title": "Engine sesuai kebutuhan", "text": "Engine berukuran besar bersifat opsional. Centang di installer atau unduh nanti di aplikasi: {engineNames}. Filee menampilkan versinya, kecepatan unduhan, dan sisa waktunya. Sudah punya FFmpeg, calibre, atau Pandoc? Filee menemukannya dan melewati unduhan." },
-      { "icon": "code", "title": "Gratis dan open source", "text": "Berlisensi MIT, tanpa iklan, tanpa akun. Tersedia dalam English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, dan Tiếng Việt. Filee memberi tahu Anda tentang versi baru; setiap rilis mencantumkan perubahan dan kontributornya." }
+      { "icon": "code", "title": "Gratis dan open source", "text": "Berlisensi MIT, tanpa iklan, tanpa akun. Tersedia dalam English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt, বাংলা (বাংলাদেশ), dan فارسی. Filee memberi tahu Anda tentang versi baru; setiap rilis mencantumkan perubahan dan kontributornya." }
     ]
   },
   "formats": {
@@ -157,7 +157,7 @@
       ["Bawaan", "{builtinTotal} format, tanpa perlu memasang apa pun"],
       ["Engine opsional", "{engineNames}"],
       ["Baris perintah", "filee convert dan filee watch, ditambahkan ke PATH oleh Setup"],
-      ["Bahasa", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt"],
+      ["Bahasa", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt, বাংলা (বাংলাদেশ), فارسی"],
       ["Pembaruan", "Dipasang dari dalam aplikasi dengan satu klik; setiap pembaruan menyebutkan apakah wajib, disarankan, atau opsional"]
     ]
   },

@@ -114,7 +114,7 @@
       { "icon": "windows", "title": "Ngay nơi bạn làm việc", "text": "Thao tác kéo, Chuyển đổi bằng Filee trong menu chuột phải (trên Windows 11 có cả ở menu chính), Gửi tới, phím tắt bàn phím hoặc vùng thả trong cửa sổ chính." },
       { "icon": "sliders", "title": "Cấu hình sẵn cho từng loại tệp", "text": "Chất lượng, đổi kích thước, xoay và lật, DPI, thang độ xám, siêu dữ liệu, xóa nền, Dò nét sang SVG, nén TIFF, kích thước ICO, ghép, tách, khoảng trang, nén PDF và ảnh dài, video 720p, HEVC và AV1, mã hóa phần cứng, lưu mọi khung hình thành ảnh, bitrate MP3, thư mục lưu, tên tệp và ngày của tệp gốc." },
       { "icon": "download", "title": "Bộ xử lý khi cần", "text": "Các bộ xử lý lớn là tùy chọn. Đánh dấu chọn trong trình cài đặt hoặc tải xuống sau trong ứng dụng: {engineNames}. Filee hiện phiên bản, tốc độ tải xuống và thời gian còn lại. Đã có FFmpeg, calibre hoặc Pandoc? Filee sẽ tìm thấy và bỏ qua bước tải xuống." },
-      { "icon": "code", "title": "Miễn phí và mã nguồn mở", "text": "Giấy phép MIT, không quảng cáo, không cần tài khoản. Có bằng English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia và Tiếng Việt. Filee báo cho bạn khi có phiên bản mới; mỗi bản phát hành đều liệt kê các thay đổi và những người đóng góp." }
+      { "icon": "code", "title": "Miễn phí và mã nguồn mở", "text": "Giấy phép MIT, không quảng cáo, không cần tài khoản. Có bằng English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt, বাংলা (বাংলাদেশ) và فارسی. Filee báo cho bạn khi có phiên bản mới; mỗi bản phát hành đều liệt kê các thay đổi và những người đóng góp." }
     ]
   },
   "formats": {
@@ -157,7 +157,7 @@
       ["Tích hợp sẵn", "{builtinTotal} định dạng, không cần cài thêm gì"],
       ["Bộ xử lý tùy chọn", "{engineNames}"],
       ["Dòng lệnh", "filee convert và filee watch, được trình cài đặt thêm vào PATH"],
-      ["Ngôn ngữ", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt"],
+      ["Ngôn ngữ", "English, Español, 日本語, 한국어, 简体中文, 繁體中文, Polski, हिन्दी, Русский, العربية, Português (Brasil), Français, नेपाली, ไทย, Türkçe, Português (Portugal), Deutsch, Italiano, Bahasa Indonesia, Tiếng Việt, বাংলা (বাংলাদেশ), فارسی"],
       ["Cập nhật", "Cài ngay trong ứng dụng chỉ với một cú nhấp; mỗi bản cập nhật cho biết là bắt buộc, khuyến nghị hay tùy chọn"]
     ]
   },
