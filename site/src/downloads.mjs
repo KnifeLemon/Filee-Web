@@ -38,16 +38,13 @@ export function mirrorUrl(version, name) {
 }
 
 /**
- * The selected target's file in a release: { name, url, size, github }. url is the mirror's address when the mirror
- * carries the file, otherwise the GitHub asset; github is always the GitHub asset (the fallback link).
+ * Finds a checked release asset by its exact expected name. url is the mirror's address when the mirror carries the
+ * file, otherwise the GitHub asset; github is always the GitHub asset (the fallback link).
  */
-export function findDownloadAsset(release, target) {
+function findReleaseAsset(release, target, names) {
   if (!DOWNLOAD_TARGETS.includes(target) || release?.draft
       || !versionTag.test(release?.tag_name ?? '') || !Array.isArray(release?.assets)) return null;
   const version = release.tag_name.replace(/^v/, '');
-  const names = target === 'win-x64'
-    ? [`Filee-${version}-win-Setup.exe`, 'Filee-win-Setup.exe']
-    : [`Filee-${version}-${target}.tar.gz`];
   for (const name of names) {
     for (const asset of release.assets.filter(item => item?.name === name)) {
       try {
@@ -67,10 +64,30 @@ export function findDownloadAsset(release, target) {
   return null;
 }
 
+/** The main download: Setup on Windows, tar.gz on Linux and the native disk image on macOS. */
+export function findDownloadAsset(release, target) {
+  const version = release?.tag_name?.replace(/^v/, '');
+  const macTarget = typeof target === 'string' && target.startsWith('osx-');
+  const names = target === 'win-x64'
+    ? [`Filee-${version}-win-Setup.exe`, 'Filee-win-Setup.exe']
+    : macTarget
+      ? [`Filee-${version}-${target}.dmg`]
+      : [`Filee-${version}-${target}.tar.gz`];
+  return findReleaseAsset(release, target, names);
+}
+
+/** The macOS package that supplies install.sh and the filee command; never a substitute for the main disk image. */
+export function findDownloadArchive(release, target) {
+  if (typeof target !== 'string' || !target.startsWith('osx-')) return null;
+  const version = release?.tag_name?.replace(/^v/, '');
+  return findReleaseAsset(release, target, [`Filee-${version}-${target}.tar.gz`]);
+}
+
 export function downloadChoice(release, target, failed = false) {
   const asset = findDownloadAsset(release, target);
   return {
     asset,
+    archive: findDownloadArchive(release, target),
     url: asset?.url ?? RELEASES_URL,
     /** The same file on GitHub, offered next to the button when the button downloads from the mirror. */
     github: asset && asset.url !== asset.github ? asset.github : null,

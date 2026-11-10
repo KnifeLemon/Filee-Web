@@ -187,7 +187,11 @@ export async function build() {
   const css = minifyCss(await readFile(join(ROOT, 'src', 'styles.css'), 'utf8'));
   const downloads = await readFile(join(ROOT, 'src', 'downloads.mjs'), 'utf8');
   const downloadsName = `downloads.${hash(downloads)}.js`;
-  const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8')).replace("'./downloads.mjs'", `'./${downloadsName}'`);
+  const downloadTarget = await readFile(join(ROOT, 'src', 'download-target.mjs'), 'utf8');
+  const downloadTargetName = `download-target.${hash(downloadTarget)}.js`;
+  const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8'))
+    .replace("'./downloads.mjs'", `'./${downloadsName}'`)
+    .replace("'./download-target.mjs'", `'./${downloadTargetName}'`);
   // Pages get the hashed asset names, and the supporters for the home page's sponsor section.
   const supporters = await loadSupporters();
   const vendor = await Promise.all(VENDOR.map(async ([name, path]) => {
@@ -204,6 +208,7 @@ export async function build() {
   await writeFile(join(DIST, 'assets', assets.css), css);
   await writeFile(join(DIST, 'assets', assets.js), js);
   await writeFile(join(DIST, 'assets', downloadsName), downloads);
+  await writeFile(join(DIST, 'assets', downloadTargetName), downloadTarget);
   await Promise.all(vendor.map(v => writeFile(join(DIST, 'assets', v.file), v.text)));
   if (logoFiles(supporters).length) await mkdir(join(DIST, 'media', 'sponsors'), { recursive: true });
   await Promise.all(logoFiles(supporters).map(l => writeFile(join(DIST, 'media', 'sponsors', l.file), l.bytes)));

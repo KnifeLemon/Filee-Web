@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "نسخه macOS پیش‌نمایش است. Linux به Ubuntu 22.04 یا جدیدتر نیاز دارد؛ حرکت‌های کشیدن به X11 نیاز دارند (روی KDE Plasma با Wayland آزمایشی است).",
+  "archive": "به فرمان filee نیاز دارید؟ بسته را دانلود کنید و install.sh را اجرا کنید.",
+  "macosNote": "به macOS 13 یا جدیدتر نیاز است. Filee هنوز نوتاریزه نشده است: تصویر دیسک را باز کنید و Filee را به Applications بکشید. اگر macOS اجرای اول را مسدود کرد، در System Settings > Privacy & Security گزینه Open Anyway را انتخاب کنید.",
     "developmentLabel": "پیش‌نمایش",
     "developmentButton": "دانلود نسخه پیش‌نمایش",
     "checking": "در حال بررسی فایل‌های نسخه…",

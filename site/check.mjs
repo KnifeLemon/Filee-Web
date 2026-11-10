@@ -48,6 +48,7 @@ function matchesRedirect(sources, path) {
 async function main() {
   if (!existsSync(DIST)) throw new Error('dist/ is missing: run node build.mjs first');
   const files = await walk(DIST);
+  const assets = new Set(files.map(file => relative(DIST, file).split(sep).join('/')));
   const htmlFiles = files.filter(f => f.endsWith('.html') && !f.endsWith(`${sep}404.html`));
   const sources = await redirectSources();
   const pages = new Map();
@@ -137,6 +138,18 @@ async function main() {
   }
   for (const [title, where] of titles) if (where.length > 1) error(where.join(', '), `duplicate title "${title}"`);
   for (const [description, where] of descriptions) if (where.length > 1) error(where.join(', '), `duplicate description "${description.slice(0, 60)}…"`);
+
+  // JavaScript modules can import other hashed files. A missing generated dependency makes the module fail before
+  // it can reveal any page content, so validate every relative import in the built assets.
+  for (const asset of files.filter(file => file.endsWith('.js'))) {
+    const source = await readFile(asset, 'utf8');
+    const assetPath = relative(DIST, asset).split(sep).join('/');
+    const assetFolder = dirname(assetPath);
+    for (const [, imported] of source.matchAll(/(?:import|export)\s+(?:[\s\S]*?\s+from\s+)?['"](\.[^'"]+)['"]/g)) {
+      const target = relative('.', join(assetFolder, imported)).split(sep).join('/');
+      if (!assets.has(target)) error(`/${assetPath}`, `missing module ${imported}`);
+    }
+  }
 
   // Sitemap: every page once, alternates exist.
   const sitemap = await readFile(join(DIST, 'sitemap.xml'), 'utf8');

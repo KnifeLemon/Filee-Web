@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS è in anteprima. Linux richiede Ubuntu 22.04 o successivo; i gesti di trascinamento richiedono X11 (sperimentali su KDE Plasma con Wayland).",
+  "archive": "Ti serve il comando filee? Scarica il pacchetto ed esegui install.sh.",
+  "macosNote": "Richiede macOS 13 o successivo. Filee non è ancora notarizzato: apri l'immagine disco e trascina Filee in Applicazioni. Se macOS blocca il primo avvio, scegli Apri comunque in Impostazioni di Sistema > Privacy e sicurezza.",
     "developmentLabel": "Anteprima",
     "developmentButton": "Scarica l'anteprima",
     "checking": "Verifica dei file della versione…",

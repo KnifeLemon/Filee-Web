@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOSはプレビュー版です。LinuxはUbuntu 22.04以降が必要で、ドラッグジェスチャーにはX11が必要です（KDE PlasmaのWaylandでは実験的機能）。",
+  "archive": "filee コマンドが必要ですか？ パッケージをダウンロードして install.sh を実行してください。",
+  "macosNote": "macOS 13 以降が必要です。Filee はまだ公証されていません。ディスクイメージを開き、Filee をアプリケーションへドラッグしてください。macOS が最初の起動を止めた場合は、「システム設定」>「プライバシーとセキュリティ」で「このまま開く」を選んでください。",
     "developmentLabel": "プレビュー版",
     "developmentButton": "プレビュー版をダウンロード",
     "checking": "リリースファイルを確認中…",

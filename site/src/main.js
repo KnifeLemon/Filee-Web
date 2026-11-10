@@ -4,6 +4,7 @@
 // and download buttons lead to the latest release page.
 
 import { DOWNLOAD_TARGETS, downloadChoice, releaseSummary } from './downloads.mjs';
+import { canRefineMacTarget, chromiumMacTarget, guessTarget } from './download-target.mjs';
 
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(pointer: fine)').matches;
@@ -611,19 +612,6 @@ async function getJson(url) {
   }
 }
 
-/**
- * The visitor's system as a first guess (they can change it). A Mac is taken as Apple silicon: browsers on Intel and
- * Apple silicon Macs report the same platform, and Apple silicon is what Apple sells now.
- */
-function guessTarget() {
-  const platform = (navigator.userAgentData?.platform || navigator.platform || '').toLowerCase();
-  const agent = navigator.userAgent.toLowerCase();
-  if (platform.includes('mac')) return 'osx-arm64';
-  if (platform.includes('linux') && !agent.includes('android'))
-    return /aarch64|arm64/.test(platform + agent) ? 'linux-arm64' : 'linux-x64';
-  return 'win-x64';
-}
-
 /** Each selection resolves only an asset for that operating system and processor. */
 function setupGitHub() {
   const api = 'https://api.github.com/repos/KnifeLemon/Filee';
@@ -638,10 +626,14 @@ function setupGitHub() {
   const t = page.download;
   if (!t) return;
   const selectors = [...document.querySelectorAll('select[data-download-target]')];
-  let selected = guessTarget(), release = null, failed = false;
+  let selected = guessTarget({ platform: navigator.userAgentData?.platform || navigator.platform, userAgent: navigator.userAgent });
+  let release = null, failed = false, savedTarget = false, manuallySelected = false;
   try {
     const saved = sessionStorage.getItem('filee-download-target');
-    if (DOWNLOAD_TARGETS.includes(saved)) selected = saved;
+    if (DOWNLOAD_TARGETS.includes(saved)) {
+      selected = saved;
+      savedTarget = true;
+    }
   } catch { /* storage unavailable */ }
 
   const render = () => {
@@ -665,6 +657,12 @@ function setupGitHub() {
       if (choice.github) link.href = choice.github;
       link.hidden = !choice.github;
     });
+    document.querySelectorAll('[data-download-archive]').forEach(node => {
+      const link = node.querySelector('a');
+      if (choice.archive && link) link.href = choice.archive.url;
+      node.hidden = !choice.archive;
+    });
+    document.querySelectorAll('[data-macos-note]').forEach(node => { node.hidden = !selected.startsWith('osx-'); });
     // The Store has the Windows app only.
     document.querySelectorAll('[data-store-badge]').forEach(badge => { badge.hidden = !selected.startsWith('win-'); });
     document.querySelectorAll('[data-download-status]').forEach(node => { node.textContent = status; node.hidden = false; });
@@ -678,11 +676,22 @@ function setupGitHub() {
     select.addEventListener('change', () => {
       if (!DOWNLOAD_TARGETS.includes(select.value)) return;
       selected = select.value;
+      manuallySelected = true;
       try { sessionStorage.setItem('filee-download-target', selected); } catch { /* storage unavailable */ }
       render();
     });
   });
   render();
+  // Chromium can report an exact CPU architecture. Safari and Firefox cannot, so macOS deliberately remains ARM64
+  // there. A stored or explicit visitor choice is always more important than an asynchronous browser hint.
+  if (canRefineMacTarget({ selected, savedTarget, manuallySelected })) {
+    chromiumMacTarget(navigator.userAgentData).then(target => {
+      if (target && canRefineMacTarget({ selected, savedTarget, manuallySelected })) {
+        selected = target;
+        render();
+      }
+    });
+  }
   cached('filee-release-v3', async () => releaseSummary(await getJson(`${api}/releases/latest`)))
     .then(value => { release = releaseSummary(value); render(); })
     .catch(() => { failed = true; render(); });

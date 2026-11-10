@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS to wersja zapoznawcza. Linux wymaga Ubuntu 22.04 lub nowszego; gesty przeciągania wymagają X11 (w KDE Plasma z Waylandem są eksperymentalne).",
+  "archive": "Potrzebujesz polecenia filee? Pobierz pakiet i uruchom install.sh.",
+  "macosNote": "Wymagany jest macOS 13 lub nowszy. Filee nie jest jeszcze notaryzowane: otwórz obraz dysku i przeciągnij Filee do Applications. Jeśli macOS zablokuje pierwsze uruchomienie, wybierz Open Anyway w Ustawieniach systemowych > Prywatność i ochrona.",
     "developmentLabel": "Wersja zapoznawcza",
     "developmentButton": "Pobierz wersję zapoznawczą",
     "checking": "Sprawdzanie plików wydania…",

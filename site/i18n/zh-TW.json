@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS 為預覽版。Linux 需要 Ubuntu 22.04 或更新版本；拖曳手勢需要 X11（在 KDE Plasma 的 Wayland 下為實驗性功能）。",
+  "archive": "需要 filee 指令嗎？下載套件後執行 install.sh。",
+  "macosNote": "需要 macOS 13 或更新版本。Filee 尚未通過公證：開啟磁碟映像並將 Filee 拖到「應用程式」。如果 macOS 阻止首次啟動，請在「系統設定」>「隱私權與安全性」中選擇「仍要打開」。",
     "developmentLabel": "預覽版",
     "developmentButton": "下載預覽版",
     "checking": "正在檢查發行檔案…",
