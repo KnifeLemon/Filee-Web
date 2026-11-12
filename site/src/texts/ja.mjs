@@ -142,6 +142,12 @@ export default dictionary([
   [`A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.`,
     `Shapefileは5つのファイル（.shp、.shx、.dbf、.prj、.cpg）で構成されます。プリセットの「変換結果をZIPで保存」か、「設定」→「一般」の「地理空間データの変換結果はすべてZIPで保存する」を使うと、1つのZIPにまとめて保存されます。`],
 
+  // Text that needs shaping
+  [`DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) go to PDF and images through the optional LibreOffice engine`,
+    `アラビア文字、ヘブライ文字、インド系文字、タイ文字など字形処理（シェーピング）が必要なテキストを含むDOCX、TXT、Markdown、HTML、XLSX、PPTX、HWPXは、PDFと画像への変換に追加のLibreOfficeエンジンを使います`],
+  [`Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `ただし、アラビア文字、ヘブライ文字、インド系文字、タイ文字など字形処理（シェーピング）が必要なテキストは例外です。これを含むDOCX、TXT、Markdown、HTML、XLSX、PPTX、HWPXファイルは、追加のLibreOfficeエンジンでPDFと画像に変換します。LibreOfficeがない場合は、壊れたPDFを作る代わりに、その文字を示すメッセージを出して変換に失敗します。`],
+
   // Camera RAW
   [`Canon CR2 RAW photo`, `Canon CR2 RAW写真`],
   [`CR2 is the RAW photo format Canon DSLRs used for many years (newer Canon models write CR3). It stores the unprocessed sensor data, which leaves plenty of room for editing.`,
@@ -658,8 +664,8 @@ export default dictionary([
     `Fileeは{categoryCount}カテゴリー、{formatTotal}種類のファイル形式を読み込めます：{categoryList}。そのうち{builtinTotal}種類はインストール後すぐに使え、それ以外は無料の追加エンジンを使います。すべての形式とその変換先は、形式カタログで確認できます。`],
   [`Do I need Microsoft Office, Hancom Office or LibreOffice?`,
     `Microsoft Office、Hancom Office、LibreOfficeは必要ですか？`],
-  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.`,
-    `いいえ。Word、Excel、PowerPointのファイル（DOCX、XLSX、XLS、CSV、PPTX）と韓国のHWP/HWPX文書は、Fileeに内蔵されたエンジンで変換します。OfficeやHancom Officeがインストールされていても、Fileeはそれらを使いません。LibreOfficeは、DOC、PPT、ODT、RTFなどの古い形式用に、アプリ内で任意にダウンロードする追加エンジンにすぎません。`],
+  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF. Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `いいえ。Word、Excel、PowerPointのファイル（DOCX、XLSX、XLS、CSV、PPTX）と韓国のHWP/HWPX文書は、Fileeに内蔵されたエンジンで変換します。OfficeやHancom Officeがインストールされていても、Fileeはそれらを使いません。LibreOfficeは、DOC、PPT、ODT、RTFなどの古い形式用に、アプリ内で任意にダウンロードする追加エンジンにすぎません。ただし、アラビア文字、ヘブライ文字、インド系文字、タイ文字など字形処理（シェーピング）が必要なテキストは例外です。これを含むDOCX、TXT、Markdown、HTML、XLSX、PPTX、HWPXファイルは、追加のLibreOfficeエンジンでPDFと画像に変換します。LibreOfficeがない場合は、壊れたPDFを作る代わりに、その文字を示すメッセージを出して変換に失敗します。`],
   [`What are the optional engines?`, `追加エンジンとは何ですか？`],
   [`Large engines are not in the installer. Tick them on the installer's engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee's own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.`,
     `容量の大きいエンジンはインストーラーに含まれていません。インストーラーのエンジンのページでチェックを入れるか、必要なときにFilee内でダウンロードしてください：{engineDetails}。エンジンはFilee専用のフォルダーに保存され、いつでも削除できます。アプリにはバージョン、ダウンロード速度、残り時間が表示されます。FFmpeg、calibre、Pandoc、Ghostscript、LibreOfficeがすでにPCのPATH上（Scoopを含む）やProgram Files内にある場合は、Fileeがそれを使ってダウンロードを省略し、テスト済みのバージョンより古い場合はお知らせします。特定のものを使うには「設定」→「変換エンジン」→「手元のプログラムを使う」で選びます。`],

@@ -2,8 +2,8 @@
 // Everything is generated from catalog.mjs, so the facts match the pages.
 
 import {
-  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, VERSION, L, countFormats, engineDetails, fill, joinList, pairSlug,
-  routeFor, sizeText, stats, vars,
+  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, SHAPING, VERSION, L, countFormats, engineDetails, fill, joinList,
+  needsShaping, pairSlug, routeFor, sizeText, stats, vars,
 } from './catalog.mjs';
 import { DOWNLOAD, REPO, SITE, paths } from './layout.mjs';
 import { pairMeta } from './convert-page.mjs';
@@ -21,7 +21,8 @@ function facts(languages) {
     `Windows x64 and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and other Wayland desktops use the drop zone and the file manager's right-click menu. macOS 13+ packages (Apple silicon and Intel) are previews: the app is not notarized yet. The format counts, examples and screenshots describe Windows (JPEG XR, EMF/WMF and the Explorer menu are Windows only).`,
     `Filee converts ${s.formatTotal} file formats in ${s.categoryCount} categories: ${v.categoryList}.`,
     `${s.builtinTotal} of those formats work right after installation. The others use optional engines, picked in the installer or downloaded inside the app when needed: ${engineDetails(EN)}.`,
-    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files. It never uses Microsoft Office or Hancom Office. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
+    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files, except for text that needs shaping (below). It never uses Microsoft Office or Hancom Office. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
+    `Text that needs shaping (Hebrew, Arabic, Syriac, Thaana, N'Ko, Indic scripts, Sinhala, Thai, Lao, Tibetan, Myanmar, Khmer, Mongolian and other South and Southeast Asian scripts) is the exception: the built-in PDF route can't shape it, so DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with such text are converted to PDF, and to images through PDF, by the optional LibreOffice engine. Without LibreOffice, such a file fails with "This script needs LibreOffice to convert correctly. Install it in Settings → Engines" and the script's name instead of becoming a broken PDF. Other text never needs LibreOffice; French, German, Spanish, Chinese, Japanese and Korean documents, for example, keep the built-in route.`,
     `How it works: hold a modifier key (Ctrl by default, configurable) and drag files; a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals.`,
     `Other ways to convert: "Convert with Filee" in the Windows 11 top-level right-click menu, Send To, a keyboard shortcut on selected files, and the drop zone in the main window.`,
     `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
@@ -122,7 +123,7 @@ ${PAIRS.map(p => {
 
 ${SITE}${paths.convert(t, pairSlug(p))}
 
-${meta.lead} ${engine}. ${L(p.tip, EN)}${p.options.length ? ` Options: ${p.options.map(k => L(OPTIONS[k].long, EN)).join(' ')}` : ''}
+${meta.lead} ${engine}. ${L(p.tip, EN)}${p.options.length ? ` Options: ${p.options.map(k => L(OPTIONS[k].long, EN)).join(' ')}` : ''}${needsShaping(p.from, p.to) ? ` ${L(SHAPING.point, EN)}` : ''}
 `;
   }).join('\n')}
 ## FAQ

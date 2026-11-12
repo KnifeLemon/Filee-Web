@@ -167,6 +167,12 @@ export default dictionary([
   [`NEF is Nikon's RAW photo format, used by Nikon DSLRs and Z mirrorless cameras. Like other RAW files it holds unprocessed sensor data and is several times larger than a JPG.`,
     `NEF 是 Nikon 的 RAW 照片格式，用於 Nikon 數位單眼相機和 Z 系列無反光鏡相機。和其他 RAW 檔一樣，它保存未經處理的感光元件資料，檔案比 JPG 大上好幾倍。`],
 
+  // Text that needs shaping
+  [`DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) go to PDF and images through the optional LibreOffice engine`,
+    `含有需要字形整形的文字（阿拉伯文、希伯來文、印度系文字、泰文等）的 DOCX、TXT、Markdown、HTML、XLSX、PPTX 和 HWPX，轉成 PDF 和圖片時使用可選引擎 LibreOffice`],
+  [`Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `需要字形整形的文字（阿拉伯文、希伯來文、印度系文字、泰文等）是例外：含有這類文字的 DOCX、TXT、Markdown、HTML、XLSX、PPTX 和 HWPX 檔案會透過可選引擎 LibreOffice 轉成 PDF 和圖片。沒有 LibreOffice 時，該檔案會轉換失敗並顯示註明該文字的訊息，而不會產生錯亂的 PDF。`],
+
   // Images
   [`Images`, `圖片`],
   [`images`, `圖片`],
@@ -645,8 +651,8 @@ export default dictionary([
     `Filee 可讀取 {categoryCount} 大類共 {formatTotal} 種檔案格式：{categoryList}。其中 {builtinTotal} 種安裝後即可使用，其餘使用免費的可選引擎。格式目錄列出了每種格式，以及它能轉換成的格式。`],
   [`Do I need Microsoft Office, Hancom Office or LibreOffice?`,
     `需要 Microsoft Office、Hancom Office 或 LibreOffice 嗎？`],
-  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.`,
-    `不需要。Word、Excel 和 PowerPoint 檔案（DOCX、XLSX、XLS、CSV、PPTX）以及韓文 HWP/HWPX 文件，都由 Filee 內建的引擎轉換。即使電腦裝了 Office 或 Hancom Office，Filee 也不會使用；LibreOffice 只是為 DOC、PPT、ODT 和 RTF 等舊格式準備的應用程式內可選下載。`],
+  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF. Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `不需要。Word、Excel 和 PowerPoint 檔案（DOCX、XLSX、XLS、CSV、PPTX）以及韓文 HWP/HWPX 文件，都由 Filee 內建的引擎轉換。即使電腦裝了 Office 或 Hancom Office，Filee 也不會使用；LibreOffice 只是為 DOC、PPT、ODT 和 RTF 等舊格式準備的應用程式內可選下載。需要字形整形的文字（阿拉伯文、希伯來文、印度系文字、泰文等）是例外：含有這類文字的 DOCX、TXT、Markdown、HTML、XLSX、PPTX 和 HWPX 檔案會透過可選引擎 LibreOffice 轉成 PDF 和圖片。沒有 LibreOffice 時，該檔案會轉換失敗並顯示註明該文字的訊息，而不會產生錯亂的 PDF。`],
   [`What are the optional engines?`,
     `什麼是可選引擎？`],
   [`Large engines are not in the installer. Tick them on the installer's engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee's own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.`,
