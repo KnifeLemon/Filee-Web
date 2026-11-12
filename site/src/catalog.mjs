@@ -318,6 +318,22 @@ export const OPTIONS = {
   },
 };
 
+/**
+ * Text that needs shaping (Hebrew, Arabic, Indic scripts, Thai, …). The built-in PDF route (rhwp) can't shape it, so
+ * Filee sends DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with such text to PDF (and images through PDF) through
+ * LibreOffice, and refuses the file when LibreOffice is missing (Filee docs/ENGINES.md). note: under the routes in the
+ * format catalog; point: on the conversion pages of those pairs and in the FAQ.
+ */
+export const SHAPING = {
+  note: T('DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) go to PDF and images through the optional LibreOffice engine',
+    '아랍어·히브리어·인도계 문자·태국어처럼 글자 모양 처리(셰이핑)가 필요한 텍스트가 든 DOCX·TXT·마크다운·HTML·XLSX·PPTX·HWPX는 PDF·이미지로 바꿀 때 추가 엔진 LibreOffice를 써요',
+    '含有需要字形整形的文字（阿拉伯文、希伯来文、印度系文字、泰文等）的 DOCX、TXT、Markdown、HTML、XLSX、PPTX 和 HWPX，转成 PDF 和图片时使用可选引擎 LibreOffice'),
+  point: T('Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.',
+    '다만 아랍어·히브리어·인도계 문자·태국어처럼 글자 모양 처리(셰이핑)가 필요한 텍스트는 예외입니다. 이런 텍스트가 든 DOCX·TXT·마크다운·HTML·XLSX·PPTX·HWPX 파일은 추가 엔진 LibreOffice로 PDF·이미지를 만듭니다. LibreOffice가 없으면 깨진 PDF를 만드는 대신 해당 문자를 알려 주는 메시지와 함께 변환이 실패합니다.',
+    '需要字形整形的文字（阿拉伯文、希伯来文、印度系文字、泰文等）是例外：含有这类文字的 DOCX、TXT、Markdown、HTML、XLSX、PPTX 和 HWPX 文件会通过可选引擎 LibreOffice 转成 PDF 和图片。没有 LibreOffice 时，该文件会转换失败并显示注明该文字的消息，而不会生成错乱的 PDF。'),
+};
+const SHAPED_FROM = ['docx', 'txt', 'md', 'html', 'xlsx', 'pptx', 'hwpx'];
+
 /* ───────── Formats and routes, by category ───────── */
 
 /**
@@ -591,7 +607,8 @@ export const CATEGORIES = [
       }),
     ],
     routes: [
-      { from: ['docx', 'docm', 'dotx', 'dotm'], to: ['pdf', 'hwpx', 'hwp', 'epub', 'txt', 'html', 'png', 'jpg'], engine: 'builtin', extras: ['noOffice', 'merge'] },
+      { from: ['docx', 'docm', 'dotx', 'dotm'], to: ['pdf', 'hwpx', 'hwp', 'epub', 'txt', 'html', 'png', 'jpg'], engine: 'builtin', extras: ['noOffice', 'merge'],
+        note: SHAPING.note },
       { from: ['docx'], to: ['md'], engine: 'pandoc' },
       { from: ['ofd'], to: ['pdf', 'docx', 'hwpx', 'txt', 'md', 'html', 'epub'], engine: 'builtin', extras: ['noOffice'] },
       { from: ['doc', 'dot', 'odt', 'fodt', 'ott', 'rtf', 'wps', 'wpd', 'lwp', 'abw', 'pages', 'sdw', 'cwk', 'mcw', '602', 'psw'],
@@ -623,7 +640,8 @@ export const CATEGORIES = [
       }),
     ],
     routes: [
-      { from: ['hwp', 'hwpx'], to: ['pdf', 'png', 'jpg', 'docx', 'txt', 'md', 'html', 'epub'], engine: 'builtin', extras: ['noHancom', 'merge'] },
+      { from: ['hwp', 'hwpx'], to: ['pdf', 'png', 'jpg', 'docx', 'txt', 'md', 'html', 'epub'], engine: 'builtin', extras: ['noHancom', 'merge'],
+        note: SHAPING.note },
       { from: ['hwp'], to: ['hwpx'], engine: 'builtin', via: 'rhwp', extras: ['noHancom'] },
       { from: ['hwpx'], to: ['hwp'], engine: 'builtin', via: 'rhwp', extras: ['noHancom'] },
       { from: ['docx', 'xlsx', 'pptx', 'md', 'pdf'], to: ['hwpx'], engine: 'builtin', via: 'Filee HWPX writer', extras: ['layoutKept', 'noHancom'] },
@@ -668,7 +686,7 @@ export const CATEGORIES = [
     ],
     routes: [
       { from: ['xlsx', 'xlsm', 'xltx', 'xls', 'xlt', 'ods', 'csv', 'tsv'], to: ['pdf', 'xlsx', 'csv', 'tsv', 'ods', 'json', 'hwpx', 'html'], engine: 'builtin',
-        extras: ['noOffice', 'perSheet', 'merge'] },
+        extras: ['noOffice', 'perSheet', 'merge'], note: SHAPING.note },
       { from: ['numbers', 'et', 'sdc', 'fods', 'ots'], to: ['pdf', 'xlsx'], engine: 'libreoffice' },
       { from: ['xlsx', 'xls', 'ods'], to: ['ots', 'xlt'], engine: 'libreoffice' },
     ],
@@ -704,7 +722,8 @@ export const CATEGORIES = [
       fmt('sda', 'SDA', ['sda', 'sdd'], { brand: 'StarImpress / StarDraw' }),
     ],
     routes: [
-      { from: ['pptx', 'pptm', 'potx', 'potm', 'ppsx'], to: ['pdf', 'png', 'jpg', 'docx', 'hwpx'], engine: 'builtin', extras: ['noOffice', 'merge'] },
+      { from: ['pptx', 'pptm', 'potx', 'potm', 'ppsx'], to: ['pdf', 'png', 'jpg', 'docx', 'hwpx'], engine: 'builtin', extras: ['noOffice', 'merge'],
+        note: SHAPING.note },
       { from: ['ppt', 'odp', 'otp', 'fodp', 'key', 'dps', 'sda'], to: ['pdf', 'pptx', 'odp'], engine: 'libreoffice', extras: ['merge'] },
       { from: ['pptx', 'ppt', 'odp'], to: ['otp'], engine: 'libreoffice' },
     ],
@@ -750,7 +769,7 @@ export const CATEGORIES = [
       fmt('opml', 'OPML', ['opml'], { koJong: 2 }),
     ],
     routes: [
-      { from: ['txt', 'md', 'html'], to: ['pdf', 'docx', 'hwpx', 'epub'], engine: 'builtin', extras: ['merge'] },
+      { from: ['txt', 'md', 'html'], to: ['pdf', 'docx', 'hwpx', 'epub'], engine: 'builtin', extras: ['merge'], note: SHAPING.note },
       { from: ['txt'], to: ['txt'], engine: 'builtin', extras: ['utf8'],
         note: T('LOG files and scripts (PY, PAC, BAT, COMMAND) are read as text and never run',
           'LOG 파일과 스크립트(PY·PAC·BAT·COMMAND)는 텍스트로만 읽고 실행하지 않아요',
@@ -1597,9 +1616,9 @@ export const FAQ = [
       'Filee 可读取 {categoryCount} 大类共 {formatTotal} 种格式：{categoryList}。其中 {builtinTotal} 种安装后即可使用，其余使用免费的可选引擎。完整格式及可转换的目标格式见格式目录。'),
     links: ['formats'] },
   { q: T('Do I need Microsoft Office, Hancom Office or LibreOffice?', 'MS 오피스나 한컴오피스, LibreOffice가 있어야 하나요?', '需要安装 Microsoft Office、Hancom Office 或 LibreOffice 吗？'),
-    a: T('No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn\'t use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.',
-      '아니요. 워드·엑셀·파워포인트 파일(DOCX, XLSX, XLS, CSV, PPTX)과 한글 문서(HWP, HWPX)는 Filee에 내장된 엔진으로 변환합니다. 오피스나 한컴오피스가 설치되어 있어도 쓰지 않으며, LibreOffice는 DOC·PPT·ODT·RTF 같은 예전 형식을 위한 선택형 추가 엔진일 뿐입니다.',
-      '不需要。Word、Excel、PowerPoint 文件（DOCX、XLSX、XLS、CSV、PPTX）和韩文 HWP/HWPX 文档都由 Filee 内置的引擎转换。即使装了 Office 或 Hancom Office，Filee 也不会使用；LibreOffice 只是为 DOC、PPT、ODT、RTF 等旧格式准备的应用内可选下载。'),
+    a: T('No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn\'t use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF. Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.',
+      '아니요. 워드·엑셀·파워포인트 파일(DOCX, XLSX, XLS, CSV, PPTX)과 한글 문서(HWP, HWPX)는 Filee에 내장된 엔진으로 변환합니다. 오피스나 한컴오피스가 설치되어 있어도 쓰지 않으며, LibreOffice는 DOC·PPT·ODT·RTF 같은 예전 형식을 위한 선택형 추가 엔진일 뿐입니다. 다만 아랍어·히브리어·인도계 문자·태국어처럼 글자 모양 처리(셰이핑)가 필요한 텍스트는 예외입니다. 이런 텍스트가 든 DOCX·TXT·마크다운·HTML·XLSX·PPTX·HWPX 파일은 추가 엔진 LibreOffice로 PDF·이미지를 만듭니다. LibreOffice가 없으면 깨진 PDF를 만드는 대신 해당 문자를 알려 주는 메시지와 함께 변환이 실패합니다.',
+      '不需要。Word、Excel、PowerPoint 文件（DOCX、XLSX、XLS、CSV、PPTX）和韩文 HWP/HWPX 文档都由 Filee 内置的引擎转换。即使装了 Office 或 Hancom Office，Filee 也不会使用；LibreOffice 只是为 DOC、PPT、ODT、RTF 等旧格式准备的应用内可选下载。需要字形整形的文字（阿拉伯文、希伯来文、印度系文字、泰文等）是例外：含有这类文字的 DOCX、TXT、Markdown、HTML、XLSX、PPTX 和 HWPX 文件会通过可选引擎 LibreOffice 转成 PDF 和图片。没有 LibreOffice 时，该文件会转换失败并显示注明该文字的消息，而不会生成错乱的 PDF。'),
     links: ['docx-to-pdf', 'xlsx-to-pdf', 'pptx-to-pdf', 'hwp-to-pdf'] },
   { q: T('What are the optional engines?', '추가 엔진은 무엇인가요?', '什么是可选引擎？'),
     a: T('Large engines are not in the installer. Tick them on the installer\'s engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee\'s own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.',
@@ -1676,6 +1695,10 @@ export function routeFor(from, to) {
   const matches = ALL_ROUTES.filter(r => sources.every(s => r.from.includes(s)) && r.to.includes(to));
   return matches.find(r => r.engine === 'builtin') ?? matches[0] ?? null;
 }
+
+/** Whether text that needs shaping takes from → to off the built-in route (see SHAPING). */
+export const needsShaping = (from, to) => SHAPED_FROM.includes(from)
+  && (to === 'pdf' || FORMATS[to]?.cat === 'images') && routeFor(from, to)?.engine === 'builtin';
 
 /** Everything `from` converts to: [{ to, engine }], built-in first, without duplicates. */
 export function targetsOf(from) {

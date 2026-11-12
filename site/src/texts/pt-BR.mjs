@@ -165,6 +165,12 @@ export default dictionary([
   [`NEF is Nikon's RAW photo format, used by Nikon DSLRs and Z mirrorless cameras. Like other RAW files it holds unprocessed sensor data and is several times larger than a JPG.`,
     `NEF é o formato de foto RAW da Nikon, usado pelas DSLRs e pelas câmeras mirrorless Z da Nikon. Como outros arquivos RAW, ele guarda os dados brutos do sensor e é várias vezes maior que um JPG.`],
 
+  // Text that needs shaping
+  [`DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) go to PDF and images through the optional LibreOffice engine`,
+    `DOCX, TXT, Markdown, HTML, XLSX, PPTX e HWPX com texto que precisa de modelagem de glifos (árabe, hebraico, escritas índicas, tailandês e outras) vão para PDF e imagens pelo motor opcional LibreOffice`],
+  [`Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `A exceção é o texto que precisa de modelagem de glifos (árabe, hebraico, escritas índicas, tailandês e outras): arquivos DOCX, TXT, Markdown, HTML, XLSX, PPTX e HWPX com esse texto vão para PDF e imagens pelo motor opcional LibreOffice. Sem o LibreOffice, esse arquivo falha com uma mensagem que indica a escrita, em vez de virar um PDF quebrado.`],
+
   // Images
   [`Images`, `Imagens`],
   [`images`, `imagens`],
@@ -643,8 +649,8 @@ export default dictionary([
     `O Filee lê {formatTotal} formatos de arquivo em {categoryCount} categorias: {categoryList}. {builtinTotal} deles funcionam logo após a instalação; os outros usam um motor opcional gratuito. O catálogo de formatos lista cada formato e para quais formatos ele converte.`],
   [`Do I need Microsoft Office, Hancom Office or LibreOffice?`,
     `Preciso do Microsoft Office, do Hancom Office ou do LibreOffice?`],
-  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.`,
-    `Não. Arquivos do Word, Excel e PowerPoint (DOCX, XLSX, XLS, CSV, PPTX) e documentos coreanos HWP/HWPX são convertidos por motores integrados ao Filee. O Filee não usa o Office nem o Hancom Office, mesmo que estejam instalados; o LibreOffice é apenas um download opcional dentro do app para formatos mais antigos, como DOC, PPT, ODT e RTF.`],
+  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF. Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `Não. Arquivos do Word, Excel e PowerPoint (DOCX, XLSX, XLS, CSV, PPTX) e documentos coreanos HWP/HWPX são convertidos por motores integrados ao Filee. O Filee não usa o Office nem o Hancom Office, mesmo que estejam instalados; o LibreOffice é apenas um download opcional dentro do app para formatos mais antigos, como DOC, PPT, ODT e RTF. A exceção é o texto que precisa de modelagem de glifos (árabe, hebraico, escritas índicas, tailandês e outras): arquivos DOCX, TXT, Markdown, HTML, XLSX, PPTX e HWPX com esse texto vão para PDF e imagens pelo motor opcional LibreOffice. Sem o LibreOffice, esse arquivo falha com uma mensagem que indica a escrita, em vez de virar um PDF quebrado.`],
   [`What are the optional engines?`,
     `O que são os motores opcionais?`],
   [`Large engines are not in the installer. Tick them on the installer's engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee's own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.`,

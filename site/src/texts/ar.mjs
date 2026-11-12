@@ -156,6 +156,12 @@ export default dictionary([
   [`A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.`,
     `يتكون Shapefile من خمسة ملفات (\u200E.shp و\u200E.shx و\u200E.dbf و\u200E.prj و\u200E.cpg). ومع خيار «حفظ النتيجة بصيغة ZIP» في إعداد مسبق، أو لكل النتائج الجغرافية من الإعدادات، تنتقل معًا في ملف ZIP واحد.`],
 
+  // Text that needs shaping
+  [`DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) go to PDF and images through the optional LibreOffice engine`,
+    `ملفات DOCX وTXT وMarkdown وHTML وXLSX وPPTX وHWPX التي تحتوي نصًا يحتاج إلى معالجة أشكال الحروف (العربية والعبرية والكتابات الهندية والتايلاندية وغيرها) تُحوَّل إلى PDF وصور عبر محرك LibreOffice الاختياري`],
+  [`Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `يُستثنى النص الذي يحتاج إلى معالجة أشكال الحروف (العربية والعبرية والكتابات الهندية والتايلاندية وغيرها): ملفات DOCX وTXT وMarkdown وHTML وXLSX وPPTX وHWPX التي تحتوي هذا النص تُحوَّل إلى PDF وصور عبر محرك LibreOffice الاختياري. ومن دون LibreOffice يفشل تحويل الملف برسالة تذكر اسم نظام الكتابة بدلًا من إنتاج PDF معطوب.`],
+
   // Camera RAW
   [`Canon CR2 RAW photo`, `صورة RAW بصيغة CR2 من Canon`],
   [`CR2 is the RAW photo format Canon DSLRs used for many years (newer Canon models write CR3). It stores the unprocessed sensor data, which leaves plenty of room for editing.`,
@@ -644,8 +650,8 @@ export default dictionary([
     `يقرأ Filee {formatTotal} صيغة ملفات موزعة على {categoryCount} فئة: {categoryList}. يعمل {builtinTotal} منها فور التثبيت، وتستخدم البقية محركًا اختياريًا مجانيًا. ويسرد دليل الصيغ كل صيغة وما يمكن تحويلها إليه.`],
   [`Do I need Microsoft Office, Hancom Office or LibreOffice?`,
     `هل أحتاج إلى Microsoft Office أو Hancom Office أو LibreOffice؟`],
-  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.`,
-    `لا. تُحوَّل ملفات Word وExcel وPowerPoint (DOCX وXLSX وXLS وCSV وPPTX) ومستندات HWP/HWPX الكورية بمحركات مدمجة في Filee. ولا يستخدم Filee برامج Office أو Hancom Office حتى إن كانت مثبّتة؛ أما LibreOffice فهو مجرد تنزيل اختياري من داخل التطبيق للصيغ الأقدم مثل DOC وPPT وODT وRTF.`],
+  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF. Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `لا. تُحوَّل ملفات Word وExcel وPowerPoint (DOCX وXLSX وXLS وCSV وPPTX) ومستندات HWP/HWPX الكورية بمحركات مدمجة في Filee. ولا يستخدم Filee برامج Office أو Hancom Office حتى إن كانت مثبّتة؛ أما LibreOffice فهو مجرد تنزيل اختياري من داخل التطبيق للصيغ الأقدم مثل DOC وPPT وODT وRTF. يُستثنى النص الذي يحتاج إلى معالجة أشكال الحروف (العربية والعبرية والكتابات الهندية والتايلاندية وغيرها): ملفات DOCX وTXT وMarkdown وHTML وXLSX وPPTX وHWPX التي تحتوي هذا النص تُحوَّل إلى PDF وصور عبر محرك LibreOffice الاختياري. ومن دون LibreOffice يفشل تحويل الملف برسالة تذكر اسم نظام الكتابة بدلًا من إنتاج PDF معطوب.`],
   [`What are the optional engines?`,
     `ما المحركات الاختيارية؟`],
   [`Large engines are not in the installer. Tick them on the installer's engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee's own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.`,

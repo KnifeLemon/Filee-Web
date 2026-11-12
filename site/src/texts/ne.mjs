@@ -160,6 +160,12 @@ export default dictionary([
   [`A Shapefile is five files (.shp, .shx, .dbf, .prj and .cpg). With Save the result as a ZIP in a preset, or for every geospatial result in the settings, they travel together in one ZIP.`,
     `Shapefile पाँच फाइल (.shp, .shx, .dbf, .prj र .cpg) मिलेर बन्छ। प्रिसेटमा “परिणामलाई ZIP को रूपमा सुरक्षित गर्नुहोस्”, वा सेटिङहरूमा “प्रत्येक भौगोलिक परिणामलाई ZIP को रूपमा सुरक्षित गर्नुहोस्” चालु गर्दा ती सबै एउटै ZIP मा सँगै रहन्छन्।`],
 
+  // Text that needs shaping
+  [`DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX with text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) go to PDF and images through the optional LibreOffice engine`,
+    `शेपिङ चाहिने पाठ (अरबी, हिब्रू, देवनागरीजस्ता इन्डिक लिपिहरू, थाई आदि) भएका DOCX, TXT, Markdown, HTML, XLSX, PPTX र HWPX ऐच्छिक LibreOffice इन्जिनमार्फत PDF र छविमा बदलिन्छन्`],
+  [`Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `शेपिङ चाहिने पाठ (अरबी, हिब्रू, देवनागरीजस्ता इन्डिक लिपिहरू, थाई आदि) अपवाद हो: यस्तो पाठ भएका DOCX, TXT, Markdown, HTML, XLSX, PPTX र HWPX फाइलहरू ऐच्छिक LibreOffice इन्जिनमार्फत PDF र छविमा बदलिन्छन्। LibreOffice नभए त्यो फाइल बिग्रिएको PDF बन्नुको सट्टा लिपिको नाम बताउने सन्देशसहित असफल हुन्छ।`],
+
   // Camera RAW
   [`Canon CR2 RAW photo`, `Canon CR2 RAW फोटो`],
   [`CR2 is the RAW photo format Canon DSLRs used for many years (newer Canon models write CR3). It stores the unprocessed sensor data, which leaves plenty of room for editing.`,
@@ -680,8 +686,8 @@ export default dictionary([
     `Filee ले {categoryCount} वर्गमा {formatTotal} फाइल ढाँचा पढ्छ: {categoryList}। तीमध्ये {builtinTotal} स्थापना गर्नेबित्तिकै काम गर्छन्; बाँकीले नि:शुल्क ऐच्छिक इन्जिन प्रयोग गर्छन्। ढाँचा क्याटलगमा हरेक ढाँचा र त्यो केमा रूपान्तरण हुन्छ भन्ने सूची छ।`],
   [`Do I need Microsoft Office, Hancom Office or LibreOffice?`,
     `के मलाई Microsoft Office, Hancom Office वा LibreOffice चाहिन्छ?`],
-  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF.`,
-    `चाहिँदैन। Word, Excel र PowerPoint फाइलहरू (DOCX, XLSX, XLS, CSV, PPTX) र कोरियाली HWP/HWPX कागजातहरू Filee भित्रकै इन्जिनले रूपान्तरण गर्छन्। Office वा Hancom Office स्थापना भए पनि Filee ले तिनलाई प्रयोग गर्दैन; LibreOffice चाहिँ DOC, PPT, ODT र RTF जस्ता पुराना ढाँचाका लागि एपभित्रैबाट गरिने ऐच्छिक डाउनलोड मात्र हो।`],
+  [`No. Word, Excel and PowerPoint files (DOCX, XLSX, XLS, CSV, PPTX) and Korean HWP/HWPX documents are converted by engines built into Filee. Filee doesn't use Office or Hancom Office even when they are installed; LibreOffice is only an optional in-app download for older formats such as DOC, PPT, ODT and RTF. Text that needs shaping (Arabic, Hebrew, Indic scripts, Thai and others) is the exception: DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with it go to PDF and images through the optional LibreOffice engine. Without LibreOffice, that file fails with a message naming the script instead of becoming a broken PDF.`,
+    `चाहिँदैन। Word, Excel र PowerPoint फाइलहरू (DOCX, XLSX, XLS, CSV, PPTX) र कोरियाली HWP/HWPX कागजातहरू Filee भित्रकै इन्जिनले रूपान्तरण गर्छन्। Office वा Hancom Office स्थापना भए पनि Filee ले तिनलाई प्रयोग गर्दैन; LibreOffice चाहिँ DOC, PPT, ODT र RTF जस्ता पुराना ढाँचाका लागि एपभित्रैबाट गरिने ऐच्छिक डाउनलोड मात्र हो। शेपिङ चाहिने पाठ (अरबी, हिब्रू, देवनागरीजस्ता इन्डिक लिपिहरू, थाई आदि) अपवाद हो: यस्तो पाठ भएका DOCX, TXT, Markdown, HTML, XLSX, PPTX र HWPX फाइलहरू ऐच्छिक LibreOffice इन्जिनमार्फत PDF र छविमा बदलिन्छन्। LibreOffice नभए त्यो फाइल बिग्रिएको PDF बन्नुको सट्टा लिपिको नाम बताउने सन्देशसहित असफल हुन्छ।`],
   [`What are the optional engines?`,
     `ऐच्छिक इन्जिनहरू के हुन्?`],
   [`Large engines are not in the installer. Tick them on the installer's engine page, or download them inside Filee whenever you need them: {engineDetails}. They are saved in Filee's own folder and can be removed at any time, and the app shows their versions, download speed and time left. If FFmpeg, calibre, Pandoc, Ghostscript or LibreOffice is already on your PC (on the PATH, Scoop included, or in Program Files), Filee uses it and skips the download, and says when that copy is older than the version it is tested with. Settings → Engines → Use my copy picks a specific one.`,
