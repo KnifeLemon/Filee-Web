@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS সংস্করণটি প্রিভিউ। Linux-এ Ubuntu 22.04 বা তার পরের সংস্করণ লাগবে; টেনে আনার জেসচারের জন্য X11 প্রয়োজন (Wayland-সহ KDE Plasma-তে পরীক্ষামূলক)।",
+  "archive": "filee কমান্ডটি দরকার? প্যাকেজটি ডাউনলোড করে install.sh চালান।",
+  "macosNote": "macOS 13 বা পরের সংস্করণ লাগবে। Filee এখনো নোটারাইজ করা নয়: ডিস্ক ইমেজ খুলে Filee-কে Applications-এ টানুন। macOS প্রথমবার চালাতে বাধা দিলে System Settings > Privacy & Security থেকে Open Anyway বেছে নিন।",
     "developmentLabel": "প্রিভিউ",
     "developmentButton": "প্রিভিউ ডাউনলোড করুন",
     "checking": "রিলিজ ফাইল যাচাই করা হচ্ছে…",

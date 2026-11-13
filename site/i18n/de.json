@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS ist eine Vorschau. Linux braucht Ubuntu 22.04 oder neuer; Ziehgesten brauchen X11 (experimentell unter KDE Plasma mit Wayland).",
+  "archive": "Du brauchst den Befehl filee? Lade das Paket herunter und führe install.sh aus.",
+  "macosNote": "macOS 13 oder neuer erforderlich. Filee ist noch nicht notarisiert: Öffne das Festplatten-Image und ziehe Filee in Programme. Wenn macOS den ersten Start blockiert, wähle in Systemeinstellungen > Datenschutz & Sicherheit „Dennoch öffnen“.",
     "developmentLabel": "Vorschau",
     "developmentButton": "Vorschau herunterladen",
     "checking": "Release-Dateien werden geprüft…",

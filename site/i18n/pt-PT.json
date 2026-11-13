@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "O macOS está em pré-visualização. O Linux requer o Ubuntu 22.04 ou posterior; os gestos de arrastar precisam do X11 (experimental no KDE Plasma com Wayland).",
+  "archive": "Precisa do comando filee? Transfira o pacote e execute install.sh.",
+  "macosNote": "Requer o macOS 13 ou posterior. O Filee ainda não é reconhecido pela Apple: abra a imagem de disco e arraste o Filee para Aplicações. Se o macOS bloquear a primeira abertura, escolha Abrir mesmo assim em Definições do Sistema > Privacidade e segurança.",
     "developmentLabel": "Pré-visualização",
     "developmentButton": "Descarregar a pré-visualização",
     "checking": "A verificar os ficheiros da versão…",

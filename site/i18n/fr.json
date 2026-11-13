@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS est en préversion. Linux nécessite Ubuntu 22.04 ou ultérieur ; les gestes de glisser nécessitent X11 (expérimental sous KDE Plasma avec Wayland).",
+  "archive": "Vous avez besoin de la commande filee ? Téléchargez le paquet et exécutez install.sh.",
+  "macosNote": "macOS 13 ou ultérieur est nécessaire. Filee n’est pas encore notarisé : ouvrez l’image disque et faites glisser Filee vers Applications. Si macOS bloque le premier démarrage, choisissez « Ouvrir quand même » dans Réglages Système > Confidentialité et sécurité.",
     "developmentLabel": "Préversion",
     "developmentButton": "Télécharger la préversion",
     "checking": "Vérification des fichiers de la version…",

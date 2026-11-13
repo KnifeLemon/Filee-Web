@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS is a preview. Linux needs Ubuntu 22.04 or later; drag gestures need X11 (experimental on KDE Plasma with Wayland).",
+  "archive": "Need the filee command? Download the package and run install.sh.",
+  "macosNote": "macOS 13 or later. Filee is not notarized yet: open the disk image and drag Filee to Applications. If macOS blocks the first start, choose Open Anyway in System Settings > Privacy & Security.",
     "developmentLabel": "Preview",
     "developmentButton": "Download the preview",
     "checking": "Checking release files…",

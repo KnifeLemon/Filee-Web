@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS masih berupa preview. Linux memerlukan Ubuntu 22.04 atau lebih baru; gestur seret memerlukan X11 (eksperimental di KDE Plasma dengan Wayland).",
+  "archive": "Perlu perintah filee? Unduh paket lalu jalankan install.sh.",
+  "macosNote": "Memerlukan macOS 13 atau lebih baru. Filee belum dinotariskan: buka image disk dan seret Filee ke Applications. Jika macOS memblokir peluncuran pertama, pilih Open Anyway di System Settings > Privacy & Security.",
     "developmentLabel": "Preview",
     "developmentButton": "Unduh versi preview",
     "checking": "Memeriksa file rilis…",

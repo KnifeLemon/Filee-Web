@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS đang là bản xem trước. Linux cần Ubuntu 22.04 trở lên; thao tác kéo cần X11 (đang thử nghiệm trên KDE Plasma với Wayland).",
+  "archive": "Cần lệnh filee? Hãy tải gói xuống rồi chạy install.sh.",
+  "macosNote": "Cần macOS 13 trở lên. Filee chưa được công chứng: mở ảnh đĩa rồi kéo Filee vào Applications. Nếu macOS chặn lần khởi động đầu tiên, hãy chọn Open Anyway trong System Settings > Privacy & Security.",
     "developmentLabel": "Bản xem trước",
     "developmentButton": "Tải bản xem trước",
     "checking": "Đang kiểm tra các tệp phát hành…",

@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS está en versión preliminar. Linux necesita Ubuntu 22.04 o posterior; los gestos de arrastre requieren X11 (experimental en KDE Plasma con Wayland).",
+  "archive": "¿Necesitas el comando filee? Descarga el paquete y ejecuta install.sh.",
+  "macosNote": "Se necesita macOS 13 o posterior. Filee aún no está notarizado: abre la imagen de disco y arrastra Filee a Aplicaciones. Si macOS bloquea el primer inicio, elige «Abrir de todos modos» en Ajustes del Sistema > Privacidad y seguridad.",
     "developmentLabel": "Versión preliminar",
     "developmentButton": "Descargar la versión preliminar",
     "checking": "Comprobando los archivos de la versión…",

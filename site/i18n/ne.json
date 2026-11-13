@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS पूर्वावलोकन हो। Linux का लागि Ubuntu 22.04 वा नयाँ चाहिन्छ; तान्ने जेस्चरका लागि X11 चाहिन्छ (Wayland सहितको KDE Plasma मा प्रायोगिक)।",
+  "archive": "filee आदेश चाहिन्छ? प्याकेज डाउनलोड गरी install.sh चलाउनुहोस्।",
+  "macosNote": "macOS 13 वा नयाँ चाहिन्छ। Filee अझै notarized छैन: डिस्क इमेज खोलेर Filee लाई Applications मा तान्नुहोस्। macOS ले पहिलो सुरु रोक्यो भने System Settings > Privacy & Security मा Open Anyway छान्नुहोस्।",
     "developmentLabel": "पूर्वावलोकन",
     "developmentButton": "पूर्वावलोकन डाउनलोड गर्नुहोस्",
     "checking": "रिलिज फाइलहरू जाँच गरिँदैछ…",

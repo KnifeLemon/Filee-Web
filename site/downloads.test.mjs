@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { downloadChoice, findDownloadAsset, mirrorUrl, releaseSummary, RELEASES_URL } from './src/downloads.mjs';
+import { downloadChoice, findDownloadArchive, findDownloadAsset, mirrorUrl, releaseSummary, RELEASES_URL } from './src/downloads.mjs';
+import { canRefineMacTarget, chromiumMacTarget, guessTarget, macTargetFromArchitecture } from './src/download-target.mjs';
 
 const tag = 'v1.2.3';
 const asset = name => ({
@@ -11,9 +12,11 @@ const asset = name => ({
 const windows = asset('Filee-1.2.3-win-Setup.exe');
 const linux = asset('Filee-1.2.3-linux-x64.tar.gz');
 const linuxArm = asset('Filee-1.2.3-linux-arm64.tar.gz');
-const macArm = asset('Filee-1.2.3-osx-arm64.tar.gz');
-const macIntel = asset('Filee-1.2.3-osx-x64.tar.gz');
-const release = releaseSummary({ tag_name: tag, assets: [macArm, linux, windows, macIntel, linuxArm] });
+const macArm = asset('Filee-1.2.3-osx-arm64.dmg');
+const macIntel = asset('Filee-1.2.3-osx-x64.dmg');
+const macArmArchive = asset('Filee-1.2.3-osx-arm64.tar.gz');
+const macIntelArchive = asset('Filee-1.2.3-osx-x64.tar.gz');
+const release = releaseSummary({ tag_name: tag, assets: [macArm, linux, windows, macIntel, linuxArm, macArmArchive, macIntelArchive] });
 
 const mirrored = 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Setup.exe';
 
@@ -63,6 +66,27 @@ test('a missing Unix build never falls back to the Windows installer', () => {
 test('an x64 asset cannot satisfy an ARM64 selection', () => {
   assert.equal(findDownloadAsset({ tag_name: tag, assets: [linux, macIntel] }, 'linux-arm64'), null);
   assert.equal(findDownloadAsset({ tag_name: tag, assets: [linux, macIntel] }, 'osx-arm64'), null);
+  assert.equal(findDownloadArchive({ tag_name: tag, assets: [macIntelArchive] }, 'osx-arm64'), null);
+});
+
+test('macOS offers the matching install.sh package only as a secondary archive', () => {
+  for (const [target, expected] of [['osx-arm64', macArmArchive], ['osx-x64', macIntelArchive]]) {
+    assert.deepEqual(findDownloadArchive(release, target), {
+      name: expected.name, url: expected.browser_download_url, size: expected.size, github: expected.browser_download_url,
+    });
+    assert.deepEqual(downloadChoice(release, target).archive, findDownloadArchive(release, target));
+  }
+  assert.equal(findDownloadArchive(release, 'linux-x64'), null);
+});
+
+test('a missing macOS disk image does not silently become its archive', () => {
+  const onlyArchive = { tag_name: tag, assets: [macArmArchive] };
+  const choice = downloadChoice(onlyArchive, 'osx-arm64');
+  assert.equal(choice.asset, null);
+  assert.equal(choice.url, RELEASES_URL);
+  assert.deepEqual(choice.archive, {
+    name: macArmArchive.name, url: macArmArchive.browser_download_url, size: macArmArchive.size, github: macArmArchive.browser_download_url,
+  });
 });
 
 test('macOS builds are previews; Windows and Linux are full releases', () => {
@@ -92,6 +116,16 @@ test('asset versions and filenames must match the selected release', () => {
   const assets = [asset('Filee-1.2.2-linux-x64.tar.gz'), asset('Filee-1.2.3-linux-x64-debug.tar.gz')];
   assert.equal(findDownloadAsset({ tag_name: tag, assets }, 'linux-x64'), null);
   assert.equal(findDownloadAsset(release, 'win-arm64'), null);
+  assert.equal(findDownloadAsset(release, undefined), null);
+  assert.equal(findDownloadArchive(release, undefined), null);
+});
+
+test('macOS disk images and archives require their exact trusted GitHub URLs', () => {
+  for (const file of [macArm, macArmArchive]) {
+    const malformed = { ...file, browser_download_url: file.browser_download_url.replace('/v1.2.3/', '/v1.2.2/') };
+    assert.equal(findDownloadAsset({ tag_name: tag, assets: [malformed] }, 'osx-arm64'), null);
+    assert.equal(findDownloadArchive({ tag_name: tag, assets: [malformed] }, 'osx-arm64'), null);
+  }
 });
 
 const badUrls = [
@@ -136,6 +170,25 @@ test('an API failure and an unfinished check both retain an honest releases fall
   assert.equal(failed.state, 'unavailable');
   assert.equal(failed.asset, null);
   assert.equal(failed.url, RELEASES_URL);
+});
+
+test('macOS falls back to Apple silicon except for Chromium’s explicit architecture hint', async () => {
+  assert.equal(guessTarget({ platform: 'MacIntel', userAgent: 'Mozilla/5.0' }), 'osx-arm64');
+  assert.equal(macTargetFromArchitecture('arm'), 'osx-arm64');
+  assert.equal(macTargetFromArchitecture('x86'), 'osx-x64');
+  for (const value of ['', 'x86_64', 'arm64', 'unknown', null]) assert.equal(macTargetFromArchitecture(value), null);
+  assert.equal(await chromiumMacTarget({ getHighEntropyValues: async () => ({ architecture: 'x86' }) }), 'osx-x64');
+  assert.equal(await chromiumMacTarget({ getHighEntropyValues: async () => ({ architecture: 'arm' }) }), 'osx-arm64');
+  assert.equal(await chromiumMacTarget({ getHighEntropyValues: async () => ({ architecture: 'x86_64' }) }), null);
+  assert.equal(await chromiumMacTarget({ getHighEntropyValues: async () => { throw new Error('denied'); } }), null);
+  assert.equal(await chromiumMacTarget(null), null);
+});
+
+test('a stored or manual selection cannot be replaced by a late architecture hint', () => {
+  assert.equal(canRefineMacTarget({ selected: 'osx-arm64', savedTarget: false, manuallySelected: false }), true);
+  assert.equal(canRefineMacTarget({ selected: 'osx-arm64', savedTarget: true, manuallySelected: false }), false);
+  assert.equal(canRefineMacTarget({ selected: 'osx-arm64', savedTarget: false, manuallySelected: true }), false);
+  assert.equal(canRefineMacTarget({ selected: 'osx-x64', savedTarget: false, manuallySelected: false }), false);
 });
 
 test('drafts, branch names and stale single-URL cache data are not release metadata', () => {

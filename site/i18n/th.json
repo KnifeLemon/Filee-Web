@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS ยังเป็นรุ่นทดลอง Linux ต้องใช้ Ubuntu 22.04 ขึ้นไป และท่าทางการลากต้องใช้ X11 (บน KDE Plasma กับ Wayland อยู่ในขั้นทดลอง)",
+  "archive": "ต้องการคำสั่ง filee หรือไม่? ดาวน์โหลดแพ็กเกจแล้วเรียกใช้ install.sh",
+  "macosNote": "ต้องใช้ macOS 13 หรือใหม่กว่า Filee ยังไม่ได้รับการรับรอง: เปิดดิสก์อิมเมจแล้วลาก Filee ไปที่ Applications หาก macOS บล็อกการเริ่มครั้งแรก ให้เลือก Open Anyway ใน System Settings > Privacy & Security",
     "developmentLabel": "รุ่นทดลอง",
     "developmentButton": "ดาวน์โหลดรุ่นทดลอง",
     "checking": "กำลังตรวจสอบไฟล์รุ่นล่าสุด…",

@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS sürümü önizlemedir. Linux için Ubuntu 22.04 veya üstü gerekir; sürükleme hareketleri X11 gerektirir (Wayland ile KDE Plasma'da deneyseldir).",
+  "archive": "filee komutuna mı ihtiyacınız var? Paketi indirin ve install.sh dosyasını çalıştırın.",
+  "macosNote": "macOS 13 veya sonrası gerekir. Filee henüz noter onaylı değildir: disk imajını açın ve Filee'yi Applications'a sürükleyin. macOS ilk açılışı engellerse Sistem Ayarları > Gizlilik ve Güvenlik bölümünden Open Anyway'i seçin.",
     "developmentLabel": "Önizleme",
     "developmentButton": "Önizlemeyi indir",
     "checking": "Sürüm dosyaları denetleniyor…",

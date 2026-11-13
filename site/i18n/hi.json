@@ -177,6 +177,8 @@
       "osx-x64": "macOS · Intel (x64)"
     },
     "platformNote": "macOS अभी प्रीव्यू है। Linux के लिए Ubuntu 22.04 या नया संस्करण चाहिए; ड्रैग जेस्चर के लिए X11 ज़रूरी है (Wayland वाले KDE Plasma पर यह प्रायोगिक है)।",
+  "archive": "filee कमांड चाहिए? पैकेज डाउनलोड करके install.sh चलाएँ।",
+  "macosNote": "macOS 13 या उसके बाद का संस्करण चाहिए। Filee अभी notarized नहीं है: डिस्क इमेज खोलें और Filee को Applications में खींचें। अगर macOS पहली बार शुरू होने से रोके, तो System Settings > Privacy & Security में Open Anyway चुनें।",
     "developmentLabel": "प्रीव्यू",
     "developmentButton": "प्रीव्यू डाउनलोड करें",
     "checking": "रिलीज़ फ़ाइलें जाँची जा रही हैं…",
