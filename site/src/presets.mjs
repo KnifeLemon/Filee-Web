@@ -1,6 +1,7 @@
 // The preset gallery's data: KnifeLemon/Filee-Presets' index.json and every listed preset's files, read from GitHub at
 // build time, with the likes and comments of each preset's discussion (GitHub GraphQL API) and the download counts
-// kept by the Worker (Cloudflare D1, read through the Cloudflare API). The build writes /presets/index.json with the
+// kept by the Worker (Cloudflare D1, read through the Cloudflare API, or through Wrangler on a machine that is signed
+// in with `wrangler login`). The build writes /presets/index.json with the
 // stats filled in, and mirrors the files under /presets/files/ (the Content-Security-Policy allows images from this
 // site only, and the app downloads from here).
 //
@@ -11,10 +12,16 @@
 // Environment:
 //   PRESETS=<folder>          read a local Filee-Presets checkout instead of GitHub (index.json and presets/ in it)
 //   GITHUB_TOKEN / GH_TOKEN   reads reactions and comment counts (any token; public data only)
-//   CLOUDFLARE_API_TOKEN      with "D1 Read" on the account, and CLOUDFLARE_ACCOUNT_ID: reads the download counters
+//   CLOUDFLARE_API_TOKEN      with "D1 Read" on the account, and CLOUDFLARE_ACCOUNT_ID: reads the download counters;
+//                             without them the build asks Wrangler (`wrangler d1 execute --remote`, which uses the
+//                             account `wrangler login` signed in to, the same one `npm run deploy` uses)
+//   PRESETS_NO_WRANGLER=1     don't try Wrangler (CI without a Cloudflare sign-in)
 //   PRESETS_D1_ID             the D1 database's id (otherwise looked up by its name, D1_NAME)
 //   PRESETS_PUBLISHED         where a build without either source takes the stats from (default: the live index.json)
 
+import { execFile } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -188,7 +195,7 @@ async function cloudflare(path, token, init = {}) {
  */
 export async function loadDownloads(now = Date.now(), env = process.env) {
   const token = env.CLOUDFLARE_API_TOKEN, account = env.CLOUDFLARE_ACCOUNT_ID;
-  if (!token || !account) { console.warn('presets: no Cloudflare credentials, downloads count as 0'); return {}; }
+  if (!token || !account) return loadDownloadsWithWrangler(now, env);
   try {
     let id = env.PRESETS_D1_ID;
     if (!id) {
@@ -209,6 +216,51 @@ export async function loadDownloads(now = Date.now(), env = process.env) {
     // "no such table" until the Worker counts its first download.
     console.warn(`presets: downloads not read (${error.message})`);
     return {};
+  }
+}
+
+/** Runs one SQL statement on the D1 database through Wrangler; the rows, or throws. */
+function wranglerQuery(sql, env) {
+  // The site's own Wrangler (a devDependency), run by this Node without a shell, so the SQL stays one argument.
+  // (its package "exports" hide bin/, so it's found next to this file rather than through require.resolve)
+  const wrangler = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
+  if (!existsSync(wrangler)) return Promise.reject(new Error('Wrangler is not installed (npm install)'));
+  const args = [wrangler, 'd1', 'execute', D1_NAME, '--remote', '--json', '--command', sql];
+  return new Promise((resolve, reject) => {
+    execFile(process.execPath, args, { env, timeout: 120_000, maxBuffer: 64 * 1024 * 1024 },
+      (error, stdout) => {
+        if (error) {
+          let text;
+          try { text = JSON.parse(stdout.slice(stdout.indexOf('{')))?.error?.text; } catch { /* not JSON */ }
+          return reject(new Error(text ?? String(error.message).split(/\r?\n/)[0]));
+        }
+        const start = stdout.indexOf('[');
+        try { resolve(JSON.parse(stdout.slice(start))?.[0]?.results ?? []); }
+        catch { reject(new Error('Wrangler gave no JSON')); }
+      });
+  });
+}
+
+/**
+ * The download counters through Wrangler, for a build on a machine signed in with `wrangler login` (manual deploys):
+ * no API token needed. null when Wrangler can't read them (not signed in, no network, PRESETS_NO_WRANGLER).
+ */
+async function loadDownloadsWithWrangler(now, env) {
+  if (env.PRESETS_NO_WRANGLER) { console.warn('presets: no Cloudflare credentials, downloads not read'); return null; }
+  try {
+    const since = utcDay(now - 365 * 86_400_000);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) throw new Error('bad date');
+    const out = {};
+    for (const row of await wranglerQuery('SELECT slug, SUM(n) AS total FROM downloads GROUP BY slug', env)) out[row.slug] = { days: {}, total: Number(row.total) || 0 };
+    for (const row of await wranglerQuery(`SELECT slug, day, n FROM downloads WHERE day >= '${since}'`, env)) {
+      (out[row.slug] ??= { days: {}, total: 0 }).days[row.day] = Number(row.n) || 0;
+    }
+    return out;
+  } catch (error) {
+    // Before the first deploy there is no database, and until the Worker counts its first download no table: both
+    // mean "no downloads yet". Anything else (not signed in, no network) means "not read".
+    console.warn(`presets: downloads not read through Wrangler (${error.message})`);
+    return /no such table|Couldn't find a D1 DB/i.test(error.message) ? {} : null;
   }
 }
 
@@ -238,11 +290,11 @@ async function publishedStats(url = process.env.PRESETS_PUBLISHED ?? 'https://fi
 export async function loadGallery(now = Date.now(), env = process.env) {
   const { index, files } = await loadRepo();
   const token = env.GITHUB_TOKEN || env.GH_TOKEN;
-  const cloudflareSet = Boolean(env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ACCOUNT_ID);
-  const published = index.presets.length && !token && !cloudflareSet ? await publishedStats() : {};
+  const read = index.presets.length ? await loadDownloads(now, env) : {};
+  const downloads = read ?? {};
+  const published = index.presets.length && !token && read === null ? await publishedStats() : {};
   const discussions = token ? await loadDiscussions(index.presets.map(p => p.discussion).filter(Boolean), token) : {};
-  const downloads = index.presets.length && cloudflareSet ? await loadDownloads(now, env) : {};
-  if (!token && !cloudflareSet && index.presets.length) console.warn('presets: no GITHUB_TOKEN or Cloudflare credentials, keeping the stats published now');
+  if (!token && read === null && index.presets.length) console.warn('presets: neither GitHub nor the download counters could be read, keeping the stats published now');
   const presets = index.presets.map(p => {
     const d = p.discussion ? discussions[p.discussion] : null;
     const dl = downloads[p.id];
