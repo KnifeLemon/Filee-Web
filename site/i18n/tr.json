@@ -11,6 +11,7 @@
     "how": "Nasıl çalışır",
     "formats": "Biçimler",
     "cli": "Komut satırı",
+    "presets": "Ön ayarlar",
     "hwp": "HWP",
     "faq": "SSS",
     "download": "İndir",
@@ -219,6 +220,7 @@
     "openSource": "Açık kaynak",
     "formats": "Tüm biçimler",
     "cli": "Komut satırı",
+    "presets": "Ön ayar galerisi",
     "popular": "Popüler dönüştürmeler"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "filee komutuyla birlikte Filee'yi edinin",
     "ctaText": "Komut satırı, Windows 10/11 için Filee ile birlikte gelir: ücretsiz, açık kaynaklı ve çevrimdışı."
+  },
+  "presets": {
+    "title": "Filee Ön Ayar Galerisi: Ön Ayarlar ve Halka Çubuklar | Filee",
+    "description": "Filee kullanıcılarının paylaştığı ücretsiz ön ayarlara ve halka araç çubuklarına göz atın. Ne yaptıklarını görün, tek tıkla kurun. Hepsi CC0.",
+    "crumb": "Ön ayar galerisi",
+    "h1": "Ön ayar galerisi",
+    "lead": "Diğer Filee kullanıcılarının paylaştığı hazır ön ayarlar ve halka araç çubukları. Kurmadan önce her birinin ne yaptığını görün, kendinizinkileri de paylaşın.",
+    "upload": "Ön ayar yükle",
+    "guideButton": "Paylaşım nasıl işler",
+    "sortLabel": "Sırala",
+    "sort": {
+      "hot": "Popüler",
+      "best": "En iyi",
+      "new": "Yeni"
+    },
+    "periodLabel": "Dönem",
+    "periods": {
+      "day": "Bugün",
+      "week": "Bu hafta",
+      "month": "Bu ay",
+      "year": "Bu yıl",
+      "all": "Tüm zamanlar"
+    },
+    "searchLabel": "Ön ayar ara",
+    "searchPlaceholder": "Ad, yazar veya etiket",
+    "filterKind": "Tür",
+    "filterFormat": "Biçim",
+    "filterTag": "Etiket",
+    "filterLanguage": "Dil",
+    "any": "Tümü",
+    "clear": "Filtreleri temizle",
+    "kinds": {
+      "convert": "Dönüştürme",
+      "tool": "Araç",
+      "toolbar": "Araç çubuğu"
+    },
+    "count": "{n|one:# ön ayar|other:# ön ayar}",
+    "empty": "Henüz kimse ön ayar paylaşmadı. İlk sizinki olabilir.",
+    "noMatch": "Bu filtrelere uyan ön ayar yok.",
+    "by": "{author} tarafından",
+    "likes": "{n|one:# beğeni|other:# beğeni}",
+    "downloads": "{n|one:# indirme|other:# indirme}",
+    "comments": "{n|one:# yorum|other:# yorum}",
+    "statsNote": "Beğeniler, her ön ayarın GitHub'daki tartışmasına bırakılan 👍 tepkileridir. Beğeniler ve indirmeler saatte bir yeniden sayılır.",
+    "detailTitle": "{title}: {author} tarafından Filee ön ayarı",
+    "detailDescription": "{title}: {author} tarafından paylaşılan ücretsiz bir Filee ön ayarı. Görsellerine ve ne yaptığına bakın, ardından Filee ön ayar galerisinden kurun.",
+    "sharedBy": "Paylaşan: {author}",
+    "updated": "Güncellenme: {date}",
+    "imageAlt": "{title}, görsel {n}/{total}",
+    "aboutTitle": "Bu ön ayar hakkında",
+    "whatTitle": "Ne yapar",
+    "colPreset": "Ön ayar",
+    "colKind": "Tür",
+    "colMakes": "Çıktı",
+    "colOptions": "Başlıca seçenekler",
+    "presetKinds": {
+      "convert": "Dönüştürme",
+      "group": "Grup",
+      "tool": "Araç penceresi",
+      "copy": "Kopyalama"
+    },
+    "toolbarRow": "{n|one:# dilimli|other:# dilimli} “{name}” araç çubuğunu ekler.",
+    "worksOn": "Girdi biçimleri",
+    "makes": "Çıktı biçimleri",
+    "minVersion": "Filee {version} veya üstü gerekir.",
+    "defaults": "Varsayılan seçenekler",
+    "options": {
+      "quality": "Kalite {n}",
+      "longEdge": "Uzun kenar {n} px",
+      "width": "Genişlik {n} px",
+      "percent": "Boyut: %{n}",
+      "customSize": "{w} × {h}",
+      "maxSize": "En fazla {n} MB",
+      "grayscale": "Siyah beyaz",
+      "removeBackground": "Arka planı kaldırır",
+      "stripMetadata": "Meta verileri kaldırır",
+      "mergePdf": "Tek PDF'te birleştirir",
+      "compressPdf": "PDF'i sıkıştırır",
+      "ocr": "Metni tanır (OCR)",
+      "pageNumbers": "Sayfa numarası ekler",
+      "mediaHigh": "Yüksek kalite",
+      "mediaBalanced": "Dengeli kalite",
+      "mediaSmall": "Küçük dosyalar",
+      "maxHeight": "En fazla {n}p",
+      "audioBitrate": "Ses {n} kbps",
+      "askCompression": "Sıkıştırmayı her seferinde sorar",
+      "group": "{n|one:# ön ayarı|other:# ön ayarı} yelpaze gibi açar",
+      "tool": "Kendi penceresini açar"
+    },
+    "installTitle": "Kurulum",
+    "installSteps": [
+      "Filee'yi açın ve **Ön ayarlar** bölümüne gidin.",
+      "**Ön ayar galerisi** düğmesine tıklayın ve “{title}” adlı ön ayarı bulun.",
+      "**Kur** düğmesine tıklayın. Ön ayarlar kendi ön ayarlarınızın yanına eklenir, onların yerini asla almaz."
+    ],
+    "downloadButton": "Ön ayar dosyasını indir",
+    "downloadNote": "Ya da dosyayı indirip Filee ayarlarında **Genel → İçe aktar…** ile ekleyin.",
+    "license": "{author} bu ön ayarı ve görsellerini CC0 1.0 kapsamında paylaştı: herkes bunları hiçbir koşul olmadan kullanabilir, değiştirebilir ve paylaşabilir.",
+    "licenseLink": "CC0 hakkında",
+    "commentsButton": "GitHub'daki yorumlar",
+    "report": "Bu ön ayarda bir sorun mu var? Yorumlarında bize bildirin ya da [kaldırılmasını isteyin]({removal}).",
+    "back": "Galeriye dön",
+    "guideTitle": "Kendi ön ayarınızı paylaşın",
+    "guideLead": "Ön ayarlar program değil, ayardır; bu yüzden paylaşmak güvenlidir ve yalnızca birkaç dakika sürer.",
+    "guideSteps": [
+      {
+        "title": "Filee'den dışa aktarın",
+        "text": "Filee ayarlarında **Genel** sayfasını açın ve Ön ayarlar ve araç çubukları altında **Dışa aktar…** düğmesine tıklayın. Filee ön ayarlarınızı ve araç çubuklarınızı bir dosyaya kaydeder."
+      },
+      {
+        "title": "1 ila 4 görsel hazırlayın",
+        "text": "Ön ayarın ne yaptığını gösterin: halka dilimini, ayarlarını veya örnek bir dosyanın öncesini ve sonrasını. PNG, JPEG veya WebP; uzun kenarı 640 ila 2.560 px, her biri en fazla 2 MB. İlk görsel kapak olur."
+      },
+      {
+        "title": "Formu doldurun",
+        "text": "**{upload}** düğmesine tıklayın, GitHub'da oturum açın ve dosyayı, görselleri, bir başlığı ve kısa bir açıklamayı ekleyin. Otomatik denetimler düzeltilmesi gereken bir şey varsa size söyler, ardından bir proje sorumlusu ön ayarı yayımlar."
+      }
+    ],
+    "allowedTitle": "Neler paylaşılabilir",
+    "allowed": [
+      "Dönüştürme ve araç ön ayarları ile bunlardan oluşan halka araç çubukları.",
+      "Yükleme başına en fazla 20 ön ayar ve bir araç çubuğu, en fazla 256 KB'lık tek bir dosyada.",
+      "Görsel için hazırlanmış örnek dosyaları gösteren, kendi hazırladığınız görseller."
+    ],
+    "notAllowedTitle": "Asla paylaşılmayanlar",
+    "notAllowed": [
+      "Program veya komut çalıştıran ön ayarlar.",
+      "Ağ ve proxy ayarları, özel çeviri sunucuları ve API anahtarları.",
+      "Kaynak dosyanın yanı dışındaki çıktı klasörleri ve herhangi bir yerdeki kişisel yollar veya adlar.",
+      "Gerçek belgelerin, adların, yüzlerin veya dosya yollarının görselleri."
+    ],
+    "ccTitle": "CC0 ile paylaşılır",
+    "ccText": "Paylaşılan ön ayarlar ve görselleri CC0 1.0 ile kamu malına adanır: herkes bunları koşulsuz kullanabilir, değiştirebilir ve paylaşabilir. Galeri yine de her birini kimin paylaştığını gösterir.",
+    "removalTitle": "Kaldırma talepleri",
+    "removalText": "Paylaştığınız bir ön ayarı kaldırmak ya da bu kuralları çiğneyen veya kişisel bilgi gösteren bir ön ayarı bildirmek için Filee-Presets deposunda bir issue açın. Orada kaldırıldığında bir saat içinde bu siteden ve uygulamadan da kalkar.",
+    "removalLink": "Issue açın"
   },
   "notFound": {
     "title": "Sayfa bulunamadı",

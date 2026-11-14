@@ -11,6 +11,7 @@
     "how": "使用方式",
     "formats": "支援格式",
     "cli": "命令列",
+    "presets": "預設",
     "hwp": "HWP",
     "faq": "常見問題",
     "download": "下載",
@@ -219,6 +220,7 @@
     "openSource": "開放原始碼",
     "formats": "格式目錄",
     "cli": "命令列",
+    "presets": "預設廣場",
     "popular": "熱門轉換"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "下載 Filee，取得 filee 命令",
     "ctaText": "命令列隨 Windows 10/11 版 Filee 一起提供：免費、開放原始碼、可離線使用。"
+  },
+  "presets": {
+    "title": "Filee 預設廣場：免費預設和環形工具列 | Filee",
+    "description": "瀏覽 Filee 使用者分享的免費預設和環形工具列，先了解每一個的用途，再一鍵安裝到 Filee。全部以 CC0 授權分享。",
+    "crumb": "預設廣場",
+    "h1": "預設廣場",
+    "lead": "其他 Filee 使用者分享的現成預設和環形工具列。安裝前先看看每一個能做什麼，也歡迎分享你自己的。",
+    "upload": "上傳預設",
+    "guideButton": "如何分享",
+    "sortLabel": "排序",
+    "sort": {
+      "hot": "熱門",
+      "best": "最佳",
+      "new": "最新"
+    },
+    "periodLabel": "時間範圍",
+    "periods": {
+      "day": "今天",
+      "week": "本週",
+      "month": "本月",
+      "year": "今年",
+      "all": "所有時間"
+    },
+    "searchLabel": "搜尋預設",
+    "searchPlaceholder": "名稱、作者或標籤",
+    "filterKind": "類型",
+    "filterFormat": "格式",
+    "filterTag": "標籤",
+    "filterLanguage": "語言",
+    "any": "全部",
+    "clear": "清除篩選",
+    "kinds": {
+      "convert": "轉換",
+      "tool": "工具",
+      "toolbar": "工具列"
+    },
+    "count": "{n|other:# 個預設}",
+    "empty": "還沒有人分享預設。第一個說不定就是你的。",
+    "noMatch": "沒有符合這些篩選條件的預設。",
+    "by": "作者：{author}",
+    "likes": "{n|other:# 個讚}",
+    "downloads": "{n|other:# 次下載}",
+    "comments": "{n|other:# 則留言}",
+    "statsNote": "讚數是每個預設在 GitHub 討論串上的 👍 反應。讚數和下載次數每小時重新計算一次。",
+    "detailTitle": "{title}：{author} 分享的 Filee 預設",
+    "detailDescription": "{title}：{author} 分享的免費 Filee 預設。查看圖片和用途，再從 Filee 預設廣場安裝。",
+    "sharedBy": "由 {author} 分享",
+    "updated": "更新於 {date}",
+    "imageAlt": "{title}，第 {n} 張，共 {total} 張",
+    "aboutTitle": "關於這個預設",
+    "whatTitle": "用途",
+    "colPreset": "預設",
+    "colKind": "類型",
+    "colMakes": "輸出",
+    "colOptions": "主要選項",
+    "presetKinds": {
+      "convert": "轉換",
+      "group": "群組",
+      "tool": "工具視窗",
+      "copy": "複製"
+    },
+    "toolbarRow": "新增工具列「{name}」，包含 {n|other:# 個扇形}。",
+    "worksOn": "適用於",
+    "makes": "輸出",
+    "minVersion": "需要 Filee {version} 或更新版本。",
+    "defaults": "預設選項",
+    "options": {
+      "quality": "品質 {n}",
+      "longEdge": "長邊 {n} px",
+      "width": "寬度 {n} px",
+      "percent": "原始大小的 {n}%",
+      "customSize": "{w} × {h}",
+      "maxSize": "最大 {n} MB",
+      "grayscale": "黑白",
+      "removeBackground": "移除背景",
+      "stripMetadata": "移除中繼資料",
+      "mergePdf": "合併為一個 PDF",
+      "compressPdf": "壓縮 PDF",
+      "ocr": "辨識文字（OCR）",
+      "pageNumbers": "加上頁碼",
+      "mediaHigh": "高品質",
+      "mediaBalanced": "平衡品質",
+      "mediaSmall": "小檔案",
+      "maxHeight": "最高 {n}p",
+      "audioBitrate": "音訊 {n} kbps",
+      "askCompression": "每次詢問壓縮程度",
+      "group": "展開為 {n|other:# 個預設}",
+      "tool": "開啟獨立視窗"
+    },
+    "installTitle": "安裝",
+    "installSteps": [
+      "開啟 Filee，前往**預設**。",
+      "按一下**預設廣場**，找到「{title}」。",
+      "按一下**安裝**。這些預設會加在你自己的預設旁邊，絕不會取代它們。"
+    ],
+    "downloadButton": "下載預設檔案",
+    "downloadNote": "也可以下載檔案，在 Filee 設定的**一般 → 匯入…**中加入。",
+    "license": "{author} 以 CC0 1.0 分享了這個預設及其圖片：任何人都可以無條件使用、修改和分享。",
+    "licenseLink": "關於 CC0",
+    "commentsButton": "在 GitHub 上留言",
+    "report": "這個預設有問題嗎？請在留言中告訴我們，或[要求移除]({removal})。",
+    "back": "返回預設廣場",
+    "guideTitle": "分享你自己的預設",
+    "guideLead": "預設只是設定，不是程式，所以分享很安全，幾分鐘就能完成。",
+    "guideSteps": [
+      {
+        "title": "從 Filee 匯出",
+        "text": "在 Filee 設定中開啟**一般**，在「預設與工具列」下按一下**匯出…**。Filee 會把你的預設和工具列儲存成一個檔案。"
+      },
+      {
+        "title": "準備 1 到 4 張圖片",
+        "text": "展示預設的用途：它在環形工具列上的扇形、它的設定，或範例檔案轉換前後的對照。PNG、JPEG 或 WebP，長邊 640 到 2,560 px，每張最多 2 MB。第一張會當作封面。"
+      },
+      {
+        "title": "填寫表單",
+        "text": "按一下**{upload}**，登入 GitHub，加入檔案、圖片、標題和簡短說明。自動檢查會告訴你哪裡需要修正，之後由維護者發布。"
+      }
+    ],
+    "allowedTitle": "可以分享的內容",
+    "allowed": [
+      "轉換預設和工具預設，以及由它們組成的環形工具列。",
+      "每次上傳最多 20 個預設和一個工具列，檔案最大 256 KB。",
+      "你自己製作的圖片，內容是專為截圖準備的範例檔案。"
+    ],
+    "notAllowedTitle": "絕不分享的內容",
+    "notAllowed": [
+      "會執行程式或命令的預設。",
+      "網路和 Proxy 設定、自訂翻譯伺服器以及 API 金鑰。",
+      "來源檔案所在位置以外的輸出資料夾，以及任何地方的個人路徑或姓名。",
+      "真實文件、姓名、人臉或檔案路徑的圖片。"
+    ],
+    "ccTitle": "以 CC0 分享",
+    "ccText": "分享的預設及其圖片以 CC0 1.0 貢獻至公有領域：任何人都可以無條件使用、修改和分享。預設廣場仍會顯示每個預設的分享者。",
+    "removalTitle": "移除要求",
+    "removalText": "若要撤下你分享的預設，或檢舉違反這些規則、含有個人資訊的預設，請在 Filee-Presets 儲存庫中建立 issue。在那裡移除後，一小時內就會從本網站和應用程式中消失。",
+    "removalLink": "建立 issue"
   },
   "notFound": {
     "title": "找不到頁面",

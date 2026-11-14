@@ -11,6 +11,7 @@
     "how": "Cómo funciona",
     "formats": "Formatos",
     "cli": "Línea de comandos",
+    "presets": "Ajustes preestablecidos",
     "hwp": "HWP",
     "faq": "Preguntas",
     "download": "Descargar",
@@ -219,6 +220,7 @@
     "openSource": "Código abierto",
     "formats": "Todos los formatos",
     "cli": "Línea de comandos",
+    "presets": "Galería de ajustes preestablecidos",
     "popular": "Conversiones populares"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "Consigue Filee con el comando filee",
     "ctaText": "La línea de comandos viene con Filee para Windows 10/11: gratis, de código abierto y sin conexión."
+  },
+  "presets": {
+    "title": "Ajustes preestablecidos y menús circulares gratis | Filee",
+    "description": "Explora ajustes preestablecidos y menús circulares gratis que comparten los usuarios de Filee. Mira qué hace cada uno e instálalo con un clic. Bajo CC0.",
+    "crumb": "Galería de ajustes preestablecidos",
+    "h1": "Galería de ajustes preestablecidos",
+    "lead": "Ajustes preestablecidos y menús circulares listos para usar, compartidos por otros usuarios de Filee. Mira qué hace cada uno antes de instalarlo y comparte los tuyos.",
+    "upload": "Subir un ajuste preestablecido",
+    "guideButton": "Cómo se comparte",
+    "sortLabel": "Ordenar",
+    "sort": {
+      "hot": "Populares",
+      "best": "Mejores",
+      "new": "Nuevos"
+    },
+    "periodLabel": "Mejores de",
+    "periods": {
+      "day": "Hoy",
+      "week": "Esta semana",
+      "month": "Este mes",
+      "year": "Este año",
+      "all": "Todos los tiempos"
+    },
+    "searchLabel": "Buscar ajustes preestablecidos",
+    "searchPlaceholder": "Nombre, autor o etiqueta",
+    "filterKind": "Tipo",
+    "filterFormat": "Formato",
+    "filterTag": "Etiqueta",
+    "filterLanguage": "Idioma",
+    "any": "Todos",
+    "clear": "Quitar filtros",
+    "kinds": {
+      "convert": "Conversión",
+      "tool": "Herramienta",
+      "toolbar": "Menú circular"
+    },
+    "count": "{n|one:# ajuste preestablecido|many:# de ajustes preestablecidos|other:# ajustes preestablecidos}",
+    "empty": "Nadie ha compartido todavía un ajuste preestablecido. El tuyo podría ser el primero.",
+    "noMatch": "Ningún ajuste preestablecido coincide con estos filtros.",
+    "by": "por {author}",
+    "likes": "{n|one:# me gusta|many:# de me gusta|other:# me gusta}",
+    "downloads": "{n|one:# descarga|many:# de descargas|other:# descargas}",
+    "comments": "{n|one:# comentario|many:# de comentarios|other:# comentarios}",
+    "statsNote": "Los «me gusta» son reacciones 👍 en la discusión de cada ajuste preestablecido en GitHub. Los «me gusta» y las descargas se vuelven a contar cada hora.",
+    "detailTitle": "{title}: ajuste preestablecido de Filee, por {author}",
+    "detailDescription": "{title}: un ajuste preestablecido gratis de Filee que comparte {author}. Mira sus imágenes y qué hace, e instálalo desde la galería de Filee.",
+    "sharedBy": "Compartido por {author}",
+    "updated": "Actualizado el {date}",
+    "imageAlt": "{title}, imagen {n} de {total}",
+    "aboutTitle": "Sobre este ajuste preestablecido",
+    "whatTitle": "Qué hace",
+    "colPreset": "Ajuste preestablecido",
+    "colKind": "Tipo",
+    "colMakes": "Genera",
+    "colOptions": "Opciones principales",
+    "presetKinds": {
+      "convert": "Conversión",
+      "group": "Grupo",
+      "tool": "Ventana de herramienta",
+      "copy": "Copia"
+    },
+    "toolbarRow": "Añade el menú circular «{name}» con {n|one:# porción|many:# de porciones|other:# porciones}.",
+    "worksOn": "Funciona con",
+    "makes": "Genera",
+    "minVersion": "Requiere Filee {version} o posterior.",
+    "defaults": "Opciones predeterminadas",
+    "options": {
+      "quality": "Calidad {n}",
+      "longEdge": "Lado largo de {n} px",
+      "width": "Ancho de {n} px",
+      "percent": "{n} % del tamaño",
+      "customSize": "{w} × {h}",
+      "maxSize": "Hasta {n} MB",
+      "grayscale": "Blanco y negro",
+      "removeBackground": "Quita el fondo",
+      "stripMetadata": "Quita los metadatos",
+      "mergePdf": "Combina en un solo PDF",
+      "compressPdf": "Comprime el PDF",
+      "ocr": "Reconoce el texto (OCR)",
+      "pageNumbers": "Añade números de página",
+      "mediaHigh": "Alta calidad",
+      "mediaBalanced": "Calidad equilibrada",
+      "mediaSmall": "Archivos pequeños",
+      "maxHeight": "Hasta {n}p",
+      "audioBitrate": "Audio a {n} kbps",
+      "askCompression": "Pregunta la compresión cada vez",
+      "group": "Despliega {n|one:# ajuste preestablecido|many:# de ajustes preestablecidos|other:# ajustes preestablecidos}",
+      "tool": "Abre su propia ventana"
+    },
+    "installTitle": "Instalarlo",
+    "installSteps": [
+      "Abre Filee y ve a **Ajustes preestablecidos**.",
+      "Haz clic en **Galería de ajustes preestablecidos** y busca «{title}».",
+      "Haz clic en **Instalar**. Los ajustes preestablecidos se añaden junto a los tuyos y nunca los sustituyen."
+    ],
+    "downloadButton": "Descargar el archivo del ajuste preestablecido",
+    "downloadNote": "O descarga el archivo y añádelo en los ajustes de Filee, en **General → Importar…**",
+    "license": "{author} compartió este ajuste preestablecido y sus imágenes bajo CC0 1.0: cualquiera puede usarlos, modificarlos y compartirlos, sin condiciones.",
+    "licenseLink": "Sobre CC0",
+    "commentsButton": "Comentarios en GitHub",
+    "report": "¿Algo va mal con este ajuste preestablecido? Cuéntanoslo en sus comentarios o [pide que se retire]({removal}).",
+    "back": "Volver a la galería",
+    "guideTitle": "Comparte tu propio ajuste preestablecido",
+    "guideLead": "Los ajustes preestablecidos son configuraciones, no programas, así que compartir uno es seguro y lleva pocos minutos.",
+    "guideSteps": [
+      {
+        "title": "Expórtalo desde Filee",
+        "text": "En los ajustes de Filee, abre **General** y haz clic en **Exportar…**, en Ajustes preestablecidos y menús circulares. Filee guarda tus ajustes preestablecidos y menús circulares en un archivo."
+      },
+      {
+        "title": "Prepara de 1 a 4 imágenes",
+        "text": "Muestra lo que hace el ajuste preestablecido: su porción del menú circular, su configuración o un archivo de ejemplo antes y después. PNG, JPEG o WebP, de 640 a 2560 px en el lado largo y hasta 2 MB cada una. La primera es la portada."
+      },
+      {
+        "title": "Rellena el formulario",
+        "text": "Haz clic en **{upload}**, inicia sesión en GitHub y añade el archivo, las imágenes, un título y una breve descripción. Unas comprobaciones automáticas te avisan si hay algo que corregir y después un responsable del proyecto lo publica."
+      }
+    ],
+    "allowedTitle": "Qué se puede compartir",
+    "allowed": [
+      "Ajustes preestablecidos de conversión y de herramienta, y menús circulares hechos con ellos.",
+      "Hasta 20 ajustes preestablecidos y un menú circular por subida, en un archivo de 256 KB como máximo.",
+      "Imágenes hechas por ti, de archivos de ejemplo creados para la imagen."
+    ],
+    "notAllowedTitle": "Nunca se comparte",
+    "notAllowed": [
+      "Ajustes preestablecidos que ejecutan un programa o un comando.",
+      "Configuración de red y de proxy, servidores de traducción personalizados y claves de API.",
+      "Carpetas de salida que no sean la del archivo de origen, y rutas o nombres personales en cualquier parte.",
+      "Imágenes de documentos reales, nombres, caras o rutas de archivo."
+    ],
+    "ccTitle": "Compartido bajo CC0",
+    "ccText": "Los ajustes preestablecidos compartidos y sus imágenes se dedican al dominio público bajo CC0 1.0: cualquiera puede usarlos, modificarlos y compartirlos sin condiciones. La galería sigue mostrando quién compartió cada uno.",
+    "removalTitle": "Solicitudes de retirada",
+    "removalText": "Para retirar un ajuste preestablecido que compartiste, o para denunciar uno que incumple estas normas o muestra información personal, abre una incidencia en el repositorio Filee-Presets. En cuanto se retira allí, desaparece de este sitio y de la aplicación en menos de una hora.",
+    "removalLink": "Abrir una incidencia"
   },
   "notFound": {
     "title": "Página no encontrada",

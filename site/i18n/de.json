@@ -11,6 +11,7 @@
     "how": "So funktioniert's",
     "formats": "Formate",
     "cli": "Befehlszeile",
+    "presets": "Vorlagen",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Download",
@@ -219,6 +220,7 @@
     "openSource": "Open Source",
     "formats": "Alle Formate",
     "cli": "Befehlszeile",
+    "presets": "Vorlagengalerie",
     "popular": "Beliebte Konvertierungen"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "Filee mit dem Befehl filee holen",
     "ctaText": "Die Befehlszeile gehört zu Filee für Windows 10/11: kostenlos, quelloffen und offline."
+  },
+  "presets": {
+    "title": "Filee-Vorlagengalerie: Gratis-Vorlagen und Ringmenüs | Filee",
+    "description": "Kostenlose Vorlagen und Ringmenüs von Filee-Nutzern. Sieh dir an, was jede macht, und installiere sie mit einem Klick in Filee. Alles unter CC0.",
+    "crumb": "Vorlagengalerie",
+    "h1": "Vorlagengalerie",
+    "lead": "Fertige Vorlagen und Ringmenüs, die andere Filee-Nutzer teilen. Sieh dir vor der Installation an, was jede macht, und teile deine eigenen.",
+    "upload": "Vorlage hochladen",
+    "guideButton": "So funktioniert das Teilen",
+    "sortLabel": "Sortieren",
+    "sort": {
+      "hot": "Angesagt",
+      "best": "Beste",
+      "new": "Neu"
+    },
+    "periodLabel": "Zeitraum",
+    "periods": {
+      "day": "Heute",
+      "week": "Diese Woche",
+      "month": "Dieser Monat",
+      "year": "Dieses Jahr",
+      "all": "Alle Zeiten"
+    },
+    "searchLabel": "Vorlagen durchsuchen",
+    "searchPlaceholder": "Name, Autor oder Tag",
+    "filterKind": "Art",
+    "filterFormat": "Format",
+    "filterTag": "Tag",
+    "filterLanguage": "Sprache",
+    "any": "Alle",
+    "clear": "Filter zurücksetzen",
+    "kinds": {
+      "convert": "Konvertierung",
+      "tool": "Werkzeug",
+      "toolbar": "Ringmenü"
+    },
+    "count": "{n|one:# Vorlage|other:# Vorlagen}",
+    "empty": "Noch hat niemand eine Vorlage geteilt. Deine könnte die erste sein.",
+    "noMatch": "Keine Vorlage passt zu diesen Filtern.",
+    "by": "von {author}",
+    "likes": "{n|one:# Like|other:# Likes}",
+    "downloads": "{n|one:# Download|other:# Downloads}",
+    "comments": "{n|one:# Kommentar|other:# Kommentare}",
+    "statsNote": "Likes sind 👍-Reaktionen in der Diskussion zu jeder Vorlage auf GitHub. Likes und Downloads werden stündlich neu gezählt.",
+    "detailTitle": "{title}: Filee-Vorlage von {author}",
+    "detailDescription": "{title}: eine kostenlose Filee-Vorlage von {author}. Sieh dir Bilder und Funktion an und installiere sie dann aus der Vorlagengalerie von Filee.",
+    "sharedBy": "Geteilt von {author}",
+    "updated": "Aktualisiert am {date}",
+    "imageAlt": "{title}, Bild {n} von {total}",
+    "aboutTitle": "Über diese Vorlage",
+    "whatTitle": "Was sie macht",
+    "colPreset": "Vorlage",
+    "colKind": "Art",
+    "colMakes": "Erzeugt",
+    "colOptions": "Wichtigste Optionen",
+    "presetKinds": {
+      "convert": "Konvertierung",
+      "group": "Gruppe",
+      "tool": "Werkzeugfenster",
+      "copy": "Kopieren"
+    },
+    "toolbarRow": "Fügt das Ringmenü „{name}“ mit {n|one:# Segment|other:# Segmenten} hinzu.",
+    "worksOn": "Funktioniert mit",
+    "makes": "Erzeugt",
+    "minVersion": "Benötigt Filee {version} oder neuer.",
+    "defaults": "Standardoptionen",
+    "options": {
+      "quality": "Qualität {n}",
+      "longEdge": "Lange Kante {n} px",
+      "width": "Breite {n} px",
+      "percent": "{n} % der Größe",
+      "customSize": "{w} × {h}",
+      "maxSize": "Bis {n} MB",
+      "grayscale": "Schwarzweiß",
+      "removeBackground": "Entfernt den Hintergrund",
+      "stripMetadata": "Entfernt Metadaten",
+      "mergePdf": "Fügt zu einem PDF zusammen",
+      "compressPdf": "Komprimiert das PDF",
+      "ocr": "Erkennt Text (OCR)",
+      "pageNumbers": "Fügt Seitenzahlen hinzu",
+      "mediaHigh": "Hohe Qualität",
+      "mediaBalanced": "Ausgewogene Qualität",
+      "mediaSmall": "Kleine Dateien",
+      "maxHeight": "Bis {n}p",
+      "audioBitrate": "Audio {n} kbps",
+      "askCompression": "Fragt jedes Mal nach der Komprimierung",
+      "group": "Fächert {n|one:# Vorlage|other:# Vorlagen} auf",
+      "tool": "Öffnet ein eigenes Fenster"
+    },
+    "installTitle": "Installieren",
+    "installSteps": [
+      "Öffne Filee und gehe zu **Vorlagen**.",
+      "Klicke auf **Vorlagengalerie** und suche „{title}“.",
+      "Klicke auf **Installieren**. Die Vorlagen kommen zu deinen eigenen hinzu und ersetzen sie nie."
+    ],
+    "downloadButton": "Vorlagendatei herunterladen",
+    "downloadNote": "Oder lade die Datei herunter und füge sie in den Filee-Einstellungen unter **Allgemein → Importieren…** hinzu.",
+    "license": "{author} hat diese Vorlage und ihre Bilder unter CC0 1.0 geteilt: Alle dürfen sie ohne Bedingungen nutzen, ändern und weitergeben.",
+    "licenseLink": "Über CC0",
+    "commentsButton": "Kommentare auf GitHub",
+    "report": "Stimmt mit dieser Vorlage etwas nicht? Schreib es in die Kommentare oder [beantrage ihre Entfernung]({removal}).",
+    "back": "Zurück zur Galerie",
+    "guideTitle": "Teile deine eigene Vorlage",
+    "guideLead": "Vorlagen sind Einstellungen, keine Programme. Das Teilen ist daher sicher und dauert nur ein paar Minuten.",
+    "guideSteps": [
+      {
+        "title": "Aus Filee exportieren",
+        "text": "Öffne in den Filee-Einstellungen **Allgemein** und klicke unter Vorlagen und Werkzeugleisten auf **Exportieren…**. Filee speichert deine Vorlagen und Werkzeugleisten in einer Datei."
+      },
+      {
+        "title": "1 bis 4 Bilder erstellen",
+        "text": "Zeig, was die Vorlage macht: ihr Ringmenüsegment, ihre Einstellungen oder eine Beispieldatei vorher und nachher. PNG, JPEG oder WebP, 640 bis 2.560 px an der langen Kante, jeweils bis 2 MB. Das erste Bild wird zum Titelbild."
+      },
+      {
+        "title": "Formular ausfüllen",
+        "text": "Klicke auf **{upload}**, melde dich bei GitHub an und füge die Datei, die Bilder, einen Titel und eine kurze Beschreibung hinzu. Automatische Prüfungen sagen dir, wenn etwas korrigiert werden muss, danach veröffentlicht ein Maintainer die Vorlage."
+      }
+    ],
+    "allowedTitle": "Was geteilt werden darf",
+    "allowed": [
+      "Konvertierungs- und Werkzeugvorlagen sowie daraus gebaute Ringmenüs.",
+      "Bis zu 20 Vorlagen und ein Ringmenü pro Upload, in einer Datei von höchstens 256 KB.",
+      "Selbst erstellte Bilder von Beispieldateien, die eigens dafür angelegt wurden."
+    ],
+    "notAllowedTitle": "Wird nie geteilt",
+    "notAllowed": [
+      "Vorlagen, die ein Programm oder einen Befehl ausführen.",
+      "Netzwerk- und Proxy-Einstellungen, eigene Übersetzungsserver und API-Schlüssel.",
+      "Andere Ausgabeordner als neben der Quelldatei sowie persönliche Pfade oder Namen jeglicher Art.",
+      "Bilder von echten Dokumenten, Namen, Gesichtern oder Dateipfaden."
+    ],
+    "ccTitle": "Geteilt unter CC0",
+    "ccText": "Geteilte Vorlagen und ihre Bilder werden unter CC0 1.0 gemeinfrei gestellt: Alle dürfen sie ohne Bedingungen nutzen, ändern und weitergeben. Die Galerie zeigt trotzdem, wer welche Vorlage geteilt hat.",
+    "removalTitle": "Anträge auf Entfernung",
+    "removalText": "Um eine von dir geteilte Vorlage zu entfernen oder eine zu melden, die gegen diese Regeln verstößt oder persönliche Daten zeigt, eröffne ein Issue im Repository Filee-Presets. Sobald sie dort entfernt ist, verschwindet sie innerhalb einer Stunde von dieser Website und aus der App.",
+    "removalLink": "Issue eröffnen"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

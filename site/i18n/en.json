@@ -11,6 +11,7 @@
     "how": "How it works",
     "formats": "Formats",
     "cli": "Command line",
+    "presets": "Presets",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Download",
@@ -219,6 +220,7 @@
     "openSource": "Open source",
     "formats": "All formats",
     "cli": "Command line",
+    "presets": "Preset gallery",
     "popular": "Popular conversions"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "Get Filee with the filee command",
     "ctaText": "The command line comes with Filee for Windows 10/11: free, open source and offline."
+  },
+  "presets": {
+    "title": "Filee Preset Gallery: Free Presets and Donut Toolbars | Filee",
+    "description": "Browse free presets and donut toolbars shared by Filee users. See what each one does, then install it in Filee in one click. All shared under CC0.",
+    "crumb": "Preset gallery",
+    "h1": "Preset gallery",
+    "lead": "Ready-made presets and donut toolbars shared by other Filee users. See what each one does before you install it, and share your own.",
+    "upload": "Upload a preset",
+    "guideButton": "How sharing works",
+    "sortLabel": "Sort",
+    "sort": {
+      "hot": "Hot",
+      "best": "Best",
+      "new": "New"
+    },
+    "periodLabel": "Best of",
+    "periods": {
+      "day": "Today",
+      "week": "This week",
+      "month": "This month",
+      "year": "This year",
+      "all": "All time"
+    },
+    "searchLabel": "Search presets",
+    "searchPlaceholder": "Name, author or tag",
+    "filterKind": "Kind",
+    "filterFormat": "Format",
+    "filterTag": "Tag",
+    "filterLanguage": "Language",
+    "any": "All",
+    "clear": "Clear filters",
+    "kinds": {
+      "convert": "Conversion",
+      "tool": "Tool",
+      "toolbar": "Toolbar"
+    },
+    "count": "{n|one:# preset|other:# presets}",
+    "empty": "Nobody has shared a preset yet. Yours could be the first.",
+    "noMatch": "No preset matches these filters.",
+    "by": "by {author}",
+    "likes": "{n|one:# like|other:# likes}",
+    "downloads": "{n|one:# download|other:# downloads}",
+    "comments": "{n|one:# comment|other:# comments}",
+    "statsNote": "Likes are 👍 reactions on each preset's discussion on GitHub. Likes and downloads are counted again every hour.",
+    "detailTitle": "{title}: Filee preset by {author}",
+    "detailDescription": "{title}: a free Filee preset shared by {author}. See its pictures and what it does, then install it from Filee's preset gallery.",
+    "sharedBy": "Shared by {author}",
+    "updated": "Updated {date}",
+    "imageAlt": "{title}, picture {n} of {total}",
+    "aboutTitle": "About this preset",
+    "whatTitle": "What it does",
+    "colPreset": "Preset",
+    "colKind": "Kind",
+    "colMakes": "Makes",
+    "colOptions": "Main options",
+    "presetKinds": {
+      "convert": "Conversion",
+      "group": "Group",
+      "tool": "Tool window",
+      "copy": "Copy"
+    },
+    "toolbarRow": "Adds the toolbar “{name}” with {n|one:# slice|other:# slices}.",
+    "worksOn": "Works on",
+    "makes": "Makes",
+    "minVersion": "Needs Filee {version} or later.",
+    "defaults": "Default options",
+    "options": {
+      "quality": "Quality {n}",
+      "longEdge": "Long edge {n} px",
+      "width": "Width {n} px",
+      "percent": "{n}% of the size",
+      "customSize": "{w} × {h}",
+      "maxSize": "Up to {n} MB",
+      "grayscale": "Black and white",
+      "removeBackground": "Removes the background",
+      "stripMetadata": "Removes metadata",
+      "mergePdf": "Merges into one PDF",
+      "compressPdf": "Compresses the PDF",
+      "ocr": "Recognizes text (OCR)",
+      "pageNumbers": "Adds page numbers",
+      "mediaHigh": "High quality",
+      "mediaBalanced": "Balanced quality",
+      "mediaSmall": "Small files",
+      "maxHeight": "Up to {n}p",
+      "audioBitrate": "Audio {n} kbps",
+      "askCompression": "Asks for the compression each time",
+      "group": "Fans out {n|one:# preset|other:# presets}",
+      "tool": "Opens its own window"
+    },
+    "installTitle": "Install it",
+    "installSteps": [
+      "Open Filee and go to **Presets**.",
+      "Click **Preset gallery** and find “{title}”.",
+      "Click **Install**. The presets are added next to your own and never replace them."
+    ],
+    "downloadButton": "Download the preset file",
+    "downloadNote": "Or download the file, then open **General** in Filee's settings and click **Import…**",
+    "license": "{author} shared this preset and its pictures under CC0 1.0: anyone may use, change and share them, without conditions.",
+    "licenseLink": "About CC0",
+    "commentsButton": "Comments on GitHub",
+    "report": "Something wrong with this preset? Tell us in its comments, or [ask for its removal]({removal}).",
+    "back": "Back to the gallery",
+    "guideTitle": "Share your own preset",
+    "guideLead": "Presets are settings, not programs, so sharing one is safe and takes a few minutes.",
+    "guideSteps": [
+      {
+        "title": "Export it from Filee",
+        "text": "In Filee's settings, open **General** and click **Export…** under Presets and toolbars. Filee saves your presets and toolbars to a file."
+      },
+      {
+        "title": "Make 1 to 4 pictures",
+        "text": "Show what the preset does: its donut slice, its settings, or a sample file before and after. PNG, JPEG or WebP, 640 to 2,560 px on the long edge, up to 2 MB each. The first one is the cover."
+      },
+      {
+        "title": "Fill in the form",
+        "text": "Click **{upload}**, sign in to GitHub, and add the file, the pictures, a title and a short description. Automatic checks tell you if something needs fixing, then a maintainer publishes it."
+      }
+    ],
+    "allowedTitle": "What may be shared",
+    "allowed": [
+      "Conversion and tool presets, and donut toolbars made of them.",
+      "Up to 20 presets and one toolbar per upload, in a file of at most 256 KB.",
+      "Pictures you made yourself, of sample files made for the picture."
+    ],
+    "notAllowedTitle": "Never shared",
+    "notAllowed": [
+      "Presets that run a program or a command.",
+      "Network and proxy settings, custom translation servers and API keys.",
+      "Output folders other than next to the source file, and personal paths or names anywhere.",
+      "Pictures of real documents, names, faces or file paths."
+    ],
+    "ccTitle": "Shared under CC0",
+    "ccText": "Shared presets and their pictures are dedicated to the public domain under CC0 1.0: anyone may use, change and share them without conditions. The gallery still shows who shared each one.",
+    "removalTitle": "Removal requests",
+    "removalText": "To take down a preset you shared, or to report one that breaks these rules or shows personal information, open an issue in the Filee-Presets repository. Once it is removed there, it leaves this site and the app within the hour.",
+    "removalLink": "Open an issue"
   },
   "notFound": {
     "title": "Page not found",

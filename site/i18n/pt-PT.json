@@ -11,6 +11,7 @@
     "how": "Como funciona",
     "formats": "Formatos",
     "cli": "Linha de comandos",
+    "presets": "Predefinições",
     "hwp": "HWP",
     "faq": "Perguntas",
     "download": "Descarregar",
@@ -219,6 +220,7 @@
     "openSource": "Código aberto",
     "formats": "Todos os formatos",
     "cli": "Linha de comandos",
+    "presets": "Galeria de predefinições",
     "popular": "Conversões populares"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "Descarrega o Filee com o comando filee",
     "ctaText": "A linha de comandos vem com o Filee para Windows 10/11: gratuito, de código aberto e offline."
+  },
+  "presets": {
+    "title": "Predefinições e barras circulares gratuitas | Filee",
+    "description": "Explora predefinições e barras circulares gratuitas partilhadas por utilizadores do Filee. Vê o que cada uma faz e instala-a com um clique. Tudo em CC0.",
+    "crumb": "Galeria de predefinições",
+    "h1": "Galeria de predefinições",
+    "lead": "Predefinições e barras circulares prontas a usar, partilhadas por outros utilizadores do Filee. Vê o que cada uma faz antes de a instalar e partilha as tuas.",
+    "upload": "Carregar uma predefinição",
+    "guideButton": "Como funciona a partilha",
+    "sortLabel": "Ordenar",
+    "sort": {
+      "hot": "Populares",
+      "best": "Melhores",
+      "new": "Recentes"
+    },
+    "periodLabel": "Melhores de",
+    "periods": {
+      "day": "Hoje",
+      "week": "Esta semana",
+      "month": "Este mês",
+      "year": "Este ano",
+      "all": "Sempre"
+    },
+    "searchLabel": "Pesquisar predefinições",
+    "searchPlaceholder": "Nome, autor ou etiqueta",
+    "filterKind": "Tipo",
+    "filterFormat": "Formato",
+    "filterTag": "Etiqueta",
+    "filterLanguage": "Idioma",
+    "any": "Todos",
+    "clear": "Limpar filtros",
+    "kinds": {
+      "convert": "Conversão",
+      "tool": "Ferramenta",
+      "toolbar": "Barra circular"
+    },
+    "count": "{n|one:# predefinição|many:# de predefinições|other:# predefinições}",
+    "empty": "Ainda ninguém partilhou uma predefinição. A tua pode ser a primeira.",
+    "noMatch": "Nenhuma predefinição corresponde a estes filtros.",
+    "by": "de {author}",
+    "likes": "{n|one:# gosto|many:# de gostos|other:# gostos}",
+    "downloads": "{n|one:# transferência|many:# de transferências|other:# transferências}",
+    "comments": "{n|one:# comentário|many:# de comentários|other:# comentários}",
+    "statsNote": "Os gostos são reações 👍 na discussão de cada predefinição no GitHub. Os gostos e as transferências são contados de novo a cada hora.",
+    "detailTitle": "{title}: predefinição do Filee partilhada por {author}",
+    "detailDescription": "{title}: uma predefinição gratuita do Filee partilhada por {author}. Vê as imagens e o que faz, e instala-a a partir da galeria de predefinições.",
+    "sharedBy": "Partilhada por {author}",
+    "updated": "Atualizada a {date}",
+    "imageAlt": "{title}, imagem {n} de {total}",
+    "aboutTitle": "Sobre esta predefinição",
+    "whatTitle": "O que faz",
+    "colPreset": "Predefinição",
+    "colKind": "Tipo",
+    "colMakes": "Cria",
+    "colOptions": "Opções principais",
+    "presetKinds": {
+      "convert": "Conversão",
+      "group": "Grupo",
+      "tool": "Janela de ferramenta",
+      "copy": "Cópia"
+    },
+    "toolbarRow": "Adiciona a barra circular «{name}» com {n|one:# segmento|many:# de segmentos|other:# segmentos}.",
+    "worksOn": "Funciona com",
+    "makes": "Cria",
+    "minVersion": "Requer o Filee {version} ou posterior.",
+    "defaults": "Opções predefinidas",
+    "options": {
+      "quality": "Qualidade {n}",
+      "longEdge": "Lado maior com {n} px",
+      "width": "Largura de {n} px",
+      "percent": "{n}% do tamanho",
+      "customSize": "{w} × {h}",
+      "maxSize": "Até {n} MB",
+      "grayscale": "Preto e branco",
+      "removeBackground": "Remove o fundo",
+      "stripMetadata": "Remove os metadados",
+      "mergePdf": "Junta num só PDF",
+      "compressPdf": "Comprime o PDF",
+      "ocr": "Reconhece o texto (OCR)",
+      "pageNumbers": "Adiciona números de página",
+      "mediaHigh": "Alta qualidade",
+      "mediaBalanced": "Qualidade equilibrada",
+      "mediaSmall": "Ficheiros pequenos",
+      "maxHeight": "Até {n}p",
+      "audioBitrate": "Áudio a {n} kbps",
+      "askCompression": "Pergunta a compressão de cada vez",
+      "group": "Abre-se em {n|one:# predefinição|many:# de predefinições|other:# predefinições}",
+      "tool": "Abre a sua própria janela"
+    },
+    "installTitle": "Instalar",
+    "installSteps": [
+      "Abre o Filee e vai a **Predefinições**.",
+      "Clica em **Galeria de predefinições** e procura «{title}».",
+      "Clica em **Instalar**. As predefinições são adicionadas ao lado das tuas e nunca as substituem."
+    ],
+    "downloadButton": "Descarregar o ficheiro da predefinição",
+    "downloadNote": "Ou descarrega o ficheiro e adiciona-o nas definições do Filee, em **Geral → Importar…**",
+    "license": "{author} partilhou esta predefinição e as respetivas imagens em CC0 1.0: qualquer pessoa as pode usar, alterar e partilhar, sem condições.",
+    "licenseLink": "Sobre a CC0",
+    "commentsButton": "Comentários no GitHub",
+    "report": "Algo de errado com esta predefinição? Diz-nos nos comentários ou [pede a remoção]({removal}).",
+    "back": "Voltar à galeria",
+    "guideTitle": "Partilha a tua predefinição",
+    "guideLead": "As predefinições são configurações, não programas, por isso partilhar uma é seguro e demora poucos minutos.",
+    "guideSteps": [
+      {
+        "title": "Exporta-a do Filee",
+        "text": "Nas definições do Filee, abre **Geral** e clica em **Exportar…** em Predefinições e barras. O Filee guarda as tuas predefinições e barras circulares num ficheiro."
+      },
+      {
+        "title": "Prepara 1 a 4 imagens",
+        "text": "Mostra o que a predefinição faz: o segmento na barra circular, as opções ou um ficheiro de exemplo antes e depois. PNG, JPEG ou WebP, de 640 a 2560 px no lado maior, até 2 MB cada. A primeira é a capa."
+      },
+      {
+        "title": "Preenche o formulário",
+        "text": "Clica em **{upload}**, inicia sessão no GitHub e adiciona o ficheiro, as imagens, um título e uma descrição curta. Verificações automáticas avisam-te se algo tiver de ser corrigido e depois um responsável publica-a."
+      }
+    ],
+    "allowedTitle": "O que pode ser partilhado",
+    "allowed": [
+      "Predefinições de conversão e de ferramenta, e barras circulares feitas com elas.",
+      "Até 20 predefinições e uma barra circular por envio, num ficheiro de 256 KB no máximo.",
+      "Imagens feitas por ti, de ficheiros de exemplo criados para a imagem."
+    ],
+    "notAllowedTitle": "Nunca é partilhado",
+    "notAllowed": [
+      "Predefinições que executam um programa ou um comando.",
+      "Definições de rede e de proxy, servidores de tradução personalizados e chaves de API.",
+      "Pastas de saída que não fiquem junto ao ficheiro de origem, e caminhos ou nomes pessoais em qualquer lado.",
+      "Imagens de documentos reais, nomes, rostos ou caminhos de ficheiros."
+    ],
+    "ccTitle": "Partilhado em CC0",
+    "ccText": "As predefinições partilhadas e as respetivas imagens são dedicadas ao domínio público em CC0 1.0: qualquer pessoa as pode usar, alterar e partilhar sem condições. A galeria continua a mostrar quem partilhou cada uma.",
+    "removalTitle": "Pedidos de remoção",
+    "removalText": "Para retirar uma predefinição que partilhaste, ou denunciar uma que viole estas regras ou mostre dados pessoais, abre uma issue no repositório Filee-Presets. Depois de ser removida lá, desaparece deste site e da aplicação no espaço de uma hora.",
+    "removalLink": "Abrir uma issue"
   },
   "notFound": {
     "title": "Página não encontrada",

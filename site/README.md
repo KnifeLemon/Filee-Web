@@ -1,6 +1,6 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in twenty-two languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish, European Portuguese, German, Italian, Indonesian, Vietnamese, Bengali, Persian), deployed to Cloudflare Workers (static assets).
+The Filee website: a static, dependency-free site in twenty-two languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish, European Portuguese, German, Italian, Indonesian, Vietnamese, Bengali, Persian), deployed to Cloudflare Workers (static assets, plus a small Worker for the preset gallery's download counter).
 
 ```
 site/
@@ -16,6 +16,10 @@ site/
                             404 page
   src/formats-page.mjs      format catalog: /formats/, /ko/formats/, /zh-cn/formats/, /pl/formats/…
   src/convert-page.mjs      conversion guides: /convert/<from>-to-<to>/ (and /ko/…, /zh-cn/…, /pl/…, /es/…, /hi/…, /ja/…, /ru/…, /ar/…, /pt-br/…)
+  src/presets-page.mjs      preset gallery: /presets/ (tabs, filters, search, the guide to sharing) and /presets/<id>/
+  src/presets.mjs           the gallery's data: Filee-Presets' index.json and files, likes and comments (GitHub), downloads (D1)
+  src/preset-stats.mjs      Hot and Best rankings (shared by the build and gallery.js)
+  src/gallery.js            the gallery's tabs, filters and search in the browser
   src/llms.mjs              llms.txt and llms-full.txt
   src/sponsors.mjs          sponsors: the app's sponsors.json and logos, read from GitHub at build time, shown in a
                             home page section, under the hero's download button and in the after-download dialog;
@@ -30,7 +34,9 @@ site/
                             _headers, _redirects; stops on catalog or i18n inconsistencies
   check.mjs                 checks dist/: titles, descriptions, canonical, hreflang reciprocity, JSON-LD, links, sitemap
   serve.mjs                 local preview with rebuild on change
-  wrangler.jsonc            Cloudflare config (custom domain filee.sh)
+  worker/index.mjs          the Worker: /presets/download/<id> only (serves the file, counts it per day in D1)
+  presets.test.mjs          tests of the rankings, the index entries and the Worker (node --test)
+  wrangler.jsonc            Cloudflare config (custom domain filee.sh, the Worker's routes, the D1 binding)
 ```
 
 ## Develop
@@ -88,6 +94,7 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 | Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
 | Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 22 languages) |
+| Preset gallery | `/presets/`, `/presets/<id>/` … | Filee-Presets' index.json, read at build time (see Preset gallery) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
 `/convert/` itself redirects to the format catalog. Every page has canonical + hreflang (with `x-default` = English),
@@ -131,9 +138,55 @@ latest release at build time and links the Setup and portable zip on the mirror 
 with the release's size (otherwise on GitHub). macOS packages are labelled previews (`PREVIEW_TARGETS` in `src/downloads.mjs`); Windows
 and Linux are full releases.
 
+## Preset gallery
+
+`/presets/` (and `/ko/presets/`…) lists the presets and donut toolbars that Filee users share through
+[KnifeLemon/Filee-Presets](https://github.com/KnifeLemon/Filee-Presets) (design: KnifeLemon/Filee#1530), with a page per
+preset at `/presets/<id>/`. Nothing is stored here: every build reads the repository again.
+
+- **Data** (`src/presets.mjs`): the repository's `index.json` and each listed preset's `preset.json` and pictures, read
+  from `raw.githubusercontent.com` (`PRESETS=<folder>` reads a local checkout). An entry with a bad id, a path outside
+  its own folder, or a `preset.json` whose SHA-256 differs from the index is left out with a warning. An empty
+  repository gives an empty gallery ("be the first"), not a failed build. The ids `files`, `download` and `index` are
+  reserved (they are paths of the gallery itself).
+- **Output**: `/presets/index.json` (the repository's index with `stats` filled in and a `download` link; its paths are
+  relative to the index, `files/presets/<id>/…`, so the app resolves them the same way against GitHub's copy) and the
+  files mirrored under `/presets/files/presets/<id>/…` (the Content-Security-Policy allows images from this site only).
+- **Likes and comments**: 👍 reactions (with their dates) and the comment count of each preset's discussion, from the
+  GitHub GraphQL API, which needs a token: `GITHUB_TOKEN` (or `GH_TOKEN`), any token, public data only.
+- **Downloads**: `https://filee.sh/presets/download/<id>` runs `worker/index.mjs` (`run_worker_first` in
+  `wrangler.jsonc`; every other path is served as static assets without the Worker). It serves the mirrored
+  `preset.json` and adds one to `downloads(slug, day, n)` in the D1 database `filee-presets`, one row per preset per UTC
+  day; no IP, user agent or cookie is stored. Each Worker instance counts at most 30 downloads per preset per minute
+  (later ones are served, not counted): a naive cap against a script looping on the link. The build reads the counters
+  through the Cloudflare API when `CLOUDFLARE_API_TOKEN` (D1 Read) and `CLOUDFLARE_ACCOUNT_ID` are set
+  (`PRESETS_D1_ID`, or the database is found by name).
+- **Without tokens** (a local build, a manual deploy): the build keeps the stats published on filee.sh now
+  (`/presets/index.json`), so a deploy doesn't reset them; with either source set, it computes them.
+- **Rankings** (`src/preset-stats.mjs`, tested in `presets.test.mjs`):
+  - **Hot** = Σ likes 5 · 2^(−age / 72 h) + Σ downloads 1 · 2^(−age / 72 h) + 3 · 2^(−time since publication / 72 h).
+    A like or a download weighs half as much every three days; a like weighs five downloads (a deliberate vote
+    against a cheap, repeatable action); publication counts as a short boost so new presets are seen. Downloads are
+    counted per day, aged from the middle of that day.
+  - **Best**: likes received in the last day, 7 days, 30 days, 365 days, or ever. **New**: publication date.
+  - Ties go to more downloads, then the newer preset.
+- **In the browser** (`src/gallery.js`, gallery page only): the tabs, the Best period, the filters (kind, format, tag,
+  language) and the search sort and filter the server-rendered cards with the same `rank()`, and keep the choice in the
+  address (`?sort=best&period=month&tag=pdf`). Without JavaScript the cards stay in Hot order.
+- **Hourly rebuild**: `.github/workflows/presets-hourly.yml` builds and deploys every hour so new presets, likes and
+  downloads show up. It is off until the repository variable `PRESETS_HOURLY` is `true` and the secrets
+  `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set (see the file).
+- **Setup once**: nothing to create by hand. `wrangler deploy` binds the D1 database `filee-presets` and creates it on
+  the first deploy (no `database_id` in `wrangler.jsonc`; Wrangler's automatic provisioning), and the Worker creates its
+  table on the first download. The deploy token needs D1 Edit as well as Workers Scripts Edit. With Workers Builds, add
+  `GITHUB_TOKEN`, `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as build variables so its builds fill the stats.
+- **Local preview**: `node serve.mjs` serves `/presets/download/<id>` like the Worker (without counting). To see the
+  pages with presets before the repository has any, point `PRESETS` at a folder laid out like the repository.
+
 ## Deploy to Cloudflare
 
-The site is a Worker with static assets only, so it is free to serve and needs no Worker code.
+The site is a Worker with static assets. Its only code, `worker/index.mjs`, runs for the preset gallery's download
+links (`/presets/download/*`); every other request is served as a static asset without it.
 
 ### Automatic deploys from GitHub (recommended)
 

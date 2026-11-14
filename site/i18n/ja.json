@@ -11,6 +11,7 @@
     "how": "使い方",
     "formats": "対応形式",
     "cli": "コマンドライン",
+    "presets": "プリセット",
     "hwp": "HWP",
     "faq": "よくある質問",
     "download": "ダウンロード",
@@ -219,6 +220,7 @@
     "openSource": "オープンソース",
     "formats": "すべての形式",
     "cli": "コマンドライン",
+    "presets": "プリセットギャラリー",
     "popular": "よく使われる変換"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "fileeコマンド付きのFileeを入手",
     "ctaText": "コマンドラインはWindows 10/11版のFileeに付属しています。無料、オープンソース、オフラインで使えます。"
+  },
+  "presets": {
+    "title": "プリセットギャラリー：無料プリセットとドーナツメニュー | Filee",
+    "description": "Fileeユーザーが共有した無料のプリセットとドーナツメニュー。中身を確かめてから、ワンクリックでFileeにインストール。すべてCC0で共有されています。",
+    "crumb": "プリセットギャラリー",
+    "h1": "プリセットギャラリー",
+    "lead": "ほかのFileeユーザーが共有した、すぐに使えるプリセットとドーナツメニュー。インストールする前に中身を確かめられます。自分のものも共有してみましょう。",
+    "upload": "プリセットをアップロード",
+    "guideButton": "共有のしかた",
+    "sortLabel": "並べ替え",
+    "sort": {
+      "hot": "注目",
+      "best": "高評価",
+      "new": "新着"
+    },
+    "periodLabel": "期間",
+    "periods": {
+      "day": "今日",
+      "week": "今週",
+      "month": "今月",
+      "year": "今年",
+      "all": "全期間"
+    },
+    "searchLabel": "プリセットを検索",
+    "searchPlaceholder": "名前、作者、タグ",
+    "filterKind": "種類",
+    "filterFormat": "形式",
+    "filterTag": "タグ",
+    "filterLanguage": "言語",
+    "any": "すべて",
+    "clear": "絞り込みを解除",
+    "kinds": {
+      "convert": "変換",
+      "tool": "ツール",
+      "toolbar": "ドーナツメニュー"
+    },
+    "count": "{n|other:#件のプリセット}",
+    "empty": "まだ誰もプリセットを共有していません。最初の1件はあなたのものかもしれません。",
+    "noMatch": "この条件に合うプリセットはありません。",
+    "by": "作成：{author}",
+    "likes": "{n|other:いいね#件}",
+    "downloads": "{n|other:#回ダウンロード}",
+    "comments": "{n|other:コメント#件}",
+    "statsNote": "いいねは、GitHub上の各プリセットのディスカッションに付いた👍リアクションの数です。いいねとダウンロード数は1時間ごとに集計し直します。",
+    "detailTitle": "{title}：{author}さんのFileeプリセット",
+    "detailDescription": "{title}：{author}さんが共有した無料のFileeプリセット。画像と機能を確かめて、Fileeのプリセットギャラリーからインストール。",
+    "sharedBy": "共有者：{author}",
+    "updated": "{date}に更新",
+    "imageAlt": "{title}、画像{n}/{total}",
+    "aboutTitle": "このプリセットについて",
+    "whatTitle": "できること",
+    "colPreset": "プリセット",
+    "colKind": "種類",
+    "colMakes": "出力",
+    "colOptions": "主なオプション",
+    "presetKinds": {
+      "convert": "変換",
+      "group": "グループ",
+      "tool": "ツールウィンドウ",
+      "copy": "コピー"
+    },
+    "toolbarRow": "ドーナツメニュー「{name}」を追加します（{n|other:#項目}）。",
+    "worksOn": "対象",
+    "makes": "出力",
+    "minVersion": "Filee {version}以降が必要です。",
+    "defaults": "既定のオプション",
+    "options": {
+      "quality": "品質 {n}",
+      "longEdge": "長辺 {n} px",
+      "width": "幅 {n} px",
+      "percent": "元のサイズの{n}%",
+      "customSize": "{w} × {h}",
+      "maxSize": "最大 {n} MB",
+      "grayscale": "白黒",
+      "removeBackground": "背景を削除",
+      "stripMetadata": "メタデータを削除",
+      "mergePdf": "1つのPDFに結合",
+      "compressPdf": "PDFを圧縮",
+      "ocr": "文字を認識（OCR）",
+      "pageNumbers": "ページ番号を追加",
+      "mediaHigh": "高画質",
+      "mediaBalanced": "バランス",
+      "mediaSmall": "小さいファイル",
+      "maxHeight": "最大 {n}p",
+      "audioBitrate": "音声 {n} kbps",
+      "askCompression": "毎回圧縮率を確認",
+      "group": "{n|other:#件のプリセット}をまとめて実行",
+      "tool": "専用のウィンドウを開く"
+    },
+    "installTitle": "インストール",
+    "installSteps": [
+      "Fileeを開いて**プリセット**に移動します。",
+      "**プリセットギャラリー**をクリックして「{title}」を探します。",
+      "**インストール**をクリックします。プリセットは自分のプリセットの横に追加され、置き換えられることはありません。"
+    ],
+    "downloadButton": "プリセットファイルをダウンロード",
+    "downloadNote": "ファイルをダウンロードして、Fileeの設定の**一般 → インポート…**から追加することもできます。",
+    "license": "{author}さんはこのプリセットと画像をCC0 1.0で共有しています。誰でも条件なしに利用、改変、共有できます。",
+    "licenseLink": "CC0について",
+    "commentsButton": "GitHubでコメント",
+    "report": "このプリセットに問題がありますか？コメントでお知らせいただくか、[削除を依頼]({removal})してください。",
+    "back": "ギャラリーに戻る",
+    "guideTitle": "自分のプリセットを共有する",
+    "guideLead": "プリセットはプログラムではなく設定なので、安全に共有でき、数分で済みます。",
+    "guideSteps": [
+      {
+        "title": "Fileeからエクスポート",
+        "text": "Fileeの設定で**一般**を開き、「プリセットとドーナツメニュー」の**エクスポート…**をクリックします。プリセットとドーナツメニューが1つのファイルに保存されます。"
+      },
+      {
+        "title": "画像を1～4枚用意",
+        "text": "プリセットのできることを見せましょう。ドーナツの項目、設定画面、サンプルファイルの変換前後など。PNG、JPEG、WebPで、長辺640～2,560 px、1枚あたり2 MBまで。1枚目が表紙になります。"
+      },
+      {
+        "title": "フォームに入力",
+        "text": "**{upload}**をクリックしてGitHubにサインインし、ファイル、画像、タイトル、短い説明を追加します。直すところがあれば自動チェックが知らせ、その後メンテナーが公開します。"
+      }
+    ],
+    "allowedTitle": "共有できるもの",
+    "allowed": [
+      "変換プリセットとツールプリセット、およびそれらで作ったドーナツメニュー。",
+      "1回のアップロードにつきプリセット20件まで、ドーナツメニュー1つまで。ファイルは256 KB以下。",
+      "自分で作った画像で、画像用に用意したサンプルファイルを写したもの。"
+    ],
+    "notAllowedTitle": "共有できないもの",
+    "notAllowed": [
+      "プログラムやコマンドを実行するプリセット。",
+      "ネットワークとプロキシの設定、独自の翻訳サーバー、APIキー。",
+      "元のファイルと同じ場所以外の出力フォルダー、および個人のパスや名前（どこに含まれていても）。",
+      "実際の文書、名前、顔、ファイルパスが写った画像。"
+    ],
+    "ccTitle": "CC0で共有",
+    "ccText": "共有されたプリセットとその画像は、CC0 1.0によりパブリックドメインに提供されます。誰でも条件なしに利用、改変、共有できます。ギャラリーには、それぞれを共有した人が引き続き表示されます。",
+    "removalTitle": "削除の依頼",
+    "removalText": "自分が共有したプリセットを取り下げたいとき、またはこのルールに反するプリセットや個人情報が写ったプリセットを報告するときは、Filee-Presetsリポジトリでissueを作成してください。そこで削除されると、1時間以内にこのサイトとアプリから消えます。",
+    "removalLink": "issueを作成"
   },
   "notFound": {
     "title": "ページが見つかりません",

@@ -11,6 +11,7 @@
     "how": "Comment ça marche",
     "formats": "Formats",
     "cli": "Ligne de commande",
+    "presets": "Préréglages",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Télécharger",
@@ -219,6 +220,7 @@
     "openSource": "Open source",
     "formats": "Tous les formats",
     "cli": "Ligne de commande",
+    "presets": "Galerie de préréglages",
     "popular": "Conversions populaires"
   },
   "common": {
@@ -515,6 +517,142 @@
     ],
     "ctaTitle": "Obtenez Filee avec la commande filee",
     "ctaText": "La ligne de commande est fournie avec Filee pour Windows 10/11 : gratuit, open source et hors ligne."
+  },
+  "presets": {
+    "title": "Galerie de préréglages et menus circulaires gratuits | Filee",
+    "description": "Parcourez les préréglages et menus circulaires gratuits partagés par la communauté Filee. Voyez ce que fait chacun et installez-le en un clic. Sous CC0.",
+    "crumb": "Galerie de préréglages",
+    "h1": "Galerie de préréglages",
+    "lead": "Des préréglages et menus circulaires prêts à l'emploi, partagés par d'autres utilisateurs de Filee. Voyez ce que fait chacun avant de l'installer, et partagez les vôtres.",
+    "upload": "Envoyer un préréglage",
+    "guideButton": "Comment partager",
+    "sortLabel": "Trier",
+    "sort": {
+      "hot": "Populaires",
+      "best": "Meilleurs",
+      "new": "Nouveaux"
+    },
+    "periodLabel": "Période",
+    "periods": {
+      "day": "Aujourd'hui",
+      "week": "Cette semaine",
+      "month": "Ce mois-ci",
+      "year": "Cette année",
+      "all": "Depuis toujours"
+    },
+    "searchLabel": "Rechercher des préréglages",
+    "searchPlaceholder": "Nom, auteur ou étiquette",
+    "filterKind": "Type",
+    "filterFormat": "Format",
+    "filterTag": "Étiquette",
+    "filterLanguage": "Langue",
+    "any": "Tous",
+    "clear": "Effacer les filtres",
+    "kinds": {
+      "convert": "Conversion",
+      "tool": "Outil",
+      "toolbar": "Menu circulaire"
+    },
+    "count": "{n|one:# préréglage|many:# de préréglages|other:# préréglages}",
+    "empty": "Personne n'a encore partagé de préréglage. Le vôtre pourrait être le premier.",
+    "noMatch": "Aucun préréglage ne correspond à ces filtres.",
+    "by": "par {author}",
+    "likes": "{n|one:# j'aime|many:# de j'aime|other:# j'aime}",
+    "downloads": "{n|one:# téléchargement|many:# de téléchargements|other:# téléchargements}",
+    "comments": "{n|one:# commentaire|many:# de commentaires|other:# commentaires}",
+    "statsNote": "Les « j'aime » sont les réactions 👍 sur la discussion GitHub de chaque préréglage. Les « j'aime » et les téléchargements sont recomptés toutes les heures.",
+    "detailTitle": "{title} : préréglage Filee de {author}",
+    "detailDescription": "{title} : un préréglage Filee gratuit partagé par {author}. Voyez ses images et ce qu'il fait, puis installez-le depuis la galerie de préréglages Filee.",
+    "sharedBy": "Partagé par {author}",
+    "updated": "Mis à jour le {date}",
+    "imageAlt": "{title}, image {n} sur {total}",
+    "aboutTitle": "À propos de ce préréglage",
+    "whatTitle": "Ce qu'il fait",
+    "colPreset": "Préréglage",
+    "colKind": "Type",
+    "colMakes": "Produit",
+    "colOptions": "Options principales",
+    "presetKinds": {
+      "convert": "Conversion",
+      "group": "Groupe",
+      "tool": "Fenêtre d'outil",
+      "copy": "Copie"
+    },
+    "toolbarRow": "Ajoute le menu circulaire « {name} » avec {n|one:# tranche|many:# de tranches|other:# tranches}.",
+    "worksOn": "S'applique à",
+    "makes": "Produit",
+    "minVersion": "Nécessite Filee {version} ou une version ultérieure.",
+    "defaults": "Options par défaut",
+    "options": {
+      "quality": "Qualité {n}",
+      "longEdge": "Grand côté de {n} px",
+      "width": "Largeur de {n} px",
+      "percent": "{n} % de la taille",
+      "customSize": "{w} × {h}",
+      "maxSize": "Jusqu'à {n} MB",
+      "grayscale": "Noir et blanc",
+      "removeBackground": "Supprime l'arrière-plan",
+      "stripMetadata": "Supprime les métadonnées",
+      "mergePdf": "Fusionne en un seul PDF",
+      "compressPdf": "Compresse le PDF",
+      "ocr": "Reconnaît le texte (OCR)",
+      "pageNumbers": "Ajoute des numéros de page",
+      "mediaHigh": "Haute qualité",
+      "mediaBalanced": "Qualité équilibrée",
+      "mediaSmall": "Fichiers légers",
+      "maxHeight": "Jusqu'à {n}p",
+      "audioBitrate": "Audio à {n} kbps",
+      "askCompression": "Demande la compression à chaque fois",
+      "group": "Se déploie en {n|one:# préréglage|many:# de préréglages|other:# préréglages}",
+      "tool": "Ouvre sa propre fenêtre"
+    },
+    "installTitle": "L'installer",
+    "installSteps": [
+      "Ouvrez Filee et allez dans **Préréglages**.",
+      "Cliquez sur **Galerie de préréglages** et trouvez « {title} ».",
+      "Cliquez sur **Installer**. Les préréglages s'ajoutent aux vôtres et ne les remplacent jamais."
+    ],
+    "downloadButton": "Télécharger le fichier du préréglage",
+    "downloadNote": "Ou téléchargez le fichier et ajoutez-le dans les paramètres de Filee, sous **Général → Importer…**",
+    "license": "{author} a partagé ce préréglage et ses images sous CC0 1.0 : chacun peut les utiliser, les modifier et les partager, sans condition.",
+    "licenseLink": "À propos de CC0",
+    "commentsButton": "Commentaires sur GitHub",
+    "report": "Un problème avec ce préréglage ? Dites-le dans ses commentaires, ou [demandez son retrait]({removal}).",
+    "back": "Retour à la galerie",
+    "guideTitle": "Partagez votre propre préréglage",
+    "guideLead": "Les préréglages sont des réglages, pas des programmes : en partager un est sans risque et ne prend que quelques minutes.",
+    "guideSteps": [
+      {
+        "title": "Exportez-le depuis Filee",
+        "text": "Dans les paramètres de Filee, ouvrez **Général** et cliquez sur **Exporter…** sous Préréglages et menus circulaires. Filee enregistre vos préréglages et menus circulaires dans un fichier."
+      },
+      {
+        "title": "Préparez 1 à 4 images",
+        "text": "Montrez ce que fait le préréglage : sa tranche dans le menu circulaire, ses réglages, ou un fichier d'exemple avant et après. PNG, JPEG ou WebP, de 640 à 2 560 px sur le grand côté, 2 MB maximum chacune. La première sert de couverture."
+      },
+      {
+        "title": "Remplissez le formulaire",
+        "text": "Cliquez sur **{upload}**, connectez-vous à GitHub, puis ajoutez le fichier, les images, un titre et une courte description. Des vérifications automatiques vous signalent ce qui doit être corrigé, puis un mainteneur le publie."
+      }
+    ],
+    "allowedTitle": "Ce qui peut être partagé",
+    "allowed": [
+      "Les préréglages de conversion et d'outil, et les menus circulaires qui en sont composés.",
+      "Jusqu'à 20 préréglages et un menu circulaire par envoi, dans un fichier de 256 KB maximum.",
+      "Des images faites par vous-même, de fichiers d'exemple créés pour l'occasion."
+    ],
+    "notAllowedTitle": "Jamais partagé",
+    "notAllowed": [
+      "Les préréglages qui lancent un programme ou une commande.",
+      "Les paramètres réseau et proxy, les serveurs de traduction personnalisés et les clés d'API.",
+      "Les dossiers de sortie autres que celui du fichier source, et les chemins ou noms personnels, où que ce soit.",
+      "Les images de vrais documents, de noms, de visages ou de chemins de fichiers."
+    ],
+    "ccTitle": "Partagé sous CC0",
+    "ccText": "Les préréglages partagés et leurs images sont versés dans le domaine public sous CC0 1.0 : chacun peut les utiliser, les modifier et les partager sans condition. La galerie indique toujours qui a partagé chacun d'eux.",
+    "removalTitle": "Demandes de retrait",
+    "removalText": "Pour retirer un préréglage que vous avez partagé, ou signaler un préréglage qui enfreint ces règles ou affiche des informations personnelles, ouvrez une issue dans le dépôt Filee-Presets. Une fois retiré là-bas, il disparaît de ce site et de l'application dans l'heure.",
+    "removalLink": "Ouvrir une issue"
   },
   "notFound": {
     "title": "Page introuvable",
