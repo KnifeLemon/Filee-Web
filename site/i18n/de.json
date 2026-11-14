@@ -626,6 +626,7 @@
       "moves_original": "Verschiebt deine Originaldateien nach der Konvertierung in einen anderen Ordner.",
       "overwrites_existing": "Überschreibt vorhandene Dateien mit demselben Namen.",
       "edits_metadata": "Ändert die Metadaten deiner Dateien, etwa Titel, Autor oder Datum.",
+      "fixed_edits": "Fügt jeder konvertierten Datei dieselben Markierungen, verdeckten Bereiche, denselben Hintergrund oder dieselben Clip-Schnitte hinzu.",
       "strips_metadata": "Entfernt Metadaten wie Kameradaten und Standort aus den Ergebnissen.",
       "uses_translate_model": "Übersetzt mit einem Offline-KI-Modell, das Filee beim ersten Mal herunterlädt, falls es fehlt.",
       "copies_to_folder": "Kopiert Dateien in einen Ordner deiner Wahl."

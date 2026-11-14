@@ -626,6 +626,7 @@
       "moves_original": "Memindahkan file asli Anda ke folder lain setelah konversi.",
       "overwrites_existing": "Menimpa file yang sudah ada dengan nama yang sama.",
       "edits_metadata": "Mengubah metadata file Anda, seperti judul, penulis, atau tanggal.",
+      "fixed_edits": "Menambahkan tanda, area yang ditutupi, latar belakang, atau suntingan klip yang sama ke setiap file yang dikonversi.",
       "strips_metadata": "Menghapus metadata seperti info kamera dan lokasi dari hasil.",
       "uses_translate_model": "Menerjemahkan dengan model AI offline, yang diunduh Filee saat pertama dipakai jika belum terpasang.",
       "copies_to_folder": "Menyalin file ke folder pilihan Anda."

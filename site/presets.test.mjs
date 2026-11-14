@@ -136,7 +136,9 @@ const assets = { css: 'styles.css', js: 'main.js', gallery: 'gallery.js', suppor
 const warned = warnings => ({ ...checkEntry({ ...ENTRY, warnings }).entry, bundle: { presets: [] }, stats: NO_STATS });
 
 test('every language words every known warning code and every severity', () => {
-  const codes = Object.keys(languages[0].presets.warnings);
+  // The validator's codes (Filee-Presets; codes are only ever added, never renamed).
+  const codes = ['replaces_original', 'moves_original', 'overwrites_existing', 'copies_to_folder', 'edits_metadata', 'fixed_edits', 'strips_metadata', 'uses_translate_model'];
+  assert.deepEqual(Object.keys(languages[0].presets.warnings).sort(), [...codes].sort());
   for (const l of languages) {
     for (const code of codes) assert.ok(l.presets.warnings[code]?.trim(), `${l.lang}: ${code}`);
     for (const severity of ['high', 'medium', 'info']) assert.ok(l.presets.warnGeneric[severity]?.trim(), `${l.lang}: ${severity}`);

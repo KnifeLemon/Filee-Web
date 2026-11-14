@@ -626,6 +626,7 @@
       "moves_original": "Po konwersji przenosi oryginalne pliki do innego folderu.",
       "overwrites_existing": "Nadpisuje istniejące pliki o tej samej nazwie.",
       "edits_metadata": "Zmienia metadane plików, np. tytuł, autora lub datę.",
+      "fixed_edits": "Dodaje te same oznaczenia, zakryte obszary, tło lub edycję klipu do każdego konwertowanego pliku.",
       "strips_metadata": "Usuwa z wyników metadane, np. dane aparatu i lokalizację.",
       "uses_translate_model": "Tłumaczy offline modelem AI, który Filee pobiera przy pierwszym użyciu, jeśli go nie ma.",
       "copies_to_folder": "Kopiuje pliki do wybranego folderu."

@@ -626,6 +626,7 @@
       "moves_original": "Dönüştürmeden sonra özgün dosyalarınızı başka bir klasöre taşır.",
       "overwrites_existing": "Aynı adda var olan dosyaların üzerine yazar.",
       "edits_metadata": "Dosyalarınızın başlık, yazar veya tarih gibi meta verilerini değiştirir.",
+      "fixed_edits": "Dönüştürdüğü her dosyaya aynı işaretleri, gizlenen alanları, arka planı veya klip düzenlemelerini ekler.",
       "strips_metadata": "Sonuçlardan kamera bilgileri ve konum gibi meta verileri kaldırır.",
       "uses_translate_model": "Çevrimdışı bir yapay zekâ modeliyle çevirir; kurulu değilse Filee ilk kullanımda indirir.",
       "copies_to_folder": "Dosyaları seçtiğiniz bir klasöre kopyalar."

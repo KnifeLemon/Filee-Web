@@ -626,6 +626,7 @@
       "moves_original": "Di chuyển tệp gốc sang thư mục khác sau khi chuyển đổi.",
       "overwrites_existing": "Ghi đè các tệp đã có cùng tên.",
       "edits_metadata": "Thay đổi siêu dữ liệu của tệp, như tiêu đề, tác giả hoặc ngày.",
+      "fixed_edits": "Thêm cùng các đánh dấu, vùng che, nền hoặc chỉnh sửa đoạn cắt vào mọi tệp được chuyển đổi.",
       "strips_metadata": "Xóa siêu dữ liệu như thông tin máy ảnh và vị trí khỏi tệp kết quả.",
       "uses_translate_model": "Dịch bằng mô hình AI ngoại tuyến; nếu chưa cài, Filee sẽ tải về ở lần dùng đầu tiên.",
       "copies_to_folder": "Sao chép tệp vào thư mục bạn chọn."

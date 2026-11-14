@@ -626,6 +626,7 @@
       "moves_original": "변환한 뒤 원본 파일을 다른 폴더로 옮겨요.",
       "overwrites_existing": "같은 이름의 파일이 이미 있으면 덮어써요.",
       "edits_metadata": "제목, 작성자, 날짜 같은 파일의 메타데이터를 바꿔요.",
+      "fixed_edits": "변환하는 모든 파일에 같은 표시, 가린 영역, 배경 또는 클립 편집을 넣어요.",
       "strips_metadata": "결과 파일에서 카메라 정보와 위치 같은 메타데이터를 지워요.",
       "uses_translate_model": "오프라인 AI 모델로 번역해요. 모델이 없으면 처음 쓸 때 Filee가 내려받아요.",
       "copies_to_folder": "직접 고른 폴더로 파일을 복사해요."

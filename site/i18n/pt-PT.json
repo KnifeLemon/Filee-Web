@@ -626,6 +626,7 @@
       "moves_original": "Move os teus ficheiros originais para outra pasta depois da conversão.",
       "overwrites_existing": "Substitui ficheiros que já existam com o mesmo nome.",
       "edits_metadata": "Altera os metadados dos teus ficheiros, como o título, o autor ou a data.",
+      "fixed_edits": "Acrescenta as mesmas marcas, áreas tapadas, fundo ou cortes de clip a cada ficheiro convertido.",
       "strips_metadata": "Remove dos resultados metadados como os dados da câmara e a localização.",
       "uses_translate_model": "Traduz com um modelo de IA offline, que o Filee descarrega na primeira utilização se não estiver instalado.",
       "copies_to_folder": "Copia ficheiros para uma pasta à tua escolha."

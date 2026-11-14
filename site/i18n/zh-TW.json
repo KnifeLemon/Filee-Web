@@ -626,6 +626,7 @@
       "moves_original": "轉換後會把原始檔案移到另一個資料夾。",
       "overwrites_existing": "會覆寫已存在的同名檔案。",
       "edits_metadata": "會修改檔案的中繼資料，例如標題、作者或日期。",
+      "fixed_edits": "會在轉換的每個檔案中加入相同的標註、遮蓋區域、背景或剪輯編輯。",
       "strips_metadata": "會從結果中移除相機資訊和位置等中繼資料。",
       "uses_translate_model": "使用離線 AI 模型翻譯；若尚未安裝，Filee 會在第一次使用時下載。",
       "copies_to_folder": "會把檔案複製到你選擇的資料夾。"

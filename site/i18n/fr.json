@@ -626,6 +626,7 @@
       "moves_original": "Déplace vos fichiers d’origine dans un autre dossier après la conversion.",
       "overwrites_existing": "Écrase les fichiers qui existent déjà sous le même nom.",
       "edits_metadata": "Modifie les métadonnées de vos fichiers, comme le titre, l’auteur ou la date.",
+      "fixed_edits": "Ajoute les mêmes annotations, zones masquées, arrière-plan ou découpes de clip à chaque fichier converti.",
       "strips_metadata": "Retire des résultats les métadonnées comme les données de l’appareil photo et la position.",
       "uses_translate_model": "Traduit avec un modèle d’IA hors ligne, que Filee télécharge à la première utilisation s’il n’est pas installé.",
       "copies_to_folder": "Copie des fichiers dans un dossier de votre choix."
