@@ -7,7 +7,7 @@ import { HOT, NO_STATS, presetStats, rank, utcDay } from './src/preset-stats.mjs
 import { readFileSync } from 'node:fs';
 import { LANGUAGES } from './src/languages.mjs';
 import { renderGalleryPage, renderPresetPage } from './src/presets-page.mjs';
-import { checkEntry, checkWarnings, publicIndex } from './src/presets.mjs';
+import { checkEntry, checkWarnings, imagesFor, langKey, publicIndex, thumbFor } from './src/presets.mjs';
 import worker, { LIMIT, allow } from './worker/index.mjs';
 
 const NOW = Date.parse('2026-11-15T12:00:00Z');
@@ -160,6 +160,38 @@ test('gallery cards badge high-severity presets only', () => {
   const medium = renderGalleryPage(languages[0], languages, assets, gallery([warned([{ code: 'edits_metadata', severity: 'medium' }])]));
   assert.ok(high.includes('class="preset-badge"'));
   assert.ok(!medium.includes('class="preset-badge"'));
+});
+
+test('per-language pictures: checked, mirrored paths rewritten, picked by the page language', () => {
+  const dir = 'presets/instagram-jpg/images';
+  const { entry } = checkEntry({
+    ...ENTRY,
+    imagesByLang: { ko: [`${dir}/ko/1.webp`, `${dir}/2.webp`], 'zh-CN': [`${dir}/zh-CN/1.webp`], pt: [`${dir}/pt/1.webp`], bad: [`${dir}/../../x.webp`], 'x y': [`${dir}/1.webp`] },
+    thumbByLang: { ko: `${dir}/ko/1-thumb.webp`, ja: 'https://example.com/t.webp' },
+  });
+  assert.deepEqual(Object.keys(entry.imagesByLang), ['ko', 'zh-CN', 'pt']);
+  assert.deepEqual(entry.thumbByLang, { ko: `${dir}/ko/1-thumb.webp` });
+  assert.deepEqual(imagesFor(entry, 'ko'), [`${dir}/ko/1.webp`, `${dir}/2.webp`]);
+  assert.deepEqual(imagesFor(entry, 'zh-CN'), [`${dir}/zh-CN/1.webp`]);
+  assert.deepEqual(imagesFor(entry, 'pt-PT'), [`${dir}/pt/1.webp`], 'base language when no exact set');
+  assert.deepEqual(imagesFor(entry, 'en'), entry.images, 'default set otherwise');
+  assert.equal(thumbFor(entry, 'ko'), `${dir}/ko/1-thumb.webp`);
+  assert.equal(thumbFor(entry, 'ja'), entry.thumb);
+  assert.equal(langKey({ 'BN-bd': [] }, 'bn-BD'), 'BN-bd', 'codes match without regard to case');
+
+  const [p] = publicIndex({ generated: 'now', presets: [{ ...entry, bundle: {}, stats: NO_STATS }] }, 'https://filee.sh').presets;
+  assert.deepEqual(p.imagesByLang.ko, [`files/${dir}/ko/1.webp`, `files/${dir}/2.webp`]);
+  assert.equal(p.thumbByLang.ko, `files/${dir}/ko/1-thumb.webp`);
+
+  const preset = { ...entry, bundle: { presets: [] }, stats: NO_STATS };
+  const ko = languages.find(l => l.lang === 'ko');
+  const koPage = renderPresetPage(ko, languages, assets, preset);
+  assert.ok(koPage.includes(`/presets/files/${dir}/ko/1.webp`));
+  assert.ok(!koPage.includes(`/presets/files/${dir}/1.webp"`), 'not the default cover on the Korean page');
+  const enPage = renderPresetPage(languages[0], languages, assets, preset);
+  assert.ok(enPage.includes(`/presets/files/${dir}/1.webp`) && !enPage.includes(`${dir}/ko/`));
+  const koGallery = renderGalleryPage(ko, languages, assets, { presets: [preset] });
+  assert.ok(koGallery.includes(`/presets/files/${dir}/ko/1-thumb.webp`));
 });
 
 /* ───────── Worker ───────── */

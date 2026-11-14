@@ -152,6 +152,10 @@ preset at `/presets/<id>/`. Nothing is stored here: every build reads the reposi
 - **Output**: `/presets/index.json` (the repository's index with `stats` filled in and a `download` link; its paths are
   relative to the index, `files/presets/<id>/…`, so the app resolves them the same way against GitHub's copy) and the
   files mirrored under `/presets/files/presets/<id>/…` (the Content-Security-Policy allows images from this site only).
+- **Pictures per language**: an entry may have `imagesByLang` / `thumbByLang` (`{ <app language>: […] }`, sets under
+  `images/<lang>/` with the default pictures already filled in where a set has fewer). They are mirrored and rewritten
+  like the default ones, and each language's card and page use that language's set (the site's language codes are the
+  app's, matched without regard to case; then the base language, `pt` for `pt-PT`), else the default set.
 - **Warnings**: an entry's `warnings` (`[{ code, severity }]`, set by Filee-Presets' checks for risky settings such as
   `replaces_original`) appear in a box above the install steps and the download link on the preset's page (high red,
   medium amber, info neutral) and, for high ones, as a badge on its card. Each known code has a sentence in every

@@ -7,7 +7,7 @@
 import { FORMATS, fill, label, vars } from './catalog.mjs';
 import { md } from './cli-page.mjs';
 import { SITE, alternatesOf, breadcrumbs, downloadCard, escape, icon, paths, renderDocument } from './layout.mjs';
-import { ISSUES, PRESETS_REPO, SEVERITIES, UPLOAD, downloadPath, filePath } from './presets.mjs';
+import { ISSUES, PRESETS_REPO, SEVERITIES, UPLOAD, downloadPath, filePath, imagesFor, thumbFor } from './presets.mjs';
 import { PERIODS } from './preset-stats.mjs';
 
 const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
@@ -83,7 +83,7 @@ function card(t, p) {
   };
   return `<li class="preset-card" ${Object.entries(data).map(([k, v]) => `data-${k}="${escape(v)}"`).join(' ')}>
         <a class="preset-card-link" href="${paths.preset(t, p.id)}">
-          <span class="preset-thumb"><img src="${filePath(p.thumb)}" alt="" width="480" height="300" loading="lazy" decoding="async">${worst(p) === 'high' ? `<span class="preset-badge">${icon('alert')}<span>${escape(t.presets.warnBadge)}</span></span>` : ''}</span>
+          <span class="preset-thumb"><img src="${filePath(thumbFor(p, t.lang))}" alt="" width="480" height="300" loading="lazy" decoding="async">${worst(p) === 'high' ? `<span class="preset-badge">${icon('alert')}<span>${escape(t.presets.warnBadge)}</span></span>` : ''}</span>
           <span class="preset-card-body">
             <strong class="preset-card-title"${textLang(p, t)}>${escape(p.title)}</strong>
             <span class="preset-by">${html(t, t.presets.by, { author: p.author })}</span>
@@ -281,7 +281,9 @@ export function renderPresetPage(t, languages, assets, p) {
     { name: p.title, path: alternates[t.lang] },
   ]);
   const own = textLang(p, t);
-  const images = p.images.map((path, i) => `<figure class="preset-figure${i === 0 ? ' is-cover' : ''}"><img src="${filePath(path)}" alt="${escape(plain(t, g.imageAlt, { title: p.title, n: i + 1, total: p.images.length }))}"${i ? ' loading="lazy"' : ''} decoding="async"></figure>`).join('');
+  // The pictures in the page's language when the preset has a set for it (app screenshots in that language).
+  const pictures = imagesFor(p, t.lang);
+  const images = pictures.map((path, i) => `<figure class="preset-figure${i === 0 ? ' is-cover' : ''}"><img src="${filePath(path)}" alt="${escape(plain(t, g.imageAlt, { title: p.title, n: i + 1, total: pictures.length }))}"${i ? ' loading="lazy"' : ''} decoding="async"></figure>`).join('');
   const comments = discussionUrl(p);
   const formats = (label, ids) => (ids.length ? `<p class="preset-formats"><b>${escape(label)}</b> ${ids.map(id => `<span class="tag">${escape(formatName(id, t.lang))}</span>`).join(' ')}</p>` : '');
   const rows = presetRows(t, p.bundle);
@@ -352,7 +354,7 @@ export function renderPresetPage(t, languages, assets, p) {
     ...(p.languages[0] ? { inLanguage: p.languages[0] } : {}),
     author: { '@type': 'Person', name: p.author, url: authorUrl(p) },
     license: CC0,
-    image: p.images.map(path => SITE + filePath(path)),
+    image: pictures.map(path => SITE + filePath(path)),
     ...(p.created ? { dateCreated: p.created } : {}),
     ...(p.updated ? { dateModified: p.updated } : {}),
     isPartOf: { '@type': 'CollectionPage', url: SITE + paths.presets(t) },
@@ -366,7 +368,7 @@ export function renderPresetPage(t, languages, assets, p) {
     t, languages, assets, alternates, nav: 'presets',
     title: plain(t, g.detailTitle, { title: p.title, author: p.author }),
     description: plain(t, g.detailDescription, { title: p.title, author: p.author }),
-    image: { url: SITE + filePath(p.images[0]), alt: plain(t, g.imageAlt, { title: p.title, n: 1, total: p.images.length }) },
+    image: { url: SITE + filePath(pictures[0]), alt: plain(t, g.imageAlt, { title: p.title, n: 1, total: pictures.length }) },
     jsonLd: [work, crumbs.ld], main,
   });
 }

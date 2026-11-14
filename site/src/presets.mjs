@@ -84,6 +84,14 @@ export function checkEntry(entry) {
   const images = Array.isArray(entry.images) ? entry.images.filter(p => inFolder(p, IMAGE)).slice(0, 4) : [];
   if (!images.length) return { error: `${id}: no image` };
   const thumb = inFolder(entry.thumb, IMAGE) ? entry.thumb : images[0];
+  // Optional picture sets per app language (images/<lang>/…), already resolved with fallbacks by Filee-Presets' CI.
+  const byLang = (value, pick) => Object.fromEntries(Object.entries(value && typeof value === 'object' && !Array.isArray(value) ? value : {})
+    .filter(([lang]) => LANG.test(lang)).slice(0, 23).map(([lang, v]) => [lang, pick(v)]).filter(([, v]) => v != null));
+  const imagesByLang = byLang(entry.imagesByLang, list => {
+    const ok = Array.isArray(list) ? list.filter(p => inFolder(p, IMAGE)).slice(0, 4) : [];
+    return ok.length ? ok : null;
+  });
+  const thumbByLang = byLang(entry.thumbByLang, path => (inFolder(path, IMAGE) ? path : null));
   if (entry.preset !== `${folder}preset.json`) return { error: `${id}: preset must be ${folder}preset.json` };
   if (typeof entry.sha256 !== 'string' || !/^[0-9a-f]{64}$/i.test(entry.sha256)) return { error: `${id}: bad sha256` };
   const formats = { from: words(entry.formats?.from, FORMAT, 40), to: words(entry.formats?.to, FORMAT, 40) };
@@ -99,7 +107,7 @@ export function checkEntry(entry) {
       discussion: Number.isInteger(entry.discussion) && entry.discussion > 0 ? entry.discussion : null,
       license: 'CC0-1.0',
       warnings: checkWarnings(entry.warnings),
-      images, thumb, preset: entry.preset, sha256: entry.sha256.toLowerCase(),
+      images, thumb, imagesByLang, thumbByLang, preset: entry.preset, sha256: entry.sha256.toLowerCase(),
     },
   };
 }
@@ -134,7 +142,7 @@ async function loadRepo() {
       const sha = createHash('sha256').update(preset).digest('hex');
       if (sha !== entry.sha256) throw new Error(`preset.json has sha256 ${sha}, index.json says ${entry.sha256}`);
       const bundle = JSON.parse(preset.toString('utf8'));
-      const paths = [...new Set([...entry.images, entry.thumb])];
+      const paths = [...new Set([...entry.images, entry.thumb, ...Object.values(entry.imagesByLang).flat(), ...Object.values(entry.thumbByLang)])];
       const images = await Promise.all(paths.map(path => get(path)));
       files.set(entry.preset, preset);
       paths.forEach((path, i) => files.set(path, images[i]));
@@ -325,6 +333,22 @@ export async function loadGallery(now = Date.now(), env = process.env) {
   return { generated: new Date(now).toISOString(), presets: rank(presets, 'hot'), files };
 }
 
+/**
+ * The key of a per-language set for a site language: the site's language codes are the app's (i18n file names: ko,
+ * zh-CN, pt-BR, bn-BD…), matched without regard to case; then the base language (pt for pt-PT) when no exact set
+ * exists. null: use the default set.
+ */
+export function langKey(sets, lang) {
+  const keys = Object.keys(sets ?? {});
+  const find = code => keys.find(k => k.toLowerCase() === code.toLowerCase());
+  return find(lang) ?? (lang.includes('-') ? find(lang.split('-')[0]) : undefined) ?? null;
+}
+
+/** A preset's pictures for a site language (its own set, else the default one). */
+export const imagesFor = (p, lang) => p.imagesByLang?.[langKey(p.imagesByLang, lang)] ?? p.images;
+/** A preset's list thumbnail for a site language. */
+export const thumbFor = (p, lang) => p.thumbByLang?.[langKey(p.thumbByLang, lang)] ?? p.thumb;
+
 /** The path a repository file is served at on this site. */
 export const filePath = path => `/presets/files/${path}`;
 /** The counting download link of a preset (worker/index.mjs). */
@@ -343,6 +367,8 @@ export function publicIndex(gallery, site) {
       ...p,
       images: p.images.map(path => `files/${path}`),
       thumb: `files/${p.thumb}`,
+      imagesByLang: Object.fromEntries(Object.entries(p.imagesByLang ?? {}).map(([lang, list]) => [lang, list.map(path => `files/${path}`)])),
+      thumbByLang: Object.fromEntries(Object.entries(p.thumbByLang ?? {}).map(([lang, path]) => [lang, `files/${path}`])),
       preset: `files/${p.preset}`,
       download: `${site}${downloadPath(p.id)}`,
     })),

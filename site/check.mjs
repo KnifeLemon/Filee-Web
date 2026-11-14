@@ -172,7 +172,7 @@ async function main() {
   const index = JSON.parse(await readFile(join(DIST, 'presets', 'index.json'), 'utf8'));
   if (index.version !== 1 || !Array.isArray(index.presets)) error('presets/index.json', 'not a version 1 index');
   for (const p of index.presets ?? []) {
-    for (const file of [...p.images, p.thumb, p.preset]) if (!existsSync(join(DIST, 'presets', ...file.split('/')))) error('presets/index.json', `${p.id}: ${file} is missing`);
+    for (const file of [...p.images, p.thumb, p.preset, ...Object.values(p.imagesByLang ?? {}).flat(), ...Object.values(p.thumbByLang ?? {})]) if (!existsSync(join(DIST, 'presets', ...file.split('/')))) error('presets/index.json', `${p.id}: ${file} is missing`);
     if (!pages.has(`/presets/${p.id}/`)) error('presets/index.json', `${p.id} has no page`);
     // A preset with warnings shows them, above its download link, on its page in every language.
     if (p.warnings?.length) {
