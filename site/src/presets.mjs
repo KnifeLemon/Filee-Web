@@ -46,6 +46,23 @@ const WORD = /^[a-z0-9][a-z0-9-]{0,31}$/;
 const LANG = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/;
 const FORMAT = /^[a-z0-9]{1,12}$/;
 const IMAGE = /\.(webp|png|jpe?g)$/i;
+/** Warning severities, most serious first. */
+export const SEVERITIES = ['high', 'medium', 'info'];
+
+/**
+ * The warnings of an entry (risky settings Filee-Presets' checks found: replaces_original, moves_original…), as
+ * [{ code, severity }], the most serious first. Unknown codes are kept: the pages word them by their severity.
+ */
+export function checkWarnings(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = new Set();
+  return value
+    .filter(w => typeof w?.code === 'string' && /^[a-z][a-z0-9_]{0,39}$/.test(w.code) && SEVERITIES.includes(w.severity) && !seen.has(w.code) && seen.add(w.code))
+    .slice(0, 12)
+    .map(({ code, severity }) => ({ code, severity }))
+    .sort((a, b) => SEVERITIES.indexOf(a.severity) - SEVERITIES.indexOf(b.severity));
+}
+
 const DATE = value => (typeof value === 'string' && Number.isFinite(Date.parse(value)) ? new Date(value).toISOString() : null);
 const text = (value, max) => (typeof value === 'string' && value.trim() && value.length <= max ? value.trim() : null);
 const words = (value, pattern, max) => (Array.isArray(value) ? [...new Set(value.filter(v => typeof v === 'string' && pattern.test(v)))].slice(0, max) : []);
@@ -81,6 +98,7 @@ export function checkEntry(entry) {
       created: DATE(entry.created), updated: DATE(entry.updated) ?? DATE(entry.created),
       discussion: Number.isInteger(entry.discussion) && entry.discussion > 0 ? entry.discussion : null,
       license: 'CC0-1.0',
+      warnings: checkWarnings(entry.warnings),
       images, thumb, preset: entry.preset, sha256: entry.sha256.toLowerCase(),
     },
   };

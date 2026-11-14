@@ -174,6 +174,14 @@ async function main() {
   for (const p of index.presets ?? []) {
     for (const file of [...p.images, p.thumb, p.preset]) if (!existsSync(join(DIST, 'presets', ...file.split('/')))) error('presets/index.json', `${p.id}: ${file} is missing`);
     if (!pages.has(`/presets/${p.id}/`)) error('presets/index.json', `${p.id} has no page`);
+    // A preset with warnings shows them, above its download link, on its page in every language.
+    if (p.warnings?.length) {
+      for (const page of pages.values()) {
+        if (!page.path.endsWith(`/presets/${p.id}/`)) continue;
+        const box = page.html.indexOf('class="preset-warnings');
+        if (box < 0 || box > page.html.indexOf(`/presets/download/${p.id}`)) error(page.path, 'warnings missing or below the download link');
+      }
+    }
   }
 
   // Report.

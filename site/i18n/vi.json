@@ -619,6 +619,22 @@
     "commentsButton": "Bình luận trên GitHub",
     "report": "Cấu hình sẵn này có vấn đề? Hãy cho chúng tôi biết trong phần bình luận, hoặc [yêu cầu gỡ bỏ]({removal}).",
     "back": "Quay lại thư viện",
+    "warnTitle": "Đọc trước khi cài đặt",
+    "warnBadge": "Lưu ý",
+    "warnings": {
+      "replaces_original": "Thay tệp gốc của bạn bằng tệp đã chuyển đổi.",
+      "moves_original": "Di chuyển tệp gốc sang thư mục khác sau khi chuyển đổi.",
+      "overwrites_existing": "Ghi đè các tệp đã có cùng tên.",
+      "edits_metadata": "Thay đổi siêu dữ liệu của tệp, như tiêu đề, tác giả hoặc ngày.",
+      "strips_metadata": "Xóa siêu dữ liệu như thông tin máy ảnh và vị trí khỏi tệp kết quả.",
+      "uses_translate_model": "Dịch bằng mô hình AI ngoại tuyến; nếu chưa cài, Filee sẽ tải về ở lần dùng đầu tiên.",
+      "copies_to_folder": "Sao chép tệp vào thư mục bạn chọn."
+    },
+    "warnGeneric": {
+      "high": "Có thể thay đổi hoặc xóa tệp trên máy tính của bạn. Hãy đọc mô tả trước khi cài đặt.",
+      "medium": "Thay đổi cách lưu tệp của bạn. Hãy đọc mô tả trước khi cài đặt.",
+      "info": "Có một cài đặt bạn nên biết. Xem phần mô tả."
+    },
     "guideTitle": "Chia sẻ cấu hình sẵn của bạn",
     "guideLead": "Cấu hình sẵn là các thiết lập, không phải chương trình, nên việc chia sẻ an toàn và chỉ mất vài phút.",
     "guideSteps": [

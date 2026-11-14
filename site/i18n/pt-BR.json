@@ -619,6 +619,22 @@
     "commentsButton": "Comentários no GitHub",
     "report": "Algo errado com esta predefinição? Conte nos comentários dela ou [peça a remoção]({removal}).",
     "back": "Voltar à galeria",
+    "warnTitle": "Leia antes de instalar",
+    "warnBadge": "Atenção",
+    "warnings": {
+      "replaces_original": "Substitui seus arquivos originais pelos convertidos.",
+      "moves_original": "Move seus arquivos originais para outra pasta depois da conversão.",
+      "overwrites_existing": "Sobrescreve arquivos que já existem com o mesmo nome.",
+      "edits_metadata": "Altera os metadados dos seus arquivos, como título, autor ou data.",
+      "strips_metadata": "Remove dos resultados metadados como dados da câmera e localização.",
+      "uses_translate_model": "Traduz com um modelo de IA offline, que o Filee baixa no primeiro uso se não estiver instalado.",
+      "copies_to_folder": "Copia arquivos para uma pasta que você escolher."
+    },
+    "warnGeneric": {
+      "high": "Pode alterar ou remover arquivos do seu computador. Leia a descrição antes de instalar.",
+      "medium": "Muda a forma como seus arquivos são salvos. Leia a descrição antes de instalar.",
+      "info": "Tem uma configuração que vale a pena conhecer. Veja a descrição."
+    },
     "guideTitle": "Compartilhe sua própria predefinição",
     "guideLead": "Predefinições são configurações, não programas, então compartilhar uma é seguro e leva poucos minutos.",
     "guideSteps": [

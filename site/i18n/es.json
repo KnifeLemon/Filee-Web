@@ -619,6 +619,22 @@
     "commentsButton": "Comentarios en GitHub",
     "report": "¿Algo va mal con este ajuste preestablecido? Cuéntanoslo en sus comentarios o [pide que se retire]({removal}).",
     "back": "Volver a la galería",
+    "warnTitle": "Lee esto antes de instalar",
+    "warnBadge": "Atención",
+    "warnings": {
+      "replaces_original": "Sustituye tus archivos originales por los convertidos.",
+      "moves_original": "Mueve tus archivos originales a otra carpeta después de convertir.",
+      "overwrites_existing": "Sobrescribe los archivos que ya existen con el mismo nombre.",
+      "edits_metadata": "Cambia los metadatos de tus archivos, como el título, el autor o la fecha.",
+      "strips_metadata": "Elimina de los resultados metadatos como los datos de la cámara y la ubicación.",
+      "uses_translate_model": "Traduce con un modelo de IA sin conexión que Filee descarga la primera vez si no está instalado.",
+      "copies_to_folder": "Copia archivos a una carpeta que tú eliges."
+    },
+    "warnGeneric": {
+      "high": "Puede cambiar o eliminar archivos de tu equipo. Lee la descripción antes de instalar.",
+      "medium": "Cambia cómo se guardan tus archivos. Lee la descripción antes de instalar.",
+      "info": "Tiene una configuración que conviene conocer. Consulta la descripción."
+    },
     "guideTitle": "Comparte tu propio ajuste preestablecido",
     "guideLead": "Los ajustes preestablecidos son configuraciones, no programas, así que compartir uno es seguro y lleva pocos minutos.",
     "guideSteps": [

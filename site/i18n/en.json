@@ -619,6 +619,22 @@
     "commentsButton": "Comments on GitHub",
     "report": "Something wrong with this preset? Tell us in its comments, or [ask for its removal]({removal}).",
     "back": "Back to the gallery",
+    "warnTitle": "Read this before installing",
+    "warnBadge": "Warning",
+    "warnings": {
+      "replaces_original": "Replaces your original files with the converted ones.",
+      "moves_original": "Moves your original files to another folder after converting.",
+      "overwrites_existing": "Overwrites files that already exist with the same name.",
+      "edits_metadata": "Changes your files' metadata, such as the title, author or date.",
+      "strips_metadata": "Removes metadata such as camera details and location from the results.",
+      "uses_translate_model": "Translates with an offline AI model, which Filee downloads the first time if it isn't installed.",
+      "copies_to_folder": "Copies files to a folder you choose."
+    },
+    "warnGeneric": {
+      "high": "Can change or remove files on your computer. Read the description before installing.",
+      "medium": "Changes how your files are saved. Read the description before installing.",
+      "info": "Has a setting worth knowing about. See the description."
+    },
     "guideTitle": "Share your own preset",
     "guideLead": "Presets are settings, not programs, so sharing one is safe and takes a few minutes.",
     "guideSteps": [

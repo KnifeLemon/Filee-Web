@@ -769,7 +769,7 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
 .preset-steps { margin: 14px 0 20px; padding-inline-start: 22px; display: grid; gap: 8px; }
 .preset-note { margin-top: 14px; font-size: 14.5px; }
 .preset-sha { margin-top: 10px; font-size: 12.5px; overflow-wrap: anywhere; }
-.preset-sha code { font: 500 12px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; word-break: break-all; }
+.preset-sha code { font: 500 12px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; word-break: break-all; white-space: normal; }
 [dir="rtl"] .gallery-guide-link .icon { scale: -1 1; }
 .preset-comments { justify-self: start; }
 .preset-description { margin-top: 14px; font-size: 17px; overflow-wrap: anywhere; }
@@ -779,6 +779,25 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
 .preset-table th[scope="row"] { color: var(--ink); font-weight: 700; }
 .preset-toolbar { display: flex; align-items: center; gap: 10px; margin-top: 18px; font-weight: 600; }
 .preset-toolbar .icon { width: 24px; height: 24px; fill: var(--accent); flex: none; }
+/* Preset warnings (risky settings): high red, medium amber, info neutral. Text stays --ink; the heading and icons take
+   the severity colour (contrast ≥ 5.6:1 on its background in both themes). */
+.preset-warnings, .preset-warnings li { --warn-fg: #b42318; --warn-bg: #f8ebea; }
+.preset-warnings.is-medium, .preset-warnings li.is-medium { --warn-fg: #934a04; --warn-bg: #fef2e2; }
+.preset-warnings.is-info, .preset-warnings li.is-info { --warn-fg: var(--muted); --warn-bg: var(--surface-2); }
+.preset-warnings { padding: 20px 22px; border-radius: var(--radius); background: var(--warn-bg); border: 1px solid color-mix(in srgb, var(--warn-fg) 35%, transparent); border-inline-start-width: 5px; }
+.preset-warnings h2 { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; color: var(--warn-fg); }
+.preset-warnings .icon { width: 22px; height: 22px; flex: none; fill: var(--warn-fg); }
+.preset-warnings ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
+.preset-warnings li { display: flex; align-items: flex-start; gap: 10px; font-weight: 600; color: var(--ink); }
+.preset-warnings li .icon { width: 20px; height: 20px; margin-top: 2px; }
+.preset-badge { position: absolute; top: 10px; inset-inline-start: 10px; display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 7px; border-radius: 999px; font-size: 12.5px; font-weight: 750; color: #fff; background: #b42318; box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.4); }
+.preset-badge .icon { width: 15px; height: 15px; fill: currentColor; }
+.preset-thumb { position: relative; }
+@media (prefers-color-scheme: dark) {
+  .preset-warnings, .preset-warnings li { --warn-fg: #ff8a80; --warn-bg: #3c2027; }
+  .preset-warnings.is-medium, .preset-warnings li.is-medium { --warn-fg: #fdb022; --warn-bg: #392a20; }
+  .preset-warnings.is-info, .preset-warnings li.is-info { --warn-fg: var(--muted); --warn-bg: var(--surface-2); }
+}
 .preset-license p + p { margin-top: 12px; }
 @media (prefers-color-scheme: dark) {
   .gallery-rules a, .preset-license a, .preset-meta a, .preset-back, .gallery-clear { color: #c9c4ff; }

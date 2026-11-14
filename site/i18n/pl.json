@@ -619,6 +619,22 @@
     "commentsButton": "Komentarze na GitHubie",
     "report": "Coś jest nie tak z tym ustawieniem wstępnym? Napisz w komentarzach albo [poproś o jego usunięcie]({removal}).",
     "back": "Wróć do galerii",
+    "warnTitle": "Przeczytaj przed instalacją",
+    "warnBadge": "Uwaga",
+    "warnings": {
+      "replaces_original": "Zastępuje Twoje oryginalne pliki przekonwertowanymi.",
+      "moves_original": "Po konwersji przenosi oryginalne pliki do innego folderu.",
+      "overwrites_existing": "Nadpisuje istniejące pliki o tej samej nazwie.",
+      "edits_metadata": "Zmienia metadane plików, np. tytuł, autora lub datę.",
+      "strips_metadata": "Usuwa z wyników metadane, np. dane aparatu i lokalizację.",
+      "uses_translate_model": "Tłumaczy offline modelem AI, który Filee pobiera przy pierwszym użyciu, jeśli go nie ma.",
+      "copies_to_folder": "Kopiuje pliki do wybranego folderu."
+    },
+    "warnGeneric": {
+      "high": "Może zmieniać lub usuwać pliki na Twoim komputerze. Przeczytaj opis przed instalacją.",
+      "medium": "Zmienia sposób zapisywania plików. Przeczytaj opis przed instalacją.",
+      "info": "Ma ustawienie, o którym warto wiedzieć. Zobacz opis."
+    },
     "guideTitle": "Udostępnij własne ustawienie wstępne",
     "guideLead": "Ustawienia wstępne to ustawienia, a nie programy, więc ich udostępnianie jest bezpieczne i zajmuje kilka minut.",
     "guideSteps": [

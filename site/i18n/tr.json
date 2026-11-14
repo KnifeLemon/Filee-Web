@@ -619,6 +619,22 @@
     "commentsButton": "GitHub'daki yorumlar",
     "report": "Bu ön ayarda bir sorun mu var? Yorumlarında bize bildirin ya da [kaldırılmasını isteyin]({removal}).",
     "back": "Galeriye dön",
+    "warnTitle": "Kurmadan önce okuyun",
+    "warnBadge": "Dikkat",
+    "warnings": {
+      "replaces_original": "Özgün dosyalarınızı dönüştürülmüş olanlarla değiştirir.",
+      "moves_original": "Dönüştürmeden sonra özgün dosyalarınızı başka bir klasöre taşır.",
+      "overwrites_existing": "Aynı adda var olan dosyaların üzerine yazar.",
+      "edits_metadata": "Dosyalarınızın başlık, yazar veya tarih gibi meta verilerini değiştirir.",
+      "strips_metadata": "Sonuçlardan kamera bilgileri ve konum gibi meta verileri kaldırır.",
+      "uses_translate_model": "Çevrimdışı bir yapay zekâ modeliyle çevirir; kurulu değilse Filee ilk kullanımda indirir.",
+      "copies_to_folder": "Dosyaları seçtiğiniz bir klasöre kopyalar."
+    },
+    "warnGeneric": {
+      "high": "Bilgisayarınızdaki dosyaları değiştirebilir veya silebilir. Kurmadan önce açıklamayı okuyun.",
+      "medium": "Dosyalarınızın nasıl kaydedileceğini değiştirir. Kurmadan önce açıklamayı okuyun.",
+      "info": "Bilinmesi gereken bir ayarı var. Açıklamaya bakın."
+    },
     "guideTitle": "Kendi ön ayarınızı paylaşın",
     "guideLead": "Ön ayarlar program değil, ayardır; bu yüzden paylaşmak güvenlidir ve yalnızca birkaç dakika sürer.",
     "guideSteps": [

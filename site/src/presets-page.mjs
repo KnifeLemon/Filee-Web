@@ -7,7 +7,7 @@
 import { FORMATS, fill, label, vars } from './catalog.mjs';
 import { md } from './cli-page.mjs';
 import { SITE, alternatesOf, breadcrumbs, downloadCard, escape, icon, paths, renderDocument } from './layout.mjs';
-import { ISSUES, PRESETS_REPO, UPLOAD, downloadPath, filePath } from './presets.mjs';
+import { ISSUES, PRESETS_REPO, SEVERITIES, UPLOAD, downloadPath, filePath } from './presets.mjs';
 import { PERIODS } from './preset-stats.mjs';
 
 const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
@@ -49,6 +49,27 @@ function statLine(t, p, { comments = false } = {}) {
   return `<p class="preset-stats">${item('thumb', s.likes, t.presets.likes)}${item('download', s.downloads, t.presets.downloads)}${comments ? item('comment', s.comments, t.presets.comments) : ''}</p>`;
 }
 
+/** The most serious severity among a preset's warnings, or null. */
+const worst = p => SEVERITIES.find(s => p.warnings?.some(w => w.severity === s)) ?? null;
+
+/** One plain sentence per warning; a code this site doesn't know yet is worded by its severity. */
+const warningText = (t, w) => t.presets.warnings[w.code] ?? t.presets.warnGeneric[w.severity];
+
+/**
+ * The warning box above the install steps: high in red, medium in amber, info neutral; the box takes the colour of
+ * the most serious one. Nothing when the preset has no warnings.
+ */
+function warningBox(t, p) {
+  const level = worst(p);
+  if (!level) return '';
+  const texts = new Set();
+  const items = p.warnings.filter(w => !texts.has(warningText(t, w)) && texts.add(warningText(t, w)));
+  return `<div class="preset-warnings is-${level}" id="warnings" role="note" aria-labelledby="warnings-title">
+        <h2 id="warnings-title">${icon(level === 'info' ? 'info' : 'alert')}<span>${escape(t.presets.warnTitle)}</span></h2>
+        <ul>${items.map(w => `<li class="is-${w.severity}" data-warning="${escape(w.code)}">${icon(w.severity === 'info' ? 'info' : 'alert')}<span>${escape(warningText(t, w))}</span></li>`).join('')}</ul>
+      </div>`;
+}
+
 const tagList = p => (p.tags.length ? `<ul class="preset-tags">${p.tags.map(tag => `<li class="tag">${escape(tag)}</li>`).join('')}</ul>` : '');
 
 function card(t, p) {
@@ -62,7 +83,7 @@ function card(t, p) {
   };
   return `<li class="preset-card" ${Object.entries(data).map(([k, v]) => `data-${k}="${escape(v)}"`).join(' ')}>
         <a class="preset-card-link" href="${paths.preset(t, p.id)}">
-          <span class="preset-thumb"><img src="${filePath(p.thumb)}" alt="" width="480" height="300" loading="lazy" decoding="async"></span>
+          <span class="preset-thumb"><img src="${filePath(p.thumb)}" alt="" width="480" height="300" loading="lazy" decoding="async">${worst(p) === 'high' ? `<span class="preset-badge">${icon('alert')}<span>${escape(t.presets.warnBadge)}</span></span>` : ''}</span>
           <span class="preset-card-body">
             <strong class="preset-card-title"${textLang(p, t)}>${escape(p.title)}</strong>
             <span class="preset-by">${html(t, t.presets.by, { author: p.author })}</span>
@@ -279,6 +300,7 @@ export function renderPresetPage(t, languages, assets, p) {
   <section class="section section-tight preset-detail">
     <div class="preset-images">${images}</div>
     <div class="preset-side">
+      ${warningBox(t, p)}
       <div class="details-copy preset-install" id="install">
         <h2>${escape(g.installTitle)}</h2>
         <ol class="preset-steps">${g.installSteps.map(s => `<li>${html(t, s, { title: p.title })}</li>`).join('')}</ol>

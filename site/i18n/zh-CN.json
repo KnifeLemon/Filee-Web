@@ -619,6 +619,22 @@
     "commentsButton": "在 GitHub 上评论",
     "report": "此预设有问题？请在评论中告诉我们，或[申请删除]({removal})。",
     "back": "返回预设广场",
+    "warnTitle": "安装前请先阅读",
+    "warnBadge": "注意",
+    "warnings": {
+      "replaces_original": "会用转换后的文件替换原始文件。",
+      "moves_original": "转换后会把原始文件移到另一个文件夹。",
+      "overwrites_existing": "会覆盖已存在的同名文件。",
+      "edits_metadata": "会修改文件的元数据，例如标题、作者或日期。",
+      "strips_metadata": "会从结果中删除相机信息和位置等元数据。",
+      "uses_translate_model": "使用离线 AI 模型翻译；如未安装，Filee 会在首次使用时下载。",
+      "copies_to_folder": "会把文件复制到你选择的文件夹。"
+    },
+    "warnGeneric": {
+      "high": "可能会更改或删除你电脑上的文件。安装前请阅读说明。",
+      "medium": "会改变文件的保存方式。安装前请阅读说明。",
+      "info": "包含一项值得了解的设置。请查看说明。"
+    },
     "guideTitle": "分享你自己的预设",
     "guideLead": "预设只是设置，不是程序，所以分享很安全，几分钟就能完成。",
     "guideSteps": [

@@ -619,6 +619,22 @@
     "commentsButton": "GitHub 댓글",
     "report": "이 프리셋에 문제가 있나요? 댓글로 알려 주시거나 [삭제를 요청]({removal})하세요.",
     "back": "갤러리로 돌아가기",
+    "warnTitle": "설치하기 전에 확인하세요",
+    "warnBadge": "주의",
+    "warnings": {
+      "replaces_original": "원본 파일을 변환된 파일로 바꿔요.",
+      "moves_original": "변환한 뒤 원본 파일을 다른 폴더로 옮겨요.",
+      "overwrites_existing": "같은 이름의 파일이 이미 있으면 덮어써요.",
+      "edits_metadata": "제목, 작성자, 날짜 같은 파일의 메타데이터를 바꿔요.",
+      "strips_metadata": "결과 파일에서 카메라 정보와 위치 같은 메타데이터를 지워요.",
+      "uses_translate_model": "오프라인 AI 모델로 번역해요. 모델이 없으면 처음 쓸 때 Filee가 내려받아요.",
+      "copies_to_folder": "직접 고른 폴더로 파일을 복사해요."
+    },
+    "warnGeneric": {
+      "high": "컴퓨터의 파일을 바꾸거나 지울 수 있어요. 설치하기 전에 설명을 읽어 보세요.",
+      "medium": "파일이 저장되는 방식을 바꿔요. 설치하기 전에 설명을 읽어 보세요.",
+      "info": "알아 두면 좋은 설정이 있어요. 설명을 확인하세요."
+    },
     "guideTitle": "내 프리셋 공유하기",
     "guideLead": "프리셋은 프로그램이 아니라 설정이라서 안전하게 공유할 수 있고, 몇 분이면 끝나요.",
     "guideSteps": [

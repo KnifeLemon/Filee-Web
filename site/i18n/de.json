@@ -619,6 +619,22 @@
     "commentsButton": "Kommentare auf GitHub",
     "report": "Stimmt mit dieser Vorlage etwas nicht? Schreib es in die Kommentare oder [beantrage ihre Entfernung]({removal}).",
     "back": "Zurück zur Galerie",
+    "warnTitle": "Vor der Installation lesen",
+    "warnBadge": "Achtung",
+    "warnings": {
+      "replaces_original": "Ersetzt deine Originaldateien durch die konvertierten.",
+      "moves_original": "Verschiebt deine Originaldateien nach der Konvertierung in einen anderen Ordner.",
+      "overwrites_existing": "Überschreibt vorhandene Dateien mit demselben Namen.",
+      "edits_metadata": "Ändert die Metadaten deiner Dateien, etwa Titel, Autor oder Datum.",
+      "strips_metadata": "Entfernt Metadaten wie Kameradaten und Standort aus den Ergebnissen.",
+      "uses_translate_model": "Übersetzt mit einem Offline-KI-Modell, das Filee beim ersten Mal herunterlädt, falls es fehlt.",
+      "copies_to_folder": "Kopiert Dateien in einen Ordner deiner Wahl."
+    },
+    "warnGeneric": {
+      "high": "Kann Dateien auf deinem Computer ändern oder entfernen. Lies vor der Installation die Beschreibung.",
+      "medium": "Ändert, wie deine Dateien gespeichert werden. Lies vor der Installation die Beschreibung.",
+      "info": "Hat eine Einstellung, die du kennen solltest. Siehe Beschreibung."
+    },
     "guideTitle": "Teile deine eigene Vorlage",
     "guideLead": "Vorlagen sind Einstellungen, keine Programme. Das Teilen ist daher sicher und dauert nur ein paar Minuten.",
     "guideSteps": [

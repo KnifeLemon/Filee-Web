@@ -619,6 +619,22 @@
     "commentsButton": "Commenti su GitHub",
     "report": "Qualcosa non va in questo preset? Scrivilo nei commenti oppure [chiedine la rimozione]({removal}).",
     "back": "Torna alla galleria",
+    "warnTitle": "Leggi prima di installare",
+    "warnBadge": "Attenzione",
+    "warnings": {
+      "replaces_original": "Sostituisce i file originali con quelli convertiti.",
+      "moves_original": "Dopo la conversione sposta i file originali in un'altra cartella.",
+      "overwrites_existing": "Sovrascrive i file esistenti con lo stesso nome.",
+      "edits_metadata": "Modifica i metadati dei file, come titolo, autore o data.",
+      "strips_metadata": "Rimuove dai risultati metadati come i dati della fotocamera e la posizione.",
+      "uses_translate_model": "Traduce con un modello di IA offline, che Filee scarica al primo uso se manca.",
+      "copies_to_folder": "Copia i file in una cartella a tua scelta."
+    },
+    "warnGeneric": {
+      "high": "Può modificare o rimuovere file sul tuo computer. Leggi la descrizione prima di installare.",
+      "medium": "Cambia il modo in cui i file vengono salvati. Leggi la descrizione prima di installare.",
+      "info": "Ha un'impostazione che è bene conoscere. Vedi la descrizione."
+    },
     "guideTitle": "Condividi il tuo preset",
     "guideLead": "I preset sono impostazioni, non programmi: condividerne uno è sicuro e richiede pochi minuti.",
     "guideSteps": [

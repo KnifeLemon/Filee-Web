@@ -619,6 +619,22 @@
     "commentsButton": "Komentar di GitHub",
     "report": "Ada yang salah dengan preset ini? Beri tahu kami di komentarnya, atau [minta agar dihapus]({removal}).",
     "back": "Kembali ke galeri",
+    "warnTitle": "Baca sebelum memasang",
+    "warnBadge": "Perhatian",
+    "warnings": {
+      "replaces_original": "Mengganti file asli Anda dengan file hasil konversi.",
+      "moves_original": "Memindahkan file asli Anda ke folder lain setelah konversi.",
+      "overwrites_existing": "Menimpa file yang sudah ada dengan nama yang sama.",
+      "edits_metadata": "Mengubah metadata file Anda, seperti judul, penulis, atau tanggal.",
+      "strips_metadata": "Menghapus metadata seperti info kamera dan lokasi dari hasil.",
+      "uses_translate_model": "Menerjemahkan dengan model AI offline, yang diunduh Filee saat pertama dipakai jika belum terpasang.",
+      "copies_to_folder": "Menyalin file ke folder pilihan Anda."
+    },
+    "warnGeneric": {
+      "high": "Dapat mengubah atau menghapus file di komputer Anda. Baca deskripsinya sebelum memasang.",
+      "medium": "Mengubah cara file Anda disimpan. Baca deskripsinya sebelum memasang.",
+      "info": "Punya pengaturan yang perlu diketahui. Lihat deskripsinya."
+    },
     "guideTitle": "Bagikan preset Anda sendiri",
     "guideLead": "Preset adalah pengaturan, bukan program, jadi membagikannya aman dan hanya butuh beberapa menit.",
     "guideSteps": [

@@ -619,6 +619,22 @@
     "commentsButton": "Commentaires sur GitHub",
     "report": "Un problème avec ce préréglage ? Dites-le dans ses commentaires, ou [demandez son retrait]({removal}).",
     "back": "Retour à la galerie",
+    "warnTitle": "À lire avant l’installation",
+    "warnBadge": "Attention",
+    "warnings": {
+      "replaces_original": "Remplace vos fichiers d’origine par les fichiers convertis.",
+      "moves_original": "Déplace vos fichiers d’origine dans un autre dossier après la conversion.",
+      "overwrites_existing": "Écrase les fichiers qui existent déjà sous le même nom.",
+      "edits_metadata": "Modifie les métadonnées de vos fichiers, comme le titre, l’auteur ou la date.",
+      "strips_metadata": "Retire des résultats les métadonnées comme les données de l’appareil photo et la position.",
+      "uses_translate_model": "Traduit avec un modèle d’IA hors ligne, que Filee télécharge à la première utilisation s’il n’est pas installé.",
+      "copies_to_folder": "Copie des fichiers dans un dossier de votre choix."
+    },
+    "warnGeneric": {
+      "high": "Peut modifier ou supprimer des fichiers sur votre ordinateur. Lisez la description avant l’installation.",
+      "medium": "Change la façon dont vos fichiers sont enregistrés. Lisez la description avant l’installation.",
+      "info": "Contient un réglage bon à connaître. Voir la description."
+    },
     "guideTitle": "Partagez votre propre préréglage",
     "guideLead": "Les préréglages sont des réglages, pas des programmes : en partager un est sans risque et ne prend que quelques minutes.",
     "guideSteps": [

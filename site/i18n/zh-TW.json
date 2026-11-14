@@ -619,6 +619,22 @@
     "commentsButton": "在 GitHub 上留言",
     "report": "這個預設有問題嗎？請在留言中告訴我們，或[要求移除]({removal})。",
     "back": "返回預設廣場",
+    "warnTitle": "安裝前請先閱讀",
+    "warnBadge": "注意",
+    "warnings": {
+      "replaces_original": "會用轉換後的檔案取代原始檔案。",
+      "moves_original": "轉換後會把原始檔案移到另一個資料夾。",
+      "overwrites_existing": "會覆寫已存在的同名檔案。",
+      "edits_metadata": "會修改檔案的中繼資料，例如標題、作者或日期。",
+      "strips_metadata": "會從結果中移除相機資訊和位置等中繼資料。",
+      "uses_translate_model": "使用離線 AI 模型翻譯；若尚未安裝，Filee 會在第一次使用時下載。",
+      "copies_to_folder": "會把檔案複製到你選擇的資料夾。"
+    },
+    "warnGeneric": {
+      "high": "可能會變更或刪除你電腦上的檔案。安裝前請閱讀說明。",
+      "medium": "會改變檔案的儲存方式。安裝前請閱讀說明。",
+      "info": "包含一項值得了解的設定。請查看說明。"
+    },
     "guideTitle": "分享你自己的預設",
     "guideLead": "預設只是設定，不是程式，所以分享很安全，幾分鐘就能完成。",
     "guideSteps": [

@@ -152,6 +152,10 @@ preset at `/presets/<id>/`. Nothing is stored here: every build reads the reposi
 - **Output**: `/presets/index.json` (the repository's index with `stats` filled in and a `download` link; its paths are
   relative to the index, `files/presets/<id>/…`, so the app resolves them the same way against GitHub's copy) and the
   files mirrored under `/presets/files/presets/<id>/…` (the Content-Security-Policy allows images from this site only).
+- **Warnings**: an entry's `warnings` (`[{ code, severity }]`, set by Filee-Presets' checks for risky settings such as
+  `replaces_original`) appear in a box above the install steps and the download link on the preset's page (high red,
+  medium amber, info neutral) and, for high ones, as a badge on its card. Each known code has a sentence in every
+  `i18n/*.json` (`presets.warnings`); a code the site doesn't know yet is worded by its severity (`presets.warnGeneric`).
 - **Likes and comments**: 👍 reactions (with their dates) and the comment count of each preset's discussion, from the
   GitHub GraphQL API, which needs a token: `GITHUB_TOKEN` (or `GH_TOKEN`), any token, public data only.
 - **Downloads**: `https://filee.sh/presets/download/<id>` runs `worker/index.mjs` (`run_worker_first` in

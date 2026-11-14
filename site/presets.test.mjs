@@ -4,7 +4,10 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { HOT, NO_STATS, presetStats, rank, utcDay } from './src/preset-stats.mjs';
-import { checkEntry, publicIndex } from './src/presets.mjs';
+import { readFileSync } from 'node:fs';
+import { LANGUAGES } from './src/languages.mjs';
+import { renderGalleryPage, renderPresetPage } from './src/presets-page.mjs';
+import { checkEntry, checkWarnings, publicIndex } from './src/presets.mjs';
 import worker, { LIMIT, allow } from './worker/index.mjs';
 
 const NOW = Date.parse('2026-11-15T12:00:00Z');
@@ -106,6 +109,57 @@ test('publicIndex: paths relative to the index, a download link, no bundle', () 
   assert.equal(new URL(p.thumb, 'https://filee.sh/presets/index.json').href, 'https://filee.sh/presets/files/presets/instagram-jpg/images/1-thumb.webp');
   assert.equal(p.download, 'https://filee.sh/presets/download/instagram-jpg');
   assert.equal(p.bundle, undefined);
+});
+
+test('checkWarnings keeps known and unknown codes, drops bad ones, most serious first', () => {
+  const warnings = checkWarnings([
+    { code: 'strips_metadata', severity: 'info' },
+    { code: 'replaces_original', severity: 'high' },
+    { code: 'future_thing', severity: 'medium' },
+    { code: 'replaces_original', severity: 'high' },
+    { code: 'Bad Code', severity: 'high' },
+    { code: 'no_severity' },
+    { code: 'odd', severity: 'critical' },
+  ]);
+  assert.deepEqual(warnings, [
+    { code: 'replaces_original', severity: 'high' },
+    { code: 'future_thing', severity: 'medium' },
+    { code: 'strips_metadata', severity: 'info' },
+  ]);
+  assert.deepEqual(checkWarnings('nope'), []);
+  assert.deepEqual(checkEntry(ENTRY).entry.warnings, []);
+});
+
+/** Every language with its texts, as build.mjs loads them. */
+const languages = LANGUAGES.map(l => ({ ...JSON.parse(readFileSync(new URL(`./i18n/${l.lang}.json`, import.meta.url), 'utf8')), ...l }));
+const assets = { css: 'styles.css', js: 'main.js', gallery: 'gallery.js', supporters: { sponsors: [], backers: [] } };
+const warned = warnings => ({ ...checkEntry({ ...ENTRY, warnings }).entry, bundle: { presets: [] }, stats: NO_STATS });
+
+test('every language words every known warning code and every severity', () => {
+  const codes = Object.keys(languages[0].presets.warnings);
+  for (const l of languages) {
+    for (const code of codes) assert.ok(l.presets.warnings[code]?.trim(), `${l.lang}: ${code}`);
+    for (const severity of ['high', 'medium', 'info']) assert.ok(l.presets.warnGeneric[severity]?.trim(), `${l.lang}: ${severity}`);
+  }
+});
+
+test('a preset page shows its warnings above the install steps and the download link', () => {
+  const html = renderPresetPage(languages[0], languages, assets, warned([{ code: 'replaces_original', severity: 'high' }, { code: 'brand_new', severity: 'info' }]));
+  const box = html.indexOf('class="preset-warnings is-high"');
+  assert.ok(box > 0, 'warning box');
+  assert.ok(box < html.indexOf('id="install"') && box < html.indexOf('/presets/download/'), 'above install and download');
+  assert.ok(html.includes(languages[0].presets.warnings.replaces_original));
+  assert.ok(html.includes(languages[0].presets.warnGeneric.info), 'an unknown code is worded by its severity');
+  const plain = renderPresetPage(languages[0], languages, assets, warned([]));
+  assert.ok(!plain.includes('preset-warnings'), 'no box without warnings');
+});
+
+test('gallery cards badge high-severity presets only', () => {
+  const gallery = presets => ({ presets: presets.map((p, i) => ({ ...p, id: `p${i}-x` })) });
+  const high = renderGalleryPage(languages[0], languages, assets, gallery([warned([{ code: 'moves_original', severity: 'high' }])]));
+  const medium = renderGalleryPage(languages[0], languages, assets, gallery([warned([{ code: 'edits_metadata', severity: 'medium' }])]));
+  assert.ok(high.includes('class="preset-badge"'));
+  assert.ok(!medium.includes('class="preset-badge"'));
 });
 
 /* ───────── Worker ───────── */
