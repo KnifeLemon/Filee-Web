@@ -545,7 +545,7 @@
     "filterKind": "種類",
     "filterFormat": "形式",
     "filterTag": "タグ",
-    "filterLanguage": "言語",
+    "onlyMine": "自分の言語のみ",
     "any": "すべて",
     "clear": "絞り込みを解除",
     "kinds": {

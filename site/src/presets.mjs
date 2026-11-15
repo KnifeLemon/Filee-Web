@@ -68,6 +68,20 @@ const text = (value, max) => (typeof value === 'string' && value.trim() && value
 const words = (value, pattern, max) => (Array.isArray(value) ? [...new Set(value.filter(v => typeof v === 'string' && pattern.test(v)))].slice(0, max) : []);
 
 /**
+ * The language fields of an entry: language (the main language of title, description and default pictures; old
+ * entries without it: languages[0], else English), titleByLang / descriptionByLang (translations, same limits as the
+ * main texts; app language codes) and languages (the supported ones: the main language and every one with a title).
+ */
+function texts(entry, title, description) {
+  const language = [entry.language, ...(Array.isArray(entry.languages) ? entry.languages : [])].find(l => typeof l === 'string' && LANG.test(l)) ?? 'en';
+  const byLang = (value, max) => Object.fromEntries(Object.entries(value && typeof value === 'object' && !Array.isArray(value) ? value : {})
+    .filter(([lang, v]) => LANG.test(lang) && lang.toLowerCase() !== language.toLowerCase() && text(v, max)).slice(0, 23).map(([lang, v]) => [lang, v.trim()]));
+  const titleByLang = byLang(entry.titleByLang, 80);
+  const descriptionByLang = byLang(entry.descriptionByLang, 1000);
+  return { language, titleByLang, descriptionByLang, languages: [language, ...Object.keys(titleByLang)] };
+}
+
+/**
  * One index.json entry, checked and normalised, or a reason it is left out. Paths must stay in the preset's own
  * folder (presets/<id>/…), so a bad entry can never make the build read or write anywhere else.
  */
@@ -99,7 +113,7 @@ export function checkEntry(entry) {
     entry: {
       id, title, description, author: entry.author,
       tags: words(entry.tags, WORD, 6),
-      languages: words(entry.languages, LANG, 10),
+      ...texts(entry, title, description),
       kinds: words(entry.kinds, WORD, 3),
       formats,
       minVersion: typeof entry.minVersion === 'string' && /^\d+\.\d+\.\d+$/.test(entry.minVersion) ? entry.minVersion : null,
@@ -348,6 +362,29 @@ export function langKey(sets, lang) {
 export const imagesFor = (p, lang) => p.imagesByLang?.[langKey(p.imagesByLang, lang)] ?? p.images;
 /** A preset's list thumbnail for a site language. */
 export const thumbFor = (p, lang) => p.thumbByLang?.[langKey(p.thumbByLang, lang)] ?? p.thumb;
+
+/**
+ * What a page in language lang shows of a preset. Supported (its main language, or a language with a translated
+ * title; base language as a fallback): that language's title, its description (else the main one) and its pictures.
+ * Otherwise the main-language texts and the default pictures, marked with the main language (the page shows a badge).
+ * { supported, lang (of the title), title, description, descriptionLang, images, thumb }
+ */
+export function shownFor(p, lang) {
+  const main = p.language ?? 'en';
+  const key = langKey({ [main]: true, ...p.titleByLang }, lang);
+  if (!key) return { supported: false, lang: main, title: p.title, description: p.description, descriptionLang: main, images: p.images, thumb: p.thumb };
+  const own = key !== main;
+  const translated = own && p.descriptionByLang?.[key];
+  return {
+    supported: true,
+    lang: key,
+    title: own ? p.titleByLang[key] : p.title,
+    description: translated || p.description,
+    descriptionLang: translated ? key : main,
+    images: imagesFor(p, key),
+    thumb: thumbFor(p, key),
+  };
+}
 
 /** The path a repository file is served at on this site. */
 export const filePath = path => `/presets/files/${path}`;

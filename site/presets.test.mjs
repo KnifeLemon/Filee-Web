@@ -7,7 +7,7 @@ import { HOT, NO_STATS, presetStats, rank, utcDay } from './src/preset-stats.mjs
 import { readFileSync } from 'node:fs';
 import { LANGUAGES } from './src/languages.mjs';
 import { renderGalleryPage, renderPresetPage } from './src/presets-page.mjs';
-import { checkEntry, checkWarnings, imagesFor, langKey, publicIndex, thumbFor } from './src/presets.mjs';
+import { checkEntry, checkWarnings, imagesFor, langKey, publicIndex, shownFor, thumbFor } from './src/presets.mjs';
 import worker, { LIMIT, allow } from './worker/index.mjs';
 
 const NOW = Date.parse('2026-11-15T12:00:00Z');
@@ -168,6 +168,8 @@ test('per-language pictures: checked, mirrored paths rewritten, picked by the pa
   const dir = 'presets/instagram-jpg/images';
   const { entry } = checkEntry({
     ...ENTRY,
+    // The Korean page uses the ko pictures only because the preset supports Korean (it has a Korean title).
+    titleByLang: { ko: '인스타그램용 JPG' },
     imagesByLang: { ko: [`${dir}/ko/1.webp`, `${dir}/2.webp`], 'zh-CN': [`${dir}/zh-CN/1.webp`], pt: [`${dir}/pt/1.webp`], bad: [`${dir}/../../x.webp`], 'x y': [`${dir}/1.webp`] },
     thumbByLang: { ko: `${dir}/ko/1-thumb.webp`, ja: 'https://example.com/t.webp' },
   });
@@ -194,6 +196,66 @@ test('per-language pictures: checked, mirrored paths rewritten, picked by the pa
   assert.ok(enPage.includes(`/presets/files/${dir}/1.webp`) && !enPage.includes(`${dir}/ko/`));
   const koGallery = renderGalleryPage(ko, languages, assets, { presets: [preset] });
   assert.ok(koGallery.includes(`/presets/files/${dir}/ko/1-thumb.webp`));
+});
+
+test('language fields: main language, translations and the supported languages', () => {
+  const { entry } = checkEntry({ ...ENTRY, language: 'en', titleByLang: { ko: '인스타그램용 JPG', ja: '', 'x y': 'bad', en: 'same as main' }, descriptionByLang: { ko: '사진을 1080px로 줄여요.' } });
+  assert.equal(entry.language, 'en');
+  assert.deepEqual(entry.titleByLang, { ko: '인스타그램용 JPG' });
+  assert.deepEqual(entry.languages, ['en', 'ko']);
+  // Old entries: languages[0] is the main language.
+  assert.equal(checkEntry({ ...ENTRY, languages: ['ja'] }).entry.language, 'ja');
+  assert.equal(checkEntry({ ...ENTRY, languages: undefined }).entry.language, 'en');
+});
+
+test('shownFor: translated texts when supported, main texts and default pictures otherwise', () => {
+  const dir = 'presets/instagram-jpg/images';
+  const { entry } = checkEntry({
+    ...ENTRY, language: 'en',
+    titleByLang: { ko: '인스타그램용 JPG', pt: 'JPG para Instagram' }, descriptionByLang: { ko: '사진을 1080px로 줄여요.' },
+    imagesByLang: { ko: [`${dir}/ko/1.webp`], ja: [`${dir}/ja/1.webp`] },
+  });
+  const ko = shownFor(entry, 'ko');
+  assert.deepEqual([ko.supported, ko.lang, ko.title, ko.description, ko.images[0]], [true, 'ko', '인스타그램용 JPG', '사진을 1080px로 줄여요.', `${dir}/ko/1.webp`]);
+  const ptPT = shownFor(entry, 'pt-PT');
+  assert.deepEqual([ptPT.supported, ptPT.title, ptPT.description, ptPT.descriptionLang], [true, 'JPG para Instagram', ENTRY.description, 'en'], 'base language; description falls back to the main one');
+  const ja = shownFor(entry, 'ja');
+  assert.deepEqual([ja.supported, ja.lang, ja.title, ja.images], [false, 'en', ENTRY.title, entry.images], 'not supported: main texts and default pictures, even with a ja picture set');
+  assert.equal(shownFor(entry, 'en').supported, true);
+});
+
+test('rank puts the presets that pass first ahead in every sort', () => {
+  const p = (id, hot, ok) => ({ id, created: '2026-11-01T00:00:00Z', ok, stats: { hot, downloads: 0, best: { all: hot } } });
+  const list = [p('a', 9, false), p('b', 1, true), p('c', 5, true)];
+  assert.deepEqual(rank(list, 'hot', 'all', x => x.ok).map(x => x.id), ['c', 'b', 'a']);
+  assert.deepEqual(rank(list, 'best', 'all', x => x.ok).map(x => x.id), ['c', 'b', 'a']);
+  assert.deepEqual(rank(list, 'hot').map(x => x.id), ['a', 'c', 'b'], 'without it, by score only');
+});
+
+test('pages: translated title in its language, otherwise the main text with a language badge; supported first', () => {
+  const make = (id, hot, patch) => ({ ...checkEntry({ ...ENTRY, language: 'en', ...patch }).entry, id, bundle: { presets: [] }, stats: { ...NO_STATS, hot } });
+  const translated = make('translated-one', 1, { titleByLang: { ko: '번역된 프리셋' } });
+  const english = make('english-only', 9, {});
+  const ko = languages.find(l => l.lang === 'ko');
+
+  const koPage = renderPresetPage(ko, languages, assets, translated);
+  assert.ok(koPage.includes('<h1>번역된 프리셋</h1>'));
+  assert.ok(!koPage.includes('class="preset-lang'), 'no badge when supported');
+  assert.ok(koPage.includes('<title>번역된 프리셋'), 'title tag in the page language');
+
+  const otherPage = renderPresetPage(ko, languages, assets, english);
+  assert.ok(otherPage.includes(`<h1 lang="en">${ENTRY.title}</h1>`));
+  assert.match(otherPage, /class="preset-lang preset-lang-hero" lang="en">.*<span>English<\/span>/);
+  assert.ok(otherPage.includes('"inLanguage":"en"'));
+
+  const gallery = renderGalleryPage(ko, languages, assets, { presets: [english, translated] });
+  assert.ok(gallery.indexOf('data-id="translated-one"') < gallery.indexOf('data-id="english-only"'), 'supported first despite a lower score');
+  assert.ok(gallery.includes('data-only-mine'), 'the "Only in my language" toggle');
+  assert.ok(!gallery.includes('data-filter="langs"'), 'no language filter any more');
+  assert.match(gallery, /data-id="english-only"[^>]*data-supported="0"/);
+  assert.ok(gallery.includes(`data-search="${ENTRY.title.toLowerCase()}`) || gallery.toLowerCase().includes(ENTRY.title.toLowerCase()));
+  const en = renderGalleryPage(languages[0], languages, assets, { presets: [english, translated] });
+  assert.ok(!en.includes('class="preset-lang"'), 'English pages need no badge for English presets');
 });
 
 /* ───────── Worker ───────── */

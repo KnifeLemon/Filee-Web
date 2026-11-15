@@ -545,7 +545,7 @@
     "filterKind": "Rodzaj",
     "filterFormat": "Format",
     "filterTag": "Tag",
-    "filterLanguage": "Język",
+    "onlyMine": "Tylko w moim języku",
     "any": "Wszystkie",
     "clear": "Wyczyść filtry",
     "kinds": {

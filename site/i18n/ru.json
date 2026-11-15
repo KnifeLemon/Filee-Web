@@ -545,7 +545,7 @@
     "filterKind": "Тип",
     "filterFormat": "Формат",
     "filterTag": "Тег",
-    "filterLanguage": "Язык",
+    "onlyMine": "Только на моём языке",
     "any": "Все",
     "clear": "Сбросить фильтры",
     "kinds": {

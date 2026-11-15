@@ -545,7 +545,7 @@
     "filterKind": "प्रकार",
     "filterFormat": "फ़ॉर्मैट",
     "filterTag": "टैग",
-    "filterLanguage": "भाषा",
+    "onlyMine": "सिर्फ़ मेरी भाषा में",
     "any": "सभी",
     "clear": "फ़िल्टर हटाएँ",
     "kinds": {

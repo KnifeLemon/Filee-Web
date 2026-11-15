@@ -1,14 +1,15 @@
 // The preset gallery: /presets/ (cards with Hot / Best / New tabs, filters and search; the guide to sharing) and
 // one page per preset, /presets/<id>/ (all pictures, the description, what each preset in the file does, the install
-// steps, the download link, the CC0 note and the comments link), in every language. The presets' own titles and
-// descriptions are shown as their authors wrote them, marked with their language. Texts: i18n/<lang>.json (t.presets).
+// steps, the download link, the CC0 note and the comments link), in every language. A preset in the page's language
+// (its main language or a translated title) shows those texts and pictures; any other shows its main-language texts
+// with a badge naming that language, and comes after them in every sort. Texts: i18n/<lang>.json (t.presets).
 // Data: src/presets.mjs. Sorting and filtering in the browser: src/gallery.js (without it, the cards stay in Hot order).
 
 import { FORMATS, fill, label, vars } from './catalog.mjs';
 import { md } from './cli-page.mjs';
 import { SITE, alternatesOf, breadcrumbs, downloadCard, escape, icon, paths, renderDocument } from './layout.mjs';
-import { ISSUES, PRESETS_REPO, SEVERITIES, UPLOAD, downloadPath, filePath, imagesFor, thumbFor } from './presets.mjs';
-import { PERIODS } from './preset-stats.mjs';
+import { ISSUES, PRESETS_REPO, SEVERITIES, UPLOAD, downloadPath, filePath, shownFor } from './presets.mjs';
+import { PERIODS, rank } from './preset-stats.mjs';
 
 const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
 const SORTS = ['hot', 'best', 'new'];
@@ -29,13 +30,21 @@ const html = (t, template, values = {}) => fill(md(template), {
 const download = t => downloadCard(t, { title: t.download.title, text: fill(t.download.text, vars(t.lang)), button: t.download.button });
 
 const formatName = (id, lang) => (FORMATS[id] ? label(id, lang) : id.toUpperCase());
-const languageName = (code, t) => {
-  try { return new Intl.DisplayNames([t.htmlLang], { type: 'language' }).of(code) ?? code; } catch { return code; }
+/** A language's own name, as its speakers write it ("English", "日本語"), for the badge on texts in another language. */
+export const ownName = code => {
+  try {
+    const name = new Intl.DisplayNames([code], { type: 'language' }).of(code) ?? code;
+    return name.charAt(0).toLocaleUpperCase(code) + name.slice(1);
+  } catch { return code; }
 };
 const date = (iso, t) => (iso ? new Intl.DateTimeFormat(t.htmlLang, { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(iso)) : '');
 const number = (n, t) => new Intl.NumberFormat(t.htmlLang).format(n);
-/** lang="…" for a preset's own texts (the first language its author named), when it differs from the page's. */
-const textLang = (p, t) => (p.languages[0] && p.languages[0].toLowerCase() !== t.htmlLang.toLowerCase() ? ` lang="${escape(p.languages[0])}"` : '');
+/** lang="…" for a preset's text written in another language than the page's. */
+const textLang = (code, t) => (code && code.toLowerCase() !== t.htmlLang.toLowerCase() ? ` lang="${escape(code)}"` : '');
+/** The badge on a preset that isn't in the page's language: the language it is in, by its own name. */
+const langBadge = (shown, cls = 'preset-lang') => (shown.supported ? '' : `<span class="${cls}" lang="${escape(shown.lang)}">${icon('globe')}<span>${escape(ownName(shown.lang))}</span></span>`);
+/** Presets in a page's language first, then the others, each in Hot order (gallery.js re-sorts the same way). */
+export const galleryOrder = (presets, t) => rank(presets, 'hot', 'all', p => shownFor(p, t.lang).supported);
 const authorUrl = p => `https://github.com/${p.author}`;
 const discussionUrl = p => (p.discussion ? `${PRESETS_REPO}/discussions/${p.discussion}` : null);
 
@@ -73,19 +82,22 @@ function warningBox(t, p) {
 const tagList = p => (p.tags.length ? `<ul class="preset-tags">${p.tags.map(tag => `<li class="tag">${escape(tag)}</li>`).join('')}</ul>` : '');
 
 function card(t, p) {
+  const shown = shownFor(p, t.lang);
   const formats = [...new Set([...p.formats.from, ...p.formats.to])];
-  const search = [p.title, p.author, p.description, ...p.tags].join(' ').toLowerCase();
+  // Search finds the shown texts and the main-language ones.
+  const search = [...new Set([shown.title, shown.description, p.title, p.description])].concat(p.author, p.tags).join(' ').toLowerCase();
   const data = {
     id: p.id, hot: p.stats.hot, downloads: p.stats.downloads, created: p.created ?? '',
     best: PERIOD_NAMES.map(name => p.stats.best[name] ?? 0).join(','),
-    kinds: p.kinds.join(' '), formats: formats.join(' '), tags: p.tags.join(' '), langs: p.languages.join(' '),
+    kinds: p.kinds.join(' '), formats: formats.join(' '), tags: p.tags.join(' '), supported: shown.supported ? 1 : 0,
     search,
   };
   return `<li class="preset-card" ${Object.entries(data).map(([k, v]) => `data-${k}="${escape(v)}"`).join(' ')}>
         <a class="preset-card-link" href="${paths.preset(t, p.id)}">
-          <span class="preset-thumb"><img src="${filePath(thumbFor(p, t.lang))}" alt="" width="480" height="300" loading="lazy" decoding="async">${worst(p) === 'high' ? `<span class="preset-badge">${icon('alert')}<span>${escape(t.presets.warnBadge)}</span></span>` : ''}</span>
+          <span class="preset-thumb"><img src="${filePath(shown.thumb)}" alt="" width="480" height="300" loading="lazy" decoding="async">${worst(p) === 'high' ? `<span class="preset-badge">${icon('alert')}<span>${escape(t.presets.warnBadge)}</span></span>` : ''}</span>
           <span class="preset-card-body">
-            <strong class="preset-card-title"${textLang(p, t)}>${escape(p.title)}</strong>
+            <strong class="preset-card-title"${textLang(shown.lang, t)}>${escape(shown.title)}</strong>
+            ${langBadge(shown)}
             <span class="preset-by">${html(t, t.presets.by, { author: p.author })}</span>
           </span>
         </a>
@@ -104,7 +116,6 @@ function tools(t, presets) {
   const formats = unique(presets.flatMap(p => [...p.formats.from, ...p.formats.to])).map(f => [f, formatName(f, t.lang)])
     .sort((a, b) => a[1].localeCompare(b[1]));
   const tags = unique(presets.flatMap(p => p.tags)).map(tag => [tag, tag]);
-  const langs = unique(presets.flatMap(p => p.languages)).map(l => [l, languageName(l, t)]);
   return `<div class="gallery-tools" data-gallery-tools hidden>
         <div class="gallery-sort" role="group" aria-label="${escape(g.sortLabel)}">
           ${SORTS.map(s => `<button type="button" class="pill" data-sort="${s}" aria-pressed="${s === 'hot'}">${escape(g.sort[s])}</button>`).join('')}
@@ -116,7 +127,7 @@ function tools(t, presets) {
         ${kinds.length > 1 ? select('kinds', g.filterKind, kinds, t) : ''}
         ${formats.length > 1 ? select('formats', g.filterFormat, formats, t) : ''}
         ${tags.length > 1 ? select('tags', g.filterTag, tags, t) : ''}
-        ${langs.length > 1 ? select('langs', g.filterLanguage, langs, t) : ''}
+        <label class="gallery-toggle"><input type="checkbox" data-only-mine><span>${escape(g.onlyMine)}</span></label>
         <button type="button" class="gallery-clear" data-clear hidden>${escape(g.clear)}</button>
       </div>`;
 }
@@ -141,7 +152,7 @@ function guide(t) {
 
 export function renderGalleryPage(t, languages, assets, gallery) {
   const g = t.presets;
-  const { presets } = gallery;
+  const presets = galleryOrder(gallery.presets, t);
   const alternates = alternatesOf(languages, paths.presets);
   const url = SITE + alternates[t.lang];
   const crumbs = breadcrumbs(t, [
@@ -193,7 +204,7 @@ export function renderGalleryPage(t, languages, assets, gallery) {
       mainEntity: {
         '@type': 'ItemList',
         numberOfItems: presets.length,
-        itemListElement: presets.slice(0, 100).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + paths.preset(t, p.id), name: p.title })),
+        itemListElement: presets.slice(0, 100).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + paths.preset(t, p.id), name: shownFor(p, t.lang).title })),
       },
     },
     crumbs.ld,
@@ -273,17 +284,18 @@ function toolbarLine(t, bundle) {
 
 export function renderPresetPage(t, languages, assets, p) {
   const g = t.presets;
+  const shown = shownFor(p, t.lang);
   const alternates = alternatesOf(languages, l => paths.preset(l, p.id));
   const url = SITE + alternates[t.lang];
   const crumbs = breadcrumbs(t, [
     { name: t.common.home, path: paths.home(t) },
     { name: g.crumb, path: paths.presets(t) },
-    { name: p.title, path: alternates[t.lang] },
+    { name: shown.title, path: alternates[t.lang] },
   ]);
-  const own = textLang(p, t);
-  // The pictures in the page's language when the preset has a set for it (app screenshots in that language).
-  const pictures = imagesFor(p, t.lang);
-  const images = pictures.map((path, i) => `<figure class="preset-figure${i === 0 ? ' is-cover' : ''}"><img src="${filePath(path)}" alt="${escape(plain(t, g.imageAlt, { title: p.title, n: i + 1, total: pictures.length }))}"${i ? ' loading="lazy"' : ''} decoding="async"></figure>`).join('');
+  const own = textLang(shown.lang, t);
+  // The pictures in the page's language when the preset supports it, else the default ones.
+  const pictures = shown.images;
+  const images = pictures.map((path, i) => `<figure class="preset-figure${i === 0 ? ' is-cover' : ''}"><img src="${filePath(path)}" alt="${escape(plain(t, g.imageAlt, { title: shown.title, n: i + 1, total: pictures.length }))}"${i ? ' loading="lazy"' : ''} decoding="async"></figure>`).join('');
   const comments = discussionUrl(p);
   const formats = (label, ids) => (ids.length ? `<p class="preset-formats"><b>${escape(label)}</b> ${ids.map(id => `<span class="tag">${escape(formatName(id, t.lang))}</span>`).join(' ')}</p>` : '');
   const rows = presetRows(t, p.bundle);
@@ -292,7 +304,8 @@ export function renderPresetPage(t, languages, assets, p) {
   <section class="page-hero page-hero-wide preset-hero">
     <div class="page-hero-copy">
       ${crumbs.html}
-      <h1${own}>${escape(p.title)}</h1>
+      <h1${own}>${escape(shown.title)}</h1>
+      ${langBadge(shown, 'preset-lang preset-lang-hero')}
       <p class="preset-meta"><a href="${authorUrl(p)}" rel="ugc noopener">${html(t, g.sharedBy, { author: p.author })}</a>${p.updated ? ` · <span>${escape(plain(t, g.updated, { date: date(p.updated, t) }))}</span>` : ''}</p>
       ${statLine(t, p, { comments: Boolean(comments) })}
       ${tagList(p)}
@@ -305,7 +318,7 @@ export function renderPresetPage(t, languages, assets, p) {
       ${warningBox(t, p)}
       <div class="details-copy preset-install" id="install">
         <h2>${escape(g.installTitle)}</h2>
-        <ol class="preset-steps">${g.installSteps.map(s => `<li>${html(t, s, { title: p.title })}</li>`).join('')}</ol>
+        <ol class="preset-steps">${g.installSteps.map(s => `<li>${html(t, s, { title: shown.title })}</li>`).join('')}</ol>
         <a class="btn btn-primary" href="${downloadPath(p.id)}" download="${escape(p.id)}.json">${icon('download')}<span>${escape(g.downloadButton)}</span></a>
         <p class="muted preset-note">${md(g.downloadNote)}</p>
         <p class="muted preset-sha"><abbr title="SHA-256">SHA-256</abbr> <code>${escape(p.sha256)}</code></p>
@@ -318,7 +331,7 @@ export function renderPresetPage(t, languages, assets, p) {
   <section class="section section-tight">
     <div class="details-copy" id="about">
       <h2>${escape(g.aboutTitle)}</h2>
-      <p class="preset-description"${own}>${escape(p.description).replaceAll('\n', '<br>')}</p>
+      <p class="preset-description"${textLang(shown.descriptionLang, t)}>${escape(shown.description).replaceAll('\n', '<br>')}</p>
       ${formats(g.worksOn, p.formats.from)}
       ${formats(g.makes, p.formats.to)}
     </div>
@@ -348,10 +361,10 @@ export function renderPresetPage(t, languages, assets, p) {
   const work = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
-    name: p.title,
-    description: p.description,
+    name: shown.title,
+    description: shown.description,
     url,
-    ...(p.languages[0] ? { inLanguage: p.languages[0] } : {}),
+    inLanguage: shown.lang,
     author: { '@type': 'Person', name: p.author, url: authorUrl(p) },
     license: CC0,
     image: pictures.map(path => SITE + filePath(path)),
@@ -366,9 +379,9 @@ export function renderPresetPage(t, languages, assets, p) {
   };
   return renderDocument({
     t, languages, assets, alternates, nav: 'presets',
-    title: plain(t, g.detailTitle, { title: p.title, author: p.author }),
-    description: plain(t, g.detailDescription, { title: p.title, author: p.author }),
-    image: { url: SITE + filePath(pictures[0]), alt: plain(t, g.imageAlt, { title: p.title, n: 1, total: pictures.length }) },
+    title: plain(t, g.detailTitle, { title: shown.title, author: p.author }),
+    description: plain(t, g.detailDescription, { title: shown.title, author: p.author }),
+    image: { url: SITE + filePath(pictures[0]), alt: plain(t, g.imageAlt, { title: shown.title, n: 1, total: pictures.length }) },
     jsonLd: [work, crumbs.ld], main,
   });
 }

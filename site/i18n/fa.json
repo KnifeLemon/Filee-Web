@@ -545,7 +545,7 @@
     "filterKind": "نوع",
     "filterFormat": "فرمت",
     "filterTag": "برچسب",
-    "filterLanguage": "زبان",
+    "onlyMine": "فقط به زبان من",
     "any": "همه",
     "clear": "پاک کردن فیلترها",
     "kinds": {

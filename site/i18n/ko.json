@@ -545,7 +545,7 @@
     "filterKind": "종류",
     "filterFormat": "형식",
     "filterTag": "태그",
-    "filterLanguage": "언어",
+    "onlyMine": "내 언어로 된 것만",
     "any": "전체",
     "clear": "필터 지우기",
     "kinds": {

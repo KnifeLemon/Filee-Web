@@ -61,10 +61,12 @@ export function presetStats({ now, created, likes = [], likeTotal, comments = 0,
 export const NO_STATS = Object.freeze({ likes: 0, comments: 0, downloads: 0, hot: 0, best: { day: 0, week: 0, month: 0, year: 0, all: 0 } });
 
 /**
- * Sorts presets (each with stats and created) for a tab: 'hot', 'new', or 'best' with a period. Ties fall back to
- * downloads, then to the newer preset, then to the id, so the order is stable. Returns a new array.
+ * Sorts presets (each with stats and created) for a tab: 'hot', 'new', or 'best' with a period. first (optional): a
+ * test that comes before the score, e.g. "supports the viewer's language": those presets come first, each group in
+ * score order. Ties fall back to downloads, then to the newer preset, then to the id, so the order is stable. Returns
+ * a new array.
  */
-export function rank(presets, sort = 'hot', period = 'all') {
+export function rank(presets, sort = 'hot', period = 'all', first = null) {
   const created = p => time(p.created) ?? 0;
   const key = {
     hot: p => [p.stats.hot, p.stats.downloads],
@@ -72,6 +74,7 @@ export function rank(presets, sort = 'hot', period = 'all') {
     new: () => [],
   }[sort] ?? (p => [p.stats.hot]);
   return [...presets].sort((a, b) => {
+    if (first && Boolean(first(a)) !== Boolean(first(b))) return first(a) ? -1 : 1;
     const ka = key(a), kb = key(b);
     for (let i = 0; i < ka.length; i++) if (ka[i] !== kb[i]) return kb[i] - ka[i];
     return created(b) - created(a) || a.id.localeCompare(b.id);

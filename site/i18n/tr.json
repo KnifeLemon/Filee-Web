@@ -545,7 +545,7 @@
     "filterKind": "Tür",
     "filterFormat": "Biçim",
     "filterTag": "Etiket",
-    "filterLanguage": "Dil",
+    "onlyMine": "Yalnızca benim dilimde",
     "any": "Tümü",
     "clear": "Filtreleri temizle",
     "kinds": {

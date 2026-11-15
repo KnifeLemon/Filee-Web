@@ -545,7 +545,7 @@
     "filterKind": "ধরন",
     "filterFormat": "ফরম্যাট",
     "filterTag": "ট্যাগ",
-    "filterLanguage": "ভাষা",
+    "onlyMine": "শুধু আমার ভাষায়",
     "any": "সব",
     "clear": "ফিল্টার মুছুন",
     "kinds": {

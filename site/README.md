@@ -152,9 +152,15 @@ preset at `/presets/<id>/`. Nothing is stored here: every build reads the reposi
 - **Output**: `/presets/index.json` (the repository's index with `stats` filled in and a `download` link; its paths are
   relative to the index, `files/presets/<id>/…`, so the app resolves them the same way against GitHub's copy) and the
   files mirrored under `/presets/files/presets/<id>/…` (the Content-Security-Policy allows images from this site only).
+- **Languages**: an entry has a main `language` (its title, description and default pictures) and may have `titleByLang` /
+  `descriptionByLang`; a language with a title is supported (`languages`). A page in a supported language (matched without
+  regard to case, then by base language: `pt` for `pt-PT`) shows that title, that description (else the main one) and
+  that language's pictures; any other page shows the main-language texts and the default pictures with a badge naming
+  the main language in its own words ("English") and `lang` on the text. Supported presets come first in every sort;
+  "Only in my language" (off by default, `?mine=1`) hides the rest. Search matches the shown and the main texts.
 - **Pictures per language**: an entry may have `imagesByLang` / `thumbByLang` (`{ <app language>: […] }`, sets under
   `images/<lang>/` with the default pictures already filled in where a set has fewer). They are mirrored and rewritten
-  like the default ones, and each language's card and page use that language's set (the site's language codes are the
+  like the default ones, and a supported language's card and page use that language's set (the site's language codes are the
   app's, matched without regard to case; then the base language, `pt` for `pt-PT`), else the default set.
 - **Warnings**: an entry's `warnings` (`[{ code, severity }]`, set by Filee-Presets' checks for risky settings such as
   `replaces_original`) appear in a box above the install steps and the download link on the preset's page (high red,

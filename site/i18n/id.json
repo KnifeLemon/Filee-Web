@@ -545,7 +545,7 @@
     "filterKind": "Jenis",
     "filterFormat": "Format",
     "filterTag": "Tag",
-    "filterLanguage": "Bahasa",
+    "onlyMine": "Hanya dalam bahasa saya",
     "any": "Semua",
     "clear": "Hapus filter",
     "kinds": {

@@ -545,7 +545,7 @@
     "filterKind": "類型",
     "filterFormat": "格式",
     "filterTag": "標籤",
-    "filterLanguage": "語言",
+    "onlyMine": "只看我的語言",
     "any": "全部",
     "clear": "清除篩選",
     "kinds": {

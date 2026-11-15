@@ -545,7 +545,7 @@
     "filterKind": "Art",
     "filterFormat": "Format",
     "filterTag": "Tag",
-    "filterLanguage": "Sprache",
+    "onlyMine": "Nur in meiner Sprache",
     "any": "Alle",
     "clear": "Filter zurücksetzen",
     "kinds": {

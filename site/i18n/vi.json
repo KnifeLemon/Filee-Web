@@ -545,7 +545,7 @@
     "filterKind": "Loại",
     "filterFormat": "Định dạng",
     "filterTag": "Thẻ",
-    "filterLanguage": "Ngôn ngữ",
+    "onlyMine": "Chỉ bằng ngôn ngữ của tôi",
     "any": "Tất cả",
     "clear": "Xóa bộ lọc",
     "kinds": {

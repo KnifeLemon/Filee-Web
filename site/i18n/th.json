@@ -545,7 +545,7 @@
     "filterKind": "ประเภท",
     "filterFormat": "ฟอร์แมต",
     "filterTag": "แท็ก",
-    "filterLanguage": "ภาษา",
+    "onlyMine": "เฉพาะภาษาของฉัน",
     "any": "ทั้งหมด",
     "clear": "ล้างตัวกรอง",
     "kinds": {
