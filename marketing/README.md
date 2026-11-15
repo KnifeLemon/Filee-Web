@@ -115,7 +115,7 @@ download badge) to its tests only. A clip lives in `demo-videos/<Name>Clip.cs`; 
 | `out/demo-videos/<clip>.webp`, `<clip>.gif` | README, slides (820 px; ≤ 1.5 MB / ≤ 3 MB) |
 | `site/public/media/demos/<clip>.mp4`, `.webp` | The website's showcase: the square clip at 720 px, 30 fps, H.264 without audio (about 100–260 KB) and its poster still (`export.py demos`, FFmpeg) |
 | `out/demo-videos/<clip>-640.webp` | The app's What's new slides (640 px, ≤ 400 KB; `export.py demos`) |
-| `site/public/media/whats-new/<release>/<id>.mp4`, `.webp` | The website's "What's new in Filee" section: the app's What's new slides of that release (`src/Filee.App/Assets/WhatsNew/<version>`, animated WebP) as H.264 at 768 × 432 with each frame's own duration, about 60–110 KB, and the slide's poster frame (`export.py whats-new <version>`, FFmpeg) |
+| `site/public/media/whats-new/<release>/<id>.mp4`, `.webp` | The website's "What's new in Filee" section: the app's What's new slides of that release (`src/Filee.App/Assets/WhatsNew/<version>`, animated WebP) as H.264 at 768 × 432 with each frame's own duration, about 60–110 KB, and the slide's poster frame (`export.py whats-new <version>`, FFmpeg 5.1 or later) |
 
 Set the GitHub social preview in the repository's **Settings → General → Social preview**: upload
 `docs/media/social-preview.jpg`.

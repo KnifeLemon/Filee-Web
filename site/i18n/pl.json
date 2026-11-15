@@ -95,12 +95,12 @@
     "title": "Nowości w Filee {release}",
     "lead": "Najważniejsze nowości tej wersji w krótkich klipach prosto z aplikacji.",
     "items": [
-      { "title": "Adnotacje na obrazach", "text": "Rysuj strzałki, ramki, zakreślenia, tekst i numery bezpośrednio na obrazie. Dodaj Adnotacje do pierścienia w Ustawienia → Pasek-pierścień." },
-      { "title": "Kadrowanie wideo", "text": "Usuń automatycznie wykryte czarne pasy albo wykadruj do 16:9, 9:16, 4:3, 1:1 lub 21:9. Wideo HDR zostaje w HDR." },
-      { "title": "Stron na arkusz", "text": "Umieść 2, 4, 6, 8 lub 9 stron PDF na każdym arkuszu. Strony pozostają wektorowe, więc tekst jest ostry." },
-      { "title": "Tylko formaty, których używasz", "text": "Wyłącz w Ustawienia → Dziedziny to, czym się nie zajmujesz, np. CAD, 3D czy czcionki. Ich formaty znikną z pierścienia i z list." },
-      { "title": "Napisy i tłumaczenia na twoim komputerze", "text": "Twórz napisy SRT z wideo i tłumacz dokumenty, e-booki oraz napisy lokalną AI. Nic nie opuszcza twojego komputera." },
-      { "title": "I jeszcze trochę", "text": "Kopiowanie lub przenoszenie do folderu, kadrowanie z perspektywą, pliki CMYK do druku, pliki Krity i Minecrafta oraz włoski, indonezyjski i wietnamski." }
+      { "title": "Galeria ustawień wstępnych", "text": "Przeglądaj ustawienia udostępnione przez innych, sprawdź, co każde robi z plikami, i zainstaluj je jednym kliknięciem. Otwórz ją w Ustawienia wstępne → Galeria." },
+      { "title": "Udostępnij swoje ustawienia", "text": "„Eksportuj do galerii…” sprawdza ustawienia tak jak galeria, wypisuje, co poprawić, i zapisuje plik preset.json do zgłoszenia." },
+      { "title": "Oryginały do Kosza", "text": "Ustawienie wstępne może przenieść oryginał do Kosza, gdy wynik jest gotowy. Nic nie jest usuwane: możesz go stamtąd przywrócić." },
+      { "title": "Nowe formaty", "text": "Tekstury Valve (VTF), płytki drukowane Gerber, Obsidian Canvas, G-code, nagrania NOV z Wisenet, szkice Arduino i więcej." },
+      { "title": "Windows on Arm i mongolski", "text": "Filee działa teraz natywnie na komputerach z Windows on Arm i mówi po mongolsku (Монгол)." },
+      { "title": "I jeszcze trochę", "text": "Obrazy ISO UDF 2.01, połączone PDF w jednym rozmiarze papieru, Połącz PDF w pierścieniu Obrazy, PDF/A z zachowanymi linkami i Yazi w Linuksie." }
     ]
   },
   "features": {

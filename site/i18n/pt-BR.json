@@ -95,12 +95,12 @@
     "title": "Novidades do Filee {release}",
     "lead": "Os destaques desta versão, em clipes curtos tirados do próprio app.",
     "items": [
-      { "title": "Anote suas imagens", "text": "Desenhe setas, molduras, destaques, texto e números direto na imagem. Adicione Anotar a um menu em Configurações → Menu circular." },
-      { "title": "Recorte vídeos", "text": "Remova as barras pretas encontradas automaticamente ou recorte em 16:9, 9:16, 4:3, 1:1 ou 21:9. Vídeo HDR continua HDR." },
-      { "title": "Páginas por folha", "text": "Coloque 2, 4, 6, 8 ou 9 páginas de PDF em cada folha. As páginas continuam vetoriais e o texto fica nítido." },
-      { "title": "Só os formatos que você usa", "text": "Em Configurações → Áreas, desative as que você não usa, como CAD, 3D ou fontes. Os formatos delas saem do menu circular e das listas." },
-      { "title": "Legendas e traduções no seu PC", "text": "Crie legendas SRT a partir de um vídeo e traduza documentos, e-books e legendas com uma IA local. Nada sai do seu PC." },
-      { "title": "E um pouco mais", "text": "Copiar ou mover para uma pasta, recorte com perspectiva, arquivos CMYK para impressão, arquivos do Krita e do Minecraft, além de italiano, indonésio e vietnamita." }
+      { "title": "Galeria de predefinições", "text": "Veja as predefinições que outras pessoas compartilharam, confira o que cada uma faz com seus arquivos e instale com um clique. Abra em Predefinições → Galeria de predefinições." },
+      { "title": "Compartilhe suas predefinições", "text": "“Exportar para a galeria…” verifica suas predefinições do jeito que a galeria verifica, mostra o que corrigir e salva um preset.json para enviar." },
+      { "title": "Originais para a Lixeira", "text": "Uma predefinição pode mover o original para a Lixeira quando o resultado fica pronto. Nada é apagado: dá para restaurar de lá." },
+      { "title": "Novos formatos", "text": "Texturas da Valve (VTF), placas de circuito Gerber, Obsidian Canvas, G-code, gravações NOV da Wisenet, sketches do Arduino e mais." },
+      { "title": "Windows on Arm e mongol", "text": "O Filee agora roda nativamente em PCs Windows on Arm e fala mongol (Монгол)." },
+      { "title": "E um pouco mais", "text": "Imagens ISO UDF 2.01, PDFs mesclados em um só tamanho de papel, Mesclar PDF no menu de Imagens, PDF/A que mantém os links e Yazi no Linux." }
     ]
   },
   "features": {

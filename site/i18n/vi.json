@@ -95,12 +95,12 @@
     "title": "Có gì mới trong Filee {release}",
     "lead": "Những điểm nổi bật của bản phát hành này, qua các đoạn clip ngắn quay từ chính ứng dụng.",
     "items": [
-      { "title": "Chú thích trên ảnh", "text": "Vẽ mũi tên, khung, tô sáng, chữ và số thứ tự ngay trên ảnh. Thêm Chú thích vào một vòng tròn trong Cài đặt → Thanh công cụ vòng tròn." },
-      { "title": "Cắt khung video", "text": "Gỡ viền đen được tự động tìm thấy, hoặc cắt theo tỉ lệ 16:9, 9:16, 4:3, 1:1 hay 21:9. Video HDR vẫn giữ HDR." },
-      { "title": "Số trang mỗi tờ", "text": "Đặt 2, 4, 6, 8 hoặc 9 trang PDF lên mỗi tờ. Các trang vẫn là vector nên chữ vẫn sắc nét." },
-      { "title": "Chỉ những định dạng bạn dùng", "text": "Tắt các lĩnh vực bạn không làm, như CAD, 3D hay phông chữ, trong Cài đặt → Lĩnh vực. Định dạng của chúng sẽ biến mất khỏi vòng tròn và các danh sách." },
-      { "title": "Phụ đề và bản dịch ngay trên máy tính", "text": "Tạo phụ đề SRT từ video, và dịch tài liệu, sách điện tử và phụ đề bằng AI cục bộ. Không có gì rời khỏi máy tính của bạn." },
-      { "title": "Và thêm một chút nữa", "text": "Sao chép hoặc di chuyển vào thư mục, cắt phối cảnh, tệp CMYK để in, tệp Krita và Minecraft, cùng tiếng Ý, tiếng Indonesia và tiếng Việt." }
+      { "title": "Thư viện cấu hình sẵn", "text": "Xem các cấu hình sẵn người khác đã chia sẻ, biết mỗi cấu hình làm gì với tệp của bạn rồi cài đặt chỉ với một lần nhấp. Mở từ Cấu hình sẵn → Thư viện cấu hình sẵn." },
+      { "title": "Chia sẻ cấu hình của bạn", "text": "“Xuất cho thư viện…” kiểm tra cấu hình của bạn giống như thư viện kiểm tra, liệt kê những gì cần sửa và lưu tệp preset.json để gửi." },
+      { "title": "Bản gốc vào Thùng rác", "text": "Một cấu hình sẵn có thể chuyển bản gốc vào Thùng rác khi đã có kết quả. Không có gì bị xóa hẳn: bạn có thể khôi phục từ đó." },
+      { "title": "Định dạng mới", "text": "Texture Valve (VTF), mạch in Gerber, Obsidian Canvas, G-code, bản ghi Wisenet NOV, sketch Arduino và nhiều hơn nữa." },
+      { "title": "Windows on Arm và tiếng Mông Cổ", "text": "Filee giờ chạy gốc trên PC Windows on Arm và có thêm tiếng Mông Cổ (Монгол)." },
+      { "title": "Và thêm một chút nữa", "text": "Ảnh ISO UDF 2.01, ghép PDF về một khổ giấy, Ghép PDF trên vòng tròn Ảnh, PDF/A giữ liên kết và Yazi trên Linux." }
     ]
   },
   "features": {
