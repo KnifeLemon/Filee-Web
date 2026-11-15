@@ -168,8 +168,6 @@ test('per-language pictures: checked, mirrored paths rewritten, picked by the pa
   const dir = 'presets/instagram-jpg/images';
   const { entry } = checkEntry({
     ...ENTRY,
-    // The Korean page uses the ko pictures only because the preset supports Korean (it has a Korean title).
-    titleByLang: { ko: '인스타그램용 JPG' },
     imagesByLang: { ko: [`${dir}/ko/1.webp`, `${dir}/2.webp`], 'zh-CN': [`${dir}/zh-CN/1.webp`], pt: [`${dir}/pt/1.webp`], bad: [`${dir}/../../x.webp`], 'x y': [`${dir}/1.webp`] },
     thumbByLang: { ko: `${dir}/ko/1-thumb.webp`, ja: 'https://example.com/t.webp' },
   });
@@ -220,7 +218,8 @@ test('shownFor: translated texts when supported, main texts and default pictures
   const ptPT = shownFor(entry, 'pt-PT');
   assert.deepEqual([ptPT.supported, ptPT.title, ptPT.description, ptPT.descriptionLang], [true, 'JPG para Instagram', ENTRY.description, 'en'], 'base language; description falls back to the main one');
   const ja = shownFor(entry, 'ja');
-  assert.deepEqual([ja.supported, ja.lang, ja.title, ja.images], [false, 'en', ENTRY.title, entry.images], 'not supported: main texts and default pictures, even with a ja picture set');
+  assert.deepEqual([ja.supported, ja.lang, ja.title, ja.images[0]], [false, 'en', ENTRY.title, `${dir}/ja/1.webp`], 'not supported: main texts, but its own pictures when a ja set exists');
+  assert.deepEqual(shownFor(entry, 'de').images, entry.images, 'no set: default pictures');
   assert.equal(shownFor(entry, 'en').supported, true);
 });
 

@@ -365,14 +365,17 @@ export const thumbFor = (p, lang) => p.thumbByLang?.[langKey(p.thumbByLang, lang
 
 /**
  * What a page in language lang shows of a preset. Supported (its main language, or a language with a translated
- * title; base language as a fallback): that language's title, its description (else the main one) and its pictures.
- * Otherwise the main-language texts and the default pictures, marked with the main language (the page shows a badge).
+ * title; base language as a fallback): that language's title and its description (else the main one).
+ * Otherwise the main-language texts, marked with the main language (the page shows a badge). The pictures are chosen
+ * on their own: the page language's set when there is one (base language as a fallback), else the default set.
  * { supported, lang (of the title), title, description, descriptionLang, images, thumb }
  */
 export function shownFor(p, lang) {
   const main = p.language ?? 'en';
   const key = langKey({ [main]: true, ...p.titleByLang }, lang);
-  if (!key) return { supported: false, lang: main, title: p.title, description: p.description, descriptionLang: main, images: p.images, thumb: p.thumb };
+  // Pictures follow the page language whenever a set exists for it, whatever the texts are in.
+  const pictures = { images: imagesFor(p, lang), thumb: thumbFor(p, lang) };
+  if (!key) return { supported: false, lang: main, title: p.title, description: p.description, descriptionLang: main, ...pictures };
   const own = key !== main;
   const translated = own && p.descriptionByLang?.[key];
   return {
@@ -381,8 +384,7 @@ export function shownFor(p, lang) {
     title: own ? p.titleByLang[key] : p.title,
     description: translated || p.description,
     descriptionLang: translated ? key : main,
-    images: imagesFor(p, key),
-    thumb: thumbFor(p, key),
+    ...pictures,
   };
 }
 
