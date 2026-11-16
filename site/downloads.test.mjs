@@ -13,9 +13,11 @@ const linux = asset('Filee-1.2.3-linux-x64.tar.gz');
 const linuxArm = asset('Filee-1.2.3-linux-arm64.tar.gz');
 const macArm = asset('Filee-1.2.3-osx-arm64.tar.gz');
 const macIntel = asset('Filee-1.2.3-osx-x64.tar.gz');
-const release = releaseSummary({ tag_name: tag, assets: [macArm, linux, windows, macIntel, linuxArm] });
+const windowsArm = asset('Filee-1.2.3-win-arm64-Setup.exe');
+const release = releaseSummary({ tag_name: tag, assets: [macArm, linux, windows, windowsArm, macIntel, linuxArm] });
 
 const mirrored = 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Setup.exe';
+const mirroredArm = 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-arm64-Setup.exe';
 
 test('the Windows installer downloads from the mirror, with the GitHub asset as the fallback', () => {
   assert.deepEqual(findDownloadAsset(release, 'win-x64'), {
@@ -24,6 +26,23 @@ test('the Windows installer downloads from the mirror, with the GitHub asset as 
   const choice = downloadChoice(release, 'win-x64');
   assert.equal(choice.url, mirrored);
   assert.equal(choice.github, windows.browser_download_url);
+});
+
+test('the Windows ARM64 installer downloads from the mirror too, with its GitHub asset as the fallback', () => {
+  assert.deepEqual(findDownloadAsset(release, 'win-arm64'), {
+    name: windowsArm.name, url: mirroredArm, size: windowsArm.size, github: windowsArm.browser_download_url,
+  });
+  const choice = downloadChoice(release, 'win-arm64');
+  assert.equal(choice.url, mirroredArm);
+  assert.equal(choice.github, windowsArm.browser_download_url);
+  assert.equal(choice.development, false);
+});
+
+test('Windows x64 and ARM64 never take each other\'s installer', () => {
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [windows] }, 'win-arm64'), null);
+  assert.equal(downloadChoice({ tag_name: tag, assets: [windows] }, 'win-arm64').url, RELEASES_URL);
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [windowsArm] }, 'win-x64'), null);
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [asset('Filee-win-Setup.exe')] }, 'win-arm64'), null);
 });
 
 for (const [target, expected] of [
@@ -42,11 +61,15 @@ for (const [target, expected] of [
 test('mirror URLs exist only for the Windows files of a checked version', () => {
   assert.equal(mirrorUrl('1.2.3', 'Filee-1.2.3-win-Setup.exe'), mirrored);
   assert.equal(mirrorUrl('1.2.3', 'Filee-1.2.3-win-Portable.zip'), 'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-Portable.zip');
+  assert.equal(mirrorUrl('1.2.3', 'Filee-1.2.3-win-arm64-Setup.exe'), mirroredArm);
+  assert.equal(mirrorUrl('1.2.3', 'Filee-1.2.3-win-arm64-Portable.zip'),
+    'https://dl.filee.sh/1.2.3/Filee-1.2.3-win-arm64-Portable.zip');
   assert.equal(mirrorUrl('2.0.0-beta.1', 'Filee-2.0.0-beta.1-win-Setup.exe'),
     'https://dl.filee.sh/2.0.0-beta.1/Filee-2.0.0-beta.1-win-Setup.exe');
   for (const [version, name] of [
     ['1.2.3', 'Filee-1.2.3-linux-x64.tar.gz'], ['1.2.3', 'Filee-1.2.3-osx-arm64.dmg'],
     ['1.2.3', 'Filee-1.2.3-SHA256SUMS.txt'], ['1.2.3', 'Filee-win-Setup.exe'], ['1.2.3', 'Filee-1.2.2-win-Setup.exe'],
+    ['1.2.3', 'Filee-1.2.3-win-arm64-SHA256SUMS.txt'], ['1.2.3', 'Filee-1.2.2-win-arm64-Setup.exe'],
     ['1.2.3', '../Filee-1.2.3-win-Setup.exe'], ['v1.2.3', 'Filee-v1.2.3-win-Setup.exe'],
     ['1.2.3/..', 'Filee-1.2.3/..-win-Setup.exe'], ['1.2.3?x', 'Filee-1.2.3?x-win-Setup.exe'],
     ['1.2.3#x', 'Filee-1.2.3#x-win-Setup.exe'], ['main', 'Filee-main-win-Setup.exe'], [undefined, 'Filee--win-Setup.exe'],
@@ -71,7 +94,7 @@ test('macOS builds are previews; Windows and Linux are full releases', () => {
     assert.equal(choice.state, 'available');
     assert.equal(choice.development, true);
   }
-  for (const target of ['win-x64', 'linux-x64', 'linux-arm64']) {
+  for (const target of ['win-x64', 'win-arm64', 'linux-x64', 'linux-arm64']) {
     const choice = downloadChoice(release, target);
     assert.equal(choice.state, 'available');
     assert.equal(choice.development, false);
@@ -91,7 +114,8 @@ test('the legacy Windows filename is supported without a generic Setup.exe fallb
 test('asset versions and filenames must match the selected release', () => {
   const assets = [asset('Filee-1.2.2-linux-x64.tar.gz'), asset('Filee-1.2.3-linux-x64-debug.tar.gz')];
   assert.equal(findDownloadAsset({ tag_name: tag, assets }, 'linux-x64'), null);
-  assert.equal(findDownloadAsset(release, 'win-arm64'), null);
+  assert.equal(findDownloadAsset(release, 'win-ia32'), null);
+  assert.equal(findDownloadAsset({ tag_name: tag, assets: [asset('Filee-1.2.2-win-arm64-Setup.exe')] }, 'win-arm64'), null);
 });
 
 const badUrls = [

@@ -152,7 +152,7 @@
       ["Prix", "Gratuit"],
       ["Licence", "MIT (open source)"],
       ["Version", "{version}"],
-      ["Plateforme", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (préversion)"],
+      ["Plateforme", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (préversion)"],
       ["Hors ligne", "Oui, les fichiers ne quittent jamais votre PC"],
       ["Formats", "{formatTotal} dans {categoryCount} catégories"],
       ["Intégrés", "{builtinTotal} formats, rien d'autre à installer"],
@@ -172,6 +172,7 @@
     "selector": "Système d'exploitation et processeur",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

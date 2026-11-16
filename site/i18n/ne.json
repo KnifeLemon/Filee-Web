@@ -152,7 +152,7 @@
       ["मूल्य", "नि:शुल्क"],
       ["इजाजतपत्र", "MIT (खुला स्रोत)"],
       ["संस्करण", "{version}"],
-      ["प्लेटफर्म", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (पूर्वावलोकन)"],
+      ["प्लेटफर्म", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (पूर्वावलोकन)"],
       ["अफलाइन काम गर्छ", "हो, फाइलहरू कहिल्यै तपाईंको PC बाट बाहिर जाँदैनन्"],
       ["ढाँचाहरू", "{categoryCount} वर्गमा {formatTotal}"],
       ["निर्मित", "{builtinTotal} ढाँचा, अरू केही स्थापना गर्नुपर्दैन"],
@@ -172,6 +172,7 @@
     "selector": "अपरेटिङ सिस्टम र प्रोसेसर",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

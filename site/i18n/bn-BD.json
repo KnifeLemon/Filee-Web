@@ -152,7 +152,7 @@
       ["দাম", "ফ্রি"],
       ["লাইসেন্স", "MIT (ওপেন সোর্স)"],
       ["সংস্করণ", "{version}"],
-      ["প্ল্যাটফর্ম", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (প্রিভিউ)"],
+      ["প্ল্যাটফর্ম", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (প্রিভিউ)"],
       ["অফলাইনে কাজ করে", "হ্যাঁ, ফাইল কখনো আপনার পিসি ছেড়ে যায় না"],
       ["ফরম্যাট", "{categoryCount}টি বিভাগে {formatTotal}টি"],
       ["বিল্ট-ইন", "{builtinTotal}টি ফরম্যাট, আর কিছু ইনস্টল করতে হয় না"],
@@ -172,6 +172,7 @@
     "selector": "অপারেটিং সিস্টেম ও প্রসেসর",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

@@ -152,7 +152,7 @@
       ["价格", "免费"],
       ["许可证", "MIT（开源）"],
       ["版本", "{version}"],
-      ["平台", "Windows 10/11 x64 · Linux x64/ARM64（Ubuntu 22.04 以上） · macOS 13 以上（预览版）"],
+      ["平台", "Windows 10/11 x64/ARM64 · Linux x64/ARM64（Ubuntu 22.04 以上） · macOS 13 以上（预览版）"],
       ["离线使用", "支持，文件不会离开你的电脑"],
       ["支持格式", "{categoryCount} 大类共 {formatTotal} 种"],
       ["内置", "{builtinTotal} 种格式无需额外安装"],
@@ -172,6 +172,7 @@
     "selector": "操作系统和处理器",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

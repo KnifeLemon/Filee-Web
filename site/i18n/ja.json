@@ -152,7 +152,7 @@
       ["価格", "無料"],
       ["ライセンス", "MIT（オープンソース）"],
       ["バージョン", "{version}"],
-      ["プラットフォーム", "Windows 10/11 x64 · Linux x64/ARM64（Ubuntu 22.04以降） · macOS 13以降（プレビュー版）"],
+      ["プラットフォーム", "Windows 10/11 x64/ARM64 · Linux x64/ARM64（Ubuntu 22.04以降） · macOS 13以降（プレビュー版）"],
       ["オフライン動作", "対応。ファイルがPCの外に出ることはありません"],
       ["対応形式", "{categoryCount}カテゴリー、{formatTotal}種類"],
       ["内蔵", "{builtinTotal}種類の形式は追加インストール不要"],
@@ -172,6 +172,7 @@
     "selector": "OSとプロセッサー",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

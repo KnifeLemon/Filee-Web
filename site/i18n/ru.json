@@ -152,7 +152,7 @@
       ["Цена", "Бесплатно"],
       ["Лицензия", "MIT (открытый код)"],
       ["Версия", "{version}"],
-      ["Платформа", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (превью)"],
+      ["Платформа", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (превью)"],
       ["Работает офлайн", "Да, файлы не покидают ваш компьютер"],
       ["Форматы", "{formatTotal} в {categoryCount|one:# категории|other:# категориях}"],
       ["Встроено", "{builtinTotal|one:# формат|few:# формата|many:# форматов|other:# формата}, больше ничего устанавливать не нужно"],
@@ -172,6 +172,7 @@
     "selector": "Операционная система и процессор",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
