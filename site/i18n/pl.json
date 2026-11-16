@@ -11,6 +11,7 @@
     "how": "Jak to działa",
     "formats": "Formaty",
     "cli": "Wiersz poleceń",
+    "presets": "Ustawienia wstępne",
     "hwp": "HWP",
     "faq": "Pytania",
     "download": "Pobierz",
@@ -219,6 +220,7 @@
     "openSource": "Open source",
     "formats": "Wszystkie formaty",
     "cli": "Wiersz poleceń",
+    "presets": "Galeria ustawień wstępnych",
     "popular": "Popularne konwersje"
   },
   "common": {
@@ -515,6 +517,159 @@
     ],
     "ctaTitle": "Pobierz Filee z poleceniem filee",
     "ctaText": "Wiersz poleceń jest częścią Filee dla Windows 10/11: za darmo, open source i offline."
+  },
+  "presets": {
+    "title": "Galeria ustawień wstępnych i pasków-pierścieni Filee | Filee",
+    "description": "Darmowe ustawienia wstępne i paski-pierścienie od użytkowników Filee. Zobacz, co robią, i zainstaluj je w Filee jednym kliknięciem. Wszystko na CC0.",
+    "crumb": "Galeria ustawień wstępnych",
+    "h1": "Galeria ustawień wstępnych",
+    "lead": "Gotowe ustawienia wstępne i paski-pierścienie udostępnione przez innych użytkowników Filee. Zanim coś zainstalujesz, zobacz, jak działa, i udostępnij własne.",
+    "upload": "Prześlij ustawienie wstępne",
+    "guideButton": "Jak działa udostępnianie",
+    "sortLabel": "Sortuj",
+    "sort": {
+      "hot": "Na topie",
+      "best": "Najlepsze",
+      "new": "Nowe"
+    },
+    "periodLabel": "Okres",
+    "periods": {
+      "day": "Dziś",
+      "week": "Ten tydzień",
+      "month": "Ten miesiąc",
+      "year": "Ten rok",
+      "all": "Od początku"
+    },
+    "searchLabel": "Szukaj ustawień wstępnych",
+    "searchPlaceholder": "Nazwa, autor lub tag",
+    "filterKind": "Rodzaj",
+    "filterFormat": "Format",
+    "filterTag": "Tag",
+    "onlyMine": "Tylko w moim języku",
+    "any": "Wszystkie",
+    "clear": "Wyczyść filtry",
+    "kinds": {
+      "convert": "Konwersja",
+      "tool": "Narzędzie",
+      "toolbar": "Pasek-pierścień"
+    },
+    "count": "{n|one:# ustawienie wstępne|few:# ustawienia wstępne|many:# ustawień wstępnych|other:# ustawienia wstępnego}",
+    "empty": "Nikt jeszcze nie udostępnił ustawienia wstępnego. Twoje może być pierwsze.",
+    "noMatch": "Żadne ustawienie wstępne nie pasuje do tych filtrów.",
+    "by": "autor: {author}",
+    "likes": "{n|one:# polubienie|few:# polubienia|many:# polubień|other:# polubienia}",
+    "downloads": "{n|one:# pobranie|few:# pobrania|many:# pobrań|other:# pobrania}",
+    "comments": "{n|one:# komentarz|few:# komentarze|many:# komentarzy|other:# komentarza}",
+    "statsNote": "Polubienia to reakcje 👍 w dyskusji każdego ustawienia wstępnego na GitHubie. Polubienia i pobrania są przeliczane co godzinę.",
+    "detailTitle": "{title} – ustawienie wstępne Filee, autor: {author}",
+    "detailDescription": "{title}: darmowe ustawienie wstępne Filee udostępnione przez {author}. Zobacz obrazy i działanie, a potem zainstaluj je z galerii ustawień wstępnych Filee.",
+    "sharedBy": "Udostępnione przez {author}",
+    "updated": "Zaktualizowano {date}",
+    "imageAlt": "{title}, obraz {n} z {total}",
+    "aboutTitle": "O tym ustawieniu wstępnym",
+    "whatTitle": "Co robi",
+    "colPreset": "Ustawienie wstępne",
+    "colKind": "Rodzaj",
+    "colMakes": "Tworzy",
+    "colOptions": "Główne opcje",
+    "presetKinds": {
+      "convert": "Konwersja",
+      "group": "Grupa",
+      "tool": "Okno narzędzia",
+      "copy": "Kopiowanie"
+    },
+    "toolbarRow": "Dodaje pasek-pierścień „{name}” z {n|one:# wycinkiem|few:# wycinkami|many:# wycinkami|other:# wycinka}.",
+    "worksOn": "Obsługuje",
+    "makes": "Tworzy",
+    "minVersion": "Wymaga Filee {version} lub nowszego.",
+    "defaults": "Opcje domyślne",
+    "options": {
+      "quality": "Jakość {n}",
+      "longEdge": "Dłuższy bok {n} px",
+      "width": "Szerokość {n} px",
+      "percent": "{n}% rozmiaru",
+      "customSize": "{w} × {h}",
+      "maxSize": "Do {n} MB",
+      "grayscale": "Czarno-białe",
+      "removeBackground": "Usuwa tło",
+      "stripMetadata": "Usuwa metadane",
+      "mergePdf": "Scala w jeden PDF",
+      "compressPdf": "Kompresuje PDF",
+      "ocr": "Rozpoznaje tekst (OCR)",
+      "pageNumbers": "Dodaje numery stron",
+      "mediaHigh": "Wysoka jakość",
+      "mediaBalanced": "Zrównoważona jakość",
+      "mediaSmall": "Małe pliki",
+      "maxHeight": "Do {n}p",
+      "audioBitrate": "Dźwięk {n} kbps",
+      "askCompression": "Za każdym razem pyta o kompresję",
+      "group": "Rozkłada {n|one:# ustawienie wstępne|few:# ustawienia wstępne|many:# ustawień wstępnych|other:# ustawienia wstępnego}",
+      "tool": "Otwiera własne okno"
+    },
+    "installTitle": "Instalacja",
+    "installSteps": [
+      "Otwórz Filee i przejdź do **Ustawienia wstępne**.",
+      "Kliknij **Galeria ustawień wstępnych** i znajdź „{title}”.",
+      "Kliknij **Zainstaluj**. Ustawienia wstępne zostaną dodane obok Twoich i nigdy ich nie zastąpią."
+    ],
+    "downloadButton": "Pobierz plik ustawienia wstępnego",
+    "downloadNote": "Możesz też pobrać plik i dodać go w ustawieniach Filee w sekcji **Ogólne → Importuj…**",
+    "license": "{author} udostępnia to ustawienie wstępne i jego obrazy na licencji CC0 1.0: każdy może ich używać, zmieniać je i udostępniać bez żadnych warunków.",
+    "licenseLink": "O CC0",
+    "commentsButton": "Komentarze na GitHubie",
+    "report": "Coś jest nie tak z tym ustawieniem wstępnym? Napisz w komentarzach albo [poproś o jego usunięcie]({removal}).",
+    "back": "Wróć do galerii",
+    "warnTitle": "Przeczytaj przed instalacją",
+    "warnBadge": "Uwaga",
+    "warnings": {
+      "replaces_original": "Zastępuje Twoje oryginalne pliki przekonwertowanymi.",
+      "moves_original": "Po konwersji przenosi oryginalne pliki do innego folderu.",
+      "overwrites_existing": "Nadpisuje istniejące pliki o tej samej nazwie.",
+      "edits_metadata": "Zmienia metadane plików, np. tytuł, autora lub datę.",
+      "fixed_edits": "Dodaje te same oznaczenia, zakryte obszary, tło lub edycję klipu do każdego konwertowanego pliku.",
+      "strips_metadata": "Usuwa z wyników metadane, np. dane aparatu i lokalizację.",
+      "uses_translate_model": "Tłumaczy offline modelem AI, który Filee pobiera przy pierwszym użyciu, jeśli go nie ma.",
+      "copies_to_folder": "Kopiuje pliki do wybranego folderu."
+    },
+    "warnGeneric": {
+      "high": "Może zmieniać lub usuwać pliki na Twoim komputerze. Przeczytaj opis przed instalacją.",
+      "medium": "Zmienia sposób zapisywania plików. Przeczytaj opis przed instalacją.",
+      "info": "Ma ustawienie, o którym warto wiedzieć. Zobacz opis."
+    },
+    "guideTitle": "Udostępnij własne ustawienie wstępne",
+    "guideLead": "Ustawienia wstępne to ustawienia, a nie programy, więc ich udostępnianie jest bezpieczne i zajmuje kilka minut.",
+    "guideSteps": [
+      {
+        "title": "Wyeksportuj je z Filee",
+        "text": "W ustawieniach Filee otwórz **Ogólne** i kliknij **Eksportuj…** w sekcji Ustawienia wstępne i paski. Filee zapisze Twoje ustawienia wstępne i paski do pliku."
+      },
+      {
+        "title": "Przygotuj od 1 do 4 obrazów",
+        "text": "Pokaż, co robi ustawienie wstępne: jego wycinek pierścienia, jego opcje albo przykładowy plik przed i po. PNG, JPEG lub WebP, od 640 do 2560 px na dłuższym boku, do 2 MB każdy. Pierwszy będzie okładką."
+      },
+      {
+        "title": "Wypełnij formularz",
+        "text": "Kliknij **{upload}**, zaloguj się na GitHubie i dodaj plik, obrazy, tytuł oraz krótki opis. Automatyczne testy powiedzą Ci, jeśli coś trzeba poprawić, a potem opiekun projektu je opublikuje."
+      }
+    ],
+    "allowedTitle": "Co można udostępniać",
+    "allowed": [
+      "Ustawienia wstępne konwersji i narzędzi oraz zbudowane z nich paski-pierścienie.",
+      "Do 20 ustawień wstępnych i jeden pasek-pierścień na przesłanie, w pliku o rozmiarze najwyżej 256 KB.",
+      "Obrazy wykonane samodzielnie, przedstawiające przykładowe pliki przygotowane specjalnie do nich."
+    ],
+    "notAllowedTitle": "Nigdy nie jest udostępniane",
+    "notAllowed": [
+      "Ustawienia wstępne uruchamiające program lub polecenie.",
+      "Ustawienia sieci i proxy, własne serwery tłumaczeń i klucze API.",
+      "Foldery wyjściowe inne niż obok pliku źródłowego oraz jakiekolwiek osobiste ścieżki lub nazwiska.",
+      "Obrazy z prawdziwymi dokumentami, nazwiskami, twarzami lub ścieżkami plików."
+    ],
+    "ccTitle": "Udostępniane na CC0",
+    "ccText": "Udostępnione ustawienia wstępne i ich obrazy są przekazywane do domeny publicznej na licencji CC0 1.0: każdy może ich używać, zmieniać je i udostępniać bez warunków. Galeria nadal pokazuje, kto udostępnił każde z nich.",
+    "removalTitle": "Prośby o usunięcie",
+    "removalText": "Aby usunąć udostępnione przez siebie ustawienie wstępne albo zgłosić takie, które łamie te zasady lub pokazuje dane osobowe, otwórz zgłoszenie w repozytorium Filee-Presets. Gdy zostanie tam usunięte, w ciągu godziny zniknie z tej strony i z aplikacji.",
+    "removalLink": "Otwórz zgłoszenie"
   },
   "notFound": {
     "title": "Nie znaleziono strony",

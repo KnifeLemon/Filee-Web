@@ -1,5 +1,6 @@
 // Local preview of dist/ that behaves like Cloudflare's static assets (folder index pages, trailing-slash
-// redirects, 404.html) and rebuilds when src/, i18n/ or public/ change. Usage: node serve.mjs [port]
+// redirects, 404.html, the Worker's preset downloads, served but not counted) and rebuilds when src/, i18n/ or public/
+// change. Usage: node serve.mjs [port]
 
 import { spawn } from 'node:child_process';
 import { createReadStream, watch } from 'node:fs';
@@ -43,6 +44,9 @@ const isFile = async path => (await stat(path).catch(() => null))?.isFile() ?? f
 
 createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
+  // The Worker's preset download link (worker/index.mjs), without the counting.
+  const download = /^\/presets\/download\/([a-z0-9-]+)\/?$/.exec(url.pathname);
+  if (download) url.pathname = `/presets/files/presets/${download[1]}/preset.json`;
   const path = normalize(join(DIST, decodeURIComponent(url.pathname)));
   if (!path.startsWith(DIST)) { res.writeHead(403).end(); return; }
 

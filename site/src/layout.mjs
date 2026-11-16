@@ -79,6 +79,12 @@ const ICONS = {
   chevron: 'M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z',
   play: 'M8,5.14V19.14L19,12.14L8,5.14Z',
   pause: 'M14,19H18V5H14M6,19H10V5H6V19Z',
+  alert: 'M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z',
+  info: 'M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z',
+  thumb: 'M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z',
+  comment: 'M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22H9Z',
+  upload: 'M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z',
+  search: 'M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z',
   // Category glyphs (even-odd): cut-outs are holes.
   image: { d: 'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM5 5v11l4-4.5 3 3.5 3.5-4.5L19 15.5V5zm4 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z' },
   vector: { d: 'M3 15h6v6H3zM15 3h6v6h-6zM5 15c0-5.5 4.5-10 10-10v2c-4.4 0-8 3.6-8 8z' },
@@ -183,6 +189,8 @@ export const paths = {
   home: t => t.path,
   formats: t => `${t.path}formats/`,
   cli: t => `${t.path}cli/`,
+  presets: t => `${t.path}presets/`,
+  preset: (t, id) => `${t.path}presets/${id}/`,
   convert: (t, slug) => `${t.path}convert/${slug}/`,
 };
 
@@ -193,10 +201,12 @@ export const alternatesOf = (languages, pathOf) => Object.fromEntries(languages.
 
 /**
  * A complete HTML document. alternates: { lang: path } of this page in every language (hreflang, language menu,
- * language suggestion). jsonLd: array of schema.org objects. main: the <main> content.
+ * language suggestion). jsonLd: array of schema.org objects. main: the <main> content. image: the link preview picture
+ * ({ url, alt, width?, height? }); the language's Open Graph card by default.
  */
-export function renderDocument({ t, languages, assets, title, description, alternates, jsonLd = [], main, extraHead = '', nav = '', scripts = '' }) {
+export function renderDocument({ t, languages, assets, title, description, alternates, jsonLd = [], main, extraHead = '', nav = '', scripts = '', image }) {
   const url = SITE + alternates[t.lang];
+  const og = image ?? { url: `${SITE}/media/og-${t.media}.jpg`, width: 1200, height: 630, alt: t.meta.ogAlt };
   const others = languages.filter(l => l.lang !== t.lang);
   const hreflang = languages.map(l => `<link rel="alternate" hreflang="${l.htmlLang}" href="${SITE}${alternates[l.lang]}">`).join('')
     + `<link rel="alternate" hreflang="x-default" href="${SITE}${alternates.en}">`;
@@ -226,17 +236,15 @@ ${hreflang}
 <meta property="og:title" content="${escape(title)}">
 <meta property="og:description" content="${escape(description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/media/og-${t.media}.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${escape(t.meta.ogAlt)}">
+<meta property="og:image" content="${escape(og.url)}">
+${og.width ? `<meta property="og:image:width" content="${og.width}">\n<meta property="og:image:height" content="${og.height}">\n` : ''}<meta property="og:image:alt" content="${escape(og.alt)}">
 <meta property="og:locale" content="${t.ogLocale}">
 ${others.map(l => `<meta property="og:locale:alternate" content="${l.ogLocale}">`).join('')}
 ${extraHead}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escape(title)}">
 <meta name="twitter:description" content="${escape(description)}">
-<meta name="twitter:image" content="${SITE}/media/og-${t.media}.jpg">
+<meta name="twitter:image" content="${escape(og.url)}">
 <meta name="theme-color" content="#7F77DD" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16151F" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
@@ -275,6 +283,7 @@ function header(t, languages, alternates, current) {
       ${link(`${home}#features`, t.nav.features, 'features')}
       ${link(paths.formats(t), t.nav.formats, 'formats')}
       ${link(paths.cli(t), t.nav.cli, 'cli')}
+      ${link(paths.presets(t), t.nav.presets, 'presets')}
       ${link(`${home}#hwp`, t.nav.hwp, 'hwp')}
       ${link(`${home}#faq`, t.nav.faq, 'faq')}
     </nav>
@@ -312,6 +321,7 @@ function footer(t, languages, alternates) {
     ${column(t.footer.product, [
       [paths.formats(t), t.footer.formats],
       [paths.cli(t), t.footer.cli],
+      [paths.presets(t), t.footer.presets],
       [`${REPO}/releases`, t.download.all],
       [`${REPO}#code-signing-policy`, t.footer.signing],
     ])}

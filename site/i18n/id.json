@@ -11,6 +11,7 @@
     "how": "Cara kerja",
     "formats": "Format",
     "cli": "Baris perintah",
+    "presets": "Preset",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Unduh",
@@ -219,6 +220,7 @@
     "openSource": "Open source",
     "formats": "Semua format",
     "cli": "Baris perintah",
+    "presets": "Galeri preset",
     "popular": "Konversi populer"
   },
   "common": {
@@ -515,6 +517,159 @@
     ],
     "ctaTitle": "Dapatkan Filee dengan perintah filee",
     "ctaText": "Baris perintah disertakan dalam Filee untuk Windows 10/11: gratis, open source, dan offline."
+  },
+  "presets": {
+    "title": "Galeri Preset Filee: Preset dan Toolbar Donut Gratis | Filee",
+    "description": "Jelajahi preset dan toolbar donut gratis yang dibagikan pengguna Filee. Lihat fungsi masing-masing, lalu pasang di Filee dengan satu klik. Semuanya CC0.",
+    "crumb": "Galeri preset",
+    "h1": "Galeri preset",
+    "lead": "Preset dan toolbar donut siap pakai yang dibagikan pengguna Filee lain. Lihat fungsi masing-masing sebelum memasangnya, dan bagikan milik Anda sendiri.",
+    "upload": "Unggah preset",
+    "guideButton": "Cara berbagi",
+    "sortLabel": "Urutkan",
+    "sort": {
+      "hot": "Populer",
+      "best": "Terbaik",
+      "new": "Terbaru"
+    },
+    "periodLabel": "Terbaik dari",
+    "periods": {
+      "day": "Hari ini",
+      "week": "Minggu ini",
+      "month": "Bulan ini",
+      "year": "Tahun ini",
+      "all": "Sepanjang masa"
+    },
+    "searchLabel": "Cari preset",
+    "searchPlaceholder": "Nama, pembuat, atau tag",
+    "filterKind": "Jenis",
+    "filterFormat": "Format",
+    "filterTag": "Tag",
+    "onlyMine": "Hanya dalam bahasa saya",
+    "any": "Semua",
+    "clear": "Hapus filter",
+    "kinds": {
+      "convert": "Konversi",
+      "tool": "Alat",
+      "toolbar": "Toolbar donut"
+    },
+    "count": "{n|other:# preset}",
+    "empty": "Belum ada yang membagikan preset. Preset Anda bisa jadi yang pertama.",
+    "noMatch": "Tidak ada preset yang cocok dengan filter ini.",
+    "by": "oleh {author}",
+    "likes": "{n|other:# suka}",
+    "downloads": "{n|other:# unduhan}",
+    "comments": "{n|other:# komentar}",
+    "statsNote": "Suka adalah reaksi 👍 di diskusi tiap preset di GitHub. Suka dan unduhan dihitung ulang setiap jam.",
+    "detailTitle": "{title}: preset Filee oleh {author}",
+    "detailDescription": "{title}: preset Filee gratis yang dibagikan oleh {author}. Lihat gambar dan fungsinya, lalu pasang dari galeri preset Filee.",
+    "sharedBy": "Dibagikan oleh {author}",
+    "updated": "Diperbarui {date}",
+    "imageAlt": "{title}, gambar {n} dari {total}",
+    "aboutTitle": "Tentang preset ini",
+    "whatTitle": "Fungsinya",
+    "colPreset": "Preset",
+    "colKind": "Jenis",
+    "colMakes": "Menghasilkan",
+    "colOptions": "Opsi utama",
+    "presetKinds": {
+      "convert": "Konversi",
+      "group": "Grup",
+      "tool": "Jendela alat",
+      "copy": "Salin"
+    },
+    "toolbarRow": "Menambahkan toolbar donut “{name}” dengan {n|other:# irisan}.",
+    "worksOn": "Berlaku untuk",
+    "makes": "Menghasilkan",
+    "minVersion": "Memerlukan Filee {version} atau yang lebih baru.",
+    "defaults": "Opsi bawaan",
+    "options": {
+      "quality": "Kualitas {n}",
+      "longEdge": "Sisi panjang {n} px",
+      "width": "Lebar {n} px",
+      "percent": "{n}% dari ukuran",
+      "customSize": "{w} × {h}",
+      "maxSize": "Maksimal {n} MB",
+      "grayscale": "Hitam putih",
+      "removeBackground": "Menghapus latar belakang",
+      "stripMetadata": "Menghapus metadata",
+      "mergePdf": "Menggabungkan menjadi satu PDF",
+      "compressPdf": "Mengompres PDF",
+      "ocr": "Mengenali teks (OCR)",
+      "pageNumbers": "Menambahkan nomor halaman",
+      "mediaHigh": "Kualitas tinggi",
+      "mediaBalanced": "Kualitas seimbang",
+      "mediaSmall": "File kecil",
+      "maxHeight": "Maksimal {n}p",
+      "audioBitrate": "Audio {n} kbps",
+      "askCompression": "Menanyakan kompresi setiap kali",
+      "group": "Membuka {n|other:# preset}",
+      "tool": "Membuka jendelanya sendiri"
+    },
+    "installTitle": "Cara memasang",
+    "installSteps": [
+      "Buka Filee dan masuk ke **Preset**.",
+      "Klik **Galeri preset** dan cari “{title}”.",
+      "Klik **Pasang**. Preset ditambahkan di samping preset Anda sendiri dan tidak pernah menggantikannya."
+    ],
+    "downloadButton": "Unduh file preset",
+    "downloadNote": "Atau unduh filenya dan tambahkan di pengaturan Filee lewat **Umum → Impor…**",
+    "license": "{author} membagikan preset ini beserta gambarnya di bawah CC0 1.0: siapa pun boleh menggunakan, mengubah, dan membagikannya tanpa syarat.",
+    "licenseLink": "Tentang CC0",
+    "commentsButton": "Komentar di GitHub",
+    "report": "Ada yang salah dengan preset ini? Beri tahu kami di komentarnya, atau [minta agar dihapus]({removal}).",
+    "back": "Kembali ke galeri",
+    "warnTitle": "Baca sebelum memasang",
+    "warnBadge": "Perhatian",
+    "warnings": {
+      "replaces_original": "Mengganti file asli Anda dengan file hasil konversi.",
+      "moves_original": "Memindahkan file asli Anda ke folder lain setelah konversi.",
+      "overwrites_existing": "Menimpa file yang sudah ada dengan nama yang sama.",
+      "edits_metadata": "Mengubah metadata file Anda, seperti judul, penulis, atau tanggal.",
+      "fixed_edits": "Menambahkan tanda, area yang ditutupi, latar belakang, atau suntingan klip yang sama ke setiap file yang dikonversi.",
+      "strips_metadata": "Menghapus metadata seperti info kamera dan lokasi dari hasil.",
+      "uses_translate_model": "Menerjemahkan dengan model AI offline, yang diunduh Filee saat pertama dipakai jika belum terpasang.",
+      "copies_to_folder": "Menyalin file ke folder pilihan Anda."
+    },
+    "warnGeneric": {
+      "high": "Dapat mengubah atau menghapus file di komputer Anda. Baca deskripsinya sebelum memasang.",
+      "medium": "Mengubah cara file Anda disimpan. Baca deskripsinya sebelum memasang.",
+      "info": "Punya pengaturan yang perlu diketahui. Lihat deskripsinya."
+    },
+    "guideTitle": "Bagikan preset Anda sendiri",
+    "guideLead": "Preset adalah pengaturan, bukan program, jadi membagikannya aman dan hanya butuh beberapa menit.",
+    "guideSteps": [
+      {
+        "title": "Ekspor dari Filee",
+        "text": "Di pengaturan Filee, buka **Umum** lalu klik **Ekspor…** di bagian Preset dan toolbar. Filee menyimpan preset dan toolbar Anda ke sebuah file."
+      },
+      {
+        "title": "Buat 1 sampai 4 gambar",
+        "text": "Tunjukkan fungsi preset: irisannya di donut, pengaturannya, atau contoh file sebelum dan sesudah. PNG, JPEG, atau WebP, 640 sampai 2.560 px di sisi panjang, maksimal 2 MB per gambar. Gambar pertama menjadi sampul."
+      },
+      {
+        "title": "Isi formulir",
+        "text": "Klik **{upload}**, masuk ke GitHub, lalu tambahkan file, gambar, judul, dan deskripsi singkat. Pemeriksaan otomatis memberi tahu jika ada yang perlu diperbaiki, lalu maintainer menerbitkannya."
+      }
+    ],
+    "allowedTitle": "Yang boleh dibagikan",
+    "allowed": [
+      "Preset konversi dan preset alat, serta toolbar donut yang tersusun darinya.",
+      "Maksimal 20 preset dan satu toolbar per unggahan, dalam file berukuran paling besar 256 KB.",
+      "Gambar buatan Anda sendiri, dari contoh file yang dibuat khusus untuk gambar itu."
+    ],
+    "notAllowedTitle": "Tidak pernah dibagikan",
+    "notAllowed": [
+      "Preset yang menjalankan program atau perintah.",
+      "Pengaturan jaringan dan proxy, server terjemahan kustom, dan kunci API.",
+      "Folder output selain di samping file sumber, serta path atau nama pribadi di mana pun.",
+      "Gambar dokumen asli, nama, wajah, atau path file."
+    ],
+    "ccTitle": "Dibagikan dengan CC0",
+    "ccText": "Preset yang dibagikan beserta gambarnya didedikasikan ke domain publik dengan CC0 1.0: siapa pun boleh menggunakan, mengubah, dan membagikannya tanpa syarat. Galeri tetap menampilkan siapa yang membagikan masing-masing.",
+    "removalTitle": "Permintaan penghapusan",
+    "removalText": "Untuk menurunkan preset yang Anda bagikan, atau melaporkan preset yang melanggar aturan ini atau menampilkan informasi pribadi, buka issue di repositori Filee-Presets. Setelah dihapus di sana, preset itu hilang dari situs ini dan dari aplikasi dalam satu jam.",
+    "removalLink": "Buka issue"
   },
   "notFound": {
     "title": "Halaman tidak ditemukan",

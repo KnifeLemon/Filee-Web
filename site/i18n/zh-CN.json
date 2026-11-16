@@ -11,6 +11,7 @@
     "how": "使用方法",
     "formats": "支持格式",
     "cli": "命令行",
+    "presets": "预设",
     "hwp": "HWP",
     "faq": "常见问题",
     "download": "下载",
@@ -219,6 +220,7 @@
     "openSource": "开源",
     "formats": "格式目录",
     "cli": "命令行",
+    "presets": "预设广场",
     "popular": "热门转换"
   },
   "common": {
@@ -515,6 +517,159 @@
     ],
     "ctaTitle": "下载 Filee，获取 filee 命令",
     "ctaText": "命令行随 Windows 10/11 版 Filee 一起提供，免费开源，可离线使用。"
+  },
+  "presets": {
+    "title": "Filee 预设广场：免费预设与环形工具栏 | Filee",
+    "description": "浏览 Filee 用户分享的免费预设和环形工具栏，先看清每个的作用，再一键安装到 Filee。全部以 CC0 分享。",
+    "crumb": "预设广场",
+    "h1": "预设广场",
+    "lead": "其他 Filee 用户分享的现成预设和环形工具栏。安装前先看看每个能做什么，也欢迎分享你自己的。",
+    "upload": "上传预设",
+    "guideButton": "如何分享",
+    "sortLabel": "排序",
+    "sort": {
+      "hot": "热门",
+      "best": "最佳",
+      "new": "最新"
+    },
+    "periodLabel": "时间范围",
+    "periods": {
+      "day": "今天",
+      "week": "本周",
+      "month": "本月",
+      "year": "今年",
+      "all": "全部时间"
+    },
+    "searchLabel": "搜索预设",
+    "searchPlaceholder": "名称、作者或标签",
+    "filterKind": "类型",
+    "filterFormat": "格式",
+    "filterTag": "标签",
+    "onlyMine": "只看我的语言",
+    "any": "全部",
+    "clear": "清除筛选",
+    "kinds": {
+      "convert": "转换",
+      "tool": "工具",
+      "toolbar": "工具栏"
+    },
+    "count": "{n|other:# 个预设}",
+    "empty": "还没有人分享预设。第一个也许就是你的。",
+    "noMatch": "没有符合这些筛选条件的预设。",
+    "by": "作者：{author}",
+    "likes": "{n|other:# 个赞}",
+    "downloads": "{n|other:# 次下载}",
+    "comments": "{n|other:# 条评论}",
+    "statsNote": "点赞数是 GitHub 上每个预设讨论帖的 👍 反应数。点赞数和下载数每小时重新统计一次。",
+    "detailTitle": "{title}：{author} 分享的 Filee 预设",
+    "detailDescription": "{title}：{author} 分享的免费 Filee 预设。查看图片和功能，然后从 Filee 预设广场安装。",
+    "sharedBy": "由 {author} 分享",
+    "updated": "更新于 {date}",
+    "imageAlt": "{title}，第 {n} 张，共 {total} 张",
+    "aboutTitle": "关于此预设",
+    "whatTitle": "功能",
+    "colPreset": "预设",
+    "colKind": "类型",
+    "colMakes": "输出",
+    "colOptions": "主要选项",
+    "presetKinds": {
+      "convert": "转换",
+      "group": "组",
+      "tool": "工具窗口",
+      "copy": "复制"
+    },
+    "toolbarRow": "添加工具栏“{name}”，含 {n|other:# 个扇区}。",
+    "worksOn": "适用于",
+    "makes": "输出",
+    "minVersion": "需要 Filee {version} 或更高版本。",
+    "defaults": "默认选项",
+    "options": {
+      "quality": "质量 {n}",
+      "longEdge": "长边 {n} px",
+      "width": "宽度 {n} px",
+      "percent": "原尺寸的 {n}%",
+      "customSize": "{w} × {h}",
+      "maxSize": "最大 {n} MB",
+      "grayscale": "黑白",
+      "removeBackground": "移除背景",
+      "stripMetadata": "移除元数据",
+      "mergePdf": "合并为一个 PDF",
+      "compressPdf": "压缩 PDF",
+      "ocr": "识别文字（OCR）",
+      "pageNumbers": "添加页码",
+      "mediaHigh": "高质量",
+      "mediaBalanced": "均衡质量",
+      "mediaSmall": "小文件",
+      "maxHeight": "最高 {n}p",
+      "audioBitrate": "音频 {n} kbps",
+      "askCompression": "每次询问压缩程度",
+      "group": "展开为 {n|other:# 个预设}",
+      "tool": "打开独立窗口"
+    },
+    "installTitle": "安装",
+    "installSteps": [
+      "打开 Filee，进入**预设**。",
+      "点击**预设广场**，找到“{title}”。",
+      "点击**安装**。这些预设会添加到你自己的预设旁边，绝不会替换它们。"
+    ],
+    "downloadButton": "下载预设文件",
+    "downloadNote": "也可以下载文件，在 Filee 设置的**常规 → 导入…**中添加。",
+    "license": "{author} 以 CC0 1.0 分享了此预设及其图片：任何人都可以无条件使用、修改和分享。",
+    "licenseLink": "关于 CC0",
+    "commentsButton": "在 GitHub 上评论",
+    "report": "此预设有问题？请在评论中告诉我们，或[申请删除]({removal})。",
+    "back": "返回预设广场",
+    "warnTitle": "安装前请先阅读",
+    "warnBadge": "注意",
+    "warnings": {
+      "replaces_original": "会用转换后的文件替换原始文件。",
+      "moves_original": "转换后会把原始文件移到另一个文件夹。",
+      "overwrites_existing": "会覆盖已存在的同名文件。",
+      "edits_metadata": "会修改文件的元数据，例如标题、作者或日期。",
+      "fixed_edits": "会在转换的每个文件中加入相同的标注、遮盖区域、背景或剪辑编辑。",
+      "strips_metadata": "会从结果中删除相机信息和位置等元数据。",
+      "uses_translate_model": "使用离线 AI 模型翻译；如未安装，Filee 会在首次使用时下载。",
+      "copies_to_folder": "会把文件复制到你选择的文件夹。"
+    },
+    "warnGeneric": {
+      "high": "可能会更改或删除你电脑上的文件。安装前请阅读说明。",
+      "medium": "会改变文件的保存方式。安装前请阅读说明。",
+      "info": "包含一项值得了解的设置。请查看说明。"
+    },
+    "guideTitle": "分享你自己的预设",
+    "guideLead": "预设只是设置，不是程序，所以分享很安全，几分钟就能完成。",
+    "guideSteps": [
+      {
+        "title": "从 Filee 导出",
+        "text": "在 Filee 设置中打开**常规**，在“预设与工具栏”下点击**导出…**。Filee 会把你的预设和工具栏保存为一个文件。"
+      },
+      {
+        "title": "准备 1 到 4 张图片",
+        "text": "展示预设的作用：它的环形扇区、它的设置，或示例文件转换前后的对比。PNG、JPEG 或 WebP，长边 640 到 2,560 px，每张不超过 2 MB。第一张作为封面。"
+      },
+      {
+        "title": "填写表单",
+        "text": "点击**{upload}**，登录 GitHub，添加文件、图片、标题和简短说明。自动检查会提示需要修改的地方，之后由维护者发布。"
+      }
+    ],
+    "allowedTitle": "可以分享的内容",
+    "allowed": [
+      "转换预设和工具预设，以及由它们组成的环形工具栏。",
+      "每次上传最多 20 个预设和一个工具栏，文件不超过 256 KB。",
+      "你自己制作的图片，内容是专为截图准备的示例文件。"
+    ],
+    "notAllowedTitle": "绝不分享的内容",
+    "notAllowed": [
+      "运行程序或命令的预设。",
+      "网络和代理设置、自定义翻译服务器以及 API 密钥。",
+      "源文件所在位置以外的输出文件夹，以及任何位置的个人路径或姓名。",
+      "真实文档、姓名、人脸或文件路径的图片。"
+    ],
+    "ccTitle": "以 CC0 分享",
+    "ccText": "分享的预设及其图片以 CC0 1.0 贡献到公有领域：任何人都可以无条件使用、修改和分享。预设广场仍会显示每个预设的分享者。",
+    "removalTitle": "删除请求",
+    "removalText": "要撤下你分享的预设，或举报违反这些规则、含有个人信息的预设，请在 Filee-Presets 仓库中提交 issue。在那里删除后，一小时内就会从本网站和应用中消失。",
+    "removalLink": "提交 issue"
   },
   "notFound": {
     "title": "找不到页面",

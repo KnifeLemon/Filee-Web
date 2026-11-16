@@ -11,6 +11,7 @@
     "how": "Cách hoạt động",
     "formats": "Định dạng",
     "cli": "Dòng lệnh",
+    "presets": "Cấu hình sẵn",
     "hwp": "HWP",
     "faq": "Hỏi đáp",
     "download": "Tải xuống",
@@ -219,6 +220,7 @@
     "openSource": "Mã nguồn mở",
     "formats": "Tất cả định dạng",
     "cli": "Dòng lệnh",
+    "presets": "Thư viện cấu hình sẵn",
     "popular": "Chuyển đổi phổ biến"
   },
   "common": {
@@ -515,6 +517,159 @@
     ],
     "ctaTitle": "Tải Filee kèm lệnh filee",
     "ctaText": "Dòng lệnh đi kèm Filee cho Windows 10/11: miễn phí, mã nguồn mở và ngoại tuyến."
+  },
+  "presets": {
+    "title": "Thư viện cấu hình sẵn Filee miễn phí | Filee",
+    "description": "Duyệt cấu hình sẵn và thanh công cụ vòng tròn miễn phí do người dùng Filee chia sẻ. Xem chức năng rồi cài vào Filee chỉ với một cú nhấp. Tất cả theo CC0.",
+    "crumb": "Thư viện cấu hình sẵn",
+    "h1": "Thư viện cấu hình sẵn",
+    "lead": "Cấu hình sẵn và thanh công cụ vòng tròn làm sẵn, do những người dùng Filee khác chia sẻ. Xem từng cái làm gì trước khi cài, và chia sẻ của riêng bạn.",
+    "upload": "Tải lên cấu hình sẵn",
+    "guideButton": "Cách chia sẻ",
+    "sortLabel": "Sắp xếp",
+    "sort": {
+      "hot": "Nổi bật",
+      "best": "Hay nhất",
+      "new": "Mới"
+    },
+    "periodLabel": "Trong",
+    "periods": {
+      "day": "Hôm nay",
+      "week": "Tuần này",
+      "month": "Tháng này",
+      "year": "Năm nay",
+      "all": "Mọi lúc"
+    },
+    "searchLabel": "Tìm cấu hình sẵn",
+    "searchPlaceholder": "Tên, tác giả hoặc thẻ",
+    "filterKind": "Loại",
+    "filterFormat": "Định dạng",
+    "filterTag": "Thẻ",
+    "onlyMine": "Chỉ bằng ngôn ngữ của tôi",
+    "any": "Tất cả",
+    "clear": "Xóa bộ lọc",
+    "kinds": {
+      "convert": "Chuyển đổi",
+      "tool": "Công cụ",
+      "toolbar": "Thanh công cụ"
+    },
+    "count": "{n|other:# cấu hình sẵn}",
+    "empty": "Chưa ai chia sẻ cấu hình sẵn nào. Của bạn có thể là cái đầu tiên.",
+    "noMatch": "Không có cấu hình sẵn nào khớp với các bộ lọc này.",
+    "by": "của {author}",
+    "likes": "{n|other:# lượt thích}",
+    "downloads": "{n|other:# lượt tải}",
+    "comments": "{n|other:# bình luận}",
+    "statsNote": "Lượt thích là số phản ứng 👍 trên thảo luận GitHub của từng cấu hình sẵn. Lượt thích và lượt tải được đếm lại mỗi giờ.",
+    "detailTitle": "{title}: cấu hình sẵn Filee của {author}",
+    "detailDescription": "{title}: cấu hình sẵn Filee miễn phí do {author} chia sẻ. Xem hình ảnh và chức năng, rồi cài đặt từ thư viện cấu hình sẵn của Filee.",
+    "sharedBy": "Chia sẻ bởi {author}",
+    "updated": "Cập nhật {date}",
+    "imageAlt": "{title}, ảnh {n} trên {total}",
+    "aboutTitle": "Về cấu hình sẵn này",
+    "whatTitle": "Chức năng",
+    "colPreset": "Cấu hình sẵn",
+    "colKind": "Loại",
+    "colMakes": "Tạo ra",
+    "colOptions": "Tùy chọn chính",
+    "presetKinds": {
+      "convert": "Chuyển đổi",
+      "group": "Nhóm",
+      "tool": "Cửa sổ công cụ",
+      "copy": "Sao chép"
+    },
+    "toolbarRow": "Thêm thanh công cụ “{name}” với {n|other:# phần}.",
+    "worksOn": "Dùng cho",
+    "makes": "Tạo ra",
+    "minVersion": "Cần Filee {version} trở lên.",
+    "defaults": "Tùy chọn mặc định",
+    "options": {
+      "quality": "Chất lượng {n}",
+      "longEdge": "Cạnh dài {n} px",
+      "width": "Chiều rộng {n} px",
+      "percent": "{n}% kích thước",
+      "customSize": "{w} × {h}",
+      "maxSize": "Tối đa {n} MB",
+      "grayscale": "Đen trắng",
+      "removeBackground": "Xóa nền",
+      "stripMetadata": "Xóa siêu dữ liệu",
+      "mergePdf": "Gộp thành một PDF",
+      "compressPdf": "Nén PDF",
+      "ocr": "Nhận dạng văn bản (OCR)",
+      "pageNumbers": "Thêm số trang",
+      "mediaHigh": "Chất lượng cao",
+      "mediaBalanced": "Chất lượng cân bằng",
+      "mediaSmall": "Tệp nhỏ",
+      "maxHeight": "Tối đa {n}p",
+      "audioBitrate": "Âm thanh {n} kbps",
+      "askCompression": "Hỏi mức nén mỗi lần",
+      "group": "Chạy {n|other:# cấu hình sẵn} cùng lúc",
+      "tool": "Mở cửa sổ riêng"
+    },
+    "installTitle": "Cài đặt",
+    "installSteps": [
+      "Mở Filee và vào **Cấu hình sẵn**.",
+      "Nhấp **Thư viện cấu hình sẵn** và tìm “{title}”.",
+      "Nhấp **Cài đặt**. Các cấu hình sẵn được thêm bên cạnh của bạn và không bao giờ thay thế chúng."
+    ],
+    "downloadButton": "Tải tệp cấu hình sẵn",
+    "downloadNote": "Hoặc tải tệp về và thêm vào trong phần cài đặt của Filee tại **Chung → Nhập…**",
+    "license": "{author} đã chia sẻ cấu hình sẵn này và hình ảnh của nó theo CC0 1.0: bất kỳ ai cũng có thể dùng, sửa và chia sẻ mà không cần điều kiện.",
+    "licenseLink": "Về CC0",
+    "commentsButton": "Bình luận trên GitHub",
+    "report": "Cấu hình sẵn này có vấn đề? Hãy cho chúng tôi biết trong phần bình luận, hoặc [yêu cầu gỡ bỏ]({removal}).",
+    "back": "Quay lại thư viện",
+    "warnTitle": "Đọc trước khi cài đặt",
+    "warnBadge": "Lưu ý",
+    "warnings": {
+      "replaces_original": "Thay tệp gốc của bạn bằng tệp đã chuyển đổi.",
+      "moves_original": "Di chuyển tệp gốc sang thư mục khác sau khi chuyển đổi.",
+      "overwrites_existing": "Ghi đè các tệp đã có cùng tên.",
+      "edits_metadata": "Thay đổi siêu dữ liệu của tệp, như tiêu đề, tác giả hoặc ngày.",
+      "fixed_edits": "Thêm cùng các đánh dấu, vùng che, nền hoặc chỉnh sửa đoạn cắt vào mọi tệp được chuyển đổi.",
+      "strips_metadata": "Xóa siêu dữ liệu như thông tin máy ảnh và vị trí khỏi tệp kết quả.",
+      "uses_translate_model": "Dịch bằng mô hình AI ngoại tuyến; nếu chưa cài, Filee sẽ tải về ở lần dùng đầu tiên.",
+      "copies_to_folder": "Sao chép tệp vào thư mục bạn chọn."
+    },
+    "warnGeneric": {
+      "high": "Có thể thay đổi hoặc xóa tệp trên máy tính của bạn. Hãy đọc mô tả trước khi cài đặt.",
+      "medium": "Thay đổi cách lưu tệp của bạn. Hãy đọc mô tả trước khi cài đặt.",
+      "info": "Có một cài đặt bạn nên biết. Xem phần mô tả."
+    },
+    "guideTitle": "Chia sẻ cấu hình sẵn của bạn",
+    "guideLead": "Cấu hình sẵn là các thiết lập, không phải chương trình, nên việc chia sẻ an toàn và chỉ mất vài phút.",
+    "guideSteps": [
+      {
+        "title": "Xuất từ Filee",
+        "text": "Trong phần cài đặt của Filee, mở **Chung** và nhấp **Xuất…** trong mục Cấu hình sẵn và thanh công cụ. Filee lưu cấu hình sẵn và thanh công cụ của bạn vào một tệp."
+      },
+      {
+        "title": "Chuẩn bị 1 đến 4 ảnh",
+        "text": "Cho thấy cấu hình sẵn làm gì: phần của nó trên vòng tròn, các thiết lập, hoặc một tệp mẫu trước và sau. PNG, JPEG hoặc WebP, cạnh dài từ 640 đến 2.560 px, mỗi ảnh tối đa 2 MB. Ảnh đầu tiên là ảnh bìa."
+      },
+      {
+        "title": "Điền biểu mẫu",
+        "text": "Nhấp **{upload}**, đăng nhập GitHub, rồi thêm tệp, ảnh, tiêu đề và mô tả ngắn. Các bước kiểm tra tự động sẽ báo nếu có gì cần sửa, sau đó người duy trì sẽ đăng lên."
+      }
+    ],
+    "allowedTitle": "Được chia sẻ",
+    "allowed": [
+      "Cấu hình sẵn chuyển đổi và công cụ, cùng các thanh công cụ vòng tròn tạo từ chúng.",
+      "Tối đa 20 cấu hình sẵn và một thanh công cụ mỗi lần tải lên, trong một tệp không quá 256 KB.",
+      "Ảnh do bạn tự làm, chụp các tệp mẫu được tạo riêng cho ảnh."
+    ],
+    "notAllowedTitle": "Không bao giờ chia sẻ",
+    "notAllowed": [
+      "Cấu hình sẵn chạy chương trình hoặc lệnh.",
+      "Thiết lập mạng và proxy, máy chủ dịch tùy chỉnh và khóa API.",
+      "Thư mục đầu ra khác với cạnh tệp nguồn, và đường dẫn hay tên cá nhân ở bất kỳ đâu.",
+      "Ảnh chụp tài liệu thật, tên, khuôn mặt hoặc đường dẫn tệp."
+    ],
+    "ccTitle": "Chia sẻ theo CC0",
+    "ccText": "Các cấu hình sẵn được chia sẻ và hình ảnh của chúng được hiến tặng vào phạm vi công cộng theo CC0 1.0: bất kỳ ai cũng có thể dùng, sửa và chia sẻ mà không cần điều kiện. Thư viện vẫn hiển thị người đã chia sẻ từng cái.",
+    "removalTitle": "Yêu cầu gỡ bỏ",
+    "removalText": "Để gỡ một cấu hình sẵn bạn đã chia sẻ, hoặc báo cáo một cấu hình sẵn vi phạm các quy định này hay để lộ thông tin cá nhân, hãy mở một issue trong kho Filee-Presets. Sau khi được gỡ ở đó, nó sẽ biến mất khỏi trang này và ứng dụng trong vòng một giờ.",
+    "removalLink": "Mở issue"
   },
   "notFound": {
     "title": "Không tìm thấy trang",
