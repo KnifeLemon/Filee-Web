@@ -96,12 +96,12 @@
     "title": "What's new in Filee {release}",
     "lead": "The highlights of this release, shown in short clips from the app itself.",
     "items": [
-      { "title": "Annotate pictures", "text": "Draw arrows, boxes, highlights, text and numbers right on a picture. Add Annotate to a donut in Settings → Donut toolbar." },
-      { "title": "Crop videos", "text": "Remove black bars found on their own, or crop to 16:9, 9:16, 4:3, 1:1 or 21:9. HDR video stays HDR." },
-      { "title": "Pages per sheet", "text": "Put 2, 4, 6, 8 or 9 PDF pages on each sheet. The pages stay vector, so text stays sharp." },
-      { "title": "Only the formats you use", "text": "Turn off fields you don't work in, like CAD, 3D or fonts, in Settings → Fields. Their formats leave the donut and the lists." },
-      { "title": "Captions and translations on your PC", "text": "Make SRT captions from a video, and translate documents, e-books and subtitles with a local AI. Nothing leaves your PC." },
-      { "title": "And a little more", "text": "Copy or move to a folder, perspective crop, CMYK print files, Krita and Minecraft files, and Italian, Indonesian and Vietnamese." }
+      { "title": "Preset gallery", "text": "Browse presets other people shared, see what each one does to your files, and install it in one click. Open it from Presets → Preset gallery." },
+      { "title": "Share your presets", "text": "“Export for the gallery…” checks your presets the way the gallery does, lists what to fix, and saves a preset.json to submit." },
+      { "title": "Originals to the Recycle Bin / Trash", "text": "A preset can move the original to the Recycle Bin / Trash once its result is done. Nothing is deleted: you can restore it from there." },
+      { "title": "New formats", "text": "Valve textures (VTF), Gerber circuit boards, Obsidian Canvas, G-code, Wisenet NOV recordings, Arduino sketches and more." },
+      { "title": "Windows on Arm, and Mongolian", "text": "Filee now runs natively on Windows on Arm PCs, and it speaks Mongolian (Монгол)." },
+      { "title": "And a little more", "text": "UDF 2.01 ISO images, merged PDFs on one paper size, Merge PDF on the Images donut, PDF/A that keeps links, and Yazi on Linux." }
     ]
   },
   "features": {

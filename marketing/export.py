@@ -112,32 +112,27 @@ def export_whats_new(version):
         video = os.path.join(target, f'{clip}.mp4')
         poster = os.path.join(target, f'{clip}.webp')
         with tempfile.TemporaryDirectory() as frames:
-            # FFmpeg can't decode animated WebP, so the frames go out as PNGs. Each file's modification time carries
-            # its start in milliseconds (read as seconds by image2 -ts_from_file 1; setpts turns them back into
-            # milliseconds). The concat demuxer would round every frame to 1/25 s.
-            epoch, at = 1_000_000_000, 0
-
-            def frame(index, image, start):
-                name = os.path.join(frames, f'{index:04d}.png')
-                image.save(name)
-                os.utime(name, (epoch + start, epoch + start))
-
+            # FFmpeg can't decode animated WebP, so the frames go out as PNGs, listed for the concat demuxer with how
+            # long each shows. Passed through with a millisecond time base (FFmpeg 5.1 or later), every frame keeps
+            # its length; the last picture is listed once more so the closing hold ends where the WebP's does.
+            listing, at = ['ffconcat version 1.0'], 0
             for i in range(anim.n_frames):
                 anim.seek(i)
                 anim.load()
                 image = anim.convert('RGB')
-                frame(i, image, at)
+                name = f'{i:04d}.png'
+                image.save(os.path.join(frames, name))
                 if i == slide.get('poster', 0):
                     image.save(poster, 'WEBP', quality=78, method=6)
+                listing += [f"file '{name}'", f"duration {anim.info['duration'] / 1000:.3f}"]
                 at += anim.info['duration']
-            # The closing hold (two seconds or so before the loop starts over) ends with the last picture again 50 ms
-            # before the end, and once more at the end: FFmpeg drops that final frame but takes the clip's length from it.
-            frame(anim.n_frames, image, at - 50)
-            frame(anim.n_frames + 1, image, at)
+            listing.append(f"file '{anim.n_frames - 1:04d}.png'")
+            concat = os.path.join(frames, 'frames.txt')
+            with open(concat, 'w', encoding='utf-8') as f:
+                f.write('\n'.join(listing) + '\n')
             # No B-frames: with them FFmpeg's MP4 edit list cuts off the closing hold.
-            subprocess.run([exe, '-v', 'error', '-y', '-f', 'image2', '-ts_from_file', '1',
-                            '-i', os.path.join(frames, '%04d.png'), '-an',
-                            '-vf', 'settb=1/1000,setpts=(PTS-STARTPTS)/1000', '-vsync', 'vfr', '-r', '1000',
+            subprocess.run([exe, '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', concat, '-an',
+                            '-vf', 'settb=1/1000,setpts=PTS-STARTPTS', '-fps_mode', 'passthrough', '-enc_time_base', '1/1000',
                             '-c:v', 'libx264', '-preset', 'veryslow', '-crf', '24', '-profile:v', 'high', '-bf', '0',
                             '-pix_fmt', 'yuv420p', '-video_track_timescale', '1000', '-movflags', '+faststart', video],
                            check=True)
