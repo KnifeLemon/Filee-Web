@@ -687,6 +687,6 @@ export default dictionary([
     `線上轉換網站會把你的檔案上傳到別人的伺服器，常常限制檔案大小和數量，也仰賴快速的網路。Filee 在你的電腦上轉換：私人檔案保持私密，大型影片和上百個檔案都沒問題，不用網路也能使用，而且免費、沒有廣告。`],
   [`Which operating systems are supported?`,
     `支援哪些作業系統？`],
-  [`Windows 10 and 11 (64-bit) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager's right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.`,
-    `Windows 10 和 11（64 位元）以及 Linux（x64 和 ARM64，Ubuntu 22.04 或更新版本）為正式版本。在 Linux 上，拖曳手勢需要 X11 工作階段；在 KDE Plasma 的 Wayland 下為實驗性功能，其他 Wayland 桌面則可使用拖放區域和檔案管理員的右鍵選單。macOS 13 或更新版本（Apple 晶片和 Intel）為預覽版：應用程式尚未經過公證，因此 macOS 會要求你在「隱私權與安全性」中允許一次。請在下載區選擇你的系統。`],
+  [`Windows 10 and 11 (x64 and ARM64) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager's right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn't notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.`,
+    `Windows 10 和 11（x64 和 ARM64）以及 Linux（x64 和 ARM64，Ubuntu 22.04 或更新版本）為正式版本。在 Linux 上，拖曳手勢需要 X11 工作階段；在 KDE Plasma 的 Wayland 下為實驗性功能，其他 Wayland 桌面則可使用拖放區域和檔案管理員的右鍵選單。macOS 13 或更新版本（Apple 晶片和 Intel）為預覽版：應用程式尚未經過公證，因此 macOS 會要求你在「隱私權與安全性」中允許一次。請在下載區選擇你的系統。`],
 ]);

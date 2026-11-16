@@ -152,7 +152,7 @@
       ["السعر", "مجاني"],
       ["الترخيص", "MIT (مفتوح المصدر)"],
       ["الإصدار", "{version}"],
-      ["النظام", "Windows 10/11 x64‏ · Linux x64/ARM64 (Ubuntu 22.04+)‏ · macOS 13+‎ (إصدار معاينة)"],
+      ["النظام", "Windows 10/11 x64/ARM64‏ · Linux x64/ARM64 (Ubuntu 22.04+)‏ · macOS 13+‎ (إصدار معاينة)"],
       ["يعمل دون إنترنت", "نعم، لا تغادر الملفات جهازك أبدًا"],
       ["الصيغ", "{formatTotal|zero:# صيغة|one:صيغة واحدة|two:صيغتان|few:# صيغ|many:# صيغة|other:# صيغة} في {categoryCount|zero:# فئة|one:فئة واحدة|two:فئتين|few:# فئات|many:# فئة|other:# فئة}"],
       ["مدمج في التطبيق", "{builtinTotal|zero:# صيغة|one:صيغة واحدة|two:صيغتان|few:# صيغ|many:# صيغة|other:# صيغة}، دون تثبيت أي شيء آخر"],
@@ -172,6 +172,7 @@
     "selector": "نظام التشغيل والمعالج",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

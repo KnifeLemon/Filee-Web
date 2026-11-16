@@ -152,7 +152,7 @@
       ["कीमत", "मुफ़्त"],
       ["लाइसेंस", "MIT (ओपन सोर्स)"],
       ["संस्करण", "{version}"],
-      ["प्लेटफ़ॉर्म", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (प्रीव्यू)"],
+      ["प्लेटफ़ॉर्म", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (प्रीव्यू)"],
       ["ऑफ़लाइन काम करता है", "हाँ, फ़ाइलें कभी आपके PC से बाहर नहीं जातीं"],
       ["फ़ॉर्मैट", "{categoryCount} श्रेणियों में {formatTotal}"],
       ["बिल्ट-इन", "{builtinTotal} फ़ॉर्मैट, और कुछ इंस्टॉल करने की ज़रूरत नहीं"],
@@ -172,6 +172,7 @@
     "selector": "ऑपरेटिंग सिस्टम और प्रोसेसर",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

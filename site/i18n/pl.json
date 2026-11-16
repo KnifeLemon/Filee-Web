@@ -152,7 +152,7 @@
       ["Cena", "Za darmo"],
       ["Licencja", "MIT (open source)"],
       ["Wersja", "{version}"],
-      ["Platforma", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (wersja zapoznawcza)"],
+      ["Platforma", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (wersja zapoznawcza)"],
       ["Działa offline", "Tak, pliki nigdy nie opuszczają Twojego komputera"],
       ["Formaty", "{formatTotal} w {categoryCount|one:# kategorii|other:# kategoriach}"],
       ["Wbudowane", "{builtinTotal|one:# format|few:# formaty|many:# formatów|other:# formatu}, nic więcej do instalowania"],
@@ -172,6 +172,7 @@
     "selector": "System operacyjny i procesor",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

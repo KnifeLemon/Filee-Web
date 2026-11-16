@@ -152,7 +152,7 @@
       ["가격", "무료"],
       ["라이선스", "MIT (오픈소스)"],
       ["버전", "{version}"],
-      ["운영체제", "Windows 10/11 x64 · Linux x64/ARM64(Ubuntu 22.04 이상) · macOS 13 이상(미리보기)"],
+      ["운영체제", "Windows 10/11 x64/ARM64 · Linux x64/ARM64(Ubuntu 22.04 이상) · macOS 13 이상(미리보기)"],
       ["오프라인", "지원 (파일이 PC 밖으로 나가지 않음)"],
       ["지원 형식", "{categoryCount}개 분야 {formatTotal}가지"],
       ["기본 내장", "{builtinTotal}가지 형식은 추가 설치 없이"],
@@ -172,6 +172,7 @@
     "selector": "운영체제와 프로세서",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",

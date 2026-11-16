@@ -1655,9 +1655,9 @@ export const FAQ = [
       '온라인 변환 사이트는 파일을 남의 서버에 올리고, 크기와 개수를 제한하는 경우가 많으며, 빠른 인터넷이 필요합니다. Filee는 내 PC에서 변환하므로 개인 파일이 밖으로 나가지 않고, 큰 동영상이나 수백 개의 파일도 문제없으며, 인터넷 없이도 광고 없이 무료로 쓸 수 있어요.',
       '在线转换网站要把文件上传到别人的服务器，常常限制文件大小和数量，还依赖网速。Filee 在你的电脑上转换：私密文件不外泄，大视频和上百个文件都没问题，没有网络也能用，而且免费、无广告。') },
   { q: T('Which operating systems are supported?', '어떤 운영체제에서 쓸 수 있나요?', '支持哪些操作系统？'),
-    a: T('Windows 10 and 11 (64-bit) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager\'s right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn\'t notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.',
-      'Windows 10·11(64비트)과 Linux(x64·ARM64, Ubuntu 22.04 이상)는 정식 버전이에요. Linux에서 드래그 제스처는 X11 세션에서 동작하고, KDE Plasma의 Wayland에서는 실험 기능이에요. 다른 Wayland 데스크톱에서는 드롭 영역과 파일 관리자의 우클릭 메뉴를 쓰세요. macOS 13 이상(Apple Silicon·Intel)은 미리보기예요. 앱이 아직 공증을 받지 않아 처음 한 번 개인정보 보호 및 보안에서 허용해야 해요. 다운로드에서 운영체제를 고르면 돼요.',
-      'Windows 10 和 11（64 位）以及 Linux（x64 和 ARM64，Ubuntu 22.04 或更高版本）为正式版。Linux 上的拖动手势需要 X11 会话；在 KDE Plasma 的 Wayland 下为实验功能，其他 Wayland 桌面请使用拖放区和文件管理器的右键菜单。macOS 13 或更高版本（Apple 芯片和 Intel）为预览版：应用尚未公证，首次需在“隐私与安全性”中允许一次。在下载区选择你的系统即可。') },
+    a: T('Windows 10 and 11 (x64 and ARM64) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and on other Wayland desktops the drop zone and the file manager\'s right-click menu work. macOS 13 or later (Apple silicon and Intel) is a preview: the app isn\'t notarized yet, so macOS asks you to allow it once under Privacy & Security. Pick your system in the download section.',
+      'Windows 10·11(x64·ARM64)과 Linux(x64·ARM64, Ubuntu 22.04 이상)는 정식 버전이에요. Linux에서 드래그 제스처는 X11 세션에서 동작하고, KDE Plasma의 Wayland에서는 실험 기능이에요. 다른 Wayland 데스크톱에서는 드롭 영역과 파일 관리자의 우클릭 메뉴를 쓰세요. macOS 13 이상(Apple Silicon·Intel)은 미리보기예요. 앱이 아직 공증을 받지 않아 처음 한 번 개인정보 보호 및 보안에서 허용해야 해요. 다운로드에서 운영체제를 고르면 돼요.',
+      'Windows 10 和 11（x64 和 ARM64）以及 Linux（x64 和 ARM64，Ubuntu 22.04 或更高版本）为正式版。Linux 上的拖动手势需要 X11 会话；在 KDE Plasma 的 Wayland 下为实验功能，其他 Wayland 桌面请使用拖放区和文件管理器的右键菜单。macOS 13 或更高版本（Apple 芯片和 Intel）为预览版：应用尚未公证，首次需在“隐私与安全性”中允许一次。在下载区选择你的系统即可。') },
 ];
 
 /* ───────── Home page bits ───────── */

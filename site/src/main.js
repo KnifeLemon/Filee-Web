@@ -624,6 +624,20 @@ function guessTarget() {
   return 'win-x64';
 }
 
+/**
+ * Whether a Windows browser runs on an ARM PC. Only Chromium browsers say so (client hints, architecture "arm"); the
+ * others report x64, so they keep the x64 guess and ARM64 stays one pick away in the list.
+ */
+async function windowsOnArm() {
+  const hints = navigator.userAgentData;
+  if (typeof hints?.getHighEntropyValues !== 'function' || !/windows/i.test(hints.platform ?? '')) return false;
+  try {
+    return (await hints.getHighEntropyValues(['architecture'])).architecture === 'arm';
+  } catch {
+    return false;
+  }
+}
+
 /** Each selection resolves only an asset for that operating system and processor. */
 function setupGitHub() {
   const api = 'https://api.github.com/repos/KnifeLemon/Filee';
@@ -638,10 +652,10 @@ function setupGitHub() {
   const t = page.download;
   if (!t) return;
   const selectors = [...document.querySelectorAll('select[data-download-target]')];
-  let selected = guessTarget(), release = null, failed = false;
+  let selected = guessTarget(), chosen = false, release = null, failed = false;
   try {
     const saved = sessionStorage.getItem('filee-download-target');
-    if (DOWNLOAD_TARGETS.includes(saved)) selected = saved;
+    if (DOWNLOAD_TARGETS.includes(saved)) { selected = saved; chosen = true; }
   } catch { /* storage unavailable */ }
 
   const render = () => {
@@ -678,11 +692,15 @@ function setupGitHub() {
     select.addEventListener('change', () => {
       if (!DOWNLOAD_TARGETS.includes(select.value)) return;
       selected = select.value;
+      chosen = true;
       try { sessionStorage.setItem('filee-download-target', selected); } catch { /* storage unavailable */ }
       render();
     });
   });
   render();
+  // The answer comes asynchronously; a choice the visitor made in the meantime stays.
+  if (selected === 'win-x64' && !chosen)
+    windowsOnArm().then(arm => { if (arm && !chosen) { selected = 'win-arm64'; render(); } });
   cached('filee-release-v3', async () => releaseSummary(await getJson(`${api}/releases/latest`)))
     .then(value => { release = releaseSummary(value); render(); })
     .catch(() => { failed = true; render(); });
@@ -748,7 +766,7 @@ function setupDownloadGuide() {
   document.addEventListener('click', e => {
     const link = e.target.closest?.('[data-download]');
     if (!link || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-    if (link.dataset.downloadTarget !== 'win-x64') return;
+    if (!link.dataset.downloadTarget?.startsWith('win-')) return;
     if (!/\.exe$/i.test(new URL(link.href).pathname)) return; // still the release page: it explains itself
     if (!dialog) build();
     retry.href = link.href;

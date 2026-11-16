@@ -152,7 +152,7 @@
       ["Giá", "Miễn phí"],
       ["Giấy phép", "MIT (mã nguồn mở)"],
       ["Phiên bản", "{version}"],
-      ["Nền tảng", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (bản xem trước)"],
+      ["Nền tảng", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (bản xem trước)"],
       ["Hoạt động ngoại tuyến", "Có, tệp không bao giờ rời khỏi máy tính của bạn"],
       ["Định dạng", "{formatTotal} định dạng thuộc {categoryCount} loại"],
       ["Tích hợp sẵn", "{builtinTotal} định dạng, không cần cài thêm gì"],
@@ -172,6 +172,7 @@
     "selector": "Hệ điều hành và CPU",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
