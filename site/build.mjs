@@ -202,7 +202,11 @@ export async function build() {
   const css = minifyCss(await readFile(join(ROOT, 'src', 'styles.css'), 'utf8'));
   const downloads = await readFile(join(ROOT, 'src', 'downloads.mjs'), 'utf8');
   const downloadsName = `downloads.${hash(downloads)}.js`;
-  const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8')).replace("'./downloads.mjs'", `'./${downloadsName}'`);
+  const downloadTarget = await readFile(join(ROOT, 'src', 'download-target.mjs'), 'utf8');
+  const downloadTargetName = `download-target.${hash(downloadTarget)}.js`;
+  const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8'))
+    .replace("'./downloads.mjs'", `'./${downloadsName}'`)
+    .replace("'./download-target.mjs'", `'./${downloadTargetName}'`);
   // The gallery's script shares the ranking with the build (preset-stats.mjs).
   const presetStats = await readFile(join(ROOT, 'src', 'preset-stats.mjs'), 'utf8');
   const presetStatsName = `preset-stats.${hash(presetStats)}.js`;
@@ -224,6 +228,7 @@ export async function build() {
   await writeFile(join(DIST, 'assets', assets.css), css);
   await writeFile(join(DIST, 'assets', assets.js), js);
   await writeFile(join(DIST, 'assets', downloadsName), downloads);
+  await writeFile(join(DIST, 'assets', downloadTargetName), downloadTarget);
   await writeFile(join(DIST, 'assets', presetStatsName), presetStats);
   await writeFile(join(DIST, 'assets', assets.gallery), galleryJs);
   await Promise.all(vendor.map(v => writeFile(join(DIST, 'assets', v.file), v.text)));

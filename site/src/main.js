@@ -4,6 +4,7 @@
 // and download buttons lead to the latest release page.
 
 import { DOWNLOAD_TARGETS, downloadChoice, releaseSummary } from './downloads.mjs';
+import { canRefineMacTarget, chromiumMacTarget, guessTarget } from './download-target.mjs';
 
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(pointer: fine)').matches;
@@ -612,19 +613,6 @@ async function getJson(url) {
 }
 
 /**
- * The visitor's system as a first guess (they can change it). A Mac is taken as Apple silicon: browsers on Intel and
- * Apple silicon Macs report the same platform, and Apple silicon is what Apple sells now.
- */
-function guessTarget() {
-  const platform = (navigator.userAgentData?.platform || navigator.platform || '').toLowerCase();
-  const agent = navigator.userAgent.toLowerCase();
-  if (platform.includes('mac')) return 'osx-arm64';
-  if (platform.includes('linux') && !agent.includes('android'))
-    return /aarch64|arm64/.test(platform + agent) ? 'linux-arm64' : 'linux-x64';
-  return 'win-x64';
-}
-
-/**
  * Whether a Windows browser runs on an ARM PC. Only Chromium browsers say so (client hints, architecture "arm"); the
  * others report x64, so they keep the x64 guess and ARM64 stays one pick away in the list.
  */
@@ -652,10 +640,14 @@ function setupGitHub() {
   const t = page.download;
   if (!t) return;
   const selectors = [...document.querySelectorAll('select[data-download-target]')];
-  let selected = guessTarget(), chosen = false, release = null, failed = false;
+  let selected = guessTarget({ platform: navigator.userAgentData?.platform || navigator.platform, userAgent: navigator.userAgent });
+  let release = null, failed = false, savedTarget = false, manuallySelected = false;
   try {
     const saved = sessionStorage.getItem('filee-download-target');
-    if (DOWNLOAD_TARGETS.includes(saved)) { selected = saved; chosen = true; }
+    if (DOWNLOAD_TARGETS.includes(saved)) {
+      selected = saved;
+      savedTarget = true;
+    }
   } catch { /* storage unavailable */ }
 
   const render = () => {
@@ -679,6 +671,12 @@ function setupGitHub() {
       if (choice.github) link.href = choice.github;
       link.hidden = !choice.github;
     });
+    document.querySelectorAll('[data-download-archive]').forEach(node => {
+      const link = node.querySelector('a');
+      if (choice.archive && link) link.href = choice.archive.url;
+      node.hidden = !choice.archive;
+    });
+    document.querySelectorAll('[data-macos-note]').forEach(node => { node.hidden = !selected.startsWith('osx-'); });
     // The Store has the Windows app only.
     document.querySelectorAll('[data-store-badge]').forEach(badge => { badge.hidden = !selected.startsWith('win-'); });
     document.querySelectorAll('[data-download-status]').forEach(node => { node.textContent = status; node.hidden = false; });
@@ -692,15 +690,25 @@ function setupGitHub() {
     select.addEventListener('change', () => {
       if (!DOWNLOAD_TARGETS.includes(select.value)) return;
       selected = select.value;
-      chosen = true;
+      manuallySelected = true;
       try { sessionStorage.setItem('filee-download-target', selected); } catch { /* storage unavailable */ }
       render();
     });
   });
   render();
-  // The answer comes asynchronously; a choice the visitor made in the meantime stays.
-  if (selected === 'win-x64' && !chosen)
-    windowsOnArm().then(arm => { if (arm && !chosen) { selected = 'win-arm64'; render(); } });
+  // Chromium can report an exact CPU architecture. Safari and Firefox cannot, so macOS deliberately remains ARM64
+  // there. A stored or explicit visitor choice is always more important than an asynchronous browser hint.
+  if (canRefineMacTarget({ selected, savedTarget, manuallySelected })) {
+    chromiumMacTarget(navigator.userAgentData).then(target => {
+      if (target && canRefineMacTarget({ selected, savedTarget, manuallySelected })) {
+        selected = target;
+        render();
+      }
+    });
+  }
+  // Likewise a Windows browser on an ARM PC; the answer comes asynchronously and a choice made meanwhile stays.
+  if (selected === 'win-x64' && !savedTarget && !manuallySelected)
+    windowsOnArm().then(arm => { if (arm && !savedTarget && !manuallySelected) { selected = 'win-arm64'; render(); } });
   cached('filee-release-v3', async () => releaseSummary(await getJson(`${api}/releases/latest`)))
     .then(value => { release = releaseSummary(value); render(); })
     .catch(() => { failed = true; render(); });
