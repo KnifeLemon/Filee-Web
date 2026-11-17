@@ -11,6 +11,7 @@
     "how": "사용법",
     "formats": "지원 형식",
     "cli": "명령줄",
+    "presets": "프리셋",
     "hwp": "한글 파일",
     "faq": "자주 묻는 질문",
     "download": "다운로드",
@@ -95,12 +96,12 @@
     "title": "Filee {release}의 새 기능",
     "lead": "이번 버전의 새 기능을 앱 화면 그대로 짧은 영상에 담았어요.",
     "items": [
-      { "title": "사진에 주석 달기", "text": "사진 위에 화살표, 상자, 강조, 글자, 번호를 바로 그려요. 설정 → 원형 툴바에서 주석을 툴바에 넣어 보세요." },
-      { "title": "동영상 화면 자르기", "text": "검은 테두리를 알아서 찾아 없애거나 16:9, 9:16, 4:3, 1:1, 21:9로 잘라요. HDR 동영상은 HDR 그대로 남아요." },
-      { "title": "모아찍기", "text": "PDF 2·4·6·8·9쪽을 한 장에 모아요. 페이지가 벡터 그대로라 글자가 선명해요." },
-      { "title": "쓰는 형식만 보기", "text": "설정 → 분야에서 CAD, 3D, 글꼴처럼 쓰지 않는 분야를 끄면 그 형식이 원형 툴바와 목록에서 빠져요." },
-      { "title": "내 PC에서 자막과 번역", "text": "동영상에서 SRT 자막을 만들고, 문서·전자책·자막을 내 PC의 AI로 번역해요. 파일은 PC 밖으로 나가지 않아요." },
-      { "title": "그리고 조금 더", "text": "폴더로 복사·이동, 원근 보정 자르기, 인쇄용 CMYK 파일, Krita·마인크래프트 파일, 이탈리아어·인도네시아어·베트남어가 더해졌어요." }
+      { "title": "프리셋 갤러리", "text": "다른 사람이 공유한 프리셋을 둘러보고, 파일에 무엇을 하는지 확인한 뒤 클릭 한 번으로 설치해요. 프리셋 → 프리셋 갤러리에서 열어요." },
+      { "title": "내 프리셋 공유하기", "text": "‘갤러리용으로 내보내기…’가 갤러리와 같은 기준으로 프리셋을 검사하고, 고칠 점을 알려 주고, 제출할 preset.json을 저장해요." },
+      { "title": "원본은 휴지통으로", "text": "변환이 끝나면 원본을 휴지통으로 옮기도록 프리셋에서 정할 수 있어요. 지우는 게 아니라서 휴지통에서 되살릴 수 있어요." },
+      { "title": "새 형식", "text": "Valve 텍스처(VTF), Gerber 회로 기판, Obsidian Canvas, G-code, Wisenet NOV 녹화 파일, Arduino 스케치 등을 다뤄요." },
+      { "title": "Windows on Arm과 몽골어", "text": "이제 Windows on Arm PC에서 네이티브로 실행되고, 몽골어(Монгол)로도 쓸 수 있어요." },
+      { "title": "그리고 조금 더", "text": "UDF 2.01 ISO 이미지, 한 용지 크기로 맞추는 PDF 병합, 이미지 원형 툴바의 PDF 병합, 링크를 지키는 PDF/A, Linux의 Yazi 연동." }
     ]
   },
   "features": {
@@ -151,7 +152,7 @@
       ["가격", "무료"],
       ["라이선스", "MIT (오픈소스)"],
       ["버전", "{version}"],
-      ["운영체제", "Windows 10/11 x64 · Linux x64/ARM64(Ubuntu 22.04 이상) · macOS 13 이상(미리보기)"],
+      ["운영체제", "Windows 10/11 x64/ARM64 · Linux x64/ARM64(Ubuntu 22.04 이상) · macOS 13 이상(미리보기)"],
       ["오프라인", "지원 (파일이 PC 밖으로 나가지 않음)"],
       ["지원 형식", "{categoryCount}개 분야 {formatTotal}가지"],
       ["기본 내장", "{builtinTotal}가지 형식은 추가 설치 없이"],
@@ -171,6 +172,7 @@
     "selector": "운영체제와 프로세서",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
@@ -221,6 +223,7 @@
     "openSource": "오픈 소스",
     "formats": "지원 형식 전체",
     "cli": "명령줄",
+    "presets": "프리셋 갤러리",
     "popular": "많이 찾는 변환"
   },
   "common": {
@@ -517,6 +520,159 @@
     ],
     "ctaTitle": "filee 명령이 들어 있는 Filee 받기",
     "ctaText": "명령줄은 Windows 10/11용 Filee에 함께 들어 있어요. 무료 오픈소스이고 오프라인으로 동작해요."
+  },
+  "presets": {
+    "title": "Filee 프리셋 갤러리: 무료 프리셋과 원형 툴바 | Filee",
+    "description": "Filee 사용자가 공유한 무료 프리셋과 원형 툴바를 둘러보세요. 무엇을 하는지 확인하고 한 번에 설치할 수 있어요. 모두 CC0로 공유됩니다.",
+    "crumb": "프리셋 갤러리",
+    "h1": "프리셋 갤러리",
+    "lead": "다른 Filee 사용자가 공유한 프리셋과 원형 툴바예요. 설치하기 전에 무엇을 하는지 확인하고, 내 프리셋도 공유해 보세요.",
+    "upload": "프리셋 올리기",
+    "guideButton": "공유하는 방법",
+    "sortLabel": "정렬",
+    "sort": {
+      "hot": "인기",
+      "best": "베스트",
+      "new": "최신"
+    },
+    "periodLabel": "기간",
+    "periods": {
+      "day": "오늘",
+      "week": "이번 주",
+      "month": "이번 달",
+      "year": "올해",
+      "all": "전체"
+    },
+    "searchLabel": "프리셋 검색",
+    "searchPlaceholder": "이름, 만든 사람, 태그",
+    "filterKind": "종류",
+    "filterFormat": "형식",
+    "filterTag": "태그",
+    "onlyMine": "내 언어로 된 것만",
+    "any": "전체",
+    "clear": "필터 지우기",
+    "kinds": {
+      "convert": "변환",
+      "tool": "도구",
+      "toolbar": "툴바"
+    },
+    "count": "{n|other:프리셋 #개}",
+    "empty": "아직 공유된 프리셋이 없어요. 첫 번째 프리셋을 올려 보세요.",
+    "noMatch": "이 조건에 맞는 프리셋이 없어요.",
+    "by": "{author}",
+    "likes": "{n|other:좋아요 #개}",
+    "downloads": "{n|other:다운로드 #회}",
+    "comments": "{n|other:댓글 #개}",
+    "statsNote": "좋아요는 GitHub에 있는 각 프리셋 토론의 👍 반응이에요. 좋아요와 다운로드 수는 한 시간마다 다시 집계해요.",
+    "detailTitle": "{title}: {author}의 Filee 프리셋",
+    "detailDescription": "{author}님이 공유한 무료 Filee 프리셋 {title}. 그림과 하는 일을 확인하고 Filee 프리셋 갤러리에서 설치하세요.",
+    "sharedBy": "{author}님이 공유",
+    "updated": "{date} 업데이트",
+    "imageAlt": "{title}, 그림 {n}/{total}",
+    "aboutTitle": "이 프리셋은",
+    "whatTitle": "하는 일",
+    "colPreset": "프리셋",
+    "colKind": "종류",
+    "colMakes": "결과 형식",
+    "colOptions": "주요 옵션",
+    "presetKinds": {
+      "convert": "변환",
+      "group": "그룹",
+      "tool": "도구 창",
+      "copy": "복사"
+    },
+    "toolbarRow": "조각 {n|other:#개}로 된 “{name}” 툴바를 추가해요.",
+    "worksOn": "입력",
+    "makes": "결과",
+    "minVersion": "Filee {version} 이상이 필요해요.",
+    "defaults": "기본 옵션",
+    "options": {
+      "quality": "품질 {n}",
+      "longEdge": "긴 변 {n}px",
+      "width": "너비 {n}px",
+      "percent": "크기의 {n}%",
+      "customSize": "{w} × {h}",
+      "maxSize": "최대 {n}MB",
+      "grayscale": "흑백",
+      "removeBackground": "배경 제거",
+      "stripMetadata": "메타데이터 제거",
+      "mergePdf": "PDF 하나로 합치기",
+      "compressPdf": "PDF 압축",
+      "ocr": "글자 인식(OCR)",
+      "pageNumbers": "쪽 번호 넣기",
+      "mediaHigh": "고화질",
+      "mediaBalanced": "균형 잡힌 화질",
+      "mediaSmall": "작은 파일",
+      "maxHeight": "최대 {n}p",
+      "audioBitrate": "오디오 {n}kbps",
+      "askCompression": "변환할 때마다 압축 정도를 물어봄",
+      "group": "프리셋 {n|other:#개}를 펼침",
+      "tool": "자체 창을 엶"
+    },
+    "installTitle": "설치하기",
+    "installSteps": [
+      "Filee를 열고 **프리셋** 화면으로 가세요.",
+      "**프리셋 갤러리**를 누르고 “{title}” 프리셋을 찾으세요.",
+      "**설치**를 누르세요. 내 프리셋 옆에 새로 추가되고, 내 프리셋을 바꾸지 않아요."
+    ],
+    "downloadButton": "프리셋 파일 다운로드",
+    "downloadNote": "또는 파일을 받아 Filee 설정의 **일반 → 가져오기…**에서 추가할 수 있어요.",
+    "license": "{author}님이 이 프리셋과 그림을 CC0 1.0으로 공유했어요. 누구나 조건 없이 쓰고, 고치고, 다시 공유할 수 있어요.",
+    "licenseLink": "CC0 알아보기",
+    "commentsButton": "GitHub 댓글",
+    "report": "이 프리셋에 문제가 있나요? 댓글로 알려 주시거나 [삭제를 요청]({removal})하세요.",
+    "back": "갤러리로 돌아가기",
+    "warnTitle": "설치하기 전에 확인하세요",
+    "warnBadge": "주의",
+    "warnings": {
+      "replaces_original": "원본 파일을 변환된 파일로 바꿔요.",
+      "moves_original": "변환한 뒤 원본 파일을 다른 폴더로 옮겨요.",
+      "overwrites_existing": "같은 이름의 파일이 이미 있으면 덮어써요.",
+      "edits_metadata": "제목, 작성자, 날짜 같은 파일의 메타데이터를 바꿔요.",
+      "fixed_edits": "변환하는 모든 파일에 같은 표시, 가린 영역, 배경 또는 클립 편집을 넣어요.",
+      "strips_metadata": "결과 파일에서 카메라 정보와 위치 같은 메타데이터를 지워요.",
+      "uses_translate_model": "오프라인 AI 모델로 번역해요. 모델이 없으면 처음 쓸 때 Filee가 내려받아요.",
+      "copies_to_folder": "직접 고른 폴더로 파일을 복사해요."
+    },
+    "warnGeneric": {
+      "high": "컴퓨터의 파일을 바꾸거나 지울 수 있어요. 설치하기 전에 설명을 읽어 보세요.",
+      "medium": "파일이 저장되는 방식을 바꿔요. 설치하기 전에 설명을 읽어 보세요.",
+      "info": "알아 두면 좋은 설정이 있어요. 설명을 확인하세요."
+    },
+    "guideTitle": "내 프리셋 공유하기",
+    "guideLead": "프리셋은 프로그램이 아니라 설정이라서 안전하게 공유할 수 있고, 몇 분이면 끝나요.",
+    "guideSteps": [
+      {
+        "title": "Filee에서 내보내기",
+        "text": "Filee 설정에서 **일반**을 열고 프리셋과 툴바의 **내보내기…**를 누르세요. 프리셋과 툴바가 파일 하나로 저장돼요."
+      },
+      {
+        "title": "그림 1~4장 만들기",
+        "text": "프리셋이 하는 일을 보여 주세요. 원형 툴바의 조각, 설정 화면, 예시 파일의 변환 전후 모습 등이 좋아요. PNG, JPEG 또는 WebP, 긴 변 640~2,560px, 한 장에 2MB까지예요. 첫 번째 그림이 표지가 돼요."
+      },
+      {
+        "title": "양식 작성하기",
+        "text": "**{upload}**를 누르고 GitHub에 로그인한 뒤 파일, 그림, 제목과 짧은 설명을 넣으세요. 자동 검사가 고칠 점을 알려 주고, 관리자가 확인한 뒤 게시해요."
+      }
+    ],
+    "allowedTitle": "공유할 수 있는 것",
+    "allowed": [
+      "변환 프리셋과 도구 프리셋, 그리고 이것들로 만든 원형 툴바.",
+      "한 번에 프리셋 20개와 툴바 1개까지, 256KB 이하 파일.",
+      "직접 만든 그림. 그림을 위해 만든 예시 파일을 담은 것."
+    ],
+    "notAllowedTitle": "공유하지 않는 것",
+    "notAllowed": [
+      "프로그램이나 명령을 실행하는 프리셋.",
+      "네트워크·프록시 설정, 사용자 지정 번역 서버, API 키.",
+      "원본 파일 옆이 아닌 저장 폴더, 그리고 어디에든 들어간 개인 경로나 이름.",
+      "실제 문서, 이름, 얼굴, 파일 경로가 보이는 그림."
+    ],
+    "ccTitle": "CC0로 공유",
+    "ccText": "공유된 프리셋과 그림은 CC0 1.0에 따라 퍼블릭 도메인으로 공개돼요. 누구나 조건 없이 쓰고, 고치고, 다시 공유할 수 있어요. 갤러리에는 누가 공유했는지 계속 표시돼요.",
+    "removalTitle": "삭제 요청",
+    "removalText": "내가 공유한 프리셋을 내리거나, 규칙을 어기거나 개인 정보가 보이는 프리셋을 신고하려면 Filee-Presets 저장소에 이슈를 열어 주세요. 그곳에서 삭제되면 한 시간 안에 이 사이트와 앱에서도 사라져요.",
+    "removalLink": "이슈 열기"
   },
   "notFound": {
     "title": "페이지를 찾을 수 없어요",

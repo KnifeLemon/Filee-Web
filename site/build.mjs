@@ -1,6 +1,7 @@
-// Builds the static site into dist/: per language the home page, the format catalog, the command line guide and one
-// conversion guide per catalog pair; hashed CSS/JS, sitemap (hreflang for every page, the promo video on home pages), robots.txt,
-// llms.txt, llms-full.txt, pad.xml (for download sites), 404 page, web manifest and Cloudflare _headers/_redirects.
+// Builds the static site into dist/: per language the home page, the format catalog, the command line guide, the preset
+// gallery with a page per shared preset, and one conversion guide per catalog pair; hashed CSS/JS, sitemap (hreflang for every page, the promo video on home pages), robots.txt,
+// llms.txt, llms-full.txt, pad.xml (for download sites), 404 page, web manifest, Cloudflare _headers/_redirects, and the
+// gallery's /presets/index.json with its files mirrored under /presets/files/.
 // Usage: node build.mjs          (no dependencies; Node 20+)
 
 import { createHash } from 'node:crypto';
@@ -11,6 +12,8 @@ import { PAIRS, pairSlug, useVersion, validateCatalog } from './src/catalog.mjs'
 import { renderCliPage } from './src/cli-page.mjs';
 import { renderConvertPage } from './src/convert-page.mjs';
 import { renderFormatsPage } from './src/formats-page.mjs';
+import { renderGalleryPage, renderPresetPage } from './src/presets-page.mjs';
+import { loadGallery, publicIndex } from './src/presets.mjs';
 import { DOWNLOAD, INLINE_SCRIPTS, REPO, SITE, paths } from './src/layout.mjs';
 import { llmsFullTxt, llmsTxt } from './src/llms.mjs';
 import { latestRelease, padXml } from './src/pad.mjs';
@@ -66,11 +69,17 @@ function checkLanguageKeys(languages) {
 }
 
 /** Every logical page: its path in each language and how to render it. */
-function pageList() {
+function pageList(gallery) {
   return [
     { pathOf: paths.home, render: renderPage, video: true, priority: '1.0' },
     { pathOf: paths.formats, render: renderFormatsPage, priority: '0.9' },
     { pathOf: paths.cli, render: renderCliPage, priority: '0.8' },
+    { pathOf: paths.presets, render: (t, languages, assets) => renderGalleryPage(t, languages, assets, gallery), priority: '0.8' },
+    ...gallery.presets.map(preset => ({
+      pathOf: l => paths.preset(l, preset.id),
+      render: (t, languages, assets) => renderPresetPage(t, languages, assets, preset),
+      priority: '0.6',
+    })),
     ...PAIRS.map(pair => ({
       pathOf: l => paths.convert(l, pairSlug(pair)),
       render: (t, languages, assets) => renderConvertPage(t, languages, assets, pair),
@@ -154,6 +163,12 @@ function headers() {
 
 /media/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/presets/index.json
+  Cache-Control: public, max-age=300
+
+/presets/files/*
+  Cache-Control: public, max-age=3600
 `;
 }
 
@@ -192,15 +207,20 @@ export async function build() {
   const js = (await readFile(join(ROOT, 'src', 'main.js'), 'utf8'))
     .replace("'./downloads.mjs'", `'./${downloadsName}'`)
     .replace("'./download-target.mjs'", `'./${downloadTargetName}'`);
+  // The gallery's script shares the ranking with the build (preset-stats.mjs).
+  const presetStats = await readFile(join(ROOT, 'src', 'preset-stats.mjs'), 'utf8');
+  const presetStatsName = `preset-stats.${hash(presetStats)}.js`;
+  const galleryJs = (await readFile(join(ROOT, 'src', 'gallery.js'), 'utf8')).replace("'./preset-stats.mjs'", `'./${presetStatsName}'`);
+  const gallery = await loadGallery();
   // Pages get the hashed asset names, and the supporters for the home page's sponsor section.
   const supporters = await loadSupporters();
   const vendor = await Promise.all(VENDOR.map(async ([name, path]) => {
     const text = await readFile(join(ROOT, path), 'utf8');
     return { file: `${name}.${hash(text)}.js`, text };
   }));
-  const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js`, gsap: vendor.map(v => v.file), supporters };
+  const assets = { css: `styles.${hash(css)}.css`, js: `main.${hash(js)}.js`, gallery: `gallery.${hash(galleryJs)}.js`, gsap: vendor.map(v => v.file), supporters };
   const today = new Date().toISOString().slice(0, 10);
-  const pages = pageList();
+  const pages = pageList(gallery);
 
   await rm(DIST, { recursive: true, force: true });
   await cp(join(ROOT, 'public'), DIST, { recursive: true });
@@ -209,6 +229,8 @@ export async function build() {
   await writeFile(join(DIST, 'assets', assets.js), js);
   await writeFile(join(DIST, 'assets', downloadsName), downloads);
   await writeFile(join(DIST, 'assets', downloadTargetName), downloadTarget);
+  await writeFile(join(DIST, 'assets', presetStatsName), presetStats);
+  await writeFile(join(DIST, 'assets', assets.gallery), galleryJs);
   await Promise.all(vendor.map(v => writeFile(join(DIST, 'assets', v.file), v.text)));
   if (logoFiles(supporters).length) await mkdir(join(DIST, 'media', 'sponsors'), { recursive: true });
   await Promise.all(logoFiles(supporters).map(l => writeFile(join(DIST, 'media', 'sponsors', l.file), l.bytes)));
@@ -222,6 +244,14 @@ export async function build() {
   await Promise.all(jobs);
   const count = jobs.length;
   await writeFile(join(DIST, '404.html'), renderNotFound(languages, assets));
+  // The gallery's index with stats, and its files where the index's paths point (files/presets/<id>/…).
+  await mkdir(join(DIST, 'presets'), { recursive: true });
+  await writeFile(join(DIST, 'presets', 'index.json'), `${JSON.stringify(publicIndex(gallery, SITE), null, 2)}\n`);
+  await Promise.all([...gallery.files].map(async ([path, bytes]) => {
+    const file = join(DIST, 'presets', 'files', ...path.split('/'));
+    await mkdir(dirname(file), { recursive: true });
+    await writeFile(file, bytes);
+  }));
   await writeFile(join(DIST, 'sitemap.xml'), sitemap(pages, languages, today));
   await writeFile(join(DIST, 'robots.txt'), robots);
   await writeFile(join(DIST, 'llms.txt'), llmsTxt(languages));
@@ -230,7 +260,7 @@ export async function build() {
   await writeFile(join(DIST, 'pad.xml'), padXml(release));
   await writeFile(join(DIST, '_headers'), headers());
   await writeFile(join(DIST, '_redirects'), redirects(languages));
-  console.log(`Built ${count} pages (${pages.length} × ${languages.length} languages) into dist/ in ${Date.now() - started} ms`);
+  console.log(`Built ${count} pages (${pages.length} × ${languages.length} languages, ${gallery.presets.length} shared presets) into dist/ in ${Date.now() - started} ms`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) await build();

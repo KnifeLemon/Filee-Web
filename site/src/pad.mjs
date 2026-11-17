@@ -138,7 +138,7 @@ export function padXml(release) {
     ${tag('Program_Change_Info', `See ${REPO}/releases/tag/v${release.version}`)}
     ${tag('Program_Specific_Category', 'File Converters')}
     ${tag('Program_Category_Class', 'Utilities::File & Disk Management')}
-    ${tag('Program_System_Requirements', 'Windows 10 version 1809 or later, or Windows 11 (64-bit). The .NET runtime is included.')}
+    ${tag('Program_System_Requirements', 'Windows 10 version 1809 or later, or Windows 11 (x64 or ARM64). The .NET runtime is included.')}
     <File_Info>
       ${tag('File_Size_Bytes', size)}
       ${tag('File_Size_K', Math.round(size / 1024))}

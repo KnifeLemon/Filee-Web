@@ -1,4 +1,4 @@
-export const DOWNLOAD_TARGETS = ['win-x64', 'linux-x64', 'linux-arm64', 'osx-arm64', 'osx-x64'];
+export const DOWNLOAD_TARGETS = ['win-x64', 'win-arm64', 'linux-x64', 'linux-arm64', 'osx-arm64', 'osx-x64'];
 export const RELEASES_URL = 'https://github.com/KnifeLemon/Filee/releases';
 /**
  * The download mirror (Cloudflare R2): the signing script (build/sign-release.ps1 in the app's repository, step 5)
@@ -24,8 +24,9 @@ export function releaseSummary(release) {
   };
 }
 
-/** The Windows files the signing script copies to the mirror, for a version without the "v". */
-const mirroredNames = version => [`Filee-${version}-win-Setup.exe`, `Filee-${version}-win-Portable.zip`];
+/** The Windows files (x64 and ARM64) the signing script copies to the mirror, for a version without the "v". */
+const mirroredNames = version => [`Filee-${version}-win-Setup.exe`, `Filee-${version}-win-Portable.zip`,
+  `Filee-${version}-win-arm64-Setup.exe`, `Filee-${version}-win-arm64-Portable.zip`];
 
 /**
  * The mirror's address of a release file, or null when the mirror doesn't carry it (the Linux and macOS packages,
@@ -70,6 +71,8 @@ export function findDownloadAsset(release, target) {
   const macTarget = typeof target === 'string' && target.startsWith('osx-');
   const names = target === 'win-x64'
     ? [`Filee-${version}-win-Setup.exe`, 'Filee-win-Setup.exe']
+    // No fallback to the x64 Setup: a release without the ARM64 file shows "missing" and links the release page.
+    : target === 'win-arm64' ? [`Filee-${version}-win-arm64-Setup.exe`]
     : macTarget
       ? [`Filee-${version}-${target}.dmg`]
       : [`Filee-${version}-${target}.tar.gz`];

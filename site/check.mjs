@@ -1,6 +1,6 @@
 // Checks the built site in dist/: one <h1>, title and description (present, unique, length), canonical, hreflang
-// (complete and reciprocal), JSON-LD (valid JSON, expected types), internal links and #fragments, sitemap coverage
-// and the links in llms.txt / llms-full.txt. Exits with 1 on errors; length warnings don't fail.
+// (complete and reciprocal), JSON-LD (valid JSON, expected types), internal links and #fragments, sitemap coverage,
+// the links in llms.txt / llms-full.txt and the preset gallery's index.json (every listed file is mirrored). Exits with 1 on errors; length warnings don't fail.
 // Usage: node build.mjs && node check.mjs
 
 import { existsSync } from 'node:fs';
@@ -113,7 +113,8 @@ async function main() {
       }
     }
     const expected = path.includes('/convert/') ? ['HowTo', 'BreadcrumbList'] : path.endsWith('/formats/') ? ['CollectionPage', 'BreadcrumbList']
-      : path.endsWith('/cli/') ? ['TechArticle', 'BreadcrumbList'] : ['SoftwareApplication', 'FAQPage'];
+      : path.endsWith('/cli/') ? ['TechArticle', 'BreadcrumbList'] : path.endsWith('/presets/') ? ['CollectionPage', 'BreadcrumbList']
+      : path.includes('/presets/') ? ['CreativeWork', 'BreadcrumbList'] : ['SoftwareApplication', 'FAQPage'];
     for (const type of expected) if (!types.includes(type)) error(path, `JSON-LD type ${type} missing`);
 
     // Internal links and fragments.
@@ -126,6 +127,12 @@ async function main() {
       if (!target.startsWith('/') || target.startsWith('//')) continue;
       const [pathPart, fragment] = target.split('#');
       const clean = pathPart.split('?')[0];
+      // The Worker serves /presets/download/<id> from the mirrored preset.json (worker/index.mjs).
+      const download = /^\/presets\/download\/([a-z0-9-]+)$/.exec(clean);
+      if (download) {
+        if (!existsSync(join(DIST, 'presets', 'files', 'presets', download[1], 'preset.json'))) error(path, `download link ${raw} has no preset.json`);
+        continue;
+      }
       if (pages.has(clean)) {
         if (fragment && !pages.get(clean).ids.has(fragment)) error(path, `link to missing ${clean}#${fragment}`);
         continue;
@@ -174,11 +181,27 @@ async function main() {
     }
   }
 
+  // The preset gallery's index.json: every path it lists is served next to it.
+  const index = JSON.parse(await readFile(join(DIST, 'presets', 'index.json'), 'utf8'));
+  if (index.version !== 1 || !Array.isArray(index.presets)) error('presets/index.json', 'not a version 1 index');
+  for (const p of index.presets ?? []) {
+    for (const file of [...p.images, p.thumb, p.preset, ...Object.values(p.imagesByLang ?? {}).flat(), ...Object.values(p.thumbByLang ?? {})]) if (!existsSync(join(DIST, 'presets', ...file.split('/')))) error('presets/index.json', `${p.id}: ${file} is missing`);
+    if (!pages.has(`/presets/${p.id}/`)) error('presets/index.json', `${p.id} has no page`);
+    // A preset with warnings shows them, above its download link, on its page in every language.
+    if (p.warnings?.length) {
+      for (const page of pages.values()) {
+        if (!page.path.endsWith(`/presets/${p.id}/`)) continue;
+        const box = page.html.indexOf('class="preset-warnings');
+        if (box < 0 || box > page.html.indexOf(`/presets/download/${p.id}`)) error(page.path, 'warnings missing or below the download link');
+      }
+    }
+  }
+
   // Report.
-  const byType = { home: 0, formats: 0, cli: 0, convert: 0 };
-  for (const p of pages.keys()) byType[p.includes('/convert/') ? 'convert' : p.endsWith('/formats/') ? 'formats' : p.endsWith('/cli/') ? 'cli' : 'home']++;
+  const byType = { home: 0, formats: 0, cli: 0, presets: 0, convert: 0 };
+  for (const p of pages.keys()) byType[p.includes('/convert/') ? 'convert' : p.endsWith('/formats/') ? 'formats' : p.endsWith('/cli/') ? 'cli' : p.includes('/presets/') ? 'presets' : 'home']++;
   const sizes = [...pages.values()].sort((a, b) => b.size - a.size);
-  console.log(`Checked ${pages.size} pages (home ${byType.home}, format catalog ${byType.formats}, command line guide ${byType.cli}, conversion guides ${byType.convert}), ${locs.length} sitemap URLs.`);
+  console.log(`Checked ${pages.size} pages (home ${byType.home}, format catalog ${byType.formats}, command line guide ${byType.cli}, preset gallery ${byType.presets}, conversion guides ${byType.convert}), ${locs.length} sitemap URLs.`);
   console.log(`Largest pages: ${sizes.slice(0, 3).map(p => `${p.path} ${(p.size / 1024).toFixed(1)} KB`).join(', ')}; smallest ${sizes.at(-1).path} ${(sizes.at(-1).size / 1024).toFixed(1)} KB`);
   for (const lang of LANGS) {
     const ofLang = [...pages.values()].filter(p => p.lang === lang);

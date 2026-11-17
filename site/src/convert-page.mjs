@@ -3,7 +3,8 @@
 // templates come from i18n/<lang>.json → convert.
 
 import {
-  CATEGORY, ENGINES, FORMATS, OPTIONS, PAIR, PAIRS, L, fill, label, pairSlug, particles, routeFor, sizeParen, sizeText, targetsOf, vars,
+  CATEGORY, ENGINES, FORMATS, OPTIONS, PAIR, PAIRS, SHAPING, L, fill, label, needsShaping, pairSlug, particles, routeFor, sizeParen, sizeText,
+  targetsOf, vars,
 } from './catalog.mjs';
 import {
   SITE, alternatesOf, breadcrumbs, downloadCard, engineBadge, escape, fileIcon, icon, pairLinks, paths, renderDocument,
@@ -87,6 +88,7 @@ export function renderConvertPage(t, languages, assets, pair) {
     route.engine === 'builtin' ? f(c.points.builtIn) : f(c.points.optional),
     ...(route.via ? [f(fill(c.points.via, { via: route.via }))] : []),
     ...pair.options.map(key => L(OPTIONS[key].long, t.lang)),
+    ...(needsShaping(pair.from, pair.to) ? [L(SHAPING.point, t.lang)] : []),
     f(c.points.batch),
     f(c.points.local),
     f(c.points.output),

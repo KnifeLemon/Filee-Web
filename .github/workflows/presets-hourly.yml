@@ -1,0 +1,48 @@
+# Rebuilds and deploys filee.sh every hour, so the preset gallery picks up new presets, likes and downloads
+# (site/README.md → Preset gallery).
+#
+# Off until it is switched on: the site is deployed by hand (npm run deploy) or by Workers Builds today, not from
+# Actions. To switch it on:
+#   1. Repository secrets: CLOUDFLARE_API_TOKEN (Workers Scripts: Edit, D1: Edit; the token `wrangler deploy` needs)
+#      and CLOUDFLARE_ACCOUNT_ID.
+#   2. Repository variable PRESETS_HOURLY = true (Settings → Secrets and variables → Actions → Variables).
+# The workflow's own GITHUB_TOKEN reads the likes and comments (public discussions of KnifeLemon/Filee-Presets).
+# It deploys whatever is on main, so merge site changes only when they may go live (as with Workers Builds).
+
+name: Preset gallery hourly rebuild
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: vars.PRESETS_HOURLY == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: site
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      # No IndexNow here (npm run deploy sends it): an hourly ping for unchanged pages would be noise.
+      - run: npx wrangler deploy

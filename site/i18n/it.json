@@ -11,6 +11,7 @@
     "how": "Come funziona",
     "formats": "Formati",
     "cli": "Riga di comando",
+    "presets": "Preset",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Scarica",
@@ -95,12 +96,12 @@
     "title": "Novità di Filee {release}",
     "lead": "Le novità principali di questa versione, in brevi clip prese dall'app stessa.",
     "items": [
-      { "title": "Annota le immagini", "text": "Disegna frecce, cornici, evidenziazioni, testo e numeri direttamente sull'immagine. Aggiungi Annota a un donut in Impostazioni → Barra donut." },
-      { "title": "Ritaglia i video", "text": "Rimuovi le bande nere trovate in automatico o ritaglia in 16:9, 9:16, 4:3, 1:1 o 21:9. I video HDR restano HDR." },
-      { "title": "Pagine per foglio", "text": "Metti 2, 4, 6, 8 o 9 pagine PDF su ogni foglio. Le pagine restano vettoriali e il testo resta nitido." },
-      { "title": "Solo i formati che usi", "text": "In Impostazioni → Settori disattiva quelli in cui non lavori, come CAD, 3D o caratteri. I loro formati spariscono dal donut e dagli elenchi." },
-      { "title": "Sottotitoli e traduzioni sul tuo PC", "text": "Crea sottotitoli SRT da un video e traduci documenti, ebook e sottotitoli con un'IA locale. Niente lascia il tuo PC." },
-      { "title": "E qualcosa in più", "text": "Copia o sposta in una cartella, ritaglio prospettico, file CMYK per la stampa, file di Krita e Minecraft, e in più italiano, indonesiano e vietnamita." }
+      { "title": "Galleria dei preset", "text": "Sfoglia i preset condivisi da altre persone, guarda cosa fa ciascuno ai tuoi file e installalo con un clic. Aprila da Preset → Galleria dei preset." },
+      { "title": "Condividi i tuoi preset", "text": "«Esporta per la galleria…» controlla i tuoi preset come fa la galleria, elenca cosa sistemare e salva un preset.json da inviare." },
+      { "title": "Originali nel Cestino", "text": "Un preset può spostare l'originale nel Cestino quando il risultato è pronto. Non viene eliminato nulla: puoi ripristinarlo da lì." },
+      { "title": "Nuovi formati", "text": "Texture Valve (VTF), circuiti stampati Gerber, Obsidian Canvas, G-code, registrazioni NOV di Wisenet, sketch Arduino e altro." },
+      { "title": "Windows on Arm e mongolo", "text": "Filee ora funziona in modo nativo sui PC Windows on Arm e parla mongolo (Монгол)." },
+      { "title": "E qualcosa in più", "text": "Immagini ISO UDF 2.01, PDF uniti su un solo formato carta, Unisci PDF nel donut Immagini, PDF/A che mantiene i link e Yazi su Linux." }
     ]
   },
   "features": {
@@ -151,7 +152,7 @@
       ["Prezzo", "Gratuito"],
       ["Licenza", "MIT (open source)"],
       ["Versione", "{version}"],
-      ["Piattaforma", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (anteprima)"],
+      ["Piattaforma", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (anteprima)"],
       ["Funziona offline", "Sì, i file non lasciano mai il tuo PC"],
       ["Formati", "{formatTotal} in {categoryCount} categorie"],
       ["Integrati", "{builtinTotal} formati, senza installare altro"],
@@ -171,6 +172,7 @@
     "selector": "Sistema operativo e processore",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
@@ -221,6 +223,7 @@
     "openSource": "Open source",
     "formats": "Tutti i formati",
     "cli": "Riga di comando",
+    "presets": "Galleria dei preset",
     "popular": "Conversioni più usate"
   },
   "common": {
@@ -517,6 +520,159 @@
     ],
     "ctaTitle": "Scarica Filee con il comando filee",
     "ctaText": "La riga di comando è inclusa in Filee per Windows 10/11: gratuita, open source e offline."
+  },
+  "presets": {
+    "title": "Galleria preset Filee: preset e barre donut gratis | Filee",
+    "description": "Preset e barre donut gratuiti condivisi dagli utenti di Filee. Scopri cosa fa ognuno e installalo in Filee con un clic. Tutto sotto licenza CC0.",
+    "crumb": "Galleria dei preset",
+    "h1": "Galleria dei preset",
+    "lead": "Preset e barre donut già pronti, condivisi da altri utenti di Filee. Scopri cosa fa ognuno prima di installarlo e condividi i tuoi.",
+    "upload": "Carica un preset",
+    "guideButton": "Come funziona la condivisione",
+    "sortLabel": "Ordina",
+    "sort": {
+      "hot": "Di tendenza",
+      "best": "Migliori",
+      "new": "Nuovi"
+    },
+    "periodLabel": "Periodo",
+    "periods": {
+      "day": "Oggi",
+      "week": "Questa settimana",
+      "month": "Questo mese",
+      "year": "Quest'anno",
+      "all": "Da sempre"
+    },
+    "searchLabel": "Cerca preset",
+    "searchPlaceholder": "Nome, autore o tag",
+    "filterKind": "Tipo",
+    "filterFormat": "Formato",
+    "filterTag": "Tag",
+    "onlyMine": "Solo nella mia lingua",
+    "any": "Tutti",
+    "clear": "Azzera filtri",
+    "kinds": {
+      "convert": "Conversione",
+      "tool": "Strumento",
+      "toolbar": "Barra donut"
+    },
+    "count": "{n|one:# preset|many:# di preset|other:# preset}",
+    "empty": "Nessuno ha ancora condiviso un preset. Il tuo potrebbe essere il primo.",
+    "noMatch": "Nessun preset corrisponde a questi filtri.",
+    "by": "di {author}",
+    "likes": "{n|one:# Mi piace|many:# Mi piace|other:# Mi piace}",
+    "downloads": "{n|one:# download|many:# di download|other:# download}",
+    "comments": "{n|one:# commento|many:# di commenti|other:# commenti}",
+    "statsNote": "I Mi piace sono le reazioni 👍 alla discussione di ogni preset su GitHub. Mi piace e download vengono ricontati ogni ora.",
+    "detailTitle": "{title}: preset Filee creato da {author}",
+    "detailDescription": "{title}: un preset gratuito per Filee condiviso da {author}. Guarda le immagini e cosa fa, poi installalo dalla galleria dei preset di Filee.",
+    "sharedBy": "Condiviso da {author}",
+    "updated": "Aggiornato il {date}",
+    "imageAlt": "{title}, immagine {n} di {total}",
+    "aboutTitle": "Informazioni su questo preset",
+    "whatTitle": "Cosa fa",
+    "colPreset": "Preset",
+    "colKind": "Tipo",
+    "colMakes": "Produce",
+    "colOptions": "Opzioni principali",
+    "presetKinds": {
+      "convert": "Conversione",
+      "group": "Gruppo",
+      "tool": "Finestra strumento",
+      "copy": "Copia"
+    },
+    "toolbarRow": "Aggiunge la barra “{name}” con {n|one:# fetta|many:# di fette|other:# fette}.",
+    "worksOn": "Funziona con",
+    "makes": "Produce",
+    "minVersion": "Richiede Filee {version} o successivo.",
+    "defaults": "Opzioni predefinite",
+    "options": {
+      "quality": "Qualità {n}",
+      "longEdge": "Lato lungo {n} px",
+      "width": "Larghezza {n} px",
+      "percent": "{n}% della dimensione",
+      "customSize": "{w} × {h}",
+      "maxSize": "Fino a {n} MB",
+      "grayscale": "Bianco e nero",
+      "removeBackground": "Rimuove lo sfondo",
+      "stripMetadata": "Rimuove i metadati",
+      "mergePdf": "Unisce in un solo PDF",
+      "compressPdf": "Comprime il PDF",
+      "ocr": "Riconosce il testo (OCR)",
+      "pageNumbers": "Aggiunge i numeri di pagina",
+      "mediaHigh": "Alta qualità",
+      "mediaBalanced": "Qualità bilanciata",
+      "mediaSmall": "File piccoli",
+      "maxHeight": "Fino a {n}p",
+      "audioBitrate": "Audio {n} kbps",
+      "askCompression": "Chiede ogni volta la compressione",
+      "group": "Apre a ventaglio {n|one:# preset|many:# di preset|other:# preset}",
+      "tool": "Apre una finestra propria"
+    },
+    "installTitle": "Installalo",
+    "installSteps": [
+      "Apri Filee e vai su **Preset**.",
+      "Fai clic su **Galleria dei preset** e cerca “{title}”.",
+      "Fai clic su **Installa**. I preset vengono aggiunti accanto ai tuoi e non li sostituiscono mai."
+    ],
+    "downloadButton": "Scarica il file del preset",
+    "downloadNote": "Oppure scarica il file e aggiungilo nelle impostazioni di Filee da **Generali → Importa…**",
+    "license": "{author} ha condiviso questo preset e le sue immagini sotto CC0 1.0: chiunque può usarli, modificarli e condividerli senza condizioni.",
+    "licenseLink": "Informazioni su CC0",
+    "commentsButton": "Commenti su GitHub",
+    "report": "Qualcosa non va in questo preset? Scrivilo nei commenti oppure [chiedine la rimozione]({removal}).",
+    "back": "Torna alla galleria",
+    "warnTitle": "Leggi prima di installare",
+    "warnBadge": "Attenzione",
+    "warnings": {
+      "replaces_original": "Sostituisce i file originali con quelli convertiti.",
+      "moves_original": "Dopo la conversione sposta i file originali in un'altra cartella.",
+      "overwrites_existing": "Sovrascrive i file esistenti con lo stesso nome.",
+      "edits_metadata": "Modifica i metadati dei file, come titolo, autore o data.",
+      "fixed_edits": "Aggiunge gli stessi segni, aree coperte, sfondo o tagli della clip a ogni file che converte.",
+      "strips_metadata": "Rimuove dai risultati metadati come i dati della fotocamera e la posizione.",
+      "uses_translate_model": "Traduce con un modello di IA offline, che Filee scarica al primo uso se manca.",
+      "copies_to_folder": "Copia i file in una cartella a tua scelta."
+    },
+    "warnGeneric": {
+      "high": "Può modificare o rimuovere file sul tuo computer. Leggi la descrizione prima di installare.",
+      "medium": "Cambia il modo in cui i file vengono salvati. Leggi la descrizione prima di installare.",
+      "info": "Ha un'impostazione che è bene conoscere. Vedi la descrizione."
+    },
+    "guideTitle": "Condividi il tuo preset",
+    "guideLead": "I preset sono impostazioni, non programmi: condividerne uno è sicuro e richiede pochi minuti.",
+    "guideSteps": [
+      {
+        "title": "Esportalo da Filee",
+        "text": "Nelle impostazioni di Filee apri **Generali** e fai clic su **Esporta…** in Preset e barre. Filee salva i tuoi preset e le tue barre in un file."
+      },
+      {
+        "title": "Prepara da 1 a 4 immagini",
+        "text": "Mostra cosa fa il preset: la sua fetta del donut, le sue impostazioni o un file di esempio prima e dopo. PNG, JPEG o WebP, da 640 a 2.560 px sul lato lungo, fino a 2 MB ciascuna. La prima è la copertina."
+      },
+      {
+        "title": "Compila il modulo",
+        "text": "Fai clic su **{upload}**, accedi a GitHub e aggiungi il file, le immagini, un titolo e una breve descrizione. Dei controlli automatici ti dicono se c'è qualcosa da correggere, poi un manutentore lo pubblica."
+      }
+    ],
+    "allowedTitle": "Cosa si può condividere",
+    "allowed": [
+      "Preset di conversione e di strumento, e barre donut composte da essi.",
+      "Fino a 20 preset e una barra per caricamento, in un file di massimo 256 KB.",
+      "Immagini fatte da te, di file di esempio creati apposta per l'immagine."
+    ],
+    "notAllowedTitle": "Mai condiviso",
+    "notAllowed": [
+      "Preset che eseguono un programma o un comando.",
+      "Impostazioni di rete e proxy, server di traduzione personalizzati e chiavi API.",
+      "Cartelle di destinazione diverse da quella del file originale, e percorsi o nomi personali ovunque.",
+      "Immagini di documenti reali, nomi, volti o percorsi di file."
+    ],
+    "ccTitle": "Condiviso sotto CC0",
+    "ccText": "I preset condivisi e le loro immagini sono dedicati al pubblico dominio con CC0 1.0: chiunque può usarli, modificarli e condividerli senza condizioni. La galleria mostra comunque chi ha condiviso ciascuno.",
+    "removalTitle": "Richieste di rimozione",
+    "removalText": "Per ritirare un preset che hai condiviso, o per segnalarne uno che viola queste regole o mostra dati personali, apri una issue nel repository Filee-Presets. Una volta rimosso lì, sparisce da questo sito e dall'app entro un'ora.",
+    "removalLink": "Apri una issue"
   },
   "notFound": {
     "title": "Pagina non trovata",

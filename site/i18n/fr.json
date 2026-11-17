@@ -11,6 +11,7 @@
     "how": "Comment ça marche",
     "formats": "Formats",
     "cli": "Ligne de commande",
+    "presets": "Préréglages",
     "hwp": "HWP",
     "faq": "FAQ",
     "download": "Télécharger",
@@ -95,12 +96,12 @@
     "title": "Nouveautés de Filee {release}",
     "lead": "Les nouveautés phares de cette version, en courts extraits tirés de l'application.",
     "items": [
-      { "title": "Annoter les images", "text": "Dessinez flèches, cadres, surlignages, texte et numéros directement sur l'image. Ajoutez Annoter à un menu dans Paramètres → Menu circulaire." },
-      { "title": "Recadrer les vidéos", "text": "Supprimez les bandes noires détectées automatiquement ou recadrez en 16:9, 9:16, 4:3, 1:1 ou 21:9. Une vidéo HDR reste en HDR." },
-      { "title": "Pages par feuille", "text": "Placez 2, 4, 6, 8 ou 9 pages PDF sur chaque feuille. Les pages restent vectorielles et le texte reste net." },
-      { "title": "Seulement les formats qui vous servent", "text": "Dans Paramètres → Domaines, désactivez ceux où vous ne travaillez pas, comme la CAO, la 3D ou les polices. Leurs formats quittent le menu circulaire et les listes." },
-      { "title": "Sous-titres et traductions sur votre PC", "text": "Créez des sous-titres SRT à partir d'une vidéo et traduisez documents, livres numériques et sous-titres avec une IA locale. Rien ne quitte votre PC." },
-      { "title": "Et encore un peu plus", "text": "Copier ou déplacer dans un dossier, recadrage en perspective, fichiers CMJN pour l'impression, fichiers Krita et Minecraft, ainsi que l'italien, l'indonésien et le vietnamien." }
+      { "title": "Galerie de préréglages", "text": "Parcourez les préréglages partagés par d'autres, voyez ce que chacun fait à vos fichiers et installez-le en un clic. Ouvrez-la depuis Préréglages → Galerie de préréglages." },
+      { "title": "Partagez vos préréglages", "text": "« Exporter pour la galerie… » vérifie vos préréglages comme la galerie, liste ce qu'il faut corriger et enregistre un preset.json à soumettre." },
+      { "title": "Les originaux à la Corbeille", "text": "Un préréglage peut mettre l'original à la Corbeille une fois le résultat prêt. Rien n'est effacé : vous pouvez le restaurer depuis la Corbeille." },
+      { "title": "Nouveaux formats", "text": "Textures Valve (VTF), circuits imprimés Gerber, Obsidian Canvas, G-code, enregistrements NOV de Wisenet, croquis Arduino et plus encore." },
+      { "title": "Windows on Arm et mongol", "text": "Filee fonctionne désormais nativement sur les PC Windows on Arm et parle mongol (Монгол)." },
+      { "title": "Et encore un peu plus", "text": "Images ISO UDF 2.01, PDF fusionnés sur un seul format de papier, Fusionner les PDF sur le menu Images, PDF/A qui garde les liens et Yazi sous Linux." }
     ]
   },
   "features": {
@@ -151,7 +152,7 @@
       ["Prix", "Gratuit"],
       ["Licence", "MIT (open source)"],
       ["Version", "{version}"],
-      ["Plateforme", "Windows 10/11 x64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (préversion)"],
+      ["Plateforme", "Windows 10/11 x64/ARM64 · Linux x64/ARM64 (Ubuntu 22.04+) · macOS 13+ (préversion)"],
       ["Hors ligne", "Oui, les fichiers ne quittent jamais votre PC"],
       ["Formats", "{formatTotal} dans {categoryCount} catégories"],
       ["Intégrés", "{builtinTotal} formats, rien d'autre à installer"],
@@ -171,6 +172,7 @@
     "selector": "Système d'exploitation et processeur",
     "targets": {
       "win-x64": "Windows 10/11 · x64",
+      "win-arm64": "Windows 10/11 · ARM64",
       "linux-x64": "Linux · x64",
       "linux-arm64": "Linux · ARM64",
       "osx-arm64": "macOS · Apple Silicon (ARM64)",
@@ -221,6 +223,7 @@
     "openSource": "Open source",
     "formats": "Tous les formats",
     "cli": "Ligne de commande",
+    "presets": "Galerie de préréglages",
     "popular": "Conversions populaires"
   },
   "common": {
@@ -517,6 +520,159 @@
     ],
     "ctaTitle": "Obtenez Filee avec la commande filee",
     "ctaText": "La ligne de commande est fournie avec Filee pour Windows 10/11 : gratuit, open source et hors ligne."
+  },
+  "presets": {
+    "title": "Galerie de préréglages et menus circulaires gratuits | Filee",
+    "description": "Parcourez les préréglages et menus circulaires gratuits partagés par la communauté Filee. Voyez ce que fait chacun et installez-le en un clic. Sous CC0.",
+    "crumb": "Galerie de préréglages",
+    "h1": "Galerie de préréglages",
+    "lead": "Des préréglages et menus circulaires prêts à l'emploi, partagés par d'autres utilisateurs de Filee. Voyez ce que fait chacun avant de l'installer, et partagez les vôtres.",
+    "upload": "Envoyer un préréglage",
+    "guideButton": "Comment partager",
+    "sortLabel": "Trier",
+    "sort": {
+      "hot": "Populaires",
+      "best": "Meilleurs",
+      "new": "Nouveaux"
+    },
+    "periodLabel": "Période",
+    "periods": {
+      "day": "Aujourd'hui",
+      "week": "Cette semaine",
+      "month": "Ce mois-ci",
+      "year": "Cette année",
+      "all": "Depuis toujours"
+    },
+    "searchLabel": "Rechercher des préréglages",
+    "searchPlaceholder": "Nom, auteur ou étiquette",
+    "filterKind": "Type",
+    "filterFormat": "Format",
+    "filterTag": "Étiquette",
+    "onlyMine": "Uniquement dans ma langue",
+    "any": "Tous",
+    "clear": "Effacer les filtres",
+    "kinds": {
+      "convert": "Conversion",
+      "tool": "Outil",
+      "toolbar": "Menu circulaire"
+    },
+    "count": "{n|one:# préréglage|many:# de préréglages|other:# préréglages}",
+    "empty": "Personne n'a encore partagé de préréglage. Le vôtre pourrait être le premier.",
+    "noMatch": "Aucun préréglage ne correspond à ces filtres.",
+    "by": "par {author}",
+    "likes": "{n|one:# j'aime|many:# de j'aime|other:# j'aime}",
+    "downloads": "{n|one:# téléchargement|many:# de téléchargements|other:# téléchargements}",
+    "comments": "{n|one:# commentaire|many:# de commentaires|other:# commentaires}",
+    "statsNote": "Les « j'aime » sont les réactions 👍 sur la discussion GitHub de chaque préréglage. Les « j'aime » et les téléchargements sont recomptés toutes les heures.",
+    "detailTitle": "{title} : préréglage Filee de {author}",
+    "detailDescription": "{title} : un préréglage Filee gratuit partagé par {author}. Voyez ses images et ce qu'il fait, puis installez-le depuis la galerie de préréglages Filee.",
+    "sharedBy": "Partagé par {author}",
+    "updated": "Mis à jour le {date}",
+    "imageAlt": "{title}, image {n} sur {total}",
+    "aboutTitle": "À propos de ce préréglage",
+    "whatTitle": "Ce qu'il fait",
+    "colPreset": "Préréglage",
+    "colKind": "Type",
+    "colMakes": "Produit",
+    "colOptions": "Options principales",
+    "presetKinds": {
+      "convert": "Conversion",
+      "group": "Groupe",
+      "tool": "Fenêtre d'outil",
+      "copy": "Copie"
+    },
+    "toolbarRow": "Ajoute le menu circulaire « {name} » avec {n|one:# tranche|many:# de tranches|other:# tranches}.",
+    "worksOn": "S'applique à",
+    "makes": "Produit",
+    "minVersion": "Nécessite Filee {version} ou une version ultérieure.",
+    "defaults": "Options par défaut",
+    "options": {
+      "quality": "Qualité {n}",
+      "longEdge": "Grand côté de {n} px",
+      "width": "Largeur de {n} px",
+      "percent": "{n} % de la taille",
+      "customSize": "{w} × {h}",
+      "maxSize": "Jusqu'à {n} MB",
+      "grayscale": "Noir et blanc",
+      "removeBackground": "Supprime l'arrière-plan",
+      "stripMetadata": "Supprime les métadonnées",
+      "mergePdf": "Fusionne en un seul PDF",
+      "compressPdf": "Compresse le PDF",
+      "ocr": "Reconnaît le texte (OCR)",
+      "pageNumbers": "Ajoute des numéros de page",
+      "mediaHigh": "Haute qualité",
+      "mediaBalanced": "Qualité équilibrée",
+      "mediaSmall": "Fichiers légers",
+      "maxHeight": "Jusqu'à {n}p",
+      "audioBitrate": "Audio à {n} kbps",
+      "askCompression": "Demande la compression à chaque fois",
+      "group": "Se déploie en {n|one:# préréglage|many:# de préréglages|other:# préréglages}",
+      "tool": "Ouvre sa propre fenêtre"
+    },
+    "installTitle": "L'installer",
+    "installSteps": [
+      "Ouvrez Filee et allez dans **Préréglages**.",
+      "Cliquez sur **Galerie de préréglages** et trouvez « {title} ».",
+      "Cliquez sur **Installer**. Les préréglages s'ajoutent aux vôtres et ne les remplacent jamais."
+    ],
+    "downloadButton": "Télécharger le fichier du préréglage",
+    "downloadNote": "Ou téléchargez le fichier et ajoutez-le dans les paramètres de Filee, sous **Général → Importer…**",
+    "license": "{author} a partagé ce préréglage et ses images sous CC0 1.0 : chacun peut les utiliser, les modifier et les partager, sans condition.",
+    "licenseLink": "À propos de CC0",
+    "commentsButton": "Commentaires sur GitHub",
+    "report": "Un problème avec ce préréglage ? Dites-le dans ses commentaires, ou [demandez son retrait]({removal}).",
+    "back": "Retour à la galerie",
+    "warnTitle": "À lire avant l’installation",
+    "warnBadge": "Attention",
+    "warnings": {
+      "replaces_original": "Remplace vos fichiers d’origine par les fichiers convertis.",
+      "moves_original": "Déplace vos fichiers d’origine dans un autre dossier après la conversion.",
+      "overwrites_existing": "Écrase les fichiers qui existent déjà sous le même nom.",
+      "edits_metadata": "Modifie les métadonnées de vos fichiers, comme le titre, l’auteur ou la date.",
+      "fixed_edits": "Ajoute les mêmes annotations, zones masquées, arrière-plan ou découpes de clip à chaque fichier converti.",
+      "strips_metadata": "Retire des résultats les métadonnées comme les données de l’appareil photo et la position.",
+      "uses_translate_model": "Traduit avec un modèle d’IA hors ligne, que Filee télécharge à la première utilisation s’il n’est pas installé.",
+      "copies_to_folder": "Copie des fichiers dans un dossier de votre choix."
+    },
+    "warnGeneric": {
+      "high": "Peut modifier ou supprimer des fichiers sur votre ordinateur. Lisez la description avant l’installation.",
+      "medium": "Change la façon dont vos fichiers sont enregistrés. Lisez la description avant l’installation.",
+      "info": "Contient un réglage bon à connaître. Voir la description."
+    },
+    "guideTitle": "Partagez votre propre préréglage",
+    "guideLead": "Les préréglages sont des réglages, pas des programmes : en partager un est sans risque et ne prend que quelques minutes.",
+    "guideSteps": [
+      {
+        "title": "Exportez-le depuis Filee",
+        "text": "Dans les paramètres de Filee, ouvrez **Général** et cliquez sur **Exporter…** sous Préréglages et menus circulaires. Filee enregistre vos préréglages et menus circulaires dans un fichier."
+      },
+      {
+        "title": "Préparez 1 à 4 images",
+        "text": "Montrez ce que fait le préréglage : sa tranche dans le menu circulaire, ses réglages, ou un fichier d'exemple avant et après. PNG, JPEG ou WebP, de 640 à 2 560 px sur le grand côté, 2 MB maximum chacune. La première sert de couverture."
+      },
+      {
+        "title": "Remplissez le formulaire",
+        "text": "Cliquez sur **{upload}**, connectez-vous à GitHub, puis ajoutez le fichier, les images, un titre et une courte description. Des vérifications automatiques vous signalent ce qui doit être corrigé, puis un mainteneur le publie."
+      }
+    ],
+    "allowedTitle": "Ce qui peut être partagé",
+    "allowed": [
+      "Les préréglages de conversion et d'outil, et les menus circulaires qui en sont composés.",
+      "Jusqu'à 20 préréglages et un menu circulaire par envoi, dans un fichier de 256 KB maximum.",
+      "Des images faites par vous-même, de fichiers d'exemple créés pour l'occasion."
+    ],
+    "notAllowedTitle": "Jamais partagé",
+    "notAllowed": [
+      "Les préréglages qui lancent un programme ou une commande.",
+      "Les paramètres réseau et proxy, les serveurs de traduction personnalisés et les clés d'API.",
+      "Les dossiers de sortie autres que celui du fichier source, et les chemins ou noms personnels, où que ce soit.",
+      "Les images de vrais documents, de noms, de visages ou de chemins de fichiers."
+    ],
+    "ccTitle": "Partagé sous CC0",
+    "ccText": "Les préréglages partagés et leurs images sont versés dans le domaine public sous CC0 1.0 : chacun peut les utiliser, les modifier et les partager sans condition. La galerie indique toujours qui a partagé chacun d'eux.",
+    "removalTitle": "Demandes de retrait",
+    "removalText": "Pour retirer un préréglage que vous avez partagé, ou signaler un préréglage qui enfreint ces règles ou affiche des informations personnelles, ouvrez une issue dans le dépôt Filee-Presets. Une fois retiré là-bas, il disparaît de ce site et de l'application dans l'heure.",
+    "removalLink": "Ouvrir une issue"
   },
   "notFound": {
     "title": "Page introuvable",

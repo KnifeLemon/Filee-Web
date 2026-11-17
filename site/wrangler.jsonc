@@ -1,16 +1,27 @@
-// Cloudflare Workers (static assets only, no Worker script): serves dist/ on filee.sh.
+// Cloudflare Workers: serves dist/ (static assets) on filee.sh, and runs worker/index.mjs for the preset gallery's
+// download links only (/presets/download/<id>: serves the preset file and counts it per day in D1). Every other
+// request goes straight to the static assets, without running the Worker.
 // Deploy: npm run deploy (or connect the repo in Workers Builds, see README.md).
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "filee-site",
+  "main": "worker/index.mjs",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    // Only these paths run the Worker first; the rest is served as static assets as before.
+    "run_worker_first": ["/presets/download/*"],
     // /ko → /ko/, /ko/index.html → /ko/
     "html_handling": "auto-trailing-slash",
     // Unknown paths get dist/404.html with status 404.
     "not_found_handling": "404-page"
   },
+  // The download counters. Without a database_id, `wrangler deploy` binds the D1 database of this name, creating it on
+  // the first deploy (automatic provisioning); the Worker creates its table on the first download. See README.md.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "filee-presets" }
+  ],
   "routes": [
     { "pattern": "filee.sh", "custom_domain": true }
   ],

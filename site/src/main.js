@@ -612,6 +612,20 @@ async function getJson(url) {
   }
 }
 
+/**
+ * Whether a Windows browser runs on an ARM PC. Only Chromium browsers say so (client hints, architecture "arm"); the
+ * others report x64, so they keep the x64 guess and ARM64 stays one pick away in the list.
+ */
+async function windowsOnArm() {
+  const hints = navigator.userAgentData;
+  if (typeof hints?.getHighEntropyValues !== 'function' || !/windows/i.test(hints.platform ?? '')) return false;
+  try {
+    return (await hints.getHighEntropyValues(['architecture'])).architecture === 'arm';
+  } catch {
+    return false;
+  }
+}
+
 /** Each selection resolves only an asset for that operating system and processor. */
 function setupGitHub() {
   const api = 'https://api.github.com/repos/KnifeLemon/Filee';
@@ -692,6 +706,9 @@ function setupGitHub() {
       }
     });
   }
+  // Likewise a Windows browser on an ARM PC; the answer comes asynchronously and a choice made meanwhile stays.
+  if (selected === 'win-x64' && !savedTarget && !manuallySelected)
+    windowsOnArm().then(arm => { if (arm && !savedTarget && !manuallySelected) { selected = 'win-arm64'; render(); } });
   cached('filee-release-v3', async () => releaseSummary(await getJson(`${api}/releases/latest`)))
     .then(value => { release = releaseSummary(value); render(); })
     .catch(() => { failed = true; render(); });
@@ -757,7 +774,7 @@ function setupDownloadGuide() {
   document.addEventListener('click', e => {
     const link = e.target.closest?.('[data-download]');
     if (!link || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-    if (link.dataset.downloadTarget !== 'win-x64') return;
+    if (!link.dataset.downloadTarget?.startsWith('win-')) return;
     if (!/\.exe$/i.test(new URL(link.href).pathname)) return; // still the release page: it explains itself
     if (!dialog) build();
     retry.href = link.href;

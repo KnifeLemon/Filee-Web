@@ -2,8 +2,8 @@
 // Everything is generated from catalog.mjs, so the facts match the pages.
 
 import {
-  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, VERSION, L, countFormats, engineDetails, fill, joinList, pairSlug,
-  routeFor, sizeText, stats, vars,
+  BUILT_IN_ENGINES, CATEGORIES, ENGINES, FAQ, FORMATS, OPTIONS, PAIRS, SHAPING, VERSION, L, countFormats, engineDetails, fill, joinList,
+  needsShaping, pairSlug, routeFor, sizeText, stats, vars,
 } from './catalog.mjs';
 import { DOWNLOAD, REPO, SITE, paths } from './layout.mjs';
 import { pairMeta } from './convert-page.mjs';
@@ -17,11 +17,12 @@ function facts(languages) {
   const s = stats();
   const v = vars(EN);
   return [
-    `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (64-bit) and Linux (x64 and ARM64), with a preview build for macOS 13+. It converts files offline on the user's own computer; files are never uploaded.`,
-    `Windows x64 and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and other Wayland desktops use the drop zone and the file manager's right-click menu. macOS 13+ packages (Apple silicon and Intel) are previews: the app is not notarized yet. The format counts, examples and screenshots describe Windows (JPEG XR, EMF/WMF and the Explorer menu are Windows only).`,
+    `Filee is a free, open-source (MIT) file converter for Windows 10 and Windows 11 (x64 and ARM64) and Linux (x64 and ARM64), with a preview build for macOS 13+. It converts files offline on the user's own computer; files are never uploaded.`,
+    `Windows (x64 and ARM64) and Linux (x64 and ARM64, Ubuntu 22.04 or later) are full releases. On Linux the drag gesture needs an X11 session; on KDE Plasma with Wayland it is experimental, and other Wayland desktops use the drop zone and the file manager's right-click menu. macOS 13+ packages (Apple silicon and Intel) are previews: the app is not notarized yet. The format counts, examples and screenshots describe Windows (JPEG XR, EMF/WMF and the Explorer menu are Windows only).`,
     `Filee converts ${s.formatTotal} file formats in ${s.categoryCount} categories: ${v.categoryList}.`,
     `${s.builtinTotal} of those formats work right after installation. The others use optional engines, picked in the installer or downloaded inside the app when needed: ${engineDetails(EN)}.`,
-    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files. It never uses Microsoft Office or Hancom Office. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
+    `Filee needs no Microsoft Office, Hancom Office or LibreOffice for Word (DOCX), Excel (XLSX, XLS, CSV), PowerPoint (PPTX) and Korean HWP/HWPX files, except for text that needs shaping (below). It never uses Microsoft Office or Hancom Office. Optional engines (FFmpeg, calibre, Pandoc, Ghostscript, LibreOffice) already on the PC (PATH or Program Files) are used instead of a download; the user can also pick a specific copy.`,
+    `Text that needs shaping (Hebrew, Arabic, Syriac, Thaana, N'Ko, Indic scripts, Sinhala, Thai, Lao, Tibetan, Myanmar, Khmer, Mongolian and other South and Southeast Asian scripts) is the exception: the built-in PDF route can't shape it, so DOCX, TXT, Markdown, HTML, XLSX, PPTX and HWPX files with such text are converted to PDF, and to images through PDF, by the optional LibreOffice engine. Without LibreOffice, such a file fails with "This script needs LibreOffice to convert correctly. Install it in Settings → Engines" and the script's name instead of becoming a broken PDF. Other text never needs LibreOffice; French, German, Spanish, Chinese, Japanese and Korean documents, for example, keep the built-in route.`,
     `How it works: hold a modifier key (Ctrl by default, configurable) and drag files; a donut-shaped menu of formats opens at the cursor; drop the files on a format and the converted files are saved next to the originals.`,
     `Other ways to convert: "Convert with Filee" in the Windows 11 top-level right-click menu, Send To, a keyboard shortcut on selected files, and the drop zone in the main window.`,
     `Batch conversion: any number of files are converted in parallel; one failure doesn't stop the rest; presets can merge files into one PDF or pack them into one ZIP.`,
@@ -29,7 +30,7 @@ function facts(languages) {
     `Watch folders: files that land in a chosen folder are converted automatically once they are complete, set up in the app or with "filee watch"; the originals can stay or move to an "originals" folder.`,
     `Presets per file type: quality, resizing, rotate and flip, DPI, grayscale, metadata, background removal, Trace to SVG (raster images to vector SVG, built in), TIFF compression, ICO sizes, PDF merge, split, page ranges and compression (Compress PDF: pictures at 72, 150 or 300 dpi, built in), 720p, HEVC and AV1 video, hardware video encoding (H.264 and HEVC on NVENC, Quick Sync, AMF, VideoToolbox or VA-API), every frame of a video saved as PNG or JPG pictures, MP3 bitrate, output folder and file names. A donut slice can hold a group of presets.`,
     `Filee is free: no ads, no watermarks, no account and no file-size or file-count limits of its own. The app is available in English, Spanish (Español), Japanese (日本語), Korean (한국어), Simplified Chinese (简体中文), Traditional Chinese (繁體中文), Polish (Polski), Hindi (हिन्दी), Russian (Русский), Arabic (العربية, right to left), Brazilian Portuguese (Português (Brasil)), French (Français), Nepali (नेपाली), Thai (ไทย), Turkish (Türkçe), European Portuguese (Português (Portugal)), German (Deutsch), Italian (Italiano), Indonesian (Bahasa Indonesia), Vietnamese (Tiếng Việt), Bengali (বাংলা (বাংলাদেশ)) and Persian (فارسی, right to left).`,
-    `Current version: ${VERSION}. On Windows, Filee's own installer (Filee-<version>-win-Setup.exe, in the app's languages) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in, the filee command and optional engines; silent installs use /VERYSILENT /SUPPRESSMSGBOXES. A portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. Linux and macOS packages (Filee-<version>-linux-x64.tar.gz, linux-arm64, osx-arm64, osx-x64) are unpacked and installed with ./install.sh. When a new version is out on GitHub Releases, the installed app downloads it, checks its SHA-256 and installs it after one click, keeping settings and engines; the portable ZIP is replaced by hand.`,
+    `Current version: ${VERSION}. On Windows, Filee's own installer (Filee-<version>-win-Setup.exe, in the app's languages) asks for administrator rights once, installs Filee for all users and lets the user choose the File Explorer menu entry, starting at sign-in, the filee command and optional engines; silent installs use /VERYSILENT /SUPPRESSMSGBOXES. A portable ZIP (Filee-<version>-win-Portable.zip) needs no installation. Windows on ARM PCs take the native ARM64 files instead (Filee-<version>-win-arm64-Setup.exe and -win-arm64-Portable.zip); the x64 files also run there under emulation. Linux and macOS packages (Filee-<version>-linux-x64.tar.gz, linux-arm64, osx-arm64, osx-x64) are unpacked and installed with ./install.sh. When a new version is out on GitHub Releases, the installed app downloads it, checks its SHA-256 and installs it after one click, keeping settings and engines; the portable ZIP is replaced by hand.`,
     `Website: ${languages.map(l => `${SITE}${l.path} (${l.englishName})`).join(', ')}.`,
   ].filter(Boolean);
 }
@@ -66,7 +67,7 @@ ${PAIRS.map(p => `- [${pairMeta(t, p).h1}](${SITE}${paths.convert(t, pairSlug(p)
 ## Download
 
 - [Windows installer, latest release](${DOWNLOAD}) (free; Windows 10/11, x64)
-- [Choose an operating system and processor](${SITE}/#download) (Linux x64/ARM64 for Ubuntu 22.04+; macOS 13+ is a preview)
+- [Choose an operating system and processor](${SITE}/#download) (Windows on ARM64; Linux x64/ARM64 for Ubuntu 22.04+; macOS 13+ is a preview)
 - [All releases and release notes](${REPO}/releases)
 
 ## Website
@@ -122,7 +123,7 @@ ${PAIRS.map(p => {
 
 ${SITE}${paths.convert(t, pairSlug(p))}
 
-${meta.lead} ${engine}. ${L(p.tip, EN)}${p.options.length ? ` Options: ${p.options.map(k => L(OPTIONS[k].long, EN)).join(' ')}` : ''}
+${meta.lead} ${engine}. ${L(p.tip, EN)}${p.options.length ? ` Options: ${p.options.map(k => L(OPTIONS[k].long, EN)).join(' ')}` : ''}${needsShaping(p.from, p.to) ? ` ${L(SHAPING.point, EN)}` : ''}
 `;
   }).join('\n')}
 ## FAQ

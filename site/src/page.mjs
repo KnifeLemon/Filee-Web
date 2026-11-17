@@ -35,7 +35,7 @@ const CLIP_SIZE = 720;
  * clip per t.whatsNew.items entry, in that order, from public/media/whats-new/<release> (marketing/export.py
  * whats-new <version>: <clip>.mp4 and its poster <clip>.webp, 768 × 432, light theme only). The texts are the app's.
  */
-const WHATS_NEW = { release: '2.3', clips: ['annotate', 'crop_video', 'sheets', 'fields', 'translate', 'more'] };
+const WHATS_NEW = { release: '2.5', clips: ['gallery', 'share', 'trash', 'formats', 'mongolian', 'more'] };
 const WIDE_CLIP = [768, 432];
 
 /** The terminal on the home page's automation section (output as the filee command prints it). */
