@@ -778,7 +778,7 @@ function setupDownloadGuide() {
 function setupLanguageBanner() {
   const KEY = 'filee-lang-chosen';
   const remember = () => { try { localStorage.setItem(KEY, '1'); } catch { /* storage unavailable */ } };
-  document.querySelectorAll('.lang-menu a, .footer-langs a').forEach(a => a.addEventListener('click', remember));
+  document.querySelectorAll('.lang-menu a').forEach(a => a.addEventListener('click', remember));
   try { if (localStorage.getItem(KEY)) return; } catch { return; }
   if (document.referrer && new URL(document.referrer).origin === location.origin) return;
 
@@ -814,11 +814,14 @@ function setupNav() {
   addEventListener('scroll', update, { passive: true });
   update();
 
-  const menu = document.querySelector('.lang-menu');
-  if (!menu) return;
-  document.addEventListener('click', e => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+  // The header's and the footer's language menus: a click outside or Escape closes the open one; opening one closes the other.
+  const menus = [...document.querySelectorAll('.lang-menu')];
+  if (!menus.length) return;
+  document.addEventListener('click', e => { for (const menu of menus) if (menu.open && !menu.contains(e.target)) menu.open = false; });
   document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape' || !menu.open) return;
+    if (e.key !== 'Escape') return;
+    const menu = menus.find(m => m.open);
+    if (!menu) return;
     menu.open = false;
     menu.querySelector('summary').focus();
   });

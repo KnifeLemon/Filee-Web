@@ -272,6 +272,17 @@ ${scripts}
 `;
 }
 
+/**
+ * The language menu: a globe and the current language that open a list of every language with its flag. The header
+ * and the footer use the same one (extra: a class for the footer's, which opens upwards, see styles.css).
+ */
+function languageMenu(t, languages, alternates, extra = '') {
+  return `<details class="lang-menu${extra ? ` ${extra}` : ''}">
+        <summary aria-label="${escape(t.nav.language)}">${icon('globe')}<span>${escape(t.name)}</span></summary>
+        <ul>${languages.map(l => `<li><a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}"${l.lang === t.lang ? ' aria-current="page"' : ''}><img class="flag" src="/media/flags/${l.flag}.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span>${escape(l.name)}</span></a></li>`).join('')}</ul>
+      </details>`;
+}
+
 function header(t, languages, alternates, current) {
   const home = paths.home(t);
   const link = (href, text, key) => `<a href="${href}"${current === key ? ' aria-current="page"' : ''}>${escape(text)}</a>`;
@@ -288,10 +299,7 @@ function header(t, languages, alternates, current) {
       ${link(`${home}#faq`, t.nav.faq, 'faq')}
     </nav>
     <div class="nav-actions">
-      <details class="lang-menu">
-        <summary aria-label="${escape(t.nav.language)}">${icon('globe')}<span>${escape(t.name)}</span></summary>
-        <ul>${languages.map(l => `<li><a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}"${l.lang === t.lang ? ' aria-current="page"' : ''}><img class="flag" src="/media/flags/${l.flag}.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span>${escape(l.name)}</span></a></li>`).join('')}</ul>
-      </details>
+      ${languageMenu(t, languages, alternates)}
       <a class="btn btn-ghost github" href="${REPO}" rel="noopener">${icon('github')}<span class="stars" data-stars>GitHub</span></a>
       <a class="btn btn-primary btn-small" href="#download">${icon('download')}<span>${escape(t.nav.download)}</span></a>
     </div>
@@ -337,7 +345,7 @@ function footer(t, languages, alternates) {
       <ul>${popular.map(p => `<li><a href="${paths.convert(t, pairSlug(p))}">${escape(pairName(t, p))}</a></li>`).join('')}</ul>
     </nav>
     <div class="footer-bottom">
-      <nav class="footer-langs" aria-label="${escape(t.nav.language)}">${icon('globe')}<ul>${languages.map(l => `<li><a href="${alternates[l.lang]}" hreflang="${l.htmlLang}" lang="${l.htmlLang}"${l.lang === t.lang ? ' aria-current="page"' : ''}>${escape(l.name)}</a></li>`).join('')}</ul></nav>
+      ${languageMenu(t, languages, alternates, 'lang-menu-footer')}
       <p class="footer-made">${made}</p>
     </div>
   </div>
