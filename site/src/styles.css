@@ -871,7 +871,7 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   /* The footer's menu keeps its name, and its list opens upwards in one column instead of spanning the screen. */
   .footer .lang-menu summary span { display: inline; }
-  .footer .lang-menu ul { position: absolute; top: auto; bottom: calc(100% + 8px); inset-inline: 0 auto; grid-template-columns: minmax(0, 1fr); max-height: min(60dvh, 420px); }
+  .footer .lang-menu ul { position: absolute; top: auto; bottom: calc(100% + 8px); inset-inline: 0 auto; grid-template-columns: max-content; max-width: calc(100vw - 32px); max-height: min(60dvh, 420px); }
   .demo-window { min-height: 430px; }
   .file-icon { width: 54px; height: 66px; }
 }
