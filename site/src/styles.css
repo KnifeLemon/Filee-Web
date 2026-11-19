@@ -503,21 +503,18 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
 .footer-badge img { height: 44px; width: auto; }
 .footer-col h2 { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); }
 .lang-hi .footer-col h2, .lang-ne .footer-col h2, .lang-bn-BD .footer-col h2, .lang-ja .footer-col h2, .lang-ko .footer-col h2, .lang-zh-CN .footer-col h2, .lang-zh-TW .footer-col h2 { letter-spacing: 0; }
-.footer-col ul, .footer-langs ul { list-style: none; margin: 0; padding: 0; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
 .footer-col ul { display: grid; gap: 9px; font-size: 14px; }
 .footer-popular ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
-.footer-col a, .footer-langs a, .footer-made a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.footer-col a:hover, .footer-langs a:hover, .footer-made a:hover { color: var(--ink); }
+.footer-col a, .footer-made a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-col a:hover, .footer-made a:hover { color: var(--ink); }
 .footer-bottom {
   grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px;
   padding-top: 24px; border-top: 1px solid var(--line);
 }
-.footer-langs { display: flex; align-items: center; gap: 10px; font-size: 14px; }
-.footer-langs .icon { width: 18px; height: 18px; flex: none; fill: var(--muted); }
-.footer-langs ul { display: flex; flex-wrap: wrap; gap: 4px; }
-.footer-langs a { display: block; padding: 3px 9px; border-radius: 999px; }
-.footer-langs a[aria-current] { color: var(--accent-strong); background: var(--accent-soft); font-weight: 650; }
-@media (prefers-color-scheme: dark) { .footer-langs a[aria-current] { color: #c9c4ff; } }
+/* The footer's language menu is the header's (.lang-menu) as a bordered pill that opens upwards, from the start edge. */
+.footer .lang-menu summary { border: 1px solid var(--line); }
+.footer .lang-menu ul { inset-inline: 0 auto; top: auto; bottom: calc(100% + 8px); }
 .footer-made { color: var(--muted); font-size: 13px; }
 .footer-made a { color: var(--ink); font-weight: 600; }
 
@@ -877,8 +874,9 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
   .footer-brand, .footer-popular { grid-column: 1 / -1; }
   .footer-badge { margin: 0; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .footer-langs { align-items: flex-start; }
-  .footer-langs .icon { margin-top: 4px; }
+  /* The footer's menu keeps its name, and its list opens upwards in one column instead of spanning the screen. */
+  .footer .lang-menu summary span { display: inline; }
+  .footer .lang-menu ul { position: absolute; top: auto; bottom: calc(100% + 8px); inset-inline: 0 auto; grid-template-columns: max-content; max-width: calc(100vw - 32px); max-height: min(60dvh, 420px); }
   .demo-window { min-height: 430px; }
   .file-icon { width: 54px; height: 66px; }
 }
