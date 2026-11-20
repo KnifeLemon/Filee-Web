@@ -168,6 +168,8 @@
     "button": "Unduh untuk Windows",
     "store": "Unduh dari Microsoft Store",
     "winget": "Atau dengan WinGet",
+    "copy": "Salin perintah",
+    "copied": "Disalin",
     "linuxButton": "Unduh untuk Linux",
     "selector": "Sistem operasi dan prosesor",
     "targets": {

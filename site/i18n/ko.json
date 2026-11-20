@@ -168,6 +168,8 @@
     "button": "Windows용 다운로드",
     "store": "Microsoft Store에서 받기",
     "winget": "또는 WinGet으로",
+    "copy": "명령어 복사",
+    "copied": "복사됨",
     "linuxButton": "Linux용 다운로드",
     "selector": "운영체제와 프로세서",
     "targets": {

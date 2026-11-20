@@ -168,6 +168,8 @@
     "button": "Windows-এর জন্য ডাউনলোড করুন",
     "store": "Microsoft Store থেকে ডাউনলোড করুন",
     "winget": "অথবা WinGet দিয়ে",
+    "copy": "কমান্ড কপি করুন",
+    "copied": "কপি হয়েছে",
     "linuxButton": "Linux-এর জন্য ডাউনলোড করুন",
     "selector": "অপারেটিং সিস্টেম ও প্রসেসর",
     "targets": {
