@@ -782,6 +782,57 @@ function setupDownloadGuide() {
   });
 }
 
+/**
+ * The FAQ cards: they open and close smoothly (the answer's height is animated, since <details> alone jumps), and
+ * only one is open at a time. While a card closes it keeps its [open] attribute and gets [data-closing], so the
+ * chevron and border turn back at once (styles.css). With reduced motion they change instantly.
+ */
+function setupFaq() {
+  const items = [...document.querySelectorAll('.faq details')];
+  if (!items.length) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const running = new WeakMap();
+  const isOpen = item => item.open && !item.hasAttribute('data-closing');
+
+  function setOpen(item, open) {
+    const answer = item.querySelector('.faq-answer');
+    const previous = running.get(item);
+    // An unfinished animation continues from the height it has reached.
+    const reached = previous ? answer.getBoundingClientRect().height : null;
+    previous?.cancel();
+    item.toggleAttribute('data-closing', !open);
+    if (open) item.open = true;
+    if (reduced.matches || !answer.animate) {
+      item.open = open;
+      item.removeAttribute('data-closing');
+      return;
+    }
+    const full = answer.getBoundingClientRect().height;
+    const padding = parseFloat(getComputedStyle(answer).paddingBottom);
+    const from = reached ?? (open ? 0 : full);
+    const to = open ? full : 0;
+    const frame = height => ({ height: `${height}px`, paddingBottom: `${full ? padding * height / full : 0}px`, opacity: full ? height / full : 1 });
+    answer.style.overflow = 'hidden';
+    const animation = answer.animate([frame(from), frame(to)], { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    running.set(item, animation);
+    animation.onfinish = () => {
+      running.delete(item);
+      answer.style.overflow = '';
+      if (!open) item.open = false;
+      item.removeAttribute('data-closing');
+    };
+  }
+
+  for (const item of items) {
+    item.querySelector('summary').addEventListener('click', e => {
+      e.preventDefault();
+      const open = !isOpen(item);
+      if (open) for (const other of items) if (other !== item && isOpen(other)) setOpen(other, false);
+      setOpen(item, open);
+    });
+  }
+}
+
 /** Copies the WinGet command when its button is clicked; the icon turns into a check for two seconds. */
 function setupCopyCommand() {
   const button = document.querySelector('.copy-cmd');
@@ -893,5 +944,6 @@ setupShowcase();
 setupTilt();
 setupGitHub();
 setupDownloadGuide();
+setupFaq();
 setupCopyCommand();
 setupLanguageBanner();

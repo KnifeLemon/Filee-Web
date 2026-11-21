@@ -621,12 +621,12 @@ a.supporter-logo:hover { border-color: color-mix(in srgb, var(--accent) 45%, tra
 .supporters-join { margin-top: 24px; font-size: 15px; }
 .faq { max-width: 880px; margin: 0 auto; display: grid; gap: 10px; }
 .faq details { border-radius: 18px; transition: border-color 0.3s; }
-.faq details[open] { border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+.faq details[open]:not([data-closing]) { border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
 .faq summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; cursor: pointer; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary h3 { font-size: 18px; letter-spacing: -0.01em; line-height: 1.35; }
 .faq-chevron { width: 22px; height: 22px; fill: var(--muted); flex: none; transition: transform 0.3s var(--ease-out); }
-.faq details[open] .faq-chevron { transform: rotate(90deg); }
+.faq details[open]:not([data-closing]) .faq-chevron { transform: rotate(90deg); }
 .faq-answer { padding: 0 22px 20px; color: var(--muted); }
 .faq-answer .pills { margin-top: 14px; }
 
