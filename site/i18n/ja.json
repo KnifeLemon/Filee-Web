@@ -168,6 +168,8 @@
     "button": "Windows版をダウンロード",
     "store": "Microsoft Store から入手",
     "winget": "またはWinGetで",
+    "copy": "コマンドをコピー",
+    "copied": "コピーしました",
     "linuxButton": "Linux版をダウンロード",
     "selector": "OSとプロセッサー",
     "targets": {

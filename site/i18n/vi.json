@@ -168,6 +168,8 @@
     "button": "Tải xuống cho Windows",
     "store": "Tải xuống từ Microsoft Store",
     "winget": "Hoặc dùng WinGet",
+    "copy": "Sao chép lệnh",
+    "copied": "Đã sao chép",
     "linuxButton": "Tải xuống cho Linux",
     "selector": "Hệ điều hành và CPU",
     "targets": {

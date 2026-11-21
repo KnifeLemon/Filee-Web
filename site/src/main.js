@@ -833,6 +833,36 @@ function setupFaq() {
   }
 }
 
+/** Copies the WinGet command when its button is clicked; the icon turns into a check for two seconds. */
+function setupCopyCommand() {
+  const button = document.querySelector('.copy-cmd');
+  if (!button) return;
+  // Outside the button, so "Copied" is announced on its own and never becomes part of the button's name.
+  const status = button.parentElement.querySelector('[data-copy-status]');
+  let timer;
+  const copy = async text => {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      const field = Object.assign(document.createElement('textarea'), { value: text });
+      field.setAttribute('readonly', '');
+      field.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+      document.body.append(field);
+      field.select();
+      try { return document.execCommand('copy'); } catch { return false; } finally { field.remove(); }
+    }
+  };
+  button.addEventListener('click', async () => {
+    if (!await copy(button.dataset.copy)) return;
+    getSelection()?.removeAllRanges();
+    button.classList.add('is-copied');
+    status.textContent = button.dataset.copied;
+    clearTimeout(timer);
+    timer = setTimeout(() => { button.classList.remove('is-copied'); status.textContent = ''; }, 2000);
+  });
+}
+
 /** Suggests the visitor's language when it differs from the page. Never redirects (crawlers and shared links stay put). */
 function setupLanguageBanner() {
   const KEY = 'filee-lang-chosen';
@@ -915,4 +945,5 @@ setupTilt();
 setupGitHub();
 setupDownloadGuide();
 setupFaq();
+setupCopyCommand();
 setupLanguageBanner();

@@ -168,6 +168,8 @@
     "button": "下載 Windows 版",
     "store": "從 Microsoft Store 取得",
     "winget": "或使用 WinGet",
+    "copy": "複製指令",
+    "copied": "已複製",
     "linuxButton": "下載 Linux 版",
     "selector": "作業系統和處理器",
     "targets": {

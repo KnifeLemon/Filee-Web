@@ -168,6 +168,8 @@
     "button": "Windows का लागि डाउनलोड गर्नुहोस्",
     "store": "Microsoft Store बाट प्राप्त गर्नुहोस्",
     "winget": "वा WinGet बाट",
+    "copy": "कमाण्ड प्रतिलिपि गर्नुहोस्",
+    "copied": "प्रतिलिपि गरियो",
     "linuxButton": "Linux का लागि डाउनलोड गर्नुहोस्",
     "selector": "अपरेटिङ सिस्टम र प्रोसेसर",
     "targets": {

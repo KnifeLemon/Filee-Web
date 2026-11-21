@@ -168,6 +168,8 @@
     "button": "Baixar para Windows",
     "store": "Baixe na Microsoft Store",
     "winget": "Ou pelo WinGet",
+    "copy": "Copiar comando",
+    "copied": "Copiado",
     "linuxButton": "Baixar para Linux",
     "selector": "Sistema operacional e processador",
     "targets": {
