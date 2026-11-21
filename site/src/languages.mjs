@@ -159,6 +159,13 @@ export const LANGUAGES = [
     list: { sep: '، ', last: ' و ' }, size: 'حدود {mb} مگابایت', paren: ' ({size})',
     engineFor: '{name} – {what}{size}', engineSep: '؛ ',
   },
+  {
+    // Mongolian in Cyrillic, as the app ships it.
+    lang: 'mn', flag: 'mn', path: '/mn/', htmlLang: 'mn', ogLocale: 'mn_MN', name: 'Монгол', englishName: 'Mongolian',
+    match: ['mn'], aliases: [], font: 'inter', media: 'en', snippet: { title: 70, description: 160 },
+    list: { sep: ', ', last: ' ба ' }, size: 'ойролцоогоор {mb} MB', paren: ' ({size})',
+    engineFor: '{name} – {what}{size}', engineSep: '; ',
+  },
 ];
 
 /** Language codes in page order. */

@@ -1,6 +1,6 @@
 # filee.sh
 
-The Filee website: a static, dependency-free site in twenty-two languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish, European Portuguese, German, Italian, Indonesian, Vietnamese, Bengali, Persian), deployed to Cloudflare Workers (static assets, plus a small Worker for the preset gallery's download counter).
+The Filee website: a static, dependency-free site in twenty-three languages (English, Korean, Simplified Chinese, Traditional Chinese, Polish, Spanish, Hindi, Japanese, Russian, Arabic, Brazilian Portuguese, French, Nepali, Thai, Turkish, European Portuguese, German, Italian, Indonesian, Vietnamese, Bengali, Persian, Mongolian), deployed to Cloudflare Workers (static assets, plus a small Worker for the preset gallery's download counter).
 
 ```
 site/
@@ -8,7 +8,7 @@ site/
                             guide pairs, FAQ. Every format/support claim and every count on the site comes from here
   src/languages.mjs         THE language list: code, URL prefix, names, html lang/hreflang, Open Graph locale, browser
                             languages that pick it, short URLs, font, media language, list/size wording
-  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (zh-TW, pl, es, hi, ja, ru, ar, pt-BR, fr, ne, th, tr, pt-PT, de, it, id, vi, bn-BD, fa): English text → translation
+  src/texts/<lang>.mjs      catalog texts of the languages after en, ko, zh-CN (zh-TW, pl, es, hi, ja, ru, ar, pt-BR, fr, ne, th, tr, pt-PT, de, it, id, vi, bn-BD, fa, mn): English text → translation
   i18n/<lang>.json          page text (UI and marketing copy), one file per language; {placeholders} are filled
                             from the catalog
   src/layout.mjs            shared frame: <head> (meta, canonical, hreflang, Open Graph), nav, footer, icons
@@ -86,6 +86,9 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
   package `flag-icons` 7.2.3 (MIT, `LICENSE.txt` beside them), drawn round by CSS. Each language names one in
   `flag` in `src/languages.mjs`; a new language copies its country's file from the same version. `es.svg` is Spain's
   plain red-yellow-red flag written by hand, because the package's one with the coat of arms is 92 KB.
+  `mn.svg` (Mongolia) is written by hand too, with a simplified Soyombo. The Microsoft Store badge is Microsoft's own
+  in each language (`public/media/badges/ms-store`); a language without one shows the English badge (`STORE_BADGE_LANG`
+  in `src/layout.mjs`, Mongolian for now).
 
 ## Pages
 
@@ -93,7 +96,7 @@ No `npm install` is needed to build, check or preview; Wrangler is only needed t
 |---|---|---|
 | Home | `/`, `/ko/`, `/zh-cn/`, `/pl/`, `/es/`, `/hi/`, `/ja/`, `/ru/`, `/ar/`, `/pt-br/` | `i18n/*.json` + catalog (categories, counts, FAQ, specs) |
 | Format catalog | `/formats/` … | catalog: every category, format, route and engine |
-| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 22 languages) |
+| Conversion guides | `/convert/heic-to-jpg/` … | catalog `PAIRS`: one page per pair (84 pairs × 23 languages) |
 | Preset gallery | `/presets/`, `/presets/<id>/` … | Filee-Presets' index.json, read at build time (see Preset gallery) |
 | `llms.txt`, `llms-full.txt` | `/llms.txt`, `/llms-full.txt` | catalog, in English |
 
