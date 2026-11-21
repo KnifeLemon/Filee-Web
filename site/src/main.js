@@ -786,7 +786,8 @@ function setupDownloadGuide() {
 function setupCopyCommand() {
   const button = document.querySelector('.copy-cmd');
   if (!button) return;
-  const status = button.querySelector('[data-copy-status]');
+  // Outside the button, so "Copied" is announced on its own and never becomes part of the button's name.
+  const status = button.parentElement.querySelector('[data-copy-status]');
   let timer;
   const copy = async text => {
     try {
