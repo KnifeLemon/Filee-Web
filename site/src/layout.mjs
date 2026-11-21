@@ -73,6 +73,7 @@ const ICONS = {
   download: 'M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z',
   github: 'M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21.09C14.5,21.36 14.66,21.67 15.17,21.59C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z',
   windows: 'M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z',
+  copy: 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z',
   check: 'M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z',
   star: 'M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z',
   arrow: 'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z',
@@ -400,7 +401,7 @@ export function downloadCard(t, { title, text, button }) {
       <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download aria-describedby="download-status">${icon('download')}<span data-download-label>${escape(button)}</span></a>
       <p class="download-archive" data-download-archive hidden><a href="${DOWNLOAD}" rel="noopener">${escape(t.download.archive)}</a></p>
       <a class="store-badge" href="${escape(STORE)}" rel="noopener" target="_blank" data-store-badge><img src="/media/badges/ms-store/${t.lang}.svg" alt="${escape(t.download.store)}" width="${STORE_BADGE_WIDTH[t.lang] ?? 161}" height="44" loading="lazy" decoding="async"></a>
-      <p class="download-winget" data-store-badge>${escape(t.download.winget)} <code>winget install KnifeLemon.Filee</code></p>
+      <p class="download-winget" data-store-badge><span>${escape(t.download.winget)}</span> <button type="button" class="copy-cmd" data-copy="winget install KnifeLemon.Filee" data-copied="${escape(t.download.copied)}" aria-label="${escape(t.download.copy)}" title="${escape(t.download.copy)}"><code>winget install KnifeLemon.Filee</code>${icon('copy', 'icon icon-copy')}${icon('check', 'icon icon-check')}<span class="sr-only" role="status" data-copy-status></span></button></p>
       <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
       <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
       <p class="download-macos-note" data-macos-note hidden>${escape(t.download.macosNote)}</p>

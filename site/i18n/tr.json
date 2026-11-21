@@ -168,6 +168,8 @@
     "button": "Windows için indir",
     "store": "Microsoft Store'dan edinin",
     "winget": "Ya da WinGet ile",
+    "copy": "Komutu kopyala",
+    "copied": "Kopyalandı",
     "linuxButton": "Linux için indir",
     "selector": "İşletim sistemi ve işlemci",
     "targets": {

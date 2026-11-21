@@ -168,6 +168,8 @@
     "button": "Скачать для Windows",
     "store": "Скачать из Microsoft Store",
     "winget": "Или через WinGet",
+    "copy": "Копировать команду",
+    "copied": "Скопировано",
     "linuxButton": "Скачать для Linux",
     "selector": "Операционная система и процессор",
     "targets": {

@@ -480,7 +480,16 @@ kbd { display: inline-block; padding: 2px 8px; border-radius: 7px; font: 700 13p
 .store-badge img { display: block; height: 48px; width: auto; }
 .download-winget { margin: 10px 0 0; font-size: 0.875rem; color: var(--muted); }
 .download-winget[hidden] { display: none; }
-.download-winget code { user-select: all; }
+.download-winget { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 8px; }
+.copy-cmd { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; }
+.copy-cmd code { user-select: all; white-space: nowrap; }
+.copy-cmd .icon { width: 16px; height: 16px; flex: none; fill: currentColor; }
+.copy-cmd .icon-check { display: none; color: var(--green); }
+.copy-cmd:hover { color: var(--ink); }
+.copy-cmd.is-copied .icon-copy { display: none; }
+.copy-cmd.is-copied .icon-check { display: block; }
+.copy-cmd:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; border-radius: 8px; }
+
 .download-card > .download-status { margin: 14px auto 0; font-size: 14px; }
 .download-card > .download-platform-note { margin: 16px auto 0; font-size: 14px; }
 .download-card > .download-macos-note { margin: 10px auto 0; font-size: 14px; }
