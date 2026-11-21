@@ -20,6 +20,8 @@ export const DOWNLOAD = `${REPO}/releases/latest`;
  */
 export const STORE = 'https://apps.microsoft.com/detail/XPDCN05L89WS0C?referrer=appbadge&cid=site&mode=full';
 const STORE_BADGE_WIDTH = { tr: 180, de: 183 }; // the others are 161 × 44
+// Languages without a badge of their own in public/media/badges/ms-store show the English one.
+const STORE_BADGE_LANG = { mn: 'en' };
 
 /** Filee's AlternativeTo page (footer badge; the badge SVGs are kept in public/media/badges, the CSP allows no other hosts). */
 /**
@@ -400,7 +402,7 @@ export function downloadCard(t, { title, text, button }) {
       </div>
       <a class="btn btn-primary btn-large" href="${DOWNLOAD}" data-download aria-describedby="download-status">${icon('download')}<span data-download-label>${escape(button)}</span></a>
       <p class="download-archive" data-download-archive hidden><a href="${DOWNLOAD}" rel="noopener">${escape(t.download.archive)}</a></p>
-      <a class="store-badge" href="${escape(STORE)}" rel="noopener" target="_blank" data-store-badge><img src="/media/badges/ms-store/${t.lang}.svg" alt="${escape(t.download.store)}" width="${STORE_BADGE_WIDTH[t.lang] ?? 161}" height="44" loading="lazy" decoding="async"></a>
+      <a class="store-badge" href="${escape(STORE)}" rel="noopener" target="_blank" data-store-badge><img src="/media/badges/ms-store/${STORE_BADGE_LANG[t.lang] ?? t.lang}.svg" alt="${escape(t.download.store)}" width="${STORE_BADGE_WIDTH[STORE_BADGE_LANG[t.lang] ?? t.lang] ?? 161}" height="44" loading="lazy" decoding="async"></a>
       <p class="download-winget" data-store-badge><span>${escape(t.download.winget)}</span> <button type="button" class="copy-cmd" data-copy="winget install KnifeLemon.Filee" data-copied="${escape(t.download.copied)}" title="${escape(t.download.copy)}"><code>winget install KnifeLemon.Filee</code><span class="sr-only">${escape(t.download.copy)}</span>${icon('copy', 'icon icon-copy')}${icon('check', 'icon icon-check')}</button><span class="sr-only" role="status" data-copy-status></span></p>
       <p class="download-status" id="download-status" data-download-status role="status" hidden></p>
       <p class="download-platform-note" id="download-platform-note">${escape(t.download.platformNote)}</p>
